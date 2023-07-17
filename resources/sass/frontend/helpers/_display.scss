@@ -1,0 +1,15 @@
+.inline-block {
+ 	display: inline-block;
+}
+
+.block {
+	display: block;
+}
+
+.max-height{
+	@for $i from 0 through 1000 {
+		&-#{$i}px{
+			max-height: #{$i}px;;
+		}
+	}
+}

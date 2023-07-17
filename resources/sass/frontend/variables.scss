@@ -1,0 +1,99 @@
+/** ============== CONFIG ============= ***/
+$assetsFolder: '/gms/assets/';
+/** ============== COLORS ============= ***/
+
+$relo-primary-color: var(--main-color);
+$relo-secondary-color: var(--secondary-color);
+$relo-dark-blue: #0A142B;
+$relo-dark-blue-75: rgba(10, 20, 43, 0.75);
+$relo-dark-blue-70: rgba(10, 20, 43, 0.70);
+$relo-dark-blue-30: rgb(195, 197, 201);
+$relo-dark-blue-25: rgb(195, 197, 201);
+$relo-dark-blue-5: rgb(243, 243, 244);
+$relo-bright-blue: #0098FF;
+$relo-bright-blue-75: rgba(0, 152, 255, 0.75);
+$relo-bright-blue-25: rgba(0, 152, 255, 0.25);
+$relo-bright-blue-10: rgba(0, 152, 255, 0.1);
+$relo-grey: #7E8189;
+$relo-grey-10: rgba(126, 129, 137, 0.1);
+$relo-gray-80: #b2b2b2;
+$relo-grey-50: #FAFAFA;
+$relo-red: #e34a6f;
+$relo-red-75: rgba(227, 74, 111, 0.75);
+$relo-plum-red: #90234A;
+$relo-plum-red-10: #DDD3D6;
+$relo-red-10: rgba(227, 74, 111, 0.1);
+$relo-green: #39c17f;
+$relo-green-75: rgba(57, 193, 127, 0.75);
+$relo-bright-green: rgba(57, 193, 127, 0.75);
+$relo-dark-green: #39c17f;
+
+$relo-turquoise: #6ef5ff;
+$relo-turquoise-75: rgba(110, 245, 255, 0.75);
+$relo-yellow: #f9cb40;
+$relo-yellow-75: rgba(249, 203, 64, 0.75);
+$relo-yellow-40: rgba(249, 203, 64, 0.40);
+$relo-yellow-20: rgba(249, 203, 64, 0.20);
+$relo-gray: #cbd6e2;
+$relo-bright-gray: #F5F7FA;
+$relo-dark-gray: #7E8189;
+$relo-dark-gray-50: #CCCCCC;
+$relo-dark-gray-75: #dde6e9;
+$relo-bright-gray-2: #BDBDBD;
+$relo-inverse: #263238;
+$relo-blue: #2f80e7;
+$relo-white: #ffffff;
+$relo-white-90: rgba(255, 255, 255, 0.90);
+$relo-white-80: rgba(255, 255, 255, 0.80);
+$relo-white-50: rgba(255, 255, 255, 0.50);
+$relo-white-75: rgba(255, 255, 255, 0.75);
+$relo-default-gray: #eaeaea;
+$relo-blue-light: #E0EFFA;
+$relo-bg-bright-blue-soft: #E4EFFB;
+$relo-white-15: rgba(255, 255, 255, 0.15);
+$relo-white-90: rgba(255, 255, 255, 0.90);
+$relo-dark-blue-85: rgba(10, 20, 43, 0.85);
+$relo-dark-blue-75: rgba(10, 20, 43, 0.75);
+$relo-dark-blue-25: rgba(10, 20, 43, 0.25);
+$relo-dark-blue-5: rgb(243, 243, 244);
+$relo-navy-blue: #454c5d;
+$relo-bright-gray-3:  #9E9E9E;
+$relo-table-hover:  #fafbfc;
+$relo-bright-gray-4: #FAFAFA;
+$relo-orange: #FF8E26;
+$relo-orange-10: #FFF4EA;
+$relo-sky-blue: #E5F5FF;
+
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+    &:before {
+        content: "";
+        display: block;
+        padding-top: ($height / $width) * 100%;
+        width: 100%;
+    }
+
+    .inner-ratio {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+
+        > img {
+            max-height: 100%;
+        }
+    }
+}
+
+@mixin scale-4-3($height) {
+    height: $height;
+    width: $height * 1.33;
+}
+
+// --- 16:9
+@mixin scale-16-9($height) {
+    height: $height;
+    width: $height * 1.77;
+}

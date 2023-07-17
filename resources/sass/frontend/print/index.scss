@@ -1,0 +1,38 @@
+@media screen {
+    #printSection2 {
+        display: none;
+    }
+}
+@media all {
+    .pagebreak, .pagebreak2	{ display: none; }
+}
+@media print {
+    #printSection2, #printSection2 * {
+        visibility: visible;
+        overflow:visible
+    }
+    #printSection2{
+        //display: table;
+        //width: 100%;
+        width: 99%;
+        height: 99%;
+        position: relative;
+        left:0;
+        top: 20px;
+        overflow:visible;
+    }
+    #printSection2:first-child{
+        page-break-after: avoid;
+        page-break-before: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 0px;
+    }
+
+    .pagebreak {
+        page-break-after: always;
+    }
+
+    .pagebreak2 {
+        page-break-before: always;
+    }
+}

@@ -1,0 +1,133 @@
+.kanban-container {
+    display: flex;
+    width: 100%;
+    .kanban-list {
+        padding: 16px;
+    }
+}
+
+.panel {
+    &.has-kanban {
+        background: $relo-bright-gray;
+    }
+}
+
+.kanban {
+    padding: 0px 10px 10px 10px;
+    height: 100%;
+
+    /**
+     * The dnd-list should always have a min-height,
+     * otherwise you can't drop to it once it's empty
+     */
+
+    ul[dnd-list] {
+        min-height: 160px;
+        padding-left: 0px;
+
+        /**
+         * The dndDraggingSource class will be applied to
+         * the source element of a drag operation. It makes
+         * sense to hide it to give the user the feeling
+         * that he's actually moving it.
+         */
+        .dndDraggingSource {
+            display: none;
+        }
+
+        .dndDragover {
+
+        }
+
+        /**
+         * An element with .dndPlaceholder class will be
+         * added to the dnd-list while the user is dragging
+         * over it.
+         */
+        .dndPlaceholder {
+            border: 2px dashed #999999;
+            border-radius: 2px;
+            background-color: $relo-white;
+            float: left;
+            display: block;
+            min-height: 160px;
+        }
+
+        li {
+            background-color: #fff;
+            border: 1px solid $relo-bright-gray;
+            display: block;
+            padding: 5px 5px;
+            margin-bottom: 5px;
+            margin-top: 0px;
+            float: left;
+            width: 100%;
+            border-radius: 5px;
+
+            div {
+                &.item {
+                    height: 30px;
+                    width: 100%;
+                    float: left;
+                    display: table;
+                }
+            }
+
+            /**
+            * Show selected elements in green
+            */
+            &.selected {
+                background-color: $relo-bright-gray;
+                color: $relo-bright-blue;
+                float: left;
+            }
+
+            &.border-right-0 {
+                border-left: 5px solid $relo-yellow !important;
+            }
+
+            &.border-right-3 {
+                border-left: 5px solid $relo-green !important;
+            }
+
+            &.border-right-1 {
+                border-left: 5px solid $relo-bright-blue !important;
+            }
+
+            &.border-todo {
+                border-left: 5px solid $relo-yellow !important;
+                border-right: 1px solid $relo-yellow !important;
+                border-top: 1px solid $relo-yellow !important;
+                border-bottom: 1px solid $relo-yellow !important;
+            }
+
+            &.border-done {
+                border-left: 5px solid $relo-green !important;
+                border-right: 1px solid $relo-green !important;
+                border-top: 1px solid $relo-green !important;
+                border-bottom: 1px solid $relo-green !important;
+            }
+
+            &.border-in-progress {
+                border-left: 5px solid $relo-bright-blue !important;
+                border-right: 1px solid $relo-bright-blue !important;
+                border-top: 1px solid $relo-bright-blue !important;
+                border-bottom: 1px solid $relo-bright-blue !important;
+            }
+            &.border-awaiting-review{
+                border-left: 5px solid $relo-plum-red !important;
+                border-right: 1px solid $relo-plum-red !important;
+                border-top: 1px solid $relo-plum-red !important;
+                border-bottom: 1px solid $relo-plum-red !important;
+            }
+        }
+
+    }
+    .due-date {
+        font-weight: normal !important;
+        color: #909FA7;
+        font-size: 12px;
+    }
+}
+
+

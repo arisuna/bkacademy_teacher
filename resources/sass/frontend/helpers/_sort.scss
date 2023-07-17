@@ -1,0 +1,28 @@
+.sort-order {
+    li {
+        padding: 10px;
+        &:hover {
+            background-color: $relo-bright-blue;
+            color: #fff;
+        }
+    }
+}
+
+.sort-order-key {
+    &:hover {
+        background-color: $relo-bright-blue;
+        color: #fff;
+    }
+}
+
+.sort-order-type {
+    display: inline-block;
+    margin-left: 5px;
+    padding: 0px;
+    width: 35px;
+    border-radius: 50%;
+    &:hover {
+        background-color: $relo-bright-blue;
+        color: #fff;
+    }
+}

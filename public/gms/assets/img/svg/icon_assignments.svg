@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70px" height="70px" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Assignments</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Assignments" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(2.000000, 2.000000)">
+            <g id="Group-88" fill="#FFFFFF" stroke="#0098FF" stroke-width="3">
+                <circle id="Oval-7" cx="33" cy="33" r="33"></circle>
+            </g>
+            <g id="Group-94" transform="translate(10.560000, 10.560000)" fill="#0A142B">
+                <g id="Group-88">
+                    <circle id="Oval-7" cx="22.44" cy="22.44" r="22.44"></circle>
+                </g>
+            </g>
+            <g id="Group-98" transform="translate(13.200000, 13.200000)">
+                <path d="M25.74,6.2805554 L16.705705,21.94 L34.774295,21.94 L25.74,6.2805554 Z" id="Triangle-2" stroke="#FFFFFF" transform="translate(25.740000, 13.860000) rotate(46.000000) translate(-25.740000, -13.860000) "></path>
+                <polygon id="Triangle-2" fill="#FFFFFF" transform="translate(13.049053, 26.281633) rotate(226.000000) translate(-13.049053, -26.281633) " points="13.0490534 17.7016328 22.9490534 34.8616328 3.14905335 34.8616328"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,123 @@
+@mixin size-image-slide-housing-proposals($width,$height) {
+    .carousel-custom {
+        .carousel-inner {
+            height: $height;
+        }
+
+        div.picture-frame {
+            box-sizing: border-box;
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            width: $width;
+            height: $height;
+            overflow: hidden;
+
+            > img {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                max-height: $height;
+            }
+        }
+    }
+}
+
+@mixin attr-carousel-custom{
+    ol.carousel-indicators {
+        display: none;
+    }
+    li {
+        background: $relo-white !important;
+    }
+}
+
+.carousel-custom {
+    @include attr-carousel-custom;
+    a {
+        span:first-child {
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px #fff, 0px 0px 0 9px #fff, 0 0 0 6px #fff, 0 0 0 10px #fff, 0 0 0 13px $relo-grey;
+        }
+    }
+
+}
+
+.carousel-custom.no-border-icon {
+    @include attr-carousel-custom;
+    a {
+        span:first-child {
+            background: none;
+            box-shadow: none;
+        }
+    }
+}
+
+.carousel-custom.limited-height{
+    .carousel-inner {
+        height: 140px !important;
+    }
+
+    div.picture-frame {
+        width:  140px !important;
+        height: 140px !important;
+
+        > img {
+            max-height: 140px !important;
+        }
+    }
+}
+
+.carousel-elements {
+    .carousel-control {
+        &.left {
+            left: -26%;
+        }
+        &.right {
+            right: -26%;
+        }
+    }
+    a {
+        span:first-child {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid $relo-white;
+
+            &:before {
+                position: absolute;
+                top: 20%;
+                right: 28%;
+            }
+        }
+    }
+
+    .icon {
+        top: 30px;
+        span.solid-time-line::before {
+            height: 390%;
+            width: 4.5px;
+        }
+
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    @include size-image-slide-housing-proposals(19em, 17em);
+}
+
+@media (min-width: 1024px) and (max-width: 1339px) {
+    @include size-image-slide-housing-proposals(27em, 17em);
+}
+
+@media (min-width: 1440px) and (max-width: 1919px) {
+    @include size-image-slide-housing-proposals(52em, 30em);
+}
+
+@media (min-width: 1920px) {
+    @include size-image-slide-housing-proposals(60vw, 60vh);
+}
+

@@ -1,0 +1,39 @@
+div {
+    &.force-disabled {
+        background: $relo-dark-gray;
+        opacity: 0.4;
+        pointer-events: none;
+
+        > * {
+            background: $relo-dark-gray !important;
+            pointer-events: none;
+            color: white !important;
+
+            * {
+                background: $relo-dark-gray !important;
+                pointer-events: none;
+                color: white !important;
+            }
+        }
+    }
+}
+
+div {
+    &.force-disabled-2 {
+        background: $relo-bright-gray;
+        opacity: 0.6;
+        pointer-events: none;
+
+        > * {
+            background: $relo-bright-gray !important;
+            pointer-events: none;
+            color: $relo-dark-blue !important;
+
+            * {
+                background: $relo-bright-gray !important;
+                pointer-events: none;
+                color: $relo-dark-blue !important;
+            }
+        }
+    }
+}

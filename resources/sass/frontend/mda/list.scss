@@ -1,0 +1,21 @@
+.mda-list {
+    &.mda-list-small {
+        padding: 0;
+
+        .mda-list-item {
+            .mda-list-item-initial {
+                font-size: 18px;
+                font-weight: normal;
+                margin-top: 10px;
+                margin-bottom: 0px;
+                margin-right: 10px;
+                line-height: 31px;
+                width: 30px;
+                height: 30px;
+            }
+            .mda-list-item-text {
+                padding: 15px 0 0 0;
+            }
+        }
+    }
+}

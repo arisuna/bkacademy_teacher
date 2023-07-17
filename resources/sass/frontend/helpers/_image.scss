@@ -1,0 +1,63 @@
+.img-logo {
+    display: inline-block;
+    margin: auto;
+    max-height: 180px;
+}
+
+.imgcrop-preview {
+    max-height: 165px !important;
+
+    .img-avatar {
+        display: inline-block;
+        margin: auto;
+        max-height: 150px;
+    }
+}
+
+.img-company {
+    width: 50px;
+    height: 50px;
+}
+
+img.icon-svg.svg-white{
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(8deg) brightness(107%) contrast(101%);
+    &:hover {
+        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(8deg) brightness(107%) contrast(101%);
+    }
+}
+
+img.icon-svg.svg-bright-gray-2{
+    filter: invert(91%) sepia(5%) saturate(36%) hue-rotate(21deg) brightness(86%) contrast(85%);
+    &:hover {
+        filter: invert(91%) sepia(5%) saturate(36%) hue-rotate(21deg) brightness(86%) contrast(85%);
+    }
+}
+
+img.svg-hover-white{
+    &:hover {
+        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(8deg) brightness(107%) contrast(101%);
+    }
+}
+
+li{
+    &:hover{
+        img.svg-hover-white{
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(8deg) brightness(107%) contrast(101%);
+        }
+    }
+
+}
+
+.thumb18{
+    width: 18px;
+    height: 18px;
+}
+
+.launch-service-img-icon{
+    width: 32px;
+    height: 20px;
+    vertical-align: middle;
+    margin-top: -7px;
+    filter: none !important
+
+}

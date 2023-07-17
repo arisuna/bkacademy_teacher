@@ -1,0 +1,201 @@
+
+.mda-radio {
+    input[type="radio"]:checked + em:after {
+        left: 4px;
+    }
+}
+
+.number-input-container {
+    height: 50px;
+
+    .number-input {
+        box-shadow: none;
+        width: calc(100% - 70px);
+    }
+
+    .number-input-no-postfix {
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+
+    .number-input-fix {
+        padding-right: 5px;
+        line-height: 34px;
+        text-align: middle;
+        height: 34px;
+    }
+
+    .number-input-postfix {
+        padding-left: 5px;
+    }
+
+    .number-input-btns-container {
+        width: 69px;
+        height: 34px;
+    }
+
+    .number-input-btns-container button {
+        box-shadow: none;
+        line-height: 5px;
+        width: 34px;
+        height: 34px;
+    }
+
+    .number-input-btns-container button:focus {
+        background-color: white;
+        border-color: #ccc;
+        outline: 0;
+    }
+
+    .number-input-plus {
+        background: white;
+        border-right: none;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+
+    .number-input-plus-no-postfix {
+        border-left: none;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+
+    .number-input-plus-postfix {
+
+    }
+
+    .number-input-minus {
+        background: white;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+
+    .number-input-hint {
+        display: block;
+        font-size: 0.8em;
+        color: #b3b3b3;
+        clear: both;
+    }
+}
+
+md-datepicker {
+    position: relative;
+    width: 100%;
+    .md-datepicker-input-container {
+        display: inline-block;
+        width: calc(100% - 60px);
+        .md-datepicker-input {
+            max-width: 100%;
+            min-width: 200px;
+        }
+        &.md-datepicker-focused {
+            border-bottom-color: $relo-bright-blue;
+        }
+    }
+    button.md-datepicker-button {
+        background-color: $relo-bright-blue;
+    }
+    md-icon {
+        &.md-datepicker-calendar-icon {
+            color: white;
+        }
+    }
+
+}
+
+.md-datepicker-calendar-pane {
+    z-index: 9999 !important;
+}
+
+mdp-date-picker .md-button.md-icon-button {
+    margin: 5px 0 0 !important;
+}
+
+md-input-container {
+    margin: 0px 0;
+    .md-input {
+        width: 100% !important;
+    }
+}
+
+md-select {
+    min-width: 50%;
+}
+
+mdp-time-picker .md-button.md-icon-button {
+    margin: 5px 0 0 !important;
+}
+
+.mdp-timepicker-time {
+    background-color: $relo-bright-blue !important;
+}
+
+mdp-date-picker {
+    .md-button {
+        &.md-icon-button {
+            min-width: 40px !important;
+        }
+    }
+}
+
+.mdp-datepicker:not(.portrait) {
+    .mdp-datepicker-date-wrapper {
+        background-color: $relo-bright-blue !important;
+        width: 150px;
+    }
+    .mdp-calendar-monthyear {
+        font-size: 15px;
+    }
+    .mdp-datepicker-year {
+        font-size: 14px;
+    }
+
+    .md-button {
+        &.md-accent {
+            &.md-raised {
+                background-color: $relo-bright-blue !important;
+            }
+        }
+    }
+}
+
+.mda-date-container {
+    height: 50px;
+    margin-left: -10px;
+    margin-top: -10px;
+    md-input-container {
+        > input {
+            &.md-input {
+                margin-top: 4px;
+            }
+        }
+    }
+}
+
+.mda-form-control {
+    &:read-write {
+        -webkit-animation-name: inputMdaReadOnly; /* Safari 4.0 - 8.0 */
+        -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+        animation-name: inputMdaReadOnly;
+        animation-duration: 2s;
+    }
+}
+
+@-webkit-keyframes inputReadOnly {
+    from {
+        border-bottom: 1px solid $relo-bright-blue-75;
+    }
+    to {
+        border-bottom: 1px solid #dde6e9;
+    }
+}
+
+/* Standard syntax */
+@keyframes inputMdaReadOnly {
+    from {
+        border-bottom: 1px solid $relo-bright-blue-75;
+    }
+    to {
+        border-bottom: 1px solid #dde6e9;
+    }
+}

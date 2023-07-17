@@ -1,0 +1,138 @@
+@-webkit-keyframes scale {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+    45% {
+        -webkit-transform: scale(0.1);
+        transform: scale(0.1);
+        opacity: 0.7;
+    }
+    80% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes scale {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+    45% {
+        -webkit-transform: scale(0.1);
+        transform: scale(0.1);
+        opacity: 0.7;
+    }
+    80% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.ball-pulse > div:nth-child(0) {
+    -webkit-animation: scale 0.75s -0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+    animation: scale 0.75s -0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+}
+
+.ball-pulse > div:nth-child(1) {
+    -webkit-animation: scale 0.75s -0.24s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+    animation: scale 0.75s -0.24s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+}
+
+.ball-pulse > div:nth-child(2) {
+    -webkit-animation: scale 0.75s -0.12s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+    animation: scale 0.75s -0.12s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+}
+
+.ball-pulse > div:nth-child(3) {
+    -webkit-animation: scale 0.75s 0s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+    animation: scale 0.75s 0s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+}
+
+.ball-pulse > div {
+    background-color: #fff;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    margin: 2px;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    display: inline-block;
+}
+
+.quick-spinner {
+    display: inline-block;
+    animation: rotate-loading 1.5s linear 0s infinite normal;
+    box-sizing: border-box;
+    background-color: rgb(48, 133, 214);
+    background-color: transparent !important;
+    color: transparent;
+    cursor: default;
+    padding: 0;
+    margin: -2px 30px;
+    border: 4px solid transparent;
+    border-color: transparent;
+    border-left-color: rgb(48, 133, 214);
+    border-right-color: rgb(48, 133, 214);
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    vertical-align: top;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
+}
+
+.spinner-loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    > div.state_container {
+        position: relative;
+        width: 400px;
+        margin: 40px auto;
+        background: white;
+        border-radius: 5px;
+        padding: 30px;
+        top: 30%;
+        opacity: 1;
+        border: 1px solid gray;
+    }
+}
+
+/*** SPIN ***/
+img {
+    &.spin-xsmall {
+        height: 32px !important;
+    }
+
+    &.spin-md-small {
+        height: 36px !important;
+    }
+
+    &.spin-small {
+        height: 56px !important;
+    }
+
+    &.spin-medium {
+        height: 123px !important;
+    }
+
+    &.spin-large {
+        height: 256px !important;
+    }
+
+    &.spin-xlarge {
+        height: 512px !important;
+    }
+}
+
+

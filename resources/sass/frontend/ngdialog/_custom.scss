@@ -1,0 +1,559 @@
+.ngdialog-title {
+    color: #ffffff;
+    background-color: #008ceb;
+    padding: 5px;
+}
+
+/** ngDialog */
+
+.ngdialog {
+    .ngdialog-content {
+        .card {
+            .card-body {
+                overflow-y: auto;
+                background-color: transparent;
+            }
+        }
+    }
+
+    .card {
+        margin-bottom: 0px !important;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        border-radius: 15px;
+
+        .card-heading {
+            -webkit-border-radius: 5px 5px 0px 0px;
+            -moz-border-radius: 5px 5px 0px 0px;
+            border-radius: 5px 5px 0px 0px;
+        }
+        .card-footer {
+            border-top: 1px solid $relo-dark-gray-75;
+            background-color: $relo-bright-gray;
+            -webkit-border-radius: 0px 0px 10px 10px;
+            -moz-border-radius: 0px 0px 10px 10px;
+            border-radius: 0px 0px 10px 10px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .ngdialog {
+
+        &.xxs-box {
+            .ngdialog-content {
+                width: 100% !important;
+            }
+        }
+
+
+        &.xs-box {
+            .ngdialog-content {
+                width: 100% !important;
+            }
+        }
+
+        &.sm-box {
+            .ngdialog-content {
+                width: 100% !important;
+            }
+        }
+
+        &.md-box {
+            .ngdialog-content {
+                width: 100% !important;
+            }
+        }
+
+        &.lg-box {
+            .ngdialog-content {
+                width: 100% !important;
+            }
+        }
+
+        &.xl-box {
+            .ngdialog-content {
+                width: 100% !important;
+            }
+        }
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .ngdialog {
+
+        &.xxs-box {
+            .ngdialog-content {
+                width: 60% !important;
+            }
+        }
+
+
+        &.xs-box {
+            .ngdialog-content {
+                width: 70% !important;
+            }
+        }
+
+        &.sm-box {
+            .ngdialog-content {
+                width: 70% !important;
+            }
+        }
+
+        &.md-box {
+            .ngdialog-content {
+                width: 80% !important;
+            }
+        }
+
+        &.lg-box {
+            .ngdialog-content {
+                width: 80% !important;
+            }
+        }
+
+        &.xl-box {
+            .ngdialog-content {
+                width: 100% !important;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .ngdialog {
+        &.xxs-box {
+            .ngdialog-content {
+                width: 40% !important;
+            }
+        }
+
+        &.xs-box {
+            .ngdialog-content {
+                width: 50% !important;
+            }
+        }
+
+        &.sm-box {
+            .ngdialog-content {
+                width: 50% !important;
+            }
+        }
+
+        &.md-box {
+            .ngdialog-content {
+                width: 70% !important;
+            }
+        }
+
+        &.lg-box {
+            .ngdialog-content {
+                width: 80% !important;
+            }
+        }
+
+        &.xl-box {
+            .ngdialog-content {
+                width: 90% !important;
+            }
+        }
+    }
+
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+    .ngdialog {
+
+        &.xxs-box {
+            .ngdialog-content {
+                width: 30% !important;
+            }
+        }
+
+
+        &.xs-box {
+            .ngdialog-content {
+                width: 40% !important;
+            }
+        }
+
+        &.sm-box {
+            .ngdialog-content {
+                width: 50% !important;
+            }
+        }
+
+        &.md-box {
+            .ngdialog-content {
+                width: 70% !important;
+            }
+        }
+
+        &.lg-box {
+            .ngdialog-content {
+                width: 80% !important;
+            }
+        }
+
+        &.xl-box {
+            .ngdialog-content {
+                width: 90% !important;
+            }
+        }
+    }
+
+}
+
+@media (min-width: 1281px) {
+
+    .ngdialog {
+
+        &.xxs-box {
+            .ngdialog-content {
+                width: 30% !important;
+            }
+        }
+
+
+        &.xs-box {
+            .ngdialog-content {
+                width: 40% !important;
+            }
+        }
+
+        &.sm-box {
+            .ngdialog-content {
+                width: 50% !important;
+            }
+        }
+
+        &.md-box {
+            .ngdialog-content {
+                width: 70% !important;
+            }
+        }
+
+        &.lg-box {
+            .ngdialog-content {
+                width: 80% !important;
+            }
+        }
+
+        &.xl-box {
+            .ngdialog-content {
+                width: 90% !important;
+            }
+        }
+    }
+
+}
+
+.ngdialog {
+    overflow: hidden !important;
+    &.media-view {
+        padding: 0 !important;
+        background-color: $relo-white-75 !important;
+
+        .ngdialog-overlay {
+            background-color: $relo-white-75 !important;
+        }
+
+        .ngdialog-content {
+            padding: 0 !important;
+            width: 100% !important;
+
+            > .view-container {
+
+                height: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 999;
+
+                > .header {
+                    background-color: #000000;
+                    padding-left: 10px;
+                    display: table;
+                    box-sizing: border-box;
+                    border-spacing: 0px;
+                    table-layout: fixed;
+                    width: 100%;
+
+                    > .header-title {
+                        max-width: 70%;
+                        display: block;
+                        float: left;
+                        height: 50px;
+
+                        > div {
+                            color: #ffffff;
+                            line-height: 50px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            font-size: 16px;
+
+                            > em {
+                                font-size: 32px;
+                                float: left;
+                                margin-right: 10px;
+                                margin-top: 9px;
+                            }
+                        }
+                    }
+
+                    > .header-control {
+                        max-width: 30%;
+                        display: block;
+                        float: right;
+                        height: 50px;
+                        box-sizing: border-box;
+                        text-align: right;
+
+                        > button {
+                            color: #ffffff;
+                            font-size: 18px;
+                            height: 50px;
+                            width: 50px;
+                            -webkit-border-radius: 0;
+                            -moz-border-radius: 0;
+                            border-radius: 0;
+                            text-align: center;
+                            float: left;
+
+                            &:hover, &:focus {
+                                -webkit-box-shadow: none;
+                                -moz-box-shadow: none;
+                                box-shadow: none;
+                            }
+
+                            &:hover {
+                                background-color: rgba(255, 255, 255, 0.65);
+                            }
+                        }
+                    }
+                }
+
+                > .content {
+                    height: 100%;
+                    margin: 0;
+                    display: table;
+                    box-sizing: border-box;
+                    border-spacing: 0;
+                    table-layout: fixed;
+                    width: 100%;
+
+                    > .file-body {
+                        box-sizing: border-box;
+                        left: 0px;
+                        overflow: hidden;
+                        position: absolute;
+                        right: 0px;
+                        text-align: center;
+                        top: 50px;
+                        vertical-align: middle;
+                        height: calc(100% - 50px);
+
+                        > .viewer-layer {
+                            height: 100%;
+                            > .image-preview {
+                                width: 100%;
+                                height: 100%;
+                                overflow: auto;
+                                white-space: nowrap;
+                                -webkit-box-sizing: border-box;
+                                -moz-box-sizing: border-box;
+                                box-sizing: border-box;
+
+                                > .image-container {
+                                    position: relative;
+                                    display: inline-block;
+                                    vertical-align: middle;
+
+                                    > img {
+                                        vertical-align: middle;
+                                    }
+                                }
+
+                                span.baseline-extension {
+                                    display: inline-block;
+                                    vertical-align: middle;
+                                    height: 100%;
+                                }
+                            }
+                        }
+
+                        > .arrow-layer {
+                            .arrow-nav {
+                                outline: none;
+                                border: none;
+                                color: #ffffff;
+                                position: absolute;
+                                top: 50%;
+                                margin-top: -40px;
+                                -webkit-border-radius: 50%;
+                                -moz-border-radius: 50%;
+                                border-radius: 50%;
+                                width: 40px;
+                                height: 40px;
+                                font-size: 24px;
+                                background-color: transparent;
+                                -webkit-user-select: none;
+                                -moz-user-select: none;
+                                -ms-user-select: none;
+                                user-select: none;
+
+                                -webkit-transition: background-color 0.2s ease-in-out;
+                                -moz-transition: background-color 0.2s ease-in-out;
+                                -ms-transition: background-color 0.2s ease-in-out;
+                                -o-transition: background-color 0.2s ease-in-out;
+                                transition: background-color 0.2s ease-in-out;
+
+                                > em {
+
+                                    margin-top: 7px;
+                                }
+
+                                &.left {
+                                    left: 15px;
+                                    em {
+                                        margin-right: 5px;
+                                    }
+                                }
+
+                                &.right {
+                                    right: 15px;
+                                    em {
+                                        margin-left: 5px;
+                                    }
+                                }
+
+                                &:hover {
+                                    background-color: #000000;
+                                    color: $relo-white !important;
+
+                                    em, span, i {
+                                        color: $relo-white !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                > .footer {
+                    position: absolute;
+                    width: 100%;
+                    bottom: 40px;
+
+                    .footer-tools {
+                        text-align: center;
+                        display: inline-block;
+                        background-color: rgba(0, 0, 0, 0.75);
+
+                        button {
+                            color: #ffffff;
+                            font-size: 18px;
+                            -webkit-border-radius: 0;
+                            -moz-border-radius: 0;
+                            border-radius: 0;
+                            text-align: center;
+
+                            &:hover, &:focus {
+                                -webkit-box-shadow: none;
+                                -moz-box-shadow: none;
+                                box-shadow: none;
+                            }
+
+                            &:hover {
+                                background-color: rgba(255, 255, 255, 0.65);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.ngdialog-theme-full-screen {
+    .ngdialog-content {
+        background: none !important;
+        width: 100% !important;
+        height: 100%;
+        .card {
+            .card-footer{
+                background-color: $relo-white;
+               padding: 15px 22px;
+            }
+        }
+    }
+}
+
+.ngdialog-theme-full-screen-dep-cus {
+    .ngdialog-content {
+        background: none !important;
+        width: 100% !important;
+        height: 100%;
+        .card {
+            .card-footer{
+                padding: 15px 22px;
+                min-height: 75px !important;
+            }
+        }
+    }
+}
+.ngdialog.ng-dialog-btn-close-dark-blue > .ngdialog-content > .ngdialog-close:before {
+    color: #0A142B !important;
+}
+
+.ngdialog.ng-dialog-btn-close-white > .ngdialog-content > .ngdialog-close:before {
+    color: $relo-white !important;
+}
+
+.ngdialog.md-box > .ngdialog-content > .ngdialog-close:before {
+    margin-top: 4px;
+}
+
+.ngdialog.btn-close-font-size{
+    @for $i from 1 through 10 {
+        &-#{$i}px {
+            > .ngdialog-content > .ngdialog-close:before{
+                font-size: #{$i}px !important;
+            }
+        }
+    }
+
+}
+
+.ngdialog-top-btn{
+    position: absolute;
+    top: 14px;
+    right: 40px;
+}
+
+body.mce-font-nunito-sans {
+    font-family: 'Nunito Sans';
+    font-weight: 400;
+}
+
+@keyframes ngdialog-slidein {
+    0% {
+        right: -500px;
+    }
+    100% {
+        right: 0;
+    }
+}
+
+@keyframes ngdialog-slideout {
+    0% {
+        right: 0;
+    }
+    100% {
+        right: -500px;
+    }
+}

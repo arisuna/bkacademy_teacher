@@ -1,0 +1,11 @@
+.uib-timepicker {
+    .btn {
+        border: none;
+        &:hover {
+            box-shadow: none;
+        }
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70px" height="70px" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Cost Projection</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Cost-Projection" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval-7" stroke="#0098FF" stroke-width="3" fill="#FFFFFF" cx="35" cy="35" r="33"></circle>
+        <g id="Group-105" transform="translate(15.000000, 20.000000)">
+            <rect id="Rectangle-48" stroke="#0A142B" stroke-width="2" x="1" y="1" width="38" height="28"></rect>
+            <circle id="Oval-19" fill="#0A142B" cx="6.5" cy="23.5" r="2.5"></circle>
+            <circle id="Oval-19" fill="#0A142B" cx="6.5" cy="23.5" r="2.5"></circle>
+            <circle id="Oval-19" fill="#0A142B" cx="13.5" cy="16.5" r="2.5"></circle>
+            <circle id="Oval-19" fill="#0A142B" cx="20.5" cy="20.5" r="2.5"></circle>
+            <g id="Group-95" transform="translate(25.000000, 4.000000)">
+                <circle id="Oval-20" fill="#0A142B" cx="5.5" cy="5.5" r="5.5"></circle>
+                <text id="$" font-family="PTSans-Caption, PT Sans Caption" font-size="8" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="3.124" y="8">$</tspan>
+                </text>
+            </g>
+            <path d="M6.5,23.5 L13.5,16.5" id="Line-12" stroke="#0A142B" stroke-linecap="square"></path>
+            <path d="M20.5,20.5 L13.5,16.5" id="Line-12" stroke="#0A142B" stroke-linecap="square"></path>
+            <path d="M20.5,20.5 L27.5,13.5" id="Line-12" stroke="#0A142B" stroke-linecap="square"></path>
+        </g>
+    </g>
+</svg>

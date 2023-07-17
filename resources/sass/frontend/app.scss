@@ -1,0 +1,104 @@
+/** variables   **/
+@import "variables";
+
+@import "common/section";
+@import "common/border";
+@import "common/background";
+@import "common/font";
+@import "common/scale";
+@import "common/sizes";
+@import "common/zindex";
+@import "common/opacity";
+@import "styles";
+@import "browser";
+
+
+@import "directives/perfect_scrollbar";
+@import "directives/document-viewer";
+@import "directives/media-zone-v2";
+@import "directives/assignment-relocation-relocation-detail";
+@import "directives/toaster";
+@import "directives/dashboard";
+@import "directives/line-loading-spinner";
+@import "directives/expat-map";
+@import "directives/datatables";
+@import "directives/assignee-selector";
+@import "directives/date-range";
+@import "directives/datetime-range";
+@import "directives/time-range";
+@import "directives/datetime-input";
+@import "directives/uib-datepicker";
+@import "directives/uib-select";
+@import "directives/spinners";
+@import "directives/pdf-viewer";
+@import "directives/selector";
+@import "directives/sweet-alert";
+@import "directives/notification";
+@import "directives/tooltip";
+@import "directives/comment";
+@import "directives/country";
+@import "directives/date-range-picker";
+@import "directives/chosen";
+
+@import "mda/form-group";
+@import "mda/list";
+@import "mda/input";
+
+@import "sortable/index";
+
+@import "table/index";
+@import "tasks/index";
+@import "card/index";
+@import "panel/index";
+@import "form/index";
+@import "form/input";
+@import "sidenavbar/index";
+@import "roles/index";
+@import "todolist/index";
+@import "reminder/ns-default";
+@import "reminder/ns-style-other";
+@import "kanban/index";
+@import "listgroup/index";
+@import "ngdialog/index";
+@import "ngdialog/setting";
+@import "ngdialog/theme";
+@import "ngdialog/custom";
+@import "uibtabset/index";
+@import "property/index";
+@import "print/index";
+@import "filter/index";
+@import "progress/index";
+@import "user_guide/index";
+@import "user_guide/relocation-guide";
+@import "guide/index";
+@import "mediazone/index";
+@import "mediazone/document";
+@import "cdpanel/index";
+@import "button/index";
+@import "todolist/index";
+@import "rating/index";
+@import "vertical-nav/common.scss";
+@import "vertical-nav/angel.scss";
+@import "needform/index";
+@import "helpers/index";
+@import "carousel/index";
+@import "finance/expense";
+@import "finance/product";
+@import "article/index";
+@import "top-button/index";
+@import "icon/index";
+@import "material/index";
+@import "xxx_relotalent_v2/index";
+@import "extract-data/index";
+@import "dropdownmenu/index";
+@import "status/index";
+
+/** screen settings  **/
+@import "screen";
+
+@import "dashboard-layout";
+
+/** custom styles **/
+@import "custom";
+
+

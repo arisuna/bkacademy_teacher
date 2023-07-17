@@ -1,0 +1,77 @@
+
+
+
+/* ========================================================================
+     Component: inputs
+ ========================================================================== */
+/**
+ * Custom form elements
+ *    - Checkbox
+ *    - Radios
+ *    - Switch
+ *    - Note editor
+ */
+.c-checkbox,
+.c-radio {
+    margin-right: 4px; }
+.c-checkbox *,
+.c-radio * {
+    cursor: pointer; }
+.c-checkbox input,
+.c-radio input {
+    opacity: 0;
+    position: absolute;
+    margin-left: 0 !important; }
+.c-checkbox span,
+.c-radio span {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+    text-align: center; }
+.c-checkbox span:before,
+.c-radio span:before {
+    margin-left: 1px; }
+.c-checkbox:hover span,
+.c-radio:hover span {
+    border-color: #5d9cec; }
+.form-inline .c-checkbox span, .form-inline
+.c-radio span {
+    margin-left: 0; }
+.c-checkbox.c-checkbox-rounded span, .c-checkbox.c-radio-rounded span,
+.c-radio.c-checkbox-rounded span,
+.c-radio.c-radio-rounded span {
+    border-radius: 500px; }
+
+/* override for radio */
+.c-radio span {
+    border-radius: 500px; }
+
+/* the icon */
+.c-checkbox span:before,
+.c-radio span:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    text-align: center !important;
+    font-size: 12px;
+    line-height: 18px;
+    vertical-align: middle;
+}
+
+.c-checkbox.c-checkbox-small span{
+    width: 14px;
+    height: 14px;
+}
+
+.c-checkbox.c-checkbox-small span:before{
+    font-size: 8px;
+    line-height: 13px;
+}

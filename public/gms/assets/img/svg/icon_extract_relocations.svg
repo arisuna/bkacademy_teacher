@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70px" height="70px" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Extract Relocations</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Extract-Relocations" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" transform="translate(2.000000, 2.000000)">
+            <g id="Group" fill="#FFFFFF" stroke="#0098FF" stroke-width="3">
+                <g id="Group-88">
+                    <circle id="Oval-7" cx="33" cy="33" r="33"></circle>
+                </g>
+            </g>
+            <g id="Group-104" transform="translate(11.000000, 21.000000)">
+                <g id="Group-93" transform="translate(29.000000, 4.000000)">
+                    <rect id="Rectangle-50" fill="#0A142B" x="0" y="9" width="14.7529412" height="6.14705882" rx="2"></rect>
+                    <circle id="Oval-7" fill="#FFFFFF" cx="11.6147059" cy="12.6147059" r="1"></circle>
+                    <circle id="Oval-7" fill="#FFFFFF" cx="13.6147059" cy="12.6147059" r="1"></circle>
+                    <rect id="Rectangle-46" fill="#0A142B" x="6" y="0" width="3.68823529" height="6.5835" rx="1"></rect>
+                    <path d="M6.76413166,10.716958 L2,5 L13.0647059,5 L8.30057422,10.716958 C7.94701014,11.1412349 7.31644544,11.198559 6.89216854,10.8449949 C6.84570548,10.8062757 6.80285088,10.7634211 6.76413166,10.716958 Z" id="Triangle" fill="#FFFFFF"></path>
+                    <path d="M7.16374918,8.77790218 L3,4 L12.8352941,4 L8.67154494,8.77790218 C8.30869849,9.19426848 7.67702174,9.2376549 7.26065544,8.87480845 C7.22617532,8.84476041 7.19379722,8.81238231 7.16374918,8.77790218 Z" id="Triangle" fill="#0A142B"></path>
+                </g>
+                <path d="M22.3716095,1.17746819 C17.0599603,4.9595289 14.1483884,6.85055926 13.636894,6.85055926 L2.92350264,4.01401373 L0,4.81773604 L10.3972254,10.3100297 L4.80581435,18.1008362 L1.90617328,17.5602796 L0.608929212,18.603306 L5.7038358,23.6206625 L6.66105233,22.8382779 L5.7038358,19.677995 L13.636894,13.6157766 L18.7799826,23.6206625 L20.3878861,22.2995568 L17.611224,9.80618326 C20.9604305,5.95646974 23.0637217,3.4635738 23.9210976,2.32749543 C25.1550868,0.692380156 25.115731,0.260026369 24.8449488,0.0772990853 C24.5780129,-0.102832726 24.1008727,-0.0538213499 22.3716095,1.17746819 Z" id="Path-3" fill="#0A142B"></path>
+            </g>
+        </g>
+    </g>
+</svg>

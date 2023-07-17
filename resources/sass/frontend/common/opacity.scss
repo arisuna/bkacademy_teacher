@@ -1,0 +1,16 @@
+
+.opacity-8 {
+    opacity: 0.8;
+}
+
+.opacity-10 {
+    opacity: 1 !important;
+}
+
+.opacity {
+    @for $i from 1 through 10 {
+        &-#{$i} {
+            opacity: #{$i/10};
+        }
+    }
+}

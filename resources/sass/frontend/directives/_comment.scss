@@ -1,0 +1,122 @@
+.comments {
+    .timeline-alt {
+        padding: 0 0 0px !important;
+
+        &.comment-2 {
+            > li {
+                margin-bottom: 10px !important;
+                > .timeline-panel {
+                    .popover {
+                        z-index: unset !important;
+                    }
+                }
+            }
+
+        }
+
+        &.comment {
+            &:before {
+                background-color: transparent;
+            }
+
+            > li {
+                > .timeline-badge {
+                    width: 30px;
+                    height: 30px;
+                    font-size: 35px;
+                    line-height: 30px;
+                }
+
+                > .timeline-panel {
+                    margin-left: 80px;
+
+                    .arrow:after {
+                        //border-right-color: #f5f7fa;
+                        border-right-color: $relo-white;
+                    }
+
+                    .popover {
+                        z-index: 990;
+                        //background-color: #F5F7FA;
+                        background-color: $relo-white;
+                    }
+                }
+            }
+        }
+
+        > li {
+            > .timeline-badge {
+                &.default {
+                    border: 1px solid $relo-gray;
+                    background-color: $relo-white;
+                }
+            }
+
+            > .timeline-panel {
+                .popover {
+                    z-index: inherit;
+                }
+            }
+        }
+    }
+
+    .comment-init {
+        height: 40px;
+        width: 100%;
+        border: 1px solid $relo-bright-gray;
+    }
+
+    .comment-space {
+        background-color: $relo-gray;
+        font-size: 22px;
+        padding: 0px;
+    }
+
+    .comment-footer {
+        height: 60px;
+        padding: 5px 10px !important;
+    }
+
+    /* Define what each icon button should look like */
+    .comment-notice {
+        color: white;
+        display: inline-block; /* Inline elements with width and height. TL;DR they make the icon buttons stack from left-to-right instead of top-to-bottom */
+        position: relative; /* All 'absolute'ly positioned elements are relative to this one */
+        padding: 2px 5px; /* Add some padding so it looks nice */
+    }
+}
+
+.timeline-alt-2.comment {
+    &:before {
+        background-color: transparent;
+    }
+
+    > li {
+        > .timeline-badge {
+            width: 60px;
+            height: 60px;
+            font-size: 35px;
+            line-height: 60px;
+        }
+
+        > .timeline-panel {
+            margin-left: 80px;
+
+            .arrow:after {
+                border-right-color: #f5f7fa;
+            }
+
+            .popover {
+                z-index: 990;
+                background-color: #F5F7FA;
+            }
+        }
+    }
+}
+
+.add-comment-bottom{
+    position: absolute;
+    width: 100%;
+    bottom: 30px;
+
+}

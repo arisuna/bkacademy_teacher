@@ -1,0 +1,37 @@
+.tasks {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.tasks-block {
+    max-height: 366px;
+}
+
+.tasks-content {
+    height: 337px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.tasks-list {
+    height: 350px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.tasks-content-full {
+
+}
+
+.tasks-edit {
+    max-height: 62px;
+    overflow: hidden
+}
+
+
+.task-block {
+    border-radius: 0px;
+    min-height: 165px;
+    border-radius: 5px;
+    vertical-align: center;
+}

@@ -1,0 +1,18 @@
+.ngdialog {
+    &.ngdialog-theme-waiting {
+        background: $relo-dark-blue-85;
+
+        .ngdialog-content {
+
+            background: transparent !important;
+            width: 100% !important;
+            height: 100%;
+            padding-top: 0px;
+
+
+            .ngdialog-close {
+                display: none;
+            }
+        }
+    }
+}

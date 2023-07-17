@@ -1,0 +1,33 @@
+.ngdialog {
+    &.ngdialog-theme-transparent {
+
+
+        background-color: rgba(10,20,43,0.65);
+
+        .ngdialog-content {
+
+            background: none !important;
+            width: 100% !important;
+            height: 100%;
+            padding-top: 0px;
+
+
+            .ngdialog-close {
+                margin-top: 10px;
+                margin-right: 10px;
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                background: transparent;
+                border: none;
+                font-size: 24px;
+
+                &:before {
+                    font-size: 24px;
+                    padding: 0px;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+}

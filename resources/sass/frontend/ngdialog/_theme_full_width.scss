@@ -1,0 +1,62 @@
+.ngdialog {
+    &.ngdialog-theme-full-width {
+
+        background: $relo-dark-blue-85;
+
+        .ngdialog-content {
+            background: none !important;
+            width: 100% !important;
+            height: 100%;
+            padding-top: 50px;
+            padding-bottom: 50px;
+
+            .card {
+                border-radius: 0px;
+
+                .card-heading {
+                    border-radius: 0px !important;
+
+                    &.card-white {
+                        border-bottom: 1px solid $relo-bright-gray;
+
+                        > h4 {
+                            font-weight: 400;
+                        }
+                    }
+                }
+
+                .card-body {
+                    height: calc(100vh - 250px);
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                }
+            }
+
+            > .ngdialog-close {
+                top: 0px;
+                right: 0px;
+                height: 40px;
+                width: 50px;
+                border: none;
+                position: fixed;
+                size: 40px;
+                background-color: transparent;
+                margin: 0px !important;
+
+                &:before {
+                    display: block;
+                    background: transparent;
+                    color: $relo-gray !important;;
+                    content: '\00D7';
+                    font-size: 50px;
+                    font-weight: 400;
+                    text-align: center;
+                }
+
+                &:before:hover, &:before:active {
+                    color: #777;
+                }
+            }
+        }
+    }
+}

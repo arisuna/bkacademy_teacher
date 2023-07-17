@@ -1,0 +1,75 @@
+.user-guide-home {
+    .topic {
+        margin-bottom: 20px;
+
+        a {
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.7);
+        }
+    }
+
+    .category {
+        position: relative;
+        padding: 10px 0 0 45px;
+        margin-left: 23px;
+        border-left: 1px solid rgba(0, 0, 0, 0.4);
+        overflow: visible;
+
+        &:after {
+            content: "\00a0";
+            position: absolute;
+            bottom: 0px;
+            left: -1px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+            width: 30px;
+        }
+
+        h5 {
+            position: relative;
+            top: 7px;
+            margin: 0;
+        }
+
+        a {
+            font-size: 14px;
+        }
+    }
+}
+
+.user-guide-detail-page {
+    $margin-left: 30px;
+
+    .table-of-content {
+        padding-left: $margin-left;
+
+        @for $i from 1 through 6 {
+            .h#{$i} {
+                font-size: 14px;
+                margin: 8px 0 8px #{$margin-left * ($i - 1)};
+                position: relative;
+
+                a {
+                    color: $brand-primary;
+                    &:hover {
+                        color: darken($brand-primary, 20%);
+                    }
+                }
+
+                &:before {
+                    content: '\2022';
+                    font-size: 25px;
+                    position: absolute;
+                    top: -6px;
+                    left: -18px;
+                    color: rgba(0, 0, 0, 0.6);
+                }
+            }
+        }
+    }
+}
+
+.userguide-dropdown {
+    > ul {
+        top: 70px;
+    }
+}

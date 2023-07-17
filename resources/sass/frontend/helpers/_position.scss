@@ -1,0 +1,67 @@
+// pos-* classes
+
+.pos {
+    &-relative {
+        position: relative;
+    }
+}
+
+.float-left{
+    float: left;
+}
+
+.float-right{
+    float: right;
+}
+
+.clear::after{
+    clear: both;
+    display: flex;
+    content: "";
+}
+
+.btn-bottom-absolute{
+}
+
+
+@media (min-width: 1000px) {
+    .btn-bottom-absolute{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+.top{
+    &-minus{
+        @for $i from 0 through 100 {
+            &-#{$i} {
+                top: -#{$i}px;
+            }
+        }
+    }
+    &-plus{
+        @for $i from 0 through 100 {
+            &-#{$i} {
+                top: #{$i}px;
+            }
+        }
+    }
+}
+
+.bottom{
+    &-minus{
+        @for $i from 0 through 100 {
+            &-#{$i} {
+                bottom: -#{$i}px;
+            }
+        }
+    }
+    &-plus{
+        @for $i from 0 through 100 {
+            &-#{$i} {
+                bottom: #{$i}px;
+            }
+        }
+    }
+}

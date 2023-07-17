@@ -1,0 +1,91 @@
+.uib-datepicker-popup {
+    .btn {
+        border: none;
+
+        &:hover {
+            -webkit-box-shadow: none !important;
+            -moz-box-shadow: none !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+
+        &.btn-danger {
+            background: transparent;
+            color: $relo-red;
+        }
+
+        &.btn-success {
+            background: transparent;
+            color: $relo-bright-blue;
+        }
+
+        &.btn-info {
+            background: transparent;
+            color: $relo-bright-blue;
+        }
+
+        &.btn-default {
+            background: transparent;
+        }
+
+        > .text-info {
+            color: $relo-bright-blue !important;
+        }
+    }
+
+    .uib-day {
+        > button {
+            &.btn {
+                &.btn-default {
+                    &:hover {
+                        background: $relo-dark-blue;
+                        > span {
+                            color: white !important;
+                        }
+
+                        > .text-muted {
+                            color: white !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.input-group.date-picker {
+    > .input-group-btn {
+        > .btn {
+            border-left: none;
+            color: $relo-bright-blue;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+    }
+
+    > input {
+        border-right: none;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+
+        &.ng-valid {
+            border-color: $relo-default-gray !important;
+        }
+    }
+}
+
+.btn {
+    &.time-picker-button {
+        min-height: 35px;
+        border-radius: 3px;
+    }
+}
+
+
+.uib-datepicker-popup {
+    .btn {
+
+    }
+}
+
+

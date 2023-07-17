@@ -1,0 +1,9 @@
+<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_1246_7372" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="23" height="23">
+<circle cx="11.5" cy="11.5" r="11.5" fill="#C4C4C4"/>
+</mask>
+<g mask="url(#mask0_1246_7372)">
+<rect width="23" height="23" fill="white"/>
+<path d="M10.35 16.56L4.945 11.155L6.555 9.545L10.35 13.34L20.01 3.68C17.825 1.495 14.835 0 11.5 0C5.175 0 0 5.175 0 11.5C0 17.825 5.175 23 11.5 23C17.825 23 23 17.825 23 11.5C23 9.315 22.425 7.36 21.39 5.635L10.35 16.56Z" fill="#39C17F"/>
+</g>
+</svg>

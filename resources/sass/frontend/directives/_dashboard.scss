@@ -1,0 +1,265 @@
+.activity-feeds {
+    $status_size: 22px;
+    overflow: hidden;
+
+    .activity {
+        border: 1px solid $relo-bright-gray;
+        border-top: none;
+        padding: 8px 10px;;
+        transition: background-color ease-out 0.3s;
+
+        &:nth-of-type(1) {
+            border-right: none;
+            border-left: none;
+            padding-bottom: 1px;
+        }
+
+        &-ref, &-update, &-time {
+            padding: 0 5px;
+        }
+
+        &:hover:not(:nth-of-type(1)) {
+            cursor: pointer;
+            background-color: $relo-bright-gray;
+        }
+    }
+}
+
+.gms-last-seen-assignments {
+    overflow: hidden;
+
+    .assignment  {
+        border: 1px solid $relo-bright-gray;
+        border-left: none;
+        border-top: none;
+        transition: background-color ease-out 0.3s;
+
+        &-assignee, &-object-link {
+            padding: 5px 3px;
+        }
+
+        &-assignee {
+            border-left: 5px solid $relo-bright-gray;
+            padding-left: 15px;
+        }
+
+        &:nth-of-type(1) {
+            border-right: none;
+        }
+
+        &:nth-of-type(1) .assignment-assignee {
+            border: none;
+            padding-left: 20px;
+        }
+
+        &:hover:not(:nth-of-type(1)) {
+            cursor: pointer;
+            background-color: $relo-bright-gray;
+        };
+    }
+}
+
+.gms-last-seen-relocations {
+    overflow: hidden;
+
+    .relocation  {
+        border: 1px solid $relo-bright-gray;
+        border-left: none;
+        border-top: none;
+        transition: background-color ease-out 0.3s;
+
+        &-assignee, &-object-link {
+            padding: 5px 3px;
+        }
+
+        &-assignee {
+            border-left: 5px solid $relo-bright-gray;
+            padding-left: 15px;
+        }
+
+        &:nth-of-type(1) {
+            border-right: none;
+        }
+
+        &:nth-of-type(1) .relocation-assignee {
+            border: none;
+            padding-left: 20px;
+        }
+
+        &:hover:not(:nth-of-type(1)) {
+            background-color: $relo-bright-gray;
+            cursor: pointer;
+        }
+    }
+}
+
+.gms-team-activities {
+    overflow: hidden;
+
+    .activity  {
+        border: 1px solid $relo-bright-gray;
+        border-top: none;
+        transition: background-color ease-out 0.2s;
+
+        &-team-member {
+            padding: 3px 0 3px 10px;
+
+            &:hover {
+                cursor: pointer;
+                background-color: $relo-bright-gray;
+            }
+        }
+
+        &-statistic {
+            .active {
+                background-color: $relo-bright-gray;
+            }
+
+            div:nth-child(3).active{
+                border-right: none;
+            }
+        }
+
+        &:nth-of-type(1) {
+            border-right: none;
+            border-left: none;
+        }
+    }
+
+    .assignment, .relocation, .task {
+        background-color: $relo-bright-gray;
+        border-right: none;
+
+        .activity-statistic {
+            padding: 5px 0;
+            border-right: 5px solid $relo-bright-gray;
+        }
+    }
+}
+
+.gms-today-tasks {
+    overflow: hidden;
+
+    .task  {
+        border: 1px solid $relo-bright-gray;
+        border-left: none;
+        border-top: none;
+        transition: background-color ease-out 0.3s;
+
+        &-name, &-related {
+            padding: 5px 3px;
+        }
+
+        &-name {
+            border-left: 5px solid $relo-bright-gray;
+            padding-left: 15px;
+        }
+
+        &:nth-of-type(1) {
+            border-right: none;
+        }
+
+        &:nth-of-type(1) .task-name {
+            border: none;
+            padding-left: 20px;
+        }
+
+        &:hover:not(:nth-of-type(1)) {
+            cursor: pointer;
+            background-color: $relo-bright-gray;
+        }
+    }
+}
+
+.gms-top-origins {
+    overflow: hidden;
+
+    .nav-link {
+        padding: 2px 20px;
+        font-size: 12px;
+    }
+
+    .country, .account, .booker  {
+        border: 1px solid $relo-bright-gray;
+        border-top: none;
+        padding: 8px 3px;
+
+        &:nth-of-type(1) {
+            padding-bottom: 3px;
+            border-right: none;
+            border-left: none;
+        }
+
+        &-ranking {
+            padding-left: 10px;
+        }
+
+        &-name, &-relocations {
+            padding: 0 2px;
+        }
+
+        &:hover:not(:nth-of-type(1)) {
+            background-color: $relo-bright-gray;
+            cursor: pointer;
+        }
+    }
+
+    .account, .booker {
+        border: none;
+    }
+}
+
+.line-loading-spinner {
+    @keyframes running {
+        0%   {
+            left: -30%;
+        }
+
+        100% {
+            left: 110%;
+        }
+    }
+
+    .spinner-container {
+        width: 100%;
+        height: 30px;
+        background-color: #F5F7FA;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 10px;
+
+        .spinner-cursor {
+            width: 300px;
+            height: 30px;
+            position: absolute;
+            top: 0;
+            background: linear-gradient(to right, #F5F7FA, #dee5ef , #F5F7FA);
+            animation-name: running;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+
+        .spinner-no-cursor {
+            width: 300px;
+            height: 30px;
+            position: absolute;
+            top: 0;
+            background: $relo-dark-blue-25;
+        }
+    }
+
+    &-circle {
+        .spinner-container {
+            width: 30px;
+            border-radius: 50%;
+
+            .spinner-cursor {
+                width: 30px;
+            }
+        }
+    }
+}
+
+.txt-number-dashboard{
+    font-size: 30px;
+}

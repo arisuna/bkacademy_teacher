@@ -1,0 +1,35 @@
+.table-wrapper-scroll-y {
+    > table {
+        width: 100%;
+
+        > thead {
+            width: calc( 100% - 1.1em );
+        }
+        > tbody {
+            display: block;
+            max-height: 300px;
+            overflow-y: auto;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+
+        > thead,tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+    }
+
+}
+
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 2;
+}
+
+.rowSpacing{
+    border-bottom: 5px solid white;
+    /* border-collapse: separate; */
+    border-spacing: 0.5em;
+}

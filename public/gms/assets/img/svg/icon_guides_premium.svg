@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70px" height="70px" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Guides Premium</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Guides-Premium" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(2.000000, 2.000000)">
+            <circle id="Oval-7" stroke="#FFFFFF" stroke-width="3" fill="#484F60" cx="33" cy="33" r="33"></circle>
+            <path d="M12.011359,46.1779876 C12.011359,46.1779876 14.6690794,40.5549476 19.9845203,29.3088677 L23.9073401,35.0882649 L32.3419132,28.083611 L41.2256201,35.0882649 L42.9999454,51.2460022 L32.3419132,44.5506823 L32.3419132,28.083611" id="Path-8" stroke="#FFFFFF" stroke-width="2"></path>
+            <polyline id="Path-11" stroke="#FFFFFF" stroke-width="2" points="12.604695 45.0378497 22.0880422 51.6163077 23.8766801 35.1521335"></polyline>
+            <polyline id="Path-13" stroke="#FFFFFF" stroke-width="2" points="43.7257196 52.4797092 52.4498241 45.9551185 49.157846 37.1203527"></polyline>
+            <path d="M22.3878803,52.6533203 C29.0196927,47.5172761 32.345191,44.7925934 32.3643753,44.4792722" id="Path-12" stroke="#FFFFFF" stroke-width="2"></path>
+            <path d="M45.955698,34.8597726 C50.0978336,34.8597726 53,23.6421356 53,19.5 C53,15.3578644 49.6421356,12 45.5,12 C41.3578644,12 38,15.3578644 38,19.5 C38,23.6421356 41.8135624,34.8597726 45.955698,34.8597726 Z" id="Oval-16" stroke="#FFFFFF" fill="#FFFFFF"></path>
+            <circle id="Oval-15" fill="#484F60" cx="45.5" cy="19.5" r="4.5"></circle>
+        </g>
+    </g>
+</svg>

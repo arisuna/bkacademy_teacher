@@ -1,0 +1,80 @@
+.extract-data-page {
+
+    .extract-data-left-bar {
+        height: 85vh;
+        overflow-y: auto;
+    }
+
+    .extract-data-grid {
+        height: 100%;
+
+        .ag-header-cell {
+            text-align: left;
+            font-weight: bold;
+            padding-left: 0 !important;
+
+            .ag-header-cell-label {
+                padding-top: 5px;
+                padding-left: 12px;
+
+                &:after {
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+}
+
+.resposive-chart {
+    div {
+        width: 100% !important;
+
+        div.legend > div {
+            background: none !important;
+            width: 139px !important;
+        }
+
+        tbody {
+            display: block;
+            overflow-x: auto;
+            height: 325px;
+        }
+    }
+}
+
+.responsive-chart {
+    div {
+        width: 100% !important;
+
+        div.legend > div {
+            background: none !important;
+            width: 139px !important;
+        }
+
+        tbody {
+            display: block;
+            overflow-x: hidden;
+            overflow-y: auto;
+            height: 325px;
+            width: 200px;
+            tr{
+                td.legendLabel{
+                    max-width: 185px;
+                }
+            }
+        }
+    }
+}
+
+.chart-rotate {
+    padding-bottom: 50px;
+
+    .flot-x-axis .flot-tick-label {
+        white-space: nowrap;
+        transform: translate(-38%, 0) rotate(-55deg);
+        text-indent: -100%;
+        transform-origin: top right;
+        text-align: right !important;
+
+    }
+}

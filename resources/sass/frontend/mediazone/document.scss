@@ -1,0 +1,66 @@
+/**
+ * Documents
+ */
+
+div.documents {
+    &.folder {
+        > div {
+            padding: 8px 8px 5px 0px;
+            position: relative;
+
+            .icon {
+                float: left;
+                font-size: 35px;
+                margin-right: 5px;
+                position: relative;
+            }
+
+            .name {
+                float: left;
+                position: relative;
+                white-space: nowrap;
+                padding-top: 15px;
+            }
+            .action {
+                padding-top: 12px;
+                float: right;
+            }
+        }
+    }
+
+    &.file {
+        .inner {
+
+            .name {
+                padding: 5px;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+.document-block {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 363px !important;
+}
+
+.document-border-top {
+    border-top: 1px solid #DDDDDD;
+}
+
+.document-border-bottom {
+    padding: 5px 0px 5px 0px;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.document-show {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 363px !important;
+}
+
+.document-i-top {
+    padding-top: 2px;
+}

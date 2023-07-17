@@ -1,0 +1,44 @@
+<a uib-dropdown-toggle="" ng-click="openNotificiation()">
+    <em class="fa fa-inbox"></em>
+    <em class="label label-info" ng-if="count >= 10">9+</em>
+    <em class="label label-info" ng-if="count < 10 && count > 0" ng-bind="count"></em>
+</a>
+<!-- START Dropdown menu-->
+<ul uib-dropdown-menu class="dropdown-menu animated fadeInRightBig system-notification" >
+    <li>
+        <!-- START list group-->
+        <spinner name="mySpinner" show="loading"></spinner>
+        <div class="list-group" ng-show="!loading">
+            <!-- list item-->
+            <a class="list-group-item" ui-sref="{{ item.object.frontend_state }}" ng-repeat="item in notifications">
+                <div class="media-box">
+                    <div class="pull-left">
+                        <em class="fa fa-comment text-info"></em>
+                    </div>
+                    <div class="media-box-body clearfix">
+                        <div class="row">
+                            <div class="col-xs-8">{{ item.content | translate | notify_message :{ params: item.params } }}
+                            </div>
+                            <div class="col-xs-4 text-muted text-right">
+                                <small>{{ item.date }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <!-- last list item-->
+            <a class="list-group-item text-center" ng-click="loadNotifications()">
+                <small>{{ 'MORE_NOTIFICATIONS_TEXT' | translate }}</small>
+                <span class="label label-info" ng-if="count >= 10">9+</span>
+                <span class="label label-info" ng-if="count < 10 && count > 0">{{ count }}</span>
+            </a>
+        </div>
+        <!-- END list group-->
+    </li>
+</ul>
+
+<script type="text/ng-template" id="reminderBodyTpl.html">
+    <button class="btn btn-sm btn-link text-white">Snooze</button>
+    <button class="btn btn-sm btn-link text-white" ng-click="dissmissReminder(toaster.data)">Dissmiss</button>
+</script>
+<!-- END Dropdown menu-->

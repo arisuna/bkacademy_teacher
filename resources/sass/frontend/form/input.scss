@@ -1,0 +1,464 @@
+.radio + .radio,
+.checkbox + .checkbox {
+    margin-top: 0px; // Move up sibling radios or checkboxes for tighter spacing
+}
+
+form.editable-wrap.editable-textarea {
+    width: 100% !important;
+}
+
+/** editable **/
+.editable-wrap {
+    &.editable-bsdate {
+        .editable-controls.form-group {
+            width: auto;
+        }
+    }
+
+    .editable-controls.form-group {
+        width: 100%;
+    }
+
+    .editable-controls {
+        > textarea {
+            width: 100%;
+            display: block !important;
+            border: 1px solid #dde6e9;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+    }
+
+    .editable-buttons {
+        display: block !important;
+        float: right;
+    }
+}
+
+.editable-click, a.editable-click {
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: 0 0 0 0 transparent;
+    color: gray !important;
+    cursor: pointer;
+    margin: -5px;
+    padding: 5px;
+    border: none;
+    border-bottom: none !important;
+    border-radius: 2.01px;
+    max-width: 100%;
+    transition: box-shadow 150ms ease-in 0ms;
+    vertical-align: top;
+    word-break: break-word;
+    -webkit-box-sizing: border-box;
+    -webkit-transition: box-shadow 150ms ease-in 0ms;
+    -moz-box-sizing: border-box;
+    text-decoration: none !important;
+    color: black !important;
+
+    &:hover {
+        text-decoration: none;
+        color: #3a3f51;
+        margin: -5px;
+        padding: 5px;
+        background-color: $relo-dark-gray-75;
+        border: none;
+        border-radius: 3px;
+        width: 100% !important;
+    }
+
+    &:hover:after {
+        text-decoration: none;
+        content: "\f040";
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        margin: 0px 10px 0px 10px;
+        text-align: right;
+        text-decoration: none;
+        display: inline-flex;
+    }
+}
+
+.form-control-static {
+    form.editable-form {
+
+    }
+
+    .media-box-object {
+        display: inline-block;
+        max-width: 20px;
+        max-height: 20px;
+    }
+
+    .editable-wrap {
+        width: 100%;
+
+        ul {
+            white-space: nowrap;
+        }
+
+        li {
+            white-space: nowrap;
+        }
+
+        .editable-controls
+        > input[type=text] {
+            width: 100%;
+            display: block !important;
+            border: 1px solid #dde6e9;
+            border-radius: 3px;
+        }
+    }
+}
+
+/** end edtiable **/
+
+/** begin tags input **/
+tags-input {
+
+    &.ng-invalid {
+        .tags {
+            box-shadow: none !important;
+            border-bottom-color: $relo-red !important;
+            -webkit-box-shadow: none !important;
+        }
+    }
+
+    .tags {
+        box-shadow: none !important;
+        border-radius: 0px !important;
+        -webkit-box-shadow: none !important;
+
+        border-bottom: 1px solid #dde6e9 !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-top: none !important;
+
+        &.focused {
+            box-shadow: 1px 1px 1px 0 #dde6e9 inset !important;
+            border-bottom: 1px solid #dde6e9 !important;
+            border-left: none !important;
+            border-right: none !important;
+            border-top: none !important;
+        }
+
+        .tag-item {
+            background: $relo-bright-blue !important;
+            border: 0px solid $relo-bright-blue !important;
+            -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) !important;
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) !important;
+            color: white !important;
+
+            .remove-button {
+                color: white !important;
+            }
+        }
+    }
+}
+
+/** end tags input **/
+.bootstrap-tagsinput {
+    &.tag {
+        font-size: 14px;
+    }
+}
+
+.intl-tel-input {
+    .country-list {
+        z-index: 10 !important;
+    }
+}
+
+.form-control {
+    border-radius: 4px;
+}
+
+/*** TODO **/
+.stylish-input-group {
+
+    .input-group-addon {
+        background: white !important;
+    }
+
+    .form-control {
+        box-shadow: 0 0 0;
+        border-color: #ccc;
+        border-right: 0;
+    }
+
+    button {
+        background: transparent;
+        border: 0;
+    }
+}
+
+.input-text-search {
+    position: relative;
+    min-width: 250px;
+
+    input {
+        padding-right: 25px;
+        border-radius: 5px;
+        //border-color: $relo-bright-gray;
+        background: white;
+    }
+
+    .fa {
+        position: absolute;
+        color: $relo-bright-blue;
+        top: 10px;
+        right: 8px;
+        font-size: 14px;
+    }
+}
+
+.input-group {
+    .btn {
+        border-color: transparent;
+    }
+
+    &.addon-search {
+        span:first-child div,
+        p > span {
+            border-right: none;
+        }
+
+        input {
+            border-left: none;
+        }
+    }
+}
+
+.input-group-addon {
+    /*
+    background-color: #ffffff;
+    border: none;
+    padding-top: 10px;
+    padding-left: 0px;
+    margin-top: 10px;
+    */
+}
+
+.editable-wrap input {
+    width: 100%;
+    margin: 0 5px;
+}
+
+.input-group-addon {
+    /*
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    */
+}
+
+.input-custom {
+    border-radius: 5px;
+    height: 35px;
+}
+
+.input-custom.ng-dirty.ng-invalid {
+    border: 1px solid #ff0000;
+}
+
+.input-check-box {
+    left: 30%;
+}
+
+div.custom-drop-file {
+    div.box-placeholder {
+        width: 98%;
+        margin: auto;
+    }
+}
+
+.input-disabled {
+    width: 20px;
+    left: 30%;
+}
+
+input[type="radio"].radio-input {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    box-shadow: inset 0 0 0 .3em #ffffff,
+    0 0 0 .1em;
+    border-radius: 50%;
+    transition: .2s;
+    cursor: pointer;
+    color: #dcdcdc;
+    margin-top: 0px;
+    vertical-align: middle;
+
+    &:checked {
+        background: #259aff;
+        box-shadow: inset 0 0 0 .3em #ffffff,
+        0 0 0 .1em #259aff;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+.actived-tab {
+    background-color: $relo-bright-blue;
+    color: $relo-white;
+    border-radius: 5px;
+
+    input[type="radio"].radio-input {
+        &:checked {
+            background: $relo-white;
+            box-shadow: inset 0 0 0 .3em $relo-bright-blue,
+            0 0 0 .1em $relo-white;
+        }
+    }
+}
+
+.input-opacity {
+    opacity: 1 !important;
+}
+
+.textarea-custom {
+    width: 87%;
+    height: 100px;
+}
+
+.search-w-285{
+    min-width: 285px !important;
+}
+
+.search {
+
+    position: relative;
+    min-width: 200px;
+
+    > input {
+        border-right: none;
+
+        &.ng-valid {
+            border-color: $relo-default-gray !important;
+        }
+    }
+
+    > .input-group-btn:last-child {
+        > button {
+            border-left: none;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            color: $relo-bright-blue;
+        }
+    }
+}
+
+.search-2 {
+
+    position: relative;
+    width: 165px;
+
+    > input {
+        border-right: none;
+
+        &.ng-valid {
+            border-color: $relo-default-gray !important;
+        }
+    }
+
+    > .input-group-btn:last-child {
+        > button {
+            border-left: none;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            color: $relo-bright-blue;
+        }
+    }
+}
+
+.input-group {
+
+}
+
+/*** switch radio button **/
+.switch {
+    input:disabled + span.force-checked {
+        background-color: #0098ff !important;
+    }
+}
+
+.input-group-addon-basic {
+    padding: 6px 16px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    color: #3a3f51;
+    text-align: center;
+    background-color: #edf1f2;
+    border: 1px solid #dde6e9;
+    border-left-color: rgb(221, 230, 233);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-radius: 4px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    display: table-cell;
+
+}
+
+/******* Input Icon **********/
+
+/* checkbox .roundedOne */
+.roundedOne {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    background: white;
+    border-radius: 50px;
+    border:1px solid $relo-dark-gray-75;
+    label {
+        width: 8px;
+        height: 8px;
+        cursor: pointer;
+        position: absolute;
+        left: 4px;
+        top: 4px;
+        background: $relo-bright-blue;
+        border-radius: 50px;
+        &:after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background: white;
+            border:none;
+            opacity: 0;
+        }
+        &:hover::after {
+            opacity: 0.3;
+        }
+    }
+    input[type=checkbox] {
+        visibility: hidden;
+        &:checked + label:after {
+            opacity: 1;
+        }
+    }
+}
+/* end .roundedOne */
+
+//input switch
+
+.switch input:checked + span {
+    background-color: $brand-primary !important;
+    border-color: $brand-primary;
+    transition: all .5s;
+}
+
+.edit-radio-mode{
+    padding:5px 10px 5px 10px;
+    border:1px solid $relo-default-gray;
+    border-radius: 15px;
+}

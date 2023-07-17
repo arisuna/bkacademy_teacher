@@ -1,0 +1,42 @@
+//====== rating star =====//
+
+.rating li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 1px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.rating .filled {
+    color: $relo-yellow;
+}
+
+.fa.fa-star.inline-block{
+    padding: 1px;
+}
+//====== rating star =====//
+
+.service-acitve{
+    background: $relo-bright-blue;
+
+    div{
+        color: $relo-white;
+    }
+
+    img.bg-svg-bright-blue{
+        filter: brightness(0) invert(1);
+    }
+
+    .icon-service-rating{
+        //background: $relo-gray;
+        background: #d1dce88a;
+    }
+}
+
+.icon-service-rating{
+    width: 8em;
+    height: 8em;
+    background: $relo-bg-bright-blue-soft;
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70px" height="70px" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Extract_data</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Extract_data" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(2.000000, 2.000000)">
+            <g id="Group-88" fill="#FFFFFF" stroke="#0098FF" stroke-width="3">
+                <circle id="Oval-7" cx="33" cy="33" r="33"></circle>
+            </g>
+            <g id="Group-93" transform="translate(15.000000, 14.000000)">
+                <rect id="Rectangle-50" fill="#0A142B" x="1.02823529" y="22.4423529" width="35.4070588" height="14.7529412" rx="2"></rect>
+                <circle id="Oval-7" fill="#FFFFFF" cx="27.5835294" cy="32.7694118" r="1.47529412"></circle>
+                <circle id="Oval-7" fill="#FFFFFF" cx="32.0094118" cy="32.7694118" r="1.47529412"></circle>
+                <rect id="Rectangle-46" fill="#0A142B" x="14.3058824" y="0.312941176" width="8.85176471" height="15.8004" rx="1"></rect>
+                <path d="M17.9635434,28.6018992 L5.45411765,13.5905882 L32.0094118,13.5905882 L19.499986,28.6018992 C19.1464219,29.0261761 18.5158572,29.0835001 18.0915803,28.7299361 C18.0451172,28.6912168 18.0022626,28.6483622 17.9635434,28.6018992 Z" id="Triangle" fill="#FFFFFF"></path>
+                <path d="M17.9778668,23.3181022 L6.92941176,10.64 L30.5341176,10.64 L19.4856626,23.3181022 C19.1228161,23.7344685 18.4911394,23.7778549 18.0747731,23.4150084 C18.040293,23.3849604 18.0079149,23.3525823 17.9778668,23.3181022 Z" id="Triangle" fill="#0A142B"></path>
+            </g>
+        </g>
+    </g>
+</svg>

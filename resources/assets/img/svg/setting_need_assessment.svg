@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="110px" height="110px" viewBox="0 0 110 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Need assessment</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Need-assessment" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(2.000000, 2.000000)">
+            <g id="Group-88" fill="#FFFFFF" stroke="#0098FF" stroke-width="3">
+                <circle id="Oval-7" cx="53" cy="53" r="53"></circle>
+            </g>
+            <g id="Group-94" transform="translate(16.960000, 16.960000)" fill="#0A142B">
+                <g id="Group-88">
+                    <circle id="Oval-7" cx="36.04" cy="36.04" r="36.04"></circle>
+                </g>
+            </g>
+            <text id="?" font-family="PTSans-Caption, PT Sans Caption" font-size="36" font-weight="normal" fill="#FFFFFF">
+                <tspan x="44.1210303" y="59.3030303">?</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

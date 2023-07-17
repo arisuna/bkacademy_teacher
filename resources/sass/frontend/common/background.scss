@@ -1,0 +1,248 @@
+
+.relo-bg-transparent {
+    background-color: transparent !important
+}
+
+.relo-bg-background {
+    background-color: $relo-dark-blue;
+    opacity: 0.3;
+}
+
+.relo-bg-white {
+    background-color: white !important;
+}
+
+.relo-bg-white-15 {
+    background: $relo-white-15;
+}
+
+.relo-bg-bright-gray {
+    background-color: $relo-bright-gray !important;
+}
+
+.relo-bg-dark-gray {
+    background-color: $relo-dark-gray !important;
+}
+
+.relo-bg-bright-blue {
+    background-color: $relo-bright-blue !important;
+    color: #fff;
+}
+
+.relo-bg-bright-blue-75 {
+    background-color: $relo-bright-blue-75 !important;
+}
+
+.relo-bg-bright-blue-25 {
+    background-color: $relo-bright-blue-25 !important;
+}
+
+.relo-bg-bright-blue-10 {
+    background-color: $relo-bright-blue-10 !important;
+}
+
+.btn {
+    &.btn-soft-blue {
+        background-color: $relo-bright-blue-10 !important;
+    }
+}
+
+.relo-bg-dark-blue-5 {
+    background-color: $relo-dark-blue-5 !important;
+}
+
+.relo-bg-bright-blue-soft {
+    background-color: #E4EFFB !important;
+}
+
+.relo-bg-gray {
+    background-color: $relo-gray !important;
+}
+
+.relo-bg-gray-default {
+    background: $relo-default-gray;
+}
+
+.relo-bg-green-75 {
+    background-color: $relo-green-75 !important;
+}
+
+.relo-bg-yellow-75 {
+    background-color: $relo-yellow-75 !important;
+}
+
+.relo-bg-yellow {
+    background: $relo-yellow;
+}
+
+.relo-bg-yellow-40 {
+    background-color: $relo-yellow-40 !important;
+}
+
+.relo-bg-yellow-20 {
+    background-color: $relo-yellow-20 !important;
+}
+
+.relo-bg-dark-blue {
+    background-color: $relo-dark-blue;
+}
+
+.relo-bg-dark-blue-75 {
+    background-color: $relo-dark-blue-75 !important;
+}
+
+.relo-bg-dark-blue-25 {
+    background-color: $relo-dark-blue-25 !important;
+}
+
+.relo-bg-red-75 {
+    background-color: $relo-red-75 !important;
+}
+
+.relo-bg-red-10 {
+    background-color: $relo-red-10;
+}
+
+.relo-bg-grey-10 {
+    background-color: $relo-grey-10;
+}
+
+.relo-bg-plum-red {
+    background-color: $relo-plum-red !important;
+}
+
+.relo-bg-plum-red-10 {
+    background-color: $relo-plum-red-10 !important;
+}
+
+.relo-bg-inverse {
+    background-color: $relo-inverse !important;
+}
+
+.relo-bg-dark {
+    background: #4a4a4a;
+}
+
+.relo-bg-gray-origin > button {
+    background: #d8d8d8;
+}
+
+.relo-bg-gray-default {
+    background: $relo-default-gray;
+}
+
+.relo-bg-dark {
+    background: #4a4a4a;
+}
+
+.relo-bg-gray-origin > button {
+    background: #d8d8d8;
+}
+
+.relo-bg-default-gray {
+    background: $relo-default-gray;
+}
+
+.relo-bg-turquoise-75 {
+    background-color: $relo-turquoise-75;
+}
+
+.relo-bg-empty {
+    background-color: #f2f2f2
+}
+
+.relo-bg-grey-50 {
+    background-color:#FAFAFA !important;
+}
+
+/*** todo check **/
+.no-background {
+    background: none !important;
+}
+
+
+.bg-gray-linear {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.bg-bright-blue-linear {
+    background-color: $relo-bright-blue-10;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+.relo-bg-navy-blue {
+    background-color: $relo-navy-blue;
+}
+
+
+.bg-svg-white {
+    filter: brightness(0) invert(1);
+}
+
+.bg-svg-bright-blue {
+    filter: invert(41%) sepia(97%) saturate(2543%) hue-rotate(184deg) brightness(103%) contrast(106%) !important;
+}
+
+/** TODO check **/
+.bg-total {
+    background-color: #f8f8f8;
+}
+
+.relo-bg-primary-color {
+    background: $relo-primary-color;
+}
+
+.relo-bg-secondary-color {
+    background: $relo-secondary-color;
+}
+
+.section-container-1-full-2-show{
+    margin-left: 260px !important;
+}
+
+.no-shadow{
+    box-shadow: none !important;
+}
+.relo-bg-bright-gray-4 {
+    background-color: $relo-bright-gray-4 !important;
+}
+.relo-bg-form-error{
+    background: $relo-red-10 !important;
+}
+
+.relo-bg-dark-blue-70{
+    background: $relo-dark-blue-70;
+}
+
+.relo-bg-red-10-hover {
+    background-color: $relo-red-10 !important;
+    &:hover, &:focus {
+        color: #ba8497;
+    }
+}
+
+.relo-bg-bright-blue-10-hover {
+    background-color: $relo-bright-blue-10 !important;
+    &:hover, &:focus {
+        color: #72bef2;
+    }
+}
+
+.relo-bg-bright-grey-10-hover {
+    background-color: $relo-grey-10 !important;
+    &:hover, &:focus {
+        color: #b1b2b6;
+    }
+}
+
+.relo-bg-white-normal {
+    background-color: white;
+}
+
+.relo-box-shadow-gray{
+    box-shadow: 0px 0px 3px 0px $relo-gray;
+}

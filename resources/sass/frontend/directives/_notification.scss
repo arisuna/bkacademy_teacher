@@ -1,0 +1,83 @@
+.notification-flat {
+
+    display: inline-flex;
+    background: #fff;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-width: 1px;
+    width: 100%;
+
+    > .notification-flat-title {
+        width: 60px;
+        float: left;
+        height: auto;
+        padding: 10px;
+        position: relative;
+        color: #fff;
+        text-align: center;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    > .notification-flat-text {
+        vertical-align: middle;
+        height: auto;
+        padding: 20px 20px 20px 20px;
+        color: #333;
+        width: 100%;
+    }
+
+    &.notification-flat-success {
+        border-color: $relo-green;
+
+        .notification-flat-title {
+            background: $relo-green;
+        }
+    }
+
+    &.notification-flat-primary {
+        border-color: $relo-bright-blue;
+
+        .notification-flat-title {
+            background: $relo-bright-blue;
+        }
+    }
+
+    &.notification-flat-info {
+        border-color: $relo-dark-blue;
+
+        .notification-flat-title {
+            background: $relo-dark-blue;
+        }
+    }
+
+    &.notification-flat-warning {
+        border-color: $relo-yellow;
+
+        .notification-flat-title {
+            background: $relo-yellow;
+        }
+    }
+
+    &.notification-flat-danger {
+        border-color: $relo-red;
+
+        .notification-flat-title {
+            background: $relo-red;
+        }
+    }
+
+    border-radius: 3px;
+    line-height: 20px;
+    margin: 0px 0 20px 0px;
+    overflow-wrap: break-word;
+    position: relative;
+    word-wrap: break-word;
+
+    &.sm {
+        padding: 10px 30px 10px 60px;
+    }
+}
+

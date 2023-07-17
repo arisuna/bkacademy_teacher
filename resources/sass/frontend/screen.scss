@@ -1,0 +1,304 @@
+/*
+  Allow angular.js to be loaded in body, hiding cloaked elements until
+  templates compile.  The !important is important given that there may be
+  other selectors that are more specific or come later and might alter display.
+ */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none;
+}
+
+@mixin resize-setting-box($padding_item_hover, $padding_sub_item){
+    padding-top: $padding_item_hover !important;
+
+    .setting-list-subitems {
+        padding: $padding_sub_item !important;
+    }
+}
+
+html {
+    @media only screen and (min-width: 1921px) {
+
+    }
+
+    @media only screen and (max-width: 1440px) {
+
+    }
+
+    @media only screen and (min-width: 1200px) and (max-width: 1440px) {
+
+    }
+
+    @media only screen and (min-width: 1200px) {
+
+    }
+
+    @media only screen and (max-width: 1199px) {
+
+    }
+
+    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+    }
+
+    @media only screen and (min-width: 992px) {
+
+    }
+
+    @media only screen and (max-width: 991px) {
+
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    }
+
+    @media only screen and (min-width: 768px) {
+
+    }
+
+    @media only screen and (max-width: 767px) {
+
+    }
+
+    @media only screen and (max-width: 480px) {
+
+    }
+
+    @media only screen and (max-width: 320px) {
+
+    }
+
+}
+
+html, body, .wrapper, .wrapper > section {
+    background-color: transparent !important;
+    background: transparent !important;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    //----------- Alignment ---------//
+    .text-md-center {
+        text-align: center;
+    }
+
+    .text-md-left {
+        text-align: left;
+    }
+
+    .pl-sm-0 {
+        padding-left: 0px;
+    }
+
+    .locked-content .box-lock {
+        width: 175px !important;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1339px) {
+    //-------- spacing -----------//
+    .pl-md-0 {
+        padding-left: 0;
+    }
+
+    .list-settings .setting-item .setting-item-hover {
+       top: 15% !important;
+    }
+
+    .resize-setting-box-gms{
+        @include resize-setting-box(160%, 5px);
+    }
+}
+
+@media (min-width: 1440px) {
+
+    //----------- Alignment ---------//
+    .text-lg-right {
+        text-align: right;
+    }
+
+    //----------- Scale -------------//
+    .height-lg-200 {
+        height: 200px;
+    }
+
+    .box-relocation-case {
+        width: 50%;
+    }
+
+    .list-settings {
+        .setting-item {
+            padding-top: 80%;
+
+            .setting-item-hover .setting-item-hover-image img {
+                width: 70%;
+            }
+        }
+    }
+}
+
+@media (min-width: 1920px) {
+    .list-settings .setting-item {
+        padding-top: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .list-settings {
+
+        .setting-item-hover {
+            top: 20px !important;
+        }
+
+        .resize-setting-box-hr, .resize-setting-box-gms{
+            @include resize-setting-box(110%, 5px);
+        }
+    }
+
+    .element-button {
+        button {
+            display: none;
+        }
+        span {
+            display: block;
+        }
+    }
+
+    .item-heading-housing-proposals {
+        padding-right: 0;
+        padding-bottom: 5px;
+    }
+
+    .box-container-step {
+        width: 100%;
+        overflow-x: auto;
+        height: 137px;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .step-tab-form {
+            .tab-item-wizard,
+            .tab-item-wizard .title-of-step {
+                width: 97px !important;
+            }
+        }
+    }
+    .no-fix-sm-height {
+        height: unset;
+    }
+
+    .form-item-actions {
+        width: 50%;
+    }
+
+    .note-message::before {
+        bottom: 37% !important;
+    }
+}
+
+@media (min-width: 120px) and (max-width: 414px) {
+    .hidden-xs {
+        display: none;
+    }
+
+    .wrapper {
+        background: $relo-dark-blue !important;
+    }
+
+    .LoginPage {
+        background: none;
+    }
+}
+
+@media print {
+    .print-disabled, .print-disabled * {
+        display: none !important;
+    }
+    .print-full-width {
+        width: 100% !important;
+    }
+}
+
+@media screen {
+    #printSection {
+        display: none;
+    }
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #printSection, #printSection * {
+        visibility: visible;
+    }
+    #printSection {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1339px) {
+    label.swal2-checkbox > span {
+        width: 25vw;
+    }
+
+    .year-text {
+        font-size: 11px;
+        padding-left: 3%;
+    }
+
+    .input-custom {
+        max-width: 109px;
+    }
+
+    .col {
+        padding: 3px !important;
+    }
+
+    .pd-t-md {
+        padding-top: 10px;
+    }
+
+    .box-relocation-case {
+        width: 90%;
+    }
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+
+/**
+ *  Media print
+ */
+
+@media print {
+    .print-page {
+        padding-bottom: 35px;
+    }
+
+    .panel-footer {
+        border: none;
+    }
+}
+
+@media only screen and (min-width: 1170px) {
+    .cd-main-content h1 {
+        font-size: 3.2rem;
+    }
+}
+
+
+@media only screen and (min-width: $mq-desktop) {
+    .col-md-2-5{
+        width: 19.999996%;
+    }
+}

@@ -1,0 +1,94 @@
+.pd {
+    &-0 {
+        padding: 0;
+    }
+
+    @for $i from 0 through 100 {
+        &-#{$i} {
+            padding: #{$i}px;
+        }
+        &-t-#{$i} {
+            padding-top: #{$i}px;
+        }
+
+        &-r-#{$i} {
+            padding-right: #{$i}px;
+        }
+
+        &-b-#{$i} {
+            padding-bottom: #{$i}px;
+        }
+
+        &-l-#{$i} {
+            padding-left: #{$i}px;
+        }
+    }
+
+    @for $i from 0 through 10 {
+        &-#{$i}s {
+            padding: #{$i * 3}px;
+        }
+
+        &-t-#{$i}s {
+            padding-top: #{$i * 3}px;
+        }
+
+        &-r-#{$i}s {
+            padding-right: #{$i * 3}px;
+        }
+
+        &-b-#{$i}s {
+            padding-bottom: #{$i * 3}px;
+        }
+
+        &-l-#{$i}s {
+            padding-left: #{$i * 3}px;
+        }
+    }
+
+    @for $i from 1 through 10 {
+        &-#{$i}x {
+            padding: #{$i * 10}px;
+        }
+
+        &-t-#{$i}x {
+            padding-top: #{$i * 10}px;
+        }
+
+        &-r-#{$i}x {
+            padding-right: #{$i * 10}px;
+        }
+
+        &-b-#{$i}x {
+            padding-bottom: #{$i * 10}px;
+        }
+
+        &-l-#{$i}x {
+            padding-left: #{$i * 10}px;
+        }
+    }
+}
+
+
+.pd {
+    @for $i from 0 through 10 {
+        &-#{$i}x {
+            @for $j from 0 through 10 {
+                &-#{$j}x {
+                    @for $k from 0 through 10 {
+                        &-#{$k}x {
+                            @for $l from 0 through 10 {
+                                &-#{$l}x {
+                                    padding-top: #{$i * 10}px;
+                                    padding-left: #{$l * 10}px;
+                                    padding-bottom: #{$k * 10}px;
+                                    padding-right: #{$j * 10}px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

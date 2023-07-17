@@ -1,0 +1,182 @@
+.multiple-contact {
+    &.ui-select-multiple {
+        &.ui-select-container {
+            border-radius: 3px;
+            background-color: $relo-bright-gray;
+            border: none;
+
+            &:hover {
+                background-color: $relo-bright-gray;
+                box-shadow: 0 4px 8px 0 rgba(0, 152, 255, 0.4);
+                /*border: 1px solid #aaa;*/
+                border-radius: 3px;
+            }
+
+            > div {
+                //padding: 10px;
+                padding: 0px;
+            }
+        }
+
+        &.ui-select-bootstrap {
+            > .ui-select-choices {
+                padding: 10px;
+                max-height: 200px !important;
+                z-index: 9999;
+                left: 0px;
+                margin-top: 3px;
+            }
+
+            .ui-select-choices-row.active {
+                > span {
+                    background: $relo-bright-blue;
+                    border-radius: 4px;
+                }
+            }
+
+            .ui-select-match-item {
+                font-size: 14px;
+                background-color: $relo-bright-blue;
+                color: white;
+                border-radius: 10px;
+
+                &:hover {
+                    box-shadow: 0 4px 8px 0 rgba(0, 152, 255, 0.4);
+                }
+
+                span {
+                    &.ui-select-match-close {
+                        font-weight: normal;
+                        color: white;
+                        margin-top: 2px;
+                        opacity: 0.8;
+                    }
+                }
+            }
+
+            .ui-select-no-choice {
+                padding: 10px;
+                margin-top: 3px;
+            }
+        }
+    }
+}
+
+.assignee-selector {
+    &.assignee-view {
+        border-radius: 18px;
+        height: 36px;
+        background-color: $relo-bright-gray;
+    }
+
+    &.assignee-view-empty {
+        border-radius: 18px;
+        height: 36px;
+        padding: 8px 10px 6px 20px;
+        background-color: $relo-bright-gray;
+    }
+
+    &.ui-select-bootstrap {
+
+        .ui-select-choices-row {
+            > span {
+                padding: 3px 10px;
+            }
+        }
+
+        > .ui-select-no-choice {
+            padding-left: 10px;
+        }
+
+        > .ui-select-match {
+            &.btn-default-focus {
+                background-color: white;
+            }
+
+            > .ui-select-toggle {
+                border: none;
+                padding: 0px;
+                border-radius: 18px;
+                background-color: $relo-bright-gray;
+
+                > .ui-select-placeholder {
+                    display: block;
+                    margin-top: 7px;
+                    margin-left: 15px;
+                }
+
+                .assignee-selector-name {
+                    display: inline;
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        .ui-select-choices-row-inner {
+            display: flex;
+
+            > span {
+                display: inline-flex;
+                justify-content: center;
+                flex-direction: column;
+            }
+        }
+    }
+
+    .ui-select-container {
+        > input[type=search] {
+            width: 90%;
+            border-radius: 15px;
+        }
+    }
+
+}
+
+.assignee-selector-body {
+    .ui-select-container {
+        > input[type=search] {
+            width: 90%;
+            border-radius: 15px;
+        }
+    }
+
+    .ui-select-choices-row-inner {
+        display: flex;
+
+        > span {
+            display: inline-flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+    }
+}
+
+.ui-select-bright-blue {
+    //background: $relo-bright-blue-10 !important;
+    &.btn-default-focus {
+        background-color: transparent !important;
+    }
+    .btn {
+        background: $relo-bright-blue-10 !important;
+    }
+}
+
+.ui-select-bright-grey {
+    //background: $relo-grey-10 !important;
+    &.btn-default-focus {
+        background-color: transparent !important;
+    }
+    .btn {
+        background: $relo-grey-10 !important;
+    }
+}
+
+.ui-select-bright-red {
+    //background: $relo-red-10 !important;
+    &.btn-default-focus {
+        background-color: transparent !important;
+    }
+    .btn {
+        background: $relo-red-10 !important;
+    }
+}

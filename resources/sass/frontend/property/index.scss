@@ -1,0 +1,118 @@
+
+.property-search-results {
+    .content {
+        .description {
+            font-size: 14px;
+            margin: 10px auto;
+            line-height: 21.4px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &.ellipsis {
+                display: block;
+                display: -webkit-box;
+                height: 107px;
+                -webkit-line-clamp: 5;
+                -webkit-box-orient: vertical;
+            }
+        }
+    }
+    .property-listing {
+        padding: 10px !important;
+        a {
+            margin: 0;
+        }
+        img {
+            max-width: 180px;
+        }
+        .media {
+            display: flex;
+            align-items: center;
+        }
+        .media-2 {
+            display: flex;
+        }
+    }
+}
+
+.selected-property-status {
+    padding: 3px 5px;
+    border-radius: 3px;
+    width: fit-content;
+
+    select {
+        background: transparent;
+        color: #fff;
+        border: none;
+        > option {
+            color: black;
+        }
+    }
+
+    &.to_suggest {
+        background-color: $relo-gray;
+    }
+
+    &.pending {
+        background-color: $relo-gray;
+    }
+
+    &.suggested {
+        background-color: $relo-bright-blue;
+    }
+
+    &.accepted {
+        background-color: $relo-green;
+    }
+    &.declined {
+        background-color: $relo-red;
+    }
+}
+
+.property-scrape {
+    .fa-check {
+        position: absolute;
+        right: 20px;
+        top: 2px;
+    }
+
+    .c-checkbox {
+        position: absolute;
+        right: 0;
+    }
+
+    body .whirl::before {
+        background-color: transparent;
+    }
+
+    .btn-default:focus {
+        color: #333;
+    }
+
+    .btn-default:hover {
+        -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+        -webkit-transform: translate3d(0, -1px, 0);
+    }
+}
+
+.properties-image {
+    width: 248px;
+    height: 167px;
+}
+
+.block-bottom{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+.block-bottom-property {
+    position: absolute;
+    bottom: 30px;
+    left: 0px;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}

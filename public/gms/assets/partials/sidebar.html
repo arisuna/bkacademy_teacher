@@ -1,0 +1,114 @@
+<!-- Inline template with sidebar items markup and ng-directives-->
+<script type="text/ng-template" id="sidebar-renderer.html">
+	<span ng-if="item.heading">{{(item.translate | translate) || item.text | translate}}</span>
+	<a ng-if="!item.heading" ng-href="{{$state.href(item.sref, item.params)}}"
+       title="{{(item.translate | translate) || item.text|translate}}"
+       md-ink-ripple="md-ink-ripple">
+        <div class="pull-right" ng-if="item.alert" ng-class="item.label || 'label label-success'">{{item.alert}}</div>
+        <em class="{{item.icon}}" ng-if="item.icon"></em><span>{{(item.translate | translate) || item.text|translate}}</span>
+    </a>
+    <ul class="nav sidebar-subnav" ng-if="item.submenu" uib-collapse="isCollapse(pIndex)" ng-init="addCollapse(pIndex, item)">
+        <li class="sidebar-subnav-header">{{(item.translate | translate) || item.text|translate}}</li>
+        <li ng-repeat="item in item.submenu" ng-include="'sidebar-renderer.html'"
+            ng-class="getMenuItemPropClasses(item)" ng-init="pIndex=(pIndex+'-'+$index); inSubmenu = true"
+            ng-click="toggleCollapse(pIndex)">
+        </li>
+    </ul>
+</script>
+<!-- START Sidebar (left)-->
+<div class="aside-inner">
+    <nav class="sidebar {{ leftSidebarColor }}" sidebar="" sidebar-anyclick-close=""
+         ng-class="{'show-scrollbar': app.layout.asideScrollbar}">
+        <!-- START sidebar nav-->
+        <ul class="nav">
+            <!-- START user info-->
+            <li class="has-user-block custom-style" style="" ng-if="hasEmployeeLeftBlock || hasWorkerLeftBlock || hasEmployeeAvatarBlock">
+                <div ng-controller="UserBlockController" ng-if="hasEmployeeLeftBlock">
+                    <div class="item user-block">
+                        <!-- User picture-->
+                        <div class="user-block-picture" ng-if="baseEmployee.uuid != undefined && baseEmployee.uuid != '' ">
+                            <div class="user-block-status">
+                                <a ui-sref="app.employees-page.view.information({number:baseEmployee.number})">
+                                    <employee-avatar-thumb uuid="{{ baseEmployee.uuid }}" size="xlarge"></employee-avatar-thumb>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Name and Job-->
+                        <div class="user-block-info">
+                            <a ui-sref="app.employees-page.view.information({number:baseEmployee.number})" class="color-white">
+                                <h4 class="user-block-name">{{ baseEmployee.firstname }} {{ baseEmployee.lastname }}</h4>
+                            </a>
+                            <p class="user-block-text color-white" ng-if="baseEmployee.company_name  != '' && baseEmployee.company_name != undefined">
+                                <i class="fa fa-building mr-sm" aria-hidden="true"></i>{{ baseEmployee.company_name }}
+                            </p>
+                            <p ng-if="baseEmployee.reference  != '' && baseEmployee.reference != undefined"
+                               class="user-block-text"><strong>EID</strong> {{ baseEmployee.reference }}</p>
+                            <p ng-if="baseEmployee.assignment_reference != '' && baseEmployee.assignment_reference != undefined"
+                               class="user-block-text"><strong>AID</strong>
+                                <a ui-sref="app.assignment.dashboard({id:baseEmployee.assignment.id})" class="text-white">{{ baseEmployee.assignment_reference }}</a></p>
+                            <p ng-if="baseEmployee.relocation_reference != '' && baseEmployee.relocation_reference != undefined"
+                               class="user-block-text"><strong>RID</strong>
+                                <a ui-sref="app.relocation-services.dashboard({uuid:baseEmployee.relocation.uuid})" class="text-white">{{ baseEmployee.relocation_reference }}</a></p>
+                        </div>
+
+                        <div class="user-block-info">
+                            <p ng-if="baseEmployee.phonework  != '' && baseEmployee.phonework != undefined"
+                               class="user-block-text"><strong><i class="fa fa-phone mr-sm" aria-hidden="true"></i></strong> {{ baseEmployee.phonework }}</p>
+
+                            <p ng-if="baseEmployee.phonehome != '' && baseEmployee.phonehome != undefined"
+                               class="user-block-text"><strong><i class="fa fa-phone mr-sm" aria-hidden="true"></i></strong> {{ baseEmployee.phonehome }}</p>
+
+                            <p ng-if="baseEmployee.mobilehome != '' && baseEmployee.mobilehome != undefined"
+                               class="user-block-text"><strong><i class="fa fa-mobile mr-sm" aria-hidden="true"></i></strong> {{ baseEmployee.mobilehome }}</p>
+
+                            <p ng-if="baseEmployee.workemail != '' && baseEmployee.workemail != undefined"
+                               class="user-block-text"><strong><i class="fa fa-envelope mr-sm" aria-hidden="true"></i></strong> {{ baseEmployee.workemail }}</p>
+
+                            <p ng-if="baseEmployee.privateemail != '' && baseEmployee.privateemail != undefined"
+                               class="user-block-text"><strong><i class="fa fa-envelope mr-sm" aria-hidden="true"></i></strong> {{ baseEmployee.privateemail }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-controller="UserBlockController" ng-if="hasWorkerLeftBlock">
+                    <div class="item user-block">
+                        <avatar-upload bind="baseWorker.avatar" button="'CHANGE_AVATAR_TEXT'" options="{}"
+                                       data="{avatar:baseWorker.avatar,uuid:worker.uuid,url:baseWorker.avatar_url}"
+                                       data-uuid="baseWorker.uuid"></avatar-upload>
+                    </div>
+                </div>
+
+                <div ng-controller="UserBlockController" ng-if="hasEmployeeAvatarBlock">
+                    <div class="item user-block">
+                        <avatar-upload bind="baseEmployee.avatar" button="'CHANGE_AVATAR_TEXT'" options="{}"
+                                       data="{avatar:baseEmployee.avatar,uuid:worker.uuid,url:baseEmployee.avatar_url}"
+                                       data-uuid="baseEmployee.uuid"></avatar-upload>
+                    </div>
+                </div>
+            </li>
+            <li class="has-user-block custom-style" style="" ng-if="hasCommunicationLeftBlock">
+				<ng-include src="'/gms/views/communication/left_menu.html'"  include-replace="" ng-if="hasCommunicationLeftBlock"></ng-include>
+            </li>
+            <li class="has-user-block custom-style" style="" ng-if="hasOldCommunicationLeftBlock">
+                <ng-include src="'/gms/views/communication/left_menu.html'"  include-replace="" ng-if="hasCommunicationLeftBlock"></ng-include>
+            </li>
+            <li class="has-user-block custom-style" style="" ng-if="hasTasksLeftBlock">
+				<ng-include src="'/gms/views/tasks/left_menu.html'"  include-replace="" ng-if="hasTasksLeftBlock"></ng-include>
+            </li>
+
+            <!-- END user info-->
+            <!-- Iterates over all sidebar items-->
+            <li ng-class="getMenuItemPropClasses(item)" ng-repeat="item in menuItems"
+                ng-if="showGlobalMenu"
+                ng-init="pIndex = $index" ng-include="'sidebar-renderer.html'"
+                ng-click="toggleCollapse(pIndex, true)"></li>
+
+        </ul>
+
+        <ng-include ng-if="hasServiceMenu" src="'/gms/views/relocation-services/left_menu.html'"></ng-include>
+
+        <!-- END sidebar nav-->
+    </nav>
+</div>
+<!-- END Sidebar (left)-->

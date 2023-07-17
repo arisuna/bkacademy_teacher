@@ -1,0 +1,317 @@
+$relo-red: #e34a6f;
+$relo-light-yellow: #fdefc4;
+$relo-green: #39c17f;
+$relo-grey: #7E8189;
+$relo-dark-blue: #0A142B;
+$relo-bright-blue: #0098FF;
+$relo-bright-gray: #F5F7FA;
+$relo-light-blue: #cce1ff;
+
+.cmn-actions {
+  line-height: 35px;
+  a {
+    margin: 0 8px;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .btn-nav {
+    display: inline-block;
+    border-radius: 3px;
+    margin: 0 3px;
+    padding: 0 15px;
+    color: #fff;
+  }
+}
+
+.cmn-inbox {
+  tbody > tr {
+    border: 1px solid #eee;
+  }
+
+  tbody > tr > td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 32px;
+  }
+
+  td:first-child {
+    border: 1px solid #eee;
+    border-right: none;
+    width: 25px;
+
+    .checkbox {
+      position: relative;
+      top: 6px;
+    }
+  }
+
+  td:last-child {
+    cursor: pointer;
+    display: flex;
+
+    .cmn-mail-name {
+      width: 170px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .cmn-mail-checkbox {
+      width: 50px;
+      height: 50px;
+      font-size: 100%;
+
+      .fa {
+        margin-right: 5px;
+      }
+    }
+
+    .cmn-mail-flags {
+      width: 50px;
+      font-size: 125%;
+
+      .fa {
+        margin-right: 5px;
+      }
+    }
+
+    .cmn-mail-title {
+      display: flex;
+      flex: 1;
+
+      .cmn-mail-tags {
+          flex: 1 0 30%;
+          overflow: hidden;
+
+        .label {
+          font-size: 100%;
+          font-weight: normal;
+        }
+      }
+
+      .cmn-mail-subject {
+        flex: 0 1 60%;
+        padding-left: 15px;
+          .cmn-mail-subject-line{
+              height: 23.75px;
+              overflow: hidden;
+          }
+      }
+
+      .cmn-mail-others {
+        flex: 0 1 10%;
+        padding-left: 0px;
+        padding-right: 10px;
+        float: left;
+        display: block;
+          .cmn-mail-others-line{
+              height: 23.75px;
+              overflow: hidden;
+          }
+      }
+    }
+
+    .cmn-mail-followers {
+      position: relative;
+      width: 75px;
+
+      & > span {
+        position: absolute;
+
+        @for $i from 1 to 6 {
+          &:nth-child(#{$i}) {
+            left: 15px + ($i - 1) * (15px);
+          }
+        }
+      }
+    }
+
+    .cmn-mail-owners {
+      position: relative;
+      width: 110px;
+
+      & > span {
+        position: absolute;
+
+        @for $i from 1 to 6 {
+          &:nth-child(#{$i}) {
+            left: 15px + ($i - 1) * (15px);
+          }
+        }
+      }
+    }
+
+    .cmn-mail-date {
+      font-size: 12px;
+      width: 75px;
+        .cmn-mail-date-line{
+            height: 23.75px;
+            overflow: hidden;
+        }
+    }
+    .cmn-mail-unread-item {
+      width: 50px;
+    }
+  }
+
+  tr.unread td {
+    background-color: $relo-light-blue;
+  }
+
+  tr.unread td:last-child {
+    .cmn-mail-name {
+      font-weight: bold;
+    }
+
+    .cmn-mail-title .cmn-mail-subject {
+      font-weight: bold;
+      color: $relo-green;
+    }
+  }
+
+  tr.checked-item td {
+    background-color: $relo-light-yellow;
+    font-weight: bold;
+  }
+}
+
+.cmn-filter-list {
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  .cmn-filter-list-group {
+
+  }
+  .label {
+    margin-top: 10px;
+    margin-right: 5px;
+    font-size: 111%;
+    display: inline-block;
+  }
+}
+
+.cmn-left-block {
+  padding: 10px;
+
+  h4 {
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  .cmn-filter {
+    margin-bottom: 20px;
+  }
+}
+
+.cmn-thread {
+  tr.unread td {
+    background-color: $relo-bright-gray;
+  }
+
+  .cmn-msg-flags {
+    width: 50px;
+    font-size: 125%;
+    .fa {
+      margin-right: 5px;
+    }
+
+    .fa-flag {
+      color: $relo-red;
+    }
+  }
+
+  .cmn-msg-title {
+    display: flex;
+
+    .cmn-msg-name {
+      font-size: 16px;
+      &.unread {
+        font-weight: 600;
+      }
+    }
+
+    .cmn-msg-date {
+      flex: 1;
+      text-align: right;
+      color: $relo-grey;
+    }
+  }
+
+  td > .cmn-msg-content {
+    height: 22px;
+    line-height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $relo-grey;
+  }
+
+  .cmn-opened-msg {
+    .cmn-msg-info {
+      margin: 0px 0;
+
+      .cmn-msg-date {
+        text-align: left;
+        color: $relo-grey;
+      }
+    }
+
+    .cmn-msg-tags {
+      .label {
+        font-size: 111%;
+      }
+    }
+
+    .cmn-msg-content {
+      margin: 20px 0;
+    }
+
+    .cmn-msg-attachments {
+      margin-top: 20px;
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          display: inline-block;
+
+          .card {
+            width: 150px;
+
+            .card-body {
+              padding: 10px 0;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.cmn-thread-table {
+
+}
+
+.cmn-success {
+  h3, h4 {
+    font-weight: 300;
+    margin: 40px 0 20px;
+  }
+  .cmn-img-confirm {
+    margin: 20px auto;
+    width: 95%;
+    text-align: center;
+  }
+}
+
+.communication-message{
+    :hover{
+        background-color: $relo-bright-gray;
+        font-weight: bold;
+    }
+}
+
+.bd-communication{
+    border: 1px solid #F5F7FA;
+}

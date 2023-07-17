@@ -1,0 +1,53 @@
+.card {
+    &.card-transparent {
+        background-color: transparent;
+        box-shadow: none;
+    }
+    &.card-nobox {
+        box-shadow: none;
+        margin-bottom: 0px;
+        min-height: 100vh;
+        &.card-nobox-500 {
+            min-height: 500px;
+        }
+    }
+
+    &.card-old-style {
+        background-color: transparent;
+        box-shadow: none;
+        > .card-heading {
+            background-color: white;
+        }
+    }
+    > .card-heading {
+        &.relo-bg-bright-blue {
+            h4 {
+                color: white !important;
+            }
+        }
+        &.card-border-bottom {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        }
+    }
+
+    .card-heading {
+        &.has-border-bottom {
+            border-bottom: 1px solid $relo-gray;
+        }
+        &.bill-card-heading{
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+            height: 32px;
+            h5 {
+                margin-top: 8px;
+                padidng: 0px;
+                margin-bottom: 0px;
+            }
+
+            em {
+                margin-top: 8px
+            }
+        }
+    }
+}
+

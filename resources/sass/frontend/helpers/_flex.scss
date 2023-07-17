@@ -1,0 +1,44 @@
+.flex {
+    display: flex;
+
+    &-middle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    &-vertical {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-bottom {
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+    }
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-auto {
+    flex: auto;
+}
+
+@for $i from 1 through 100 {
+    .flex-#{$i} {
+        flex: #{$i};
+    }
+}
+
+.flex-center{
+    align-content: center;
+    justify-content: center;
+    align-self: center;
+}

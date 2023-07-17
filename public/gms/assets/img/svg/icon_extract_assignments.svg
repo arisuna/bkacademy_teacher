@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70px" height="70px" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Extract Assignments</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Extract-Assignments" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval-7" stroke="#0098FF" stroke-width="3" fill="#FFFFFF" cx="35" cy="35" r="33"></circle>
+        <g id="Group-103" transform="translate(11.000000, 20.000000)">
+            <g id="Group-102">
+                <circle id="Oval-7" fill="#0A142B" cx="15" cy="15" r="14.6347826"></circle>
+                <path d="M18.873913,6.53099018 L13.2830963,16.2217391 L24.4647297,16.2217391 L18.873913,6.53099018 Z" id="Triangle-2" stroke="#FFFFFF" transform="translate(18.873913, 11.126087) rotate(46.000000) translate(-18.873913, -11.126087) "></path>
+                <polygon id="Triangle-2" fill="#FFFFFF" transform="translate(10.597209, 19.227152) rotate(226.000000) translate(-10.597209, -19.227152) " points="10.5972087 13.6314997 17.0537304 24.822804 4.14068697 24.822804"></polygon>
+            </g>
+            <g id="Group-93-Copy" transform="translate(32.000000, 7.000000)">
+                <rect id="Rectangle-50" fill="#0A142B" x="0" y="9" width="14.7529412" height="6.14705882" rx="2"></rect>
+                <circle id="Oval-7" fill="#FFFFFF" cx="11.6147059" cy="12.6147059" r="1"></circle>
+                <circle id="Oval-7" fill="#FFFFFF" cx="13.6147059" cy="12.6147059" r="1"></circle>
+                <rect id="Rectangle-46" fill="#0A142B" x="6" y="0" width="3.68823529" height="6.5835" rx="1"></rect>
+                <path d="M6.76413166,10.716958 L2,5 L13.0647059,5 L8.30057422,10.716958 C7.94701014,11.1412349 7.31644544,11.198559 6.89216854,10.8449949 C6.84570548,10.8062757 6.80285088,10.7634211 6.76413166,10.716958 Z" id="Triangle" fill="#FFFFFF"></path>
+                <path d="M7.16374918,8.77790218 L3,4 L12.8352941,4 L8.67154494,8.77790218 C8.30869849,9.19426848 7.67702174,9.2376549 7.26065544,8.87480845 C7.22617532,8.84476041 7.19379722,8.81238231 7.16374918,8.77790218 Z" id="Triangle" fill="#0A142B"></path>
+            </g>
+        </g>
+    </g>
+</svg>

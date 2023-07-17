@@ -1,0 +1,167 @@
+.animate-show-hide {
+    &.ng-hide {
+        opacity: 0;
+    }
+
+    &.ng-hide-add,
+    &.ng-hide-remove {
+        transition: all linear 0.5s;
+    }
+}
+
+.fade {
+    opacity: 0;
+    -webkit-transition: opacity 0.25s ease-in;
+    -moz-transition: opacity 0.25s ease-in;
+    -o-transition: opacity 0.25s ease-in;
+    -ms-transition: opacity 0.25s ease-in;
+    transition: opacity 0.25s ease-in;
+    transition-delay: 0.25s;
+}
+
+.fade.in {
+    opacity: 1;
+}
+
+/* The starting CSS styles for the enter animation */
+.fade.ng-enter {
+    transition: 0.5s linear all;
+    opacity: 0;
+}
+
+/* The finishing CSS styles for the enter animation */
+.fade.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+.fade.ng-leave {
+    transition: 0.5s linear all;
+    opacity: 1;
+}
+
+.fade.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
+.fade.ng-hide {
+    opacity: 0;
+}
+
+.fade.ng-hide-remove,
+.fade.ng-hide-add {
+    display: block !important;
+}
+
+.fade.ng-hide-remove {
+    transition: all linear 1000ms;
+}
+
+.fade.ng-hide-add {
+    transition: all linear 500ms;
+}
+
+.animate-switch-container {
+    position: relative;
+    /*overflow: hidden;*/
+    background-size: 50px 50px;
+}
+
+.animate-switch {
+    //padding:10px;
+    width: 100%;
+}
+
+.animate-switch.ng-animate {
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    position: absolute;
+
+}
+
+/* hide leaving slide  */
+/* show */
+.animate-switch.ng-leave {
+    left: 0;
+}
+
+/* hide */
+.forward .animate-switch.ng-leave.ng-leave-active {
+    left: -100%;
+}
+
+.backward .animate-switch.ng-leave.ng-leave-active {
+    left: 100%;
+}
+
+/* show entering slide  */
+/* hide */
+.forward .animate-switch.ng-enter {
+    left: 100%;
+}
+
+.backward .animate-switch.ng-enter {
+    left: -100%;
+}
+
+/* show */
+.animate-switch.ng-enter.ng-enter-active {
+    left: 0;
+}
+
+.fa {
+    &.fa-spin-reverse {
+        animation-direction: reverse;
+        -moz-animation-direction: reverse;
+        -o-animation-direction: reverse;
+        -webkit-animation-direction: reverse;
+    }
+}
+
+.funky-show-hide.ng-hide-add {
+    animation-name: bounceInRight;
+    transition: all 1s ease-in-out;
+}
+
+.funky-show-hide.ng-hide-add.ng-hide-add-active {
+    animation-name: bounceInRight;
+}
+
+.funky-show-hide.ng-hide-remove {
+    transform: rotateY(90deg);
+    transform-origin: left;
+    transition: all 0.5s ease;
+}
+
+.funky-show-hide.ng-hide-remove.ng-hide-remove-active {
+    transform: rotateY(0);
+}
+
+
+.notice-list.ng-hide-add {
+    transform: rotateZ(0);
+    transform-origin: left;
+    transition: all 0.2s ease-in-out;
+}
+
+.notice-list.ng-hide-add.ng-hide-add-active {
+    transform: rotateY(-90deg);
+}
+
+.notice-list.ng-hide-remove {
+    transform: rotateY(90deg);
+    transform-origin: right;
+    transition: all 1s ease;
+}
+
+.notice-list.ng-hide-remove.ng-hide-remove-active {
+    transform: rotateY(0);
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}

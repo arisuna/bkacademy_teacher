@@ -1,0 +1,68 @@
+.mg {
+	&-0 {
+	    margin: 0;
+	}
+
+    @for $i from 0 through 10 {
+        &-#{$i}s {
+            margin: #{$i * 3}px;
+        }
+
+        &-t-#{$i}s {
+            margin-top: #{$i * 3}px;
+        }
+
+        &-r-#{$i}s {
+            margin-right: #{$i * 3}px;
+        }
+
+        &-b-#{$i}s {
+            margin-bottom: #{$i * 3}px;
+        }
+
+        &-l-#{$i}s {
+            margin-left: #{$i * 3}px;
+        }
+    }
+
+    @for $i from 1 through 10 {
+        &-#{$i}x {
+            margin: #{$i * 10}px;
+        }
+
+        &-t-#{$i}x {
+            margin-top: #{$i * 10}px;
+        }
+
+        &-r-#{$i}x {
+            margin-right: #{$i * 10}px;
+        }
+
+        &-b-#{$i}x {
+            margin-bottom: #{$i * 10}px;
+        }
+
+        &-l-#{$i}x {
+            margin-left: #{$i * 10}px;
+        }
+    }
+
+    @for $i from 1 through 100 {
+        &-t-minus-#{$i}{
+            margin-top: -#{$i}px;
+        }
+        &-b-minus-#{$i}{
+            margin-bottom: -#{$i}px;
+        }
+        &-l-minus-#{$i}{
+            margin-left: -#{$i}px;
+        }
+        &-r-minus-#{$i}{
+            margin-right: -#{$i}px;
+        }
+    }
+
+    &-auto{
+        margin: auto;
+    }
+}

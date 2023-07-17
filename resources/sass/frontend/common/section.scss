@@ -1,0 +1,12 @@
+$heightSectionHead: 56px;
+section-head {
+    height: $heightSectionHead;
+    display: block;
+}
+
+section-body {
+    display: block;
+    height: calc(100vh - #{$heightSectionHead});
+    overflow-x: hidden;
+    overflow-y: auto;
+}

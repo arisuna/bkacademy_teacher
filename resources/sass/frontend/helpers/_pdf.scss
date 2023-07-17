@@ -1,0 +1,29 @@
+.printPdf {
+    @page {
+        margin: 2cm
+    }
+    #content, #page {
+        width: 100%;
+        margin: 0;
+        float: none;
+    }
+    h1 {
+        font-size: 18px;
+    }
+
+    h2, h3, h4 {
+        font-size: 14px;
+        margin-top: 25px;
+    }
+
+    .page-break {
+        page-break-after: always;
+        page-break-inside: avoid;
+        clear: both;
+    }
+    .page-break-before {
+        page-break-before: always;
+        page-break-inside: avoid;
+        clear: both;
+    }
+}

@@ -1,0 +1,28 @@
+<svg width="216" height="120" viewBox="0 0 216 120" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<style>.battery_833 {
+	animation: 0.9s linear 0s 1 normal forwards running battery_833;
+		width: 36px;
+}
+@keyframes battery_833 {
+	0% {
+		width: 36px;
+	}
+	33.33% {
+		width: 72px;
+	}
+	66.67% {
+		width: 96px;
+	}
+	100% {
+		width: 132px;
+	}
+}
+</style>
+<g clip-path="url(#clip_0_975)" width="216" height="120" data-name="launch workflow / 1">
+	<path d="M0 30C0 13.425 13.4325 0 30 0H174C190.575 0 204 13.425 204 30V36C210.638 36 216 41.3625 216 48V72C216 78.6375 210.638 84 204 84V90C204 106.575 190.575 120 174 120H30C13.4325 120 0 106.575 0 90V30ZM30 24C26.685 24 24 26.7 24 30V90C24 93.3 26.685 96 30 96H174C177.3 96 180 93.3 180 90V30C180 26.7 177.3 24 174 24H30Z" fill="#719192" data-name="Vector"/>
+	<path d="M202 36V38H204C209.533 38 214 42.4671 214 48V72C214 77.5329 209.533 82 204 82H202V84V90C202 105.47 189.47 118 174 118H30C14.5367 118 2 105.47 2 90V30C2 14.5299 14.5367 2 30 2H174C189.47 2 202 14.5296 202 30V36ZM30 22C25.5772 22 22 25.5987 22 30V90C22 94.4013 25.5772 98 30 98H174C178.405 98 182 94.4046 182 90V30C182 25.5954 178.405 22 174 22H30Z" stroke="#283148" stroke-opacity="0.45" stroke-width="4" data-name="Vector"/>
+	<rect width="112.28" height="44" fill="#CCCCCC" stroke="#9EA1A7" stroke-width="4" data-name="battery" class="battery_833" transform="translate(36 36)"/>
+</g>
+<defs><clipPath id="clip_0_975"><rect width="216" height="120"/></clipPath>
+</defs>
+</svg>

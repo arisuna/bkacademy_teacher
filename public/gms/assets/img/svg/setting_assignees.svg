@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="110px" height="110px" viewBox="0 0 110 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Assignees Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Assignees-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" transform="translate(2.000000, 2.000000)">
+            <circle id="Oval-7" stroke="#0098FF" stroke-width="3" fill="#FFFFFF" cx="53" cy="53" r="53"></circle>
+            <g id="Group" transform="translate(27.303030, 20.878788)" fill="#0A142B">
+                <path d="M12.7757672,72.3785505 C30.6095948,72.3785505 45.0667686,57.880437 45.0667686,39.9961076 C45.0667686,35.2848443 29.1202317,37.1762379 18.5056832,47.1297181 C9.29748747,55.7644324 4.49147657,72.3785505 12.7757672,72.3785505 Z" id="Oval-17" transform="translate(26.789821, 54.958019) rotate(42.000000) translate(-26.789821, -54.958019) "></path>
+                <rect id="Rectangle-54" x="13.0725863" y="0" width="26.1451727" height="41.0852713" rx="13.0725863"></rect>
+                <rect id="Rectangle-54" x="18.6751233" y="26.1451727" width="14.9400987" height="28.012685" rx="7.47004933"></rect>
+                <rect id="Rectangle-54" x="11.205074" y="18.6751233" width="3.73502467" height="9.33756166" rx="1.86751233"></rect>
+                <rect id="Rectangle-54" x="37.3502467" y="18.6751233" width="3.73502467" height="9.33756166" rx="1.86751233"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

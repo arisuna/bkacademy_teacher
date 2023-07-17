@@ -1,0 +1,35 @@
+img {
+    &.icon-svg {
+        &.xsmall {
+            width: 14px;
+        }
+        &.small {
+            width: 17px;
+        }
+        &.medium {
+            width: 32px;
+        }
+        &.large {
+            width: 64px;
+        }
+        &.xlarge {
+            width: 72px;
+        }
+        &.white {
+            filter: invert(1) sepia(1) saturate(5) hue-rotate(175deg);
+        }
+    }
+}
+
+.relo-icon {
+    display: inline-block;
+    &.relo-icon-premium {
+
+    }
+}
+
+.relo-icon {
+    &-phone-circle {
+        background: url(#{$assetsFolder}/img/icons/phone-circle.svg);
+    }
+}

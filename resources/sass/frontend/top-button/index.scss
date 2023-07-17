@@ -1,0 +1,45 @@
+#top-button-container {
+    position: absolute;
+    display: block;
+    top: 10px;
+    right: 20px;
+    height: 35px;
+    min-width: 300px;
+    text-align: right;
+    text-align: -webkit-right;
+
+    > button {
+        border-bottom-width: 1px !important;
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        transform: none !important;
+        -webkit-transform-origin: none !important;
+    }
+}
+
+#top-button-container-2 {
+    position: absolute;
+    display: block;
+    top: 10px;
+    right: 80px;
+    height: 35px;
+    min-width: 250px;
+    text-align: right;
+    text-align: -webkit-right;
+
+    > button {
+        border-bottom-width: 1px !important;
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        transform: none !important;
+        -webkit-transform-origin: none !important;
+    }
+}
+
+
+.btn-no-transform {
+    &:hover {
+        -webkit-transform: none !important;
+        transform: none !important;
+    }
+}

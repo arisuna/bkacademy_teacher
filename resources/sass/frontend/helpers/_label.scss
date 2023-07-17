@@ -1,0 +1,117 @@
+.label {
+    &.label-sm {
+
+    }
+
+    &.label-md {
+        padding: 8px 16px;
+        font-size: inherit;
+        line-height: 1.42857143;
+    }
+
+    &.label-lg {
+        padding: 10px 16px;
+        line-height: 1.3333333;
+        font-size: 18px;
+    }
+
+    &.label-gray {
+        color: black;
+        border-color: $relo-gray;
+        background-color: $relo-gray;
+    }
+
+    &.label-dark-gray {
+        color: black;
+        border-color: $relo-dark-gray;
+        background-color: $relo-dark-gray;
+    }
+
+    &.label-bright-gray {
+        color: $relo-bright-gray;
+        border-color: $relo-bright-gray;
+    }
+
+    &.label-yellow {
+        color: white;
+        border-color: $relo-yellow;
+        background-color: $relo-yellow;
+    }
+
+
+    &.label-outline {
+        &.label-bright-blue {
+            color: $relo-bright-blue;
+            border-color: $relo-bright-blue;
+        }
+
+        &.label-green {
+            color: $relo-green;
+            border-color: $relo-green;
+        }
+
+        &.label-dark-blue {
+            color: $relo-dark-blue;
+            border-color: $relo-dark-blue;
+        }
+
+        &.label-yellow {
+            color: $relo-yellow;
+            border-color: $relo-yellow;
+        }
+
+        &.label-inverse {
+            color: $relo-inverse;
+            border-color: $relo-inverse;
+        }
+
+        &.label-dark-gray {
+            color: $relo-dark-gray;
+            border-color: $relo-dark-gray;
+        }
+
+        &.label-bright-gray {
+            color: $relo-bright-gray;
+            border-color: $relo-bright-gray;
+        }
+
+        &.label-red {
+            color: $relo-red;
+            border-color: $relo-red;
+        }
+
+        &.label-warning {
+            color: $brand-warning;
+            border-color: $brand-warning;
+            background-color: white;
+
+            &:hover {
+                color: white !important;
+                background-color: $brand-warning !important;
+            }
+        }
+    }
+
+    &.label-oval {
+        border-radius: 15px
+    }
+
+    &.custom-size {
+        font-size: 100%;
+        font-weight: normal;
+    }
+
+}
+
+.label-custom-map-field{
+    background: $relo-sky-blue;
+    border: 1px solid rgba(10, 20, 43, 0.3);
+    border-radius: 5px;
+    color: $relo-dark-blue;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    padding: 2px 8px 2px 8px;
+    line-height: 1.2em;
+    display: inline-block;
+}

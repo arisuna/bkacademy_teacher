@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>cloudicon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="cloudicon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-116" transform="translate(1.000000, 1.000000)">
+            <circle id="Oval-27" stroke="#FFFFFF" stroke-width="2" fill="#0A142B" cx="24" cy="24" r="24"></circle>
+            <g id="Upload-data-to-cloud" transform="translate(8.000000, 12.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                <path d="M26.15,8.65714286 C26.15,8.57142857 26.1642857,8.48571429 26.1642857,8.4 C26.1642857,3.75714286 22.4642857,0 17.9,0 C14.6071429,0 11.7785714,1.95714286 10.45,4.78571429 C9.87142857,4.49285714 9.22142857,4.32142857 8.53571429,4.32142857 C6.42857143,4.32142857 4.67142857,5.88571429 4.33571429,7.92857143 C1.80714286,8.8 0,11.2214286 0,14.0714286 C0,17.6571429 2.86428571,20.5714286 6.39285714,20.5714286 L13.7142857,20.5714286 L13.7142857,14.8571429 L10.2714286,14.8571429 L16,8.87857143 L21.7285714,14.85 L18.2857143,14.85 L18.2857143,20.5642857 L26.1642857,20.5642857 C29.3928571,20.5642857 32,17.8857143 32,14.6071429 C32,11.3285714 29.3785714,8.66428571 26.15,8.65714286 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

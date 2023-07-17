@@ -1,0 +1,379 @@
+.uib-tabset-custom {
+    &.disable-header {
+        .nav-tabs {
+            display: none;
+        }
+    }
+
+    ul.nav-tabs {
+        > li.active {
+            background-color: transparent;
+        }
+    }
+
+    ul.nav-tabs {
+        &.nav-justified {
+            > li {
+                &.active {
+                    background-color: transparent;
+
+                    > a {
+                        border-bottom: 3px solid $relo-bright-blue;
+                        border-top: none;
+                        border-right: none;
+                        border-left: none;
+                        color: $relo-bright-blue;
+                    }
+                }
+
+                &:hover {
+                    > a {
+                        border-bottom: 3px solid $relo-bright-blue;
+                        border-top: none;
+                        border-right: none;
+                        border-left: none;
+                        color: $relo-bright-blue;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+.uib-tabset-custom-2 {
+    > ul.nav-tabs {
+        > li {
+            margin-bottom: 0px;
+
+            &:hover, &.active {
+                margin-bottom: 0px;
+
+                > a {
+                    color: white;
+                    background-color: $relo-bright-blue;
+                    border: none;
+                    font-weight: 400;
+                    border-radius: 4px 4px 0px 0px;
+                    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.098), 0 1px 5px 0 rgba(0, 0, 0, 0.084);
+                }
+            }
+
+            > a {
+                margin-right: 2px;
+                padding: 8px 16px;
+                background-color: #ffffff;
+                font-weight: 400;
+                border: none;
+                color: rgba(10, 20, 43, .3);
+            }
+        }
+    }
+
+    > div.tab-content {
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .uib-tabset-custom-2{
+        > ul.nav-tabs {
+            >li{
+                > a {
+                    padding: 8px 8px !important;
+                }
+            }
+        }
+
+    }
+}
+
+
+
+.uib-tabset-vertical {
+    &.with-title-icon {
+        > ul.nav-tabs {
+            width: 9%;
+            float: left;
+            border-bottom: none;
+
+            > li {
+                margin-bottom: 0px;
+
+                &:hover, &.active {
+                    margin-bottom: 0px;
+                    border-radius: 4px 4px 4px 4px;
+
+                    > a {
+                        color: white;
+                        background-color: $relo-bright-blue;
+                        border: none;
+                        font-weight: 400;
+                        border-radius: 4px 4px 4px 4px;
+                        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.098), 0 1px 5px 0 rgba(0, 0, 0, 0.084);
+                    }
+                }
+
+                > a {
+                    text-align: center;
+                    margin-right: 2px;
+                    padding: 10px 20px;
+                    background-color: #ffffff;
+                    border: none;
+                    color: rgba(10, 20, 43, .3);
+                }
+            }
+        }
+
+        > div.tab-content {
+            border: none;
+            width: 90%;
+            float: left;
+            padding: 5px 0px 0px 15px;
+        }
+    }
+}
+
+.uib-tabset-custom-3 {
+    > ul.nav-tabs {
+        > li {
+            margin-bottom: 0px;
+
+            &:hover, &.active {
+                margin-bottom: 0px;
+
+                > a {
+                    border: none;
+                    border-bottom: 5px solid $relo-bright-blue;
+                }
+            }
+
+            > a {
+                border: none;
+                background: none;
+                margin-right: 2px;
+                padding: 10px 20px;
+                color: rgba(10, 20, 43, .3);
+            }
+        }
+    }
+
+    > div.tab-content {
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+        background-color: unset;
+    }
+}
+
+.uib-tabset-custom-4 {
+    > ul.nav-tabs {
+        > li {
+            margin-bottom: 0px;
+
+            &:hover, &.active {
+                margin-bottom: 0px;
+
+                > a {
+                    color: $relo-bright-blue;
+                    border: none;
+                    font-weight: bold;
+                }
+            }
+
+            > a {
+                padding: 10px 20px;
+                background-color: #ffffff;
+                border: none;
+                color: rgba(10, 20, 43, .3);
+            }
+        }
+    }
+
+    > div.tab-content {
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+}
+
+.uib-tabset-custom-5 {
+    > ul.nav-tabs:before{
+        content:"";
+        vertical-align: middle;
+        width: 100%;
+        border-top: 1px solid $relo-dark-blue;
+        position:relative;
+        top:1rem;
+    }
+    > ul.nav-tabs {
+        border:none;
+        text-align: center;
+        >li:first-child > a{
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+            border-right:none;
+        }
+        >li:last-child > a{
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+            border-left:none;
+        }
+        >li:not(first-child) > a, >li:not(last-child) > a{
+            //border-left:none;
+            //border-right:none;
+        }
+        > li {
+            display: inline-block;
+            margin-bottom: 0px;
+            float: none;
+            background-color: transparent;
+            &:hover, &.active {
+                margin-bottom: 0px;
+
+                > a {
+                    color: $relo-white;
+                    background-color: $relo-dark-blue;
+                    border:1px solid $relo-dark-gray;
+                    font-weight: 400;
+                }
+            }
+
+            > a {
+                padding: 5px 30px;
+                background-color: #ffffff;
+                color: $relo-dark-blue;
+                border:1px solid $relo-dark-gray;
+            }
+        }
+    }
+
+    > div.tab-content {
+        border: none;
+        //padding-left: 0;
+        //padding-right: 0;
+        //padding-top: 0px;
+        //padding-bottom: 0px;
+    }
+}
+
+
+.uib-tabset-custom-justified {
+    &.disable-header {
+        .nav-tabs {
+            display: none;
+        }
+    }
+
+    &.custom-padding-tab {
+        .nav-tabs {
+            &.nav-justified {
+                > li {
+                    > a {
+                        padding: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    ul.nav-tabs {
+        > li.active {
+            background-color: transparent;
+        }
+    }
+
+    ul.nav-tabs {
+        &.nav-justified {
+            > li {
+                >a{
+                    background: none;
+                    border:none;
+                    font-size:13px;
+                }
+                &.active {
+                    background-color: transparent;
+
+                    > a {
+                        border-bottom: 3px solid $relo-bright-blue;
+                        border-top: none;
+                        border-right: none;
+                        border-left: none;
+                        color: $relo-dark-blue;
+                        background: none;
+                    }
+                }
+
+                &:hover {
+                    > a {
+                        border-bottom: 3px solid $relo-bright-blue;
+                        border-top: none;
+                        border-right: none;
+                        border-left: none;
+                        color: $relo-dark-blue
+                    }
+
+                }
+            }
+        }
+    }
+
+    > div.tab-content {
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+.uib-tabset-custom-6 {
+    > ul.nav-tabs {
+        > li {
+            margin-bottom: 0px;
+
+            &:hover, &.active {
+                background-color: transparent;
+                //border-color: transparent;
+                border-bottom: 1px solid $relo-bright-blue;
+                margin-bottom: -1px;
+
+                > a {
+                    color: $relo-bright-blue;
+                    border: none;
+                    background-color: transparent;
+                    font-weight: bold;
+                }
+            }
+
+            > a {
+                padding: 10px 20px;
+                background: none;
+                border:none;
+                font-size:13px;
+                color: $relo-dark-blue
+            }
+        }
+    }
+
+    > div.tab-content {
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+}
+
+.uib-tabset-custom-justified{
+
+}

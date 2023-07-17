@@ -1,0 +1,105 @@
+.selected-status {
+    border-radius: 15px;
+    padding: 5px 5px;
+
+    select {
+        background: transparent;
+        border: none;
+        color: #fff;
+        width: 100%;
+
+        > option {
+            color: black;
+        }
+    }
+
+    &.yes {
+        background-color: $relo-green;
+        width: 80px;
+    }
+
+    &.no {
+        background-color: $relo-dark-gray;
+        width: 80px;
+    }
+
+    &.todo, &.draft {
+        background-color: $relo-yellow;
+    }
+
+    &.preapproval {
+        background-color: $relo-yellow;
+    }
+
+    &.pending {
+        background-color: $relo-yellow;
+    }
+
+    &.pending {
+        background-color: $relo-yellow;
+    }
+
+    &.approved {
+        background-color: $relo-green;
+    }
+
+    &.ongoing {
+        background-color: $relo-bright-blue;
+    }
+
+    &.assign-terminated {
+        background-color: $relo-inverse;
+    }
+
+    &.terminated {
+        background-color: $relo-dark-blue;
+    }
+
+    &.checked {
+        background-color: $relo-red;
+    }
+
+    &.done {
+        background-color: $relo-green;
+    }
+
+    &.rejected {
+        background-color: $relo-red;
+    }
+
+    &.cancelled {
+        background-color: $relo-red;
+    }
+
+    &.deleted {
+        background-color: $relo-dark-gray;
+    }
+
+    &.sent {
+        background-color: $relo-bright-blue;
+    }
+
+    &.pre-aproval {
+        background-color: $relo-yellow;
+    }
+
+    &.in-aproval {
+        background-color: $relo-bright-blue;
+    }
+
+    &.in-progress {
+        background-color: $relo-bright-blue;
+    }
+
+    &.awaiting-final-review {
+        background-color: $relo-plum-red !important;
+    }
+
+    &.is-terminated {
+        background-color: $relo-dark-blue;
+    }
+
+    &.is-active {
+        background-color: $relo-green;
+    }
+}

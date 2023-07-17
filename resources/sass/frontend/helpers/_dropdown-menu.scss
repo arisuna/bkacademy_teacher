@@ -1,0 +1,8 @@
+.dropdown-menu {
+    & li {
+        & a {
+            text-align: left;
+            padding: 6px 16px !important;
+        }
+    }
+}

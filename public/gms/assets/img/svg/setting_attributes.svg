@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="110px" height="110px" viewBox="0 0 110 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Attributes New</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Attributes-New" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval-7" stroke="#0098FF" stroke-width="3" fill="#FFFFFF" cx="55" cy="55" r="53"></circle>
+        <g id="Group-38" transform="translate(55.244426, 55.244426) rotate(315.000000) translate(-55.244426, -55.244426) translate(33.744426, 21.244426)">
+            <g id="Group-37" transform="translate(0.537320, 0.037320)" fill="#0A142B">
+                <rect id="Rectangle-61" x="0" y="15" width="42" height="51.3939394" rx="5"></rect>
+                <path d="M2.20927348,15.6242004 L17.6242004,0.209273481 C19.5768219,-1.74334798 22.7426468,-1.74334798 24.6952683,0.209273481 L40.1101952,15.6242004 C42.0628167,17.5768219 42.0628167,20.7426468 40.1101952,22.6952683 L24.6952683,38.1101952 C22.7426468,40.0628167 19.5768219,40.0628167 17.6242004,38.1101952 L2.20927348,22.6952683 C0.256652022,20.7426468 0.256652022,17.5768219 2.20927348,15.6242004 Z M21.5601032,11.9313153 C23.5558595,11.9313153 25.1737396,10.3134352 25.1737396,8.31767897 C25.1737396,6.32192271 23.5558595,4.70404261 21.5601032,4.70404261 C19.564347,4.70404261 17.9464668,6.32192271 17.9464668,8.31767897 C17.9464668,10.3134352 19.564347,11.9313153 21.5601032,11.9313153 Z" id="Combined-Shape"></path>
+            </g>
+            <rect id="Rectangle-8" fill="#484F60" x="26" y="24" width="5" height="35" rx="2.5"></rect>
+            <rect id="Rectangle-8" fill="#484F60" x="12" y="24" width="5" height="35" rx="2.5"></rect>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,111 @@
+.breadcrumb {
+    background: transparent;
+
+    > li {
+        display: inline;
+        min-width: 120px;
+        width: auto;
+        font-size: 16px;
+    }
+
+    > li + li:before {
+        display: inline-block;
+        padding: 0 5px !important;
+        padding-left: .5rem;
+        color: #c1c2c3;
+        margin-left: 10px !important;
+
+        content: '\f054' !important;
+        font: normal normal 14px/1 FontAwesome !important;
+    }
+
+    //> li:first-child + li:before {
+    //    content: none !important;
+    //}
+}
+
+.header {
+    .breadcrumb {
+        height: 70px;
+        padding: 15px 0px;
+        margin-bottom: 0px;
+    }
+}
+
+
+
+.breadcrumbs-task {
+    background: white;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.breadcrumb-dialog {
+    background-color: transparent;
+    padding: 0px 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    > li {
+        display: inline;
+        min-width: 120px;
+        width: auto;
+        font-size: 16px;
+        a {
+            font-size: 16px;
+            color: white !important;
+        }
+
+        &:not(:first-child) {
+            &:before {
+                display: inline-block;
+                padding: 0 5px !important;
+                color: #c1c2c3;
+                margin-left: 10px !important;
+                content: '\f054' !important;
+                font: normal normal 14px/1 FontAwesome !important;
+            }
+        }
+    }
+}
+
+.breadcrumb-dialog-2 {
+    background-color: transparent;
+    padding: 0px 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    > li {
+        display: inline;
+        min-width: 120px;
+        width: auto;
+        font-size: 16px;
+        a {
+            font-size: 13px;
+            color: $relo-dark-blue !important;
+        }
+
+        &:not(:first-child) {
+            &:before {
+                display: inline-block;
+                padding: 0 5px !important;
+                color: #c1c2c3;
+                margin-left: 10px !important;
+                content: '\f054' !important;
+                font: normal normal 14px/1 FontAwesome !important;
+            }
+        }
+    }
+}
+
+.breadcrumb-wrapper {
+    background-color: white;
+}
+
+.breadcrumb-last {
+    background-image: none;
+    color: #0098ff !important;
+    border: 1px solid transparent;
+    line-height: 1.52857;
+    white-space: nowrap;
+    border-radius: 5px;
+    font-weight: bold;
+}

@@ -1,0 +1,326 @@
+.ui-select-bootstrap {
+
+    .ui-select-match {
+        .ui-select-toggle {
+            > a.btn {
+                position: absolute;
+                right: 10px;
+                height: auto;
+
+                &:hover, &:active {
+                    box-shadow: none;
+                    -webkit-box-shadow: none;
+                }
+            }
+        }
+    }
+
+    > .ui-select-choices {
+        max-height: 122px !important;
+
+        &.list-choices-priority {
+            .ui-select-choices-row-inner {
+                background: unset !important;
+            }
+        }
+
+        &.country-list {
+            max-height: 250px !important;
+
+            .ui-select-choices-row-inner {
+                display: flex;
+
+                > span {
+                    display: inline-flex;
+                    justify-content: center;
+                    flex-direction: column;
+                }
+            }
+        }
+
+        &.list-choices {
+            .ui-select-choices-row-inner {
+                background: transparent !important;
+            }
+        }
+    }
+
+    > .ui-select-no-choice {
+        max-height: 122px !important;
+    }
+
+    .dropdown-menu {
+        top: auto !important;
+    }
+}
+
+.ui-select-bootstrap .dropdown-menu {
+    top: auto !important;
+}
+
+.ui-select-multiple.ui-select-bootstrap .ui-select-match-item {
+    outline: 0;
+    margin: 0 3px 3px 0;
+}
+
+.ui-select-multiple .ui-select-match-item {
+    position: relative;
+}
+
+.ui-select-choices {
+    /*position: fixed;*/
+    top: auto;
+    left: auto;
+    width: inherit;
+
+    .ui-select-choices-title {
+        display: inline-flex;
+    }
+}
+
+body {
+    > .ui-select-container {
+        &.open {
+            z-index: 10000 !important;
+        }
+    }
+}
+
+.ui-select-container {
+    > input[type=search] {
+        position: relative;
+        padding: 0px 16px;
+        //max-width: 90% !important;
+        width: -webkit-fill-available !important;
+        width: fill-available !important;
+    }
+}
+
+.float-label {
+    .ui-select-container {
+        margin-top: 5px;
+
+        & ~ label {
+            position: absolute;
+            top: 0;
+            font-size: .85em;
+        }
+    }
+}
+
+
+/*** chosen ***/
+
+.chosen-container-single {
+    .chosen-single abbr {
+        top: 12px !important;
+    }
+}
+
+
+.select-label {
+    &.select-label-primary {
+        .chosen-single {
+            &.chosen-default, &.chosen-single-with-deselect {
+                -webkit-border-radius: 15px;
+                -moz-border-radius: 15px;
+                border-radius: 15px;
+                color: $relo-bright-blue;
+                border-color: $relo-bright-blue;
+                border: 1px solid $relo-bright-blue;
+            }
+        }
+    }
+
+    .selected-button-groups {
+        background-color: #fff;
+        border-radius: 4px;
+        float: right;
+        top: 100%;
+        right: 0;
+        z-index: 1000;
+        margin-right: 20px;
+
+        button {
+            border-top: none;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+    }
+}
+
+//set background for ui-select
+.child-background {
+    div.ui-select-container {
+        @extend .relo-bg-bright-blue-soft;
+        border-radius: 5px;
+        min-height: 34px;
+    }
+
+    ul.ui-select-choices {
+        padding-left: 0px !important;
+        padding-top: 0;
+    }
+
+    a.chosen-single.chosen-single-with-deselect {
+        border-radius: 5px;
+        @extend .relo-bg-bright-blue-soft;
+    }
+}
+
+.ui-select-bg-blue {
+    > span {
+        background: $relo-bright-blue;
+        color: white;
+    }
+}
+
+.ui-select-bg-green {
+    > span {
+        background: $relo-green;
+        color: white;
+    }
+}
+
+.ui-select-bg-red {
+    > span {
+        background: $relo-red;
+        color: white;
+    }
+}
+
+.ui-select-bg-plum-red {
+    > span {
+        background: $relo-plum-red;
+        color: white;
+    }
+}
+
+.ui-select-bg-gray {
+    > span {
+        background: $relo-gray;
+    }
+}
+
+.ui-select-bg-grey {
+    > span {
+        background: $relo-grey;
+    }
+}
+
+.ui-select-bg-dark {
+    > span {
+        background: $relo-dark-blue;
+        color: white;
+    }
+}
+
+
+.ui-select-bg-yellow {
+    > span {
+        background: $relo-yellow;
+        color: white;
+    }
+}
+
+.ui-select-bg-yellow-dark-text {
+    > span {
+        background: $relo-yellow;
+        color: #0A142B !important;
+    }
+}
+
+
+.assignee-selector-v2 {
+    &.ui-select-bootstrap {
+        > .ui-select-no-choice {
+            padding-left: 10px;
+        }
+
+        > .ui-select-match {
+            &.btn-default-focus {
+                background-color: white;
+            }
+
+            > .ui-select-toggle {
+                //border: none;
+                padding: 0px;
+                border-radius: 0px;
+
+                > .ui-select-placeholder {
+                    display: block;
+                    margin-top: 7px;
+                    margin-left: 15px;
+                }
+
+                .assignee-selector-name {
+                    display: inline;
+                    margin-left: 5px;
+                }
+
+                > .ui-select-match-text {
+                    margin-top: 1px;
+                }
+            }
+        }
+    }
+
+    &.ui-select-container {
+        > input[type=search] {
+            width: 85% !important;
+            border-radius: 0px;
+        }
+    }
+}
+
+.uib-select-bright-blue-10 {
+    > div.ui-select-match {
+        > span.btn {
+            background: $relo-bright-blue-10;
+
+            &:hover {
+                transform: none;
+                -webkit-transform: none;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+.uib-select-required.ng-invalid {
+    > div.ui-select-match {
+        > span.btn {
+            border-color: $relo-red !important;
+
+        }
+    }
+}
+
+.uib-select-95-per > input[type=search] {
+    position: relative;
+    padding: 0 10px;
+    max-width: 95% !important;
+}
+
+.uib-bg-grey-50 > div.ui-select-match > span.btn {
+    background: $relo-grey-50 !important;
+}
+
+.uib-bg-bright-blue-10 > div.ui-select-match > span.btn {
+    background: $relo-bright-blue-10 !important;
+}
+
+.uib-select-98-per > input[type=search] {
+    position: relative;
+    padding: 0 10px;
+    max-width: 98% !important;
+}
+
+
+.list-group-item.list-group-item-custom.active:hover, .list-group-item.list-group-item-custom.active:focus{
+    >span, em, i, a, div{
+        color: white !important;
+    }
+}

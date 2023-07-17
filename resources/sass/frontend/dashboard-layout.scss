@@ -1,0 +1,59 @@
+#right-button-container {
+    border-left: 1px solid $relo-gray;
+    height: 100vh;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 60px;
+    background: $relo-white;
+
+    .status-box {
+        line-height: 1.8;
+    }
+
+    .three-dots-item-list{
+        line-height: 2.2;
+    }
+}
+
+#right-button-modal-box {
+    border-left: 1px solid $relo-gray;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    bottom: 0;
+    width: 60px;
+    background: $relo-white;
+
+    .status-box {
+        line-height: 1.8;
+    }
+
+    .three-dots-item-list{
+        line-height: 2.2;
+    }
+}
+
+.display-unset{
+    display: unset !important;
+}
+
+.display-block{
+    display: block !important;
+}
+
+.display-inline{
+    display: inline !important;
+}
+
+.display-inline-block{
+    display: inline-block !important;
+}
+
+.three-dots-item-list {
+    padding-bottom: 3px;
+}
+
+.uib-datepicker-popup.dropdown-menu {
+    z-index: 9002 !important;
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="110px" height="110px" viewBox="0 0 110 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Roles new</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Roles-new" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval-7" stroke="#0098FF" stroke-width="3" fill="#FFFFFF" cx="55" cy="55" r="53"></circle>
+        <g id="Group-42" transform="translate(36.000000, 19.000000)" fill="#0A142B">
+            <path d="M8.34288431,53.9563426 C21.553127,53.9563426 32.2621446,43.2169992 32.2621446,29.9693479 C32.2621446,26.4795232 20.449895,27.8805554 12.5872665,35.2535037 C5.76638077,41.6495884 2.2063727,53.9563426 8.34288431,53.9563426 Z" id="Oval-17" transform="translate(18.723665, 41.052245) rotate(42.000000) translate(-18.723665, -41.052245) "></path>
+            <rect id="Rectangle-54" x="8.88888889" y="0" width="19.3667946" height="30.4335343" rx="9.68339728"></rect>
+            <rect id="Rectangle-54" x="13.3333333" y="19.2592593" width="11.0667397" height="20.750137" rx="5.53336987"></rect>
+            <rect id="Rectangle-54" x="7.40740741" y="14.0740741" width="2.76668494" height="6.91671234" rx="1.38334247"></rect>
+            <rect id="Rectangle-54" x="26.6666667" y="14.0740741" width="2.76668494" height="6.91671234" rx="1.38334247"></rect>
+        </g>
+        <g id="Group-40" transform="translate(25.000000, 66.000000)">
+            <circle id="Oval-40" fill="#0A142B" cx="47.8167421" cy="12.1832579" r="11.8778281"></circle>
+            <circle id="Oval-40" fill="#FFFFFF" cx="53.7556561" cy="12.1832579" r="3.56334842"></circle>
+            <rect id="Rectangle-12" fill="#0A142B" x="0.305429864" y="9.80769231" width="38.0090498" height="4.75113122" rx="2"></rect>
+            <rect id="Rectangle-11" fill="#0A142B" x="5.05656109" y="13.3710407" width="8.31447964" height="7.12669683" rx="1"></rect>
+            <rect id="Rectangle-11" fill="#FFFFFF" x="7.4321267" y="16.9343891" width="3.56334842" height="4.75113122" rx="1"></rect>
+        </g>
+    </g>
+</svg>

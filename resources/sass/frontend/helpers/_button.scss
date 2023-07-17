@@ -1,0 +1,691 @@
+.btn {
+    &.btn-transparent {
+        background: transparent !important;
+    }
+
+    &.btn-no-border {
+        border: none !important;
+    }
+}
+
+.btn-round-border-bright-blue {
+    width: 30px !important;
+    height: 30px !important;
+    border: 1px solid $relo-bright-blue;
+}
+
+.btn-div {
+    height: 35px;
+    //line-height: 35px;
+    border-radius: 3px;
+}
+
+.btn-img-svg-white {
+    > img {
+        filter: brightness(0) invert(1);
+    }
+}
+
+.btn-close {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    &:before {
+        display: block;
+        padding: 3px;
+        background: transparent;
+        color: $relo-dark-blue;
+        content: '\00D7';
+        font-size: 32px;
+        font-weight: 400;
+        line-height: 26px;
+        text-align: center;
+    }
+
+    &:hover:before, &:active:before {
+        color: #777;
+    }
+}
+
+.btn-close-right {
+    position: absolute;
+    right: 25px;
+    top: 50px;
+    z-index: 250;
+}
+
+.btn-arrow-right, .btn-arrow-left {
+    position: relative;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-radius: 0 !important;
+    margin-right: 1px;
+}
+
+.btn-arrow-right[disabled], .btn-arrow-left[disabled] {
+    opacity: 1.00;
+}
+
+.btn-arrow-right {
+    &:before, &:after {
+        content: "";
+        position: absolute;
+        top: 4px;
+
+        /* move it down because of rounded corners */
+        height: 24px;
+
+        /* button_inner_height / sqrt(2) */
+        width: 24px;
+
+        /* same as height */
+        background: inherit;
+
+        /* use parent background */
+        border: inherit;
+
+        /* use parent border */
+        border-left-color: transparent;
+
+        /* hide left border */
+        border-bottom-color: transparent;
+
+        /* hide bottom border */
+        border-radius: 0 !important;
+    }
+}
+
+.btn-arrow-left {
+    &:before, &:after {
+        content: "";
+        position: absolute;
+        top: 4px;
+
+        /* move it down because of rounded corners */
+        height: 24px;
+
+        /* button_inner_height / sqrt(2) */
+        width: 24px;
+
+        /* same as height */
+        background: inherit;
+
+        /* use parent background */
+        border: inherit;
+
+        /* use parent border */
+        border-left-color: transparent;
+
+        /* hide left border */
+        border-bottom-color: transparent;
+
+        /* hide bottom border */
+        border-radius: 0 !important;
+    }
+}
+
+.btn-arrow-right:before, .btn-arrow-left:before {
+    left: -13px;
+}
+
+.btn-arrow-right:after, .btn-arrow-left:after {
+    right: -13px;
+}
+
+.btn-arrow-right.btn-arrow-left, .btn-arrow-left.btn-arrow-left {
+    padding-right: 36px;
+}
+
+.btn-arrow-right.btn-arrow-left {
+    &:before, &:after {
+        -webkit-transform: rotate(225deg);
+        -ms-transform: rotate(225deg);
+        transform: rotate(225deg);
+
+        /* rotate right arrow squares 45 deg to point right */
+    }
+}
+
+.btn-arrow-left.btn-arrow-left {
+    &:before, &:after {
+        -webkit-transform: rotate(225deg);
+        -ms-transform: rotate(225deg);
+        transform: rotate(225deg);
+
+        /* rotate right arrow squares 45 deg to point right */
+    }
+}
+
+.btn-arrow-right.btn-arrow-right, .btn-arrow-left.btn-arrow-right {
+    padding-left: 36px;
+}
+
+.btn-arrow-right.btn-arrow-right {
+    &:before, &:after {
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+
+        /* rotate right arrow squares 45 deg to point right */
+    }
+}
+
+.btn-arrow-left.btn-arrow-right {
+    &:before, &:after {
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+
+        /* rotate right arrow squares 45 deg to point right */
+    }
+}
+
+.btn-arrow-right:after, .btn-arrow-left:before {
+    /* bring arrow pointers to front */
+    z-index: 3;
+}
+
+.btn-arrow-right:before, .btn-arrow-left:after {
+    /* hide arrow tails background */
+    background-color: white;
+}
+
+/* Large */
+
+.btn-lg {
+    &.btn-arrow-right, &.btn-arrow-left {
+        padding-left: 22px;
+        padding-right: 22px;
+        margin-right: 0px;
+    }
+}
+
+.btn-group-lg > {
+    .btn-arrow-left, .btn-arrow-right {
+        padding-left: 22px;
+        padding-right: 22px;
+        margin-right: 0px;
+    }
+}
+
+.btn-lg {
+    &.btn-arrow-right {
+        &:before, &:after {
+            top: 6px;
+
+            /* move it down because of rounded corners */
+            height: 32px;
+
+            /* button_inner_height / sqrt(2) */
+            width: 32px;
+
+            /* same as height */
+        }
+    }
+
+    &.btn-arrow-left {
+        &:before, &:after {
+            top: 6px;
+
+            /* move it down because of rounded corners */
+            height: 32px;
+
+            /* button_inner_height / sqrt(2) */
+            width: 32px;
+
+            /* same as height */
+        }
+    }
+}
+
+.btn-group-lg > {
+    .btn-arrow-left {
+        &:before, &:after {
+            top: 6px;
+
+            /* move it down because of rounded corners */
+            height: 32px;
+
+            /* button_inner_height / sqrt(2) */
+            width: 32px;
+
+            /* same as height */
+        }
+    }
+
+    .btn-arrow-right {
+        &:before, &:after {
+            top: 6px;
+
+            /* move it down because of rounded corners */
+            height: 32px;
+
+            /* button_inner_height / sqrt(2) */
+            width: 32px;
+
+            /* same as height */
+        }
+    }
+}
+
+.btn-lg {
+    &.btn-arrow-right:before, &.btn-arrow-left:before {
+        left: -16px;
+    }
+}
+
+.btn-group-lg > {
+    .btn-arrow-left:before, .btn-arrow-right:before {
+        left: -16px;
+    }
+}
+
+.btn-lg {
+    &.btn-arrow-right:after, &.btn-arrow-left:after {
+        right: -16px;
+    }
+}
+
+.btn-group-lg > {
+    .btn-arrow-left:after, .btn-arrow-right:after {
+        right: -16px;
+    }
+}
+
+.btn-lg {
+    &.btn-arrow-right.btn-arrow-left, &.btn-arrow-left.btn-arrow-left {
+        padding-right: 44px;
+    }
+}
+
+.btn-group-lg > {
+    .btn-arrow-left.btn-arrow-left, .btn-arrow-right.btn-arrow-left {
+        padding-right: 44px;
+    }
+}
+
+.btn-lg {
+    &.btn-arrow-right.btn-arrow-right, &.btn-arrow-left.btn-arrow-right {
+        padding-left: 44px;
+    }
+}
+
+.btn-group-lg > {
+    .btn-arrow-left.btn-arrow-right, .btn-arrow-right.btn-arrow-right {
+        padding-left: 44px;
+    }
+}
+
+/* Small */
+
+.btn-sm {
+    &.btn-arrow-right, &.btn-arrow-left {
+        padding-left: 14px;
+        padding-right: 14px;
+        margin-right: -1px;
+    }
+}
+
+.btn-group-sm > {
+    .btn-arrow-left, .btn-arrow-right {
+        padding-left: 14px;
+        padding-right: 14px;
+        margin-right: -1px;
+    }
+}
+
+.btn-sm {
+    &.btn-arrow-right {
+        &:before, &:after {
+            top: 4px;
+
+            /* move it down because of rounded corners */
+            height: 20px;
+
+            /* button_inner_height / sqrt(2) */
+            width: 20px;
+
+            /* same as height */
+        }
+    }
+
+    &.btn-arrow-left {
+        &:before, &:after {
+            top: 4px;
+
+            /* move it down because of rounded corners */
+            height: 20px;
+
+            /* button_inner_height / sqrt(2) */
+            width: 20px;
+
+            /* same as height */
+        }
+    }
+}
+
+.btn-group-sm > {
+    .btn-arrow-left {
+        &:before, &:after {
+            top: 4px;
+
+            /* move it down because of rounded corners */
+            height: 20px;
+
+            /* button_inner_height / sqrt(2) */
+            width: 20px;
+
+            /* same as height */
+        }
+    }
+
+    .btn-arrow-right {
+        &:before, &:after {
+            top: 4px;
+
+            /* move it down because of rounded corners */
+            height: 20px;
+
+            /* button_inner_height / sqrt(2) */
+            width: 20px;
+
+            /* same as height */
+        }
+    }
+}
+
+.btn-sm {
+    &.btn-arrow-right:before, &.btn-arrow-left:before {
+        left: -10px;
+    }
+}
+
+.btn-group-sm > {
+    .btn-arrow-left:before, .btn-arrow-right:before {
+        left: -10px;
+    }
+}
+
+.btn-sm {
+    &.btn-arrow-right:after, &.btn-arrow-left:after {
+        right: -10px;
+    }
+}
+
+.btn-group-sm > {
+    .btn-arrow-left:after, .btn-arrow-right:after {
+        right: -10px;
+    }
+}
+
+.btn-sm {
+    &.btn-arrow-right.btn-arrow-left, &.btn-arrow-left.btn-arrow-left {
+        padding-right: 28px;
+    }
+}
+
+.btn-group-sm > {
+    .btn-arrow-left.btn-arrow-left, .btn-arrow-right.btn-arrow-left {
+        padding-right: 28px;
+    }
+}
+
+.btn-sm {
+    &.btn-arrow-right.btn-arrow-right, &.btn-arrow-left.btn-arrow-right {
+        padding-left: 28px;
+    }
+}
+
+.btn-group-sm > {
+    .btn-arrow-left.btn-arrow-right, .btn-arrow-right.btn-arrow-right {
+        padding-left: 28px;
+    }
+}
+
+/* Extra Small */
+
+.btn-xs {
+    &.btn-arrow-right, &.btn-arrow-left {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-right: -1px;
+    }
+}
+
+.btn-group-xs > {
+    .btn-arrow-left, .btn-arrow-right {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-right: -1px;
+    }
+}
+
+.btn-xs {
+    &.btn-arrow-right {
+        &:before, &:after {
+            top: 3px;
+
+            /* move it down because of rounded corners */
+            height: 14px;
+
+            /* button_inner_height / sqrt(2) */
+            width: 14px;
+
+            /* same as height */
+        }
+    }
+
+    &.btn-arrow-left {
+        &:before, &:after {
+            top: 3px;
+
+            /* move it down because of rounded corners */
+            height: 14px;
+
+            /* button_inner_height / sqrt(2) */
+            width: 14px;
+
+            /* same as height */
+        }
+    }
+}
+
+.btn-group-xs > {
+    .btn-arrow-left {
+        &:before, &:after {
+            top: 3px;
+
+            /* move it down because of rounded corners */
+            height: 14px;
+
+            /* button_inner_height / sqrt(2) */
+            width: 14px;
+
+            /* same as height */
+        }
+    }
+
+    .btn-arrow-right {
+        &:before, &:after {
+            top: 3px;
+
+            /* move it down because of rounded corners */
+            height: 14px;
+
+            /* button_inner_height / sqrt(2) */
+            width: 14px;
+
+            /* same as height */
+        }
+    }
+}
+
+.btn-xs {
+    &.btn-arrow-right:before, &.btn-arrow-left:before {
+        left: -7px;
+    }
+}
+
+.btn-group-xs > {
+    .btn-arrow-left:before, .btn-arrow-right:before {
+        left: -7px;
+    }
+}
+
+.btn-xs {
+    &.btn-arrow-right:after, &.btn-arrow-left:after {
+        right: -7px;
+    }
+}
+
+.btn-group-xs > {
+    .btn-arrow-left:after, .btn-arrow-right:after {
+        right: -7px;
+    }
+}
+
+.btn-xs {
+    &.btn-arrow-right.btn-arrow-left, &.btn-arrow-left.btn-arrow-left {
+        padding-right: 20px;
+    }
+}
+
+.btn-group-xs > {
+    .btn-arrow-left.btn-arrow-left, .btn-arrow-right.btn-arrow-left {
+        padding-right: 20px;
+    }
+}
+
+.btn-xs {
+    &.btn-arrow-right.btn-arrow-right, &.btn-arrow-left.btn-arrow-right {
+        padding-left: 20px;
+    }
+}
+
+.btn-group-xs > {
+    .btn-arrow-left.btn-arrow-right, .btn-arrow-right.btn-arrow-right {
+        padding-left: 20px;
+    }
+}
+
+/* Button Groups */
+
+.btn-group > {
+    .btn-arrow-left {
+        &:hover, &:focus {
+            z-index: initial;
+        }
+    }
+
+    .btn-arrow-right {
+        &:hover, &:focus {
+            z-index: initial;
+        }
+
+        + .btn-arrow-right {
+            margin-left: 0px;
+        }
+    }
+
+    .btn-arrow-left + .btn-arrow-left {
+        margin-left: 0px;
+    }
+
+    .btn:not(.btn-arrow-right):not(.btn-arrow-left) {
+        z-index: 1;
+    }
+}
+
+.btn-upload-file{
+    border:none !important;
+    padding: 0 !important;
+    &:hover{
+        box-shadow: none !important;
+    }
+}
+
+button[class*="btn"]:hover:not(.btn-flat) {
+    color: inherit !important;
+}
+button[class*="relo-bg-"]:hover:not(.btn-flat){
+    color: #ffffff !important;
+}
+
+button[class*="relo-bg-"]:active:not(.btn-flat){
+    color: #ffffff !important;
+}
+
+button[class*="relo-bg-"]:focus:not(.btn-flat){
+    color: #ffffff !important;
+}
+
+button[class*="btn-primary"]:hover:not(.btn-flat):not(.uib-close):not(.uib-clear):not(.uib-datepicker-current),
+button[class*="btn-danger"]:hover:not(.btn-flat):not(.uib-close):not(.uib-clear):not(.uib-datepicker-current),
+button[class*="btn-success"]:hover:not(.btn-flat):not(.uib-close):not(.uib-clear):not(.uib-datepicker-current),
+button[class*="btn-info"]:hover:not(.btn-flat):not(.uib-close):not(.uib-clear):not(.uib-datepicker-current){
+    color: #ffffff !important;
+}
+
+button[class*="btn-primary"]:active:not(.btn-flat):not(.uib-close):not(.uib-clear):not(.uib-datepicker-current),
+button[class*="btn-danger"]:active:not(.btn-flat):not(.uib-close):not(.uib-clear):not(.uib-datepicker-current),
+button[class*="btn-success"]:active:not(.btn-flat):not(.uib-close):not(.uib-clear):not(.uib-datepicker-current),
+button[class*="btn-info"]:active:not(.btn-flat):not(.uib-close):not(.uib-clear):not(.uib-datepicker-current){
+    color: #ffffff !important;
+}
+
+button[class*="btn-primary"]:focus:not(.btn-flat):not(.uib-close):not(.uib-clear):not(.uib-datepicker-current),
+button[class*="btn-danger"]:focus:not(.btn-flat):not(.uib-close):not(.uib-clear):not(.uib-datepicker-current),
+button[class*="btn-success"]:focus:not(.btn-flat):not(.uib-close):not(.uib-clear):not(.uib-datepicker-current),
+button[class*="btn-info"]:focus:not(.btn-flat):not(.uib-close):not(.uib-clear):not(.uib-datepicker-current){
+    color: #ffffff !important;
+}
+
+.btn-task-file-close{
+    font-size: 1rem;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+}
+
+.btn-upload-file-custom{
+    >.bootstrap-filestyle{
+        >.group-span-filestyle{
+            >label.btn{
+                text-align: left;
+                margin-left: 0px;
+                border:none;
+                width: 100%;
+                &:hover{
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+}
+.btn-system-file-custom{
+    text-align: left;
+    margin-left: 0px;
+    border:none;
+    width: 100%;
+    &:hover{
+        box-shadow: none;
+    }
+}
+
+.btn-hover-not-underline{
+    &:hover{
+        text-decoration: none !important;
+    }
+}
+.btn-hover-svg-dark-blue{
+    &:hover{
+        filter: invert(7%) sepia(23%) saturate(2910%) hue-rotate(194deg) brightness(92%) contrast(99%) !important;
+    }
+}
+
+.btn-hover-svg-none{
+    &:hover{
+        filter: none !important;
+    }
+}

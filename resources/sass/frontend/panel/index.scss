@@ -1,0 +1,86 @@
+.panel {
+    &.todo-item {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+
+    &.panel-default {
+
+    }
+
+    &.panel-default-b {
+        border-bottom: 1px solid $relo-gray;
+        border-right: 1px solid $relo-gray;
+        border-left: 1px solid $relo-gray;
+        border-top: 3px solid $relo-gray;
+
+        > .panel-heading {
+            &.has-border-bottom {
+                border-bottom: 1px solid #e4eaec;
+            }
+        }
+
+        > .panel-footer {
+            border-top: none;
+            background-color: transparent;
+        }
+    }
+
+    > .panel-heading {
+        h4 {
+            &.panel-title {
+                //font-size: 18px;
+                //color: $relo-dark-blue-75;
+            }
+        }
+    }
+}
+
+.panel-custom {
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+.panel-flat-custom {
+    border: 1px solid #eee;
+    box-shadow: unset;
+    margin: 0 10px 10px 10px !important;
+}
+
+.panel-default {
+    .panel-heading {
+        color: $relo-dark-blue;
+    }
+}
+
+.panel-collapse{
+    >.panel-body{
+        border-top: none !important;
+    }
+}
+.panel-open{
+    >.panel-heading{
+        border-radius: 3px !important;
+    }
+}
+.panel-relo{
+    >.panel-heading{
+        border-radius: 3px !important;
+    }
+}
+
+.panel-dark-blue-70{
+    .panel-body {
+        .control-hover {
+            display: unset;
+        }
+
+        .file-icon {
+            background: $relo-dark-blue-70;
+            img {
+                opacity: 0.35;
+            }
+        }
+    }
+}

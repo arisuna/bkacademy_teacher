@@ -1,0 +1,147 @@
+.relo-table-grid {
+
+    height: calc(100vh - 190px);
+    overflow-x: auto;
+    overflow-y: auto;
+    border: 1px solid $relo-gray;
+    border-radius: 5px;
+
+
+    -webkit-box-shadow: 2px 2px 4px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 2px 4px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 2px 2px 4px -3px rgba(0, 0, 0, 0.75);
+
+
+    .relo-grid-repeat-1 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .relo-grid-repeat-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .relo-grid-repeat-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .relo-grid-repeat-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .relo-grid-repeat-5 {
+        grid-template-columns: repeat(5, 250px);
+    }
+
+    .relo-grid-repeat-6 {
+        grid-template-columns: repeat(6, 250px);
+    }
+
+    .relo-grid-repeat-7 {
+        grid-template-columns: repeat(7, 250px);
+    }
+
+    .relo-grid-repeat-8 {
+        grid-template-columns: repeat(8, 250px);
+    }
+
+    .relo-grid-repeat-9 {
+        grid-template-columns: repeat(9, 250px);
+    }
+
+    .relo-grid-repeat-10 {
+        grid-template-columns: repeat(10, 250px);
+    }
+
+    .relo-grid-repeat-11 {
+        grid-template-columns: repeat(11, 250px);
+    }
+
+    .relo-grid-repeat-12 {
+        grid-template-columns: repeat(12, 250px);
+    }
+
+    .relo-grid-repeat-13 {
+        grid-template-columns: repeat(13, 250px);
+    }
+
+    .relo-grid-repeat-14 {
+        grid-template-columns: repeat(14, 250px);
+    }
+
+    .relo-grid-repeat-15 {
+        grid-template-columns: repeat(15, 250px);
+    }
+
+    .relo-grid-repeat-16 {
+        grid-template-columns: repeat(16, 250px);
+    }
+
+    .relo-grid-repeat-17 {
+        grid-template-columns: repeat(17, 250px);
+    }
+
+    .relo-grid-repeat-18 {
+        grid-template-columns: repeat(18, 250px);
+    }
+
+    .relo-grid-repeat-19 {
+        grid-template-columns: repeat(19, 250px);
+    }
+
+    .relo-grid-repeat-20 {
+        grid-template-columns: repeat(20, 250px);
+    }
+
+    div.relo-grid {
+        display: grid;
+        //grid-column-gap: 1%;
+        grid-template-areas: ". nm nm . . . . nvb nvb nvb nvb .";
+
+        > span {
+            padding: 10px 10px;
+            border-bottom: 1px solid #eee;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            scroll-snap-align: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -ms-flex-align: center;
+        }
+
+        > span.grid-items {
+            height: 60px;
+        }
+
+        > span.grid-headers {
+            background: #fff;
+        }
+    }
+
+    .freeze-grid-header {
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .table-scroll-x-y {
+
+    }
+
+    .sticky-left {
+        position: sticky;
+        position: -webkit-sticky;
+        left: 0;
+    }
+
+    .text-overflow {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

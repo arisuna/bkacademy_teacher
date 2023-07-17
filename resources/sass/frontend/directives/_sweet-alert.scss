@@ -1,0 +1,126 @@
+.swal2-container {
+    z-index: 99999 !important;
+}
+
+.swal2-overlay-white {
+    background: $relo-white-90 !important;
+    z-index:99999;
+}
+
+.swal2-checkbox {
+    position: absolute; // take it out of document flow
+    opacity: 0; // hide it
+
+    & + label {
+        position: relative;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    // Box.
+    & + label:before {
+        content: '';
+        margin-right: 10px;
+        display: inline-block;
+        vertical-align: text-top;
+        width: 20px;
+        height: 20px;
+        background: white;
+    }
+
+    // Box hover
+    &:hover + label:before {
+        background: #f35429;
+    }
+
+    // Box focus
+    &:focus + label:before {
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+    }
+
+    // Box checked
+    &:checked + label:before {
+        background: #f35429;
+    }
+
+    // Disabled state label.
+    &:disabled + label {
+        color: #b8b8b8;
+        cursor: auto;
+    }
+
+    // Disabled box.
+    &:disabled + label:before {
+        box-shadow: none;
+        background: #ddd;
+    }
+
+    // Checkmark. Could be replaced with an image
+    &:checked + label:after {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 9px;
+        background: white;
+        width: 2px;
+        height: 2px;
+        box-shadow: 2px 0 0 white,
+        4px 0 0 white,
+        4px -2px 0 white,
+        4px -4px 0 white,
+        4px -6px 0 white,
+        4px -8px 0 white;
+        transform: rotate(45deg);
+    }
+}
+
+.sk-fading-circle2 {
+    $circleCount: 12;
+    $animationDuration: 1.2s;
+
+    margin: $spinkit-spinner-margin;
+    width: $spinkit-size;
+    height: $spinkit-size;
+    position: relative;
+
+    .sk-circle {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .sk-circle:before {
+        content: '';
+        display: block;
+        margin: 0 auto;
+        width: 8%;
+        height: 8%;
+        background-color: $spinkit-spinner-color;
+        border-radius: 100%;
+        animation: sk-circleFadeDelay $animationDuration infinite ease-in-out both;
+    }
+
+    @for $i from 2 through $circleCount {
+        .sk-circle#{$i} {
+            transform: rotate(360deg / $circleCount * ($i - 1));
+        }
+    }
+
+    @for $i from 2 through $circleCount {
+        .sk-circle#{$i}:before {
+            animation-delay: - $animationDuration + $animationDuration / $circleCount * ($i - 1);
+        }
+    }
+
+}
+
+@keyframes sk-circleFadeDelay {
+    0%, 39%, 100% {
+        opacity: 0
+    }
+    40% {
+        opacity: 1
+    }
+}

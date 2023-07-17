@@ -1,0 +1,7 @@
+.assignee-selector {
+    &.ui-select-container {
+        > input[type=search] {
+            border-radius: 15px;
+        }
+    }
+}

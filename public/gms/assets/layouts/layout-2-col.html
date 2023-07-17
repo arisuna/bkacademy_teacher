@@ -1,0 +1,29 @@
+<!-- sidebar-->
+<app-root></app-root>
+<div id="side-nav-bar" ng-include src="'/gms/views/base/side-navbar.html'"></div>
+<side-nav-second></side-nav-second>
+<!--<section class="section-container"-->
+         <!--ng-class="{-->
+         <!--'section-container-1-collapse-2-hide': (app.layout.isCollapsedNav && !app.layout.showSideNav2),-->
+         <!--'section-container-1-collapse-2-collapse': (app.layout.isCollapsedNav && !app.layout.openSideNav2),-->
+         <!--'section-container-1-collapse-2-full': (app.layout.isCollapsedNav && app.layout.openSideNav2),-->
+         <!--'section-container-1-full-2-hide': (!app.layout.isCollapsedNav && !app.layout.showSideNav2),-->
+         <!--'section-container-1-full-2-collapse': (!app.layout.isCollapsedNav && !app.layout.openSideNav2),-->
+         <!--'section-container-1-full-2-full': (!app.layout.isCollapsedNav && app.layout.openSideNav2) }">-->
+<section class="section-container"
+             ng-class="{
+         'section-container-1-collapse-2-hide': (app.layout.isCollapsedNav && !app.layout.showSideNav2),
+         'section-container-1-collapse-2-collapse': (app.layout.isCollapsedNav && app.layout.showSideNav2),
+         'section-container-1-full-2-show': (!app.layout.isCollapsedNav && app.layout.showSideNav2) }">
+
+
+    <section-head class="container-fluid header">
+        <breadcrumbs></breadcrumbs>
+    </section-head>
+
+    <section-body class="noPadding content-wrapper border-top-0" ui-view=""
+                  autoscroll="false"
+                  ng-class="[app.viewAnimation, {'overflow-disable' : app.layout.overflowDisable }]"></section-body>
+
+</section>
+<toaster-container toaster-options="toasterOptions"></toaster-container>

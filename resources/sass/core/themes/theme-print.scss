@@ -1,0 +1,104 @@
+.invoice-box {
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    table {
+        width: 100%;
+        line-height: inherit;
+        text-align: left;
+        td {
+            padding: 5px;
+            vertical-align: top;
+            p {
+                padding: 0px;
+                margin: 0px;
+                &.description {
+                    font-size: 10px;
+                    font-style: italic;
+                    padding: 0px;
+                    margin: 0px;
+                }
+            }
+        }
+        tr {
+            td:nth-child(2) {
+                text-align: right;
+            }
+            &.top table td {
+                padding-bottom: 20px;
+                &.title {
+                    font-size: 45px;
+                    line-height: 45px;
+                    color: #333;
+                }
+            }
+            &.information table td {
+                padding-bottom: 40px;
+            }
+            &.heading td {
+                background: #eee;
+                border-bottom: 1px solid #ddd;
+                font-weight: bold;
+            }
+            &.details td {
+                padding-bottom: 20px;
+            }
+
+            &.note td {
+                font-size: 10px;
+                font-style: italic;
+                padding-bottom: 20px;
+            }
+            &.item {
+                td {
+                    border-bottom: 1px solid #eee;
+                }
+                &.last td {
+                    border-bottom: none;
+                }
+            }
+            &.total td:nth-child(2) {
+                border-top: 2px solid #eee;
+                font-weight: bold;
+            }
+            > td {
+                &.table {
+                    padding: 0px !important;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .invoice-box table tr {
+        &.top table td, &.information table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+    }
+}
+
+/** RTL **/
+
+.rtl {
+    direction: rtl;
+    font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    table {
+        text-align: right;
+        tr td:nth-child(2) {
+            text-align: left;
+        }
+    }
+}
+
+.text-italic {
+    font-style: italic;
+}
+.text-10{
+    font-size: 10px;
+}
+.text-8{
+    font-size: 8px;
+}

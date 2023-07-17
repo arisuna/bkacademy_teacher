@@ -1,0 +1,432 @@
+
+.border-red {
+    border: 1px solid $relo-red !important;
+}
+
+.border-green {
+    border: 1px solid $relo-green !important;
+}
+
+.border-5-bright-blue {
+    border: 5px solid $relo-bright-blue !important;
+}
+
+.border-3-bright-blue {
+    border: 3px solid $relo-bright-blue !important;
+}
+
+.border-bright-blue {
+    border: 1px solid $relo-bright-blue !important;
+}
+
+.border-dark-blue {
+    border: 1px solid $relo-dark-blue !important;
+}
+
+.border-bright-gray {
+    border: 1px solid $relo-bright-gray !important;
+}
+
+.border-left-bright-gray{
+    border-left: 1px solid #e4eaec !important;
+}
+
+.border-right-bright-gray{
+    border-right: 1px solid #e4eaec !important;
+}
+
+.border-top-bright-gray{
+    border-top: 1px solid #e4eaec !important;
+}
+
+.border-bottom-bright-gray{
+    border-bottom: 1px solid #e4eaec !important;
+}
+
+.unset-border-radius{
+    border-radius: unset !important;
+}
+
+.border-gray {
+    border: 1px solid $relo-gray !important;
+}
+
+.border-dark-gray {
+    border: 1px solid $relo-dark-gray !important;
+}
+
+.border-2-dark-gray {
+    border: 2px solid $relo-dark-gray !important;
+}
+
+.border-yellow {
+    border: 1px solid $relo-yellow !important;
+}
+
+.border-right-0 {
+    border-left: 5px solid $relo-yellow !important;
+}
+
+.border-right-3 {
+    border-left: 5px solid $relo-green !important;
+}
+
+.border-right-1 {
+    border-left: 5px solid $relo-bright-blue !important;
+}
+
+.border-0 {
+    border: none !important;
+}
+
+.border-top-bold {
+    border-top: 3px solid $relo-gray !important;
+}
+
+.relo-bd-gray {
+    border-color: $relo-gray !important;
+}
+
+.relo-bd-bright-gray {
+    border-color: $relo-bright-gray !important;
+}
+
+.relo-bd-dark-blue {
+    border-color: $relo-dark-blue !important;
+}
+
+.relo-bd-bright-blue {
+    border-color: $relo-bright-blue !important;
+}
+
+.border-right-0 {
+    border-left: 5px solid $relo-yellow !important;
+}
+
+.border-right-3 {
+    border-left: 5px solid $relo-green !important;
+}
+
+.border-right-1 {
+    border-left: 5px solid $relo-bright-blue !important;
+}
+
+
+.border-left-blue {
+    border-left: 5px solid $relo-bright-blue !important;
+}
+
+.border-left-gray {
+    border-left: 5px solid $relo-bright-gray !important;
+}
+
+.border-left-todo {
+    border-left: 5px solid $relo-yellow !important;
+}
+
+.border-left-done {
+    border-left: 5px solid $relo-green !important;
+}
+
+.border-left-in-progress {
+    border-left: 5px solid $relo-bright-blue !important;
+}
+
+.border-left-rejected {
+    border-left: 5px solid $relo-red !important;
+}
+
+.border-left-terminated {
+    border-left: 5px solid $relo-inverse !important;
+}
+
+.border-bottom {
+    border-bottom: 1px solid $relo-gray;
+}
+
+.border-addon-input {
+    border: 1px solid $relo-grey;
+}
+
+.bd-r-5 {
+    border-radius: 5px
+}
+
+.bd-r-10 {
+    border-radius: 10px
+}
+
+.bd-r-30 {
+    border-radius: 30px
+}
+
+.bd-r-50 {
+    border-radius: 50px;
+}
+
+.left-bd-yellow {
+    border-left: 5px solid $relo-yellow !important
+}
+
+.left-bd-gray {
+    border-left: 5px solid $relo-gray !important
+}
+
+.left-bd-empty {
+    border-left: 5px solid #f2f2f2 !important
+}
+
+.left-bd-dark-gray {
+    border-left: 5px solid $relo-dark-gray !important
+}
+
+.bd-warning {
+    border-color: #FF9800 !important
+}
+
+.bd-inverse {
+    border-color: #263238 !important
+}
+
+.bd-b-white {
+    border-bottom: 1px solid $relo-white;
+}
+
+.left-bd-grey {
+    border-left: 5px solid #cdd0d4 !important;
+}
+
+.left-bd-bright-blue {
+    border-left: 5px solid $relo-bright-blue !important
+}
+
+.left-bd-dark-blue {
+    border-left: 5px solid $relo-dark-blue !important
+}
+
+.left-bd-grey {
+    border-left: 5px solid #cdd0d4 !important;
+}
+
+.left-bd-turquoise {
+    border-left: 5px solid $relo-turquoise !important;
+}
+
+
+.left-bd-green {
+    border-left: 5px solid #39c17f !important
+}
+
+.left-bd-red {
+    border-left: 5px solid #e34a6f !important
+}
+
+.left-bd-primary {
+    border-left: 5px solid #0098ff !important
+}
+
+.left-bd-success {
+    border-left: 5px solid #39c17f !important
+}
+
+.left-bd-info {
+    border-left: 5px solid #38d0db !important
+}
+
+.left-bd-warning {
+    border-left: 5px solid #FF9800 !important
+}
+
+.left-bd-danger {
+    border-left: 5px solid #F44336 !important
+}
+
+.left-bd-inverse {
+    border-left: 5px solid #263238 !important
+}
+
+.border-right-nofication {
+    @include border-right-radius(5px);
+}
+
+.border-left-nofication {
+    @include border-left-radius(5px);
+}
+
+.border-warning {
+    border: 1px solid $relo-yellow;
+    box-shadow: 3px 2px 10px 1px;
+}
+
+.border-danger {
+    border: 1px solid $relo-red;
+    box-shadow: 3px 2px 10px 1px;
+}
+
+/** TODO to check **/
+.left-border {
+    border-left: 2px solid #cdd0d4;
+}
+
+/** TODO to check **/
+.no-border {
+    border: none;
+}
+
+.noBorder {
+    border: none !important;
+}
+
+.bd-left {
+    @for $i from 1 through 20 {
+        &-#{$i}px {
+            border-left: #{$i}px solid !important;
+        }
+    }
+}
+
+.bd-right {
+    @for $i from 1 through 20 {
+        &-#{$i}px {
+            border-right: #{$i}px solid !important;
+        }
+    }
+}
+
+.bd-top {
+    @for $i from 1 through 20 {
+        &-#{$i}px {
+            border-top: #{$i}px solid !important;
+        }
+    }
+}
+
+.bd-bottom {
+    @for $i from 1 through 20 {
+        &-#{$i}px {
+            border-bottom: #{$i}px solid !important;
+        }
+    }
+}
+
+.border-bottom-left-radius {
+    @for $i from 1 through 20 {
+        &-#{$i}px {
+            border-bottom-left-radius: #{$i}px !important;
+        }
+    }
+}
+
+.border-bottom-right-radius {
+    @for $i from 1 through 20 {
+        &-#{$i}px {
+            border-bottom-right-radius: #{$i}px !important;
+        }
+    }
+}
+
+.border-top-left-radius {
+    @for $i from 1 through 20 {
+        &-#{$i}px {
+            border-top-left-radius: #{$i}px !important;
+        }
+    }
+}
+
+.border-top-right-radius {
+    @for $i from 1 through 20 {
+        &-#{$i}px {
+            border-top-right-radius: #{$i}px !important;
+        }
+    }
+}
+
+.bd-top-width {
+    @for $i from 1 through 20 {
+        &-#{$i}px {
+            border-top-width: #{$i}px !important;
+        }
+    }
+}
+
+.bd-color-gray {
+    border-color: $relo-gray !important;
+}
+
+.left-bd-turquoise {
+    border-left: 5px solid $relo-turquoise !important
+}
+
+.bd-none {
+    border: none !important;
+}
+
+.box-shadow-none {
+    box-shadow: none !important;
+}
+
+.right-bd-grey {
+    border-right: 5px solid #cdd0d4 !important;
+}
+
+.right-bd-bright-blue {
+    border-right: 5px solid $relo-bright-blue !important
+}
+
+.right-bd-dark-blue {
+    border-right: 5px solid $relo-dark-blue !important
+}
+
+.right-bd-grey {
+    border-right: 5px solid #cdd0d4 !important;
+}
+
+.right-bd-turquoise {
+    border-right: 5px solid $relo-turquoise !important;
+}
+
+
+.right-bd-green {
+    border-right: 5px solid #39c17f !important
+}
+
+.right-bd-red {
+    border-right: 5px solid #e34a6f !important
+}
+
+.right-bd-primary {
+    border-right: 5px solid #0098ff !important
+}
+
+.right-bd-success {
+    border-right: 5px solid #39c17f !important
+}
+
+.right-bd-info {
+    border-right: 5px solid #38d0db !important
+}
+
+.right-bd-warning {
+    border-right: 5px solid #FF9800 !important
+}
+
+.right-bd-danger {
+    border-right: 5px solid #F44336 !important
+}
+
+.right-bd-inverse {
+    border-right: 5px solid #263238 !important
+}
+
+.border-white {
+    border: 1px solid $relo-white !important;
+}
+
+.border-color-muted{
+    border-color: $text-muted;
+}
+
+
+.border-bottom-light-gray{
+    border-bottom: 1px solid $relo-bright-gray;
+}

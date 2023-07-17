@@ -1,0 +1,170 @@
+/** Media Management */
+.media-management-list {
+
+    > div.item-box {
+        display: inline-block;
+        position: relative;
+        vertical-align: top;
+
+        margin: 10px 10px;
+
+        > .card {
+
+            > .card-body {
+                padding-left: 10px;
+                padding-right: 10px;
+                > h5 {
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
+            }
+        }
+
+        > .selected-icon {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #fff;
+            font-size: 18px;
+            padding: 0px 3px;
+            color: #2196F3;
+            display: none;
+            border: 1px solid #dddddd;
+        }
+
+        &.selected {
+            > .selected-icon {
+                display: block;
+            }
+        }
+
+        @media (max-width: 589px) {
+            width: 28%;
+        }
+
+        @media (min-width: 590px) and (max-width: 767px) {
+            width: 21%;
+        }
+
+        @media (min-width: 768px) and (max-width: 819px) {
+            width: 28%;
+        }
+
+        @media (min-width: 820px) and (max-width: 1023px) {
+            width: 21%;
+        }
+
+        @media (min-width: 1024px) and (max-width: 1279px) {
+            width: 13.8%;
+        }
+
+        @media (min-width: 1280px) and (max-width: 1449px) {
+            width: 10.3%;
+        }
+
+        @media (min-width: 1450px) and (max-width: 1699px) {
+            width: 9.3%;
+        }
+
+        @media (min-width: 1700px) {
+            width: 8.5%;
+        }
+    }
+}
+
+/*** TODO **/
+.my-drop-zone {
+    .box-placeholder {
+        border: 2px dashed #999999;
+        border-radius: 3px;
+    }
+}
+
+.my-drop-zone {
+    .box-placeholder {
+        padding: 10px;
+        border: 3px dashed #999999;
+    }
+
+    button[media-button] {
+        font-size: $font-size-base;
+    }
+
+    button[gms-media-button] {
+        font-size: $font-size-base;
+    }
+}
+
+.media-items-list-small {
+    > div.item-box {
+        display: block;
+        width: 100%;
+        border: 0px !important;
+        border-top: 1px solid $relo-bright-gray;
+        border-radius: 0px;
+        padding: 5px 0px;
+        > .item-name {
+
+        }
+        .item-icon{
+            margin-right: 5px;
+            display: inline-block;
+        }
+        button {
+            background-color: white;
+            border: none;
+        }
+    }
+    > div.item-box:first-child {
+        display: block;
+        width: 100%;
+        border: 0px !important;
+        border-top: 0px solid $relo-bright-gray !important;
+        > .item-name {
+
+        }
+    }
+}
+
+.media-items-list {
+    > div.item-box {
+        margin: 0px 10px 10px 0 !important;
+        > span.selectable-input {
+            position: absolute;
+            top: 0px;
+            z-index: 9999;
+        }
+        > .item-name {
+            white-space: normal;
+        }
+        button {
+            font-size: 14px;
+            float: right;
+            background-color: white;
+            border: none;
+        }
+    }
+    > div.item-grid {
+        > .panel {
+            > .panel-body {
+                height: 220px;
+            }
+        }
+    }
+}
+
+.my-drop-zone {
+    .box-placeholder {
+        padding: 10px;
+        border: 2px dashed #ccc;
+        background: #fdfdfd;
+    }
+
+    button[media-button] {
+        font-size: $font-size-base;
+    }
+
+    button[gms-media-button] {
+        font-size: $font-size-base;
+    }
+}

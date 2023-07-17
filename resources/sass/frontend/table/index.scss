@@ -1,0 +1,70 @@
+.table {
+    td {
+        label.inline-block {
+            display: inline-block;
+        }
+    }
+
+    td.white-space-wrap {
+        white-space: normal;
+    }
+
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #fff;
+    .selectedRow {
+        background-color: #eef8ff !important;
+        border-color: #adf !important;
+        border: 1px solid #adf;
+    }
+}
+
+.table-borderless > thead > tr > th {
+    padding: 8px;
+}
+
+.table-borderless > thead > tr > th,
+.table-borderless > thead > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tbody > tr > td,
+.table-borderless > tfoot > tr > th,
+.table-borderless > tfoot > tr > td {
+    border: none;
+}
+
+
+
+.table-fixed {
+    width: 100%;
+    tbody {
+        height: 342px;
+        overflow-y: auto;
+        width: 100%;
+    }
+    thead, tbody, tr, td, th {
+        display: block;
+    }
+    tbody {
+        td {
+            float: left;
+        }
+    }
+    thead {
+        tr {
+            th {
+                float: left;
+                border-bottom-width: 0px !important;
+            }
+        }
+    }
+}
+
+.ng-table {
+    th.text-left {
+        text-align: left !important;
+    }
+    th.text-right {
+        text-align: right !important;
+    }
+}
