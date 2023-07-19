@@ -1,9 +1,9 @@
 
 const config = {
 
-    currentApp: 'gms',
+    currentApp: 'app',
 
-    currentAppUrl: '/gms',
+    currentAppUrl: '/app',
 
     baseAssets: './resources/assets/',
 
@@ -36,69 +36,38 @@ const config = {
 
     apps: {
         app: {
-            fileName: 'app.js',
-            filePath: './public/app/',
-            filePathJs: './public/app/js/',
-            filePathManifest: './public/app/manifest/',
-            filePathCore: './public/app/core/',
-            filePathViews: './public/app/views/',
-            filePathMenu: './public/app/menu/',
-            indexHtmlPath: './public/',
-
-            layoutFile: './resources/templates/layouts/app.html',
-
-            base: './resources/scripts/core/base-modules/',
-            modules: ['app.module.js', '**/*.module.js', '**/*.js'],
-            excludes: [
-                'employees-*/*',
-                'backend-*/*',
-                'gms-*/*',
-                'hr-*/*',
-                'routes/routes.config.js',
-                'gms.module.js',
-                'employee.module.js',
-                'base.module.js',
-                'hr.module.js',
-                'backend.module.js',
-                'needform.module.js',
-                'register.module.js'
-            ],
-
-        },
-
-        gms: {
             folders: ['assets', 'libraries', 'core', 'js', 'menu', 'views'],
             coreFileName: 'bundle.js',
             fileName: 'modules.js',
-            filePath: './public/gms/',
-            filePathCore: './public/gms/core/',
-            filePathJs: './public/gms/js/',
-            filePathManifest: './public/gms/manifest/',
-            filePathViews: './public/gms/views/',
-            filePathMenu: './public/gms/menu/',
+            filePath: './public/app/',
+            filePathCore: './public/app/core/',
+            filePathJs: './public/app/js/',
+            filePathManifest: './public/app/manifest/',
+            filePathViews: './public/app/views/',
+            filePathMenu: './public/app/menu/',
 
-            envTargetFile: './public/gms/env.js',
-            envTargetPath: './public/gms/',
+            envTargetFile: './public/app/env.js',
+            envTargetPath: './public/app/',
 
-            indexHtmlPath: './public/gms/',
-            layoutFile: './resources/templates/layouts/gms.html',
+            indexHtmlPath: './public/app/',
+            layoutFile: './resources/templates/layouts/app.html',
 
-            librariesPath: './public/gms/libraries',
-            assetsPath: './public/gms/assets/',
-            cssPath: './public/gms/assets/css/',
-            fontPath: './public/gms/assets/fonts/',
-            coreViews: './public/gms/assets/views/base-modules/',
+            librariesPath: './public/app/libraries',
+            assetsPath: './public/app/assets/',
+            cssPath: './public/app/assets/css/',
+            fontPath: './public/app/assets/fonts/',
+            coreViews: './public/app/assets/views/base-modules/',
 
             base: './resources/scripts/core/base-modules/',
 
-            modules: ['gms.module.js', '**/*.module.js', '**/*.js'],
+            modules: ['app.module.js', '**/*.module.js', '**/*.js'],
 
             excludes: [
                 'routes/routes.config.js',
                 'hr-*/*'
             ],
 
-            description: 'Your Relocation Management System',
+            description: 'Your Management System',
         },
     },
 
