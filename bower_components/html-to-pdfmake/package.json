@@ -1,0 +1,57 @@
+{
+  "_from": "html-to-pdfmake",
+  "_id": "html-to-pdfmake@2.2.3",
+  "_inBundle": false,
+  "_integrity": "sha512-mIWPVdK1h2F2rGDLLiEvpafqFJ0TFzkLq9nraH0TXxXCfPgIOtQ7Q0zQ2aMPLSQS2Wcq+BwFa9uHPmVmN2ltgg==",
+  "_location": "/html-to-pdfmake",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "html-to-pdfmake",
+    "name": "html-to-pdfmake",
+    "escapedName": "html-to-pdfmake",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/html-to-pdfmake/-/html-to-pdfmake-2.2.3.tgz",
+  "_shasum": "d9ae7c4f98f72a4eb48aac805719ddd33521584a",
+  "_spec": "html-to-pdfmake",
+  "_where": "/Users/ducvuhoang/Projects/reloday_frontend_librairies",
+  "author": {
+    "name": "Aymkdn"
+  },
+  "bugs": {
+    "url": "https://github.com/Aymkdn/html-to-pdfmake/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Convert HTML code to PDFMake",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "jsdom": "^16.6.0",
+    "pdfmake": "^0.1.70",
+    "simple-test-framework": "^0.1.7",
+    "svg-to-pdfkit": "^0.1.8"
+  },
+  "homepage": "https://github.com/Aymkdn/html-to-pdfmake#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "html-to-pdfmake",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aymkdn/html-to-pdfmake.git"
+  },
+  "scripts": {
+    "browser": "browserify index.js --standalone htmlToPdfmake | uglifyjs > browser.js",
+    "build": "npm run test && node example.js && npm run browser",
+    "pretest": "eslint index.js",
+    "test": "node test/unit.js"
+  },
+  "version": "2.2.3"
+}
