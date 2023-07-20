@@ -1,0 +1,163 @@
+<div class="">
+
+    <div class="block-center wd-xxl content-box" ng-controller="LoginForgotPasswordController">
+        <!-- START panel-->
+        <h3 class="text-center pv text-bold text-dark-blue">{{ 'FORGOT_PASSWORD_TEXT'| translate }}</h3>
+
+        <div class="panel panel-flat">
+            <div class="panel-heading text-center">
+                <a href="#">
+                    <img class="block-center img-rounded" src="{{theme.logo_login_url}}" alt="Image"/>
+                </a>
+            </div>
+            <div class="panel-body">
+                <div id="ForgetStep1" ng-if="step == 1">
+                    <form class="form-validate mb-lg" role="form" ng-submit="resetPasswordForm.$valid && resetFn()"
+                          name="resetPasswordForm" novalidate="" validate-form="" autocomplete="off">
+                        <div class="form-group pos-relative">
+                            <input type="email"
+                                   format-email=""
+                                   class="form-control" id="exampleInputEmail1" name="account_email"
+                                   placeholder="{{ 'ENTER_EMAIL_TEXT' | translate }}" autocomplete="off"
+                                   ng-model="account.email" required="required"/>
+                            <span class="fa fa-envelope form-control-feedback text-dark-blue"></span>
+                        </div>
+                        <div class="clearfix">
+                            <button class="btn btn-block btn-primary" type="submit">
+                                {{ 'NEXT_BTN_TEXT' | translate }}
+                            </button>
+
+                            <div class="mt">
+                                <div class="text-right">
+                                    <a class="text-dark-blue"
+                                       ng-click="gotoLoginFn()">
+                                        {{'LOGIN_TEXT' | translate }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="ForgetStep2" ng-if="step == 2">
+                    <form class="form-validate mb-lg" role="form"
+                          ng-submit="forgetStep2Form.$valid && nextStep(3)"
+                          name="forgetStep2Form" novalidate="" validate-form="" autocomplete="off">
+
+                        <div class="form-group">
+                            <label class="txt-13 txt-dark-blue">{{ 'CODE_TEXT' | translate }} *</label>
+                            <input class="form-control" type="text" required="required"
+                                   data-parsley-type="digits"
+                                   id="modalVerificationCodeInput"
+                                   data-parsley-required-message="{{ 'ENTER_VERIFICATION_CODE_TEXT' | translate }}"
+                                   ng-model="account.verification_code"
+                                   autocomplete="off"/>
+                        </div>
+                        <div class="clearfix">
+                            <button class="btn btn-block btn-primary" type="submit">
+                                {{ 'NEXT_BTN_TEXT' | translate }}
+                            </button>
+
+                            <div class="mt">
+                                <div class="text-right">
+                                    <a class="text-dark-blue"
+                                       ng-click="resetFn()">
+                                        {{'RESEND_VERIFICATION_EMAIL_TEXT' | translate }}
+                                    </a>
+                                </div>
+                                <div class="text-right">
+                                    <a class="text-dark-blue"
+                                       ng-click="gotoLoginFn()">
+                                        {{'LOGIN_TEXT' | translate }}
+                                    </a>
+                                </div>
+                                <div class="text-right">
+                                    <a class="text-dark-blue"
+                                       ng-click="nextStep(1)">
+                                        {{'USE_ANOTHER_ACCOUNT_TEXT' | translate }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="ForgetStep3" ng-if="step == 3">
+                    <form class="form-validate mb-lg" role="form"
+                          ng-submit="forgetStep3Form.$valid && changePasswordWithConfirmCodeFn()"
+                          name="forgetStep3Form" novalidate="" validate-form="" autocomplete="off">
+                        <div class="form-group position-relative">
+                            <label class="txt-13 txt-dark-blue">{{ 'PASSWORD_TEXT' | translate }} *</label>
+                            <input class="form-control"
+                                   type="text" required="required"
+                                   id="modalPasswordInput"
+                                   data-parsley-required-message="{{ 'ENTER_PASSWORD_TEXT' | translate }}"
+                                   ng-model="account.new_password"
+                                   autocomplete="off"
+                                   show-password="showPassword1"
+                                   data-parsley-pattern='(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#^()])[A-Za-z\d$@$!%*?&#^()]{8,}'
+                                   data-parsley-pattern-message="{{ 'INVALID_PASSWORD_TEXT' | translate }}"/>
+
+                            <div class="closeeye">
+                                    <span toggle="#modalPasswordInput"
+                                          ng-class="{'fa fa-eye': showPassword1, 'fa fa-eye-slash': !showPassword1}"
+                                          class="field-icon toggle-password"
+                                          ng-click="showPassword1 = !showPassword1"></span>
+                            </div>
+                        </div>
+                        <div class="form-group position-relative">
+                            <label class="txt-13 txt-dark-blue">{{ 'REENTER_NEW_PASSWORD_TEXT' | translate }} *</label>
+                            <input class="form-control" type="password" ng-model="account.new_password_confirm"
+                                   required
+                                   show-password="showPassword1"
+                                   autocomplete="off"
+                                   id="modelConfirmPasswordInput"
+                                   data-parsley-required-message="{{ 'ENTER_CONFIRM_PASSWORD_TEXT' | translate }}"
+                                   data-parsley-equalto="#modalPasswordInput"
+                                   data-parsley-equalto-message="{{ 'CONFIRM_PASSWORD_INCORRECT_TEXT' | translate }}"/>
+                            <div class="closeeye">
+                                    <span toggle="#modelConfirmPasswordInput"
+                                          ng-class="{'fa fa-eye': showPassword1, 'fa fa-eye-slash': !showPassword1}"
+                                          class="field-icon toggle-password"
+                                          ng-click="showPassword1 = !showPassword1">
+
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <button class="btn btn-block btn-primary" type="submit">
+                                {{ 'RESET_PASSWORD_BTN_TEXT' | translate }}
+                            </button>
+
+                            <div class="mt">
+                                <div class="text-right">
+                                    <a class="text-dark-blue"
+                                       ng-click="resetFn()">
+                                        {{'RESEND_VERIFICATION_EMAIL_TEXT' | translate }}
+                                    </a>
+                                </div>
+                                <div class="text-right">
+                                    <a class="text-dark-blue"
+                                       ng-click="gotoLoginFn()">
+                                        {{'LOGIN_TEXT' | translate }}
+                                    </a>
+                                </div>
+                                <div class="text-right">
+                                    <a class="text-dark-blue"
+                                       ng-click="nextStep(1)">
+                                        {{'USE_ANOTHER_ACCOUNT_TEXT' | translate }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END panel-->
+        <ng-include src="'/gms/views/login/bottom.html'"></ng-include>
+    </div>
+</div>
+<style>
+    .container {
+        width: 100% !important;
+    }
+</style>

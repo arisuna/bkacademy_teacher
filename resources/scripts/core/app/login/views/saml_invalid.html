@@ -1,0 +1,49 @@
+<div class="" style="margin-top: 7rem">
+
+    <!--<div class="right-line-vector hidden=-xs">-->
+        <!--<img src="/assets/img/vector.svg"/>-->
+    <!--</div>-->
+
+    <!--<div class="text-center logo-login">-->
+        <!--<a> <img class="img-rounded" src="/assets/img/logo_big.png" alt="Image"/> </a>-->
+    <!--</div>-->
+
+    <div class="block-center wd-xxl content-box centered">
+        <!-- START panel-->
+        <div class="panel panel-flat mt-xl">
+            <div class="panel-body">
+
+                <div class="mt">
+                    <p class="text-center mt text-dark-blue">
+                        <i class="fa fa-times-circle text-red txt-70" style="font-size: 5em"></i>
+                    </p>
+                </div>
+
+
+                <div class="mt-xl">
+                    <div class="text-center mt text-dark-blue">
+                        <div>{{'LOGIN_FAILED_TEXT' | translate}}</div>
+                        <div>{{'VERIFIED_RELOTALENT_FAILED_TEXT' | translate}}</div>
+                    </div>
+                </div>
+
+                <div class="mt-xl">
+                    <div class="text-center mt">
+                        <a ng-click="gotoLoginFn()" class="text-dark-blue">
+                            {{'RETURN_LOGIN_TEXT' | translate }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END panel-->
+        <div class="p-lg text-center text-white">
+            <span>&copy;</span>
+            <span ng-bind="app.year"></span>
+            <span>-</span>
+            <span ng-bind="app.name"></span>
+            <br/>
+            <span ng-bind="app.description"></span>
+        </div>
+    </div>
+</div>

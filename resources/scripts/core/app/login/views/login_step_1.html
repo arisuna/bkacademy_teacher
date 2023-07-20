@@ -1,0 +1,45 @@
+<form class="form-validate mt-lg mb-lg"
+      role="form"
+      ng-submit="loginFormStep1.$valid && verifyEmailFn()"
+      name="loginFormStep1"
+      data-parsley-validate=""
+      novalidate=""
+      validate-form=""
+      autocomplete="off">
+    <div class="float-label">
+        <label class="text-bold txt-13">{{ 'ENTER_EMAIL_TEXT' | translate }}</label>
+        <input type="email"
+               format-email=""
+               class="form-control form-control-custom-radius"
+               id="emailLogin"
+               name="account_email"
+               data-parsley-required-message="{{ 'INVALID_EMAIL_TEXT' | translate }}"
+               data-parsley-type-message="{{ 'INVALID_EMAIL_TEXT' | translate }}"
+               data-parsley-type="email"
+               auto-complete="off"
+               autocomplete="off" ng-model="account.email" required="required"/>
+    </div>
+    <div class="mt">
+        <div class="text-center" ng-if="isVerify">
+            <i class="fa fa-spinner fa-spin txt-40 text-primary mt-sm"></i>
+        </div>
+        <button class="btn btn-block btn-primary" ng-if="!isVerify" type="submit">
+            {{ 'CONTINUE_BTN_TEXT' | translate }}
+        </button>
+        <div class="text-center text-dark-blue mt-lg">
+            <div>
+                <a ng-click="gotoVerificationFn()">
+                    {{'ALREADY_GOT_VERIFICATION_CODE' | translate }}
+                </a>
+            </div>
+            <div class="pd-1x">
+                {{ 'OR_TEXT' | translate }}
+            </div>
+            <div>
+                <a ui-sref="login.forget-password">
+                    {{'FORGOT_PASSWORD_TEXT' | translate }}
+                </a>
+            </div>
+        </div>
+    </div>
+</form>

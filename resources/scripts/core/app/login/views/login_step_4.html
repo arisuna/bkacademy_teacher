@@ -1,0 +1,50 @@
+<form class="form-validate mt-lg mb-lg"
+      role="form"
+      ng-submit="loginFormStep4.$valid && verifyCodeFn()"
+      name="loginFormStep4"
+      data-parsley-validate=""
+      novalidate=""
+      validate-form=""
+      autocomplete="off">
+    <div class="text-center">
+        <img ng-src="{{ account.avatarUrl }}"
+             class="thumb64 img-circle"/>
+        <p class="mt">{{ account.fullname }}</p>
+    </div>
+    <div class="clearfix"></div>
+    <div>
+        <!--<div class="form-group float-label">-->
+        <!--<label>{{ 'VERIFICATION_CODE_TEXT' | translate }} *</label>-->
+        <!--<input class="form-control" type="text" required="required"-->
+        <!--id="modalVerificationCodeInput"-->
+        <!--data-parsley-required-message="{{ 'ENTER_VERIFICATION_CODE_TEXT' | translate }}"-->
+        <!--ng-model="account.verification_code"-->
+        <!--autocomplete="off"/>-->
+        <!--</div>-->
+        <!--<button class="btn btn-block btn-primary" type="submit">-->
+        <!--{{ 'SUBMIT_BTN_TEXT' | translate }}-->
+        <!--</button>-->
+        <p class="txt-13 text-center pd-b-15">{{ 'USER_ACTIVATION_SEND_MAIL_CONFIRM_SUCCESS_TEXT' | translate }}</p>
+
+        <div class="mt">
+            <div class="text-center">
+                <a class=""
+                   ng-click="resendCodeFn()">
+                    {{'RESEND_VERIFICATION_EMAIL_TEXT' | translate }}
+                </a>
+            </div>
+            <div class="text-center">
+                <a class=""
+                   ng-click="logoutFn()">
+                    {{'LOGOUT_TITLE_TEXT' | translate }}
+                </a>
+            </div>
+            <div class="text-center mt-15">
+                <a class=""
+                   ng-click="changeAccountFn()">
+                    {{'USE_ANOTHER_ACCOUNT_TEXT' | translate }}
+                </a>
+            </div>
+        </div>
+    </div>
+</form>

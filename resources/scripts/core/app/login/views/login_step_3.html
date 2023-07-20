@@ -1,0 +1,72 @@
+<form class="form-validate mt-lg mb-lg"
+      role="form"
+      ng-submit="loginFormStep3.$valid && changeSecurityFn()"
+      name="loginFormStep3"
+      data-parsley-validate=""
+      novalidate=""
+      validate-form=""
+      autocomplete="off">
+    <div class="text-center">
+        <h3>{{ 'SECURITY_CHANGE_TEXT' | translate }}</h3>
+        <h4 class=" mt">{{ 'CHANGE_PASSWORD_TO_CONTINUE_TEXT' | translate }}</h4>
+        <img ng-src="{{ account.avatarUrl }}"
+             class="thumb64 img-circle"/>
+        <p class="mt">{{ account.fullname }}</p>
+    </div>
+    <div class="clearfix"></div>
+    <div>
+        <div class="form-group position-relative">
+            <label class="text-bold txt-13">{{ 'NEW_PASSWORD_TEXT' | translate }} *</label>
+            <div class="closeeye">
+                <span toggle="#password-field"
+                      ng-class="{'fa fa-eye': showPassword1, 'fa fa-eye-slash': !showPassword1}"
+                      class="field-icon toggle-password"
+                      ng-click="showPassword1 = !showPassword1"></span>
+            </div>
+            <input class="form-control form-control-custom-radius" required="required"
+                   id="modalPasswordInput"
+                   type="password"
+                   data-parsley-required-message="{{ 'ENTER_PASSWORD_TEXT' | translate }}"
+                   ng-model="account.new_password"
+                   autocomplete="off"
+                   data-parsley-pattern='(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#^()])[A-Za-z\d$@$!%*?&#^()]{8,}'
+                   data-parsley-pattern-message="{{ 'INVALID_PASSWORD_TEXT' | translate }}"
+                   show-password="showPassword1"/>
+        </div>
+        <div class="form-group float-label position-relative">
+            <label class="text-bold txt-13">{{ 'REENTER_NEW_PASSWORD_TEXT' | translate }} *</label>
+            <div class="closeeye"><span toggle="#password-field"
+                                         ng-class="{'fa fa-eye': showPassword2, 'fa fa-eye-slash': !showPassword2}"
+                                         class="field-icon toggle-password"
+                                         ng-click="showPassword2 = !showPassword2"></span>
+            </div>
+            <input class="form-control form-control-custom-radius" ng-model="account.new_password_confirm"
+                   required
+                   id="modalPasswordInput2"
+                   autocomplete="off"
+                   type="password"
+                   data-parsley-required-message="{{ 'ENTER_CONFIRM_PASSWORD_TEXT' | translate }}"
+                   data-parsley-equalto="#modalPasswordInput"
+                   data-parsley-equalto-message="{{ 'CONFIRM_PASSWORD_INCORRECT_TEXT' | translate }}"
+                   show-password="showPassword2"/>
+
+        </div>
+        <button class="btn btn-block btn-primary" type="submit">
+            {{ 'SUBMIT_BTN_TEXT' | translate }}
+        </button>
+        <div class="mt">
+            <div class="text-center">
+                <a class="text-dark-blue"
+                   ng-click="logoutFn()">
+                    {{'LOGOUT_TITLE_TEXT' | translate }}
+                </a>
+            </div>
+            <div class="text-center mt-15">
+                <a class="text-dark-blue"
+                   ng-click="changeAccountFn()">
+                    {{'USE_ANOTHER_ACCOUNT_TEXT' | translate }}
+                </a>
+            </div>
+        </div>
+    </div>
+</form>

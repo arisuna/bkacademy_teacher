@@ -1,0 +1,324 @@
+<div class="LoginPage">
+    <script>
+        function parseQueryString() {
+            var url = window.location.href;
+            var splitUrl = url.split('?');
+            var query = splitUrl[splitUrl.length - 1];
+            var vars = query.split("&");
+            var query_string = {};
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                var key = decodeURIComponent(pair[0]);
+                var value = decodeURIComponent(pair[1]);
+                if (typeof query_string[key] === "undefined") {
+                    query_string[key] = decodeURIComponent(value);
+                } else if (typeof query_string[key] === "string") {
+                    query_string[key] = [query_string[key], decodeURIComponent(value)];
+                    ;
+                } else {
+                    query_string[key].push(decodeURIComponent(value));
+                }
+            }
+            console.log(query_string);
+            return query_string;
+        }
+
+        if (parseQueryString().rfsn_ci) {
+            console.log(parseQueryString().rfsn_ci);
+            _refersion(function () {
+                _rfsn._addCart(parseQueryString().rfsn_ci);
+                _rfsn._setSource("CHARGEBEE");
+            });
+        }</script>
+    <div class="block-center wd-xxl content-box">
+        <h3 class="text-center pv text-bold text-dark-blue">{{ 'SIGN_IN_NOW_TEXT' | translate }}</h3>
+        <div class="panel panel-flat">
+            <div class="panel-heading text-center">
+                <a ng-if="companyLogo != '' && companyLogo != null">
+                    <img style="max-height: 60px; width: auto" class="block-center img-rounded" src="{{companyLogo}}" alt="Image"/>
+                </a>
+
+                <a ng-if="!account.isExist || (account.isExist == true && account.companyLogo == null)" ng-show="companyLogo == '' || companyLogo == null">
+                    <img class="block-center img-rounded" src="{{theme.logo_login_url}}" alt="Image"/>
+                </a>
+                <a ng-if="account.isExist == true && account.companyLogo != null" ng-show="companyLogo == '' || companyLogo == null">
+                    <img class="block-center img-rounded" style="max-height: 60px; width: auto" src="{{account.companyLogo}}" alt="Image"/>
+                </a>
+            </div>
+            <hr class="mb-0"/>
+            <div class="panel-body">
+
+                <div id="LoginStep1" ng-if="step == 1 && !account.isExist">
+                    <ng-include src="'/gms/views/login/login_step_1.html'"></ng-include>
+                </div>
+                <div id="LoginStep2" ng-if="step == 2">
+                    <ng-include src="'/gms/views/login/login_step_2.html'"></ng-include>
+                </div>
+                <div id="LoginStep3" ng-if="step == 3 && account.isExist == true">
+                    <ng-include src="'/gms/views/login/login_step_3.html'"></ng-include>
+                </div>
+                <div id="LoginStep4" ng-if="step == 4 && account.isExist == true">
+                    <ng-include src="'/gms/views/login/login_step_4.html'"></ng-include>
+                </div>
+
+<!--                <div id="LoginStep1" ng-if="step == 1 && !account.isExist">-->
+<!--                    <form class="form-validate mt-lg mb-lg"-->
+<!--                          role="form"-->
+<!--                          ng-submit="loginFormStep1.$valid && verifyEmailFn()"-->
+<!--                          name="loginFormStep1"-->
+<!--                          data-parsley-validate=""-->
+<!--                          novalidate=""-->
+<!--                          validate-form=""-->
+<!--                          autocomplete="off">-->
+<!--                        <div class="form-group position-relative">-->
+<!--                            <label class="">{{ 'ENTER_EMAIL_TEXT' | translate }}</label>-->
+<!--                            <input type="email"-->
+<!--                                   format-email=""-->
+<!--                                   class="form-control" id="emailLogin" name="account_email"-->
+<!--                                   data-parsley-required-message="{{ 'INVALID_EMAIL_TEXT' | translate }}"-->
+<!--                                   data-parsley-type="email"-->
+<!--                                   data-parsley-type-message="{{ 'INVALID_EMAIL_TEXT' | translate }}"-->
+<!--                                   data-parsley-type="email"-->
+<!--                                   auto-complete="off"-->
+<!--                                   autocomplete="off" ng-model="account.email" required="required"/>-->
+<!--                            <span class="fa fa-envelope form-control-feedback text-dark-blue"></span>-->
+<!--                        </div>-->
+<!--                        <div class="clearfix">-->
+<!--                            <button class="btn btn-block btn-primary" type="submit">-->
+<!--                                {{ 'NEXT_BTN_TEXT' | translate }}-->
+<!--                            </button>-->
+<!--                            <div class="text-center mt-lg">-->
+<!--                                <a class="text-dark-blue"-->
+<!--                                   ng-click="gotoVerificationFn()">-->
+<!--                                    {{'ALREADY_GOT_VERIFICATION_CODE' | translate }}-->
+<!--                                </a>-->
+<!--                                <div class="pd-1x">-->
+<!--                                    {{ 'OR_TEXT' | translate }}-->
+<!--                                </div>-->
+<!--                                <a class="text-dark-blue"-->
+<!--                                   ui-sref="login.forget-password">-->
+<!--                                    {{'FORGOT_PASSWORD_TEXT' | translate }}-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--                <div id="LoginStep2" ng-if="step == 2 && account.isExist == true">-->
+<!--                    <form class="form-validate mt-lg mb-lg"-->
+<!--                          role="form"-->
+<!--                          ng-submit="loginFormStep2.$valid && loginFn($event)"-->
+<!--                          name="loginFormStep2"-->
+<!--                          data-parsley-validate=""-->
+<!--                          novalidate=""-->
+<!--                          validate-form=""-->
+<!--                          autocomplete="off">-->
+<!--                        <div class="text-center">-->
+<!--                            <img ng-src="{{ account.avatarUrl }}"-->
+<!--                                 class="thumb64 img-circle"/>-->
+<!--                            <p class="mt">{{ 'WELCOME_TEXT' | translate }}, {{ account.fullname }}</p>-->
+<!--                        </div>-->
+<!--                        <div class="clearfix"></div>-->
+<!--                        <div>-->
+<!--                            <input type="email"-->
+<!--                                   id="emailLogin2"-->
+<!--                                   name="account_email"-->
+<!--                                   class="h-0"-->
+<!--                                   ng-hide="true"-->
+<!--                                   data-parsley-type="email"-->
+<!--                                   data-parsley-required-message="{{ 'INVALID_EMAIL_TEXT' | translate }}"-->
+<!--                                   data-parsley-type-message="{{ 'INVALID_EMAIL_TEXT' | translate }}"-->
+<!--                                   data-parsley-type="email"-->
+<!--                                   auto-complete="off"-->
+<!--                                   autocomplete="off" ng-model="account.email" required="required"/>-->
+
+
+<!--                            <div class="form-group" ng-style="{'position':'relative'}">-->
+<!--                                <label class="">{{ 'ENTER_PASSWORD_TEXT' | translate }}</label>-->
+<!--                                <input class="form-control"-->
+<!--                                       id="passwordLoginText"-->
+<!--                                       type="password"-->
+<!--                                       show-password="showPassword"-->
+<!--                                       name="account_password"-->
+<!--                                       autocomplete="off"-->
+<!--                                       auto-complete="off"-->
+<!--                                       data-parsley-pattern='(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#^()])[A-Za-z\d$@$!%*?&#^()]{8,}'-->
+<!--                                       data-parsley-pattern-message="{{ 'INVALID_PASSWORD_TEXT' | translate }}"-->
+<!--                                       data-parsley-required-message="{{ 'ENTER_YOUR_PASSWORD_TEXT' | translate }}"-->
+<!--                                       ng-model="account.password" required="required"/>-->
+
+<!--                                <div class="closeeye">-->
+<!--                                    <span toggle="#password-field"-->
+<!--                                          ng-class="{'fa fa-eye': showPassword, 'fa fa-eye-slash': !showPassword}"-->
+<!--                                          class="field-icon toggle-password"-->
+<!--                                          ng-click="showPassword = !showPassword"></span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <button class="btn btn-block btn-primary" type="submit">-->
+<!--                                {{ 'LOGIN_BTN_TEXT' | translate }}-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                        <div class="mt">-->
+<!--                            <p class="text-center mt-xl" ng-if="false">-->
+<!--                                {{ 'NEED_TO_SIGN_UP_TEXT' | translate }}-->
+<!--                            </p>-->
+<!--                            <div class="text-center mt" ng-if="false">-->
+<!--                                <a ui-sref="app.register"-->
+<!--                                   href="#"-->
+<!--                                   class="block-center text-bold text-dark-blue">-->
+<!--                                    {{ 'REGISTER_NOW_TEXT' | translate }} !!</a>-->
+<!--                            </div>-->
+<!--                            <div class="text-center">-->
+<!--                                <a class="text-dark-blue"-->
+<!--                                   ui-sref="login.forget-password">-->
+<!--                                    {{'FORGOT_PASSWORD_TEXT' | translate }}-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                            <div class="text-center mt-15">-->
+<!--                                <a class="text-dark-blue"-->
+<!--                                   ng-click="changeAccountFn()">-->
+<!--                                    {{'USE_ANOTHER_ACCOUNT_TEXT' | translate }}-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--                <div id="LoginStep3" ng-if="step == 3 && account.isExist == true">-->
+<!--                    <form class="form-validate mt-lg mb-lg"-->
+<!--                          role="form"-->
+<!--                          ng-submit="loginFormStep3.$valid && changeSecurityFn()"-->
+<!--                          name="loginFormStep3"-->
+<!--                          data-parsley-validate=""-->
+<!--                          novalidate=""-->
+<!--                          validate-form=""-->
+<!--                          autocomplete="off">-->
+<!--                        <div class="text-center">-->
+<!--                            <h3>{{ 'SECURITY_CHANGE_TEXT' | translate }}</h3>-->
+<!--                            <h4 class=" mt">{{ 'CHANGE_PASSWORD_TO_CONTINUE_TEXT' | translate }}</h4>-->
+<!--                            <img ng-src="{{ account.avatarUrl }}"-->
+<!--                                 class="thumb64 img-circle"/>-->
+<!--                            <p class="mt">{{ account.fullname }}</p>-->
+<!--                        </div>-->
+<!--                        <div class="clearfix"></div>-->
+<!--                        <div>-->
+<!--                            <div class="form-group position-relative">-->
+<!--                                <label>{{ 'NEW_PASSWORD_TEXT' | translate }} *</label>-->
+<!--                                <input class="form-control" type="text" required="required"-->
+<!--                                       id="modalPasswordInput"-->
+<!--                                       data-parsley-required-message="{{ 'ENTER_PASSWORD_TEXT' | translate }}"-->
+<!--                                       ng-model="account.new_password"-->
+<!--                                       autocomplete="off"-->
+<!--                                       data-parsley-pattern='(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#^()])[A-Za-z\d$@$!%*?&#^()]{8,}'-->
+<!--                                       data-parsley-pattern-message="{{ 'INVALID_PASSWORD_TEXT' | translate }}"-->
+<!--                                       show-password="showPassword1"/>-->
+
+<!--                                <div class="closeeye">-->
+<!--                                    <span toggle="#password-field"-->
+<!--                                          ng-class="{'fa fa-eye': showPassword1, 'fa fa-eye-slash': !showPassword1}"-->
+<!--                                          class="field-icon toggle-password"-->
+<!--                                          ng-click="showPassword1 = !showPassword1"></span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="form-group position-relative">-->
+<!--                                <label>{{ 'REENTER_NEW_PASSWORD_TEXT' | translate }} *</label>-->
+<!--                                <input class="form-control" type="password" ng-model="account.new_password_confirm"-->
+<!--                                       required-->
+<!--                                       autocomplete="off"-->
+<!--                                       data-parsley-required-message="{{ 'ENTER_CONFIRM_PASSWORD_TEXT' | translate }}"-->
+<!--                                       data-parsley-equalto="#modalPasswordInput"-->
+<!--                                       data-parsley-equalto-message="{{ 'CONFIRM_PASSWORD_INCORRECT_TEXT' | translate }}"-->
+<!--                                       show-password="showPassword2"/>-->
+
+<!--                                <div class="closeeye">-->
+<!--                                    <span toggle="#password-field"-->
+<!--                                          ng-class="{'fa fa-eye': showPassword2, 'fa fa-eye-slash': !showPassword2}"-->
+<!--                                          class="field-icon toggle-password"-->
+<!--                                          ng-click="showPassword2 = !showPassword2"></span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <button class="btn btn-block btn-primary" type="submit">-->
+<!--                                {{ 'SUBMIT_BTN_TEXT' | translate }}-->
+<!--                            </button>-->
+<!--                            <div class="mt">-->
+<!--                                <div class="text-right">-->
+<!--                                    <a class="text-dark-blue"-->
+<!--                                       ng-click="logoutFn()">-->
+<!--                                        {{'LOGOUT_TITLE_TEXT' | translate }}-->
+<!--                                    </a>-->
+<!--                                </div>-->
+<!--                                <div class="text-right mt-15">-->
+<!--                                    <a class="text-dark-blue"-->
+<!--                                       ng-click="changeAccountFn()">-->
+<!--                                        {{'USE_ANOTHER_ACCOUNT_TEXT' | translate }}-->
+<!--                                    </a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--                <div id="LoginStep4" ng-if="step == 4 && account.isExist == true">-->
+<!--                    <form class="form-validate mt-lg mb-lg"-->
+<!--                          role="form"-->
+<!--                          ng-submit="loginFormStep4.$valid"-->
+<!--                          name="loginFormStep4"-->
+<!--                          data-parsley-validate=""-->
+<!--                          novalidate=""-->
+<!--                          validate-form=""-->
+<!--                          autocomplete="off">-->
+<!--                        <div class="text-center">-->
+<!--                            <img ng-src="{{ account.avatarUrl }}"-->
+<!--                                 class="thumb64 img-circle"/>-->
+<!--                            <p class="mt">{{ account.fullname }}</p>-->
+<!--                        </div>-->
+<!--                        <div class="clearfix"></div>-->
+<!--                        <div>-->
+<!--                            &lt;!&ndash;<div class="mda-form-group float-label">&ndash;&gt;-->
+<!--                                &lt;!&ndash;<input class="mda-form-control" type="text" required="required"&ndash;&gt;-->
+<!--                                       &lt;!&ndash;id="modalVerificationCodeInput"&ndash;&gt;-->
+<!--                                       &lt;!&ndash;data-parsley-required-message="{{ 'ENTER_VERIFICATION_CODE_TEXT' | translate }}"&ndash;&gt;-->
+<!--                                       &lt;!&ndash;ng-model="account.verification_code"&ndash;&gt;-->
+<!--                                       &lt;!&ndash;autocomplete="off"/>&ndash;&gt;-->
+<!--                                &lt;!&ndash;<label>{{ 'VERIFICATION_CODE_TEXT' | translate }} *</label>&ndash;&gt;-->
+<!--                            &lt;!&ndash;</div>&ndash;&gt;-->
+<!--                            &lt;!&ndash;<button class="btn btn-block btn-primary" type="submit" ng-click="verifyCodeFn()">&ndash;&gt;-->
+<!--                                &lt;!&ndash;{{ 'SUBMIT_BTN_TEXT' | translate }}&ndash;&gt;-->
+<!--                            &lt;!&ndash;</button>&ndash;&gt;-->
+<!--                            <p class="txt-13 text-center pd-b-15">{{ 'USER_ACTIVATION_SEND_MAIL_CONFIRM_SUCCESS_TEXT' | translate }}</p>-->
+
+<!--                            <div class="mt">-->
+<!--                                <div class="text-center">-->
+<!--                                    <a class=""-->
+<!--                                       ng-click="resendCodeFn()">-->
+<!--                                        {{'RESEND_VERIFICATION_EMAIL_TEXT' | translate }}-->
+<!--                                    </a>-->
+<!--                                </div>-->
+<!--                                <div class="text-center">-->
+<!--                                    <a class=""-->
+<!--                                       ng-click="logoutFn()">-->
+<!--                                        {{'LOGOUT_TITLE_TEXT' | translate }}-->
+<!--                                    </a>-->
+<!--                                </div>-->
+<!--                                <div class="text-center mt-15">-->
+<!--                                    <a class=""-->
+<!--                                       ng-click="changeAccountFn()">-->
+<!--                                        {{'USE_ANOTHER_ACCOUNT_TEXT' | translate }}-->
+<!--                                    </a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+            </div>
+        </div>
+
+        <!-- END panel-->
+        <ng-include src="'/gms/views/login/bottom.html'"></ng-include>
+    </div>
+</div>
+<style>
+    .container {
+        width: 100% !important;
+    }
+    .parsley-errors-list.filled{
+        position:initial;
+    }
+</style>

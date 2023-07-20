@@ -15,9 +15,9 @@ fs.readdirSync('./gulp')
 
 var build = {
 
-    baseLibraries: "./node_modules/reloday/libraries",
+    baseLibraries: "./node_modules",
 
-    coreScripts: "./node_modules/reloday/core",
+    coreScripts: "./node_modules",
 
     libraries: "./public/libraries/",
 
@@ -44,14 +44,12 @@ var build = {
 
 gulp.task('setup-libraries', function () {
     log.info("Setup Libraries");
-    return gulp.src(require('./libraries.json'), {base: 'bower_components'})
-        .pipe(gulp.dest(build.libraries));
+    return gulp.src(require('./libraries.json'), {base: 'bower_components'}).pipe(gulp.dest(config.apps[config.currentApp].librariesPath));
 });
 
 gulp.task('setup-base', function () {
     log.info("Setup Libraries");
-    return gulp.src(require('./core.json'), {base: 'bower_components'})
-        .pipe(gulp.dest(build.base));
+    return gulp.src(require('./core.json'), {base: 'bower_components'}).pipe(gulp.dest(config.apps[config.currentApp].assetsPath));
 });
 
 
