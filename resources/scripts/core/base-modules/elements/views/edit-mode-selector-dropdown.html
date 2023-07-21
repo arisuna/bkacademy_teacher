@@ -1,0 +1,22 @@
+<div class="btn-group dropdown pull-right" uib-dropdown="" style="">
+    <button class="btn btn-oval btn-default ng-binding dropdown-toggle"
+            type="button" uib-dropdown-toggle="" aria-haspopup="true"
+            aria-expanded="false">
+        Edit Mode :
+        <span class="text-inverse text-bold" ng-show="service.isEdit == false" >Off</span>
+        <span class="text-green text-bold" ng-show="service.isEdit == true" >On</span>
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right animated fadeInUpShort" role="menu">
+        <li class="ng-scope">
+            <a ng-click="service.isEdit = true" href="" class="ng-binding">
+                <span class="text-green text-bold">On</span>
+            </a>
+        </li>
+        <li class="ng-scope">
+            <a ng-click="service.isEdit = false" href="" class="ng-binding">
+                <span class="text-inverse text-bold">Off</span>
+            </a>
+        </li>
+    </ul>
+</div>

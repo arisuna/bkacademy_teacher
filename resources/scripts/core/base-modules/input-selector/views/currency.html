@@ -1,0 +1,23 @@
+<div class="form-group-radius {{ className }}">
+    <label ng-if="labelFloating == false && showLabel == true" class="label-text-form">
+        {{ label | translate }} <span class="text-danger" ng-if="required">*</span>
+    </label>
+    <select class="form-control"
+            ng-options="item.code as (item.code + ' - ' + (item.name | translate) ) group by ( item.group | translate ) for item in currencies|orderBy:'principal':true"
+            ng-model="model"
+            chosen=""
+            ng-disabled="disabled"
+            name="{{ realName }}"
+            data-parsley-group="{{ step }}"
+            allow-single-deselect="true"
+            data-placeholder-text-single="'{{ placeholder != '_' ? ( placeholder | translate ) : ' ' }}'"
+            ng-required="required"
+            data-parsley-required-message="{{ 'CURRENCY_REQUIRED_TEXT' | translate }}"
+            data-parsley-errors-container="#error_{{ realName }}">
+        <option value=""></option>
+    </select>
+    <label ng-if="labelFloating == true && showLabel == true" class="text-dark-blue">
+        {{ label | translate }} <span class="text-danger" ng-if="required">*</span>
+    </label>
+    <div id="error_{{ realName }}"></div>
+</div>

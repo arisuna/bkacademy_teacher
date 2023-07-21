@@ -1,0 +1,23 @@
+<div class="text-right" ng-if="$root.app.layout.topActionGroup || $root.app.layout.topActionVisible">
+    <div class="inline" ng-if="$root.app.layout.topActionVisible">
+        <button class="btn btn-oval relo-bg-bright-blue" type="button" ng-repeat="item in $root.app.layout.topActionVisible" ng-click="$emit(item.action)">
+            <em ng-if="item.icontype=='fa'" class="mr-sm {{item.icon}}"></em>
+            <strong>{{item.title | translate}}</strong>
+        </button>
+    </div>
+
+
+    <div class="btn-group ml-sm" uib-dropdown keyboard-nav  ng-if="$root.app.layout.topActionGroup && $root.app.layout.topActionGroup.length">
+        <button id="simple-btn-keyboard-nav" type="button" class="btn btn-round relo-bg-bright-blue" uib-dropdown-toggle>
+            <em class="fa fa-ellipsis-v"></em>
+        </button>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav" style="top: 100%; right: 0px; left: auto">
+
+            <li role="menuitem"><a href="#">Action</a></li>
+            <li role="menuitem"><a href="#">Another action</a></li>
+            <li role="menuitem"><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li role="menuitem"><a href="#">Separated link</a></li>
+        </ul>
+    </div>
+</div>

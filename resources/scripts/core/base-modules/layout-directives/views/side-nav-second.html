@@ -1,0 +1,37 @@
+<!-- sidebar 2-->
+<!--<div class="side-nav-2"-->
+     <!--ng-class="{'side-nav-2-hide': !app.layout.showSideNav2,'side-nav-2-collapse': !app.layout.openSideNav2,'side-nav-2-full': app.layout.openSideNav2, 'side-nav-1-collapse':app.layout.isCollapsedNav}">-->
+    <!--<div ng-show="app.layout.openSideNav2" class="side-nav-2-content border-0">-->
+        <!--<button class="btn-collapse icon-collapse bg-white"-->
+                <!--ng-click="app.layout.openSideNav2 = !app.layout.openSideNav2"><em class="fa fa-angle-left"></em>-->
+        <!--</button>-->
+        <!--<div ng-include="app.layout.templateSideNav2">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div ng-show="!app.layout.openSideNav2" class="side-nav-2-content-collapse">-->
+        <!--<div class="line-vertical"></div>-->
+        <!--<button class="btn-collapse icon-collapse bg-white"-->
+                <!--ng-click="app.layout.openSideNav2 = !app.layout.openSideNav2">-->
+            <!--<em data-ng-if="app.layout.barIconSideNav2 != true && app.layout.cogIconSideNav2 != true && app.layout.envelopeIconSideNav2 != true" class="fa fa-info"></em>-->
+            <!--<em data-ng-if="app.layout.barIconSideNav2 == true && app.layout.cogIconSideNav2 != true && app.layout.envelopeIconSideNav2 != true" class="fas fa-bars"></em>-->
+            <!--<em data-ng-if="app.layout.cogIconSideNav2 == true && app.layout.barIconSideNav2 != true && app.layout.envelopeIconSideNav2 != true" class="fas fa-cog"></em>-->
+            <!--<em data-ng-if="app.layout.envelopeIconSideNav2 == true && app.layout.barIconSideNav2 != true && app.layout.cogIconSideNav2 != true " class="fas fa-envelope"></em>-->
+        <!--</button>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="side-nav-2 side-nav-2-collapse"
+     ng-class="{'side-nav-2-hide': !app.layout.showSideNav2, 'side-nav-1-full': !app.layout.isCollapsedNav, 'side-nav-1-collapse': app.layout.isCollapsedNav}">
+    <div class="side-nav-2-content-collapse">
+        <div class="line-vertical"></div>
+        <button class="btn-collapse icon-collapse bg-white"
+                ng-click="openDialog($event)">
+
+            <em data-ng-if="app.layout.iconSideNav2 == null || app.layout.iconSideNav2 == '' || app.layout.iconSideNav2 == undefined" class="fa fa-info"></em>
+            <em data-ng-if="app.layout.iconSideNav2 == 'cog'" class="fas fa-cog"></em>
+            <em data-ng-if="app.layout.iconSideNav2 == 'bar'" class="fas fa-bars"></em>
+            <em data-ng-if="app.layout.iconSideNav2 == 'envelope'" class="fas fa-envelope"></em>
+            <em data-ng-if="app.layout.iconSideNav2 == 'dollar'" class="fas fa-dollar-sign"></em>
+        </button>
+    </div>
+</div>

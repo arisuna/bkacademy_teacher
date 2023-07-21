@@ -15,9 +15,9 @@ fs.readdirSync('./gulp')
 
 var build = {
 
-    baseLibraries: "./node_modules",
+    baseLibraries: "./node_modules/reloday/libraries",
 
-    coreScripts: "./node_modules",
+    coreScripts: "./node_modules/reloday/core",
 
     libraries: "./public/libraries/",
 
@@ -44,12 +44,8 @@ var build = {
 
 gulp.task('setup-libraries', function () {
     log.info("Setup Libraries");
-    return gulp.src(require('./libraries.json'), {base: 'bower_components'}).pipe(gulp.dest(config.apps[config.currentApp].librariesPath));
-});
-
-gulp.task('setup-base', function () {
-    log.info("Setup Libraries");
-    return gulp.src(require('./core.json'), {base: 'bower_components'}).pipe(gulp.dest(config.apps[config.currentApp].assetsPath));
+    return gulp.src(build.baseLibraries + "/**/*", {base: build.baseLibraries})
+        .pipe(gulp.dest(config.apps[config.currentApp].librariesPath));
 });
 
 
@@ -57,6 +53,13 @@ gulp.task('setup-assets', function () {
     log.info("Setup Assets");
     return gulp.src(config.baseAssets + "/**/*", {base: config.baseAssets})
         .pipe(gulp.dest(config.apps[config.currentApp].assetsPath));
+});
+
+gulp.task('setup-core', function () {
+    log.info("Setup Libraries");
+    return gulp.src("./node_modules/reloday/dist/full.bundle.js", {base: 'node_modules/reloday/dist/'})
+        .pipe(rename(config.apps[config.currentApp].coreFileName))
+        .pipe(gulp.dest(config.apps[config.currentApp].filePath));
 });
 
 
@@ -94,8 +97,8 @@ gulp.task('build', gulp.series(
     'clean:zone',
     'build:style',
     'build:fonts',
+    'setup-core',
     'setup-libraries',
-    'setup-base',
     'setup-assets',
     'build:script',
     'build:env',
@@ -110,8 +113,8 @@ gulp.task('build:dev', gulp.series(
     'clean:zone',
     'build:style',
     'build:fonts',
+    'setup-core',
     'setup-libraries',
-    'setup-base',
     'setup-assets',
     'build:dev:script',
     'build:dev:env',

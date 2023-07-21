@@ -1,0 +1,16 @@
+<div class="form-group">
+    <div class="input-group search">
+        <input type="text"
+               class="form-control"
+               placeholder="{{ 'ENTER_TO_SEARCH_TEXT' | translate }}"
+               ng-style="{'border-radius':'3px'}"
+               ng-enter-key="executeSearch()"
+               ng-model="model" aria-invalid="false">
+        <span class="input-group-btn">
+            <button class="btn btn-default btn-flat" type="button"
+                    ng-click="executeSearch()">
+                <em class="fa fa-search text-bright-blue"></em>
+            </button>
+         </span>
+    </div>
+</div>

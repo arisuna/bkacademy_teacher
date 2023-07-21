@@ -1,0 +1,10 @@
+<div class="pos-relative">
+    <ul class="rating inline-block p0 m0 ">
+        <li ng-repeat="star in [].constructor(maxRating) track by $index">
+            <span ng-click="rateBy($index+1)" ng-show="ratedBy > $index" class="filled fa fa-star"></span>
+            <span ng-click="rateBy($index+1)" ng-show="ratedBy <= $index" class="fa fa-star text-dark-blue"></span>
+        </li>
+    </ul>
+
+    <div ng-if="disabled" class="locked-element"></div>
+</div>

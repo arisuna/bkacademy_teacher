@@ -1,0 +1,32 @@
+<div>
+    <div class="input-group">
+        <span class="input-group-addon"
+              ng-if="numberInput.hasPrefix()">
+            {{numberInput.prefix}}
+        </span>
+        <input class="form-control relo-bg-bright-gray"
+               ng-style="{'border-top-left-radius':'15px', 'border-bottom-left-radius':'15px','border-color':'transparent'}"
+               name="{{ realName }}"
+               type="text"
+               ng-model="model"
+               string-to-number=""
+               ng-change="numberInput.onChange()"
+               ng-keydown="numberInput.onKeyPress($event)"
+               ng-disabled="disabled"
+               data-parsley-errors-container="#error_{{ realName }}"
+               ng-blur="numberInput.onBlur()">
+        <span class="input-group-addon relo-bg-bright-gray" ng-if="numberInput.hasPostfix()">{{numberInput.postfix}}</span>
+        <span class="input-group-btn">
+            <button class="btn btn-flat relo-bg-bright-gray text-white"
+                    ng-disabled="disabled"
+                    type="button" ng-click="numberInput.inc()"><i
+                class="fa fa-plus" aria-hidden="true"></i></button>
+            <button class="btn btn-flat relo-bg-bright-gray text-white btn-oval"
+                    ng-disabled="disabled"
+                    type="button"
+                    ng-click="numberInput.dec()"><i
+                class="fa fa-minus" aria-hidden="true"></i></button>
+        </span>
+    </div>
+    <div id="error_{{ realName }}"></div>
+</div>

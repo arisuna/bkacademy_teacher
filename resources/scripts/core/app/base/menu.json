@@ -1,0 +1,636 @@
+[
+  {
+    "translate": "USERS_TEXT",
+    "text": "USERS_TEXT",
+    "sref": "",
+    "icon": "fa fa-cog",
+    "isinvocingmenu": false,
+    "alert": 0,
+    "label": "",
+    "order": "1",
+    "visible": true,
+    "submenu": [
+      {
+        "translate": "ASSIGNEES_TEXT",
+        "id": "36",
+        "module": "Manage Assignees",
+        "text": "ASSIGNEES_TEXT",
+        "controller": "",
+        "action": "",
+        "visible": "1",
+        "sref": "",
+        "alert": 0,
+        "order": "1",
+        "submenu": [
+          {
+            "id": "1",
+            "module": "Manage Employee",
+            "text": "EMPLOYEE_TEXT",
+            "translate": "EMPLOYEE_TEXT",
+            "controller": "employee",
+            "action": "index",
+            "visible": "1",
+            "sref": "app.employees.list",
+            "order": "1"
+          },
+          {
+            "id": "8",
+            "module": "Manage Team",
+            "text": "TEAMS_TEXT",
+            "translate": "TEAMS_TEXT",
+            "controller": "team",
+            "action": "index",
+            "visible": "1",
+            "sref": "app.teams.list",
+            "order": "2"
+          },
+          {
+            "id": "6",
+            "module": "Manage Department",
+            "text": "DEPARTMENTS_TEXT",
+            "translate": "DEPARTMENTS_TEXT",
+            "controller": "department",
+            "action": "index",
+            "visible": "1",
+            "sref": "app.departments.list",
+            "order": "3"
+          },
+          {
+            "id": "7",
+            "module": "Manage Office",
+            "text": "OFFICES_TEXT",
+            "translate": "OFFICES_TEXT",
+            "controller": "office",
+            "action": "index",
+            "visible": "1",
+            "sref": "app.offices.list",
+            "order": "4"
+          },
+          {
+            "id": "111",
+            "module": "Manage Bookers",
+            "text": "BOOKERS_TEXT",
+            "translate": "BOOKERS_TEXT",
+            "controller": "bookers",
+            "action": "index",
+            "visible": "1",
+            "sref": "app.bookers.list",
+            "order": "5"
+          },
+          {
+            "id": "5",
+            "module": "Manage Company",
+            "text": "COMPANIES_TEXT",
+            "translate": "COMPANIES_TEXT",
+            "controller": "company",
+            "action": "index",
+            "visible": "1",
+            "sref": "app.hr-accounts.list",
+            "order": "6"
+          }
+        ]
+      },
+      {
+        "translate": "HR_TEXT",
+        "id": "90",
+        "module": "Manage HRs",
+        "text": "HR_TEXT",
+        "controller": "",
+        "action": "",
+        "visible": "1",
+        "sref": "",
+        "alert": 0,
+        "order": "2",
+        "submenu": [
+          {
+            "id": "9",
+            "module": "HR Member",
+            "text": "HR_MEMBERS_TEXT",
+            "translate": "HR_MEMBERS_TEXT",
+            "controller": "hr_member",
+            "action": "index",
+            "visible": "1",
+            "sref": "app.hr-contacts.list",
+            "order": "6"
+          }
+        ]
+      },
+      {
+        "translate": "GMS_TEXT",
+        "id": "91",
+        "module": "Manage GMS",
+        "text": "GMS_TEXT",
+        "controller": "",
+        "action": "",
+        "visible": "1",
+        "sref": "",
+        "alert": 0,
+        "order": "3",
+        "submenu": [
+          {
+            "id": "103",
+            "module": "GMS Company",
+            "text": "MY_GMS_TITLE_TEXT",
+            "translate": "MY_GMS_TITLE_TEXT",
+            "controller": "my_company",
+            "action": "index",
+            "visible": "1",
+            "sref": "app.my-company.index",
+            "order": "1"
+          },
+          {
+            "id": "21",
+            "module": "GMS Member",
+            "text": "GMS_MEMBERS_TEXT",
+            "translate": "GMS_MEMBERS_TEXT",
+            "controller": "gms_member",
+            "action": "index",
+            "visible": "1",
+            "sref": "app.gms-members.list",
+            "order": "10"
+          },
+          {
+            "id": "22",
+            "module": "GMS Guide",
+            "text": "MY_GUIDES_TEXT",
+            "translate": "MY_GUIDES_TEXT",
+            "controller": "guide",
+            "action": "index",
+            "visible": "1",
+            "sref": "app.guide.list",
+            "order": "11"
+          }
+        ]
+      },
+      {
+        "translate": "SERVICE_PROVIDERS_TEXT",
+        "id": "35",
+        "module": "Manage SVPs",
+        "text": "SERVICE_PROVIDERS_TEXT",
+        "controller": "",
+        "action": "",
+        "visible": "1",
+        "sref": "",
+        "alert": 0,
+        "order": "4",
+        "submenu": [
+          {
+            "id": "28",
+            "module": "SVP Worker",
+            "text": "SVP_WORKER_TEXT",
+            "translate": "SVP_WORKER_TEXT",
+            "controller": "svp_worker",
+            "action": "index",
+            "visible": "1",
+            "sref": "app.svp-workers.list",
+            "order": "2"
+          },
+          {
+            "id": "10",
+            "module": "SVP Company",
+            "text": "SVP_COMPANIES_TEXT",
+            "translate": "SVP_COMPANIES_TEXT",
+            "controller": "svp_company",
+            "action": "index",
+            "visible": "1",
+            "sref": "app.svp-companies.list",
+            "order": "4"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "translate": "SERVICES_TEXT",
+    "text": "SERVICES_TEXT",
+    "sref": null,
+    "icon": "fa fa-puzzle-piece",
+    "alert": 0,
+    "label": null,
+    "controller": "service",
+    "action": "index",
+    "order": "2",
+    "visible": true,
+    "isinvocingmenu": false,
+    "submenu": [
+      {
+        "translate": "SERVICES_TEXT",
+        "id": "38",
+        "module": "Manage Services of HR\/GMS",
+        "text": "SERVICES_TEXT",
+        "controller": "service",
+        "action": "index",
+        "visible": "1",
+        "sref": "app.services.list",
+        "alert": 0,
+        "order": "1"
+      },
+      {
+        "translate": "SERVICE_PACKS_TEXT",
+        "id": "39",
+        "module": "Manage Service Pack",
+        "text": "SERVICE_PACKS_TEXT",
+        "controller": "service_pack",
+        "action": "index",
+        "visible": "1",
+        "sref": "app.service-packs.list",
+        "alert": 0,
+        "order": "2"
+      }
+    ]
+  },
+  {
+    "translate": "ROLE_TEXT",
+    "text": "ROLE_TEXT",
+    "sref": "app.roles.index",
+    "icon": "fa fa-child",
+    "alert": 0,
+    "label": "",
+    "order": "4",
+    "visible": true,
+    "isinvocingmenu": false
+  },
+  {
+    "translate": "REAL_ESTATE_TEXT",
+    "text": "REAL_ESTATE_TEXT",
+    "icon": "fa fa-building-o",
+    "alert": 0,
+    "controller": "property",
+    "action": "index",
+    "label": "",
+    "order": "6",
+    "isinvocingmenu": false,
+    "visible": true,
+    "submenu": [
+      {
+        "translate": "MANAGE_PROPERTIES_TEXT",
+        "text": "MANAGE_PROPERTIES_TEXT",
+        "controller": "property",
+        "action": "index",
+        "visible": "1",
+        "sref": "app.properties.list",
+        "alert": 0,
+        "order": "1"
+      },
+      {
+        "translate": "MANAGE_BUILDINGS_TEXT",
+        "text": "MANAGE_BUILDINGS_TEXT",
+        "controller": "property",
+        "action": "index",
+        "visible": "1",
+        "sref": "app.properties.list",
+        "alert": 0,
+        "order": "2"
+      },
+      {
+        "translate": "MANAGE_PROPERTIES_SETTING_TEXT",
+        "text": "MANAGE_PROPERTIES_SETTING_TEXT",
+        "controller": "property",
+        "action": "create",
+        "visible": "1",
+        "sref": "app.properties.setting",
+        "alert": 0,
+        "order": "3"
+      },
+      {
+        "translate": "ADDON_SETTING_TEXT",
+        "text": "ADDON_SETTING_TEXT",
+        "visible": "1",
+        "sref": "app.profile.addon",
+        "alert": 0,
+        "order": "4"
+      }
+    ]
+  },
+  {
+    "translate": "ATTRIBUTES_TEXT",
+    "text": "ATTRIBUTES_TEXT",
+    "sref": "app.attributes.list",
+    "icon": "fa fa-tags",
+    "controller": "attributes",
+    "action": "index",
+    "alert": 0,
+    "label": "",
+    "order": "7",
+    "isinvocingmenu": false,
+    "visible": true
+  },
+  {
+    "translate": "NEEDS_ASSESSMENT_TEXT",
+    "text": "NEEDS_ASSESSMENT_TEXT",
+    "sref": "app.needs-assessment.list",
+    "icon": "fa fa-question",
+    "alert": 0,
+    "controller": "need-assessment",
+    "action": "index",
+    "label": "",
+    "order": "10",
+    "isinvocingmenu": false,
+    "visible": true
+  },
+  {
+    "translate": "TAX_INVOICING_TEXT",
+    "text": "TAX_INVOICING_TEXT",
+    "sref": "app.taxinvoice.index",
+    "icon": "fa fa-bank",
+    "alert": 0,
+    "controller": "taxinvoice",
+    "action": "index",
+    "label": "",
+    "order": "11",
+    "visible": true,
+    "isinvocingmenu": false,
+    "submenu": [
+      {
+        "translate": "SETUP_PRODUCTS_TEXT",
+        "id": "92",
+        "module": "Manage Product",
+        "text": "SETUP_PRODUCTS_TEXT",
+        "controller": "product",
+        "action": "index",
+        "visible": "1",
+        "sref": "app.product.list",
+        "alert": 0,
+        "order": "1"
+      },
+      {
+        "translate": "SETUP_PRICE_ACCOUNT_TEXT",
+        "id": "96",
+        "module": "Manage Account Pricing",
+        "text": "SETUP_PRICE_ACCOUNT_TEXT",
+        "controller": "product",
+        "action": "index",
+        "visible": "1",
+        "sref": "app.account-pricelist.list",
+        "alert": 0,
+        "order": "2"
+      },
+      {
+        "translate": "TAX_RULES_LIST_TEXT",
+        "id": "97",
+        "module": "Manage Tax Rules",
+        "text": "TAX_RULES_LIST_TEXT",
+        "controller": "tax_rule",
+        "action": "index",
+        "visible": "1",
+        "sref": "app.tax-rules.list",
+        "alert": 0,
+        "order": "3"
+      },
+      {
+        "translate": "INVOICE_TEMPLATE_TEXT",
+        "id": "104",
+        "module": "Manage Invoice Template",
+        "text": "INVOICE_TEMPLATE_TEXT",
+        "controller": "invoicing",
+        "action": "index",
+        "visible": "1",
+        "alert": 0,
+        "order": "4",
+        "sref": "app.invoicing.templates"
+      },
+      {
+        "translate": "EXPENSES_ADMIN_SUBTITLE_TEXT",
+        "id": "90",
+        "module": "Manage Expenses",
+        "text": "EXPENSES_ADMIN_SUBTITLE_TEXT",
+        "controller": "expense",
+        "action": "index",
+        "visible": "1",
+        "alert": 0,
+        "order": "4",
+        "sref": "app.expense.setting"
+      },
+      {
+        "translate": "FINANCIAL_ACCOUNTS_TEXT",
+        "id": "105",
+        "module": "Manage Currency Accounts",
+        "text": "FINANCIAL_ACCOUNTS_TEXT",
+        "controller": "invoicing",
+        "action": "index",
+        "visible": "1",
+        "alert": 0,
+        "order": "4",
+        "sref": "app.invoicing.financial-accounts"
+      }
+    ]
+  },
+  {
+    "translate": "WORKFLOWS_TEXT",
+    "id": "90",
+    "module": "Manage Workflows",
+    "text": "WORKFLOW_TEXT",
+    "controller": "",
+    "icon": "fa fa-tasks",
+    "action": "",
+    "visible": "1",
+    "alert": 0,
+    "isinvocingmenu": false,
+    "order": "12",
+    "submenu": [
+      {
+        "translate": "ASSIGNMENT_WORKFLOWS_TEXT",
+        "text": "ASSIGNMENT_WORKFLOWS_TEXT",
+        "controller": "communication",
+        "action": "index",
+        "visible": "1",
+        "sref": "app.workflow.assignment",
+        "alert": 0,
+        "order": "1"
+      },
+      {
+        "translate": "RELOCATION_WORKFLOWS_TEXT",
+        "text": "RELOCATION_WORKFLOWS_TEXT",
+        "controller": "communication",
+        "action": "index",
+        "visible": "1",
+        "sref": "app.workflow.relocation",
+        "alert": 0,
+        "order": "2"
+      }
+    ]
+  },
+  {
+    "translate": "COMMUNICATIONS_TEXT",
+    "text": "COMMUNICATIONS_TEXT",
+    "icon": "fa fa-comment-o",
+    "alert": 0,
+    "controller": "communication",
+    "action": "index",
+    "label": "",
+    "order": "14",
+    "visible": true,
+    "isinvocingmenu": false,
+    "submenu": [
+      {
+        "translate": "MANAGE_EMAIL_ACCOUNTS_TEXT",
+        "text": "MANAGE_EMAIL_ACCOUNTS_TEXT",
+        "controller": "communication",
+        "action": "index",
+        "visible": "1",
+        "sref": "app.communication-template.setting",
+        "alert": 0,
+        "order": "1"
+      },
+      {
+        "translate": "COMMENTS_TEMPLATES_TEXT",
+        "text": "COMMENTS_TEMPLATES_TEXT",
+        "controller": "communication",
+        "action": "index",
+        "visible": "1",
+        "sref": "app.communication-template.index",
+        "alert": 0,
+        "order": "2"
+      },
+      {
+        "translate": "SIGNATURE_TEXT",
+        "text": "SIGNATURE_TEXT",
+        "controller": "communication",
+        "action": "index",
+        "visible": "1",
+        "sref": "app.communication-signature.list",
+        "alert": 0,
+        "order": "3"
+      }
+    ]
+  },
+  {
+    "translate": "DASHBOARD_TEXT",
+    "id": "90",
+    "text": "DASHBOARD_TEXT",
+    "icon": "fa fa-tachometer",
+    "visible": "1",
+    "alert": 0,
+    "order": "15",
+    "isinvocingmenu": true,
+    "sref": "app.invoicing.dashboard"
+  },
+  {
+    "translate": "TIMELOGS_TEXT",
+    "id": "91",
+    "text": "TIMELOGS_TEXT",
+    "icon": "fa fa-clock-o",
+    "visible": "1",
+    "alert": 0,
+    "order": "16",
+    "isinvocingmenu": true,
+    "sref": "app.timelog.dashboard"
+  },
+  {
+    "translate": "SALES_TEXT",
+    "id": "100",
+    "text": "SALES_TEXT",
+    "icon": "fa fa-credit-card",
+    "visible": true,
+    "alert": 0,
+    "order": "17",
+    "isinvocingmenu": true,
+    "submenu": [
+      {
+        "translate": "QUOTES_TEXT",
+        "text": "QUOTES_TEXT",
+        "controller": "invoicing",
+        "action": "index",
+        "visible": "1",
+        "sref": "app.quote.list",
+        "isinvocingmenu": true,
+        "alert": 0,
+        "order": "1"
+      },
+      {
+        "translate": "INVOICES_TEXT",
+        "text": "INVOICES_TEXT",
+        "controller": "invoicing",
+        "isinvocingmenu": true,
+        "action": "index",
+        "visible": "1",
+        "sref": "app.invoice.list",
+        "alert": 0,
+        "order": "2"
+      },
+      {
+        "translate": "CREDIT_NOTES_TEXT",
+        "text": "CREDIT_NOTES_TEXT",
+        "controller": "invoicing",
+        "isinvocingmenu": true,
+        "action": "index",
+        "visible": "1",
+        "sref": "app.credit-note.list",
+        "alert": 0,
+        "order": "2"
+      }
+    ]
+  },
+  {
+    "translate": "PURCHASES_TEXT",
+    "id": "101",
+    "text": "PURCHASES_TEXT",
+    "icon": "fa fa-shopping-cart",
+    "visible": true,
+    "alert": 0,
+    "order": "18",
+    "isinvocingmenu": true,
+    "submenu": [
+      {
+        "translate": "BILLS_TEXT",
+        "text": "BILLS_TEXT",
+        "visible": "1",
+        "isinvocingmenu": true,
+        "sref": "app.bill.list",
+        "alert": 0,
+        "order": "1"
+      },
+      {
+        "translate": "EXPENSES_TEXT",
+        "text": "EXPENSES_TEXT",
+        "visible": "1",
+        "alert": 0,
+        "order": "2",
+        "isinvocingmenu": true,
+        "sref": "app.expense.dashboard"
+      },
+      {
+        "translate": "RECURRING_EXPENSES_TEXT",
+        "text": "RECURRING_EXPENSES_TEXT",
+        "visible": "1",
+        "alert": 0,
+        "order": "3",
+        "isinvocingmenu": true,
+        "sref": "app.recurrent-expense.dashboard"
+      }
+    ]
+  },
+  {
+    "translate": "ACCOUNTING_TEXT",
+    "id": "102",
+    "text": "ACCOUNTING_TEXT",
+    "icon": "fa fa-balance-scale",
+    "visible": true,
+    "alert": 0,
+    "order": "19",
+    "isinvocingmenu": true,
+    "submenu": [
+      {
+        "translate": "TRANSACTIONS_TEXT",
+        "text": "TRANSACTIONS_TEXT",
+        "visible": true,
+        "alert": 0,
+        "order": "1",
+        "isinvocingmenu": true,
+        "sref": "app.transaction.dashboard"
+      }
+    ]
+  },
+  {
+    "translate": "REPORTS_TEXT",
+    "id": "103",
+    "text": "REPORTS_TEXT",
+    "icon": "fa fa-pie-chart",
+    "visible": true,
+    "alert": 0,
+    "order": "20",
+    "isinvocingmenu": true,
+    "sref": "app.invoicing.report"
+  }
+]
+

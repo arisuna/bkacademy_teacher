@@ -27,10 +27,10 @@
                     templateUrl: helper.modulePath('gms', 'login/login'),
                     controller: 'LoginFormController',
                     resolve: {
-                        account: ['$location', 'GmsDataService', function ($location, GmsDataService) {
+                        account: ['$location', 'AppDataService', function ($location, AppDataService) {
                             var email = $location.search().email;
                             if (email !== undefined) {
-                                return GmsDataService.verfifyAccountEmail(email).then(function (res) {
+                                return AppDataService.verfifyAccountEmail(email).then(function (res) {
                                     if (res.success) {
                                         return res.data;
                                     }
@@ -93,10 +93,10 @@
                     templateUrl: helper.modulePath('gms', 'login/login'),
                     controller: 'LoginFormController',
                     resolve: {
-                        account: ['$location', 'GmsDataService', function ($location, GmsDataService) {
+                        account: ['$location', 'AppDataService', function ($location, AppDataService) {
                             var email = $location.search().email;
                             if (email !== undefined) {
-                                return GmsDataService.verfifyAccountEmail(email).then(function (res) {
+                                return AppDataService.verfifyAccountEmail(email).then(function (res) {
                                     if (res.success) {
                                         return res.data;
                                     }

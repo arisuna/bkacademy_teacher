@@ -1,0 +1,18 @@
+<div class="line-loading-spinner">
+    <div class="flex" ng-repeat-n="lines" style="height:35px;">
+        <div
+                ng-repeat="item in items track by $index"
+
+                ng-class="{
+                    'flex-1': item === 'l1',
+                    'flex-2': item === 'l2',
+                    'flex-3': item === 'l3',
+                    'line-loading-spinner-circle': item === 'c',
+                    'mr-sm': !$last
+                }">
+            <div class="spinner-container {{ animateDisabled ? 'relo-bg-dark-blue-25' : '' }} " >
+                <div class="{{ animateDisabled ? 'snipper-no-cursor' : 'spinner-cursor' }}"></div>
+            </div>
+        </div>
+    </div>
+</div>

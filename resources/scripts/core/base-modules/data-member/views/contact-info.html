@@ -1,0 +1,33 @@
+<span uib-dropdown dropdown-append-to-body>
+    <a uib-dropdown-toggle="">
+        <em class="fa fa-info-circle ml-sm text-bright-blue" aria-hidden="true"></em>
+    </a>
+    <div class="bg-black-darker text-white dropdown-menu dropdown-menu-right"
+         style="padding: 10px; left: auto; right: 100%;"
+         uib-dropdown-menu>
+        <p class="line-content">
+            {{ userProfile.firstname }} {{ userProfile.lastname }}
+        </p>
+        <p class="line-content">
+            <span class="ei-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+            <a href="mailto:{{ userProfile.email }}" target="_top" class="ei-text ml-sm text-bright-blue">{{
+                userProfile.email }}</a>
+        </p>
+
+        <p class="line-content">
+            <span class="ei-icon"><i class="fa fa-phone txt-20" aria-hidden="true"></i></span>
+            <span class="ei-text  ml-sm">{{ userProfile.telephone != '' ? userProfile.telephone : ('NC_TEXT' | translate ) }}</span>
+        </p>
+        <p class="line-content">
+            <span class="ei-icon"><i class="fa fa-mobile fa-2x" aria-hidden="true"></i></span>
+            <span
+                class="ei-text  ml-sm">{{ userProfile.mobile != '' ? userProfile.mobile : ('NC_TEXT' | translate ) }}</span>
+        </p>
+
+        <p class="line-content" ng-show="userProfile.company_name != '' && userProfile.company_name != undefined">
+            <span class="ei-icon"><i class="fa fa-building fa-2x" aria-hidden="true"></i></span>
+            <span
+                class="ei-text  ml-sm">{{ userProfile.company_name }}</span>
+        </p>
+    </div>
+</span>

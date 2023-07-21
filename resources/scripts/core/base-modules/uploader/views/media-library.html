@@ -1,0 +1,62 @@
+<div>
+    <div class="card mb-lg">
+        <div class="card-heading relo-bg-bright-blue">
+            <h4 class="card-title text-white">{{ 'MEDIA_LIBRARIES_TEXT' | translate }}</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-xs-4 col-lg-6">
+                    <input type="text" width="'100%'" name="media_search" ng-model="search" class="form-control"
+                           placeholder="{{ 'ENTER_TO_SEARCH_TEXT'|translate }}"
+                           ng-keypress="($event.which === 13) ? searchMedia():0"/>
+                </div>
+
+                <div class="col-xs-4 col-lg-3">
+                    <button class="btn btn-info" type="button" ng-click="searchMedia()"><em class="fa fa-search"></em>
+                        {{ 'SEARCH_BTN_TEXT'|translate }}
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-xl media-management-list">
+
+                <div class="item-box" ng-repeat="item in mediaItems" ng-click="selected($event,$index)">
+                    <div class="card">
+                        <div class="card-item box-ratio-1-1" ng-switch="item.file_type">
+                            <div class="inner-ratio">
+                                <img ng-switch-when="image"
+                                     ng-src="{{ item.image_data.url_thumb }}"
+                                     class="img-responsive block-center"/>
+                                <img ng-switch-when="audio" src="/gms/assets/img/files/audio.png"
+                                     class="img-responsive block-center"/>
+                                <img ng-switch-when="video" src="/gms/assets/img/files/video.png"
+                                     class="img-responsive block-center"/>
+                                <img ng-switch-when="document"
+                                     ng-src="{{ '/gms/assets/img/files/' + item.file_extension + '.png' }}"
+                                     class="img-responsive block-center"/>
+                                <img ng-switch-when="compressed" src="/gms/assets/img/files/zip.png"
+                                     class="img-responsive block-center"/>
+                                <img ng-switch-default ng-src="{{ item.image_data.url_thumb }}"/>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="m0">{{ item.name }}</h5>
+                        </div>
+                    </div>
+                    <div class="selected-icon"><em class="fa fa-check"></em></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 text-left">
+                    <ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"
+                        max-size="maxSize" class="pagination" boundary-link-numbers="true" rotate="false"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer text-right">
+            <button class="btn btn-info btn-lg" ng-click="showSelected()"><em class="fa fa-paperclip fa-flip-horizontal" aria-hidden="true"></em> {{ 'ATTACH_FILE_BTN_TEXT' | translate }}</button>
+        </div>
+    </div>
+</div>

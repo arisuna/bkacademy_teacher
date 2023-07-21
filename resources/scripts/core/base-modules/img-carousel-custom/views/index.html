@@ -1,0 +1,13 @@
+<line-loading-spinner options="l1-l1-l1" lines="10" ng-if="loading_slide"></line-loading-spinner>
+
+<ul uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" ng-show="!loading_slide" class="pl0 carousel-custom"
+    ng-class="{ 'no-border-icon': custom.noBorderIcon, 'limited-height' : custom.limitedHeight }">
+
+    <li uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id" >
+        <div class="picture-frame ">
+            <img ng-src="{{slide.image_data.url_full}}" class="cursor-pointer"
+                 document-view-media=""
+                 items="slides" element="slide">
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,25 @@
+<div class="mda-form-group">
+    <label class="text-muted" ng-show="showLabel == true">
+        {{ label | translate }}
+        <tooltip text="{{ toolTipText | translate }}" ng-if="toolTipText" class="ml-sm"></tooltip>
+        <span ng-if="required" class="text-danger ml-sm">*</span>
+    </label>
+    <div class="mda-form-control">
+        <div class="input-group">
+            <span class="input-group-addon text-center pd-l-1x pd-r-1x relo-bg-bright-gray"
+                  ng-if="prefix != '' && prefix  != undefined">
+                {{ prefix }}
+            </span>
+            <span class="input-group-addon text-center pd-l-1x pd-r-1x relo-bg-bright-gray"
+                  ng-if="prefix == '' || prefix == null || prefix  == undefined">
+                <em class="fa fa-question"></em>
+            </span>
+            <input class="form-control"
+                   step="0.01"
+                   ng-disabled="disabled"
+                   type="number"
+                   name="{{inputName}}"
+                   id="{{inputName}}" ng-model="model"/>
+        </div>
+    </div>
+</div>

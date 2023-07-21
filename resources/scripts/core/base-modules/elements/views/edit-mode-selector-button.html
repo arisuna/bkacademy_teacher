@@ -1,0 +1,16 @@
+<a class="btn btn-oval btn-flat  mr-sm hover-white"
+   ng-class="{
+        'relo-bg-grey' : isEditSelector == false, 'btn-default' : isEditSelector == true
+        }"
+   ng-click="changeEditMode()">
+
+    <em class="fa mr-sm" ng-class="{
+        'fa-edit text-white' : isEditSelector == false , 'fa-search' : isEditSelector == true
+        }"></em>
+    <span ng-if="isEditSelector == false" class="text-white">
+        {{ 'EDIT_BTN_TEXT' | translate}}
+    </span>
+    <span ng-if="isEditSelector == true">
+        {{ 'VIEW_BTN_TEXT' | translate}}
+    </span>
+</a>

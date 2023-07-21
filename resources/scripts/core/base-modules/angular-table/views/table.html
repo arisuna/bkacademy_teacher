@@ -1,0 +1,46 @@
+<div>
+    <div class="row">
+        <div class="col-md-6" ng-show="searchInputEnable == true">
+            <div class="form-group form-inline">
+                <div class="input-group search">
+                    <input type="text"
+                           class="form-control"
+                           placeholder="{{ 'SEARCH_TEXT' | translate }}"
+                           ng-style="{'border-radius':'3px'}"
+                           ng-model="table.filterText" aria-invalid="false">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default btn-flat" type="button"
+                            ng-click="searchMedia()">
+                        <em class="fa fa-search text-bright-blue"></em>
+                    </button>
+                 </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 text-right" ng-show="addButtonEnable==true || refreshButtonEnable == true"
+             ng-class="{'col-md-offset-6':searchInputEnable != true}">
+            <button ng-show="refreshButtonEnable==true" class="btn btn-circle relo-bg-gray" ng-click="refreshItem()">
+                <i class="fa fa-rotate {{isSpin ? 'fa-spin' : ''}} txt-dark-blue"></i>
+            </button>
+            <button ng-show="addButtonEnable==true && table.filteredItems.length > 0" class="btn btn-oval relo-bg-bright-blue" ng-click="addItem()">
+                <em class="fa {{ iconButton ? iconButton : 'fa-plus' }} mr-sm"></em>
+                {{ textButton ? textButton : 'CREATE_BTN_TEXT' | translate }}
+            </button>
+        </div>
+    </div>
+
+    <ng-transclude></ng-transclude>
+
+    <div ng-hide="table.filteredItems.length">
+        <table-no-data message="NO_DATA_AVAILABLE_TEXT"
+                       ng-show="addButtonEnable == true"
+                       button-title="CREATE_BTN_TEXT"
+                       ng-button-click="addItem()"></table-no-data>
+
+        <table-no-data message="NO_DATA_AVAILABLE_TEXT"
+                       ng-show="addButtonEnable == false"></table-no-data>
+    </div>
+
+    <div angular-table-pagination="table" ng-show="paginationEnable"></div>
+
+</div>

@@ -1,0 +1,20 @@
+<div class="inline">
+    <ng-if ng-if="imageUrl != '' && imageUrl != undefined">
+        <img ng-src="{{ imageUrl }}"
+             class="{{ formatClass }}"
+             ng-class="{
+                'thumb16': size == 'xxsmall',
+                'thumb24': size == 'xsmall',
+                'thumb32': size == 'medium',
+                'thumb32': size == 'small',
+                'thumb40': size == 'medium-xs',
+                'thumb48': size == 'medium-lg',
+                'thumb64': size == 'large',
+                'thumb80': size == 'xlarge',
+                'thumb96': size == 'xxlarge',
+             }"/>
+    </ng-if>
+    <ng-if ng-if="(!imageUrl || imageUrl == '') && isShowIcon">
+        <em class="fa fa-user-circle-o text-32 text-dark-blue-25"></em>
+    </ng-if>
+</div>

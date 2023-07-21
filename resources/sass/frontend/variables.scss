@@ -1,5 +1,5 @@
 /** ============== CONFIG ============= ***/
-$assetsFolder: '/app/assets/';
+$assetsFolder: '/gms/assets/';
 /** ============== COLORS ============= ***/
 
 $relo-primary-color: var(--main-color);
@@ -63,6 +63,7 @@ $relo-bright-gray-4: #FAFAFA;
 $relo-orange: #FF8E26;
 $relo-orange-10: #FFF4EA;
 $relo-sky-blue: #E5F5FF;
+$relo-blue-purple: #1D3D87;
 
 @mixin aspect-ratio($width, $height) {
     position: relative;

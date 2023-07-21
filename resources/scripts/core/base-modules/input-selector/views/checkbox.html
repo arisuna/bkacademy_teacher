@@ -1,0 +1,25 @@
+<div class="form-group">
+    <div class="checkbox c-checkbox needsclick">
+        <label class="needsclick" ng-if="!isBool">
+            <input class="needsclick"
+                   type="checkbox"
+                   ng-true-value="1"
+                   ng-false-value="0"
+                   string-to-number=""
+                   ng-disabled="disabled"
+                   ng-model="$parent.model"
+                   id="{{realName}}"
+                   name="{{realName}}">
+            <span class="fa fa-check"></span><b class="text-muted">{{ label | translate }}<b>
+        </label>
+        <label class="needsclick" ng-if="isBool">
+            <input class="needsclick"
+                   type="checkbox"
+                   ng-disabled="disabled"
+                   ng-model="$parent.model"
+                   id="{{realName}}"
+                   name="{{realName}}">
+            <span class="fa fa-check"></span><b class="text-muted">{{ label | translate }}</b>
+        </label>
+    </div>
+</div>

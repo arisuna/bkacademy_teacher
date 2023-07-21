@@ -1,0 +1,73 @@
+[
+  {
+    "text": "MY_TASKS_TEXT",
+    "sref": "#",
+    "submenu": [
+      {
+        "text": "MY_TASKS_TEXT",
+        "sref": "app.tasks.my"
+      },
+      {
+        "text": "MY_COMPLETED_TASKS_TEXT",
+        "sref": "app.tasks.mycompleted"
+      },
+      {
+        "text": "MY_OPEN_TASKS_TEXT",
+        "sref": "app.tasks.myopen"
+      }
+    ]
+  },
+
+  {
+    "text": "ALL_ASSIGNMENTS_TEXT",
+    "sref": "#",
+    "submenu": [
+      {
+        "text": "ALL_ASSIGNMENTS_TEXT",
+        "sref": "app.assignment.list"
+      },
+      {
+        "text": "ALL_ENDING_ASSIGNMENTS_TEXT",
+        "sref": "app.assignment.ending"
+      }
+    ]
+  },
+
+
+  {
+    "text": "MY_RELOCATION_TEXT",
+    "sref": "#",
+    "submenu": [
+      {
+        "text": "MY_RELOCATION_TEXT",
+        "sref": "app.relocation.my"
+      },
+      {
+        "text": "MY_COMPLETED_RELOCATION_TEXT",
+        "sref": "app.relocation.my.completed"
+      },
+      {
+        "text": "MY_ONGOING_RELOCATION_TEXT",
+        "sref": "app.relocation.my.ongoing"
+      }
+    ]
+  },
+  {
+    "text": "ALL_TASKS_TEXT",
+    "sref": "#",
+    "submenu": [
+      {
+        "text": "ALL_TASKS_TEXT",
+        "sref": "app.tasks.list.all"
+      },
+      {
+        "text": "ALL_COMPLETED_TASKS_TEXT",
+        "sref": "app.tasks.list.completed"
+      },
+      {
+        "text": "ALL_OPEN_TASKS_TEXT",
+        "sref": "app.tasks.list.open"
+      }
+    ]
+  }
+]

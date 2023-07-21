@@ -1776,7 +1776,7 @@ span.mark-complete-messenger {
     top: 0;
 }
 
-.bg-bd-transparent{
+.bg-bd-transparent {
     border: 1px solid #cbd6e2;
     background: transparent !important;
 }
@@ -1823,14 +1823,15 @@ span.mark-complete-messenger {
     height: 100% !important;
 }
 
-.editor-wrapper .mce-container-body .mce-flow-layout{
+.editor-wrapper .mce-container-body .mce-flow-layout {
     min-height: 40px;
     display: -webkit-box;
     vertical-align: middle;
     align-items: center;
 }
-.editor-wrapper .mce-panel{
-    border:0;
+
+.editor-wrapper .mce-panel {
+    border: 0;
 }
 
 .editor-wrapper-2 {
@@ -1851,14 +1852,15 @@ span.mark-complete-messenger {
     height: 100% !important;
 }
 
-.editor-wrapper-2 .mce-container-body .mce-flow-layout{
+.editor-wrapper-2 .mce-container-body .mce-flow-layout {
     min-height: 40px;
     display: -webkit-box;
     vertical-align: middle;
     align-items: center;
 }
-.editor-wrapper-2 .mce-panel{
-    border:0;
+
+.editor-wrapper-2 .mce-panel {
+    border: 0;
 }
 
 .mce-content-body p, .mce-content-body div, .mce-content-body h1, .mce-content-body h2, .mce-content-body h3, .mce-content-body h4, .mce-content-body h5, .mce-content-body h6 {
@@ -1890,4 +1892,8 @@ svg.fadeInSvg {
     cursor: grabbing;
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
+}
+
+.svg-dark-blue {
+    filter: brightness(0) saturate(100%) invert(7%) sepia(32%) saturate(1835%) hue-rotate(191deg) brightness(102%) contrast(100%)
 }

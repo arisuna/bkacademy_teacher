@@ -1,0 +1,18 @@
+<div class="inline">
+    <ng-if ng-if="imageBase64 && imageBase64 != undefined && imageBase64 != '' && imageBase64 != 'image_url' ">
+        <img ng-src="{{ imageBase64 }}"
+             class="{{ formatClass }}"
+             ng-class="{
+                'thumb16': size == 'xxsmall',
+                'thumb24': size == 'xsmall',
+                'thumb32': size == 'medium',
+                'thumb32': size == 'small',
+                'thumb64': size == 'large',
+                'thumb80': size == 'xlarge',
+                'thumb96': size == 'xxlarge',
+             }"/>
+    </ng-if>
+    <ng-if ng-if="!imageBase64 || imageBase64 == ''">
+        <em class="fa fa-user-circle-o text-32 text-gray"></em>
+    </ng-if>
+</div>

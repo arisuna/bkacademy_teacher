@@ -1,0 +1,64 @@
+<div id="document-viewer-modal" class="document-viewer-modal">
+    <div class="document-viewer-modal-header flex-middle">
+        <div class="spinner">
+			<span class="txt-3x" ng-if="loading">
+				<i class="fa fa-spinner fa-spin"></i>
+			</span>
+        </div>
+
+        <div class="tools">
+            <a ng-href="{{ url }}" class="mg-r-6s">
+                <i class="tool icon-printer"></i>
+            </a>
+
+            <span ng-click="closeDocumentViewer()">
+				<i class="tool icon-size-actual"></i>
+			</span>
+        </div>
+    </div>
+
+    <div class="document-viewer-modal-body flex-middle">
+
+        <div class="file-type-not-support black-block text-center pd-2x" ng-if="fileNotSupport == true">
+            <em class="fa fa-table" ng-style="{'font-size':'96px'}"></em>
+            <h4>{{ 'FILE_TYPE_NOT_SUPPORT_TEXT' | translate }}</h4>
+            <a href="{{url}}" target="_blank" class="btn btn-oval btn-default">{{'DOWNLOAD_BTN_TEXT'|translate}}</a>
+        </div>
+
+        <div ng-if="fileNotSupport == false && type === 'image'" class="black-block pd-2x">
+            <div class="align-center">
+                <img
+                        id="document-viewer-image"
+                        class="img-responsive"
+                        ng-src="{{ url }}"
+                        ng-if="type === 'image'"
+                        image-onload="onImageLoaded()"
+                >
+            </div>
+        </div>
+
+        <div ng-if="fileNotSupport == false && type !== 'image' " class="black-block pd-2x" ng-style="{'height':'80%'}">
+            <iframe
+                    id="document-viewer-iframe"
+                    ng-if="type !== 'image' && type !== 'default'"
+                    ng-src='{{ fullUrl }}'
+                    width='100%'
+                    height='100%'
+                    frameborder='0'
+                    image-onload="onImageLoaded()"
+            >
+            </iframe>
+
+            <iframe
+                    id="document-viewer-iframe"
+                    ng-if="type === 'default'"
+                    ng-src='{{ fullUrl }}'
+                    width='100%'
+                    height='100%'
+                    frameborder='0'
+                    image-onload="onImageLoaded()"
+            >
+            </iframe>
+        </div>
+    </div>
+</div>

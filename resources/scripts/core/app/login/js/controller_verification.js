@@ -1,8 +1,8 @@
 (function () {
     'use strict';
 
-    App.controller('LoginVerificationController', ['$scope', '$http', '$state', '$location', '$window', '$translate', 'WaitingService', 'GmsDataService', 'DataService', 'Utils',
-        function ($scope, $http, $state, $location, $window, $translate, WaitingService, GmsDataService, DataService, Utils) {
+    App.controller('LoginVerificationController', ['$scope', '$http', '$state', '$location', '$window', '$translate', 'WaitingService', 'AppDataService', 'DataService', 'Utils',
+        function ($scope, $http, $state, $location, $window, $translate, WaitingService, AppDataService, DataService, Utils) {
             $scope.account = {
                 email: '',
                 verification_code: '',
@@ -12,14 +12,14 @@
 
             $scope.theme = {
                 main_color: '#0A142B',
-                logo_login_url: '/app/assets/img/logo-login.png',
+                logo_login_url: '/gms/assets/img/logo-login.png',
                 secondary_color: '#0098FF'
             };
 
             $scope.sub_domain = $location.$$host.split(".relotalent")[0];
             console.log($scope.sub_domain);
             WaitingService.begin();
-            GmsDataService.getCompanyBuSubDomain($scope.sub_domain).then(function (res) {
+            AppDataService.getCompanyBuSubDomain($scope.sub_domain).then(function (res) {
                 if(res.success){
                     $scope.company = res.data;
                     if(angular.isDefined($scope.company.theme) && angular.isDefined($scope.company.theme.id)) {
@@ -34,7 +34,7 @@
 
 
             $scope.changePasswordWithConfirmCodeFn = function () {
-                GmsDataService.changePasswordWithConfirmCodeFn({
+                AppDataService.changePasswordWithConfirmCodeFn({
                     'code': $scope.account.verification_code,
                     'password': $scope.account.new_password,
                     'password_confirm': $scope.account.new_password_confirm,

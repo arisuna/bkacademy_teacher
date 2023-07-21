@@ -2,9 +2,9 @@
     'use strict';
 
     App.controller('LoginIndexController', ['$timeout', '$scope', '$location', '$http', '$state', '$window', '$translate', '$rootScope',
-        '$translatePartialLoader', 'WaitingService', 'GmsDataService', 'GmsAuthService', 'Utils',
+        '$translatePartialLoader', 'WaitingService', 'AppDataService', 'AppAuthService', 'Utils',
         function ($timeout, $scope, $location, $http, $state, $window, $translate, $rootScope,
-                  $translatePartialLoader, WaitingService, GmsDataService, GmsAuthService, Utils) {
+                  $translatePartialLoader, WaitingService, AppDataService, AppAuthService, Utils) {
 
             $translatePartialLoader.addPart('base');
             $translate.refresh();
@@ -30,9 +30,9 @@
             $scope.loginWithAccount = function (account) {
 
                 WaitingService.begin();
-                GmsAuthService.resetConnection(); //should reset connection
+                AppAuthService.resetConnection(); //should reset connection
 
-                GmsDataService.loginFn({
+                AppDataService.loginFn({
                     'credential': account.email,
                     'password': account.password
                 }).then(function (res) {
@@ -42,18 +42,18 @@
                         localStorage.setItem('refresh_token', res.refreshToken);
                         $rootScope._token = res.token;
                         $timeout(function () {
-                            GmsAuthService.checkTotal().then(function () {
+                            AppAuthService.checkTotal().then(function () {
                                 WaitingService.end();
-                                if (GmsAuthService.getSubscription().status == -1) {
+                                if (AppAuthService.getSubscription().status == -1) {
                                     $state.go('app.error-payment-required');
-                                } else if (GmsAuthService.getSubscription().status == 0) {
+                                } else if (AppAuthService.getSubscription().status == 0) {
                                     $state.go('app.error-subscription-paused');
                                 } else {
-                                    if (!angular.isDefined(GmsAuthService.getRedirectUrl()) || GmsAuthService.getRedirectUrl() == '' || GmsAuthService.getRedirectUrl() == null) {
+                                    if (!angular.isDefined(AppAuthService.getRedirectUrl()) || AppAuthService.getRedirectUrl() == '' || AppAuthService.getRedirectUrl() == null) {
                                         $state.go('app.dashboard');
                                     } else {
-                                        $window.location.href = GmsAuthService.getRedirectUrl();
-                                        GmsAuthService.setRedirectUrlNull();
+                                        $window.location.href = AppAuthService.getRedirectUrl();
+                                        AppAuthService.setRedirectUrlNull();
                                     }
                                 }
                             }, function () {

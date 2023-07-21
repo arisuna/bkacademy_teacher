@@ -1,0 +1,174 @@
+<div ng-controller="DashboardWorkerActivitiesController">
+    <div class="panel" ng-repeat="worker in workers">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-1">
+                    <a type="button" ng-click="isCollapsed = !isCollapsed" class="text-dark">
+                        <user-avatar-thumb uuid="worker.uuid"></user-avatar-thumb>
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    <a type="button" ng-click="isCollapsed = !isCollapsed" class="text-dark">
+                        <h4 class="panel-title">{{ worker.firstname }} {{ worker.lastname }}</h4>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a type="button" ng-click="active = 0; isCollapsed = true" class="text-dark">
+                        <h4 class="panel-title">
+                            <label class="label relo-bg-bright-blue custom-size mr-sm">
+                                {{ worker.assignments_count >= 99 ? '99+': worker.assignments_count }}
+                            </label>
+                            {{ 'ONGOING_ASSIGNMENT_TEXT' | translate }}
+                        </h4>
+                    </a>
+                </div>
+
+                <div class="col-md-3">
+                    <a type="button" ng-click="active = 1; isCollapsed = true" class="text-dark">
+                        <h4 class="panel-title">
+                            <label class="label relo-bg-green custom-size mr-sm">
+                                {{ worker.relocations_count >= 99 ? '99+': worker.relocations_count }}
+                            </label>
+                            {{ 'ONGOING_RELOCATION_TEXT' | translate }}
+                        </h4>
+                    </a>
+                </div>
+
+                <div class="col-md-3">
+                    <a type="button" ng-click="active = 2; isCollapsed = true" class="text-dark">
+                        <h4 class="panel-title">
+                            <label class="label label-primary custom-size mr-sm">
+                                {{ worker.tasks_count >= 99 ? '99+' : worker.tasks_count }}
+                            </label>
+                            {{ 'ONGOING_TASK_TEXT' | translate }}
+                        </h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-collapse" uib-collapse="!isCollapsed">
+            <div class="panel-body">
+                <uib-tabset active="active" class="tab-no-header">
+                    <uib-tab index="0">
+                        <h4 class="mt0 mb-lg">{{ 'ONGOING_ASSIGNMENT_TEXT' | translate }}</h4>
+                        <div class="custom-datatable no-filter-page switch-search-filter table-responsive">
+                            <table class="row-border hover" datatable="ng" dt-options="{pageLength:10}">
+                                <thead>
+                                <tr>
+                                    <th>{{ 'ASSIGNMENT_TEXT' | translate }}</th>
+                                    <th>{{ 'COMPANY_NAME_TEXT' | translate }}</th>
+                                    <th>{{ 'CANDIDATE_TEXT' | translate }}</th>
+                                    <th>{{ 'WORKER_STATUS_TEXT' | translate }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="assignment in worker.assignments">
+                                    <td>
+                                        <a ui-sref="app.assignment.dashboard({uuid : assignment.uuid})">{{
+                                            assignment.name
+                                            }}</a>
+                                    </td>
+                                    <td>{{ assignment.company_name }}</td>
+                                    <td>
+                                        <employee-avatar-thumb uuid="assignment.employee_uuid"
+                                                               class="mr-sm"
+                                                               size="small"></employee-avatar-thumb>
+                                        {{ assignment.employee_name | acronym }}
+                                    </td>
+                                    <td>{{ (assignment.worker_status_label + '_TEXT') | translate }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </uib-tab>
+                    <uib-tab index="1">
+                        <h4 class="mt0 mb-lg">{{ 'ONGOING_RELOCATION_TEXT' | translate }}</h4>
+                        <div class="custom-datatable no-filter-page switch-search-filter table-responsive">
+                            <table class="row-border hover" datatable="ng" dt-options="{pageLength:10}">
+                                <thead>
+                                <th>{{ 'RELOCATION_ID_TEXT' | translate }}</th>
+                                <th>{{ 'EMPLOYEE_TEXT' | translate }}</th>
+                                <th>{{ 'COUNTRY_TEXT' | translate }}</th>
+                                <th>{{ 'WORKER_STATUS_TEXT' | translate }}</th>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="relocation in worker.relocations">
+                                    <td>
+                                        <a ui-sref="app.relocation.dashboard({uuid : relocation.uuid })">
+                                            {{ relocation.number }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <employee-avatar-thumb uuid="relocation.employee_uuid"
+                                                               class="mr-sm"
+                                                               size="small"></employee-avatar-thumb>
+                                        {{ relocation.employee_name }}
+                                    </td>
+                                    <td>{{ relocation.destination_country }}</td>
+                                    <td>{{ (relocation.worker_status_label + '_TEXT') | translate }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </uib-tab>
+                    <uib-tab index="2">
+                        <h4 class="mt0 mb-lg">{{ 'ACTIVE_TASKS_TEXT' | translate }}</h4>
+                        <div class="custom-datatable no-filter-page switch-search-filter table-responsive">
+                            <table class="row-border hover" datatable="ng" dt-options="{pageLength:10}">
+                                <thead>
+                                <tr>
+                                    <th>{{ 'TASK_TEXT' | translate }}</th>
+                                    <th>{{ 'STATUS_TEXT' | translate }}</th>
+                                    <th>{{ 'DUE_DATE_TEXT' | translate }}</th>
+                                    <th>{{ 'OWNER_TEXT' | translate }}</th>
+                                    <th>{{ 'LINKED_TO_TEXT' | translate }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="task in worker.tasks">
+                                    <td>
+                                        <a ui-sref="{{ task.state }}">{{ task.number }} - {{ task.name }}</a>
+                                    </td>
+                                    <td>
+                                        <span ng-switch="task.progress" ng-if="task.status != -1">
+                                            <div ng-switch-when="0" class="label relo-bg-yellow custom-size">{{ 'TODO_STATUS_TEXT'
+                                                | translate }}
+                                            </div>
+                                            <div ng-switch-when="1" class="label relo-bg-bright-blue custom-size">{{
+                                                'IN_PROGRESS_TEXT' | translate }}
+                                            </div>
+                                            <div ng-switch-when="3" class="label relo-bg-green custom-size">{{ 'DONE_TEXT'
+                                                | translate }}
+                                            </div>
+                                            <div ng-switch-default class="label relo-bg-yellow custom-size">{{ 'NOT_STARTED_TEXT'
+                                                | translate }}
+                                            </div>
+                                        </span>
+                                        <span ng-if="task.status == -1" class="label relo-bg-red custom-size">{{ 'ARCHIVED_TEXT'
+                                        | translate }}</span>
+                                    </td>
+                                    <td><span
+                                        ng-if="task.due_at">{{ task.due_at | timestamp | date : 'dd/MM/yyyy' }}</span>
+                                    </td>
+                                    <td>{{ task.owner_name }}</td>
+                                    <td>
+                                        <employee-avatar-thumb uuid="task.employee_uuid"
+                                                               class="mr-sm"
+                                                               size="small"></employee-avatar-thumb>
+                                        {{ task.employee_name | acronym }}
+
+                                        <a ng-if="task.linked_activity != undefined"
+                                           ui-sref="{{ task.linked_activity.state }}">{{ task.linked_activity.number
+                                            }}</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+        </div>
+    </div>
+</div>

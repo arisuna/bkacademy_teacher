@@ -1,0 +1,7 @@
+<div class="label custom-size" ng-class="{'label-danger': isExpired == true || (isExpired == false && longdays < 100),
+                                          'label-warning': (isExpired == false && longdays > 100 && longdays < 200),
+                                          'label-success': (isExpired == false || longdays >= 200) }">
+    <span ng-if="isExpired">{{ 'EXPIRED_TEXT'| translate }}</span>
+    <span ng-if="moreYears">{{output}} {{ 'AND_MORE_TEXT' | translate }}</span>
+    <span ng-if="!moreYears">{{output}}</span>
+</div>

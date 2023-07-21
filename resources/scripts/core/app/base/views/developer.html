@@ -1,0 +1,136 @@
+<div ng-controller="DeveloperController" class="container-fluid">
+
+
+
+
+    <div class="mt"></div>
+    <gms-employee-filter-full
+        name="ASSIGNEE_TEXT"
+        companies="object.selected_companies"
+        model="object.selected_assignees"
+        has-avatar="true"
+        type="R"
+        class="medium"
+        auto-search="true"
+        float="true"
+        dropdown-size="medium"
+        inline-list="true"></gms-employee-filter-full>
+
+
+    <gms-country-filter
+        name="ORIGIN_TEXT"
+        model="object.selected_countries_origin"></gms-country-filter>
+
+
+    <gms-property-selector
+        ng-model="object.property_id"
+        label="PROPERTY_TEXT"
+        show-label="true"
+        is-required="false"></gms-property-selector>
+
+
+    <gms-attribute-selector
+        attribute-name="PROPERTY_TYPE"
+        is-required="false"
+        show-label="true"
+        ng-model="object.property_type"
+        required-message="PROPERTY_TYPE_REQUIRED_TEXT"
+        label="PROPERTY_TYPE_TEXT"></gms-attribute-selector>
+
+
+    <gms-service-provider-single-selector
+        provider-type-name="landlord"
+        label="LANDLORD_TEXT"
+        show-label="true"
+        is-editable="true"
+        ng-model="object.landlord_svp_id"></gms-service-provider-single-selector>
+
+
+    <gms-service-provider-single-selector
+        provider-type-name="agent"
+        label="AGENT_TEXT"
+        show-label="true"
+        is-editable="true"
+        ng-model="object.agent_svp_id"></gms-service-provider-single-selector>
+
+</div>
+<style>
+    .arrow-steps .step {
+        font-size: 14px;
+        text-align: center;
+        color: #666;
+        cursor: default;
+        margin: 0 3px;
+        padding: 10px 10px 10px 30px;
+        min-width: 180px;
+        float: left;
+        position: relative;
+        background-color: #d9e3f7;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        transition: background-color 0.2s ease;
+        height: 44px;
+    }
+
+    .arrow-steps .step:after,
+    .arrow-steps .step:before {
+        content: " ";
+        position: absolute;
+        top: 0;
+        right: -17px;
+        width: 0;
+        height: 0;
+        border-top: 23px solid transparent;
+        border-bottom: 21px solid transparent;
+        border-left: 17px solid #d9e3f7;
+        z-index: 2;
+        transition: border-color 0.2s ease;
+    }
+
+    .arrow-steps .step:before {
+        right: auto;
+        left: 0;
+        border-left: 17px solid #fff;
+        z-index: 0;
+    }
+
+    .arrow-steps .step:first-child:before {
+        border: none;
+    }
+
+    .arrow-steps .step:first-child {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+
+    .arrow-steps .step span {
+        position: relative;
+    }
+
+    .arrow-steps .step span:before {
+        opacity: 0;
+        content: "✔";
+        position: absolute;
+        top: -2px;
+        left: -20px;
+    }
+
+    .arrow-steps .step.done span:before {
+        opacity: 1;
+        -webkit-transition: opacity 0.3s ease 0.5s;
+        -moz-transition: opacity 0.3s ease 0.5s;
+        -ms-transition: opacity 0.3s ease 0.5s;
+        transition: opacity 0.3s ease 0.5s;
+    }
+
+    .arrow-steps .step.current {
+        color: #fff;
+        background-color: #23468c;
+    }
+
+    .arrow-steps .step.current:after {
+        border-left: 17px solid #23468c;
+    }
+</style>

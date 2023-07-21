@@ -1,0 +1,54 @@
+<div class="">
+
+    <div ng-if="isEditable == true" class="mda-form">
+        <label class="text-gray">{{ label | translate }} <span class="text-red" ng-if="required">*</span></label>
+        <input type="email"
+               lower-case=""
+               class="mda-form-control"
+               ng-required="required"
+               ng-model="$parent.model"
+               ng-change="changeValue()">
+    </div>
+
+    <div ng-if="isEditable == false" class="form-group">
+        <label class="text-gray">{{ label | translate }} <span class="text-red" ng-if="required">*</span></label>
+
+        <div ng-if="isEmail == true">
+            <email-viewer ng-model="model"></email-viewer>
+        </div>
+
+        <div ng-if="isTelephone == true">
+            <telephone-viewer ng-model="model"></telephone-viewer>
+        </div>
+
+        <div ng-if="isMobile == true">
+            <mobile-viewer ng-model="model"></mobile-viewer>
+        </div>
+
+        <div ng-if="isCountry == true">
+            <country-viewer country-id="model"></country-viewer>
+        </div>
+
+        <div ng-if="isCity == true">
+            <city-viewer ng-model="model"></city-viewer>
+        </div>
+
+        <div ng-if="isFax == true">
+            <fax-viewer ng-model="model"></fax-viewer>
+        </div>
+
+        <div ng-if="isWebsite == true">
+            <website-viewer ng-model="model"></website-viewer>
+        </div>
+
+        <div
+            ng-if="isText == true || (!isWebsite && !isCountry && !isCity && !isMobile && !isTelephone && !isFax && !isEmail)">
+            <div class="text-static" ng-show="model != ''">
+                {{ model }}
+            </div>
+            <div class="text-static" ng-show="model == '' || model == null || model == undefined">
+                <info-viewer ng-model="model"></info-viewer>
+            </div>
+        </div>
+    </div>
+</div>

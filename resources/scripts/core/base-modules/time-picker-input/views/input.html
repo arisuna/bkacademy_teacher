@@ -1,0 +1,23 @@
+<div class="mda-form-group">
+    <div class="btn-group" uib-dropdown uib-dropdown auto-close="outsideClick">
+        <button id="time-picker-button" type="button" class="btn btn-flat btn-default text-bright-blue time-picker-button"
+                uib-dropdown-toggle>
+            {{ displayTime ? displayTime : ('TIME_TEXT' | translate ) }} <em class="fa fa-clock-o"></em>
+        </button>
+
+        <ul uib-dropdown-menu class="dropdown-menu" aria-labelledby="time-picker-button" role="menu">
+            <li>
+                <div uib-timepicker
+                     arrowkeys="true"
+                     mousewheel="false"
+                     ng-model="dt"
+                     name="{{ options.name }}"
+                     ng-change="timepick.changed()"
+                     hour-step="timepick.hstep"
+                     minute-step="timepick.mstep"
+                     show-meridian="timepick.ismeridian"
+                     show-spinners="true"></div>
+            </li>
+        </ul>
+    </div>
+</div>

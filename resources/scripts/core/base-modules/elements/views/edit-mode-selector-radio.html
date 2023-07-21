@@ -1,0 +1,11 @@
+<div class="relo-bg-white edit-radio-mode"
+     ng-style="{'height':'34px','display':'inline-flex'}">
+    <span class="text-bold mr-sm flex-middle"
+          ng-class="{'text-blue':isEditSelector == true, 'text-muted': isEditSelector == false}">
+        {{ 'EDIT_TEXT' | translate }}
+    </span>
+    <label class="switch">
+        <input type="checkbox" ng-model="isEditSelector">
+        <span></span>
+    </label>
+</div>

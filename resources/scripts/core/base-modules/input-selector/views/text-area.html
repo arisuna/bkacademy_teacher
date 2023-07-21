@@ -1,0 +1,32 @@
+<div class="form-group">
+    <div ng-if="isEditable == true">
+        <div>
+            <label ng-show="showLabel" class="label-text-form pull-left">{{ label | translate }} <span class="text-red" ng-if="isRequired">*</span></label>
+
+            <tooltip ng-show="showLabel && toolTipText != '' && toolTipText != undefined" text="{{ toolTipText }}"
+                     class="pull-left ml-sm"></tooltip>
+            <div class="clearfix"></div>
+        </div>
+
+        <textarea type="text" class="form-control form-control-custom-radius relo-bg-bright-blue-10"
+                  ng-required="isRequired"
+                  placeholder="{{placeholder ? (placeholder | translate) : ''}}"
+                  rows="{{rows}}"
+                  ng-model="$parent.model"
+                  ng-change="changeValue()"></textarea>
+    </div>
+
+    <div ng-if="isEditable == false">
+        <div>
+            <label ng-show="showLabel" class="label-text-form pull-left">{{ label | translate }} <span class="text-red" ng-if="isRequired">*</span></label>
+
+            <tooltip ng-show="showLabel && toolTipText != '' && toolTipText != undefined" text="{{ toolTipText }}"
+                     class="pull-left ml-sm"></tooltip>
+            <div class="clearfix"></div>
+        </div>
+        <div class="text-static bd-radius-3x pd-1x relo-bd-gray bd-1x"
+             ng-style="{'min-height' :'120px', 'width': '100%'}">
+            {{ $parent.model != '' && model != null && $parent.model != undefined ? $parent.model : ('EMPTY_TEXT' | translate )}}
+        </div>
+    </div>
+</div>

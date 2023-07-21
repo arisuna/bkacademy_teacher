@@ -1,0 +1,6 @@
+<div class="label label-outline custom-size"
+     ng-class="{'label-warning':longdays >= 0 && longdays <= 15 && isExpired == false , 'label-primary' : longdays > 15 && isExpired == false, 'label-danger' : isExpired == true }"
+     ng-show="from > 0">
+    <span ng-if="longdays == 0">{{ 'TODAY_TEXT'| translate }}</span>
+    <span ng-if="longdays > 0">{{ from * 1000 | amUtc | amLocal | companyDateFormat }}</span>
+</div>

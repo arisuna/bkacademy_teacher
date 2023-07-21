@@ -1,0 +1,29 @@
+<div class="form-group">
+    <div class="checkbox c-checkbox checkbox-flag" ng-if="!isBool">
+        <input class="needsclick"
+               type="checkbox"
+               ng-true-value="1"
+               ng-false-value="0"
+               string-to-number=""
+               ng-disabled="disabled"
+               ng-model="$parent.model"
+               id="{{realName}}"
+               name="{{realName}}">
+        <label class="needsclick" for="{{realName}}" tooltip-placement="left" uib-tooltip="{{'FLAG_BTN_TEXT' | translate}}">
+        </label>
+        <b class="text-muted" ng-if="label != ''">{{ label | translate }}<b>
+    </div>
+
+    <div  class="checkbox c-checkbox checkbox-flag" ng-if="isBool">
+        <input class="needsclick"
+               type="checkbox"
+               ng-disabled="disabled"
+               ng-model="$parent.model"
+               id="{{realName}}"
+               name="{{realName}}">
+        <label class="" for="{{realName}}" tooltip-placement="left" uib-tooltip="{{'FLAG_BTN_TEXT' | translate}}">
+
+        </label>
+        <b class="text-muted" ng-if="label != ''">{{ label | translate }}</b>
+    </div>
+</div>

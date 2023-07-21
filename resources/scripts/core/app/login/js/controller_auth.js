@@ -2,9 +2,9 @@
     'use strict';
 
     App.controller('LoginFormController', ['$timeout', '$scope', '$location', '$http', '$state', '$window', '$translate', '$rootScope', '$stateParams',
-        '$translatePartialLoader', 'WaitingService', 'GmsDataService', 'GmsAuthService', 'account', 'Utils',
+        '$translatePartialLoader', 'WaitingService', 'AppDataService', 'AppAuthService', 'account', 'Utils',
         function ($timeout, $scope, $location, $http, $state, $window, $translate, $rootScope, $stateParams,
-                  $translatePartialLoader, WaitingService, GmsDataService, GmsAuthService, account, Utils) {
+                  $translatePartialLoader, WaitingService, AppDataService, AppAuthService, account, Utils) {
 
             Utils.alertScam();
             //detected IE browser
@@ -24,14 +24,14 @@
 
             $scope.theme = {
                 main_color: '#0A142B',
-                logo_login_url: '/app/assets/img/logo-login.png',
+                logo_login_url: '/gms/assets/img/logo-login.png',
                 secondary_color: '#0098FF'
             };
 
             $scope.sub_domain = $location.$$host.split(".relotalent.com")[0];
             console.log($scope.sub_domain);
             WaitingService.begin();
-            GmsDataService.getCompanyBuSubDomain($scope.sub_domain).then(function (res) {
+            AppDataService.getCompanyBuSubDomain($scope.sub_domain).then(function (res) {
                 if(res.success){
                     $scope.company = res.data;
                     if(angular.isDefined($scope.company.theme) && angular.isDefined($scope.company.theme.id)) {
@@ -54,7 +54,7 @@
             if (angular.isDefined($stateParams.hash)) {
                 console.log($stateParams.hash);
                 WaitingService.begin();
-                GmsDataService.autoLoginFn({
+                AppDataService.autoLoginFn({
                     'hash': $stateParams.hash
                 }).then(function (res) {
                     console.log(res);
@@ -63,9 +63,9 @@
                         localStorage.setItem('token_key', res.accessToken);
                         localStorage.setItem('refresh_token', res.refreshToken);
                         $rootScope._token = res.token;
-                        GmsAuthService.setRedirectUrlNull();
+                        AppAuthService.setRedirectUrlNull();
                         $timeout(function () {
-                            GmsAuthService.checkTotal().then(function () {
+                            AppAuthService.checkTotal().then(function () {
                                 WaitingService.end();
                                 console.log('redirect to home by change state');
                                 $state.go('app.dashboard');
@@ -87,11 +87,11 @@
 
                 WaitingService.begin();
 
-                GmsAuthService.resetConnection(); //should reset connection
+                AppAuthService.resetConnection(); //should reset connection
 
                 $event.preventDefault();
 
-                GmsDataService.loginFn({
+                AppDataService.loginFn({
                     'credential': $scope.account.email,
                     'password': $scope.account.password
                 }).then(function (res) {
@@ -108,21 +108,21 @@
                         $window.location.href = res.redirectUrl;
 
                         // $timeout(function () {
-                        //     GmsAuthService.checkTotal().then(function () {
+                        //     AppAuthService.checkTotal().then(function () {
                         //         WaitingService.end();
-                        //         if (GmsAuthService.getSubscription().status == -1) {
+                        //         if (AppAuthService.getSubscription().status == -1) {
                         //             $state.go('app.error-payment-required');
-                        //         } else if (GmsAuthService.getSubscription().status == 0) {
+                        //         } else if (AppAuthService.getSubscription().status == 0) {
                         //             $state.go('app.error-subscription-paused');
                         //         } else {
-                        //             if (!angular.isDefined(GmsAuthService.getRedirectUrl()) || GmsAuthService.getRedirectUrl() == '' || GmsAuthService.getRedirectUrl() == null) {
+                        //             if (!angular.isDefined(AppAuthService.getRedirectUrl()) || AppAuthService.getRedirectUrl() == '' || AppAuthService.getRedirectUrl() == null) {
                         //                 console.log('redirect to home by change state');
                         //                 $state.go('app.dashboard');
                         //             } else {
-                        //                 console.log(GmsAuthService.getRedirectUrl());
+                        //                 console.log(AppAuthService.getRedirectUrl());
                         //                 console.log('redirect to redirect url by change state');
-                        //                 $window.location.href = GmsAuthService.getRedirectUrl();
-                        //                 GmsAuthService.setRedirectUrlNull();
+                        //                 $window.location.href = AppAuthService.getRedirectUrl();
+                        //                 AppAuthService.setRedirectUrlNull();
                         //             }
                         //         }
                         //     }, function () {
@@ -164,7 +164,7 @@
                 localStorage.removeItem('token_key');
                 localStorage.removeItem('refresh_token');
 
-                GmsDataService.verfifyAccountEmail($scope.account.email).then(function (result) {
+                AppDataService.verfifyAccountEmail($scope.account.email).then(function (result) {
                     $timeout(function () {
                         $scope.isVerify = false;
                     }, 1000);
@@ -184,7 +184,7 @@
             $scope.verifyCodeFn = function () {
                 console.log("verify");
                 WaitingService.begin();
-                GmsDataService.verifyCodeFn($scope.account).then(function (res) {
+                AppDataService.verifyCodeFn($scope.account).then(function (res) {
                     WaitingService.end();
 
                     if (res.success) {
@@ -201,7 +201,7 @@
 
             $scope.resendCodeFn = function () {
                 WaitingService.begin();
-                GmsDataService.resendCodeFn($scope.account).then(function (result) {
+                AppDataService.resendCodeFn($scope.account).then(function (result) {
                     WaitingService.end();
 
                     if (result.success == true) {
@@ -214,7 +214,7 @@
 
             $scope.changeSecurityFn = function () {
                 WaitingService.begin();
-                GmsDataService.changeSecurityFn($scope.account).then(function (res) {
+                AppDataService.changeSecurityFn($scope.account).then(function (res) {
                     WaitingService.end();
                     if (res.success) {
                         if (angular.isDefined(res.verificationCodeRequired) && res.verificationCodeRequired == true) {

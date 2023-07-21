@@ -1,0 +1,87 @@
+<a uib-dropdown-toggle="" ng-click="openNotificiation()">
+    <em class="fa fa-inbox"></em>
+    <em class="label label-info" ng-if="count >= 10">9+</em>
+    <em class="label label-info" ng-if="count < 10 && count > 0" ng-bind="count"></em>
+    <span class="" ng-if="!app.layout.isCollapsedNav">{{'NOTIFICATION_TEXT' | translate}}</span>
+</a>
+<!-- START Dropdown menu-->
+<ul uib-dropdown-menu class="dropdown-menu animated fadeInLeftBig system-notification">
+    <li>
+        <!-- START list group-->
+        <!--<spinner ng-show="loading" name="mySpinner"></spinner>-->
+        <line-loading-spinner options="l1" lines="5" ng-show="loading"></line-loading-spinner>
+        <div class="list-group" style="overflow: hidden;">
+            <div ng-show="!loading && !showDetail" class="notice-list">
+                <!-- list item-->
+                <a class="list-group-item" ng-repeat="item in notifications" ng-click="openDetail(item)"
+                   ng-if="item.content != '_TEXT'">
+                    <div class="media-box">
+                        <div class="pull-left">
+                            <em class="fa fa-comment text-bright-blue"></em>
+                        </div>
+                        <div class="media-box-body clearfix">
+                            <div class="row">
+                                <div class="col-xs-8">{{ item.content | translate | notify_message :{ params: item.params
+                                        ,message:{ user_name : item.user_name, time: item.created_at }, object: item.object } }}
+                                </div>
+                                <div class="col-xs-4 text-muted text-right">
+                                    <small>{{ item.date | amUtc | amLocal | amDateFormat:'dd, DD.MM.YYYY' }}</small>
+                                    <em class="fa fa-chevron-right"></em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <!-- last list item-->
+                <a class="list-group-item text-center" ng-show="current < totalPages" ng-click="loadNotifications()">
+                    <small>{{ 'MORE_NOTIFICATIONS_TEXT' | translate }}</small>
+                    <span class="label label-info" ng-if="count >= 10">9+</span>
+                    <span class="label label-info" ng-if="count < 10 && count > 0">{{ count }}</span>
+                </a>
+            </div>
+            <div ng-show="!loading && showDetail" class="notice-list">
+                <div class="">
+                    <div class="panel-heading">
+                        <div class="panel-title text-14" ng-click="returnNotifications()"><em
+                            class="fa fa-chevron-left"></em> Back to notifications
+                        </div>
+                    </div>
+                    <div style="position: relative; overflow: hidden; width: auto; height: auto;">
+                        <div class="list-group-item">
+                            <div class="media-box">
+                                <div class="clearfix">
+                                    <a ng-if="object.object.frontend_state"
+                                       ui-sref="{{ object.object.frontend_state }}"><strong
+                                        class="media-box-heading text-primary  text-16">{{object.object.number}}</strong></a>
+                                    <p>
+                                        <strong class="media-box-heading text-muted" ng-if="object.object.type=='T'">{{object.params.task_name}}</strong>
+                                        <strong class="media-box-heading text-muted" ng-if="object.object.type=='A'">{{object.params.assignee_name
+                                            }} - {{object.params.name}}</strong>
+                                    </p>
+                                    <p>
+                                        <small>{{ object.content | translate | notify_message :{ params: object.params
+                                            ,message:{ user_name : object.user_name, time: object.created_at }, object: object.object } }}
+                                        </small>
+                                    </p>
+                                    <p class="mb-sm text-muted">
+                                        <small><i>{{ item.date | amUtc | amLocal | amDateFormat:'dddd, DD.MM.YYYY'
+                                            }}</i></small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- END list group-->
+    </li>
+</ul>
+
+<script type="text/ng-template" id="reminderBodyTpl.html">
+    <button class="btn btn-oval btn-sm btn-link text-white">Snooze</button>
+    <button class="btn btn-oval btn-sm btn-link text-white" ng-click="dissmissReminder(toaster.data)">Dissmiss</button>
+</script>
+<!-- END Dropdown menu-->

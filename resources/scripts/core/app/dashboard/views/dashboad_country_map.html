@@ -1,0 +1,41 @@
+<div ng-show="isAdminOrManager" class="card-body" ng-if="AppAclService.validateAction('dashboard','index')">
+    <div class="panel panel-default white-block gms-team-activities bd-top-width-1px">
+        <div class="panel-heading">
+
+            <div class="row">
+                <div class="col-sm-6 cursor-pointer"
+                     ng-class="{'border-bottom-red-2x': showCoMap,'border-bottom-transparent-2x': !showCoMap}"
+                     ng-click="showOriginCountriesMap()">
+                    <div class="flex" ng-style="{ 'height': headerHeight + 'px' }">
+                        <span class="inline-flex mt-sm mb-sm">
+                            <h4 class="mg-0 txt-bold inline-block">{{ 'RELOCATION_ORIGINS_TEXT' | translate }}</h4>
+                            <tooltip class="ml-sm" text="{{'DSP_RELO_ORIGIN_MAP_TOOLTIP_TEXT' | translate}}"></tooltip>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-6 cursor-pointer"
+                     ng-class="{'border-bottom-red-2x': !showCoMap,'border-bottom-transparent-2x': showCoMap}"
+                     ng-click="showDestinationCountriesMap()">
+                    <div class="flex" ng-style="{ 'height': headerHeight + 'px' }">
+                        <span class="inline-flex mt-sm  mb-sm">
+                            <h4 class="mg-0 txt-bold inline-block">{{ 'RELOCATION_DESTINATIONS_TEXT' | translate }}</h4>
+                            <tooltip class="ml-sm" text="{{'DSP_RELO_DESTINATION_MAP_TOOLTIP_TEXT' | translate}}"></tooltip>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="panel-body">
+            <countries-map height="450"
+                           header-height="30"
+                           mode="origin"
+                           ng-if="showCoMap"
+                           module-name="basic"></countries-map>
+            <countries-map height="450" header-height="30"
+                           mode="destination"
+                           ng-if="!showCoMap"
+                           module-name="basic"></countries-map>
+        </div>
+    </div>
+</div>

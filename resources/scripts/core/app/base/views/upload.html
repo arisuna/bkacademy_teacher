@@ -1,0 +1,62 @@
+<div ng-controller="DeveloperController">
+
+    <div class="mda-form-group float-label">
+        <textarea class="mda-form-control" rows="5" ng-model="textArea"
+                  mentio=""
+                  mentio-id="'theTextArea'"
+                  mentio-macros="macros"
+                  mentio-trigger-char="'@'"
+                  mentio-items="people"
+                  mentio-search="searchPeople(term)"
+                  mentio-select="getPeopleTextRaw(item)"
+                  mentio-type-term="typeTerm"
+                  mentio-template-url="people-mentions.tpl"
+                  ng-trim="false"
+        ></textarea>
+        <label>Test User Tagging</label>
+    </div>
+
+    <script type="text/ng-template" id="people-mentions.tpl">
+        <ul class="list-group user-tagging">
+            <li mentio-menu-item="person" ng-repeat="person in items" class="list-group-item">
+                <img ng-src="{{ person.imageUrl }}" class="user-photo"/>
+                <span class="text-primary"
+                      ng-bind-html="person.name | mentioHighlight:typedTerm:'menu-highlighted' | unsafe"></span>
+                <em class="text-muted" ng-bind="person.email"></em>
+            </li>
+        </ul>
+    </script>
+
+    <a href="#" uib-tooltip-template="'UserBox.tpl'" tooltip-placement="bottom-left" tooltip-class="user-tooltip">Full
+        name</a>
+
+    <script type="text/ng-template" id="UserBox.tpl">
+        <div class="tooltip-custom">
+            <img ng-src="/gms/assets/img/user/02.jpg" class="user-photo">
+            <p class="user-name text-primary">
+                Full name
+                <span class="user-email">full-name@gmail.com</span>
+            </p>
+        </div>
+    </script>
+
+    <div class="clearfix"></div>
+    <hr/>
+
+    <button class="btn btn-oval relo-bg-green" media-view="">
+        Test View Full Screen
+    </button>
+    <button class="btn btn-oval relo-bg-green"
+            ng-click="toaster('success','Testing','Test link and text: <a href=\'google.com\'>Google</a>')">
+        Show notification</button>
+
+    <button class="btn btn-oval btn-danger"
+            ng-click="toaster('error','Testing','Test link and text: <a href=\'google.com\'>Google</a>')">
+        Show Reminder</button>
+
+    <h2>OK</h2>
+    <a href="#" class="btn btn-oval  btn-sm btn-default">UPLOAD FILE</a>
+
+    <i class="fa fa-circle-info" style="font-size:16px;" aria-hidden="true" uib-tooltip-placement="bottom" uib-tooltip="{{ 'RELOCATION_TEXT' | translate }}"> </i>
+
+</div>

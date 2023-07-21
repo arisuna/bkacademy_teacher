@@ -1,0 +1,70 @@
+<div>
+    <div class="row">
+        <div class="form-inline col-md-6" ng-show="searchInputEnable == true">
+            <div class="form-group">
+                <div class="input-group search">
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Search"
+                           ng-style="{'border-radius':'3px'}"
+                           ng-model="filterText" aria-invalid="false">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default btn-flat" type="button"
+                            ng-click="search()">
+                        <em class="fa fa-search text-bright-blue"></em>
+                    </button>
+                 </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-inline col-md-6 text-right" ng-show="addButtonEnable==true">
+            <button class="btn btn-oval relo-bg-bright-blue" ng-click="addItem()">
+                <em class="fa fa-plus mr-sm"></em>
+                {{'CREATE_BTN_TEXT' | translate}}
+            </button>
+        </div>
+    </div>
+
+    <ng-transclude></ng-transclude>
+
+    <div ng-show="totalItems == 0 && isLoading == false">
+        <table-no-data message="{{'NO_DATA_AVAILABLE_TEXT' | translate }}"></table-no-data>
+    </div>
+
+    <div class="row" ng-show="totalItems > 0 && paginationEnable">
+
+
+        <div class="col-md-3 hidden-xs hidden-sm hidden-md">
+            <div class="pagination">
+                <div class="mt text-muted">{{ 'TOTAL_TEXT' | translate }} : {{totalItems}} Items</div>
+            </div>
+        </div>
+
+
+        <div class="col-md-9 hidden-xs hidden-sm hidden-md text-right">
+            <ul uib-pagination
+                total-items="totalItems"
+                ng-model="currentPage"
+                items-per-page="itemsPerPage"
+                max-size="6" boundary-links="true" boundary-link-numbers="true"
+                previous-text="&lsaquo;"
+                class="pagination"
+                next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" rotate="false"
+                ng-change="setPage( currentPage )"></ul>
+        </div>
+
+
+        <div class="col-sm-12 col-xs-12 hidden-lg hidden-xl text-center">
+            <ul uib-pagination total-items="totalItems"
+                ng-model="currentPage"
+                items-per-page="itemsPerPage"
+                max-size="6" class="pagination" boundary-links="true" boundary-link-numbers="true"
+                previous-text="&lsaquo;"
+                next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" rotate="false"
+                ng-change="setPage( currentPage )"></ul>
+        </div>
+        <div class="col-sm-12 col-xs-12 hidden-lg hidden-xl text-center">
+            <div class="mt text-muted">Total : {{totalItems}} Items</div>
+        </div>
+    </div>
+</div>

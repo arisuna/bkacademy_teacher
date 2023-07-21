@@ -1,0 +1,26 @@
+<ul class="breadcrumb txt-ellipsis">
+    <li ng-repeat="item in $root.breadcrumbs"
+        ng-if="$root.breadcrumbs"
+        class="{{ item.active ? 'active' : '' }}">
+
+        <a ng-if="$first && !$last" ng-click="goToState(item)" class="">
+            <span class="text-13">{{ item.value | translate }}</span>
+        </a>
+
+        <a ng-if="!$last && !$first && !!!item.isNotLast" ng-click="goToState(item)" class="ml">
+            <span class="text-13">{{ item.value | translate }}</span>
+        </a>
+
+        <span ng-if="$last && $first && !!!item.isNotLast" class="text-dark-blue font-500 text-13">
+            {{ item.value | translate }}
+        </span>
+
+        <span ng-if="$last && !$first && !!!item.isNotLast" class="ml text-dark-blue font-500 text-13">
+            {{ item.value | translate }}
+        </span>
+
+        <a ng-if="!!item.isNotLast" ng-click="goToState(item)" class="ml">
+            <span class="text-13">{{ item.value | translate }}</span>
+        </a>
+    </li>
+</ul>

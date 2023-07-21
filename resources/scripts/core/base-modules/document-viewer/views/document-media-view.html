@@ -1,0 +1,124 @@
+<div class="view-container text-dark-blue" id="ViewFullMedia">
+    <div class="flex relo-bg-bright-gray pd-10">
+        <div class="flex-middle flex-1">
+            <div class="text-dark-blue flex mg-l-15">
+                <div class="flex-middle mg-r-10">
+                    <em class="fa fa-picture-o txt-32"></em>
+                </div>
+                <div class="flex-middle">
+                    <span> {{ items[index].name }}.{{ items[index].file_extension }}</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="flex-vertical text-dark-blue">
+            <a class="text-dark-blue mg-r-20"
+               tooltip-placement="bottom"
+               uib-tooltip="{{'DOWNLOAD_BTN_TEXT' | translate}}" ng-click="gotoPage( items[index].image_data.url_download )"><em
+                class="fa fa-download text-dark-blue txt-24"></em></a>
+            <a  class="text-dark-blue" ng-if="false"><em class="fa fa-print text-dark-blue txt-24"></em></a>
+            <a  class="text-dark-blue mg-r-15"
+                uib-tooltip="{{'CLOSE_BTN_TEXT' | translate}}"
+                tooltip-placement="bottom"
+                ng-click="closeThisDialog()"><em class="fa fa-close text-dark-blue txt-24"></em>
+            </a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="file-body">
+            <div class="viewer-layer">
+                <div class="image-preview">
+                    <div class="image-container " ng-show="loading_view">
+                        <spinner-v2 type="spin"></spinner-v2>
+                    </div>
+
+                    <div class="image-container picture__show"
+                         ng-show="!loading_view"
+                         ng-if="items[index].file_type == 'image'">
+                        <img ng-src="{{ items[index].image_data.url_download }}" width="{{ zoom }}%"/>
+                    </div>
+
+                    <div class="image-container picture__show"
+                         ng-if="items[index].file_type == 'document'"
+                         ng-switch="items[index].file_extension"
+                         ng-show="!loading_view">
+
+                        <ng-pdf ng-switch-when="pdf"
+                                url="{{ items[index].image_data.url_download }}"
+                                template-url="/gms/assets/views/base-modules/document-viewer/pdf-viewer.html"></ng-pdf>
+
+                        <div ng-switch-default="" class="file-type-not-support relo-bg-bright-gray picture__show text-center pd-2x">
+                            <em class="fa fa-eye-slash text-dark-blue mg-b-3x" ng-style="{'font-size':'96px'}"></em>
+                            <div class="text-dark-blue mg-b-3x">{{ 'FILE_TYPE_NOT_SUPPORT_TEXT' | translate }}</div>
+                            <a href="{{ items[index].image_data.url_download }}" target="_blank"
+                               class="btn relo-bg-dark-blue text-white mg-b-10 bd-radius-5px">
+                                <em class="fa fa-download text-white mr-sm"></em>
+                                <span class="text-white">{{'DOWNLOAD_BTN_TEXT'|translate}}</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="image-container"
+                         ng-show="!loading_view"
+                         ng-if="items[index].file_type == 'audio' || getFileType(items[index].file_extension) == 'audio'">
+
+                        <audio ng-src="{{ items[index].image_data.url_full |  trustAsResourceUrl }}"
+                               pk-audio="sounds.sound" controls=""></audio>
+
+                    </div>
+
+                    <div class="image-container"
+                         ng-show="!loading_view"
+                         ng-if="items[index].file_type == 'video' || getFileType(items[index].file_extension) == 'video'">
+
+                        <video id="preview" ng-src="{{ items[index].image_data.url_full |  trustAsResourceUrl }}"
+                               width="80%" height="99%"
+                               controls>
+                        </video>
+                    </div>
+
+                    <div class="image-container"
+                         ng-show="!loading_view"
+                         ng-if="items[index].file_type != 'document' &&
+                            items[index].file_type != 'image' &&
+                            items[index].file_type != 'video' &&
+                            items[index].file_type != 'audio' ">
+
+                        <div class="file-type-not-support relo-bg-bright-gray picture__show text-center pd-2x">
+                            <em class="fa fa-eye-slash mg-b-3x text-dark-blue" ng-style="{'font-size':'96px'}"></em>
+                            <div class="mg-b-3x text-dark-blue">{{ 'FILE_TYPE_NOT_SUPPORT_TEXT' | translate }}</div>
+                            <a href="{{ items[index].image_data.url_download }}" target="_blank"
+                               class="btn relo-bg-dark-blue bd-radius-5px mg-b-10 text-white">
+                                <em class="fa fa-download text-white mr-sm"></em>
+                                <span class="text-white">{{'DOWNLOAD_BTN_TEXT'|translate}}</span>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <span class="baseline-extension"></span>
+                </div>
+            </div>
+            <div class="arrow-layer">
+                <button class="arrow-nav left" type="button" ng-click="previousItem()"><em
+                    class="fa fa-chevron-left text-dark-blue"></em></button>
+                <button class="arrow-nav right" type="button" ng-click="nextItem()"><em
+                    class="fa fa-chevron-right text-dark-blue"></em></button>
+            </div>
+        </div>
+    </div>
+    <div class="footer" ng-if="items[index].file_extension != 'pdf'">
+        <div class="footer-meta">
+            <div class="text-center">
+                <div class="footer-tools">
+                    <button type="button" class="btn btn-link" ng-click="zoomOut()"><em class="fa fa-minus"></em>
+                    </button>
+                    <button type="button" class="btn btn-link" ng-click="zoomOrigin()"><em
+                        class="fa fa-search-minus"></em></button>
+                    <button type="button" class="btn btn-link" ng-click="zoomIn()"><em class="fa fa-plus"></em></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

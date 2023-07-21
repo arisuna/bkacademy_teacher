@@ -1,0 +1,14 @@
+<!-- Upload zone without uploaded files -->
+<div>
+    <div upload-zone="">
+        <div class="uploadZone my-drop-zone" uploader="uploader" nv-file-drop="">
+            <div class="dropZone" nv-file-drop="" uploader="uploader" ng-if="!uploader.queue.length">
+                <div nv-file-over="" uploader="uploader" over-class="bg-light-blue-200" class="box-placeholder">
+                    <h4 class="text-center mg-0 pd-t-2x pd-b-2x">
+                        {{ 'DRAG_AND_DROP_TEXT' | translate }}
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+<!-- START Top Navbar-->
+
+<nav class="navbar topnavbar" role="navigation">
+    <!-- START navbar header-->
+    <div class="navbar-header pull-xs-left">
+        <a class="navbar-brand" href="#/">
+            <div class="brand-logo">
+                <img class="img-responsive hidden-xs hidden-sm hidden-md" src="/gms/assets/img/logo.png" alt="App Logo"/>
+                <img class="img-responsive mt0 thumb32 visible-md visible-xs" src="/gms/assets/img/logo-single.png" alt="App Logo"/>
+            </div>
+            <div class="brand-logo-collapsed">
+                <img class="img-responsive mt0 thumb32" src="/gms/assets/img/logo-single.png" alt="App Logo"/>
+            </div>
+        </a>
+    </div>
+    <!-- END navbar header-->
+    <!-- START Nav wrapper-->
+    <div class="nav-wrapper">
+        <!-- START Left navbar-->
+        <ul class="nav navbar-nav custom-font" ng-include="app.topMenuUrl">
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right custom-font">
+            <!-- START lock screen-->
+            <li class="dropdown dropdown-list userguide-dropdown" uib-dropdown="">
+                <a uib-dropdown-toggle="">
+                    <em class="fa fa-question-circle mr-sm"></em><span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" ui-sref="app.user-guide.guide.home">{{ 'USER_GUIDE_TEXT' | translate }}</a></li>
+                    <li><a href="#" ui-sref="app.faq">{{ 'FAQ_TEXT' | translate }}</a></li>
+                    <li><a href="#" ui-sref="app.support.index">{{ 'SUPPORT_TEXT' | translate }}</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a ui-sref="app.admin-page" title="Admin Page" gms-acl-allow="admin/index" acl-remove="true">
+                    <em class="fa fa-cog"></em>
+                </a>
+            </li>
+
+            <li ng-controller="CommunicationNotificationController">
+                <a ui-sref="app.communication.list" title="Communication Page"
+                    gms-acl-allow="communication/index" acl-remove="true">
+                    <em class="fa fa-envelope"></em>
+                </a>
+            </li>
+
+            <li class="dropdown dropdown-list" uib-dropdown=""
+                auto-close="outsideClick"
+                ng-controller="HistoryNotificationController"
+                ng-include="'/gms/views/base/notifications.html'"></li>
+
+            <li class="dropdown dropdown-list profile-dropdown" uib-dropdown=""
+                ng-controller="AppProfileMenuController">
+                <a uib-dropdown-toggle="" style="padding-top: 10px !important;">
+                    <img class="img-circle relo-profile" ng-src="{{ user.avatar_url }}"/>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a ui-sref="app.profile">
+                            <em class="fa fa-user mr"></em> {{ 'PROFILE_TEXT' | translate }}
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="app.my-company.index" gms-acl-allow="my_company/index" acl-remove="true">
+                            <em class="fa fa-users mr"></em> {{ 'MY_COMPANY_TEXT' | translate }}
+                        </a>
+                    </li>
+                    <li>
+                        <a  ui-sref="logout">
+                            <em class="fa fa-sign-out mr"></em> {{ 'LOGOUT_TITLE_TEXT' | translate }}</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+        <!-- END Right Navbar-->
+    </div>
+    <!-- END Nav wrapper-->
+</nav>
+<!-- END Top Navbar-->
+
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-wrapper" ng-include="app.breadcrumb"></div>

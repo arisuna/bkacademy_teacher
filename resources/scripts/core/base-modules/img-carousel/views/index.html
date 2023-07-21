@@ -1,0 +1,42 @@
+<div class="carousel-demo mg-t-0">
+    <ul rn-carousel="" rn-carousel-index="carouselIndex"
+        rn-carousel-auto-slide="" rn-carousel-pause-on-hover=""
+        ng-if="!isView"
+        rn-carousel-buffered=""
+        class="list-unstyled carousel2"
+        style="height: 300px !important;">
+
+        <li ng-repeat="slide in slides track by slide.id" ng-class="'id-' + slide.id">
+            <div class="picture-frame viewer-layer">
+                <img class="img-responsive img-thumbnail pd-0" ng-src="{{ slide.image_data.url_download }}"
+                     items="slides" element="slide"
+                     style="border-radius: 5px; !important;"
+                     err-src="/gms/assets/img/image_not_available.jpeg"/>
+            </div>
+
+        </li>
+
+        <div class="arrow-layer-cus">
+            <button class="arrow-nav left" type="button" ng-click="previousItem(); prevSlide()"><em
+                class="fa fa-chevron-left text-dark-blue"></em></button>
+            <button class="arrow-nav right" type="button" ng-click="nextItem(); nextSlide()"><em
+                class="fa fa-chevron-right text-dark-blue"></em></button>
+        </div>
+    </ul>
+
+    <ul ng-if="isView" rn-carousel="" rn-carousel-index="carouselIndex" rn-carousel-auto-slide=""
+        rn-carousel-pause-on-hover=""
+        rn-carousel-buffered="" class="list-unstyled carousel2" style="height: 150px !important;">
+        <li ng-repeat="slide in slides track by slide.id" ng-class="'id-' + slide.id">
+            <div class="picture-frame viewer-layer">
+                <img class="img-responsive cursor-pointer img-thumbnail pd-0 width-250px height-150px"
+                     ng-src="{{slide.image_data.url_download }}"
+                     document-view-media=""
+                     items="slides" element="slide"
+                     style="border-radius: 5px; !important;"
+                     err-src="/gms/assets/img/image_not_available.jpeg"/>
+            </div>
+        </li>
+    </ul>
+    <div rn-carousel-indicators="" ng-if="slides.length > 1" slides="slides" rn-carousel-index="carouselIndex"></div>
+</div>

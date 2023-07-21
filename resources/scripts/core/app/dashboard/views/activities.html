@@ -1,0 +1,48 @@
+<div ng-controller="DashboardActivitiesController">
+    <spinner ng-show="loading_activities"></spinner>
+    <div class="custom-datatable no-filter-page switch-search-filter table-responsive" ng-show="!loading_activities">
+        <button type="button" class="btn btn-oval btn-relo-gray pull-right" ng-click="todayActivities()"><em class="fa fa-rotate"></em></button>
+        <table class="row-border hover" datatable="ng">
+            <thead>
+            <tr>
+                <th>{{ 'TYPE_TEXT' | translate }}</th>
+                <th>{{ 'OBJECT_TEXT' | translate }}</th>
+                <th>{{ 'UPDATE_TEXT' | translate }}</th>
+                <th>{{ 'DATE_TEXT' | translate }}</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="activity in activities | orderBy:'created_at':true ">
+                <td>
+                    <div ng-if="activity.type == 'T'" class="label relo-bg-green custom-size">{{ 'TASK_TEXT' | translate
+                        }}
+                    </div>
+                    <div ng-if="activity.type == 'A'" class="label relo-bg-dark-blue custom-size">{{ 'ASSIGNMENT_TEXT' |
+                        translate }}
+                    </div>
+                    <div ng-if="activity.type == 'S'" class="label relo-bg-bright-blue custom-size">{{ 'SERVICE_TEXT' |
+                        translate }}
+                    </div>
+                    <div ng-if="activity.type == 'R'" class="label relo-bg-green custom-size">{{ 'RELOCATION_TEXT' |
+                        translate }}
+                    </div>
+                    <div ng-if="activity.type == 'O'" class="label relo-bg-green custom-size">{{ 'OTHER_TEXT' |
+                        translate }}
+                    </div>
+                    <div ng-if="activity.type == 'C'" class="label relo-bg-green custom-size">{{ 'COMMENTS_TEXT' |
+                        translate }}
+                    </div>
+                </td>
+                <td><a href="{{ activity.object.frontend_url }}">{{ activity.object.number }}</a></td>
+                <td>{{ activity.content | translate | paramsMessage:activity.params }}
+                </td>
+                <td>
+                    {{ activity.created_at | amFromUnix | amUtc | amLocal | amDateFormat:$root.constants['COMPANY_DATE_FORMAT'] }}
+                    {{ activity.created_at | amFromUnix | amUtc | amLocal | amDateFormat:'HH:mm:ss' }}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

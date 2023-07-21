@@ -1,0 +1,73 @@
+<div class="custom-datatable no-filter-page switch-search-filter table-responsive"
+     ng-controller="DashboardRelocationController">
+    <table class="row-border hover" datatable="ng">
+        <thead>
+        <tr>
+            <th>{{ 'RELOCATION_ID_TEXT' | translate }}</th>
+            <th>{{ 'RELATED_ASSIGNMENT_TEXT' | translate }}</th>
+            <th>{{ 'EMPLOYEE_TEXT' | translate }}</th>
+            <th>{{ 'COUNTRY_TEXT' | translate }}</th>
+            <th>{{ 'START_DATE_TEXT' | translate }}</th>
+            <th>{{ 'END_DATE_TEXT' | translate }}</th>
+            <th>{{ 'STATUS_TEXT' | translate }}</th>
+            <th class="none-icon-sorting"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="relocation in relocations">
+            <td>
+                <a ui-sref="app.relocation.dashboard({uuid : relocation.uuid })">
+                    {{ relocation.number }}
+                </a>
+            </td>
+            <td>
+                <a ui-sref="{{ relocation.assignment.state }}">
+                    {{ relocation.assignment.number }}
+                </a>
+            </td>
+            <td>
+                <a ui-sref="{{ relocation.employee_state }}">
+                    <employee-avatar-thumb uuid="relocation.employee_uuid"
+                                           size="small"
+                                           class="mr-sm"></employee-avatar-thumb>
+                    {{ relocation.employee_name }}
+                </a>
+            </td>
+            <td>{{ relocation.destination_country }}</td>
+            <td>{{ relocation.start_date != '' && relocation.start_date != null ? ( relocation.start_date | amUtc |
+                amLocal | amDateFormat:$root.constants['COMPANY_DATE_FORMAT'] ) : "" }}
+            </td>
+            <td>{{ relocation.end_date != '' && relocation.end_date != null ? ( relocation.end_date | amUtc | amLocal |
+                amDateFormat:$root.constants['COMPANY_DATE_FORMAT'] ) : "" }}
+            </td>
+            <td>
+                <div ng-switch="relocation.status">
+                    <div ng-switch-when="0" class="label label-primary custom-size">{{ 'PROCESSING_TEXT' |
+                        translate }}
+                    </div>
+                    <div ng-switch-when="1" class="label label-success custom-size">{{ 'STARTING_SOON_TEXT' |
+                        translate }}
+                    </div>
+                    <div ng-switch-when="2" class="label label-info custom-size">{{ 'ONGOING_TEXT' | translate
+                        }}
+                    </div>
+                    <div ng-switch-when="3" class="label label-warning custom-size">{{ 'ENDING_SOON' | translate
+                        }}
+                    </div>
+                    <div ng-switch-when="4" class="label label-inverse custom-size">{{ 'TERMINATED_TEXT' |
+                        translate }}
+                    </div>
+                </div>
+            </td>
+            <td class="noWrap text-right">
+                <button class="btn btn-oval btn-primary" type="button"
+                        gms-acl-allow="relocation/view"
+                        acl-remove="true"
+                        ui-sref="app.relocation.dashboard({uuid : relocation.uuid})"><em
+                    class="fa fa-dashboard"></em>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

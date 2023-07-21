@@ -1,0 +1,5 @@
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" class="progress-circle" width="{{size}}" height="{{size}}" viewBox="{{viewbox}}">
+    <circle class="progress-circle-meter" cx="{{size/2}}" cy="{{size/2}}" r="{{(size - 2)/2}}" fill="none" stroke="#e6e6e6" stroke-width="2" />
+    <circle class="progress-circle-value" cx="{{size/2}}" cy="{{size/2}}" r="{{(size - 2)/2}}" fill="none" stroke="#0098FF" stroke-width="2" stroke-dasharray="{{2*3.14*(size - 2)/2}}" stroke-dashoffset="{{2*3.14*(size - 2)/2*(1 - percent/100)}}" />
+    <text class="progress-circle-text" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" style="transform: rotateZ(90deg) translateY(-{{size}}px);">{{percent}}%</text>
+</svg>

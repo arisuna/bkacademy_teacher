@@ -1,0 +1,57 @@
+<div ng-controller="DashboardTodayTasksController"
+     class="custom-datatable no-filter-page switch-search-filter table-responsive">
+
+    <h3 ng-if="!loading && !hasTask">{{ 'NO_TASKS_DUE_TODAY_TEXT' | translate }}</h3>
+
+    <table class="row-border hover" datatable="ng" ng-if="!loading && hasTask">
+        <thead>
+        <tr>
+            <th class="col-md-5">{{ 'TASK_TEXT' | translate }}</th>
+            <th class="col-md-1">{{ 'STATUS_TEXT' | translate }}</th>
+            <th class="col-md-1">{{ 'DUE_DATE_TEXT' | translate }}</th>
+            <th class="col-md-2">{{ 'OWNER_TEXT' | translate }}</th>
+            <th class="col-md-3">{{ 'LINKED_TO_TEXT' | translate }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="task in tasks">
+            <td class="col-md-5">
+                <a ui-sref="app.tasks.page({uuid:task.uuid})">{{ task.number }} - {{ task.name | limitTo:60 }}</a>
+            </td>
+            <td class="col-md-1">
+                <span ng-switch="task.progress" ng-if="task.status != -1">
+                    <div ng-switch-when="0" class="label relo-bg-yellow custom-size">{{ 'TODO_STATUS_TEXT'
+                        | translate }}
+                    </div>
+                    <div ng-switch-when="1" class="label relo-bg-bright-blue custom-size">{{
+                        'IN_PROGRESS_TEXT' | translate }}
+                    </div>
+                    <div ng-switch-when="3" class="label relo-bg-green custom-size">{{ 'DONE_TEXT'
+                        | translate }}
+                    </div>
+                    <div ng-switch-default class="label relo-bg-yellow custom-size">{{ 'NOT_STARTED_TEXT'
+                        | translate }}
+                    </div>
+                </span>
+                <span ng-if="task.status == -1"
+                      class="label relo-bg-red custom-size">{{ 'ARCHIVED_TEXT' | translate }}</span>
+            </td>
+            <td class="col-md-1">
+                <span ng-if="task.due_at_time > 0">{{ task.due_at_time * 1000 | date : 'dd/MM/yyyy' }}</span>
+            </td>
+            <td class="col-md-2">
+                <user-avatar-thumb uuid="task.owner_uuid" size="small" class="mr-sm"></user-avatar-thumb>
+                {{ task.owner_name | acronym }}
+            </td>
+            <td class="col-md-3">
+                <employee-avatar-thumb uuid="task.employee_uuid"
+                                       size="small"
+                                       class="mr-sm"></employee-avatar-thumb>
+                {{ task.employee_name | acronym }}
+                <a ui-sref="{{ task.related.state }}" ng-if="task.related.state !== undefined"> - {{ task.related.name
+                    }}</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

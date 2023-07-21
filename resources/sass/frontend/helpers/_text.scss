@@ -95,6 +95,10 @@
         text-decoration: none;
     }
 
+    &-blue-2{
+        color: $relo-blue-purple !important;
+    }
+
     @for $i from 1 through 10 {
         &-#{$i}x {
             font-size: #{$i * 10}px !important;

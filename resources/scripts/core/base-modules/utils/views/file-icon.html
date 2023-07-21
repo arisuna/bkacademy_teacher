@@ -1,0 +1,37 @@
+<span class="item-icon" ng-switch="type">
+    <em ng-switch-when="image" class="fa fa-file-image-o"></em>
+    <em ng-switch-when="audio" class="fa fa-file-audio-o"></em>
+    <em ng-switch-when="video" class="fa fa-file-video-o"></em>
+
+    <em ng-switch-when="pdf" class="fa fa-file-pdf-o"></em>
+    <em ng-switch-when="xlsx" class="fa fa-file-excel-o"></em>
+    <em ng-switch-when="xls" class="fa fa-file-excel-o"></em>
+    <em ng-switch-when="ppt" class="fa fa-file-powerpoint-o"></em>
+    <em ng-switch-when="pptx" class="fa fa-file-powerpoint-o"></em>
+    <em ng-switch-when="txt" class="fa fa-file-text-o"></em>
+    <em ng-switch-when="txts" class="fa fa-file-text-o"></em>
+    <em ng-switch-when="docx" class="fa fa-file-word-o"></em>
+    <em ng-switch-when="doc" class="fa fa-file-word-o"></em>
+    <em ng-switch-when="doct" class="fa fa-file-word-o"></em>
+    <em ng-switch-when="compressed" class="fa fa-file-archive-o"></em>
+    <em ng-switch-when="archive" class="fa fa-file-archive-o"></em>
+
+    <ng-switch-when ng-switch-when="document">
+        <em ng-if="extension == 'pdf'"
+            class="fa fa-file-pdf-o"></em>
+        <em ng-if="extension== 'docx' || extension == 'doc'"
+            class="fa fa-file-word-o"></em>
+        <em ng-if="extension== 'ppt' || extension == 'pptx'"
+            class="fa fa-file-powerpoint-o"></em>
+        <em ng-if="extension== 'xls' || extension== 'xlsx'"
+            class="fa fa-file-excel-o"></em>
+        <em ng-if="extension != 'ppt' && extension != 'pptx' &&
+            extension!= 'docx' && extension != 'doc' && extension != 'pdf'
+            && extension != 'xls' && extension != 'xlsx'"
+            class="fa fa-file-o"></em>
+    </ng-switch-when>
+
+</span>
+
+
+

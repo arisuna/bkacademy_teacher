@@ -1,0 +1,12 @@
+<div class="mda-form-group">
+    <label class="mr-xl text-muted">{{ label }}</label>
+    <label class="mda-radio mr-xl" ng-repeat="( key, item ) in items">
+        <input type="radio"
+               ng-value="item.key"
+               ng-model="$parent.model"
+               id="{{ name }}_{{ key }}"
+               data-parsley-group="{{ step }}"
+               name="{{ name }}"/>
+        <em class="bg-indigo-500"></em>{{ item.value | translate }}
+    </label>
+</div>

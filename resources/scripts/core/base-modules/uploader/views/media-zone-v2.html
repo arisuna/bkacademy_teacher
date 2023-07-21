@@ -1,0 +1,78 @@
+<div class="media-zone-v2">
+    <label class="text-bold txt-black-70 mg-t-2x">{{ label | translate }}</label>
+
+    <div class="row mg-b-2s">
+        <div class="col-md-12">
+            <input filestyle="" type="file" class="form-control" multiple=""
+                data-button-text="UPLOAD_FILE_BTN_TEXT"
+                data-icon-name="fa fa-cloud-upload"
+                data-class-input="form-control inline"
+                nv-file-select="" uploader="uploader"/>
+        </div>
+    </div>
+
+    <div class="row mg-b-1s" ng-repeat="file in files | orderBy:created_at:-1">
+        <div class="col-md-12">
+            <div class="file flex">
+                <div class="flex-middle">
+                    <div class="file-icon"
+                         ng-switch="file.file_type">
+                        <div class="inner-ratio">
+                            <img ng-switch-when="image"
+                                 ng-src="{{ file.image_data.url_thumb }}"
+                                 class="img-responsive block-center"/>
+                            <em ng-switch-when="audio" class="fa fa-file-audio-o"></em>
+                            <em ng-switch-when="video" class="fa fa-file-video-o"></em>
+                            <ng-switch-when ng-switch-when="document">
+                                <em ng-if="file.file_extension == 'pdf'"
+                                    class="fa fa-file-{{ file.file_extension }}-o"></em>
+                                <em ng-if="file.file_extension == 'docx' || file.file_extension == 'doc'"
+                                    class="fa fa-file-word-o"></em>
+                                <em ng-if="file.file_extension == 'ppt' || file.file_extension == 'pptx'"
+                                    class="fa fa-file-powerpoint-o"></em>
+                                <em ng-if="file.file_extension == 'xls' || file.file_extension == 'xlsx'"
+                                    class="fa fa-file-excel-o"></em>
+                                <em ng-if="file.file_extension != 'ppt' && file.file_extension != 'pptx' &&
+                                        file.file_extension != 'docx' && file.file_extension != 'doc' && file.file_extension != 'pdf'
+                                        && file.file_extension != 'xls' && file.file_extension != 'xlsx'"
+                                    class="fa fa-file-o"></em>
+                            </ng-switch-when>
+                            <em ng-switch-when="compressed" class="fa fa-file-archive-o"></em>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 flex-middle pd-l-1x file-info">
+                    <h6 class="txt-bold mg-0 txt-14 white-space-no-wrap txt-ellipsis">
+                        {{ file.name }}
+                    </h6>
+                    <p class="mg-0 txt-12">
+                        <span class="mg-r-1x">{{ file.created_at }}</span>
+
+                        <span>
+                            {{ 'FILE_TYPE' | translate }}:
+                            <span ng-if="file.file_type === 'document'">
+                                {{ file.file_extension }}
+                            </span>
+                            <span ng-if="file.file_type !== 'document'">
+                                {{ file.file_type }}
+                            </span>
+                        </span>
+                    </p>
+                </div>
+
+                <div class="flex-middle">
+                    <div>
+                        <a class="txt-black-60 mg-r-2s pos-relative" style="top: 1px;" ng-click="downloadFile(file)">
+                            <em class="fa fa-download"></em>
+                        </a>
+                        <a class="txt-black-60" ng-click="removeFile(file)">
+                            <em class="fa fa-trash"></em>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

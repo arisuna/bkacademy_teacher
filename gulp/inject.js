@@ -27,8 +27,6 @@ function injectJsHtml(zone) {
         var sources = gulp.src([
             config.apps[zone].envTargetFile,
             config.apps[zone].filePath + '*.js',
-            config.apps[zone].assetsPath + '**/*.js',
-            config.apps[zone].librariesPath + '/**/*.js',
             config.apps[zone].filePathCore + '*.js',
             config.apps[zone].filePathJs + '*.js',
             config.apps[zone].cssPath + 'app.css',

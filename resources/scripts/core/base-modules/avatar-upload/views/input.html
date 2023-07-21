@@ -1,0 +1,27 @@
+<div class="text-center avatar-upload">
+    <div data-text="" class="imgcrop-preview" style="background:transparent;margin-top:10px;"
+         ng-if="avatar.image_data.url_thumb != ''">
+        <div class="user-block-picture">
+            <div class="user-block-status text-center">
+                <img class="img-circle img-avatar img-responsive"
+                     ng-if="avatar.image_data.url_thumb != '' && groupname == 'avatar' "
+                     ng-src="{{avatar.image_data.url_thumb }}"/>
+                <img class="img-logo img-responsive" ng-if="avatar.image_data.url_thumb != '' && groupname != 'avatar' "
+                     ng-src="{{avatar.image_data.url_thumb }}"/>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="text-center" style="width:100%;margin:auto;">
+        <input filestyle="" type="file"
+               data-input="false"
+               data-class-button="btn btn-dark-blue btn-block mg-auto"
+               nv-file-select=""
+               uploader="uploader"
+               class="text-center btn-block"
+               data-button-text=""
+               data-badge="false"
+               data-button-name="relo-bg-dark-blue text-white word-wrap"
+               data-icon-name="fa fa-cloud-upload"/>
+    </div>
+</div>

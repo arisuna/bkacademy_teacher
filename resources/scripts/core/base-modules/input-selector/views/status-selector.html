@@ -1,0 +1,77 @@
+<div class="">
+    <div ng-show="isEditable == false && isLabel == true">
+        <label class="text-muted  mr-xl text-bold" ng-style="{'padding-left':'0px'}" ng-show="hasTitle">
+            {{ title | translate }}
+        </label>
+        <div class="label custom-size"
+             ng-if="currentStatusItem.value != undefined && currentStatusItem.value != null"
+             uib-tooltip="{{ currentStatusItem.toolTipText != '' ? (currentStatusItem.toolTipText | translate) : null }}"
+             ng-class="{'relo-bg-bright-blue': currentStatusItem == null || currentStatusItem.color == '' || currentStatusItem.color == 'blue',
+             'relo-bg-red text-white' : currentStatusItem.color == 'red',
+              'relo-bg-yellow text-white' : currentStatusItem.color == 'yellow', 'relo-bg-dark-blue text-white' : currentStatusItem.color == 'dark',
+               'relo-bg-dark-blue text-white' : currentStatusItem.color == 'dark', 'relo-bg-orange text-white' : currentStatusItem.color == 'orange',
+               'relo-bg-gray text-black' : currentStatusItem.color == 'gray', 'relo-bg-green' : currentStatusItem.color == 'green', 'relo-bg-turquoise text-white' : currentStatusItem.color == 'turquoise' }">
+            {{ currentStatusItem.text | translate }}
+        </div>
+
+        <div class="label custom-size relo-bg-yellow"
+             ng-if="currentStatusItem.value == undefined || currentStatusItem.value == null">
+            {{ 'NC_TEXT' | translate }}
+        </div>
+
+        <tooltip text="{{ currentStatusItem.toolTipText | translate }}"
+                 ng-if="currentStatusItem.toolTipText != '' && currentStatusItem.toolTipText != undefined"
+                 class="ml-sm"></tooltip>
+    </div>
+    <div ng-show="isEditable == false && isCircle == true">
+        <label class="text-muted  mr-xl text-bold" ng-style="{'padding-left':'0px'}" ng-show="hasTitle">
+            {{ title | translate }}
+        </label>
+        <div ng-if="currentStatusItem.value != undefined && currentStatusItem.value != null"
+             uib-tooltip="{{ currentStatusItem.text != '' ? (currentStatusItem.text | translate ) : (currentStatusItem.name | translate )}}"
+             class="circle {{iconClass}}" ng-class="{'relo-bg-bright-blue': currentStatusItem.color == '' || currentStatusItem.color == 'blue',
+             'relo-bg-red' : currentStatusItem.color == 'red',
+              'relo-bg-yellow' : currentStatusItem.color == 'yellow', 'relo-bg-dark-blue' : currentStatusItem.color == 'dark',
+               'relo-bg-dark-blue' : currentStatusItem.color == 'dark', 'relo-bg-orange' : currentStatusItem.color == 'orange',
+               'relo-bg-gray' : currentStatusItem.color == 'gray', 'relo-bg-green' : currentStatusItem.color == 'green' , 'relo-bg-turquoise' : currentStatusItem.color == 'turquoise'}">
+
+            <span ng-show="hasIcon" class="text-bold text-white">
+                <i class=" text-white {{currentStatusItem.icon}}"
+                   style="width: 20px;
+                            margin: 0 auto;
+                            padding: 1px 0px 0px;
+                            text-align: center;"></i>
+            </span>
+        </div>
+
+        <div class="circle circle-lg relo-bg-bright-gray"
+             ng-if="currentStatusItem.value == undefined || currentStatusItem.value == null"></div>
+
+        <span ng-show="hasText" class="text-bold text-gray">
+            {{ currentStatusItem.text | translate }}
+        </span>
+    </div>
+    <div ng-show="isEditable && isRadioButton"
+         class="radio c-radio c-radio-nofont"
+         ng-class="{'mt-lg': hasTitle || hasLabel, 'mt0 mb0': hasTitle == false}">
+        <label class="text-muted  mr-xl text-bold" ng-style="{'padding-left':'0px'}" ng-show="hasTitle">
+            {{ title | translate }}
+        </label>
+        <div>
+            <div ng-repeat="itemStatus in statusList" class="mt-sm" ng-class="{'inline':isHorizontal == true}">
+                <label class="mr-xl">
+                    <input type="radio"
+                           ng-value="{{ itemStatus.value }}"
+                           ng-required="required"
+                           ng-change="changeStatus(itemStatus)"
+                           id="itemStatus{{ $index }}"
+                           data-parsley-errors-container="#errorItemStatus"
+                           name="inputStatusSelector"
+                           ng-model="currentStatusItemValue.selected"><span></span>
+                    {{ itemStatus.text | translate }}
+                </label>
+                <div id="errorItemStatus"></div>
+            </div>
+        </div>
+    </div>
+</div>

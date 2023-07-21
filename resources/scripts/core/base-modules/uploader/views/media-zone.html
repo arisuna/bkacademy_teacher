@@ -1,0 +1,196 @@
+<div class="upload-zone">
+    <div class="uploadZone my-drop-zone" uploader="uploader" nv-file-drop="">
+        <div class="dropZone" nv-file-drop="" uploader="uploader" ng-if="!uploader.queue.length">
+            <div nv-file-over="" uploader="uploader" over-class="bg-light-blue-200" class="box-placeholder">
+                <h4 class="text-center">
+                    {{ 'DRAG_AND_DROP_TEXT' | translate }}
+                </h4>
+
+                <div class="buttonUploadOnly text-center">
+                    <div class="row">
+                        <div class="col-xs-6 text-right">
+                            <input filestyle="" type="file" class="form-control" multiple=""
+                                   data-button-text="UPLOAD_FILE_BTN_TEXT"
+                                   data-icon-name="fa fa-cloud-upload"
+                                   data-class-button="btn btn-inverse btn-lg"
+                                   data-class-input="form-control inline"
+                                   nv-file-select="" uploader="uploader" ng-if="options.limit > 1"/>
+                            <input filestyle="" type="file" class="form-control"
+                                   data-button-text="UPLOAD_FILE_BTN_TEXT"
+                                   data-icon-name="fa fa-cloud-upload"
+                                   data-class-button="btn btn-inverse btn-lg"
+                                   data-class-input="form-control inline"
+                                   nv-file-select="" uploader="uploader" ng-if="options.limit = 1"/>
+                        </div>
+                        <div class="col-xs-6 text-left" ng-if="options.show_library = 1">
+                            <button type="button" class="btn btn-oval btn-default" media-button library-options="libraryOpts"
+                                    on-select-item="itemsSelected(items)"><em class="fa fa-folder-open"></em>
+                                {{ 'LIBRARY_TEXT' | translate }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="uploader.isHTML5 && uploader.queue.length">
+            <div ng-if="uploader.queue.length" nv-file-drop="" uploader="uploader" nv-file-over=""
+                 over-class="bg-light-blue-200">
+                <table ng-if="uploader.queue.length" class="table">
+                    <thead>
+                    <tr>
+                        <th width="50%">{{ 'NAME_TEXT' | translate }}</th>
+                        <th ng-show="uploader.isHTML5">{{ 'SIZE_TEXT' | translate }}</th>
+                        <th ng-show="uploader.isHTML5">{{ 'PROCESS_TEXT' | translate }}</th>
+                        <th>{{ 'STATUS_TEXT' | translate }}</th>
+                        <th>{{ 'ACTION_TEXT' | translate }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in uploader.queue">
+                        <td>
+                            <strong>{{ item.file.name }}</strong>
+                        </td>
+                        <td ng-show="uploader.isHTML5" nowrap="">{{
+                            item.file.size/1024/1024|number:2 }} MB
+                        </td>
+                        <td ng-show="uploader.isHTML5">
+                            <div style="margin-bottom: 0;" class="progress progress-xs">
+                                <div role="progressbar" ng-style="{ 'width': item.progress + '%' }"
+                                     class="progress-bar"></div>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                                                 <span ng-show="item.isSuccess">
+                                                    <em class="fa fa-check fa-fw"></em>
+                                                 </span>
+                            <span ng-show="item.isCancel">
+                                                    <em class="fa fa-ban-circle fa-fw"></em>
+                                                 </span>
+                            <span ng-show="item.isError">
+                                                    <em class="fa fa-times fa-fw"></em>
+                                                 </span>
+                        </td>
+                        <td nowrap="">
+                            <button type="button" ng-click="item.upload()"
+                                    ng-disabled="item.isReady || item.isUploading || item.isSuccess"
+                                    class="btn btn-info btn-xs">
+                                <span class="icon-cloud-upload mr"></span>{{ 'UPLOAD_FILE_BTN_TEXT' | translate }}
+                            </button>
+                            <button type="button" ng-click="item.cancel()"
+                                    ng-disabled="!item.isUploading" class="btn btn-warning btn-xs">
+                                <span class="icon-close mr"></span>{{ 'CANCEL_TEXT' | translate }}
+                            </button>
+                            <button type="button" ng-click="item.remove()"
+                                    class="btn btn-danger btn-xs">
+                                <span class="icon-trash mr"></span>{{ 'REMOVE_TEXT' | translate }}
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="panel" ng-if="uploader.queue.length > 1">
+                <div class="panel-body">
+                    <div>
+                        <p>{{ 'QUEUE_PROCESS_TEXT' | translate }}:</p>
+
+                        <div style="" class="progress progress-xs">
+                            <div role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"
+                                 class="progress-bar"></div>
+                        </div>
+                    </div>
+                    <button type="button" ng-click="uploader.uploadAll()"
+                            ng-disabled="!uploader.getNotUploadedItems().length"
+                            class="btn btn-info btn-s">
+                        <span class="icon-cloud-upload mr"></span>{{ 'UPLOAD_ALL_TEXT' | translate }}
+                    </button>
+                    <button type="button" ng-click="uploader.cancelAll()"
+                            ng-disabled="!uploader.isUploading" class="btn btn-warning btn-s">
+                        <span class="icon-close mr"></span>{{ 'CANCEL_ALL_TEXT' | translate }}
+                    </button>
+                    <button type="button" ng-click="uploader.clearQueue()"
+                            ng-disabled="!uploader.queue.length" class="btn btn-danger btn-s">
+                        <span class="icon-trash mr"></span>{{ 'REMOVE_ALL_TEXT' | translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" ng-if="items.length > 0">
+            <div class="card-body">
+                <div ng-class="{ 'media-items-list': options.isGrid, 'media-items-list-small': options.isList }">
+                    <div class="item-box" ng-repeat="item in items">
+                        <!-- Item name -->
+                        <p class="item-name mg-0 mg-b-1x txt-bold">{{ item.name }}</p>
+
+                        <!-- GRID ITEM -->
+                        <div ng-if="options.isGrid" class="item-icon box-ratio-4-3"
+                             ng-switch="item.file_type">
+                            <div class="inner-ratio">
+                                <img ng-switch-when="image"
+                                     ng-src="{{ item.image_data.url_thumb }}"
+                                     class="img-responsive block-center"/>
+                                <em ng-switch-when="audio" class="fa fa-file-audio-o"></em>
+                                <em ng-switch-when="video" class="fa fa-file-video-o"></em>
+                                <ng-switch-when ng-switch-when="document">
+                                    <em ng-if="item.file_extension == 'pdf'"
+                                        class="fa fa-file-{{ item.file_extension }}-o"></em>
+                                    <em ng-if="item.file_extension == 'docx' || item.file_extension == 'doc'"
+                                        class="fa fa-file-word-o"></em>
+                                    <em ng-if="item.file_extension == 'ppt' || item.file_extension == 'pptx'"
+                                        class="fa fa-file-powerpoint-o"></em>
+                                    <em ng-if="item.file_extension == 'xls' || item.file_extension == 'xlsx'"
+                                        class="fa fa-file-excel-o"></em>
+                                    <em ng-if="item.file_extension != 'ppt' && item.file_extension != 'pptx' &&
+                                                    item.file_extension != 'docx' && item.file_extension != 'doc' && item.file_extension != 'pdf'
+                                                    && item.file_extension != 'xls' && item.file_extension != 'xlsx'"
+                                        class="fa fa-file-o"></em>
+                                </ng-switch-when>
+                                <em ng-switch-when="compressed" class="fa fa-file-archive-o"></em>
+                            </div>
+                        </div>
+                        <!-- LIST ITEM -->
+                        <span ng-if="options.isList" class="item-icon" ng-switch="item.file_type">
+                                        <em ng-switch-when="image" class="fa fa-file-image-o"></em>
+                                        <em ng-switch-when="audio" class="fa fa-file-audio-o"></em>
+                                        <em ng-switch-when="video" class="fa fa-file-video-o"></em>
+                                        <ng-switch-when ng-switch-when="document">
+                                            <em ng-if="item.file_extension == 'pdf'"
+                                                class="fa fa-file-{{ item.file_extension }}-o"></em>
+                                            <em ng-if="item.file_extension == 'docx' || item.file_extension == 'doc'"
+                                                class="fa fa-file-word-o"></em>
+                                            <em ng-if="item.file_extension == 'ppt' || item.file_extension == 'pptx'"
+                                                class="fa fa-file-powerpoint-o"></em>
+                                            <em ng-if="item.file_extension == 'xls' || item.file_extension == 'xlsx'"
+                                                class="fa fa-file-excel-o"></em>
+                                            <em ng-if="item.file_extension != 'ppt' && item.file_extension != 'pptx' &&
+                                                item.file_extension != 'docx' && item.file_extension != 'doc' && item.file_extension != 'pdf'
+                                                && item.file_extension != 'xls' && item.file_extension != 'xlsx'"
+                                                class="fa fa-file-o"></em>
+                                        </ng-switch-when>
+                                        <em ng-switch-when="compressed" class="fa fa-file-archive-o"></em>
+                                    </span>
+
+                        <!-- Updated date -->
+                        <p class="item-name mg-0 mg-t-1x txt-gray txt-12">
+                                    <span class="txt-10 mg-r-1s">
+                                        <i class="icon-clock"></i>
+                                    </span>
+                            {{ item.updated_at | dateF:'HH:mm DD/MM/YYYY' }}
+                        </p>
+
+                        <!-- Tools -->
+                        <button type="button" class="txt-red item-trash" ng-click="uploader.removeItem( item.id )"><em
+                                class="fa fa-trash"></em></button>
+                        <button type="button" class="item-download" ng-click="uploader.downloadItem( item )"><em
+                                class="fa fa-download"></em></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

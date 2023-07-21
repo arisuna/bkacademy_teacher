@@ -1,0 +1,36 @@
+<ul uib-pagination total-items="angularTablePagination.filteredItems.length"
+    ng-model="angularTablePagination.currentPagePlus" items-per-page="angularTablePagination.itemsPerPage" \n
+    max-size="6" class="pagination" boundary-links="true" boundary-link-numbers="true" previous-text="&lsaquo;"
+    next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" rotate="false"
+    ng-change="angularTablePagination.setPage( angularTablePagination.currentPagePlus - 1)"></ul>
+<div class="row" ng-show="angularTablePagination.filteredItems.length">
+    <div class="col-xs-4">
+        <div class="pagination"><strong class="text-muted">{{ 'TOTAL_TEXT' | translate }}:
+            {{angularTablePagination.filteredItems.length}} {{ 'ITEMS_TEXT' | translate }}</strong></div>
+    </div>
+    <div class="col-xs-8">
+        <div class="pagination pull-right">
+            <ul class="pagination">
+                <li ng-class="{disabled: angularTablePagination.currentPage == 0}">
+                    <a href ng-click="angularTablePagination.setPage(0)"><em class="fa fa-angle-double-left"></em></a>
+                </li>
+                <li ng-class="{disabled: angularTablePagination.currentPage == 0}">
+                    <a href ng-click="angularTablePagination.prevPage()"><em class="fa fa-angle-left"></em></a>
+                </li>
+                <li ng-repeat="n in angularTablePagination.range(angularTablePagination.pagedItems.length, angularTablePagination.currentPage, angularTablePagination.currentPage  angularTablePagination.gap)"
+                    ng-class="{active: n == angularTablePagination.currentPage}"
+                    ng-click="angularTablePagination.setPage(n)">
+                    <a href ng-bind="n  1">1</a>
+                </li>
+                <li ng-class="{disabled: angularTablePagination.currentPage == angularTablePagination.pagedItems.length - 1}">
+                    <a href ng-click="angularTablePagination.nextPage(angularTablePagination.pagedItems.length - 1)"><em
+                        class="fa fa-angle-right"></em></a>
+                </li>
+                <li ng-class="{disabled: angularTablePagination.currentPage == angularTablePagination.pagedItems.length - 1}">
+                    <a href ng-click="angularTablePagination.setPage(angularTablePagination.pagedItems.length - 1)"><em
+                        class="fa fa-angle-double-right"></em></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

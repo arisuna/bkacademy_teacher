@@ -61,7 +61,9 @@ var Routes;
             'app.angular-table',
             'app.rating-star',
             'app.validators',
-            'app.filters'
+            'app.filters',
+            'app.app-services',
+            'app.app-services-auth'
         ]).config(function ($sceProvider) {
             $sceProvider.enabled(false);
         });

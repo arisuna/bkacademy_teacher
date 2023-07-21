@@ -1,0 +1,194 @@
+pipelines:
+  branches:
+    production_dsp:
+    - step:
+        name: Build and test
+        image: node:14.17.0
+        caches:
+        - node
+        script: # Modify the commands below to build your repository.
+            - export BITBUCKET_COMMIT_SHORT="${BITBUCKET_COMMIT::7}"
+            - npm install gulp-cli -g
+            - npm install gulp -D
+            - npm install yarn
+            - npm install
+            - yarn install
+            - gulp build --stage=prod --number=$BITBUCKET_COMMIT
+        artifacts:
+        - public/**
+    - step:
+          # set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY as environment variables
+          name: Deploy to S3
+          deployment: production
+          # set to test, staging or production
+          # trigger: manual  # uncomment to have a manual step
+          image: atlassian/pipelines-awscli
+          script:
+            - pipe: atlassian/aws-s3-deploy:0.3.5
+              variables:
+                  AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                  AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                  AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                  S3_BUCKET: $AWS_BUCKET_NAME
+                  LOCAL_PATH: 'public'
+                  ACL: 'public-read'
+            - pipe: atlassian/aws-cloudfront-invalidate:0.1.2
+              variables:
+                  AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                  AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                  AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                  DISTRIBUTION_ID: $AWS_CLOUDFRONT_ID
+                  PATHS: '/gms/*'
+    thinhdev_preprod_dsp:
+      - step:
+          name: Build and test
+          image: node:14.17.0
+          caches:
+            - node
+          script: # Modify the commands below to build your repository.
+            - export BITBUCKET_COMMIT_SHORT="${BITBUCKET_COMMIT::7}"
+            - npm install gulp-cli -g
+            - npm install gulp -D
+            - npm install yarn
+            - npm install
+            - yarn install
+            - gulp build --stage=thinhdev --number=$BITBUCKET_COMMIT
+          artifacts:
+            - public/**
+      - step:
+          # set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY as environment variables
+          name: Deploy to S3
+          deployment: thinhdev
+          # set to test, staging or production
+          # trigger: manual  # uncomment to have a manual step
+          image: atlassian/pipelines-awscli
+          script:
+            - pipe: atlassian/aws-s3-deploy:0.3.5
+              variables:
+                  AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                  AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                  AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                  S3_BUCKET: $AWS_BUCKET_NAME
+                  LOCAL_PATH: 'public'
+                  ACL: 'public-read'
+            - pipe: atlassian/aws-cloudfront-invalidate:0.1.2
+              variables:
+                  AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                  AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                  AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                  DISTRIBUTION_ID: $AWS_CLOUDFRONT_ID
+                  PATHS: '/gms/*'
+    thuydev_preprod_dsp:
+      - step:
+          name: Build and test
+          image: node:14.17.0
+          caches:
+            - node
+          script: # Modify the commands below to build your repository.
+            - npm install gulp-cli -g
+            - npm install gulp -D
+            - npm install -g yarn
+            - npm install
+            - yarn install
+            - gulp build --stage=thuydev
+          artifacts:
+            - public/**
+      - step:
+          # set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY as environment variables
+          name: Deploy to S3
+          deployment: thuydev
+          # set to test, staging or production
+          # trigger: manual  # uncomment to have a manual step
+          image: atlassian/pipelines-awscli
+          script:
+            - pipe: atlassian/aws-s3-deploy:0.3.5
+              variables:
+                  AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                  AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                  AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                  S3_BUCKET: $AWS_BUCKET_NAME
+                  LOCAL_PATH: 'public'
+                  ACL: 'public-read'
+            - pipe: atlassian/aws-cloudfront-invalidate:0.1.2
+              variables:
+                  AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                  AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                  AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                  DISTRIBUTION_ID: $AWS_CLOUDFRONT_ID
+                  PATHS: '/gms/*'
+    minhdev_preprod_dsp:
+          - step:
+              name: Build and test
+              image: node:14.17.0
+              caches:
+                - node
+              script: # Modify the commands below to build your repository.
+                - npm install gulp-cli -g
+                - npm install gulp -D
+                - npm install -g yarn
+                - npm install
+                - yarn install
+                - gulp build --stage=thuydev
+              artifacts:
+                - public/**
+          - step:
+              # set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY as environment variables
+              name: Deploy to S3
+              deployment: thuydev
+              # set to test, staging or production
+              # trigger: manual  # uncomment to have a manual step
+              image: atlassian/pipelines-awscli
+              script:
+                - pipe: atlassian/aws-s3-deploy:0.3.5
+                  variables:
+                      AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                      AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                      AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                      S3_BUCKET: $AWS_BUCKET_NAME
+                      LOCAL_PATH: 'public'
+                      ACL: 'public-read'
+                - pipe: atlassian/aws-cloudfront-invalidate:0.1.2
+                  variables:
+                      AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                      AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                      AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                      DISTRIBUTION_ID: $AWS_CLOUDFRONT_ID
+                      PATHS: '/gms/*'
+    ducdev_preprod_dsp:
+              - step:
+                  name: Build and test
+                  image: node:14.17.0
+                  caches:
+                    - node
+                  script: # Modify the commands below to build your repository.
+                    - npm install gulp-cli -g
+                    - npm install gulp -D
+                    - npm install -g yarn
+                    - npm install
+                    - yarn install
+                    - gulp build --stage=thuydev
+                  artifacts:
+                    - public/**
+              - step:
+                  # set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY as environment variables
+                  name: Deploy to S3
+                  deployment: thuydev
+                  # set to test, staging or production
+                  # trigger: manual  # uncomment to have a manual step
+                  image: atlassian/pipelines-awscli
+                  script:
+                    - pipe: atlassian/aws-s3-deploy:0.3.5
+                      variables:
+                          AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                          AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                          AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                          S3_BUCKET: $AWS_BUCKET_NAME
+                          LOCAL_PATH: 'public'
+                          ACL: 'public-read'
+                    - pipe: atlassian/aws-cloudfront-invalidate:0.1.2
+                      variables:
+                          AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                          AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                          AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                          DISTRIBUTION_ID: $AWS_CLOUDFRONT_ID
+                          PATHS: '/gms/*'

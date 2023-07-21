@@ -1,0 +1,21 @@
+<div class="" ng-class="{'inline': isInline}">
+    <ng-if ng-if="image_url && image_url != undefined && image_url != '' && image_url != 'image_url' ">
+        <img ng-src="{{ image_url }}"
+             class="{{ formatClass }}"
+             ng-class="{
+                'thumb16': size == 'xxsmall',
+                'thumb24': size == 'xsmall',
+                'thumb32': size == 'small',
+                'thumb48': size == 'xmedium',
+                'thumb64': size == 'medium',
+                'thumb75': size == 'large',
+                'thumb96': size == 'xlarge',
+                'thumb128': size == 'xxlarge',
+                'thumb256': size == 'xxxlarge',
+             }"/>
+    </ng-if>
+    <ng-if ng-if="!image_url || image_url == ''">
+        <em class="fa fa-user-circle-o text-32 text-gray" ng-if="size !='xsmall'"></em>
+        <em class="fa fa-user-circle-o text-24 text-gray" ng-if="size =='xsmall'"></em>
+    </ng-if>
+</div>

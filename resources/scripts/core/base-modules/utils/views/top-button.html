@@ -1,0 +1,30 @@
+<div class="text-right">
+    <button ng-repeat="singleButton in ($root.app.layout.topButtons | filter: {type: 'single'})"
+            type="button"
+            class="btn btn-oval mr-sm {{ singleButton.buttonClass != '' ? singleButton.buttonClass:'btn-default'}}"
+            ng-click="buttonClick($event, singleButton)">
+        <em class="{{ singleButton.icon }} mr-sm" ng-if="singleButton.icon != null && singleButton.icon != ''"></em>
+        {{singleButton.title | translate}}
+    </button>
+
+    <div ng-repeat="groupButton in ($root.app.layout.topButtons | filter: {type: 'group'})"
+         class="inline-block ml-sm" uib-dropdown keyboard-nav>
+        <button type="button"
+                class="btn btn-round {{ groupButton.buttonClass != '' ? groupButton.buttonClass:'btn-default'}}"
+                uib-dropdown-toggle>
+            <i class="fa fa-ellipsis-h"></i>
+        </button>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu"
+            aria-labelledby="simple-btn-keyboard-nav"
+            style="top: 80%; left: auto; right: 0px;">
+            <li ng-repeat="buttonItem in groupButton.items" role="menuitem">
+
+                <a ng-click="buttonClick($event, buttonItem)">
+                    <em class="{{ buttonItem.icon }} mr-sm"
+                        ng-if="buttonItem.icon != null && buttonItem.icon != ''"></em>
+                    {{buttonItem.title | translate}}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

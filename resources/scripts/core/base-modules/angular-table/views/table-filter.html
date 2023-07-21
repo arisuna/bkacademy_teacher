@@ -1,0 +1,11 @@
+<div class="form-group">
+    <select class="form-control"
+            chosen=""
+            ng-model="filter"
+            ng-change="selectFilter()"
+            data-placeholder-text-single="'{{ title | translate }}'"
+            allow-single-deselect="true"
+            ng-options="filterValue as filterValue.text for filterValue in filterValues track by filterValue.id">
+        <option value=""></option>
+    </select>
+</div>

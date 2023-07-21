@@ -1,12 +1,12 @@
 (function () {
     'use strict';
 
-    App.controller('CheckTokenController', ['$scope', '$rootScope', '$state', '$location', '$window', '$translate', 'WaitingService', 'GmsDataService', 'GmsAuthService', 'GmsSystem', 'Utils', '$stateParams', '$timeout',
-        function ($scope, $rootScope, $state, $location, $window, $translate, WaitingService, GmsDataService, GmsAuthService, GmsSystem, Utils, $stateParams, $timeout) {
+    App.controller('CheckTokenController', ['$scope', '$rootScope', '$state', '$location', '$window', '$translate', 'WaitingService', 'AppDataService', 'AppAuthService', 'AppSystem', 'Utils', '$stateParams', '$timeout',
+        function ($scope, $rootScope, $state, $location, $window, $translate, WaitingService, AppDataService, AppAuthService, AppSystem, Utils, $stateParams, $timeout) {
 
             $scope.checkSamlAuthentication = function () {
 
-                GmsDataService.checkSamlAuthentication({uuid: $stateParams.uuid}).then(function (res) {
+                AppDataService.checkSamlAuthentication({uuid: $stateParams.uuid}).then(function (res) {
                     if (res.success) {
 
                         localStorage.setItem('token_key', res.token);
@@ -14,17 +14,17 @@
 
                         $rootScope._token = res.token;
 
-                        GmsAuthService.checkLoginProcess().then(function () {
+                        AppAuthService.checkLoginProcess().then(function () {
 
-                            if (GmsAuthService.isConnected() == true) {
-                                GmsSystem.getSystemData().then(function (res) {
+                            if (AppAuthService.isConnected() == true) {
+                                AppSystem.getSystemData().then(function (res) {
                                     console.log('system:system data inited');
                                 });
 
-                                GmsAuthService.getAuthData().then(function () {
+                                AppAuthService.getAuthData().then(function () {
                                     console.log('system:auth data inited');
 
-                                    var currentUser = GmsAuthService.getUser();
+                                    var currentUser = AppAuthService.getUser();
 
                                     if (currentUser.id > 0) {
                                         $rootScope.currentUser = currentUser;
@@ -33,14 +33,14 @@
                                     }
 
                                     $timeout(function () {
-                                        if (GmsAuthService.getRedirectUrl() === 'undefined' || GmsAuthService.getRedirectUrl() === undefined || GmsAuthService.getRedirectUrl() === '' || GmsAuthService.getRedirectUrl() === null) {
+                                        if (AppAuthService.getRedirectUrl() === 'undefined' || AppAuthService.getRedirectUrl() === undefined || AppAuthService.getRedirectUrl() === '' || AppAuthService.getRedirectUrl() === null) {
                                             WaitingService.end();
                                             $state.go('app.dashboard');
                                         } else {
-                                            console.log('CHECK_SAML_REDIRECT_TO_', GmsAuthService.getRedirectUrl());
+                                            console.log('CHECK_SAML_REDIRECT_TO_', AppAuthService.getRedirectUrl());
                                             WaitingService.end();
-                                            $window.location.href = GmsAuthService.getRedirectUrl();
-                                            GmsAuthService.setRedirectUrlNull();
+                                            $window.location.href = AppAuthService.getRedirectUrl();
+                                            AppAuthService.setRedirectUrlNull();
                                         }
                                     }, 200);
 

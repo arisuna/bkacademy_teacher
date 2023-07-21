@@ -1,0 +1,22 @@
+<div class="inline">
+    <ng-if ng-if="image_url && image_url != undefined && image_url != '' && image_url != 'image_url' ">
+        <img ng-if="size == 'xxsmall'"
+             ng-src="{{ image_url }}"
+             class="{{ formatClass }} thumb-rectangle-24 mda-list-item-initial"/>
+        <img ng-if="size == 'xsmall'"
+             ng-src="{{ image_url }}"
+             class="{{ formatClass }} thumb-rectangle-36 mda-list-item-initial"/>
+        <img ng-if="size == 'small'"
+             ng-src="{{ image_url }}"
+             class="{{ formatClass }} thumb-rectangle-48 mda-list-item-initial"/>
+        <img ng-if="size == 'medium'"
+             ng-src="{{ image_url }}"
+             class="{{ formatClass }} thumb-rectangle-80"/>
+        <img ng-if="size == 'large'"
+             ng-src="{{ image_url }}"
+             class="{{ formatClass }} thumb-rectangle-128 mda-list-item-initial"/>
+        <img ng-if="size == 'xlarge'"
+             ng-src="{{ image_url }}"
+             class="{{ formatClass }} thumb-rectangle-128 mda-list-item-initial"/>
+    </ng-if>
+</div>

@@ -1,0 +1,54 @@
+<div class="view-container" id="ViewFullMedia">
+    <div class="header">
+        <div class="header-title">
+            <div>
+                <em class="fa fa-picture-o"></em>
+                {{ items[index].name }}
+            </div>
+        </div>
+        <div class="header-control">
+            <button type="button" class="btn btn-link" ng-click="gotoPage( items[index].image_data.url_download )"><em
+                class="fa fa-download"></em></button>
+            <button type="button" class="btn btn-link"><em class="fa fa-print"></em></button>
+            <button type="button" class="btn btn-link" ng-click="closeThisDialog()"><em class="fa fa-close"></em>
+            </button>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="file-body">
+            <div class="viewer-layer">
+                <div class="image-preview">
+                    <div class="image-container" ng-show="loading_view">
+                        <spinner ng-show="loading_view"></spinner>
+                    </div>
+                    <div class="image-container" ng-switch="items[index].file_extension" ng-show="!loading_view">
+                        <ng-pdf ng-switch-when="pdf" template-url="/assets/views/uploader/pdf-viewer.html"></ng-pdf>
+                        <ng-pdf ng-switch-when="docx" template-url="/assets/views/uploader/pdf-viewer.html"></ng-pdf>
+                        <img ng-switch-default="" ng-src="{{ items[index].image_data.url_thumb }}" width="{{ zoom }}%"/>
+                    </div>
+                    <span class="baseline-extension"></span>
+                </div>
+            </div>
+            <div class="arrow-layer" ng-show="items.lenght > 1">
+                <button class="arrow-nav left" type="button" ng-click="previousItem()"><em
+                    class="fa fa-chevron-left"></em></button>
+                <button class="arrow-nav right" type="button" ng-click="nextItem()"><em
+                    class="fa fa-chevron-right"></em></button>
+            </div>
+        </div>
+    </div>
+    <div class="footer" ng-if="items[index].file_extension != 'pdf'">
+        <div class="footer-meta">
+            <div class="text-center">
+                <div class="footer-tools">
+                    <button type="button" class="btn btn-link" ng-click="zoomOut()"><em class="fa fa-minus"></em>
+                    </button>
+                    <button type="button" class="btn btn-link" ng-click="zoomOrigin()"><em
+                        class="fa fa-search-minus"></em></button>
+                    <button type="button" class="btn btn-link" ng-click="zoomIn()"><em class="fa fa-plus"></em></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

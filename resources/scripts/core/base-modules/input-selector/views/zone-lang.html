@@ -1,0 +1,17 @@
+<div class="mda-form-group {{ className }} has-tool-tip">
+    <select class="mda-form-control"
+            ng-options="language.code as ( language.code + ' ' + language.name ) for language in zone_langs"
+            ng-model="model"
+            chosen=""
+            name="{{ realName }}"
+            data-parsley-group="{{ step }}"
+            data-placeholder-text-single="'{{ 'SELECT_TEXT' | translate }}'"
+            ng-required="required"
+            data-parsley-required-message="{{ 'ZONE_LANG_REQUIRED_TEXT' | translate }}"
+            data-parsley-errors-container="#error_{{ realName }}">
+        <option value=""></option>
+    </select>
+    <tooltip text="{{'TOOLTIP_LANGUAGE_REGION_TEXT' | translate}}"></tooltip>
+    <label>{{ label }} <span class="text-danger" ng-if="required == true">*</span> </label>
+    <div id="error_{{ realName }}"></div>
+</div>

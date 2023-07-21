@@ -1,0 +1,20 @@
+<div class="aside-content" ng-if="true">
+    <div class="aside-content-collapsed" ng-show="!openAsideContent">
+        <button class="aside-content-btn icon-collapse" ng-click="toggleCollapse()">
+            <!--<img src="/gms/assets/img/default_avatar.jpeg" style="width: 30px; border-radius: 50%" ng-if="!avatarUuid"/>-->
+            <em class="fa fa-info"></em>
+            <employee-avatar-thumb uuid="{{ avatarUuid }}"
+                                   ng-if="avatarUuid"
+                                   size="xsmall"></employee-avatar-thumb>
+        </button>
+        <hr/>
+    </div>
+    <div class="aside-content-collapsed-in" ng-show="openAsideContent">
+        <button class="aside-content-btn icon-collapse" ng-click="toggleCollapse()" ng-if="!hideCollape">
+            <em class="fa fa-angle-left"></em>
+        </button>
+        <div class="aside-content-main">
+            <ng-transclude></ng-transclude>
+        </div>
+    </div>
+</div>

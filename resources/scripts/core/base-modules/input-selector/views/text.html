@@ -1,0 +1,171 @@
+<div class="form-group" ng-class="{'mg-0': noMargin}">
+
+    <div ng-if="isEditable == true && isNumeric !=  true && !(maxLength >0) && isUrl != true && hasPattern">
+        <label class="label-text-form" ng-if="showLabel">
+            {{ label | translate }}
+            <tooltip text="{{ toolTipText | translate }}" ng-if="toolTipText" class="ml-sm"></tooltip>
+            <asterik-red ng-if="required" class="mr-sm"></asterik-red>
+        </label>
+        <input type="text"
+            data-parsley-pattern='{{pattern}}'
+            data-parsley-pattern-message="{{ patternErrorMessage | translate }}"
+               placeholder="{{ placeholder | translate }}"
+               class="form-control form-control-custom-radius relo-bg-bright-blue-10"
+               ng-required="isRequired"
+               ng-disabled="isDisabled"
+               ng-model="$parent.model"
+               data-parsley-required-message="{{ requiredMessage | translate }}"
+               ng-change="changeValue()">
+    </div>
+    <div ng-if="isEditable == true && isNumeric !=  true && !(maxLength >0) && isUrl != true && !hasPattern">
+        <label class="label-text-form" ng-if="showLabel">
+            {{ label | translate }}
+            <tooltip text="{{ toolTipText | translate }}" ng-if="toolTipText" class="ml-sm"></tooltip>
+            <asterik-red ng-if="required" class="mr-sm"></asterik-red>
+        </label>
+        <input type="text"
+               placeholder="{{ placeholder | translate }}"
+               class="form-control form-control-custom-radius relo-bg-bright-blue-10"
+               ng-required="isRequired"
+               ng-disabled="isDisabled"
+               ng-model="$parent.model"
+               data-parsley-required-message="{{ requiredMessage | translate }}"
+               ng-change="changeValue()">
+    </div>
+    <div ng-if="isEditable == true && isNumeric !=  true && maxLength >0">
+        <label class="label-text-form" ng-if="showLabel">
+            {{ label | translate }}
+            <tooltip text="{{ toolTipText | translate }}" ng-if="toolTipText" class="ml-sm"></tooltip>
+            <asterik-red ng-if="required" class="mr-sm"></asterik-red>
+        </label>
+        <input type="text"
+               placeholder="{{ placeholder | translate }}"
+               class="form-control form-control-custom-radius relo-bg-bright-blue-10"
+               ng-required="isRequired"
+               ng-model="$parent.model"
+               ng-disabled="isDisabled"
+               data-parsley-maxlength="{{maxLength}}"
+               data-parsley-maxlength-message="{{ maxLengthMessage | translate }}"
+               data-parsley-required-message="{{ requiredMessage | translate }}"
+               ng-change="changeValue()">
+    </div>
+    <div ng-if="isEditable == true && isNumeric ==  true">
+        <label class="label-text-form" ng-if="showLabel">
+            {{ label | translate }}
+            <tooltip text="{{ toolTipText | translate }}" ng-if="toolTipText" class="ml-sm"></tooltip>
+            <asterik-red ng-if="required" class="mr-sm"></asterik-red>
+        </label>
+        <input type="number"
+               step="{{step}}"
+               placeholder="{{ placeholder | translate }}"
+               class="form-control form-control-custom-radius relo-bg-bright-blue-10"
+               ng-required="isRequired"
+               min="{{min}}"
+               ng-model="$parent.model"
+               data-parsley-required-message="{{ requiredMessage | translate }}"
+               ng-change="changeValue()">
+    </div>
+    <div ng-if="isEditable == true && isUrl ==  true">
+        <label class="label-text-form" ng-if="showLabel">
+            {{ label | translate }}
+            <tooltip text="{{ toolTipText | translate }}" ng-if="toolTipText" class="ml-sm"></tooltip>
+            <asterik-red ng-if="required" class="mr-sm"></asterik-red>
+        </label>
+        <input type="text"
+               step="{{step}}"
+               placeholder="{{ placeholder | translate }}"
+               class="form-control form-control-custom-radius relo-bg-bright-blue-10"
+               ng-required="isRequired"
+               ng-model="$parent.model"
+               data-parsley-type="url"
+               data-parsley-type-message="{{ 'INVALID_URL_TEXT' | translate }}"
+               data-parsley-required-message="{{ requiredMessage | translate }}"
+               ng-change="changeValue()">
+    </div>
+
+
+    <div ng-if="isEditable == false">
+
+        <div>
+            <label class="label-text-form" ng-if="showLabel">
+                {{ label | translate }}
+                <span class="text-red" ng-if="required">*</span>
+            </label>
+            <tooltip text="{{ toolTipText | translate }}" ng-if="toolTipText" class="ml-sm"></tooltip>
+        </div>
+
+
+        <div ng-if="isEmail == true">
+            <email-viewer ng-model="model"></email-viewer>
+        </div>
+
+        <div ng-if="isTelephone == true">
+            <telephone-viewer ng-model="model"></telephone-viewer>
+        </div>
+
+        <div ng-if="isMobile == true">
+            <mobile-viewer ng-model="model"></mobile-viewer>
+        </div>
+
+        <div ng-if="isCountry == true">
+            <country-viewer country-id="model"></country-viewer>
+        </div>
+
+        <div ng-if="isCity == true">
+            <city-viewer ng-model="model"></city-viewer>
+        </div>
+
+        <div ng-if="isFax == true">
+            <fax-viewer ng-model="model"></fax-viewer>
+        </div>
+
+        <div ng-if="isWebsite == true">
+            <website-viewer ng-model="model"></website-viewer>
+        </div>
+
+        <div ng-if="isAddress == true">
+            <location-viewer ng-model="model"></location-viewer>
+        </div>
+
+        <div ng-if="isPerson == true">
+            <person-viewer ng-model="model"></person-viewer>
+        </div>
+
+        <div ng-if="isDocument == true">
+            <document-text-viewer ng-model="model"></document-text-viewer>
+        </div>
+
+        <div ng-if="isJobTitle == true">
+            <job-title-viewer ng-model="model"></job-title-viewer>
+        </div>
+
+        <div ng-if="isDate == true">
+            <date-viewer ng-model="modelFormatted"></date-viewer>
+        </div>
+
+        <div ng-if="isPassword == true">
+            <password-viewer></password-viewer>
+        </div>
+
+        <div ng-if="isPasswordEmpty == true">
+            <password-viewer-empty></password-viewer-empty>
+        </div>
+
+        <div ng-if="isLocation == true">
+            <location-viewer ng-model="model"></location-viewer>
+        </div>
+
+        <div ng-if="isAmount == true">
+            <amount-viewer ng-model="model" currency-code="currencyCode"></amount-viewer>
+        </div>
+
+        <div ng-if="isInfo == true || (!isLocation && !isPassword && !isPasswordEmpty && !isWebsite && !isCountry && !isCity && !isMobile && !isTelephone && !isFax && !isEmail && !isAddress && !isPerson && !isDocument && !isJobTitle && !isDate && !isAmount)">
+            <div class="text-static">
+                <info-viewer
+                    ng-model="model"
+                    is-long-view-text="isLongViewText"
+                    is-disabled="isDisabled"></info-viewer>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="mda-form-group {{ className }}">
+    <label ng-if="labelFloating == false" class="text-muted">{{ label | translate }} <span class="text-danger" ng-if="required">*</span> </label>
+    <select class="mda-form-control"
+            ng-options="item.id as (item.name + ' - ' + item.utc ) for item in timezones"
+            ng-model="model"
+            ng-disabled="disabled"
+            chosen=""
+            name="{{ realName }}"
+            data-parsley-group="{{ step }}"
+            data-placeholder-text-single="'{{ placeholder != '_' ? ( placeholder | translate ) : ' ' }}'"
+            ng-required="required"
+            data-parsley-required-message="{{ 'TIME_ZONE_REQUIRED_TEXT' | translate }}"
+            data-parsley-errors-container="#error_{{ realName }}">
+        <option value=""></option>
+    </select>
+    <label ng-if="labelFloating == true">{{ label | translate }} <span class="text-danger" ng-if="required">*</span> </label>
+    <div id="error_{{ realName }}"></div>
+</div>

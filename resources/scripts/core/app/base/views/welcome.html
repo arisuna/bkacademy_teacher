@@ -1,0 +1,162 @@
+<div class="pd-2x">
+    <div class="text-center">
+        <h2 class="animated fadeInLeft anim-delay-15 font-300">
+            {{ 'WELCOME_MESSAGE_TEXT' | translate }}
+            <span class="ml-md">
+                <user-avatar-thumb uuid="{{ userprofile.uuid }}" class="mr-sm" size="small"></user-avatar-thumb> {{ userprofile.firstname }} {{ userprofile.lastname }}
+            </span>
+        </h2>
+    </div>
+    <div class="mt-xl">
+        <div class="row" vertilize-container="">
+            <div class="col-xs-6 col-md-4" gms-acl-allow="relocation/index">
+                <div class="panel b eq-row" vertilize>
+                    <div class="panel-body  text-left">
+                        <div class="col-xs-12 col-md-12">
+                            <h4>{{'RELOCATION_TEXT'|translate}}</h4>
+                        </div>
+                        <div class="col-xs-4 col-md-4 text-left text-bright-blue mb-lg">
+                            <img src="/gms/assets/img/svg/icon_relocations.svg" class="img-responsive" width="70px">
+                        </div>
+                        <div class="col-xs-8 col-md-8 text-left text-bright-blue text-14">
+                            <a ui-sref="app.relocation.create"
+                               gms-acl-allow="relocation/create"
+                               acl-remove="true">{{'START_NEW_RELOCATION_TEXT'|translate}}</a>
+                            <br>
+                            <a ui-sref="app.relocation.list">{{'SEE_ALL_YOUR_RELOCATION_TEXT'|translate}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-md-4" gms-acl-allow="task/index">
+                <div class="panel b eq-row" vertilize>
+                    <div class="panel-body text-left">
+                        <div class="col-xs-12 col-md-12">
+                            <h4>{{'TASKS_TEXT'|translate}}</h4>
+                        </div>
+                        <div class="col-xs-4 col-md-4 text-left text-bright-blue mb-lg">
+                            <img src="/gms/assets/img/svg/icon_tasks.svg" class="img-responsive" width="70px">
+                        </div>
+                        <div class="col-xs-8 col-md-8 text-left text-bright-blue text-14">
+                            <a ng-click="addTaskDialog()"
+                               gms-acl-allow="task/create"
+                               acl-remove="true">{{'CREATE_NEW_TASK_TEXT'|translate}}</a>
+                            <br>
+                            <a ui-sref="app.tasks.list.all">{{'SEE_ALL_YOUR_TASKS'|translate}}</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-md-4" gms-acl-allow="invoice-quote/index">
+                <div class="panel b ea-row" vertilize>
+                    <div class="panel-body text-left">
+                        <div class="col-xs-12 col-md-12">
+                            <h4>{{'INVOICING_TEXT'|translate}}</h4>
+                        </div>
+                        <div class="col-xs-4 col-md-4 text-left text-bright-blue mb-lg">
+                            <img src="/gms/assets/img/svg/icon_finance.svg" width="70px">
+                        </div>
+                        <div class="col-xs-8 col-md-8 text-left text-bright-blue text-14">
+                            <a ui-sref="app.quote.create"
+                               gms-acl-allow="quote/create"
+                               acl-remove="true">{{'CREATE_NEW_QUOTE_TEXT'|translate}}</a>
+                            <br>
+                            <a ui-sref="app.invoice.create"
+                               gms-acl-allow="invoice/create"
+                               acl-remove="true">{{'CREATE_NEW_INVOICE_TEXT'|translate}}</a>
+                            <br>
+                            <a ui-sref="app.quote.list"
+                               gms-acl-allow="quote/index"
+                               acl-remove="true">{{'SEE_ALL_QUOTES'|translate}}</a>
+                            <br>
+                            <a ui-sref="app.invoice.list"
+                               gms-acl-allow="invoice/index"
+                               acl-remove="true">{{'SEE_ALL_INVOICES'|translate}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-md-4" gms-acl-allow="report/index">
+                <div class="panel b eq-row" vertilize>
+                    <div class="panel-body text-left">
+                        <div class="col-xs-12 col-md-12">
+                            <h4>{{'EXTRACT_DATA_TEXT'|translate}}</h4>
+                        </div>
+                        <div class="col-xs-4 col-md-4 text-left text-bright-blue mb-lg">
+                            <img src="/gms/assets/img/svg/icon_extract_data.svg" class="img-responsive" width="70px">
+                        </div>
+                        <div class="col-xs-8 col-md-8 text-left text-bright-blue text-14">
+                            <a ui-sref="app.report.index">{{'REPORT_TEXT'|translate}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-md-4" gms-acl-allow="property/index">
+                <div class="panel b eq-row" vertilize>
+                    <div class="panel-body text-left">
+                        <div class="col-xs-12 col-md-12">
+                            <h4>{{'PROPERTIES_BUILDINGS_TEXT'|translate}}</h4>
+                        </div>
+                        <div class="col-xs-4 col-md-4 text-left mb-lg">
+                            <img src="/gms/assets/img/svg/icon_real_estate.svg" class="img-responsive" width="70px">
+                        </div>
+                        <div class="col-xs-8 col-md-8 text-left text-bright-blue text-14">
+                            <a ui-sref="app.properties.create"
+                               gms-acl-allow="property/create"
+                               acl-remove="true">
+                                {{'CREATE_NEW_PROPERTY_TEXT'|translate}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-md-4" gms-acl-allow="admin/index">
+                <div class="panel b eq-row" vertilize>
+                    <div class="panel-body text-left">
+                        <div class="col-xs-12 col-md-12">
+                            <h4>{{'SETTINGS_TEXT'|translate}}</h4>
+                        </div>
+                        <div class="col-xs-4 col-md-4 text-left mb-lg">
+                            <img src="/gms/assets/img/svg/icon_settings.svg" class="img-responsive" width="70px">
+                        </div>
+                        <div class="col-xs-8 col-md-8 text-left text-bright-blue text-14">
+                            <a ui-sref="app.admin-page.dashboard">{{'MANAGE_YOUR_SYSTEM_TEXT'|translate}}</a>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-md-4" gms-acl-allow="invoicing/index">
+                <div class="panel b eq-row" vertilize>
+                    <div class="panel-body text-left">
+                        <div class="col-xs-12 col-md-12">
+                            <h4>{{'INVOICING_TEXT'|translate}}</h4>
+                        </div>
+                        <div class="col-xs-4 col-md-4 text-left text-bright-blue mb-lg">
+                            <img src="/gms/assets/img/svg/icon_finance.svg" class="img-responsive" width="70px">
+                        </div>
+                        <div class="col-xs-8 col-md-8 text-left text-bright-blue text-14">
+                            <a ui-sref="app.quote.list">{{'QUOTES_TEXT'|translate}}</a>
+                            <br/>
+                        </div>
+                        <div class="col-xs-8 col-md-8 text-left text-bright-blue text-14">
+                            <a ui-sref="app.invoice.list">{{'INVOICES_TEXT'|translate}}</a>
+                            <br/>
+                        </div>
+                        <div class="col-xs-8 col-md-8 text-left text-bright-blue text-14">
+                            <a ui-sref="app.expense.dashboard">{{'EXPENSES_TEXT'|translate}}</a>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

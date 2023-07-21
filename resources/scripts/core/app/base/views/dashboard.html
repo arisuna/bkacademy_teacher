@@ -1,0 +1,63 @@
+<div ng-controller="DashboardController">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel widget bg-info eq-row">
+                <div class="row row-table">
+                    <div class="col-xs-3 text-center bg-info-dark">
+                        <em class="fa fa-briefcase fa-3x"></em>
+                    </div>
+                    <div class="col-xs-9 pt-sm pb-sm">
+                        <div class="h5 mt0">18 <span>{{ 'ONGOING_RELOCATION_TEXT' | translate }}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel widget bg-warning eq-row">
+                <div class="row row-table">
+                    <div class="col-xs-3 text-center bg-warning-dark">
+                        <em class="fa fa-tasks fa-3x"></em>
+                    </div>
+                    <div class="col-xs-9 pt-sm pb-sm">
+                        <div class="h5 mt0">4 <span>{{ 'TASK_TO_DO_TEXT' | translate }}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel widget bg-danger eq-row">
+                <div class="row row-table">
+                    <div class="col-xs-3 text-center bg-danger-dark">
+                        <em class="fa fa-exclamation fa-3x"></em>
+                    </div>
+                    <div class="col-xs-9 pt-sm pb-sm">
+                        <div class="h5 mt0">3 <span>{{ 'ASSIGNMENTS_CLOSE_TO_AND_DATE_TEXT' | translate }}</span></div>
+                        <div class="h5 mt0">4 <span>{{ 'APPROVALS_TO_VIEW_TEXT' | translate }}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <uib-tabset class="uib-tabset-custom">
+                <uib-tab heading="{{ 'ACTIVITY_FEED_TEXT' | translate }}">
+
+                </uib-tab>
+                <uib-tab heading="{{ 'TODAY_TASKS_TEXT' | translate }}">
+
+                </uib-tab>
+                <uib-tab heading="{{ 'RELOCATION_TEXT' | translate }}">
+
+                </uib-tab>
+                <uib-tab heading="{{ 'ASSIGNMENTS_TEXT' | translate }}">
+
+                </uib-tab>
+                <uib-tab heading="{{ 'WORKERS_ACTIVITIES_TEXT' | translate }}">
+
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>

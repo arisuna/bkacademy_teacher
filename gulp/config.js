@@ -35,6 +35,7 @@ const config = {
     },
 
     apps: {
+
         app: {
             folders: ['assets', 'libraries', 'core', 'js', 'menu', 'views'],
             coreFileName: 'bundle.js',
@@ -67,7 +68,7 @@ const config = {
                 'hr-*/*'
             ],
 
-            description: 'Your Management System',
+            description: 'Your Relocation Management System',
         },
     },
 
