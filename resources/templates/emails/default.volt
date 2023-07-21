@@ -47,7 +47,7 @@
                     </td>
                     <td align="right" style="padding-top:3px">
                         <img src="https://static.relotalent.com/emails/relotalent_logo_gray_250.png" width="200"
-                             alt="relotalent logo">
+                             alt="SMXD logo">
                     </td>
                 </tr>
             </table>

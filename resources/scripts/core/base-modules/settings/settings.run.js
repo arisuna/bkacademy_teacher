@@ -22,8 +22,8 @@
         // Global Settings
         // -----------------------------------
         $rootScope.app = {
-            name: 'ReloTalent',
-            description: 'ReloTalent',
+            name: 'San May Xay Dung',
+            description: 'San May Xay Dung',
             year: ((new Date()).getFullYear()),
             layout: {
                 isFixed: true,
