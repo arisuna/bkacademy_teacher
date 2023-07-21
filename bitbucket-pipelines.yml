@@ -38,7 +38,7 @@ pipelines:
                   AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
                   AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
                   DISTRIBUTION_ID: $AWS_CLOUDFRONT_ID
-                  PATHS: '/gms/*'
+                  PATHS: '/app/*'
     thinhdev_preprod_dsp:
       - step:
           name: Build and test
@@ -77,7 +77,7 @@ pipelines:
                   AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
                   AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
                   DISTRIBUTION_ID: $AWS_CLOUDFRONT_ID
-                  PATHS: '/gms/*'
+                  PATHS: '/app/*'
     thuydev_preprod_dsp:
       - step:
           name: Build and test
@@ -115,7 +115,7 @@ pipelines:
                   AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
                   AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
                   DISTRIBUTION_ID: $AWS_CLOUDFRONT_ID
-                  PATHS: '/gms/*'
+                  PATHS: '/app/*'
     minhdev_preprod_dsp:
           - step:
               name: Build and test
@@ -153,7 +153,7 @@ pipelines:
                       AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
                       AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
                       DISTRIBUTION_ID: $AWS_CLOUDFRONT_ID
-                      PATHS: '/gms/*'
+                      PATHS: '/app/*'
     ducdev_preprod_dsp:
               - step:
                   name: Build and test
@@ -191,4 +191,4 @@ pipelines:
                           AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
                           AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
                           DISTRIBUTION_ID: $AWS_CLOUDFRONT_ID
-                          PATHS: '/gms/*'
+                          PATHS: '/app/*'

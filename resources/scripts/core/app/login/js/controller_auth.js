@@ -24,7 +24,7 @@
 
             $scope.theme = {
                 main_color: '#0A142B',
-                logo_login_url: '/gms/assets/img/logo-login.png',
+                logo_login_url: '/app/assets/img/logo-login.png',
                 secondary_color: '#0098FF'
             };
 
@@ -69,7 +69,8 @@
                                 WaitingService.end();
                                 console.log('redirect to home by change state');
                                 $state.go('app.dashboard');
-                            }, function () {
+                            }, function (err) {
+                                console.log(err);
                                 WaitingService.end();
                                 WaitingService.expire();
                             })

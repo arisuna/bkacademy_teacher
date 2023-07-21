@@ -233,11 +233,11 @@
         }
 
         this.getRedirectUrl = function () {
-            if (vm.data.redirectUrl !== undefined && vm.data.redirectUrl !== '' && vm.data.redirectUrl.includes('gms')) {
+            if (vm.data.redirectUrl !== undefined && vm.data.redirectUrl !== '' && vm.data.redirectUrl.includes('app')) {
                 return vm.data.redirectUrl
             }
 
-            if (angular.isDefined($localStorage.redirectUrl) && !_.isNull($localStorage.redirectUrl) && _.includes($localStorage.redirectUrl, 'gms')) {
+            if (angular.isDefined($localStorage.redirectUrl) && !_.isNull($localStorage.redirectUrl) && _.includes($localStorage.redirectUrl, 'app')) {
                 return $localStorage.redirectUrl;
             } else {
                 return undefined;
@@ -300,6 +300,7 @@
             } else {
                 AppDataService.checkLogin().then(
                     function (res) {
+                        console.log(res);
                         var current_url = window.location.href;
                         if (res.success) {
                             vm.data.profile = res.user;
@@ -308,18 +309,19 @@
                             deferredAll.resolve(res);
                         } else if (angular.isDefined(res.required)) {
                             vm.connected = false;
-                            if (!current_url.includes('/#/login') && current_url.includes('gms')) {
+                            if (!current_url.includes('/#/login') && current_url.includes('app')) {
                                 vm.setRedirectUrl(current_url);
                             }
                             deferredAll.reject(res);
                         }
                     },
                     function (err) {
+                        console.log(err);
                         let current_url = window.location.href;
-                        if (!current_url.includes('/#/login') && current_url.includes('gms')) {
+                        if (!current_url.includes('/#/login') && current_url.includes('app')) {
                             vm.setRedirectUrl(current_url);
                         }
-                        deferredAll.reject(err.data);
+                        deferredAll.reject(err);
                     }
                 )
             }
@@ -443,8 +445,8 @@
         }
 
         this.gotoWelcomePage = function () {
-            if ($location.absUrl().indexOf('gms/#/login') == -1) {
-                $location.path('/gms/#/login');
+            if ($location.absUrl().indexOf('app/#/login') == -1) {
+                $location.path('/app/#/login');
             }
         }
 
@@ -499,12 +501,17 @@
 
 
                 } else {
+                    console.log('authservice login failed')
                     deferredAll.reject({success: false, message: 'LOGIN_FAILED'});
                     $rootScope.currentUser = null;
+
+                    vm.gotoLoginPage();
                 }
             }, function (err) {
+                console.log('authservice err', err);
                 deferredAll.reject({success: false, message: 'LOGIN_FAILED'});
                 $rootScope.currentUser = null;
+                vm.gotoLoginPage();
             });
 
             return deferredAll.promise;
@@ -529,7 +536,7 @@
          */
         this.switchUiVersion = function (moduleName) {
             var deferred = $q.defer();
-            AppHttp.put('/gms/profile/switchVersion', {moduleName: moduleName}).then(function (response) {
+            AppHttp.put('/app/profile/switchVersion', {moduleName: moduleName}).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);

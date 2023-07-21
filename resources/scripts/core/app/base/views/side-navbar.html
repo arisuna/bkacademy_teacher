@@ -81,7 +81,7 @@
 <!--                    class="dropdown dropdown-list has-children" uib-dropdown=""-->
 <!--                    auto-close="outsideClick"-->
 <!--                    ng-controller="HistoryNotificationController"-->
-<!--                    ng-include="'/gms/views/base/notifications.html'"></li>-->
+<!--                    ng-include="'/app/views/base/notifications.html'"></li>-->
 
                 <li ng-class="{active: $state.includes('app.notifications.list'), collapse_nav: !!app.layout.isCollapsedNav}"
                     class="dropdown dropdown-list has-children" uib-dropdown=""
@@ -168,7 +168,7 @@
                     tooltip-enable="!!app.layout.isCollapsedNav"
                     uib-tooltip="{{ 'LOGOUT_TEXT' | translate }}">
                     <a ui-sref="logout" title="{{ 'LOGOUT_TEXT' | translate }}">
-<!--                        <img src="/gms/assets/img/svg/logout.svg"-->
+<!--                        <img src="/app/assets/img/svg/logout.svg"-->
 <!--                             class="mr icon-svg white small"/>-->
                         <em class="fa-solid fa-right-from-bracket"></em>
                         <span class="" ng-if="!app.layout.isCollapsedNav">{{'LOGOUT_TEXT' | translate}}</span>

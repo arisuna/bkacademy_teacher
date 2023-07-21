@@ -49,16 +49,16 @@
             <div class="panel-body">
 
                 <div id="LoginStep1" ng-if="step == 1 && !account.isExist">
-                    <ng-include src="'/gms/views/login/login_step_1.html'"></ng-include>
+                    <ng-include src="'/app/views/login/login_step_1.html'"></ng-include>
                 </div>
                 <div id="LoginStep2" ng-if="step == 2">
-                    <ng-include src="'/gms/views/login/login_step_2.html'"></ng-include>
+                    <ng-include src="'/app/views/login/login_step_2.html'"></ng-include>
                 </div>
                 <div id="LoginStep3" ng-if="step == 3 && account.isExist == true">
-                    <ng-include src="'/gms/views/login/login_step_3.html'"></ng-include>
+                    <ng-include src="'/app/views/login/login_step_3.html'"></ng-include>
                 </div>
                 <div id="LoginStep4" ng-if="step == 4 && account.isExist == true">
-                    <ng-include src="'/gms/views/login/login_step_4.html'"></ng-include>
+                    <ng-include src="'/app/views/login/login_step_4.html'"></ng-include>
                 </div>
 
 <!--                <div id="LoginStep1" ng-if="step == 1 && !account.isExist">-->
@@ -311,7 +311,7 @@
         </div>
 
         <!-- END panel-->
-        <ng-include src="'/gms/views/login/bottom.html'"></ng-include>
+        <ng-include src="'/app/views/login/bottom.html'"></ng-include>
     </div>
 </div>
 <style>

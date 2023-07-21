@@ -7,9 +7,9 @@
 
 
     App.controller('DashboardController', ['$q', '$scope', '$http', '$state', '$window', 'SidebarLoader', '$rootScope', '$translate', '$timeout', 'AppDataService',
-        'AppAclService', 'urlBase', 'AppAuthService', 'ngDialog', 'GmsFilterConfigService', 'WaitingService', 'GmsDashboardService',
+        'AppAclService', 'urlBase', 'AppAuthService', 'ngDialog',  'WaitingService', 
         function ($q, $scope, $http, $state, $window, SidebarLoader, $rootScope, $translate, $timeout, AppDataService,
-                  AppAclService, urlBase, AppAuthService, ngDialog, GmsFilterConfigService, WaitingService, GmsDashboardService) {
+                  AppAclService, urlBase, AppAuthService, ngDialog,  WaitingService) {
             WaitingService.end();
             $scope.assignment_on_going_count = 0;
             $scope.assignment_ending_soon_count = 0;
@@ -66,9 +66,9 @@
 
             $scope.AppAclService = AppAclService;
 
-            $scope.templateRelocation = urlBase.tplApp('gms', 'dashboard', 'relocation');
+            $scope.templateRelocation = urlBase.tplApp('app', 'dashboard', 'relocation');
 
-            $scope.mapCountryUrl = urlBase.tplApp('gms', 'dashboard', 'dashboad_country_map');
+            $scope.mapCountryUrl = urlBase.tplApp('app', 'dashboard', 'dashboad_country_map');
 
             $scope.showBox1 = false;
 
@@ -206,7 +206,7 @@
                         if (res.success) {
                             if (res.data.length > 0) {
                                 let warningModal = ngDialog.open({
-                                    template: urlBase.tplApp('gms', 'communication-setting', 'warning_dialog', '_=' + Math.random()),
+                                    template: urlBase.tplApp('app', 'communication-setting', 'warning_dialog', '_=' + Math.random()),
                                     className: 'ngdialog-theme-default sm-box',
                                     scope: $scope,
                                     closeByDocument: true,
@@ -558,7 +558,7 @@
                     angular.isUndefined($scope.company.currency_code) || $scope.company.currency_code == null || $scope.company.currency_code == "" ||
                     angular.isUndefined($scope.company.date_format) || $scope.company.date_format == null || $scope.company.date_format == "") {
                     let settingModal = ngDialog.open({
-                        template: urlBase.tplApp('gms', 'my-company', 'setting_dialog'),
+                        template: urlBase.tplApp('app', 'my-company', 'setting_dialog'),
                         className: 'ngdialog-theme-default md-box',
                         scope: $scope,
                         closeByDocument: false,

@@ -26,7 +26,7 @@
             $scope.openLeftDialog = function($event){
                 $scope.setTimeReadFn();
                 let dialog = ngDialog.open({
-                    template: urlBase.tplApp('gms', '_directives-notification-hub', 'notification-hub-dialog'),
+                    template: urlBase.tplApp('app', '_directives-notification-hub', 'notification-hub-dialog'),
                     className: 'ngdialog-theme-left-box lg-box ng-dialog-btn-close-dark-blue left-60',
                     data: {},
                     controller:'NotificationHubController'

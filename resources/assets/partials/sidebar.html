@@ -88,13 +88,13 @@
                 </div>
             </li>
             <li class="has-user-block custom-style" style="" ng-if="hasCommunicationLeftBlock">
-				<ng-include src="'/gms/views/communication/left_menu.html'"  include-replace="" ng-if="hasCommunicationLeftBlock"></ng-include>
+				<ng-include src="'/app/views/communication/left_menu.html'"  include-replace="" ng-if="hasCommunicationLeftBlock"></ng-include>
             </li>
             <li class="has-user-block custom-style" style="" ng-if="hasOldCommunicationLeftBlock">
-                <ng-include src="'/gms/views/communication/left_menu.html'"  include-replace="" ng-if="hasCommunicationLeftBlock"></ng-include>
+                <ng-include src="'/app/views/communication/left_menu.html'"  include-replace="" ng-if="hasCommunicationLeftBlock"></ng-include>
             </li>
             <li class="has-user-block custom-style" style="" ng-if="hasTasksLeftBlock">
-				<ng-include src="'/gms/views/tasks/left_menu.html'"  include-replace="" ng-if="hasTasksLeftBlock"></ng-include>
+				<ng-include src="'/app/views/tasks/left_menu.html'"  include-replace="" ng-if="hasTasksLeftBlock"></ng-include>
             </li>
 
             <!-- END user info-->
@@ -106,7 +106,7 @@
 
         </ul>
 
-        <ng-include ng-if="hasServiceMenu" src="'/gms/views/relocation-services/left_menu.html'"></ng-include>
+        <ng-include ng-if="hasServiceMenu" src="'/app/views/relocation-services/left_menu.html'"></ng-include>
 
         <!-- END sidebar nav-->
     </nav>

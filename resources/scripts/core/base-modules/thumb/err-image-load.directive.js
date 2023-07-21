@@ -26,7 +26,7 @@
                 element.bind('error', function() {
                     console.log('errImageOnLoad');
                     console.log(scope.type);
-                    attrs.$set('src', '/gms/assets/img/loading/spin.svg');
+                    attrs.$set('src', '/app/assets/img/loading/spin.svg');
                     if(scope.type == 'theme_logo' ||scope.type == 'theme_icon' ){
                         console.log(scope.type);
                         AppDataService.getMyCompanyInfo().then(
@@ -37,8 +37,8 @@
                                     } else {
                                         scope.theme = {
                                             main_color: '#0A142B',
-                                            logo_url: '/gms/assets/img/logo.png',
-                                            icon_url: '/gms/assets/img/logo-single.png',
+                                            logo_url: '/app/assets/img/logo.png',
+                                            icon_url: '/app/assets/img/logo-single.png',
                                             secondary_color: '#0098FF'
                                         };
                                     }

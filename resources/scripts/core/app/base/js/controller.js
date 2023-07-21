@@ -24,8 +24,8 @@
             $rootScope.attributes = [];
             $rootScope.zone_langes = [];
             $rootScope.user_groups = [];
-            $rootScope.app.topMenuUrl = urlBase.tplApp('gms', 'base', 'menu');
-            $rootScope.app.breadcrumb = urlBase.tplApp('gms', 'base', 'breadcrumb');
+            $rootScope.app.topMenuUrl = urlBase.tplApp('app', 'base', 'menu');
+            $rootScope.app.breadcrumb = urlBase.tplApp('app', 'base', 'breadcrumb');
             $rootScope.svp_user_groups = [];
             $rootScope._token = localStorage.getItem('token_key');
             $rootScope.isEmployeeAvailable = false;
@@ -116,7 +116,7 @@
                 $anchorScroll();
             };
 
-            $translatePartialLoader.addPart('gms');
+            $translatePartialLoader.addPart('app');
             $translate.refresh();
 
             /**
@@ -315,7 +315,7 @@
             });
 
             $scope.storage.onConnect().then(function () {
-                let redirectUrl = $window.location.origin + "/gms/#/app/admin-page/communication-setting/accounts";
+                let redirectUrl = $window.location.origin + "/app/#/app/admin-page/communication-setting/accounts";
                 return $scope.storage.set('redirect_url', redirectUrl);
             }).catch(function (err) {
                 console.info('cross storage error', err);

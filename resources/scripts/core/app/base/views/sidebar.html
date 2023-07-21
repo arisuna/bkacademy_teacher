@@ -28,28 +28,28 @@
         <ul class="nav">
 
             <li class="has-user-block custom-style" style="" ng-if="hasEmployeeLeftBlock">
-                <ng-include src="'/gms/views/base/employee_block.html'" include-replace=""></ng-include>
+                <ng-include src="'/app/views/base/employee_block.html'" include-replace=""></ng-include>
             </li>
 
             <li class="has-user-block custom-style" style="" ng-if="hasWorkerLeftBlock">
-                <ng-include src="'/gms/views/base/worker_block.html'" include-replace=""></ng-include>
+                <ng-include src="'/app/views/base/worker_block.html'" include-replace=""></ng-include>
             </li>
 
             <li class="has-user-block custom-style" style="" ng-if="hasEmployeeAvatarBlock">
-                <ng-include src="'/gms/views/base/employee_avatar_block.html'" include-replace=""></ng-include>
+                <ng-include src="'/app/views/base/employee_avatar_block.html'" include-replace=""></ng-include>
             </li>
 
 
             <li class="has-user-block custom-style" style="overflow:visible !important" ng-if="hasCommunicationLeftBlock">
-                <ng-include src="'/gms/views/communication/left_menu.html'" include-replace=""
+                <ng-include src="'/app/views/communication/left_menu.html'" include-replace=""
                             ng-if="hasCommunicationLeftBlock"></ng-include>
             </li>
             <li class="has-user-block custom-style" style="overflow:visible !important" ng-if="hasOldCommunicationLeftBlock">
-                <ng-include src="'/gms/views/old_communication/left_menu.html'" include-replace=""
+                <ng-include src="'/app/views/old_communication/left_menu.html'" include-replace=""
                             ng-if="hasOldCommunicationLeftBlock"></ng-include>
             </li>
             <li class="has-user-block custom-style" style="" ng-if="hasTasksLeftBlock">
-                <ng-include src="'/gms/views/tasks/left_menu.html'" include-replace=""
+                <ng-include src="'/app/views/tasks/left_menu.html'" include-replace=""
                             ng-if="hasTasksLeftBlock"></ng-include>
             </li>
 

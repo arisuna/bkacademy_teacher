@@ -44,7 +44,7 @@
             var urlBase = {
 
                 prefixUrl: function () {
-                    return 'gms';
+                    return 'app';
                 },
 
                 tplBase: function (folder, template, params) {

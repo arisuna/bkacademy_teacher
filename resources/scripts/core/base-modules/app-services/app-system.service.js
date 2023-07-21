@@ -424,7 +424,7 @@
                     data: country
                 })
             } else {
-                AppHttp.get('/gms/setting/getCountry/' + id).then(function (response) {
+                AppHttp.get('/app/setting/getCountry/' + id).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);

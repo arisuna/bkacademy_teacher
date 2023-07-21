@@ -9,7 +9,7 @@
         $stateProvider.state('app.dashboard', {
             url: '/dashboard',
             title: 'DASHBOARD_TEXT',
-            templateUrl: helper.modulePath('gms', 'dashboard/index'),
+            templateUrl: helper.modulePath('app', 'dashboard/index'),
             acl:'dashboard/index',
             resolve: helper.resolveFor('expat-jvectormap','infinite-scroll', 'expat-scroll'),
             params: {

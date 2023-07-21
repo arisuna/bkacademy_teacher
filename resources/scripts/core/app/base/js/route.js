@@ -47,7 +47,7 @@
             $stateProvider
                 .state('app', {
                     url: '/app',
-                    title: 'GMS',
+                    title: 'app',
                     acl: "",
                     abstract: true,
                     templateUrl: helper.basepath('layouts/layout-2-col'),
@@ -97,13 +97,13 @@
                 .state('app.index', {
                     url: '',
                     title: 'GMS_TEXT',
-                    templateUrl: helper.modulePath('gms', 'base/welcome'),
+                    templateUrl: helper.modulePath('app', 'base/welcome'),
                     redirectTo: 'app.dashboard'
                 })
                 .state('app.404', {
                     url: '/404',
                     title: '404',
-                    templateUrl: helper.modulePath('gms', 'base/404'),
+                    templateUrl: helper.modulePath('app', 'base/404'),
                     params: {
                         noPadding: true,
                         hasLeftBar: false,
@@ -113,7 +113,7 @@
                 .state('app.data-not-found', {
                     url: '/data-not-found',
                     title: '404',
-                    templateUrl: helper.modulePath('gms', 'base/data-not-found'),
+                    templateUrl: helper.modulePath('app', 'base/data-not-found'),
                     params: {
                         noPadding: true,
                         hasLeftBar: false,
@@ -123,7 +123,7 @@
                 .state('app.error-permission-not-found', {
                     url: '/error-permission-not-found',
                     title: '404',
-                    templateUrl: helper.modulePath('gms', 'base/error-permission'),
+                    templateUrl: helper.modulePath('app', 'base/error-permission'),
                     params: {
                         noPadding: true,
                         hasLeftBar: false,
@@ -133,7 +133,7 @@
                 .state('app.developer', {
                     url: '/developer',
                     title: 'Developer',
-                    templateUrl: helper.modulePath('gms', 'base/developer'),
+                    templateUrl: helper.modulePath('app', 'base/developer'),
                     data: {
                         controller: 'dashboard',
                         action: 'index'
@@ -141,13 +141,13 @@
                     params: {
                         overflowDisable: true,
                         showSideNav2: true,
-                        templateSideNav2: helper.modulePath('gms', 'admin-page/left')
+                        templateSideNav2: helper.modulePath('app', 'admin-page/left')
                     }
                 })
                 .state('app.error-payment-required', {
                     url: '/error-payment-required',
                     title: 'YOUR_TRIAL_DSP_ENDED_TEXT',
-                    templateUrl: helper.modulePath('gms', 'base/payment-required'),
+                    templateUrl: helper.modulePath('app', 'base/payment-required'),
                     controller: 'AppErrorController',
                     params: {
                         noPadding: true,
@@ -158,7 +158,7 @@
                 .state('app.error-subscription-paused', {
                     url: '/error-subscription-paused',
                     title: 'YOUR_SUBSCRIPTION_PAUSED_TEXT',
-                    templateUrl: helper.modulePath('gms', 'base/subscription-paused'),
+                    templateUrl: helper.modulePath('app', 'base/subscription-paused'),
                     controller: 'AppErrorController',
                     params: {
                         noPadding: true,

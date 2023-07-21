@@ -27,14 +27,14 @@
                                 <img ng-switch-when="image"
                                      ng-src="{{ item.image_data.url_thumb }}"
                                      class="img-responsive block-center"/>
-                                <img ng-switch-when="audio" src="/gms/assets/img/files/audio.png"
+                                <img ng-switch-when="audio" src="/app/assets/img/files/audio.png"
                                      class="img-responsive block-center"/>
-                                <img ng-switch-when="video" src="/gms/assets/img/files/video.png"
+                                <img ng-switch-when="video" src="/app/assets/img/files/video.png"
                                      class="img-responsive block-center"/>
                                 <img ng-switch-when="document"
-                                     ng-src="{{ '/gms/assets/img/files/' + item.file_extension + '.png' }}"
+                                     ng-src="{{ '/app/assets/img/files/' + item.file_extension + '.png' }}"
                                      class="img-responsive block-center"/>
-                                <img ng-switch-when="compressed" src="/gms/assets/img/files/zip.png"
+                                <img ng-switch-when="compressed" src="/app/assets/img/files/zip.png"
                                      class="img-responsive block-center"/>
                                 <img ng-switch-default ng-src="{{ item.image_data.url_thumb }}"/>
                             </div>

@@ -14,7 +14,7 @@
             'tablet': 768,
             'mobile': 480
         })
-        .constant('__currentApp', 'gms')
+        .constant('__currentApp', 'app')
         .constant('_', window._)
         .constant('__env', window.__env)
         .constant('APP_SCROLLBAR_CONFIG', {

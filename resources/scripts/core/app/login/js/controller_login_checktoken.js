@@ -49,6 +49,11 @@
                                     console.log('system:auth data failed');
                                 });
                             }
+                        },
+                        
+                        function (err) {
+                            console.log(err);
+                            
                         });
 
 

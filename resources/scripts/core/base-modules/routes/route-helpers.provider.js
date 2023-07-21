@@ -37,7 +37,7 @@
         // Set here the base of the relative path
         // for all app views
         function basepath(uri) {
-            return '/gms/assets/' + uri + '.html';
+            return '/app/assets/' + uri + '.html';
         }
 
         //Module Views Path (by An Duong)

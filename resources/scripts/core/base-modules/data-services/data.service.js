@@ -313,7 +313,7 @@
 
         this.getNeedFormRequest = function (uuid) {
             var deferred = $q.defer();
-            DataHttp.get('/gms/needform/item/' + uuid)
+            DataHttp.get('/app/needform/item/' + uuid)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err, status) {
@@ -327,7 +327,7 @@
             if (angular.isUndefined(data.uuid) || data.uuid == '' || data.uuid == 'undefined') {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                DataHttp.post('/gms/needform/saveItem/' + data.uuid, data)
+                DataHttp.post('/app/needform/saveItem/' + data.uuid, data)
                     .then(function (response) {
                         deferred.resolve(response.data);
                     }).catch(function (err, status) {

@@ -46,59 +46,59 @@
             controller: function ($scope, $element, $attrs, $timeout) {
 
 
-                $scope.imageSource = urlBase.imageUrl('gms', 'assets', 'loading', 'spin.svg');
+                $scope.imageSource = urlBase.imageUrl('app', 'assets', 'loading', 'spin.svg');
 
                 if ($scope.type == 'glowring') {
-                    $scope.imageSource = urlBase.imageUrl('gms', 'assets', 'loading', 'glowring.svg');
+                    $scope.imageSource = urlBase.imageUrl('app', 'assets', 'loading', 'glowring.svg');
                 }
 
                 if ($scope.type == 'tail') {
-                    $scope.imageSource = urlBase.imageUrl('gms', 'assets', 'loading', 'tail.svg');
+                    $scope.imageSource = urlBase.imageUrl('app', 'assets', 'loading', 'tail.svg');
                 }
 
                 if ($scope.type == 'message') {
-                    $scope.imageSource = urlBase.imageUrl('gms', 'assets', 'loading', 'message.svg');
+                    $scope.imageSource = urlBase.imageUrl('app', 'assets', 'loading', 'message.svg');
                 }
 
                 if ($scope.type == 'progress') {
-                    $scope.imageSource = urlBase.imageUrl('gms', 'assets', 'loading', 'progress.svg');
+                    $scope.imageSource = urlBase.imageUrl('app', 'assets', 'loading', 'progress.svg');
                 }
 
                 if ($scope.type == 'hourglass') {
-                    $scope.imageSource = urlBase.imageUrl('gms', 'assets', 'loading', 'hourglass.svg');
+                    $scope.imageSource = urlBase.imageUrl('app', 'assets', 'loading', 'hourglass.svg');
                 }
 
                 if ($scope.type == 'ring') {
-                    $scope.imageSource = urlBase.imageUrl('gms', 'assets', 'loading', 'ring.svg');
+                    $scope.imageSource = urlBase.imageUrl('app', 'assets', 'loading', 'ring.svg');
                 }
 
                 if ($scope.type == 'icon') {
-                    $scope.imageSource = urlBase.imageUrl('gms', 'assets', 'loading', 'icon.svg');
+                    $scope.imageSource = urlBase.imageUrl('app', 'assets', 'loading', 'icon.svg');
                 }
 
                 if ($scope.type == 'earth') {
-                    $scope.imageSource = urlBase.imageUrl('gms', 'assets', 'loading', 'earth2.svg');
+                    $scope.imageSource = urlBase.imageUrl('app', 'assets', 'loading', 'earth2.svg');
                 }
 
 
                 if ($scope.type == 'spin') {
-                    $scope.imageSource = urlBase.imageUrl('gms', 'assets', 'loading', 'spin.svg');
+                    $scope.imageSource = urlBase.imageUrl('app', 'assets', 'loading', 'spin.svg');
                 }
 
                 if ($scope.type == 'dna') {
-                    $scope.imageSource = urlBase.imageUrl('gms', 'assets', 'loading', 'dna.svg');
+                    $scope.imageSource = urlBase.imageUrl('app', 'assets', 'loading', 'dna.svg');
                 }
 
                 if ($scope.type == 'coffee') {
-                    $scope.imageSource = urlBase.imageUrl('gms', 'assets', 'loading', 'coffee.svg');
+                    $scope.imageSource = urlBase.imageUrl('app', 'assets', 'loading', 'coffee.svg');
                 }
 
                 if ($scope.type == 'spin2color') {
-                    $scope.imageSource = urlBase.imageUrl('gms', 'assets', 'loading', 'spin2color.svg');
+                    $scope.imageSource = urlBase.imageUrl('app', 'assets', 'loading', 'spin2color.svg');
                 }
 
                 if ($scope.type == 'spinwhite') {
-                    $scope.imageSource = urlBase.imageUrl('gms', 'assets', 'loading', 'spin-white.svg');
+                    $scope.imageSource = urlBase.imageUrl('app', 'assets', 'loading', 'spin-white.svg');
                 }
             }
         };

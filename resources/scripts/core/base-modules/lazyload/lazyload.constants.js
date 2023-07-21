@@ -2,7 +2,7 @@
     'use strict';
 
 
-    let currentAppPrefix = '/gms';
+    let currentAppPrefix = '/app';
 
     angular
         .module('app.lazyload')

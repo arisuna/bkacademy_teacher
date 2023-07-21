@@ -20,7 +20,7 @@
                     angular.isUndefined($scope.company.currency_code) || $scope.company.currency_code == null || $scope.company.currency_code == "" ||
                     angular.isUndefined($scope.company.date_format) || $scope.company.date_format == null || $scope.company.date_format == ""){
                     let settingModal = ngDialog.open({
-                        template: urlBase.tplApp('gms', 'my-company', 'setting_dialog', '_=' + Math.random()),
+                        template: urlBase.tplApp('app', 'my-company', 'setting_dialog', '_=' + Math.random()),
                         className: 'ngdialog-theme-default md-box',
                         scope: $scope,
                         closeByDocument: false,

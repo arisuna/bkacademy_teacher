@@ -15,8 +15,8 @@
                 } else {
                     $scope.theme = {
                         main_color: '#0A142B',
-                        logo_url: '/gms/assets/img/logo.png',
-                        icon_url: '/gms/assets/img/logo-single.png',
+                        logo_url: '/app/assets/img/logo.png',
+                        icon_url: '/app/assets/img/logo-single.png',
                         secondary_color: '#0098FF'
                     };
                 }

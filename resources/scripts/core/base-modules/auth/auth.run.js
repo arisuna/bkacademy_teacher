@@ -25,7 +25,7 @@
             console.log( $window.location.pathname );
 
             if( $window.location.pathname == '/gms' ){
-                $window.location.assign('/gms/#/login');
+                $window.location.assign('/app/#/login');
             }
             if( $window.location.pathname == '/employees' ){
                 $window.location.assign('/employees/#/login');

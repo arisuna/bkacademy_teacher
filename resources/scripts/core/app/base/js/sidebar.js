@@ -68,7 +68,7 @@
                 // Main menu
 
 
-                var menuJson = '/gms/menu/base.json?v=' + (new Date().getTime());
+                var menuJson = '/app/menu/base.json?v=' + (new Date().getTime());
                 SidebarLoader.getMenu(menuJson, sidebarReady);
             }
 

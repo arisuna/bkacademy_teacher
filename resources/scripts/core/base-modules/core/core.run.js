@@ -18,7 +18,7 @@
         $rootScope.debugMode = true;
 
         /**
-         * Load ACL list Transfert to GMS/APPCONTROLLER
+         * Load ACL list Transfert to app/APPCONTROLLER
          * @type {{}}
          */
 

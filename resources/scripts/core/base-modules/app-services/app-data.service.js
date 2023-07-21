@@ -22,7 +22,7 @@
             if (angular.isUndefined(data.credential) || data.credential == '' || angular.isUndefined(data.password) || data.password == '') {
                 deferred.resolve({success: false, msg: 'LOGIN_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.post('/gms/auth/login?_=' + Math.random(), data)
+                AppHttp.post('/app/auth/login?_=' + Math.random(), data)
                     .then(function (response) {
                         deferred.resolve(response.data);
                     }).catch(function (err) {
@@ -34,7 +34,7 @@
 
         this.autoLoginFn = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/auth/autoLogin?_=' + Math.random(), data)
+            AppHttp.post('/app/auth/autoLogin?_=' + Math.random(), data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -46,7 +46,7 @@
 
         this.checkLogin = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/auth/checkAuthConnected?_=' + Math.random())
+            AppHttp.get('/app/auth/checkAuthConnected?_=' + Math.random())
                 .then(function (response) {
                     if (response.data.success) deferred.resolve(response.data);
                     else deferred.reject(response.data);
@@ -59,7 +59,7 @@
 
         this.getPermissionsList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/setting/getPermissionsList?_=' + Math.random())
+            AppHttp.get('/app/setting/getPermissionsList?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -70,7 +70,7 @@
 
         this.checkPermission = function (controller, action) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/setting/checkPermission', {
+            AppHttp.put('/app/setting/checkPermission', {
                 controller: controller,
                 action: action
             }).then(function (response) {
@@ -91,7 +91,7 @@
 
         this.getRoleByName = function (name) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/role/getRoleByName', {name: name})
+            AppHttp.put('/app/role/getRoleByName', {name: name})
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -102,7 +102,7 @@
 
         this.getRolesList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/role/getRolesList?_=' + Math.random())
+            AppHttp.get('/app/role/getRolesList?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -113,7 +113,7 @@
 
         this.getAclList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/role/getAclList?_=' + Math.random())
+            AppHttp.get('/app/role/getAclList?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -124,7 +124,7 @@
 
         this.getControllerActionItemList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/role/getControllerActionItemList?_=' + Math.random())
+            AppHttp.get('/app/role/getControllerActionItemList?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -135,7 +135,7 @@
 
         this.initAllSetting = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/setting/init?_=' + Math.random())
+            AppHttp.get('/app/setting/init?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -147,7 +147,7 @@
 
         this.getCurrentProfile = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/profile/index')
+            AppHttp.get('/app/profile/index')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -161,7 +161,7 @@
          */
         this.getMyCompanyInfo = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/my_company/index')
+            AppHttp.get('/app/my_company/index')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -176,7 +176,7 @@
          */
         this.getMyCompanyApplication = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/my_company/getApplication')
+            AppHttp.get('/app/my_company/getApplication')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -191,7 +191,7 @@
          */
         this.getMyCompanyBasicInfo = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/my_company/getBasicInfo')
+            AppHttp.get('/app/my_company/getBasicInfo')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -206,7 +206,7 @@
          */
         this.getMyCompanyBusinessInfo = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/my_company/getBusinessInfo')
+            AppHttp.get('/app/my_company/getBusinessInfo')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -217,7 +217,7 @@
 
         this.getMyCompanyFinancialInfo = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/my_company/getFinancialInfo')
+            AppHttp.get('/app/my_company/getFinancialInfo')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -229,7 +229,7 @@
 
         this.getInitMyCompanyInfo = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/my_company/init')
+            AppHttp.get('/app/my_company/init')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -240,7 +240,7 @@
 
         this.updateMyCompanyApplication = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/my_company/updateApplication', data).then(function (response) {
+            AppHttp.put('/app/my_company/updateApplication', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -253,7 +253,7 @@
          */
         this.saveMyCompanyBasic = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/my_company/saveBasicInfo', data).then(function (response) {
+            AppHttp.put('/app/my_company/saveBasicInfo', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -266,7 +266,7 @@
          */
         this.saveMyCompanyFinancialData = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/my_company/saveFinancialData', data).then(function (response) {
+            AppHttp.put('/app/my_company/saveFinancialData', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -280,7 +280,7 @@
          */
         this.saveMyCompanyBusinessData = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/my_company/saveBusinessData', data).then(function (response) {
+            AppHttp.put('/app/my_company/saveBusinessData', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -294,7 +294,7 @@
          */
         this.getMyCompanyConfiguration = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/my_company/getConfigurationList')
+            AppHttp.get('/app/my_company/getConfigurationList')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -308,7 +308,7 @@
         this.getAttributesValues = function (lang) {
             let deferred = $q.defer();
             if (lang == undefined || lang == '') lang = 'en';
-            AppHttp.get('/gms/setting/attributes/' + lang)
+            AppHttp.get('/app/setting/attributes/' + lang)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -320,7 +320,7 @@
         this.reloadCacheAttributesValues = function (lang) {
             let deferred = $q.defer();
             if (lang == undefined || lang == '') lang = 'en';
-            AppHttp.get('/gms/setting/reloadAttributes/' + lang)
+            AppHttp.get('/app/setting/reloadAttributes/' + lang)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -350,7 +350,7 @@
         this.getSettingVariables = function (lang) {
             let deferred = $q.defer();
             if (lang == undefined || lang == '') lang = 'en';
-            AppHttp.get('/gms/setting/getSettingVariables/' + lang)
+            AppHttp.get('/app/setting/getSettingVariables/' + lang)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -365,7 +365,7 @@
          */
         this.getSettingGroup = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/setting/getSettingGroup')
+            AppHttp.get('/app/setting/getSettingGroup')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -399,7 +399,7 @@
         this.getSettingUserGroups = function (lang) {
             let deferred = $q.defer();
             if (lang == undefined || lang == '') lang = 'en';
-            AppHttp.get('/gms/setting/user_groups/' + lang)
+            AppHttp.get('/app/setting/user_groups/' + lang)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -414,7 +414,7 @@
         this.getSettingSvpUserGroups = function (lang) {
             let deferred = $q.defer();
             if (lang == undefined || lang == '') lang = 'en';
-            AppHttp.get('/gms/setting/svp_user_groups/' + lang)
+            AppHttp.get('/app/setting/svp_user_groups/' + lang)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -428,7 +428,7 @@
          */
         this.getProfile = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/profile/index').then(function (response) {
+            AppHttp.get('/app/profile/index').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -438,7 +438,7 @@
 
         this.getMyProfileSettings = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/profile/getSettingGroup').then(function (response) {
+            AppHttp.get('/app/profile/getSettingGroup').then(function (response) {
                 deferred.resolve(response.data);
             }, function (err) {
                 deferred.reject(err.data);
@@ -453,7 +453,7 @@
          */
         this.getAttributesList = function (kind) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/attributes/list?' + kind)
+            AppHttp.get('/app/attributes/list?' + kind)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -469,7 +469,7 @@
          */
         this.getNotificationsList = function (kind) {
             let deferred = $q.defer();
-            $http.get('/gms/notifications/list?' + kind)
+            $http.get('/app/notifications/list?' + kind)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -486,7 +486,7 @@
          */
         this.reloadAttributesList = function (kind) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/attributes/reload?' + kind)
+            AppHttp.post('/app/attributes/reload?' + kind)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -498,7 +498,7 @@
 
         this.createContactFromAssignee = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/contacts/createContactFromAssignee', data)
+            AppHttp.post('/app/contacts/createContactFromAssignee', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -509,7 +509,7 @@
 
         this.createContactFromUserProfile = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/contacts/createContactFromUserProfile', data)
+            AppHttp.post('/app/contacts/createContactFromUserProfile', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -525,9 +525,9 @@
          */
         this.getEmployeeList = function (kind) {
             if (kind != undefined)
-                var url = '/gms/employee/getList/' + kind;
+                var url = '/app/employee/getList/' + kind;
             else
-                var url = '/gms/employee/getList';
+                var url = '/app/employee/getList';
             let deferred = $q.defer();
             AppHttp.get(url)
                 .then(function (response) {
@@ -540,7 +540,7 @@
 
         this.searchEmployeesFull = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/employee/searchAssigneeFull', data).then(function (response) {
+            AppHttp.put('/app/employee/searchAssigneeFull', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -554,9 +554,9 @@
          */
         this.getEmployeeSimpleList = function (kind) {
             if (kind != undefined)
-                var url = '/gms/employee/simple/' + kind;
+                var url = '/app/employee/simple/' + kind;
             else
-                var url = '/gms/employee/simple';
+                var url = '/app/employee/simple';
             let deferred = $q.defer();
             AppHttp.get(url)
                 .then(function (response) {
@@ -572,7 +572,7 @@
          */
         this.createEmployeeProfile = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/employee/create', data)
+            AppHttp.post('/app/employee/create', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -588,7 +588,7 @@
          */
         this.saveEmployeeProfile = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/employee/edit', data)
+            AppHttp.put('/app/employee/edit', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -606,7 +606,7 @@
             if (uuid == undefined || uuid == 0) {
                 deferred.resolve({success: false});
             } else {
-                AppHttp.get('/gms/employee/detail/' + uuid)
+                AppHttp.get('/app/employee/detail/' + uuid)
                     .then(function (response) {
                         deferred.resolve(response.data);
                     }).catch(function (err) {
@@ -625,7 +625,7 @@
             if (uuid == undefined || uuid == 0) {
                 deferred.resolve({success: false});
             } else {
-                AppHttp.get('/gms/employee/getFields/' + uuid)
+                AppHttp.get('/app/employee/getFields/' + uuid)
                     .then(function (response) {
                         deferred.resolve(response.data);
                     }).catch(function (err) {
@@ -644,7 +644,7 @@
             if (uuid == undefined || uuid == 0) {
                 deferred.resolve({success: false});
             } else {
-                AppHttp.get('/gms/employee/getLogin/' + uuid)
+                AppHttp.get('/app/employee/getLogin/' + uuid)
                     .then(function (response) {
                         deferred.resolve(response.data);
                     }).catch(function (err) {
@@ -660,7 +660,7 @@
          */
         this.getEmployeeProfileSimple = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/employee/item/' + id)
+            AppHttp.get('/app/employee/item/' + id)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -675,7 +675,7 @@
          */
         this.getEmployeePermissions = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/employee/getPermissions/' + uuid)
+            AppHttp.get('/app/employee/getPermissions/' + uuid)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -690,7 +690,7 @@
          */
         this.removeEmployee = function (employee) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/employee/delete/' + employee.uuid)
+            AppHttp.delete('/app/employee/delete/' + employee.uuid)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -706,7 +706,7 @@
          */
         this.sendValidationEmployee = function (employee) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/employee/sendValidation/' + employee.uuid, {
+            AppHttp.put('/app/employee/sendValidation/' + employee.uuid, {
                 uuid: employee.uuid,
             }).then(function (response) {
                 deferred.resolve(response.data);
@@ -722,7 +722,7 @@
          */
         this.getLoginInformation = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/login/detail/' + uuid)
+            AppHttp.get('/app/login/detail/' + uuid)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -736,7 +736,7 @@
          */
         this.createLoginInformation = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/login/save', data)
+            AppHttp.post('/app/login/save', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -747,7 +747,7 @@
 
         this.saveLoginInformation = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/login/save', data)
+            AppHttp.put('/app/login/save', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -797,7 +797,7 @@
         this.getHrMemberProfile = function (uuid) {
             let deferred = $q.defer();
             if (angular.isDefined(uuid) && uuid != undefined) {
-                AppHttp.get('/gms/hr_member/detail/' + uuid).then(function (response) {
+                AppHttp.get('/app/hr_member/detail/' + uuid).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -816,7 +816,7 @@
         this.deleteHrMember = function (data) {
             let deferred = $q.defer();
             if (angular.isDefined(data.member) && angular.isDefined(data.member.uuid) && angular.isDefined(data.password)) {
-                AppHttp.delete('/gms/hr_member/delete/' + data.member.uuid, {
+                AppHttp.delete('/app/hr_member/delete/' + data.member.uuid, {
                     password: data.password
                 }).then(function (response) {
                     deferred.resolve(response.data);
@@ -835,7 +835,7 @@
          */
         this.desactiveHrMember = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/hr_member/desactive/' + data.uuid).then(function (response) {
+            AppHttp.put('/app/hr_member/desactive/' + data.uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -849,7 +849,7 @@
          */
         this.reactiveHrMemberFn = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/hr_member/reactive/' + data.uuid).then(function (response) {
+            AppHttp.put('/app/hr_member/reactive/' + data.uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -862,7 +862,7 @@
          */
         this.getHrRoles = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/hr_member/get_roles')
+            AppHttp.get('/app/hr_member/get_roles')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -876,7 +876,7 @@
          */
         this.getGmsRoles = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/gms_member/get_roles')
+            AppHttp.get('/app/gms_member/get_roles')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -892,7 +892,7 @@
          */
         this.getHrMemberList = function (kind) {
             let deferred = $q.defer();
-            var url = '/gms/hr_member/index';
+            var url = '/app/hr_member/index';
             if (kind != undefined) {
                 url = url + kind;
             }
@@ -912,7 +912,7 @@
          */
         this.searchHrWorkers = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/hr_member/search';
+            var url = '/app/hr_member/search';
             AppHttp.put(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -928,7 +928,7 @@
          */
         this.saveHrMemberProfile = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/hr_member/edit', data)
+            AppHttp.put('/app/hr_member/edit', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -942,7 +942,7 @@
          */
         this.createHrMemberProfile = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/hr_member/create', data).then(function (response) {
+            AppHttp.post('/app/hr_member/create', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -956,7 +956,7 @@
          */
         this.searchMembers = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/gms_member/search', data).then(function (response) {
+            AppHttp.put('/app/gms_member/search', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -971,7 +971,7 @@
          */
         this.getGmsMembersList = function (kind) {
             let deferred = $q.defer();
-            var url = '/gms/gms_member/index';
+            var url = '/app/gms_member/index';
             if (kind != undefined) {
                 url = url + kind;
             }
@@ -990,7 +990,7 @@
          */
         this.searchGmsMembersList = function (data = {}) {
             let deferred = $q.defer();
-            var url = '/gms/gms_member/searchGmsMember';
+            var url = '/app/gms_member/searchGmsMember';
 
             AppHttp.put(url, data)
                 .then(function (response) {
@@ -1007,7 +1007,7 @@
          */
         this.getGmsMemberProfile = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/gms_member/detail/' + id).then(function (response) {
+            AppHttp.get('/app/gms_member/detail/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -1021,7 +1021,7 @@
         this.deleteGmsMember = function (data) {
             let deferred = $q.defer();
             if (angular.isDefined(data.member) && angular.isDefined(data.member.uuid) && angular.isDefined(data.password)) {
-                AppHttp.delete('/gms/gms_member/delete/' + data.member.uuid, {
+                AppHttp.delete('/app/gms_member/delete/' + data.member.uuid, {
                     password: data.password
                 }).then(function (response) {
                     deferred.resolve(response.data);
@@ -1041,7 +1041,7 @@
          */
         this.updateMyProfile = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/profile/update', data).then(function (response) {
+            AppHttp.put('/app/profile/update', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -1056,7 +1056,7 @@
          */
         this.editUserProfile = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/user/edit', data)
+            AppHttp.put('/app/user/edit', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -1071,7 +1071,7 @@
          */
         this.createUserProfile = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/user/create', data)
+            AppHttp.post('/app/user/create', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -1082,7 +1082,7 @@
 
         this.getUserProfileById = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/user/item/' + id)
+            AppHttp.get('/app/user/item/' + id)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -1093,7 +1093,7 @@
 
         this.getUserProfileByUuid = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/user/simple/' + uuid)
+            AppHttp.get('/app/user/simple/' + uuid)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -1107,7 +1107,7 @@
          */
         this.saveGmsMember = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/gms_member/edit', data)
+            AppHttp.put('/app/gms_member/edit', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -1122,7 +1122,7 @@
          */
         this.createGmsMember = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/gms_member/create', data)
+            AppHttp.post('/app/gms_member/create', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -1136,7 +1136,7 @@
          */
         this.createEmployee = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/employee/create', data)
+            AppHttp.post('/app/employee/create', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -1151,7 +1151,7 @@
          */
         this.editEmployee = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/employee/edit', data)
+            AppHttp.put('/app/employee/edit', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -1180,7 +1180,7 @@
          */
         this.getEventsOfService = function (id) {
             let deferred = $q.defer();
-            var url = '/gms/service/events/' + id + '?_random=' + Math.random();
+            var url = '/app/service/events/' + id + '?_random=' + Math.random();
             AppHttp.get(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1196,7 +1196,7 @@
          */
         this.getEventsOfServiceCompany = function (id) {
             let deferred = $q.defer();
-            var url = '/gms/service/getEventsOfServiceCompany/' + id + '?_random=' + Math.random();
+            var url = '/app/service/getEventsOfServiceCompany/' + id + '?_random=' + Math.random();
             AppHttp.get(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1212,7 +1212,7 @@
          */
          this.getEventsOfRelocation = function () {
             let deferred = $q.defer();
-            var url = '/gms/relocation/getEventsOfRelocation' + '?_random=' + Math.random();
+            var url = '/app/relocation/getEventsOfRelocation' + '?_random=' + Math.random();
             AppHttp.get(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1228,7 +1228,7 @@
          */
          this.getEventsOfAssignment = function () {
             let deferred = $q.defer();
-            var url = '/gms/assignment/getEventsOfAssignment' + '?_random=' + Math.random();
+            var url = '/app/assignment/getEventsOfAssignment' + '?_random=' + Math.random();
             AppHttp.get(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1244,7 +1244,7 @@
          */
         this.getPropertyTypes = function () {
             let deferred = $q.defer();
-            var url = '/gms/property/types/?_random=' + Math.random();
+            var url = '/app/property/types/?_random=' + Math.random();
             AppHttp.get(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1259,7 +1259,7 @@
          */
         this.getProviderTypes = function () {
             let deferred = $q.defer();
-            var url = '/gms/service/provider_types?_random=' + Math.random();
+            var url = '/app/service/provider_types?_random=' + Math.random();
             AppHttp.get(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1274,7 +1274,7 @@
          */
         this.getPropertySetting = function () {
             let deferred = $q.defer();
-            var url = '/gms/property/getPropertySetting?_random=' + Math.random();
+            var url = '/app/property/getPropertySetting?_random=' + Math.random();
             AppHttp.get(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1289,7 +1289,7 @@
          */
         this.savePropertySetting = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/property/savePropertySetting?_random=' + Math.random();
+            var url = '/app/property/savePropertySetting?_random=' + Math.random();
             AppHttp.post(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1306,7 +1306,7 @@
          */
         this.getServiceTemplates = function () {
             let deferred = $q.defer();
-            var url = '/gms/service/getServiceTemplates?_random=' + Math.random();
+            var url = '/app/service/getServiceTemplates?_random=' + Math.random();
             AppHttp.get(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1323,7 +1323,7 @@
          */
         this.saveServiceProvider = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/svp_company/saveProvider';
+            var url = '/app/svp_company/saveProvider';
             AppHttp.put(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1340,7 +1340,7 @@
          */
         this.saveServiceProviderBasicInfo = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/svp_company/saveBasicInfo/' + data.id;
+            var url = '/app/svp_company/saveBasicInfo/' + data.id;
             AppHttp.put(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1357,7 +1357,7 @@
          */
         this.saveServiceProviderBusinessInfo = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/svp_company/saveBusinessInfo/' + data.id;
+            var url = '/app/svp_company/saveBusinessInfo/' + data.id;
             AppHttp.put(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1374,7 +1374,7 @@
          */
         this.saveServiceProviderFinancialInfo = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/svp_company/saveFinancialInfo/' + data.id;
+            var url = '/app/svp_company/saveFinancialInfo/' + data.id;
             AppHttp.put(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1386,7 +1386,7 @@
 
         this.getServiceProviderList = function (data = {}) {
             let deferred = $q.defer();
-            var url = '/gms/svp_company/index?_random=' + Math.random();
+            var url = '/app/svp_company/index?_random=' + Math.random();
             AppHttp.put(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1398,7 +1398,7 @@
 
         this.getServiceProviderArchivedList = function (data = {}) {
             let deferred = $q.defer();
-            var url = '/gms/svp_company/listArchived?_random=' + Math.random();
+            var url = '/app/svp_company/listArchived?_random=' + Math.random();
             AppHttp.put(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1410,7 +1410,7 @@
 
         this.getServiceProviderSimpleList = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/svp_company/getSimpleList';
+            var url = '/app/svp_company/getSimpleList';
             AppHttp.put(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1422,7 +1422,7 @@
 
         this.quickUpdateServiceProvider = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/svp_company/updateServiceCompanyProvider/' + data.id;
+            var url = '/app/svp_company/updateServiceCompanyProvider/' + data.id;
             AppHttp.put(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1438,7 +1438,7 @@
          */
         this.createServiceProvider = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/svp_company/createProvider';
+            var url = '/app/svp_company/createProvider';
             AppHttp.post(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1457,7 +1457,7 @@
             let deferred = $q.defer();
             let new_data = angular.copy(data);
             new_data.description = btoa(encodeURIComponent(new_data.description));
-            var url = '/gms/task-template/createTaskTemplate';
+            var url = '/app/task-template/createTaskTemplate';
             AppHttp.post(url, new_data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1476,7 +1476,7 @@
             let deferred = $q.defer();
             let new_data = angular.copy(data);
             new_data.description = btoa(encodeURIComponent(new_data.description));
-            var url = '/gms/service/editTaskTemplate/' + data.service_uuid;
+            var url = '/app/service/editTaskTemplate/' + data.service_uuid;
             AppHttp.put(url, new_data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1488,7 +1488,7 @@
 
         this.removeTaskTemplate = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/service/removeTaskTemplate/' + uuid).then(function (response) {
+            AppHttp.delete('/app/service/removeTaskTemplate/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err);
@@ -1502,7 +1502,7 @@
          */
         this.addProviderToService = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/service/addProviderToService/' + data.service_uuid, data).then(function (response) {
+            AppHttp.post('/app/service/addProviderToService/' + data.service_uuid, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -1512,7 +1512,7 @@
 
         this.removeProviderFromService = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/service/removeProviderFromService/' + data.service_uuid, data).then(function (response) {
+            AppHttp.put('/app/service/removeProviderFromService/' + data.service_uuid, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -1528,7 +1528,7 @@
          */
         this.getInfoServiceProvider = function (id) {
             let deferred = $q.defer();
-            var url = '/gms/svp_company/detail/';
+            var url = '/app/svp_company/detail/';
             AppHttp.get(url + id)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1546,7 +1546,7 @@
          */
         this.getMembersServiceProvider = function (id) {
             let deferred = $q.defer();
-            var url = '/gms/svp_company/member/';
+            var url = '/app/svp_company/member/';
             AppHttp.get(url + id)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1563,7 +1563,7 @@
          */
         this.deleteServiceProvider = function (id) {
             let deferred = $q.defer();
-            var url = '/gms/svp_company/delete/';
+            var url = '/app/svp_company/delete/';
             AppHttp.delete(url + id)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -1578,7 +1578,7 @@
          */
         this.getServiceList = function () {
             let deferred = $q.defer();
-            var url = '/gms/service/simple';
+            var url = '/app/service/simple';
             AppHttp.get(url).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
@@ -1596,7 +1596,7 @@
             if (kind != undefined) {
                 kind = $httpParamSerializer(kind);
             }
-            AppHttp.get('/gms/task/list/?' + kind)
+            AppHttp.get('/app/task/list/?' + kind)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
                         deferred.resolve(response.data);
@@ -1615,7 +1615,7 @@
          */
         this.getTaskListWithParams = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/task/issues', data)
+            AppHttp.put('/app/task/issues', data)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
                         deferred.resolve(response.data);
@@ -1630,7 +1630,7 @@
 
         this.getTaskItemSimple = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/task/item_simple/' + uuid)
+            AppHttp.get('/app/task/item_simple/' + uuid)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
                         deferred.resolve(response.data);
@@ -1649,7 +1649,7 @@
          */
         this.getTaskItem = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/task/item/' + uuid)
+            AppHttp.get('/app/task/item/' + uuid)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
                         deferred.resolve(response.data);
@@ -1668,7 +1668,7 @@
          */
         this.getTaskAssignment = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/task/getAssignment/' + uuid)
+            AppHttp.get('/app/task/getAssignment/' + uuid)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
                         deferred.resolve(response.data);
@@ -1683,7 +1683,7 @@
 
         this.getRelocationDependants = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation/getDependants/' + uuid)
+            AppHttp.get('/app/relocation/getDependants/' + uuid)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
                         deferred.resolve(response.data);
@@ -1698,7 +1698,7 @@
 
         this.getRelocationParticipants = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation/getParticipants/' + uuid)
+            AppHttp.get('/app/relocation/getParticipants/' + uuid)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
                         deferred.resolve(response.data);
@@ -1717,7 +1717,7 @@
          */
         this.getTaskRelocation = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/task/getRelocation/' + uuid)
+            AppHttp.get('/app/task/getRelocation/' + uuid)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
                         deferred.resolve(response.data);
@@ -1736,7 +1736,7 @@
          */
         this.getTaskRelocationServiceCompany = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/task/getRelocationServiceCompany/' + uuid)
+            AppHttp.get('/app/task/getRelocationServiceCompany/' + uuid)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
                         deferred.resolve(response.data);
@@ -1756,7 +1756,7 @@
          */
         this.getTaskParentTask = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/task/getParentTask/' + uuid)
+            AppHttp.get('/app/task/getParentTask/' + uuid)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
                         deferred.resolve(response.data);
@@ -1774,7 +1774,7 @@
          */
         this.getTaskListByUuid = function (uuid, data = {}) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/task/list/' + uuid, data)
+            AppHttp.put('/app/task/list/' + uuid, data)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
                         deferred.resolve(response.data);
@@ -1793,7 +1793,7 @@
         this.removeTaskByObject = function (data) {
             let deferred = $q.defer();
             if (angular.isDefined(data.uuid) && data.uuid != '') {
-                AppHttp.delete('/gms/task/delete/' + data.uuid)
+                AppHttp.delete('/app/task/delete/' + data.uuid)
                     .then(function (response) {
                         if (angular.isDefined(response.data.success) && response.data.success == true) {
                             deferred.resolve(response.data);
@@ -1815,7 +1815,7 @@
          */
         this.removeTaskByUuid = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/task/delete/' + uuid)
+            AppHttp.delete('/app/task/delete/' + uuid)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
                         deferred.resolve(response.data);
@@ -1835,7 +1835,7 @@
             let deferred = $q.defer();
             let new_data = angular.copy(data);
             new_data.description = btoa(encodeURIComponent(new_data.description));
-            AppHttp.post('/gms/task/create', new_data).then(function (response) {
+            AppHttp.post('/app/task/create', new_data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -1854,7 +1854,7 @@
                 new_data.description = btoa(encodeURIComponent(new_data.description));
             }
 
-            AppHttp.post('/gms/task/create', new_data).then(function (response) {
+            AppHttp.post('/app/task/create', new_data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -1871,7 +1871,7 @@
             let deferred = $q.defer();
             let new_data = angular.copy(data);
             new_data.description = btoa(encodeURIComponent(new_data.description));
-            AppHttp.post('/gms/task/create', new_data).then(function (response) {
+            AppHttp.post('/app/task/create', new_data).then(function (response) {
                 if (angular.isDefined(response.data.success) && response.data.success == true) {
                     deferred.resolve(response.data);
                 } else {
@@ -1890,7 +1890,7 @@
          */
         this.createOffice = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/office/create', data).then(function (response) {
+            AppHttp.post('/app/office/create', data).then(function (response) {
                 if (angular.isDefined(response.data.success)) {
                     deferred.resolve(response.data);
                 } else {
@@ -1904,7 +1904,7 @@
 
         this.editOffice = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/office/update/' + data.id, data).then(function (response) {
+            AppHttp.put('/app/office/update/' + data.id, data).then(function (response) {
                 if (angular.isDefined(response.data.success)) {
                     deferred.resolve(response.data);
                 } else {
@@ -1924,7 +1924,7 @@
          */
         this.getOfficeItem = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/office/detail/' + uuid)
+            AppHttp.get('/app/office/detail/' + uuid)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
                         deferred.resolve(response.data);
@@ -1944,7 +1944,7 @@
          */
         this.getOfficeList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/office/index')
+            AppHttp.get('/app/office/index')
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
                         deferred.resolve(response.data);
@@ -1962,7 +1962,7 @@
          */
         this.searchOffices = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/office/search', data).then(function (response) {
+            AppHttp.put('/app/office/search', data).then(function (response) {
                 if (angular.isDefined(response.data.success) && response.data.success == true) {
                     deferred.resolve(response.data);
                 } else {
@@ -1976,7 +1976,7 @@
 
         this.deleteOffice = function (id) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/office/delete/' + id).then(function (response) {
+            AppHttp.delete('/app/office/delete/' + id).then(function (response) {
                 if (angular.isDefined(response.data.success) && response.data.success == true) {
                     deferred.resolve(response.data);
                 } else {
@@ -1992,7 +1992,7 @@
          */
         this.createAssignment = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/assignment/create', data).then(function (response) {
+            AppHttp.post('/app/assignment/create', data).then(function (response) {
                 if (angular.isDefined(response.data.success) && response.data.success == true) {
                     deferred.resolve(response.data);
                 } else {
@@ -2012,7 +2012,7 @@
             if (angular.isUndefined(data.uuid) || data.uuid == '') {
                 deferred.reject({success: false});
             } else {
-                AppHttp.put('/gms/assignment/update/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/assignment/update/' + data.uuid, data).then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
                         deferred.resolve(response.data);
                     } else {
@@ -2030,7 +2030,7 @@
          */
         this.getServicePackPricingList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service_pack_pricing/index')
+            AppHttp.get('/app/service_pack_pricing/index')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2041,7 +2041,7 @@
 
         this.getServicePricingList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service_pricing/index')
+            AppHttp.get('/app/service_pricing/index')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2052,7 +2052,7 @@
 
         this.getServicePricingSimpleList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service_pricing/simpleList')
+            AppHttp.get('/app/service_pricing/simpleList')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2063,7 +2063,7 @@
 
         this.createServicePricing = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/service_pricing/create', data).then(function (response) {
+            AppHttp.post('/app/service_pricing/create', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2073,7 +2073,7 @@
 
         this.editServicePricing = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/service_pricing/edit/' + data.id, data).then(function (response) {
+            AppHttp.put('/app/service_pricing/edit/' + data.id, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2084,7 +2084,7 @@
 
         this.createServicePackPricing = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/service_pack_pricing/create', data).then(function (response) {
+            AppHttp.post('/app/service_pack_pricing/create', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2094,7 +2094,7 @@
 
         this.editServicePackPricing = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/service_pack_pricing/edit/' + data.id, data).then(function (response) {
+            AppHttp.put('/app/service_pack_pricing/edit/' + data.id, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2103,7 +2103,7 @@
         }
         this.detailServicePricing = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service_pricing/detail/' + id + '?_=' + Math.random())
+            AppHttp.get('/app/service_pricing/detail/' + id + '?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2114,7 +2114,7 @@
 
         this.detailServicePackPricing = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service_pack_pricing/detail/' + id + '?_=' + Math.random())
+            AppHttp.get('/app/service_pack_pricing/detail/' + id + '?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2125,7 +2125,7 @@
 
         this.deleteServicePricing = function (id) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/service_pricing/del/' + id + '?_=' + Math.random())
+            AppHttp.delete('/app/service_pricing/del/' + id + '?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2136,7 +2136,7 @@
 
         this.deleteServicePackPricing = function (id) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/service_pack_pricing/del/' + id + '?_=' + Math.random())
+            AppHttp.delete('/app/service_pack_pricing/del/' + id + '?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2147,7 +2147,7 @@
 
         this.getInvoicePeriods = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service_pricing/getInvoicePeriods')
+            AppHttp.get('/app/service_pricing/getInvoicePeriods')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2161,7 +2161,7 @@
          */
         this.getInvoiceQuoteInitData = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/invoice-quote-config/init?_=' + Math.random())
+            AppHttp.get('/app/invoice-quote-config/init?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2174,7 +2174,7 @@
          */
         this.getInvoiceList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/invoice/getInvoiceList?_=' + Math.random())
+            AppHttp.get('/app/invoice/getInvoiceList?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2185,7 +2185,7 @@
 
         this.getInvoiceById = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/invoice/detail/' + id + '?_=' + Math.random())
+            AppHttp.get('/app/invoice/detail/' + id + '?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2196,7 +2196,7 @@
 
         this.getInvoiceByUuid = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/invoice/detailByUuid/' + uuid + '?_=' + Math.random())
+            AppHttp.get('/app/invoice/detailByUuid/' + uuid + '?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2208,7 +2208,7 @@
         this.createInvoice = function (data) {
             let deferred = $q.defer();
             data.is_invoice = true;
-            AppHttp.post('/gms/invoice/create?_=' + Math.random(), data).then(function (response) {
+            AppHttp.post('/app/invoice/create?_=' + Math.random(), data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2219,7 +2219,7 @@
         this.updateInvoice = function (data) {
             let deferred = $q.defer();
             data.is_invoice = true;
-            AppHttp.put('/gms/invoice/update?_=' + Math.random(), data).then(function (response) {
+            AppHttp.put('/app/invoice/update?_=' + Math.random(), data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2229,7 +2229,7 @@
 
         this.deleteInvoice = function (id) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/invoice/delete/' + id + '?_=' + Math.random())
+            AppHttp.delete('/app/invoice/delete/' + id + '?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2244,7 +2244,7 @@
          */
         this.printInvoice = function (invoiceUuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/invoice/print/' + invoiceUuid + '?_=' + Math.random())
+            AppHttp.get('/app/invoice/print/' + invoiceUuid + '?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2261,7 +2261,7 @@
 
         this.quoteList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/quote/getQuoteList/' + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/quote/getQuoteList/' + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2275,7 +2275,7 @@
         this.createQuote = function (data) {
             let deferred = $q.defer();
             data.is_quote = true;
-            AppHttp.post('/gms/quote/create?_=' + Math.random(), data).then(function (response) {
+            AppHttp.post('/app/quote/create?_=' + Math.random(), data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2293,7 +2293,7 @@
                 deferred.resolve({success: false});
             } else {
                 data.is_quote = true;
-                AppHttp.post('/gms/quote/clone', data).then(function (response) {
+                AppHttp.post('/app/quote/clone', data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -2311,7 +2311,7 @@
             if (angular.isUndefined(data.uuid) || data.uuid == '') {
                 deferred.reject(data);
             } else {
-                AppHttp.put('/gms/quote/update/' + data.uuid + '?_=' + Math.random(), data).then(function (response) {
+                AppHttp.put('/app/quote/update/' + data.uuid + '?_=' + Math.random(), data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -2323,7 +2323,7 @@
 
         this.deleteQuoteByUuid = function (data) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/quote/deleteByUuid/' + data.uuid + '?_=' + Math.random())
+            AppHttp.delete('/app/quote/deleteByUuid/' + data.uuid + '?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2334,7 +2334,7 @@
 
         this.deleteQuote = function (id) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/quote/delete/' + id + '?_=' + Math.random())
+            AppHttp.delete('/app/quote/delete/' + id + '?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2345,7 +2345,7 @@
 
         this.printQuote = function (invoiceUuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/quote/print/' + invoiceUuid + '?_=' + Math.random())
+            AppHttp.get('/app/quote/print/' + invoiceUuid + '?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2356,7 +2356,7 @@
 
         this.deleteQuoteByUuid = function (data) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/quote/deleteByUuid/' + data.uuid + '?_=' + Math.random())
+            AppHttp.delete('/app/quote/deleteByUuid/' + data.uuid + '?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2367,7 +2367,7 @@
 
         this.getQuoteById = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/quote/detail/' + id + '?_=' + Math.random())
+            AppHttp.get('/app/quote/detail/' + id + '?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2379,7 +2379,7 @@
 
         this.getQuoteByUuid = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/quote/detailByUuid/' + uuid + '?_=' + Math.random())
+            AppHttp.get('/app/quote/detailByUuid/' + uuid + '?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -2394,7 +2394,7 @@
          */
         this.downloadQuote = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/quote/download/' + id + '?_=' + Math.random(), {
+            AppHttp.get('/app/quote/download/' + id + '?_=' + Math.random(), {
                 responseType: 'blob'
             }).then(function (response) {
                 deferred.resolve(response);
@@ -2409,7 +2409,7 @@
          */
         this.downloadInvoice = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/invoice/download/' + id + '?_=' + Math.random(), {
+            AppHttp.get('/app/invoice/download/' + id + '?_=' + Math.random(), {
                 responseType: 'blob'
             }).then(function (response) {
                 deferred.resolve(response);
@@ -2424,7 +2424,7 @@
          */
         this.saveSpecificDataRelocationService = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/relocation-service/saveInfos', data).then(function (response) {
+            AppHttp.put('/app/relocation-service/saveInfos', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2437,7 +2437,7 @@
          */
         this.saveSpecificDataRelocationServicePayLoad = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/relocation-service/saveInfos', data).then(function (response) {
+            AppHttp.put('/app/relocation-service/saveInfos', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2450,7 +2450,7 @@
             let deferred = $q.defer();
             let new_data = angular.copy(data);
             new_data.description = btoa(encodeURIComponent(new_data.description));
-            AppHttp.post('/gms/service_pack/create', new_data).then(function (response) {
+            AppHttp.post('/app/service_pack/create', new_data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2462,7 +2462,7 @@
             let deferred = $q.defer();
             let new_data = angular.copy(data);
             new_data.description = btoa(encodeURIComponent(new_data.description));
-            AppHttp.put('/gms/service_pack/update/' + new_data.id, new_data).then(function (response) {
+            AppHttp.put('/app/service_pack/update/' + new_data.id, new_data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2472,7 +2472,7 @@
 
         this.getServicePackDetail = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service_pack/detail/' + id + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/service_pack/detail/' + id + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2482,7 +2482,7 @@
 
         this.getServiceListOfServicePack = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service_pack/getServiceList/' + id + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/service_pack/getServiceList/' + id + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2492,7 +2492,7 @@
 
         this.searchProperties = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/property/search', data).then(function (response) {
+            AppHttp.put('/app/property/search', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2502,7 +2502,7 @@
 
         this.getAllProperties = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/property/getAll', data).then(function (response) {
+            AppHttp.put('/app/property/getAll', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2512,7 +2512,7 @@
 
         this.getPropertyDetail = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/property/detail/' + id + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/property/detail/' + id + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2522,7 +2522,7 @@
 
         this.deleteProperty = function (id) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/property/delete/' + id + '?_=' + Math.random()).then(function (response) {
+            AppHttp.delete('/app/property/delete/' + id + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2532,7 +2532,7 @@
 
         this.deleteMultipleProperty = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/property/deleteMultiple', data).then(function (response) {
+            AppHttp.post('/app/property/deleteMultiple', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2547,7 +2547,7 @@
             if(new_data.description){
                 new_data.description = btoa(encodeURIComponent(new_data.description));
             }
-            AppHttp.post('/gms/property/createProperty', new_data).then(function (response) {
+            AppHttp.post('/app/property/createProperty', new_data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err);
@@ -2558,7 +2558,7 @@
 
         this.getAssignmentDetail = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/assignment/detail/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/assignment/detail/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2571,7 +2571,7 @@
             if (id == undefined || id == 0) {
                 deferred.resolve({success: false});
             } else {
-                AppHttp.get('/gms/assignment/get/' + id).then(function (response) {
+                AppHttp.get('/app/assignment/get/' + id).then(function (response) {
                     if (angular.isUndefined(response.data.success)) {
                         deferred.reject(response.data);
                     } else {
@@ -2586,7 +2586,7 @@
 
         this.getRelocationFromAssignment = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/assignment/getRelocation/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/assignment/getRelocation/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2596,7 +2596,7 @@
 
         this.deleteAssignment = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/assignment/delete/' + uuid + '?_=' + Math.random(), {uuid: uuid}).then(function (response) {
+            AppHttp.delete('/app/assignment/delete/' + uuid + '?_=' + Math.random(), {uuid: uuid}).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2606,7 +2606,7 @@
 
         this.initiateRelocationAssignment = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/assignment/initiate_relocation/' + uuid + '?_=' + Math.random(), {uuid: uuid}).then(function (response) {
+            AppHttp.put('/app/assignment/initiate_relocation/' + uuid + '?_=' + Math.random(), {uuid: uuid}).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2617,7 +2617,7 @@
 
         this.approveAssignment = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/assignment/approve/' + uuid + '?_=' + Math.random(), {uuid: uuid}).then(function (response) {
+            AppHttp.put('/app/assignment/approve/' + uuid + '?_=' + Math.random(), {uuid: uuid}).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2628,7 +2628,7 @@
 
         this.archiveAssignment = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/assignment/delete/' + uuid + '?_=' + Math.random(), {uuid: uuid}).then(function (response) {
+            AppHttp.put('/app/assignment/delete/' + uuid + '?_=' + Math.random(), {uuid: uuid}).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2639,7 +2639,7 @@
 
         this.getRelocation = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation/item/' + uuid).then(function (response) {
+            AppHttp.get('/app/relocation/item/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2650,7 +2650,7 @@
 
         this.getHrCompanyOfRelocation = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation/getAccountOfRelocation/' + uuid).then(function (response) {
+            AppHttp.get('/app/relocation/getAccountOfRelocation/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2660,7 +2660,7 @@
 
         this.getRelocationBasicData = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation/detail/' + uuid).then(function (response) {
+            AppHttp.get('/app/relocation/detail/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2670,7 +2670,7 @@
 
         this.getRelocationServiceCompany = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation-service/item/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/relocation-service/item/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2680,7 +2680,7 @@
 
         this.getRelocationServiceReminders = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation-service/getReminders/' + uuid).then(function (response) {
+            AppHttp.get('/app/relocation-service/getReminders/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2696,7 +2696,7 @@
          */
         this.checkRelocationServiceCompany = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation-service/isExistAndActive/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/relocation-service/isExistAndActive/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2710,7 +2710,7 @@
          */
         this.getRelocationFromRSC = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation-service/getRelocation/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/relocation-service/getRelocation/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2724,7 +2724,7 @@
          */
         this.getAssignmentFromRSC = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation-service/getAssignment/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/relocation-service/getAssignment/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2738,7 +2738,7 @@
          */
         this.getEmployeeFromRSC = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation-service/getAssignee/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/relocation-service/getAssignee/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2752,7 +2752,7 @@
          */
         this.getServiceCompanyFromRSC = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation-service/getServiceCompany/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/relocation-service/getServiceCompany/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2762,7 +2762,7 @@
 
         this.getServiceTabsFromRSC = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation-service/getServiceTabs/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/relocation-service/getServiceTabs/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2772,7 +2772,7 @@
 
         this.getProvidersOfService = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service/get_svp/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/service/get_svp/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2783,7 +2783,7 @@
 
         this.getEventsFromRSC = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation-service/getEvents/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/relocation-service/getEvents/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2794,7 +2794,7 @@
 
         this.getFieldsFromRSC = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation-service/getFields/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/relocation-service/getFields/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2809,7 +2809,7 @@
          */
         this.getSVPFromRSC = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation-service/getSvpCompany/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/relocation-service/getSvpCompany/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2820,7 +2820,7 @@
 
         this.getAssignmentFromRelocation = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation/getAssignment/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/relocation/getAssignment/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2830,7 +2830,7 @@
 
         this.getEmployeeFromRelocation = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation/getAssgignee/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/relocation/getAssgignee/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2844,7 +2844,7 @@
 
         this.getSvpCompaniesAgentsList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/svp_company/getAgentsList').then(function (response) {
+            AppHttp.get('/app/svp_company/getAgentsList').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2854,7 +2854,7 @@
 
         this.getSvpCompaniesLandlordList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/svp_company/getLandlordsList').then(function (response) {
+            AppHttp.get('/app/svp_company/getLandlordsList').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2865,7 +2865,7 @@
         this.getServiceProviderSimpleDetails = function (id) {
             let deferred = $q.defer();
             if (id > 0) {
-                AppHttp.get('/gms/svp_company/getDetailsSimple/' + id + '?_=' + Math.random()).then(function (response) {
+                AppHttp.get('/app/svp_company/getDetailsSimple/' + id + '?_=' + Math.random()).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -2878,7 +2878,7 @@
 
         this.getServiceProviderListOfService = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service/get_svp/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/service/get_svp/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2891,7 +2891,7 @@
             if (angular.isUndefined(data.uuid) || data.uuid == '') {
                 deferred.reject(data);
             } else {
-                AppHttp.put('/gms/relocation-service/saveServiceProvider/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/relocation-service/saveServiceProvider/' + data.uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -2905,7 +2905,7 @@
             if (angular.isUndefined(data.uuid) || data.uuid == '') {
                 deferred.reject(data);
             } else {
-                AppHttp.put('/gms/relocation-service/saveSvpMember/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/relocation-service/saveSvpMember/' + data.uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -2917,7 +2917,7 @@
         this.getAssignmentList = function (kind) {
             if (kind == undefined) kind = '';
             let deferred = $q.defer();
-            AppHttp.get('/gms/assignment/list' + kind).then(function (response) {
+            AppHttp.get('/app/assignment/list' + kind).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2927,7 +2927,7 @@
 
         this.getAssignmentByEmployee = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/assignment/employee_active/' + id).then(function (response) {
+            AppHttp.get('/app/assignment/employee_active/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2937,7 +2937,7 @@
 
         this.loadAssignmentsByEmployee = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/assignment/loadByEmployee', data).then(function (response) {
+            AppHttp.put('/app/assignment/loadByEmployee', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2947,7 +2947,7 @@
 
         this.getHistoryListOfObject = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/history/list/' + uuid).then(function (response) {
+            AppHttp.get('/app/history/list/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -2964,7 +2964,7 @@
             if (angular.isUndefined(data.action)) {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_'});
             } else {
-                AppHttp.post('/gms/history/saveHistory' + '?_action=' + data.action, data)
+                AppHttp.post('/app/history/saveHistory' + '?_action=' + data.action, data)
                     .then(function (response) {
                         deferred.resolve(response.data);
                     }).catch(function (err) {
@@ -2984,7 +2984,7 @@
             if (angular.isUndefined(data.action)) {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.post('/gms/notification/addNotification' + '?action=' + data.action, data)
+                AppHttp.post('/app/notification/addNotification' + '?action=' + data.action, data)
                     .then(function (response) {
                         deferred.resolve(response.data);
                     }).catch(function (err) {
@@ -2996,7 +2996,7 @@
 
         this.countNotification = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/notification/countNotification' + '?action=' + 'countNotification')
+            AppHttp.get('/app/notification/countNotification' + '?action=' + 'countNotification')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -3011,7 +3011,7 @@
          */
         this.setReadTimeNotification = function () {
             let deferred = $q.defer();
-            AppHttp.post('/gms/notification/setReadTimeNotification' + '?action=' + 'setReadTimeNotification')
+            AppHttp.post('/app/notification/setReadTimeNotification' + '?action=' + 'setReadTimeNotification')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -3029,7 +3029,7 @@
             if (angular.isUndefined(data.action)) {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.post('/gms/notification/addNotificationForUser' + '?action=' + data.action, data)
+                AppHttp.post('/app/notification/addNotificationForUser' + '?action=' + data.action, data)
                     .then(function (response) {
                         deferred.resolve(response.data);
                     }).catch(function (err) {
@@ -3044,7 +3044,7 @@
             if (angular.isUndefined(data.action) || angular.isUndefined(data.uuid)) {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.post('/gms/notification/sendPushNotificationForUser' + '?action=' + data.action, data)
+                AppHttp.post('/app/notification/sendPushNotificationForUser' + '?action=' + data.action, data)
                     .then(function (response) {
                         deferred.resolve(response.data);
                     }).catch(function (err) {
@@ -3057,7 +3057,7 @@
 
         this.getLastNotification = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/notification/getLastNotification')
+            AppHttp.get('/app/notification/getLastNotification')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -3068,7 +3068,7 @@
 
         this.getSimpleListNotification = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/notification/getSimpleListNotification', data)
+            AppHttp.put('/app/notification/getSimpleListNotification', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -3079,7 +3079,7 @@
 
         this.readNotificationSimple = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/notification/readNotificationSimple/' + uuid)
+            AppHttp.get('/app/notification/readNotificationSimple/' + uuid)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -3095,7 +3095,7 @@
          */
         this.getHomeSearchSuggestForm = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/home-search/getSuggestInformation/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/home-search/getSuggestInformation/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3106,7 +3106,7 @@
 
         this.cancelHomeSearchSelectedProperty = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/home-search/cancelSelectedProperty', data).then(function (response) {
+            AppHttp.put('/app/home-search/cancelSelectedProperty', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3119,7 +3119,7 @@
          */
         this.getHousingPropositionList = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/home-search/getHousingPropositionList/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/home-search/getHousingPropositionList/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3133,7 +3133,7 @@
          */
         this.getHousingPropositionItem = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/home-search/getHousingPropositionItem/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/home-search/getHousingPropositionItem/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3146,7 +3146,7 @@
          */
         this.getHomeSearchHousingPropositionItem = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/home-search/getHomeSearchHousingPropositionItem/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/home-search/getHomeSearchHousingPropositionItem/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3160,7 +3160,7 @@
          */
         this.getHomeSearchCalendar = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/home-search/getCalendarEvents/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/home-search/getCalendarEvents/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3177,7 +3177,7 @@
          */
         this.addHomeSearchVisiteEvent = function (uuid, event) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/home-search/addVisiteEvent/' + uuid, event).then(function (response) {
+            AppHttp.put('/app/home-search/addVisiteEvent/' + uuid, event).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3192,7 +3192,7 @@
          */
         this.cancelHousingPropositionVisite = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/home-search/cancelVisiteEvent/' + uuid).then(function (response) {
+            AppHttp.delete('/app/home-search/cancelVisiteEvent/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3206,7 +3206,7 @@
             if (angular.isUndefined(data.relocation_service_company_uuid) || angular.isUndefined(data.housing_proposition_uuid)) {
                 deferred.reject({success: false});
             } else {
-                AppHttp.post('/gms/home-search/changeSelectedProposition', data).then(function (response) {
+                AppHttp.post('/app/home-search/changeSelectedProposition', data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err);
@@ -3220,7 +3220,7 @@
          */
         this.getHomeSearchSelectedProperty = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/home-search/getSelectedProperty/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/home-search/getSelectedProperty/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3237,7 +3237,7 @@
             if (angular.isUndefined(data.uuid) || angular.isUndefined(data.status)) {
                 deferred.reject({success: false});
             } else {
-                AppHttp.put('/gms/home-search/changeStatusHousingProposition/' + data.uuid + '?_=' + Math.random(), data).then(function (response) {
+                AppHttp.put('/app/home-search/changeStatusHousingProposition/' + data.uuid + '?_=' + Math.random(), data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3278,7 +3278,7 @@
          */
         this.getHomeSearchSuggestedProperties = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/home-search/getSuggestedProperties/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/home-search/getSuggestedProperties/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3292,7 +3292,7 @@
          */
         this.checkPropertyAvailability = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/home-search/checkPropertyAvailability', data).then(function (response) {
+            AppHttp.put('/app/home-search/checkPropertyAvailability', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3306,7 +3306,7 @@
          */
         this.getServiceTaskTemplates = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation-service/getTaskTemplate/' + uuid + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/relocation-service/getTaskTemplate/' + uuid + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3316,7 +3316,7 @@
 
         this.getCompanyPriceList = function (data) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/company_pricelist/list/', {params: data}).then(function (response) {
+            AppHttp.get('/app/company_pricelist/list/', {params: data}).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3326,7 +3326,7 @@
 
         this.getCompanyPriceListSimpleData = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/company_pricelist/simpleData/' + id).then(function (response) {
+            AppHttp.get('/app/company_pricelist/simpleData/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3339,7 +3339,7 @@
             if (id == undefined || id == 0) {
                 deferred.resolve({success: false});
             } else {
-                AppHttp.get('/gms/company/detail/' + id).then(function (response) {
+                AppHttp.get('/app/company/detail/' + id).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3350,7 +3350,7 @@
 
         this.getAccountsList = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/company/index').then(function (response) {
+            AppHttp.get('/app/company/index').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3360,7 +3360,7 @@
 
         this.getListHrAccounts = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/company/getListHrAccounts', data).then(function (response) {
+            AppHttp.put('/app/company/getListHrAccounts', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3373,7 +3373,7 @@
             if (id == undefined || id == 0) {
                 deferred.resolve({success: false});
             } else {
-                AppHttp.get('/gms/company/simpleData/' + id).then(function (response) {
+                AppHttp.get('/app/company/simpleData/' + id).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3392,7 +3392,7 @@
             if (angular.isUndefined(data.comment) && angular.isUndefined(data.task_uuid)) {
                 deferred.resolve({success: false});
             } else {
-                AppHttp.post('/gms/comments/sendToExternalRecipient', data).then(function (response) {
+                AppHttp.post('/app/comments/sendToExternalRecipient', data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3411,7 +3411,7 @@
             if (uuid == undefined || uuid == 0) {
                 deferred.resolve({success: false});
             } else {
-                AppHttp.get('/gms/relocation/needAssessmentList/' + uuid).then(function (response) {
+                AppHttp.get('/app/relocation/needAssessmentList/' + uuid).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3429,7 +3429,7 @@
             if (uuid == undefined || uuid == 0) {
                 deferred.resolve({success: false});
             } else {
-                AppHttp.get('/gms/need-assessment/requestDetail/' + uuid).then(function (response) {
+                AppHttp.get('/app/need-assessment/requestDetail/' + uuid).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3448,7 +3448,7 @@
             if (uuid == undefined || uuid == 0) {
                 deferred.resolve({success: false});
             } else {
-                AppHttp.get('/gms/relocation-service/needAssessmentList/' + uuid).then(function (response) {
+                AppHttp.get('/app/relocation-service/needAssessmentList/' + uuid).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3463,7 +3463,7 @@
          */
         this.getNeedAssessmentList = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/need-assessment/index', data).then(function (response) {
+            AppHttp.post('/app/need-assessment/index', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3477,7 +3477,7 @@
          */
         this.getNeedAssessmentSimpleList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/need-assessment/simple').then(function (response) {
+            AppHttp.get('/app/need-assessment/simple').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3487,7 +3487,7 @@
 
         this.initDataNeedForm = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/need-assessment/init?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/need-assessment/init?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3497,7 +3497,7 @@
 
         this.createNeedFormGabarit = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/need-assessment/createForm', data).then(function (response) {
+            AppHttp.post('/app/need-assessment/createForm', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3508,7 +3508,7 @@
 
         this.saveNeedFormGabarit = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/need-assessment/saveForm/' + data.id, data).then(function (response) {
+            AppHttp.put('/app/need-assessment/saveForm/' + data.id, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3518,7 +3518,7 @@
 
         this.getNeedFormGabaritInfo = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/need-assessment/detail/' + id + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/need-assessment/detail/' + id + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3531,7 +3531,7 @@
             if (angular.isUndefined(data.id)) {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.delete('/gms/need-assessment/removeQuestion/' + data.id + '?_=' + Math.random()).then(function (response) {
+                AppHttp.delete('/app/need-assessment/removeQuestion/' + data.id + '?_=' + Math.random()).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3543,13 +3543,13 @@
         this.saveNeedFormGabaritItem = function (data) {
             let deferred = $q.defer();
             if (angular.isUndefined(data.id)) {
-                AppHttp.post('/gms/need-assessment/saveQuestion/', data).then(function (response) {
+                AppHttp.post('/app/need-assessment/saveQuestion/', data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
                 });
             } else {
-                AppHttp.post('/gms/need-assessment/saveQuestion/' + data.id, data).then(function (response) {
+                AppHttp.post('/app/need-assessment/saveQuestion/' + data.id, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3567,7 +3567,7 @@
             if (angular.isUndefined(data.id) || angular.isUndefined(data.position)) {
                 deferred.resolve({success: false});
             } else {
-                AppHttp.put('/gms/need-assessment/saveRankQuestion/' + data.id, data).then(function (response) {
+                AppHttp.put('/app/need-assessment/saveRankQuestion/' + data.id, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3598,7 +3598,7 @@
          */
         this.cloneNeedFormGabarit = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/need-assessment/cloneForm', data).then(function (response) {
+            AppHttp.post('/app/need-assessment/cloneForm', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3614,7 +3614,7 @@
          */
         this.deleteNeedFormGabarit = function (id) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/need-assessment/deleteNeedForm/' + id).then(function (response) {
+            AppHttp.delete('/app/need-assessment/deleteNeedForm/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3630,13 +3630,13 @@
         this.sendNeedFormRequest = function (data) {
             let deferred = $q.defer();
             if (angular.isUndefined(data.request_uuid) || data.request_uuid == '' || data.request_uuid == undefined) {
-                AppHttp.put('/gms/relocation-service/sendNeedAssessmentFormOfRelocation/', data).then(function (response) {
+                AppHttp.put('/app/relocation-service/sendNeedAssessmentFormOfRelocation/', data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
                 });
             } else {
-                AppHttp.put('/gms/relocation-service/sendNeedAssessmentFormOfRelocation/' + data.request_uuid, data).then(function (response) {
+                AppHttp.put('/app/relocation-service/sendNeedAssessmentFormOfRelocation/' + data.request_uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3658,7 +3658,7 @@
             } else {
                 let new_data = angular.copy(data);
                 new_data.message = btoa(encodeURIComponent(new_data.message));
-                AppHttp.put('/gms/communication-template/update/' + new_data.id, new_data).then(function (response) {
+                AppHttp.put('/app/communication-template/update/' + new_data.id, new_data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3680,7 +3680,7 @@
             } else {
                 let new_data = angular.copy(data);
                 new_data.message = btoa(encodeURIComponent(new_data.message));
-                AppHttp.put('/gms/communication-template/preview/' + new_data.id, new_data).then(function (response) {
+                AppHttp.put('/app/communication-template/preview/' + new_data.id, new_data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3701,7 +3701,7 @@
             } else {
                 let new_data = angular.copy(data);
                 new_data.message = btoa(encodeURIComponent(new_data.message));
-                AppHttp.post('/gms/communication-template/create/', new_data).then(function (response) {
+                AppHttp.post('/app/communication-template/create/', new_data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3719,7 +3719,7 @@
         this.cloneCommentsTemplate = function (data) {
             let deferred = $q.defer();
 
-            AppHttp.post('/gms/communication-template/clone/', data).then(function (response) {
+            AppHttp.post('/app/communication-template/clone/', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3739,7 +3739,7 @@
             if (angular.isUndefined(data.id) && angular.isUndefined(data.id)) {
                 deferred.resolve({success: false});
             } else {
-                AppHttp.delete('/gms/communication-template/delete/' + data.id, data).then(function (response) {
+                AppHttp.delete('/app/communication-template/delete/' + data.id, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3756,7 +3756,7 @@
 
         this.detailCommentsTemplate = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/communication-template/item/' + id).then(function (response) {
+            AppHttp.get('/app/communication-template/item/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3772,7 +3772,7 @@
 
         this.detailCommentsTemplateAutoFill = function (id, data = {}) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/communication-template/itemAutoFill/' + id, data).then(function (response) {
+            AppHttp.post('/app/communication-template/itemAutoFill/' + id, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3787,7 +3787,7 @@
          */
         this.getCommentTemplates = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/communication-template/index').then(function (response) {
+            AppHttp.get('/app/communication-template/index').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3801,7 +3801,7 @@
          */
         this.getCommentTemplatesSimple = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/communication-template/simple', data).then(function (response) {
+            AppHttp.post('/app/communication-template/simple', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3815,7 +3815,7 @@
          */
         this.searchCommentTemplates = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/communication-template/search', data).then(function (response) {
+            AppHttp.post('/app/communication-template/search', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3836,7 +3836,7 @@
 
                 let new_data = angular.copy(data);
                 new_data.description = btoa(encodeURIComponent(new_data.description));
-                AppHttp.put('/gms/task/updateTask/' + new_data.uuid, new_data).then(function (response) {
+                AppHttp.put('/app/task/updateTask/' + new_data.uuid, new_data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3853,7 +3853,7 @@
             if (data.uuid == undefined || data.uuid == '') {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.put('/gms/reminder/generate/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/reminder/generate/' + data.uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3867,7 +3867,7 @@
             if (data.uuid == undefined || data.uuid == '') {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.put('/gms/reminder/stop/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/reminder/stop/' + data.uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3878,7 +3878,7 @@
 
         this.getLastReminderItems = function () {
             let deferred = $q.defer();
-            AppHttp.put('/gms/reminder/getLastReminderItems').then(function (response) {
+            AppHttp.put('/app/reminder/getLastReminderItems').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3889,7 +3889,7 @@
 
         this.standbyReminder = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/reminder/standByReminder', data).then(function (response) {
+            AppHttp.put('/app/reminder/standByReminder', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3899,7 +3899,7 @@
 
         this.clearAllReminderOfUser = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/reminder/clearAllReminderOfUser', data).then(function (response) {
+            AppHttp.put('/app/reminder/clearAllReminderOfUser', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -3912,7 +3912,7 @@
             if (data.task_uuid == undefined || data.task_uuid == '') {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.post('/gms/reminder/createReminderItem/' + data.task_uuid, data).then(function (response) {
+                AppHttp.post('/app/reminder/createReminderItem/' + data.task_uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3926,7 +3926,7 @@
             if (data.uuid == undefined || data.uuid == '') {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.put('/gms/task/setTodo/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/task/setTodo/' + data.uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3941,7 +3941,7 @@
             if (data.uuid == undefined || data.uuid == '') {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.put('/gms/task/setInProgress/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/task/setInProgress/' + data.uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3960,7 +3960,7 @@
             } else {
                 let new_data = angular.copy(data);
                 new_data.description = btoa(encodeURIComponent(new_data.description));
-                AppHttp.put('/gms/task/updateTask/' + new_data.uuid, new_data).then(function (response) {
+                AppHttp.put('/app/task/updateTask/' + new_data.uuid, new_data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3974,7 +3974,7 @@
             if (data.uuid == undefined || data.uuid == '') {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.put('/gms/task/setDone/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/task/setDone/' + data.uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -3988,7 +3988,7 @@
             if (data.name == undefined || data.name == '') {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.post('/gms/need-assessment/addNewFormCategory/', data).then(function (response) {
+                AppHttp.post('/app/need-assessment/addNewFormCategory/', data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -4002,7 +4002,7 @@
             if (data.name == undefined || data.name == '' || data.value == undefined || data.value == '') {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.post('/gms/attributes/addNewValue/?name=' + data.name, data).then(function (response) {
+                AppHttp.post('/app/attributes/addNewValue/?name=' + data.name, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -4013,7 +4013,7 @@
 
         this.removeServiceCompany = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/service/removeService/' + uuid).then(function (response) {
+            AppHttp.delete('/app/service/removeService/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4023,7 +4023,7 @@
 
         this.createServiceCompany = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/service/createServiceCompany', data).then(function (response) {
+            AppHttp.post('/app/service/createServiceCompany', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4036,7 +4036,7 @@
             if (angular.isUndefined(data.uuid)) {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.put('/gms/service/editServiceCompany/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/service/editServiceCompany/' + data.uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -4050,7 +4050,7 @@
             if (angular.isUndefined(data.uuid) || angular.isUndefined(data.tasks)) {
                 deferred.resolve({success: true, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.put('/gms/service/saveTaskTemplateList/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/service/saveTaskTemplateList/' + data.uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -4064,7 +4064,7 @@
             if (angular.isUndefined(data.uuid) || angular.isUndefined(data.tasks)) {
                 deferred.resolve({success: true, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.put('/gms/service/deleteTaskTemplateList/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/service/deleteTaskTemplateList/' + data.uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -4078,7 +4078,7 @@
             if (angular.isUndefined(data.uuid) || angular.isUndefined(data.attachments)) {
                 deferred.resolve({success: true, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.put('/gms/service/saveAttachements/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/service/saveAttachements/' + data.uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -4092,7 +4092,7 @@
             if (angular.isUndefined(data.uuid) || angular.isUndefined(data.providers)) {
                 deferred.resolve({success: true, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.put('/gms/service/saveProviderList/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/service/saveProviderList/' + data.uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -4104,7 +4104,7 @@
 
         this.getServiceListActive = function (data = {}) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/service/getServicesActive', data).then(function (response) {
+            AppHttp.post('/app/service/getServicesActive', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4114,7 +4114,7 @@
 
         this.getServiceListActiveByIds = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/service/getServiceCompanyByIds', data).then(function (response) {
+            AppHttp.put('/app/service/getServiceCompanyByIds', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4124,7 +4124,7 @@
 
         this.getServiceRelocationCountListActive = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation/getServicesActive/' + uuid).then(function (response) {
+            AppHttp.get('/app/relocation/getServicesActive/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4135,7 +4135,7 @@
 
         this.getServiceListDesactive = function (data) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service/getSimpleListDesactive').then(function (response) {
+            AppHttp.get('/app/service/getSimpleListDesactive').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4145,7 +4145,7 @@
 
         this.getServices = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/service/list', data).then(function (response) {
+            AppHttp.post('/app/service/list', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4156,7 +4156,7 @@
         this.initServicedata = function () {
 
             let deferred = $q.defer();
-            AppHttp.get('/gms/service/init').then(function (response) {
+            AppHttp.get('/app/service/init').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4167,7 +4167,7 @@
 
         this.getServiceCompanyDetail = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service/getServiceCompanyDetail/' + uuid).then(function (response) {
+            AppHttp.get('/app/service/getServiceCompanyDetail/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4177,7 +4177,7 @@
 
         this.getServiceFieldDetail = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service/getServiceFieldDetail/' + id).then(function (response) {
+            AppHttp.get('/app/service/getServiceFieldDetail/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4187,7 +4187,7 @@
 
         this.getServiceCompanyEventsList = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service/getServiceCompanyEventsList/' + uuid).then(function (response) {
+            AppHttp.get('/app/service/getServiceCompanyEventsList/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4197,7 +4197,7 @@
 
         this.getServiceCompanyProviderList = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service/getServiceCompanyProviderList/' + uuid).then(function (response) {
+            AppHttp.get('/app/service/getServiceCompanyProviderList/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4207,7 +4207,7 @@
 
         this.getServiceCompanyTaskList = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service/getServiceCompanyTaskList/' + uuid).then(function (response) {
+            AppHttp.get('/app/service/getServiceCompanyTaskList/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4217,7 +4217,7 @@
 
         this.getServiceCompanyTasks = function (uuid, data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/service/getServiceCompanyTaskList/' + uuid, data).then(function (response) {
+            AppHttp.post('/app/service/getServiceCompanyTaskList/' + uuid, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4230,7 +4230,7 @@
             if (angular.isUndefined(data.role_id) || angular.isUndefined(data.acl)) {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.post('/gms/role/addAclItem', data).then(function (response) {
+                AppHttp.post('/app/role/addAclItem', data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -4244,7 +4244,7 @@
             if (angular.isUndefined(data.role_id) || angular.isUndefined(data.acl)) {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.put('/gms/role/removeAclItem', data).then(function (response) {
+                AppHttp.put('/app/role/removeAclItem', data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -4255,7 +4255,7 @@
 
         this.showGroupAcl = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/role/showgroup/' + id).then(function (response) {
+            AppHttp.get('/app/role/showgroup/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4265,7 +4265,7 @@
 
         this.resetAclGroup = function (id) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/role/reset/' + id).then(function (response) {
+            AppHttp.put('/app/role/reset/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4279,7 +4279,7 @@
          */
         this.getServicePackList = function () {
             let deferred = $q.defer();
-            var url = '/gms/service_pack/index';
+            var url = '/app/service_pack/index';
             AppHttp.get(url)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
@@ -4299,7 +4299,7 @@
          */
         this.getServicePackSimpleList = function () {
             let deferred = $q.defer();
-            var url = '/gms/service_pack/simpleList';
+            var url = '/app/service_pack/simpleList';
             AppHttp.get(url)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
@@ -4321,7 +4321,7 @@
          */
         this.removeServicePack = function (id) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/service_pack/archive/' + id).then(function (response) {
+            AppHttp.delete('/app/service_pack/archive/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4331,7 +4331,7 @@
 
         this.getServicePackFullList = function () {
             let deferred = $q.defer();
-            var url = '/gms/service_pack/getFullList';
+            var url = '/app/service_pack/getFullList';
             AppHttp.get(url)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
@@ -4347,7 +4347,7 @@
 
         this.getServicePacks = function (data) {
             let deferred = $q.defer();
-            let url = '/gms/service_pack/list';
+            let url = '/app/service_pack/list';
             AppHttp.post(url, data)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
@@ -4363,7 +4363,7 @@
 
         this.getServicePackActiveList = function () {
             let deferred = $q.defer();
-            var url = '/gms/service_pack/getActiveList';
+            var url = '/app/service_pack/getActiveList';
             AppHttp.get(url)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
@@ -4379,7 +4379,7 @@
 
         this.suggestPropertyToEmployee = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/home-search/addSuggest', data).then(function (response) {
+            AppHttp.post('/app/home-search/addSuggest', data).then(function (response) {
                 if (angular.isDefined(response.data.success) && response.data.success == true) {
                     deferred.resolve(response.data);
                 } else {
@@ -4393,7 +4393,7 @@
 
         this.deleteHousingProposition = function (data) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/home-search/deleteHousingProposition/' + data.id).then(function (response) {
+            AppHttp.delete('/app/home-search/deleteHousingProposition/' + data.id).then(function (response) {
                 if (angular.isDefined(response.data.success) && response.data.success == true) {
                     deferred.resolve(response.data);
                 } else {
@@ -4407,7 +4407,7 @@
 
         this.sendSuggestNotificationPropertyToEmployee = function (serviceUuid) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/home-search/sendSuggestNotification', {uuid: serviceUuid}).then(function (response) {
+            AppHttp.post('/app/home-search/sendSuggestNotification', {uuid: serviceUuid}).then(function (response) {
                 if (angular.isDefined(response.data.success) && response.data.success == true) {
                     deferred.resolve(response.data);
                 } else {
@@ -4450,7 +4450,7 @@
             if (angular.isUndefined(data.url) || data.url == '') {
                 deferred.reject();
             } else {
-                var url = '/gms/property/loadByUrl';
+                var url = '/app/property/loadByUrl';
                 AppHttp.post(url, data)
                     .then(function (response) {
                         if (angular.isDefined(response.data)) {
@@ -4476,7 +4476,7 @@
             if (angular.isUndefined(data.url) || data.url == '') {
                 deferred.reject();
             } else {
-                var url = '/gms/property/getContentOfUrl';
+                var url = '/app/property/getContentOfUrl';
                 AppHttp.post(url, data)
                     .then(function (response) {
                         if (angular.isDefined(response.data.success) && response.data.success == true) {
@@ -4498,7 +4498,7 @@
                 angular.isUndefined(data.type) || data.type == '' || angular.isUndefined(data.media)) {
                 deferred.reject();
             } else {
-                AppHttp.post('/gms/uploader/createAttachment', data).then(function (response) {
+                AppHttp.post('/app/uploader/createAttachment', data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -4514,7 +4514,7 @@
                 angular.isUndefined(data.object_uuid) || data.object_uuid == '') {
                 deferred.reject();
             } else {
-                AppHttp.delete('/gms/uploader/removeAttachment/object/' + data.object_uuid + '/media/' + data.media_uuid).then(function (response) {
+                AppHttp.delete('/app/uploader/removeAttachment/object/' + data.object_uuid + '/media/' + data.media_uuid).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -4525,7 +4525,7 @@
 
         this.getMediaListByUuid = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/uploader/getListByUuid/' + uuid)
+            AppHttp.get('/app/uploader/getListByUuid/' + uuid)
                 .then(function (response) {
                     if (angular.isDefined(response.data.success) && response.data.success == true) {
                         deferred.resolve(response.data);
@@ -4544,7 +4544,7 @@
             if (angular.isUndefined(data.keyword) && angular.isUndefined(data.page)) {
                 deferred.reject();
             } else {
-                AppHttp.get('/gms/uploader/searchMedia', data).then(function (response) {
+                AppHttp.get('/app/uploader/searchMedia', data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -4555,7 +4555,7 @@
 
         this.searchAssignee = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/employee/searchAssignee', data).then(function (response) {
+            AppHttp.put('/app/employee/searchAssignee', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4565,7 +4565,7 @@
 
         this.searchService = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/service/searchService', data).then(function (response) {
+            AppHttp.post('/app/service/searchService', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4575,7 +4575,7 @@
 
         this.searchAssignment = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/assignment/searchAssignment', data).then(function (response) {
+            AppHttp.put('/app/assignment/searchAssignment', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4585,7 +4585,7 @@
 
         this.searchAssignmentRequest = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/assignment/searchAssignmentRequest', data).then(function (response) {
+            AppHttp.put('/app/assignment/searchAssignmentRequest', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4595,7 +4595,7 @@
 
         this.getRequest = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/assignment/getRequest/' + uuid).then(function (res) {
+            AppHttp.get('/app/assignment/getRequest/' + uuid).then(function (res) {
                 deferred.resolve(res.data);
             }, function (err) {
                 deferred.reject(err);
@@ -4605,7 +4605,7 @@
 
         this.rejectRequest = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/assignment/rejectRequest', data).then(function (res) {
+            AppHttp.post('/app/assignment/rejectRequest', data).then(function (res) {
                 deferred.resolve(res.data);
             }, function (err) {
                 deferred.reject(err);
@@ -4616,7 +4616,7 @@
 
         this.searchSender = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/communication/searchSender', data).then(function (response) {
+            AppHttp.put('/app/communication/searchSender', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4626,7 +4626,7 @@
 
         this.searchSender = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/communication/searchSender', data).then(function (response) {
+            AppHttp.put('/app/communication/searchSender', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4636,7 +4636,7 @@
 
         this.searchRelocation = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/relocation/searchRelocation', data).then(function (response) {
+            AppHttp.put('/app/relocation/searchRelocation', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4652,7 +4652,7 @@
             ) {
                 deferred.reject();
             } else {
-                AppHttp.put('/gms/setting/save', data).then(function (response) {
+                AppHttp.put('/app/setting/save', data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -4699,7 +4699,7 @@
          */
         this.getServiceMenuItems = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation-service/getMenuItems/' + uuid).then(function (response) {
+            AppHttp.get('/app/relocation-service/getMenuItems/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4709,7 +4709,7 @@
 
         this.getSystemLanguages = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/setting/language').then(function (response) {
+            AppHttp.get('/app/setting/language').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4719,7 +4719,7 @@
 
         this.setSystemLanguage = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/setting/setLanguage', data).then(function (response) {
+            AppHttp.put('/app/setting/setLanguage', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4729,7 +4729,7 @@
 
         this.getSvpWorkerList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/svp_worker/index').then(function (response) {
+            AppHttp.get('/app/svp_worker/index').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4739,7 +4739,7 @@
 
         this.getSvpWorkerListWithParams = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/svp_worker/index', data).then(function (response) {
+            AppHttp.post('/app/svp_worker/index', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4749,7 +4749,7 @@
 
         this.createSvpWorker = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/svp_worker/create', data).then(function (response) {
+            AppHttp.post('/app/svp_worker/create', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4759,7 +4759,7 @@
 
         this.deleteSvpWorker = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/svp_worker/delete/' + uuid).then(function (response) {
+            AppHttp.delete('/app/svp_worker/delete/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4769,7 +4769,7 @@
 
         this.updateSvpWorker = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/svp_worker/update/' + data.uuid, data).then(function (response) {
+            AppHttp.put('/app/svp_worker/update/' + data.uuid, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4779,7 +4779,7 @@
 
         this.getSvpWorkerDetail = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/svp_worker/detail/' + id).then(function (response) {
+            AppHttp.get('/app/svp_worker/detail/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4789,7 +4789,7 @@
 
         this.serviceCompanyLoadProvider = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service/loadProviders?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/service/loadProviders?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4799,7 +4799,7 @@
 
         this.searchSvpMembers = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/svp_worker/search', data).then(function (response) {
+            AppHttp.put('/app/svp_worker/search', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4819,7 +4819,7 @@
                 if (angular.isDefined(data.reminder_date) && data.reminder_date != '') {
                     data.reminder_date_time = moment(data.reminder_date).utc().valueOf() / 1000;
                 }
-                AppHttp.post('/gms/reminder/createReminderConfig', data).then(function (response) {
+                AppHttp.post('/app/reminder/createReminderConfig', data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -4837,7 +4837,7 @@
             if (data.uuid == undefined || data.uuid == '') {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.delete('/gms/reminder/deleteReminderConfig/' + data.uuid).then(function (response) {
+                AppHttp.delete('/app/reminder/deleteReminderConfig/' + data.uuid).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -4848,7 +4848,7 @@
 
         this.getListReminderOfTask = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/task/getRemindersList/' + uuid).then(function (response) {
+            AppHttp.get('/app/task/getRemindersList/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4858,7 +4858,7 @@
 
         this.getListCompanies = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/hr_account/list', data).then(function (response) {
+            AppHttp.put('/app/hr_account/list', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -4875,7 +4875,7 @@
 
         this.generateTaskFromWorflowAssignment = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/assignment/applyWorkflow',
+            AppHttp.post('/app/assignment/applyWorkflow',
                 data
             ).then(function (response) {
                 deferred.resolve(response.data);
@@ -4889,7 +4889,7 @@
 
         this.generateTaskFromWorflowRelocation = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/relocation/applyWorkflow',
+            AppHttp.post('/app/relocation/applyWorkflow',
                 data
             ).then(function (response) {
                 deferred.resolve(response.data);
@@ -4908,7 +4908,7 @@
 
         this.generateTaskFromWorflowAssignment = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/assignment/applyWorkflow',
+            AppHttp.post('/app/assignment/applyWorkflow',
                 data
             ).then(function (response) {
                 deferred.resolve(response.data);
@@ -4921,7 +4921,7 @@
 
         this.generateTaskFromWorflowRelocation = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/relocation/applyWorkflow',
+            AppHttp.post('/app/relocation/applyWorkflow',
                 data
             ).then(function (response) {
                 deferred.resolve(response.data);
@@ -4934,7 +4934,7 @@
 
         this.generatePasswordForUser = function (profile) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/password/generatePasswordForUser', profile).then(function (response) {
+            AppHttp.post('/app/password/generatePasswordForUser', profile).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -4946,7 +4946,7 @@
 
         this.generatePasswordRandom = function () {
             let deferred = $q.defer();
-            AppHttp.post('/gms/password/generatePasswordRandom').then(function (response) {
+            AppHttp.post('/app/password/generatePasswordRandom').then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -4957,7 +4957,7 @@
 
         this.relocationCountEndingSoon = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/dashboard/relocationCountEndingSoon').then(function (response) {
+            AppHttp.get('/app/dashboard/relocationCountEndingSoon').then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -4968,7 +4968,7 @@
 
         this.relocationCountOngoing = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/dashboard/relocationCountOnGoing').then(function (response) {
+            AppHttp.get('/app/dashboard/relocationCountOnGoing').then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -4979,7 +4979,7 @@
 
         this.assignmentCountEndingSoon = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/dashboard/assignmentCountEndingSoon').then(function (response) {
+            AppHttp.get('/app/dashboard/assignmentCountEndingSoon').then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -4990,7 +4990,7 @@
 
         this.taskCountTodo = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/dashboard/taskCountTodo').then(function (response) {
+            AppHttp.get('/app/dashboard/taskCountTodo').then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5001,7 +5001,7 @@
 
         this.taskCountOngoing = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/dashboard/taskCountOnGoing').then(function (response) {
+            AppHttp.get('/app/dashboard/taskCountOnGoing').then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5012,7 +5012,7 @@
 
         this.getMoreDashboardInfos = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/dashboard/getMoreDashboardInfos').then(function (response) {
+            AppHttp.get('/app/dashboard/getMoreDashboardInfos').then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5023,7 +5023,7 @@
 
         this.getRelocationServiceDashboard = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/dashboard/getRelocationServicesList', data).then(function (response) {
+            AppHttp.put('/app/dashboard/getRelocationServicesList', data).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5034,7 +5034,7 @@
 
         this.getDashboardMembers = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/dashboard/getDashboardMembers').then(function (response) {
+            AppHttp.get('/app/dashboard/getDashboardMembers').then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5048,7 +5048,7 @@
          */
         this.searchContact = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/contacts/searchContact', data).then(function (response) {
+            AppHttp.put('/app/contacts/searchContact', data).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5062,7 +5062,7 @@
             if (angular.isUndefined(data.email) || data.email == '') {
                 deferred.reject({success: false});
             } else {
-                AppHttp.post('/gms/contacts/createContact', data).then(function (response) {
+                AppHttp.post('/app/contacts/createContact', data).then(function (response) {
                     deferred.resolve(response.data);
                     return response.data;
                 }).catch(function (err) {
@@ -5077,7 +5077,7 @@
             if (angular.isUndefined(data.email) && data.email == '') {
                 deferred.reject({success: false});
             } else {
-                AppHttp.put('/gms/contacts/getContact', data).then(function (response) {
+                AppHttp.put('/app/contacts/getContact', data).then(function (response) {
                     deferred.resolve(response.data);
                     return response.data;
                 }).catch(function (err) {
@@ -5092,7 +5092,7 @@
             if (angular.isUndefined(data.email) || data.email == '' || angular.isUndefined(data.id) || !data.id > 0) {
                 deferred.reject({success: false});
             } else {
-                AppHttp.put('/gms/contacts/updateContact/' + data.id, data).then(function (response) {
+                AppHttp.put('/app/contacts/updateContact/' + data.id, data).then(function (response) {
                     deferred.resolve(response.data);
                     return response.data;
                 }).catch(function (err) {
@@ -5104,7 +5104,7 @@
 
         this.deleteContact = function (id) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/contacts/delete/' + id).then(function (response) {
+            AppHttp.delete('/app/contacts/delete/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err);
@@ -5117,7 +5117,7 @@
             if (angular.isUndefined(data.uuid) || data.uuid == '') {
                 deferred.reject({success: false});
             } else {
-                AppHttp.put('/gms/communication/saveCommunicationContacts', data).then(function (response) {
+                AppHttp.put('/app/communication/saveCommunicationContacts', data).then(function (response) {
                     deferred.resolve(response.data);
                     return response.data;
                 }).catch(function (err) {
@@ -5129,7 +5129,7 @@
 
         this.companyPriceListInit = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/company_pricelist/init').then(function (response) {
+            AppHttp.get('/app/company_pricelist/init').then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5140,7 +5140,7 @@
 
         this.companyPriceListAvailableCompanies = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/company_pricelist/getAvailableCompanies').then(function (response) {
+            AppHttp.get('/app/company_pricelist/getAvailableCompanies').then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5151,7 +5151,7 @@
 
         this.companyPriceListGetAll = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/company_pricelist/index').then(function (response) {
+            AppHttp.get('/app/company_pricelist/index').then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5167,7 +5167,7 @@
          */
         this.companyPriceListDetail = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/company_pricelist/detail/' + parseInt(id)).then(function (response) {
+            AppHttp.get('/app/company_pricelist/detail/' + parseInt(id)).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5178,7 +5178,7 @@
 
         this.companyPriceListCreate = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/company_pricelist/create/', data).then(function (response) {
+            AppHttp.post('/app/company_pricelist/create/', data).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5189,7 +5189,7 @@
 
         this.companyPriceListUpdate = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/company_pricelist/update/' + data.id, data).then(function (response) {
+            AppHttp.put('/app/company_pricelist/update/' + data.id, data).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5203,7 +5203,7 @@
             if (angular.isUndefined(data.id) || data.id == '' || data.id == 0) {
                 deferred.resolve({success: false, message: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.put('/gms/company_pricelist/delete/', data).then(function (response) {
+                AppHttp.put('/app/company_pricelist/delete/', data).then(function (response) {
                     deferred.resolve(response.data);
                     return response.data;
                 }).catch(function (err) {
@@ -5215,7 +5215,7 @@
 
         this.getReportCommentsOfTask = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/task/report_comments/' + uuid).then(function (response) {
+            AppHttp.get('/app/task/report_comments/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5226,7 +5226,7 @@
 
         this.getReportStatusOfTask = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/task/report_status/' + uuid).then(function (response) {
+            AppHttp.get('/app/task/report_status/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5237,7 +5237,7 @@
 
         this.deleteTaxRule = function (id) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/tax_rule/del/' + id).then(function (response) {
+            AppHttp.delete('/app/tax_rule/del/' + id).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5248,7 +5248,7 @@
 
         this.detailTaxRule = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/tax_rule/detail/' + id).then(function (response) {
+            AppHttp.get('/app/tax_rule/detail/' + id).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5259,7 +5259,7 @@
 
         this.createTaxRule = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/tax_rule/create', data).then(function (response) {
+            AppHttp.post('/app/tax_rule/create', data).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5270,7 +5270,7 @@
 
         this.updateTaxRule = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/tax_rule/update/' + data.id, data).then(function (response) {
+            AppHttp.put('/app/tax_rule/update/' + data.id, data).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5281,7 +5281,7 @@
 
         this.getTaxRuleList = function (data) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/tax_rule/index').then(function (response) {
+            AppHttp.get('/app/tax_rule/index').then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5292,7 +5292,7 @@
 
         this.getTaxRuleActive = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/tax_rule/getTaxRuleActive').then(function (response) {
+            AppHttp.get('/app/tax_rule/getTaxRuleActive').then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5303,7 +5303,7 @@
 
         this.getTaskTodayDashboard = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/dashboard/taskTodayList').then(function (response) {
+            AppHttp.get('/app/dashboard/taskTodayList').then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5314,7 +5314,7 @@
 
         this.getRelocationTodayDashboard = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/dashboard/relocationTodayList').then(function (response) {
+            AppHttp.get('/app/dashboard/relocationTodayList').then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5325,7 +5325,7 @@
 
         this.getRelocationOnGoing = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/dashboard/relocationListOnGoing', data).then(function (response) {
+            AppHttp.put('/app/dashboard/relocationListOnGoing', data).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5336,7 +5336,7 @@
 
         this.getAssignmentTodayDashboard = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/dashboard/assignmentTodayList').then(function (response) {
+            AppHttp.get('/app/dashboard/assignmentTodayList').then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5347,7 +5347,7 @@
 
         this.getAssignmentOnGoing = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/dashboard/assignmentListOnGoing', data).then(function (response) {
+            AppHttp.put('/app/dashboard/assignmentListOnGoing', data).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5358,7 +5358,7 @@
 
         this.getTaskActiveByUser = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/dashboard/getTaskActiveByUser', data).then(function (response) {
+            AppHttp.put('/app/dashboard/getTaskActiveByUser', data).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5369,7 +5369,7 @@
 
         this.getTodayActivities = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/notification/today', data).then(function (response) {
+            AppHttp.put('/app/notification/today', data).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5381,7 +5381,7 @@
 
         this.getObjectActivities = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/notification/getObjectFeed', data).then(function (response) {
+            AppHttp.put('/app/notification/getObjectFeed', data).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5393,7 +5393,7 @@
 
         this.getAttributeDetail = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/attributes/detail/' + id).then(function (response) {
+            AppHttp.get('/app/attributes/detail/' + id).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5404,7 +5404,7 @@
 
         this.editAttribute = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/attributes/edit/', data).then(function (response) {
+            AppHttp.put('/app/attributes/edit/', data).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5415,7 +5415,7 @@
 
         this.relocationInviteAssignee = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/relocation/inviteAssignee', data).then(function (response) {
+            AppHttp.put('/app/relocation/inviteAssignee', data).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5426,7 +5426,7 @@
 
         this.verfifyPrincipalEmail = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/user/checkEmail', data).then(function (response) {
+            AppHttp.put('/app/user/checkEmail', data).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5437,7 +5437,7 @@
 
         this.saveSettingProfile = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/profile/saveSetting', data).then(function (response) {
+            AppHttp.put('/app/profile/saveSetting', data).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -5448,7 +5448,7 @@
 
         this.getUserSettingVariables = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/profile/getSettingVariables')
+            AppHttp.get('/app/profile/getSettingVariables')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -5495,7 +5495,7 @@
          */
         this.getBookersList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/bookers/index')
+            AppHttp.get('/app/bookers/index')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -5510,7 +5510,7 @@
          */
         this.searchBookersList = function (data = {}) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/bookers/searchBookerAccounts', data)
+            AppHttp.put('/app/bookers/searchBookerAccounts', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -5525,7 +5525,7 @@
          */
         this.getBookerDetail = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/bookers/detail/' + uuid)
+            AppHttp.get('/app/bookers/detail/' + uuid)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -5540,7 +5540,7 @@
          */
         this.deleteBooker = function (data) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/bookers/delete/' + data.uuid)
+            AppHttp.delete('/app/bookers/delete/' + data.uuid)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -5556,7 +5556,7 @@
          */
         this.getSimpleBookersList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/bookers/simple')
+            AppHttp.get('/app/bookers/simple')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -5568,7 +5568,7 @@
 
         this.getBookersByIds = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/bookers/loadBookersByIds', data)
+            AppHttp.post('/app/bookers/loadBookersByIds', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -5579,7 +5579,7 @@
 
         this.createBooker = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/bookers/create', data)
+            AppHttp.post('/app/bookers/create', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -5591,7 +5591,7 @@
         this.editBooker = function (data) {
             let deferred = $q.defer();
             if (angular.isDefined(data.uuid) && data.uuid != '') {
-                AppHttp.put('/gms/bookers/edit/' + data.uuid, data)
+                AppHttp.put('/app/bookers/edit/' + data.uuid, data)
                     .then(function (response) {
                         deferred.resolve(response.data);
                     }).catch(function (err) {
@@ -5605,7 +5605,7 @@
 
         this.editBookerFinancial = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/bookers/editFinancialData', data)
+            AppHttp.put('/app/bookers/editFinancialData', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -5616,7 +5616,7 @@
 
         this.searchCompaniesAndBookers = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/company/search', data)
+            AppHttp.post('/app/company/search', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -5627,7 +5627,7 @@
 
         this.allCompaniesBookers = function (data) {
             var deferred = $q.defer();
-            AppHttp.post('/gms/company/allSimple', data)
+            AppHttp.post('/app/company/allSimple', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err, status) {
@@ -5638,7 +5638,7 @@
 
         this.searchBookers = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/bookers/search', data)
+            AppHttp.put('/app/bookers/search', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -5649,7 +5649,7 @@
 
         this.getEmployeeDependants = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/employee/getDependants/' + id)
+            AppHttp.get('/app/employee/getDependants/' + id)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -5660,7 +5660,7 @@
 
         this.addEmployeeDependant = function (employee, dependant) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/employee/addDependant', {
+            AppHttp.post('/app/employee/addDependant', {
                 employee_uuid: employee.uuid,
                 dependant: dependant
             }).then(function (response) {
@@ -5673,7 +5673,7 @@
 
         this.editEmployeeDependant = function (dependant) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/employee/editDependant/' + dependant.uuid, dependant).then(function (response) {
+            AppHttp.put('/app/employee/editDependant/' + dependant.uuid, dependant).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5683,7 +5683,7 @@
 
         this.deleteEmployeeDependant = function (dependant) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/employee/deleteDependant/' + dependant.uuid, dependant).then(function (response) {
+            AppHttp.put('/app/employee/deleteDependant/' + dependant.uuid, dependant).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5693,7 +5693,7 @@
 
         this.getDependantDetail = function (employee, dependantId) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/employee/getDependantDetail/' + dependantId).then(function (response) {
+            AppHttp.get('/app/employee/getDependantDetail/' + dependantId).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5730,7 +5730,7 @@
         }
         this.getTeamsList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/team/index').then(function (response) {
+            AppHttp.get('/app/team/index').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5740,7 +5740,7 @@
 
         this.getTeamsListWithParams = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/team/index', data).then(function (response) {
+            AppHttp.post('/app/team/index', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5750,7 +5750,7 @@
 
         this.searchTeams = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/team/search', data).then(function (response) {
+            AppHttp.put('/app/team/search', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5760,7 +5760,7 @@
 
         this.createTeam = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/team/create', data).then(function (response) {
+            AppHttp.post('/app/team/create', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5770,7 +5770,7 @@
 
         this.editTeam = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/team/edit/' + data.id, data).then(function (response) {
+            AppHttp.put('/app/team/edit/' + data.id, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5780,7 +5780,7 @@
 
         this.deleteTeam = function (teamUuid) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/team/delete/' + teamUuid).then(function (response) {
+            AppHttp.delete('/app/team/delete/' + teamUuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5790,7 +5790,7 @@
 
         this.viewTeam = function (teamId) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/team/detail/' + teamId).then(function (response) {
+            AppHttp.get('/app/team/detail/' + teamId).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5800,7 +5800,7 @@
 
         this.getDepartmentsList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/department/index').then(function (response) {
+            AppHttp.get('/app/department/index').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5810,7 +5810,7 @@
 
         this.getDepartmentsListWithParams = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/department/index', data).then(function (response) {
+            AppHttp.post('/app/department/index', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5820,7 +5820,7 @@
 
         this.getSimpleListDepartment = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/department/simpleList').then(function (response) {
+            AppHttp.get('/app/department/simpleList').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5830,7 +5830,7 @@
 
         this.searchDepartments = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/department/search', data).then(function (response) {
+            AppHttp.put('/app/department/search', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5840,7 +5840,7 @@
 
         this.createDepartment = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/department/create', data).then(function (response) {
+            AppHttp.post('/app/department/create', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5850,7 +5850,7 @@
 
         this.editDepartment = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/department/edit/' + data.id, data).then(function (response) {
+            AppHttp.put('/app/department/edit/' + data.id, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5860,7 +5860,7 @@
 
         this.deleteDepartment = function (departmentId) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/department/delete/' + departmentId).then(function (response) {
+            AppHttp.delete('/app/department/delete/' + departmentId).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5870,7 +5870,7 @@
 
         this.viewDepartment = function (departUuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/department/detail/' + departUuid).then(function (response) {
+            AppHttp.get('/app/department/detail/' + departUuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5881,7 +5881,7 @@
 
         this.editCompany = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/company/update/' + data.id, data).then(function (response) {
+            AppHttp.put('/app/company/update/' + data.id, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5891,7 +5891,7 @@
 
         this.createCompany = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/company/create/', data).then(function (response) {
+            AppHttp.post('/app/company/create/', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5901,7 +5901,7 @@
 
         this.initApplicationData = function (companyId) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/company/initApplicationData/' + companyId).then(function (response) {
+            AppHttp.get('/app/company/initApplicationData/' + companyId).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5911,7 +5911,7 @@
 
         this.getCompanyApplication = function (companyId) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/company/getApplication/' + companyId).then(function (response) {
+            AppHttp.get('/app/company/getApplication/' + companyId).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5921,7 +5921,7 @@
 
         this.updateCompanyApplication = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/company/updateApplication/' + data.company_id, data).then(function (response) {
+            AppHttp.put('/app/company/updateApplication/' + data.company_id, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5931,7 +5931,7 @@
 
         this.createCompanyApplication = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/company/createApplication/' + data.company_id, data).then(function (response) {
+            AppHttp.post('/app/company/createApplication/' + data.company_id, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5942,7 +5942,7 @@
 
         this.countInvoiceQuote = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/invoice_quote/countInvoiceQuote').then(function (response) {
+            AppHttp.get('/app/invoice_quote/countInvoiceQuote').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5953,7 +5953,7 @@
         this.generateNicknameGmsMember = function (uuid) {
 
             let deferred = $q.defer();
-            AppHttp.get('/gms/gms_member/generate_nickname/' + uuid).then(function (response) {
+            AppHttp.get('/app/gms_member/generate_nickname/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5963,7 +5963,7 @@
 
         this.checkValidation = function (controller, action) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/acl/checkValidation', {controller: controller, action: action}).then(function (response) {
+            AppHttp.put('/app/acl/checkValidation', {controller: controller, action: action}).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5974,7 +5974,7 @@
         this.loadServiceTemplateContent = function (id) {
 
             let deferred = $q.defer();
-            AppHttp.get('/gms/acl/loadServiceTemplateContent/' + id + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/acl/loadServiceTemplateContent/' + id + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5984,7 +5984,7 @@
 
         this.loadServiceTemplateContent = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service/loadServiceTemplateContent/' + id + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/service/loadServiceTemplateContent/' + id + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -5998,7 +5998,7 @@
          */
         this.loadProviderRelationByType = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/service/loadProviderRelationByType/' + '?_=' + Math.random(), data).then(function (response) {
+            AppHttp.put('/app/service/loadProviderRelationByType/' + '?_=' + Math.random(), data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6009,7 +6009,7 @@
 
         this.verfifyAccountEmail = function (email) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/auth/verifyAccount', {email: email})
+            AppHttp.put('/app/auth/verifyAccount', {email: email})
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -6023,7 +6023,7 @@
             if (angular.isUndefined(data.email) || data.email == '' || angular.isUndefined(data.new_password) || data.new_password == '') {
                 deferred.reject({success: false, message: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.post('/gms/auth/changeSecurity', data).then(function (response) {
+                AppHttp.post('/app/auth/changeSecurity', data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -6037,7 +6037,7 @@
             if (angular.isUndefined(data.email) || data.email == '' || angular.isUndefined(data.verification_code) || data.verification_code == '') {
                 deferred.reject({success: false, message: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.post('/gms/auth/verifyCode', {
+                AppHttp.post('/app/auth/verifyCode', {
                     'credential': data.email,
                     'code': data.verification_code,
                     'token': data._token
@@ -6055,7 +6055,7 @@
             if (angular.isUndefined(data.email) || data.email == '') {
                 deferred.reject({success: false, message: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.post('/gms/auth/resendCode', {
+                AppHttp.post('/app/auth/resendCode', {
                     'credential': data.email,
                     'token': data._token
                 }).then(function (response) {
@@ -6069,7 +6069,7 @@
 
         this.resetFn = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/auth/reset', data).then(function (response) {
+            AppHttp.post('/app/auth/reset', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6079,7 +6079,7 @@
 
         this.changePasswordWithConfirmCodeFn = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/auth/changePasswordWithConfirmCode', data).then(function (response) {
+            AppHttp.post('/app/auth/changePasswordWithConfirmCode', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6089,7 +6089,7 @@
 
         this.getCompanyBuSubDomain = function (sub_domain) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/auth/getCompanyBySubDomain/' + sub_domain)
+            AppHttp.get('/app/auth/getCompanyBySubDomain/' + sub_domain)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -6100,7 +6100,7 @@
 
         this.changeMyPassword = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/auth/changeMyPassword', data).then(function (response) {
+            AppHttp.post('/app/auth/changeMyPassword', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6110,7 +6110,7 @@
 
         this.changeUserPassword = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/auth/changeUserPassword', data).then(function (response) {
+            AppHttp.post('/app/auth/changeUserPassword', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6120,7 +6120,7 @@
 
         this.resetUserPassword = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/user/resetUserPassword', data).then(function (response) {
+            AppHttp.post('/app/user/resetUserPassword', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6130,7 +6130,7 @@
 
         this.getProperties = function (params) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/property/index', params).then(function (response) {
+            AppHttp.put('/app/property/index', params).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6140,7 +6140,7 @@
 
         this.getSupportTicketsList = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/customer-support-ticket/tickets', data).then(function (response) {
+            AppHttp.post('/app/customer-support-ticket/tickets', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6150,7 +6150,7 @@
 
         this.createSupportTicket = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/customer-support-ticket/create', data).then(function (response) {
+            AppHttp.post('/app/customer-support-ticket/create', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6160,7 +6160,7 @@
 
         this.createSupportQuestion = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/customer-support-ticket/create', data).then(function (response) {
+            AppHttp.post('/app/customer-support-ticket/create', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6170,7 +6170,7 @@
 
         this.getSupportRequestDetail = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/customer-support-ticket/request/' + id).then(function (response) {
+            AppHttp.get('/app/customer-support-ticket/request/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6180,7 +6180,7 @@
 
         this.getSupportRequestReplies = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/customer-support-ticket/replies/' + id).then(function (response) {
+            AppHttp.get('/app/customer-support-ticket/replies/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6193,7 +6193,7 @@
             if (angular.isUndefined(data.ticket_id) || !data.ticket_id > 0) {
                 deferred.reject({success: false});
             } else {
-                AppHttp.put('/gms/customer-support-ticket/reply/' + data.ticket_id, data).then(function (response) {
+                AppHttp.put('/app/customer-support-ticket/reply/' + data.ticket_id, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -6204,7 +6204,7 @@
 
         this.getAllTaskServicesOfRelocation = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/task/getAllTasksServicesList/' + uuid).then(function (response) {
+            AppHttp.get('/app/task/getAllTasksServicesList/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6214,7 +6214,7 @@
 
         this.getRelocationReminders = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation/getReminders/' + uuid).then(function (response) {
+            AppHttp.get('/app/relocation/getReminders/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6224,7 +6224,7 @@
 
         this.getCountriesOriginRelocationDashboard = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/dashboard/getCountriesOriginRelocation').then(function (response) {
+            AppHttp.get('/app/dashboard/getCountriesOriginRelocation').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6238,7 +6238,7 @@
             if (angular.isUndefined(data)) {
                 data = {};
             }
-            AppHttp.put('/gms/dashboard/getAccountsOriginRelocation', data).then(function (response) {
+            AppHttp.put('/app/dashboard/getAccountsOriginRelocation', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6249,7 +6249,7 @@
 
         this.getCountriesOriginRelocationMapDashboard = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/dashboard/getCountriesOriginRelocationMap').then(function (response) {
+            AppHttp.get('/app/dashboard/getCountriesOriginRelocationMap').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6262,7 +6262,7 @@
             if (angular.isUndefined(data)) {
                 data = {};
             }
-            AppHttp.put('/gms/dashboard/getBookersOriginRelocation', data).then(function (response) {
+            AppHttp.put('/app/dashboard/getBookersOriginRelocation', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6273,7 +6273,7 @@
 
         this.getAttribute = function (name) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/attributes/item/' + name).then(function (response) {
+            AppHttp.get('/app/attributes/item/' + name).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6293,7 +6293,7 @@
 
         this.loadServiceOfRelocation = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/relocation/getServices/' + uuid).then(function (response) {
+            AppHttp.get('/app/relocation/getServices/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6304,7 +6304,7 @@
 
         this.getPolicyDetail = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/policy/detail/' + id).then(function (response) {
+            AppHttp.get('/app/policy/detail/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6315,7 +6315,7 @@
 
         this.getPoliciesSimpleList = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/policy/getSimpleList', data).then(function (response) {
+            AppHttp.put('/app/policy/getSimpleList', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6325,7 +6325,7 @@
 
         this.getPoliciesList = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/policy/getList', data).then(function (response) {
+            AppHttp.put('/app/policy/getList', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6335,7 +6335,7 @@
 
         this.setFaqReviewPositive = function (faqContentId) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/faq/setReviewPositive/' + faqContentId, {faq_content_id: faqContentId}).then(function (response) {
+            AppHttp.post('/app/faq/setReviewPositive/' + faqContentId, {faq_content_id: faqContentId}).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6345,7 +6345,7 @@
 
         this.setFaqReviewNative = function (faqContentId) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/faq/setReviewNegative/' + faqContentId, {faq_content_id: faqContentId}).then(function (response) {
+            AppHttp.post('/app/faq/setReviewNegative/' + faqContentId, {faq_content_id: faqContentId}).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6355,7 +6355,7 @@
 
         this.getFaqList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/faq/index').then(function (response) {
+            AppHttp.get('/app/faq/index').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6365,7 +6365,7 @@
 
         this.makeReportPdfFromHtml = function (html) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/report/pdf', {
+            AppHttp.post('/app/report/pdf', {
                 html: html
             }).then(function (data, status, headers, config) {
                 deferred.resolve(data);
@@ -6378,7 +6378,7 @@
 
         this.getExtractDataAssignment = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/extract-data/assignment/', data).then(function (response) {
+            AppHttp.post('/app/extract-data/assignment/', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6388,7 +6388,7 @@
 
         this.getExtractDataAssignmentResult = function (execuationID, data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/extract-data/assignmentResult/' + execuationID, data).then(function (response) {
+            AppHttp.post('/app/extract-data/assignmentResult/' + execuationID, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6398,7 +6398,7 @@
 
         this.getExtractDataRelocation = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/extract-data/relocation/', data).then(function (response) {
+            AppHttp.post('/app/extract-data/relocation/', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6408,7 +6408,7 @@
 
         this.getExtractDataRelocationResult = function (execuationID, data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/extract-data/relocationResult/' + execuationID, data).then(function (response) {
+            AppHttp.post('/app/extract-data/relocationResult/' + execuationID, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6418,7 +6418,7 @@
 
         this.getExtractDataInvoice = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/extract-data/invoice/', data).then(function (response) {
+            AppHttp.post('/app/extract-data/invoice/', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6428,7 +6428,7 @@
 
         this.getExtractDataInvoiceResult = function (execuationID, data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/extract-data/invoiceResult/' + execuationID, data).then(function (response) {
+            AppHttp.post('/app/extract-data/invoiceResult/' + execuationID, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6438,7 +6438,7 @@
 
         this.getExtractDataInvoiceItem = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/extract-data/invoiceItem/', data).then(function (response) {
+            AppHttp.post('/app/extract-data/invoiceItem/', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6448,7 +6448,7 @@
 
         this.getExtractDataInvoiceItemResult = function (execuationID, data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/extract-data/invoiceItemResult/' + execuationID, data).then(function (response) {
+            AppHttp.post('/app/extract-data/invoiceItemResult/' + execuationID, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6458,7 +6458,7 @@
 
         this.getExtractDataAssignee = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/extract-data/assignee', data).then(function (response) {
+            AppHttp.post('/app/extract-data/assignee', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6468,7 +6468,7 @@
 
         this.getExtractDataAssigneeResult = function (execuationID, data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/extract-data/assigneeResult/' + execuationID, data).then(function (response) {
+            AppHttp.post('/app/extract-data/assigneeResult/' + execuationID, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6479,7 +6479,7 @@
 
         this.getExtractDataService = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/extract-data/service/', data).then(function (response) {
+            AppHttp.post('/app/extract-data/service/', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6489,7 +6489,7 @@
 
         this.getExtractDataServiceResult = function (execuationID, data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/extract-data/serviceResult/' + execuationID, data).then(function (response) {
+            AppHttp.post('/app/extract-data/serviceResult/' + execuationID, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6503,7 +6503,7 @@
          */
         this.checkUserProfileApplication = function (userProfileUuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/member/checkApplication/' + userProfileUuid).then(function (response) {
+            AppHttp.get('/app/member/checkApplication/' + userProfileUuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6518,7 +6518,7 @@
          */
         this.getMembersListByCompany = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/member/getMembersByCompany', data).then(function (response) {
+            AppHttp.put('/app/member/getMembersByCompany', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6528,7 +6528,7 @@
 
         this.getMemberProfile = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/member/getProfile', data).then(function (response) {
+            AppHttp.put('/app/member/getProfile', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6539,7 +6539,7 @@
 
         this.createEmployeeDocument = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/document/createDocument', data).then(function (response) {
+            AppHttp.post('/app/document/createDocument', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6549,7 +6549,7 @@
 
         this.updateEmployeeDocument = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/document/updateDocument/' + data.uuid, data).then(function (response) {
+            AppHttp.put('/app/document/updateDocument/' + data.uuid, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6559,7 +6559,7 @@
 
         this.deleteEmployeeDocument = function (data) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/document/deleteDocument/' + data.uuid).then(function (response) {
+            AppHttp.delete('/app/document/deleteDocument/' + data.uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6569,7 +6569,7 @@
 
         this.getEmployeeDocuments = function (employee_uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/entity-document/getDocuments/' + employee_uuid).then(function (response) {
+            AppHttp.get('/app/entity-document/getDocuments/' + employee_uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6583,7 +6583,7 @@
          */
         this.getDocumentTypes = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/setting/getDocumentTypeList')
+            AppHttp.get('/app/setting/getDocumentTypeList')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -6594,7 +6594,7 @@
 
         this.verifyDomain = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/setting/checkDomain').then(function (response) {
+            AppHttp.get('/app/setting/checkDomain').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6609,7 +6609,7 @@
          */
         this.getWorkflowList = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/index/' + data;
+            var url = '/app/workflow/index/' + data;
             AppHttp.get(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -6625,7 +6625,7 @@
          */
         this.removeWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/remove/' + data;
+            var url = '/app/workflow/remove/' + data;
             AppHttp.delete(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -6641,7 +6641,7 @@
          */
         this.createWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/create';
+            var url = '/app/workflow/create';
             AppHttp.post(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -6657,7 +6657,7 @@
          */
         this.updateWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/edit';
+            var url = '/app/workflow/edit';
             AppHttp.post(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -6671,7 +6671,7 @@
          */
         this.getWorkflowById = function (id = 0, data = {}) {
             let deferred = $q.defer();
-            let url = '/gms/workflow/detail/' + id;
+            let url = '/app/workflow/detail/' + id;
             AppHttp.post(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -6687,7 +6687,7 @@
          */
         this.createTaskWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/createTaskWorkflow';
+            var url = '/app/workflow/createTaskWorkflow';
             AppHttp.post(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -6703,7 +6703,7 @@
          */
         this.editTaskWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/editTaskWorkflow';
+            var url = '/app/workflow/editTaskWorkflow';
             AppHttp.post(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -6719,7 +6719,7 @@
          */
         this.removeTaskWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/removeTaskWorkflow/' + data;
+            var url = '/app/workflow/removeTaskWorkflow/' + data;
             AppHttp.delete(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -6735,7 +6735,7 @@
          */
         this.getTaskListOfWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/getTaskList/' + data;
+            var url = '/app/workflow/getTaskList/' + data;
             AppHttp.get(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -6751,7 +6751,7 @@
          */
         this.createSubTaskWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/createSubTask';
+            var url = '/app/workflow/createSubTask';
             AppHttp.post(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -6767,7 +6767,7 @@
          */
         this.editSubTaskWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/editSubTask';
+            var url = '/app/workflow/editSubTask';
             AppHttp.post(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -6783,7 +6783,7 @@
          */
         this.removeSubTaskWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/removeSubTask/' + data;
+            var url = '/app/workflow/removeSubTask/' + data;
             AppHttp.delete(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -6799,7 +6799,7 @@
          */
         this.getCommunicationEmails = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/communication-email/index').then(function (response) {
+            AppHttp.get('/app/communication-email/index').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6813,7 +6813,7 @@
          */
         this.saveProviderSetting = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/communication-email/create', data).then(function (response) {
+            AppHttp.post('/app/communication-email/create', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6827,7 +6827,7 @@
          */
         this.updateProviderSetting = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/communication-email/update', data).then(function (response) {
+            AppHttp.post('/app/communication-email/update', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6841,7 +6841,7 @@
          */
         this.deleteSettingProvider = function (data) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/communication-email/delete/' + data).then(function (response) {
+            AppHttp.delete('/app/communication-email/delete/' + data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6851,7 +6851,7 @@
 
         this.activeSettingProvider = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/communication-email/active/', data).then(function (response) {
+            AppHttp.post('/app/communication-email/active/', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6861,7 +6861,7 @@
 
         this.deactiveSettingProvider = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/communication-email/deactive/', data).then(function (response) {
+            AppHttp.post('/app/communication-email/deactive/', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6875,7 +6875,7 @@
          */
         this.detailSettingProvider = function (data) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/communication-email/item/' + data).then(function (response) {
+            AppHttp.get('/app/communication-email/item/' + data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6889,7 +6889,7 @@
          */
         this.getGoogleAuthUrl = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/communication-email/getGoogleAuthUrl/').then(function (response) {
+            AppHttp.get('/app/communication-email/getGoogleAuthUrl/').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6903,7 +6903,7 @@
          */
         this.getOutlookAuthUrl = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/communication-email/getOutlookAuthUrl/').then(function (response) {
+            AppHttp.get('/app/communication-email/getOutlookAuthUrl/').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6919,7 +6919,7 @@
             let deferred = $q.defer();
             let new_data = angular.copy(data);
             new_data.signature = btoa(encodeURIComponent(new_data.signature));
-            AppHttp.post('/gms/communication-email/updateSignature/', new_data).then(function (response) {
+            AppHttp.post('/app/communication-email/updateSignature/', new_data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6929,7 +6929,7 @@
 
         this.getMails = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/communication-email/getMails')
+            AppHttp.get('/app/communication-email/getMails')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -6940,7 +6940,7 @@
 
         this.checkCommunicationTokenExpired = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/communication-email/checkTokenExpired').then(function (response) {
+            AppHttp.get('/app/communication-email/checkTokenExpired').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6954,7 +6954,7 @@
          */
         this.getWorkflowList = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/index/' + data;
+            var url = '/app/workflow/index/' + data;
             AppHttp.get(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -6970,7 +6970,7 @@
          */
         this.removeWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/remove/' + data;
+            var url = '/app/workflow/remove/' + data;
             AppHttp.delete(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -6986,7 +6986,7 @@
          */
         this.createWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/create';
+            var url = '/app/workflow/create';
             AppHttp.post(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -7002,7 +7002,7 @@
          */
         this.updateWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/edit';
+            var url = '/app/workflow/edit';
             AppHttp.post(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -7017,7 +7017,7 @@
         //  */
         // this.getWorkflowById = function (data) {
         //     let deferred = $q.defer();
-        //     var url = '/gms/workflow/detail/' + data;
+        //     var url = '/app/workflow/detail/' + data;
         //     AppHttp.get(url)
         //         .then(function (response) {
         //             deferred.resolve(response.data);
@@ -7033,7 +7033,7 @@
          */
         this.createTaskWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/createTaskWorkflow';
+            var url = '/app/workflow/createTaskWorkflow';
             AppHttp.post(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -7049,7 +7049,7 @@
          */
         this.editTaskWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/editTaskWorkflow';
+            var url = '/app/workflow/editTaskWorkflow';
             AppHttp.post(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -7065,7 +7065,7 @@
          */
         this.removeTaskWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/removeTaskWorkflow/' + data;
+            var url = '/app/workflow/removeTaskWorkflow/' + data;
             AppHttp.delete(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -7077,7 +7077,7 @@
 
         this.removeTaskTemplateWorkflow = function (data){
             let deferred = $q.defer();
-            var url = '/gms/workflow/removeTaskTemplateWorkflow/' + data;
+            var url = '/app/workflow/removeTaskTemplateWorkflow/' + data;
             AppHttp.delete(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -7093,7 +7093,7 @@
          */
         this.getTaskListOfWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/getTaskList/' + data;
+            var url = '/app/workflow/getTaskList/' + data;
             AppHttp.get(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -7109,7 +7109,7 @@
          */
         this.createSubTaskWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/createSubTask';
+            var url = '/app/workflow/createSubTask';
             AppHttp.post(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -7125,7 +7125,7 @@
          */
         this.editSubTaskWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/editSubTask';
+            var url = '/app/workflow/editSubTask';
             AppHttp.post(url, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -7141,7 +7141,7 @@
          */
         this.removeSubTaskWorkflow = function (data) {
             let deferred = $q.defer();
-            var url = '/gms/workflow/removeSubTask/' + data;
+            var url = '/app/workflow/removeSubTask/' + data;
             AppHttp.delete(url)
                 .then(function (response) {
                     deferred.resolve(response.data);
@@ -7157,7 +7157,7 @@
          */
         this.getCommunicationEmails = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/communication-email/index').then(function (response) {
+            AppHttp.get('/app/communication-email/index').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7171,7 +7171,7 @@
          */
         this.saveProviderSetting = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/communication-email/create', data).then(function (response) {
+            AppHttp.post('/app/communication-email/create', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7185,7 +7185,7 @@
          */
         this.updateProviderSetting = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/communication-email/update', data).then(function (response) {
+            AppHttp.post('/app/communication-email/update', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7199,7 +7199,7 @@
          */
         this.deleteSettingProvider = function (data) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/communication-email/delete/' + data).then(function (response) {
+            AppHttp.delete('/app/communication-email/delete/' + data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7213,7 +7213,7 @@
          */
         this.detailSettingProvider = function (data) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/communication-email/item/' + data).then(function (response) {
+            AppHttp.get('/app/communication-email/item/' + data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7227,7 +7227,7 @@
          */
         this.getGoogleAuthUrl = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/communication-email/getGoogleAuthUrl/').then(function (response) {
+            AppHttp.get('/app/communication-email/getGoogleAuthUrl/').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7241,7 +7241,7 @@
          */
         this.getOutlookAuthUrl = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/communication-email/getOutlookAuthUrl/').then(function (response) {
+            AppHttp.get('/app/communication-email/getOutlookAuthUrl/').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7257,7 +7257,7 @@
             let deferred = $q.defer();
             let new_data = angular.copy(data);
             new_data.signature = btoa(encodeURIComponent(new_data.signature));
-            AppHttp.post('/gms/communication-email/updateSignature/', new_data).then(function (response) {
+            AppHttp.post('/app/communication-email/updateSignature/', new_data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7267,7 +7267,7 @@
 
         this.getMails = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/communication-email/getMails')
+            AppHttp.get('/app/communication-email/getMails')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7279,7 +7279,7 @@
 
         this.initNotificationConfig = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/notification-config/init')
+            AppHttp.get('/app/notification-config/init')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7290,7 +7290,7 @@
 
         this.getNotificationGroupList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/notification-config/getGroupList')
+            AppHttp.get('/app/notification-config/getGroupList')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7301,7 +7301,7 @@
 
         this.getNotificationSettingList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/notification-config/getList')
+            AppHttp.get('/app/notification-config/getList')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7312,7 +7312,7 @@
 
         this.saveNotificationSetting = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/notification-config/saveSetting/' + data.id, data)
+            AppHttp.put('/app/notification-config/saveSetting/' + data.id, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7323,7 +7323,7 @@
 
         this.bulkChangeNotitficationSetting = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/notification-config/bulkChange', data)
+            AppHttp.put('/app/notification-config/bulkChange', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7339,7 +7339,7 @@
          */
         this.getNotificationEventsList = function (kind) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/notification-config/getEventsList')
+            AppHttp.get('/app/notification-config/getEventsList')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7350,7 +7350,7 @@
 
         this.downloadProperty = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/property/download/' + id + '?_=' + Math.random(), {
+            AppHttp.get('/app/property/download/' + id + '?_=' + Math.random(), {
                 responseType: 'blob'
             }).then(function (response) {
                 deferred.resolve(response);
@@ -7366,7 +7366,7 @@
          */
         this.getListInvoiceTemplate = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/invoice_template/index')
+            AppHttp.get('/app/invoice_template/index')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7380,7 +7380,7 @@
          */
         this.getListInvoiceTemplateByIds = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/invoice_template/getListByIds', data)
+            AppHttp.post('/app/invoice_template/getListByIds', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7391,7 +7391,7 @@
 
         this.getInvoiceTemplateDetails = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/invoice_template/details/' + id)
+            AppHttp.get('/app/invoice_template/details/' + id)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7410,7 +7410,7 @@
             if(new_data.invoice_tc != undefined && new_data.invoice_tc != null && new_data.invoice_tc != ''){
                 new_data.invoice_tc = btoa(encodeURIComponent(new_data.invoice_tc));
             }
-            AppHttp.post('/gms/invoice_template/save', new_data)
+            AppHttp.post('/app/invoice_template/save', new_data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7425,7 +7425,7 @@
          */
         this.removeInvoiceTemplate = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.delete('/gms/invoice_template/remove/' + uuid)
+            AppHttp.delete('/app/invoice_template/remove/' + uuid)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7439,7 +7439,7 @@
             if (data.uuid == undefined || data.uuid == '') {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.put('/gms/task/bulk/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/task/bulk/' + data.uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -7453,7 +7453,7 @@
             if (data.uuid == undefined || data.uuid == '') {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.put('/gms/assignment/bulk/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/assignment/bulk/' + data.uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -7467,7 +7467,7 @@
             if (data.uuid == undefined || data.uuid == '') {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.put('/gms/relocation/bulk/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/relocation/bulk/' + data.uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -7481,7 +7481,7 @@
             if (data.uuid == undefined || data.uuid == '') {
                 deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
             } else {
-                AppHttp.put('/gms/relocation-service/bulk/' + data.uuid, data).then(function (response) {
+                AppHttp.put('/app/relocation-service/bulk/' + data.uuid, data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -7492,7 +7492,7 @@
 
         this.getPaymentMethodList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/transaction/getPaymentMethodList?_=' + Math.random())
+            AppHttp.get('/app/transaction/getPaymentMethodList?_=' + Math.random())
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7503,7 +7503,7 @@
 
         this.getServiceProviderTypeList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/svp_company/getTypes').then(function (response) {
+            AppHttp.get('/app/svp_company/getTypes').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7513,7 +7513,7 @@
 
         this.searchServiceProviderCompany = function (params) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/svp_company/search', params).then(function (response) {
+            AppHttp.put('/app/svp_company/search', params).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7527,7 +7527,7 @@
          */
         this.getBookerContacts = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/contacts/getListByBooker/' + uuid).then(function (response) {
+            AppHttp.get('/app/contacts/getListByBooker/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7545,7 +7545,7 @@
             if (angular.isUndefined(data.table) || data.table == '' || !angular.isString(data.table)) {
                 deferred.resolve({success: false, message: 'INFORMATION_REQUIRED_TEXT'});
             } else {
-                AppHttp.post('/gms/object-mapping/create', data).then(function (response) {
+                AppHttp.post('/app/object-mapping/create', data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -7559,7 +7559,7 @@
          */
         this.getContactsMembers = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/gms/contact-member/list', data).then(function (response) {
+            AppHttp.put('/app/contact-member/list', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7572,7 +7572,7 @@
             if (angular.isUndefined(data.uuid) || data.uuid == '' || !angular.isString(data.uuid) || angular.isUndefined(data.contactId) || angular.isUndefined(data.contactUuid)) {
                 deferred.resolve({success: false, message: 'INFORMATION_REQUIRED_TEXT'});
             } else {
-                AppHttp.put('/gms/contact-member/remove', data).then(function (response) {
+                AppHttp.put('/app/contact-member/remove', data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -7587,7 +7587,7 @@
             if (angular.isUndefined(data.uuid) || data.uuid == '' || !angular.isString(data.uuid) || angular.isUndefined(data.contactId) || angular.isUndefined(data.contactUuid)) {
                 deferred.resolve({success: false, message: 'INFORMATION_REQUIRED_TEXT'});
             } else {
-                AppHttp.post('/gms/contact-member/add', data).then(function (response) {
+                AppHttp.post('/app/contact-member/add', data).then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
                     deferred.reject(err.data);
@@ -7598,7 +7598,7 @@
 
         this.getPlanList = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/subscription/getPlanList').then(function (res) {
+            AppHttp.get('/app/subscription/getPlanList').then(function (res) {
                 deferred.resolve(res.data);
             }, function (err) {
                 deferred.reject(err);
@@ -7609,7 +7609,7 @@
 
         this.getCurrentPlan = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/subscription/getCurrentPlan').then(function (res) {
+            AppHttp.get('/app/subscription/getCurrentPlan').then(function (res) {
                 deferred.resolve(res.data);
             }, function (err) {
                 deferred.reject(err);
@@ -7620,7 +7620,7 @@
 
         this.getPlanDetail = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/subscription/getPlan/' + uuid).then(function (res) {
+            AppHttp.get('/app/subscription/getPlan/' + uuid).then(function (res) {
                 deferred.resolve(res.data);
             }, function (err) {
                 deferred.reject(err);
@@ -7631,7 +7631,7 @@
 
         this.reloadCurrentPlan = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/subscription/reloadCurrentPlan').then(function (res) {
+            AppHttp.get('/app/subscription/reloadCurrentPlan').then(function (res) {
                 deferred.resolve(res.data);
             }, function (err) {
                 deferred.reject(err);
@@ -7643,7 +7643,7 @@
         this.getCheckoutPage = function (data) {
             let deferred = $q.defer();
             if (angular.isDefined(data.plan_id) && data.plan_id != '') {
-                AppHttp.post('/gms/subscription/getCheckoutPage', data)
+                AppHttp.post('/app/subscription/getCheckoutPage', data)
                     .then(function (response) {
                         deferred.resolve(response.data);
                     }).catch(function (err) {
@@ -7657,7 +7657,7 @@
 
         this.getPortalUrl = function (data) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/subscription/getPortalUrl').then(function (response) {
+            AppHttp.get('/app/subscription/getPortalUrl').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7667,7 +7667,7 @@
 
         this.getMyInvitations = function (data) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/invitation/getMyInvitations').then(function (response) {
+            AppHttp.get('/app/invitation/getMyInvitations').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7677,7 +7677,7 @@
 
         this.createInvitation = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/invitation/create', data).then(function (response) {
+            AppHttp.post('/app/invitation/create', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7687,7 +7687,7 @@
 
         this.createInvitationForExistedHr = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/invitation/createForExistedHr', data).then(function (response) {
+            AppHttp.post('/app/invitation/createForExistedHr', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7697,7 +7697,7 @@
 
         this.resendInvitationRequest = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/invitation/resend', data).then(function (response) {
+            AppHttp.post('/app/invitation/resend', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7707,7 +7707,7 @@
 
         this.acceptInvitationRequest = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/invitation/accept', data).then(function (response) {
+            AppHttp.post('/app/invitation/accept', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7717,7 +7717,7 @@
 
         this.denyInvitationRequest = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/invitation/deny', data).then(function (response) {
+            AppHttp.post('/app/invitation/deny', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7727,7 +7727,7 @@
 
         this.listItemsByFilter = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/filter-config/listItemsByFilter', data).then(function (response) {
+            AppHttp.post('/app/filter-config/listItemsByFilter', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7737,7 +7737,7 @@
 
         this.listFilterConfig = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/filter-config/listFilterConfig', data).then(function (response) {
+            AppHttp.post('/app/filter-config/listFilterConfig', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7747,7 +7747,7 @@
 
         this.saveExtractDataSetting = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/extract-data/saveExtractDataSetting/', data).then(function (response) {
+            AppHttp.post('/app/extract-data/saveExtractDataSetting/', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7757,7 +7757,7 @@
 
         this.getExtractDataSetting = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/extract-data/getExtractDataSetting/', data).then(function (response) {
+            AppHttp.post('/app/extract-data/getExtractDataSetting/', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7770,7 +7770,7 @@
          */
         this.getCountriesByIds = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/setting/getCountriesByIds/', data)
+            AppHttp.post('/app/setting/getCountriesByIds/', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7781,7 +7781,7 @@
 
         this.getServiceFieldsFromServiceId = function (id) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/service/getServiceFieldsFromServiceId/' + id + '?_=' + Math.random()).then(function (response) {
+            AppHttp.get('/app/service/getServiceFieldsFromServiceId/' + id + '?_=' + Math.random()).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7791,7 +7791,7 @@
 
         this.getServiceFieldsFromServiceCompanyUuid = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/service/getServiceFieldsFromServiceCompanyUuid/' + data.uuid, data).then(function (response) {
+            AppHttp.post('/app/service/getServiceFieldsFromServiceCompanyUuid/' + data.uuid, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7804,7 +7804,7 @@
          */
         this.getListOrderSetting = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/relocation-service/getListOrderSetting', data).then(function (response) {
+            AppHttp.post('/app/relocation-service/getListOrderSetting', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7814,7 +7814,7 @@
 
         this.saveListOrderSetting = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/relocation-service/saveListOrderSetting', data)
+            AppHttp.post('/app/relocation-service/saveListOrderSetting', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7826,7 +7826,7 @@
         // Clone Service
         this.cloneServiceCompany = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/service/cloneServiceCompany', data).then(function (response) {
+            AppHttp.post('/app/service/cloneServiceCompany', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7836,7 +7836,7 @@
 
         this.cloneServicePack = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/gms/service_pack/cloneServicePack', data).then(function (response) {
+            AppHttp.post('/app/service_pack/cloneServicePack', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7853,7 +7853,7 @@
                     data: timeZone,
                 });
             } else {
-                AppHttp.get('/gms/setting/getTimeZone/' + id).then(function (response) {
+                AppHttp.get('/app/setting/getTimeZone/' + id).then(function (response) {
                     if (response.data.success) {
                         timeZone = response.data.data;
                         $localStorage['timezone_' + id] = angular.toJson(timeZone);
@@ -7878,7 +7878,7 @@
 
         this.getTags = function (data) {
             var deferred = $q.defer();
-            AppHttp.put('/gms/object-tag/getTags', data).then(function (response) {
+            AppHttp.put('/app/object-tag/getTags', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);
@@ -7888,7 +7888,7 @@
 
         this.addTag = function (data) {
             var deferred = $q.defer();
-            AppHttp.post('/gms/object-tag/addTag', data).then(function (response) {
+            AppHttp.post('/app/object-tag/addTag', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);
@@ -7899,7 +7899,7 @@
 
         this.removeTag = function (data) {
             var deferred = $q.defer();
-            AppHttp.put('/gms/object-tag/removeTag', data).then(function (response) {
+            AppHttp.put('/app/object-tag/removeTag', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);
@@ -7914,7 +7914,7 @@
          */
         this.getZoneLangItem = function (zoneLangCode) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/setting/getZoneLangItem?code=' + zoneLangCode)
+            AppHttp.get('/app/setting/getZoneLangItem?code=' + zoneLangCode)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7928,7 +7928,7 @@
          */
         this.getMapFieldDetail = function (uuid) {
             let deferred = $q.defer();
-            AppHttp.get('/gms/map-field/detail/' + uuid)
+            AppHttp.get('/app/map-field/detail/' + uuid)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7942,7 +7942,7 @@
          */
         this.activeServiceAssigneeTasks = function (data) {
             let deferred = $q.defer();
-            AppHttp.data('/gms/task/activeServiceAssigneeTasks', data)
+            AppHttp.data('/app/task/activeServiceAssigneeTasks', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -7956,7 +7956,7 @@
          */
         this.checkSamlAuthentication = function (data) {
             var deferred = $q.defer();
-            AppHttp.post('/gms/auth/checkSamlAuthentication', data)
+            AppHttp.post('/app/auth/checkSamlAuthentication', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err, status) {
@@ -7967,7 +7967,7 @@
         //Notification
         this.changeReadNotification = function (data) {
             var deferred = $q.defer();
-            AppHttp.post('/gms/notification/changeReadNotification', data)
+            AppHttp.post('/app/notification/changeReadNotification', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err, status) {
@@ -7978,7 +7978,7 @@
 
         this.markAllRead = function () {
             var deferred = $q.defer();
-            AppHttp.get('/gms/notification/markAllRead')
+            AppHttp.get('/app/notification/markAllRead')
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err, status) {
@@ -7988,7 +7988,7 @@
         }
         this.getEtlInformation = function () {
             let deferred = $q.defer();
-            AppHttp.get('/gms/extract-data/index').then(function (response) {
+            AppHttp.get('/app/extract-data/index').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -7998,7 +7998,7 @@
 
         this.switchSyncOwner = function(){
             var deferred = $q.defer();
-            AppHttp.get('/gms/profile/switchSyncOwner').then(function (response) {
+            AppHttp.get('/app/profile/switchSyncOwner').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err);
@@ -8008,7 +8008,7 @@
 
         this.searchMapFields = function(params = {}){
             var deferred = $q.defer();
-            AppHttp.post('/gms/map-field/search', params).then(function (response) {
+            AppHttp.post('/app/map-field/search', params).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err);
