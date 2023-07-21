@@ -13,7 +13,7 @@ pipelines:
             - npm install yarn
             - npm install
             - yarn install
-            - gulp build --stage=prod --number=$BITBUCKET_COMMIT
+            - gulp build --stage=preprod --number=$BITBUCKET_COMMIT
         artifacts:
         - public/**
     - step:
