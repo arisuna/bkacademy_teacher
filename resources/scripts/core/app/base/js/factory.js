@@ -1,11 +1,11 @@
 (function () {
     'use strict';
 
-    App.factory('GmsAuthResolver', GmsAuthResolver);
+    App.factory('AppAuthResolver', AppAuthResolver);
 
-    GmsAuthResolver.$inject = ['$q', '$rootScope', '$state'];
+    AppAuthResolver.$inject = ['$q', '$rootScope', '$state'];
 
-    function GmsAuthResolver($q, $rootScope, $state) {
+    function AppAuthResolver($q, $rootScope, $state) {
         return {
             resolve: function () {
                 var deferred = $q.defer();

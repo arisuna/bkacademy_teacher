@@ -13,7 +13,7 @@
         <div class="user-block-info">
 
             <a class="color-white"
-               gms-acl-allow="employee/index"
+               app-acl-allow="employee/index"
                acl-remove="true"
                ui-sref="app.employees.view({id:baseEmployee.id})">
                 <h4 class="user-block-name">{{ baseEmployee.firstname }}</h4>
@@ -61,7 +61,7 @@
             <p ng-if="baseAssignment.reference != '' && baseAssignment.reference != undefined"
                class="user-block-text"><strong>AID</strong>
 
-                <a gms-acl-allow="assignment/index"
+                <a app-acl-allow="assignment/index"
                    acl-remove="true"
                    ui-sref="app.assignment.dashboard({uuid:baseAssignment.uuid})" class="text-bright-blue">
                     {{ baseAssignment.reference }}</a>
@@ -74,7 +74,7 @@
 
             <p ng-if="baseRelocation.identify != '' && baseRelocation.identify != undefined"
                class="user-block-text"><strong>RID</strong>
-                <a gms-acl-allow="relocation/view"
+                <a app-acl-allow="relocation/view"
                    acl-remove="true"
                    ui-sref="app.relocation.dashboard({uuid:baseRelocation.uuid})"
                    class="text-bright-blue">{{ baseRelocation.identify }}</a>
@@ -88,7 +88,7 @@
             <p ng-if="baseService.name != undefined && baseEmployee.baseService.name != undefined"
                class="user-block-text"><strong>SRV</strong>
 
-                <a gms-acl-allow="relocation-service/index"
+                <a app-acl-allow="relocation-service/index"
                    acl-remove="true"
                    ui-sref="app.relocation.service-detail({uuid:baseService.uuid})"
                    class="text-bright-blue">{{ baseService.name }}</a>

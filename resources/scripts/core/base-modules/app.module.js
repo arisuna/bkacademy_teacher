@@ -63,7 +63,9 @@ var Routes;
             'app.validators',
             'app.filters',
             'app.app-services',
-            'app.app-services-auth'
+            'app.app-services-auth',
+            'app.app-directives',
+            'app.app-components'
         ]).config(function ($sceProvider) {
             $sceProvider.enabled(false);
         });

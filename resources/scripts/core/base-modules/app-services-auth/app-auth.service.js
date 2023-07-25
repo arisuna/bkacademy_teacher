@@ -358,21 +358,8 @@
                             vm.data.limitations = res.limites;
                             return res.data;
                         } else {
-                            deferredAll.reject(res);
-                        }
-                    },
-                    function (err) {
-                        deferredAll.reject(err.data);
-                    }
-                ),
-
-                AppDataService.getMyCompanyConfiguration().then(
-                    function (res) {
-                        if (res.success) {
-                            vm.data.configurations = res.data;
-                            return res.data;
-                        } else {
-                            deferredAll.reject(res);
+                            return null;
+                            // deferredAll.reject(res);
                         }
                     },
                     function (err) {
@@ -409,22 +396,7 @@
                     }
                 ).catch(function (err) {
                     deferredAll.reject(err);
-                }),
-
-                AppDataService.getPaymentMethodList().then(
-                    function (res) {
-                        if (res.success) {
-                            vm.data.paymentMethods = res.data;
-                            return res.data;
-                        }
-                        return res.data;
-                    },
-                    function (err) {
-                        deferredAll.reject(err.data);
-                    }
-                ).catch(function (err) {
-                    deferredAll.reject(err);
-                }),
+                })
 
 
             ]).then(function (values) {

@@ -9,9 +9,9 @@
         .module('app.thumb')
         .directive('companyLogoThumb', companyLogoThumb);
 
-    companyLogoThumb.$inject = ['$http', 'urlBase', 'DataService', 'DataThumbCache', 'GmsAvatarService'];
+    companyLogoThumb.$inject = ['$http', 'urlBase', 'DataService', 'DataThumbCache', 'AppAvatarService'];
 
-    function companyLogoThumb($http, urlBase, DataService, DataThumbCache, GmsAvatarService) {
+    function companyLogoThumb($http, urlBase, DataService, DataThumbCache, AppAvatarService) {
         var directiveAvatarUpload = {
             restrict: 'E',
             replace: true,
@@ -101,7 +101,7 @@
                 };
 
                 $scope.getLogoUrl = function(){
-                    GmsAvatarService.getAvatarObject($scope.uuid).then(function (response) {
+                    AppAvatarService.getAvatarObject($scope.uuid).then(function (response) {
                         if (response.success == true) {
                             DataThumbCache.put($scope.uuid, response.data);
                             $scope.logo = response.data;

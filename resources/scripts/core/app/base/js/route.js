@@ -85,9 +85,9 @@
                                 console.log('initCheck');
                             },
 
-                            checkAuthentication: ['$q', 'GmsAuthResolver', function ($q, GmsAuthResolver) {
+                            checkAuthentication: ['$q', 'AppAuthResolver', function ($q, AppAuthResolver) {
                                 console.log('checkAuthentication');
-                                return GmsAuthResolver.resolve();
+                                return AppAuthResolver.resolve();
                             }],
 
 

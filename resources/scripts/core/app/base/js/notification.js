@@ -37,15 +37,16 @@
              * count number of unread notify
              */
             $scope.notifyCount = function () {
-                AppDataService.countNotification().then(
-                    function (res) {
-                        if (res.success) {
-                            $scope.count = res.count;
-                        } else {
-                            $scope.count = "";
-                        }
-                    }
-                )
+                $scope.count = 0;
+                // AppDataService.countNotification().then(
+                //     function (res) {
+                //         if (res.success) {
+                //             $scope.count = res.count;
+                //         } else {
+                //             $scope.count = "";
+                //         }
+                //     }
+                // )
             }
             /**
              * read notifications

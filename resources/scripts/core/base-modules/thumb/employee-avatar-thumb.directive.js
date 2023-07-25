@@ -9,9 +9,9 @@
         .module('app.thumb')
         .directive('employeeAvatarThumb', employeeAvatarThumb);
 
-    employeeAvatarThumb.$inject = ['$http', 'urlBase', 'DataService', 'GmsAvatarService'];
+    employeeAvatarThumb.$inject = ['$http', 'urlBase', 'DataService', 'AppAvatarService'];
 
-    function employeeAvatarThumb($http, urlBase, DataService, GmsAvatarService) {
+    function employeeAvatarThumb($http, urlBase, DataService, AppAvatarService) {
         var directiveAvatarUpload = {
             restrict: 'E',
             replace: true,
@@ -42,19 +42,19 @@
                 $scope.loadAvatarThumb = function () {
                     if (!angular.isUndefined($scope.uuid) && $scope.uuid != '') {
                         if ($scope.uuid != "") {
-                            $scope.image_url = GmsAvatarService.getAvatarObjectDirect($scope.uuid);
+                            $scope.image_url = AppAvatarService.getAvatarObjectDirect($scope.uuid);
                         }
                     }
                 }
                 $scope.subscribe('load_avatar_thumb', function (url) {
-                    $scope.image_url = GmsAvatarService.getAvatarObjectDirect($scope.uuid);
+                    $scope.image_url = AppAvatarService.getAvatarObjectDirect($scope.uuid);
                     if (url) {
                         $scope.image_url = url;
                     }
                 });
                 $scope.$watch("uuid", function () {
                     if ($scope.uuid != "") {
-                        $scope.image_url = GmsAvatarService.getAvatarObjectDirect($scope.uuid);
+                        $scope.image_url = AppAvatarService.getAvatarObjectDirect($scope.uuid);
                     }
                 });
                 $scope.loadAvatarThumb();

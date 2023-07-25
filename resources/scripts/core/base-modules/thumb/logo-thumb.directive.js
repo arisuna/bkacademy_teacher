@@ -5,9 +5,9 @@
         .module('app.thumb')
         .directive('logoThumb', logoThumb);
 
-    logoThumb.$inject = ['FileUploader', '$http', 'urlBase', '$translate', '$rootScope', '$timeout', 'DataService', 'WaitingService', 'GmsAvatarService'];
+    logoThumb.$inject = ['FileUploader', '$http', 'urlBase', '$translate', '$rootScope', '$timeout', 'DataService', 'WaitingService', 'AppAvatarService'];
 
-    function logoThumb(FileUploader, $http, urlBase, $translate, $rootScope, $timeout, DataService, WaitingService, GmsAvatarService) {
+    function logoThumb(FileUploader, $http, urlBase, $translate, $rootScope, $timeout, DataService, WaitingService, AppAvatarService) {
 
         var directive = {
             restrict: 'E',
@@ -33,7 +33,7 @@
             controller: function ($scope, $element, $attrs, $timeout) {
                 $scope.logo = null;
                 $scope.getLogo = function () {
-                    GmsAvatarService.getAvatarObject($scope.uuid).then(
+                    AppAvatarService.getAvatarObject($scope.uuid).then(
                         function (response) {
                             if (response.success == true) {
                                 $scope.logo = response.data;

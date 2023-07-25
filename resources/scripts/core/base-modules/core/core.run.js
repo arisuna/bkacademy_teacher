@@ -92,11 +92,11 @@
                 // display new view from top
                 $window.scrollTo(0, 0);
                 // Save the route title
-                $rootScope.currTitle = $state.current.title;
+                // $rootScope.currTitle = $state.current.title;
             });
 
         // Load a title dynamically
-        $rootScope.currTitle = $state.current.title;
+        // $rootScope.currTitle = $state.current.title;
         $rootScope.pageTitle = function () {
             var title = $rootScope.app.name + ' - ' + ($rootScope.currTitle || $rootScope.app.description);
             document.title = title;

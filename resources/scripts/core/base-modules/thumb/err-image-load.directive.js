@@ -9,9 +9,9 @@
         .module('app.thumb')
         .directive('errImageOnLoad', errImageOnLoad);
 
-    errImageOnLoad.$inject = ['$http', 'urlBase', 'GmsAvatarService', 'DataThumbCache', 'AppDataService'];
+    errImageOnLoad.$inject = ['$http', 'urlBase', 'AppAvatarService', 'DataThumbCache', 'AppDataService'];
 
-    function errImageOnLoad($http, urlBase, GmsAvatarService, DataThumbCache, AppDataService) {
+    function errImageOnLoad($http, urlBase, AppAvatarService, DataThumbCache, AppDataService) {
         var directiveOnLoad = {
             restrict: 'A',
             scope: {
@@ -58,7 +58,7 @@
                         )
                     } else {
                         //call the function that was passed
-                        let imgUrl = GmsAvatarService.getAvatarObjectDirect(scope.uuid);
+                        let imgUrl = AppAvatarService.getAvatarObjectDirect(scope.uuid);
                         DataThumbCache.put(scope.uuid, imgUrl);
                         attrs.$set('src', imgUrl);
                     }

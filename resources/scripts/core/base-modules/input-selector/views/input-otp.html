@@ -1,0 +1,12 @@
+<div>
+    <input type='{{type}}'
+           ng-repeat="c in characters"
+           autocomplete='off'
+           ng-keyup='onKeyUp($index,$event)'
+           ng-keydown='onKeyDown($index,$event)'
+           ng-model='c.value' id='otpInput{{c.index}}'
+           name='otpInput{{c.index}}'
+           ng-change="checkValue(c)"
+           ng-style="style"
+           placeholder="{{placeholder}}" maxlength="1"/>
+</div>

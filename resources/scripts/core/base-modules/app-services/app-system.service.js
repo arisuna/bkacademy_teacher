@@ -22,7 +22,6 @@
             current_language: '',
             zone_langs: [],
             user_groups: [],
-            svp_user_groups: [],
             need_form_categories: [],
             service_companies: [],
             need_form_question_types: [],
@@ -200,35 +199,11 @@
                 })
             );
 
-            promiseList.push(AppDataService.getDocumentTypes($translate.use()).then(
-                function (response) {
-                    if (response.success == true) {
-                        self.data.document_types.splice(self.data.document_types.length);
-                        angular.extend(self.data.document_types, response.data);
-                        return response;
-                    } else {
-                        deferred.reject(response);
-                    }
-                }, function (err) {
-                    deferred.reject(err);
-                }));
-
 
             promiseList.push(AppDataService.getSettingUserGroups($translate.use()).then(
                 function (response) {
                     if (response.success == true) {
                         self.data.user_groups = response.data;
-                        return response;
-                    } else {
-                        deferred.reject(response);
-                    }
-                }, function (err) {
-                    deferred.reject(err);
-                }));
-            promiseList.push(AppDataService.getSettingSvpUserGroups($translate.use()).then(
-                function (response) {
-                    if (response.success == true) {
-                        self.data.svp_user_groups = response.data;
                         return response;
                     } else {
                         deferred.reject(response);
@@ -403,10 +378,6 @@
         }
         this.getControllerActionItems = function () {
             return vm.data.controller_action_items;
-        }
-
-        this.getDocumentTypes = function () {
-            return vm.data.document_types;
         }
 
         this.getCountry = function (id) {

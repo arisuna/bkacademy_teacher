@@ -287,21 +287,6 @@
             });
             return deferred.promise;
         };
-
-        /**
-         * test update
-         * @returns {*}
-         */
-        this.getMyCompanyConfiguration = function () {
-            let deferred = $q.defer();
-            AppHttp.get('/app/my_company/getConfigurationList')
-                .then(function (response) {
-                    deferred.resolve(response.data);
-                }).catch(function (err) {
-                deferred.reject(err.data);
-            });
-            return deferred.promise;
-        }
         /**
          * get all attributes values with languages
          */
@@ -400,21 +385,6 @@
             let deferred = $q.defer();
             if (lang == undefined || lang == '') lang = 'en';
             AppHttp.get('/app/setting/user_groups/' + lang)
-                .then(function (response) {
-                    deferred.resolve(response.data);
-                }).catch(function (err) {
-                deferred.reject(err.data);
-            });
-            return deferred.promise;
-        }
-
-        /**
-         *
-         */
-        this.getSettingSvpUserGroups = function (lang) {
-            let deferred = $q.defer();
-            if (lang == undefined || lang == '') lang = 'en';
-            AppHttp.get('/app/setting/svp_user_groups/' + lang)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
@@ -4955,17 +4925,6 @@
             return deferred.promise;
         }
 
-        this.relocationCountEndingSoon = function () {
-            let deferred = $q.defer();
-            AppHttp.get('/app/dashboard/relocationCountEndingSoon').then(function (response) {
-                deferred.resolve(response.data);
-                return response.data;
-            }).catch(function (err) {
-                deferred.reject(err);
-            });
-            return deferred.promise;
-        }
-
         this.relocationCountOngoing = function () {
             let deferred = $q.defer();
             AppHttp.get('/app/dashboard/relocationCountOnGoing').then(function (response) {
@@ -6087,17 +6046,6 @@
             return deferred.promise;
         }
 
-        this.getCompanyBuSubDomain = function (sub_domain) {
-            let deferred = $q.defer();
-            AppHttp.get('/app/auth/getCompanyBySubDomain/' + sub_domain)
-                .then(function (response) {
-                    deferred.resolve(response.data);
-                }).catch(function (err) {
-                deferred.reject(err.data);
-            });
-            return deferred.promise;
-        }
-
         this.changeMyPassword = function (data) {
             let deferred = $q.defer();
             AppHttp.post('/app/auth/changeMyPassword', data).then(function (response) {
@@ -6233,36 +6181,9 @@
         }
 
 
-        this.getAccountsOriginRelocationDashboard = function (data) {
-            let deferred = $q.defer();
-            if (angular.isUndefined(data)) {
-                data = {};
-            }
-            AppHttp.put('/app/dashboard/getAccountsOriginRelocation', data).then(function (response) {
-                deferred.resolve(response.data);
-            }).catch(function (err) {
-                deferred.reject(err.data);
-            });
-            return deferred.promise;
-        }
-
-
         this.getCountriesOriginRelocationMapDashboard = function () {
             let deferred = $q.defer();
             AppHttp.get('/app/dashboard/getCountriesOriginRelocationMap').then(function (response) {
-                deferred.resolve(response.data);
-            }).catch(function (err) {
-                deferred.reject(err.data);
-            });
-            return deferred.promise;
-        }
-
-        this.getBookersOriginRelocationDashboard = function (data) {
-            let deferred = $q.defer();
-            if (angular.isUndefined(data)) {
-                data = {};
-            }
-            AppHttp.put('/app/dashboard/getBookersOriginRelocation', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -6572,21 +6493,6 @@
             AppHttp.get('/app/entity-document/getDocuments/' + employee_uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
-                deferred.reject(err.data);
-            });
-            return deferred.promise;
-        }
-
-        /**
-         * get document type
-         * @returns {*}
-         */
-        this.getDocumentTypes = function () {
-            let deferred = $q.defer();
-            AppHttp.get('/app/setting/getDocumentTypeList')
-                .then(function (response) {
-                    deferred.resolve(response.data);
-                }).catch(function (err) {
                 deferred.reject(err.data);
             });
             return deferred.promise;
@@ -7487,17 +7393,6 @@
                     deferred.reject(err.data);
                 });
             }
-            return deferred.promise;
-        }
-
-        this.getPaymentMethodList = function () {
-            let deferred = $q.defer();
-            AppHttp.get('/app/transaction/getPaymentMethodList?_=' + Math.random())
-                .then(function (response) {
-                    deferred.resolve(response.data);
-                }).catch(function (err) {
-                deferred.reject(err.data);
-            });
             return deferred.promise;
         }
 

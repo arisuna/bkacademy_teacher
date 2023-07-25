@@ -14,7 +14,7 @@
                     templateUrl: helper.modulePath('app', 'login/index'),
                     resolve: angular.extend(
                         helper.resolveFor('modernizr', 'icons', 'parsley', 'ngSweetAlert2', 'crossStorageClient'), {
-                            checkAuthentication: ['GmsAuthResolver', '$state', function (GmsAuthResolver, $state) {
+                            checkAuthentication: ['AppAuthResolver', '$state', function (AppAuthResolver, $state) {
                                 return false;
                             }],
                         }

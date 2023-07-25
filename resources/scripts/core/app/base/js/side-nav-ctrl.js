@@ -107,7 +107,7 @@
                     "sref": "app.dashboard",
                     "icon": "fa-solid fa-gauge",
                     "iconType": "fontawesome",
-                    "gmsAclAllow": "dashboard/index",
+                    "appAclAllow": "dashboard/index",
                     "aclRemove": true,
                     "class": "",
                     "controller": ""
@@ -117,7 +117,7 @@
                     "sref": "app.assignment.list",
                     "icon": "fa-solid fa-compass",
                     "iconType": "fontawesome",
-                    "gmsAclAllow": "assignment/index",
+                    "appAclAllow": "assignment/index",
                     "aclRemove": true,
                     "class": ""
                 },
@@ -126,7 +126,7 @@
                     "sref": "app.relocation.list",
                     "icon": "fa-solid fa-plane",
                     "iconType": "fontawesome",
-                    "gmsAclAllow": "relocation/index",
+                    "appAclAllow": "relocation/index",
                     "aclRemove": true,
                     "class": ""
                 },
@@ -135,7 +135,7 @@
                     "sref": "app.relocation-service.list",
                     "icon": "fa-solid fa-puzzle-piece",
                     "iconType": "fontawesome",
-                    "gmsAclAllow": "relocation-service/index",
+                    "appAclAllow": "relocation-service/index",
                     "aclRemove": true,
                     "class": "side-nav-service"
                 },
@@ -144,7 +144,7 @@
                     "sref": "app.tasks.list",
                     "icon": "fa-solid fa-list-check",
                     "iconType": "fontawesome",
-                    "gmsAclAllow": "task/index",
+                    "appAclAllow": "task/index",
                     "aclRemove": true,
                     "class": ""
                 },
@@ -153,7 +153,7 @@
                     "sref": "app.finance-page.dashboard",
                     "icon": "fa-solid fa-sack-dollar",
                     "iconType": "fontawesome",
-                    "gmsAclAllow": "invoicing/index",
+                    "appAclAllow": "invoicing/index",
                     "aclRemove": true,
                     "class": ""
                 },
@@ -162,7 +162,7 @@
                     "sref": "app.report.index",
                     "icon": "fa-solid fa-chart-pie",
                     "iconType": "fontawesome",
-                    "gmsAclAllow": "report/index",
+                    "appAclAllow": "report/index",
                     "aclRemove": true,
                     "class": ""
                 }

@@ -12,22 +12,6 @@
                 secondary_color: '#0098FF'
             };
 
-            $scope.sub_domain = $location.$$host.split(".relotalent.com")[0];
-            console.log($scope.sub_domain);
-            WaitingService.begin();
-            AppDataService.getCompanyBuSubDomain($scope.sub_domain).then(function (res) {
-                if(res.success){
-                    $scope.company = res.data;
-                    if(angular.isDefined($scope.company.theme) && angular.isDefined($scope.company.theme.id)) {
-                        $scope.theme = $scope.company.theme;
-                    }
-                    console.log($scope.theme);
-                }
-                WaitingService.end();
-            }, function (err) {
-                WaitingService.error(err.message);
-            });
-
 
             $scope.resetFn = function () {
                 WaitingService.begin();

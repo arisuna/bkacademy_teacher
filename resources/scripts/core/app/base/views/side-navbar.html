@@ -116,7 +116,7 @@
                     <!--&lt;!&ndash;popover-placement="right">-->
                     <hr ng-if="!!item.deliver"/>
                     <a ng-if="!item.deliver" ui-sref="{{item.sref}}" title="{{ item.text | translate }}"
-                       gms-acl-allow="{{item.gmsAclAllow}}" acl-remove="{{item.aclRemove}}">
+                       app-acl-allow="{{item.appAclAllow}}" acl-remove="{{item.aclRemove}}">
 
 
                         <em ng-if="item.iconType=='fontawesome'" class="{{item.icon}}"></em>
@@ -127,26 +127,13 @@
                     </a>
                 </li>
 
-
-                <li ng-class="{active: $state.includes('app.communication.list'), collapse_nav: !!app.layout.isCollapsedNav}"
-                    ng-controller="CommunicationNotificationController"
-                    tooltip-placement="right"
-                    tooltip-enable="!!app.layout.isCollapsedNav"
-                    uib-tooltip="{{ 'COMMUNICATIONS_TEXT' | translate }}">
-                    <a ui-sref="app.communication.list" title="{{'COMMUNICATIONS_TEXT' | translate}}"
-                       gms-acl-allow="communication/index" acl-remove="true">
-                        <em class="fa-solid fa-envelope"></em>
-                        <span class="" ng-if="!app.layout.isCollapsedNav">{{'COMMUNICATIONS_TEXT' | translate}}</span>
-                    </a>
-                </li>
-
             </ul>
             <ul class="sidebar-nav relo-nav-bottom" id="relo-nav-bottom">
                 <li ng-class="{active: $state.includes('app.admin-page'), collapse_nav: !!app.layout.isCollapsedNav}"
                     tooltip-placement="right"
                     tooltip-enable="!!app.layout.isCollapsedNav"
                     uib-tooltip="{{ 'ADMIN_PAGE_TEXT' | translate }}">
-                    <a ui-sref="app.admin-page.dashboard" title="Admin Page" gms-acl-allow="admin/index" acl-remove="true">
+                    <a ui-sref="app.admin-page.dashboard" title="Admin Page" app-acl-allow="admin/index" acl-remove="true">
                         <em class="fa-solid fa-gear"></em>
                         <span class="" ng-if="!app.layout.isCollapsedNav">{{'ADMIN_PAGE_TEXT' | translate}}</span>
                     </a>

@@ -32,7 +32,7 @@
             $rootScope.baseEmployee = {};
             $rootScope.state_loading = false;
 
-            window.document.title = AppAuthService.getCompany().name;
+            // window.document.title = AppAuthService.getCompany().name;
 
             //$rootScope.app.layout.showSideNav2 = true;
             //$rootScope.app.layout.openSideNav2 = true;

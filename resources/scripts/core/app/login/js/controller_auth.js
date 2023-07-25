@@ -29,23 +29,6 @@
             };
 
             $scope.sub_domain = $location.$$host.split(".relotalent.com")[0];
-            console.log($scope.sub_domain);
-            WaitingService.begin();
-            AppDataService.getCompanyBuSubDomain($scope.sub_domain).then(function (res) {
-                if(res.success){
-                    $scope.company = res.data;
-                    if(angular.isDefined($scope.company.theme) && angular.isDefined($scope.company.theme.id)) {
-                        $scope.theme = $scope.company.theme;
-                    }
-                    $scope.companyLogo = $scope.company.companyLogo;
-                }else{
-                    $scope.companyLogo = null;
-                }
-                WaitingService.end();
-            }, function (err) {
-                $scope.companyLogo = null;
-                WaitingService.error(err.message);
-            });
 
             $translatePartialLoader.addPart('base');
             $translate.refresh();
@@ -94,43 +77,44 @@
 
                 AppDataService.loginFn({
                     'credential': $scope.account.email,
-                    'password': $scope.account.password
+                    'password': $scope.account.password,
+                    'session': $scope.account.session
                 }).then(function (res) {
                     //@TODO need redirection here in LOCAL
                     if (angular.isDefined(res.success) && res.success) {
-                        // localStorage.setItem('token_key', res.token);
-                        // localStorage.setItem('refresh_token', res.refreshToken);
+                        localStorage.setItem('token_key', res.token);
+                        localStorage.setItem('refresh_token', res.refreshToken);
 
-                        localStorage.removeItem('token_key');
-                        localStorage.removeItem('refresh_token');
+                        // localStorage.removeItem('token_key');
+                        // localStorage.removeItem('refresh_token');
                         $rootScope._token = res.token;
 
                         //redirect to SSO LINK
-                        $window.location.href = res.redirectUrl;
+                        $state.go('app.dashboard');
 
-                        // $timeout(function () {
-                        //     AppAuthService.checkTotal().then(function () {
-                        //         WaitingService.end();
-                        //         if (AppAuthService.getSubscription().status == -1) {
-                        //             $state.go('app.error-payment-required');
-                        //         } else if (AppAuthService.getSubscription().status == 0) {
-                        //             $state.go('app.error-subscription-paused');
-                        //         } else {
-                        //             if (!angular.isDefined(AppAuthService.getRedirectUrl()) || AppAuthService.getRedirectUrl() == '' || AppAuthService.getRedirectUrl() == null) {
-                        //                 console.log('redirect to home by change state');
-                        //                 $state.go('app.dashboard');
-                        //             } else {
-                        //                 console.log(AppAuthService.getRedirectUrl());
-                        //                 console.log('redirect to redirect url by change state');
-                        //                 $window.location.href = AppAuthService.getRedirectUrl();
-                        //                 AppAuthService.setRedirectUrlNull();
-                        //             }
-                        //         }
-                        //     }, function () {
-                        //         WaitingService.end();
-                        //         WaitingService.error('INVALID_LOGIN_CREDENTIALS_TEXT');
-                        //     })
-                        // }, 2000);
+                        $timeout(function () {
+                            AppAuthService.checkTotal().then(function () {
+                                WaitingService.end();
+                                if (AppAuthService.getSubscription().status == -1) {
+                                    $state.go('app.error-payment-required');
+                                } else if (AppAuthService.getSubscription().status == 0) {
+                                    $state.go('app.error-subscription-paused');
+                                } else {
+                                    if (!angular.isDefined(AppAuthService.getRedirectUrl()) || AppAuthService.getRedirectUrl() == '' || AppAuthService.getRedirectUrl() == null) {
+                                        console.log('redirect to home by change state');
+                                        $state.go('app.dashboard');
+                                    } else {
+                                        console.log(AppAuthService.getRedirectUrl());
+                                        console.log('redirect to redirect url by change state');
+                                        $window.location.href = AppAuthService.getRedirectUrl();
+                                        AppAuthService.setRedirectUrlNull();
+                                    }
+                                }
+                            }, function () {
+                                WaitingService.end();
+                                WaitingService.error('INVALID_LOGIN_CREDENTIALS_TEXT');
+                            })
+                        }, 2000);
                     } else if (res.message == "UserNotFoundException") {
                         WaitingService.end();
                         $scope.account._token = res.token;
@@ -172,6 +156,8 @@
 
                     if (angular.isDefined(result.success) && result.success == true) {
                         $scope.account = angular.extend($scope.account, result.data);
+                        $scope.account.session = result.session;
+                        console.log($scope.account);
                         $scope.step = 2;
                         // if (angular.isDefined(result.data.redirect) && result.data.redirect == true && angular.isDefined(result.data.appUrl)) {
                         //     $window.location.href = result.data.appUrl + '#/login?email=' + $scope.account.email;

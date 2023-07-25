@@ -3,7 +3,7 @@
     <span ng-if="item.heading && ((showGlobalMenu && !item.isinvocingmenu) || (hasInvoicingLeftBlock && item.isinvocingmenu))">{{(item.translate | translate) || item.text | translate}}</span>
     <a ng-if="!item.heading  && ((showGlobalMenu && !item.isinvocingmenu) || (hasInvoicingLeftBlock && item.isinvocingmenu))"
        ng-href="{{$state.href(item.sref, item.params)}}"
-       gms-acl-allow="{{ item.controller }}/{{ item.action }}"
+       app-acl-allow="{{ item.controller }}/{{ item.action }}"
        acl-remove="true"
        title="{{(item.translate | translate) || item.text|translate}}"
        md-ink-ripple="md-ink-ripple">

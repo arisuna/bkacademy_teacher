@@ -34,15 +34,8 @@
             </li>
 
             <li>
-                <a ui-sref="app.admin-page" title="Admin Page" gms-acl-allow="admin/index" acl-remove="true">
+                <a ui-sref="app.admin-page" title="Admin Page" app-acl-allow="admin/index" acl-remove="true">
                     <em class="fa fa-cog"></em>
-                </a>
-            </li>
-
-            <li ng-controller="CommunicationNotificationController">
-                <a ui-sref="app.communication.list" title="Communication Page"
-                    gms-acl-allow="communication/index" acl-remove="true">
-                    <em class="fa fa-envelope"></em>
                 </a>
             </li>
 
@@ -63,7 +56,7 @@
                         </a>
                     </li>
                     <li>
-                        <a ui-sref="app.my-company.index" gms-acl-allow="my_company/index" acl-remove="true">
+                        <a ui-sref="app.my-company.index" app-acl-allow="my_company/index" acl-remove="true">
                             <em class="fa fa-users mr"></em> {{ 'MY_COMPANY_TEXT' | translate }}
                         </a>
                     </li>

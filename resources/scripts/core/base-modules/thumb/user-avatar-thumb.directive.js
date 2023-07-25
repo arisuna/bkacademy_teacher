@@ -9,9 +9,9 @@
         .module('app.thumb')
         .directive('userAvatarThumb', userAvatarThumb);
 
-    userAvatarThumb.$inject = ['$http', '$localStorage', '$timeout', 'urlBase', 'DataService', '$cacheFactory', 'DataHttp', '$base64', 'Utils', 'DataThumbCache', 'GmsAvatarService'];
+    userAvatarThumb.$inject = ['$http', '$localStorage', '$timeout', 'urlBase', 'DataService', '$cacheFactory', 'DataHttp', '$base64', 'Utils', 'DataThumbCache', 'AppAvatarService'];
 
-    function userAvatarThumb($http, $localStorage, $timeout, urlBase, DataService, $cacheFactory, DataHttp, $base64, Utils, DataThumbCache, GmsAvatarService) {
+    function userAvatarThumb($http, $localStorage, $timeout, urlBase, DataService, $cacheFactory, DataHttp, $base64, Utils, DataThumbCache, AppAvatarService) {
         var directiveAvatarUpload = {
             restrict: 'E',
             replace: true,
@@ -53,10 +53,10 @@
 
                 $scope.getAvatarUrl = function () {
                     if ($scope.type == '' || $scope.type == undefined || $scope.type == null) {
-                        $scope.imageUrl = GmsAvatarService.getAvatarObjectDirect($scope.uuid);
+                        $scope.imageUrl = AppAvatarService.getAvatarObjectDirect($scope.uuid);
                     }
                     if ($scope.type == 'contact') {
-                        $scope.imageUrl = GmsAvatarService.getContactAvatarObjectDirect($scope.uuid);
+                        $scope.imageUrl = AppAvatarService.getContactAvatarObjectDirect($scope.uuid);
                     }
                     DataThumbCache.put($scope.uuid, $scope.imageUrl);
                 };

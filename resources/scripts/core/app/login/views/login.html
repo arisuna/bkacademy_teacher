@@ -1,35 +1,4 @@
 <div class="LoginPage">
-    <script>
-        function parseQueryString() {
-            var url = window.location.href;
-            var splitUrl = url.split('?');
-            var query = splitUrl[splitUrl.length - 1];
-            var vars = query.split("&");
-            var query_string = {};
-            for (var i = 0; i < vars.length; i++) {
-                var pair = vars[i].split("=");
-                var key = decodeURIComponent(pair[0]);
-                var value = decodeURIComponent(pair[1]);
-                if (typeof query_string[key] === "undefined") {
-                    query_string[key] = decodeURIComponent(value);
-                } else if (typeof query_string[key] === "string") {
-                    query_string[key] = [query_string[key], decodeURIComponent(value)];
-                    ;
-                } else {
-                    query_string[key].push(decodeURIComponent(value));
-                }
-            }
-            console.log(query_string);
-            return query_string;
-        }
-
-        if (parseQueryString().rfsn_ci) {
-            console.log(parseQueryString().rfsn_ci);
-            _refersion(function () {
-                _rfsn._addCart(parseQueryString().rfsn_ci);
-                _rfsn._setSource("CHARGEBEE");
-            });
-        }</script>
     <div class="block-center wd-xxl content-box">
         <h3 class="text-center pv text-bold text-dark-blue">{{ 'SIGN_IN_NOW_TEXT' | translate }}</h3>
         <div class="panel panel-flat">
