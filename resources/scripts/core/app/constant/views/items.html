@@ -35,6 +35,7 @@
                     <th angular-table-api-sort="table" field-name="name">Name</th>
                     <th angular-table-api-sort="table" field-name="value">Value</th>
                     <th angular-table-api-sort="table" field-name="value_en">EN</th>
+                    <th angular-table-api-sort="table" field-name="value_vi">VI</th>
                     <th class="none-icon-sorting"></th>
                 </tr>
                 </thead>
@@ -48,6 +49,7 @@
                     </td>
                     <td>{{ object.value }}</td>
                     <td>{{ object.value_en }}</td>
+                    <td>{{ object.value_vi }}</td>
                     <td class="text-right">
                         <button-edit-icon ng-click="editConstantFn( object )" class="mr-sm"></button-edit-icon>
                         <button-delete-icon ng-click="deleteFn( object )"></button-delete-icon>
