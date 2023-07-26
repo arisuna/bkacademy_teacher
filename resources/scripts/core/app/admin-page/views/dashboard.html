@@ -1,0 +1,176 @@
+<div style="position: relative">
+    <div ng-controller="AdminPageController" style="padding: 0 10px">
+        <div class="container-fluid">
+            <div class="row list-settings">
+                <div ng-repeat="item in $root.menuSettings" class="col-md-3 col-sm-6 col-xs-6 mt-15"
+                     ng-if="!item.noRender" app-acl-allow="{{item.acl}}">
+                    <div class="text-center setting-item panel b {{ app.layout.openSideNav2 ? 'resize-setting-box-gms': '' }}">
+                        <div class="setting-item-hover ">
+                            <div class="" ng-class="{'setting-item-hover-icon': item.iconType == 'icon', 'setting-item-hover-image': item.iconType == 'svg'}">
+                                <img ng-if="item.iconType == 'svg'" class="thumb100" ng-src="{{item.icon}}"/>
+                                <span ng-if="item.iconType == 'icon'" class="{{item.icon}} txt-100 txt-dark-blue"></span>
+                            </div>
+                            <strong class="setting-item-hover-text">{{item.title | translate}}</strong>
+                        </div>
+
+                        <div class="setting-list-subitems">
+                            <p class="setting-subitem" ng-repeat="subItem in item.subMenu"
+                               app-acl-allow="{{subItem.acl}}">
+                                <a ui-sref="{{subItem.state}}">{{subItem.title | translate}}</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="false">
+                <div class="col-md-4 col-lg-4">
+                    <app-panel-admin icon="fa fa-child"
+                                     app-acl-allow="role/index"
+                                     admin-title="ROLES_ADMIN_HEADER_TEXT"
+                                     links="[
+                                         {state:'app.roles.index',title:'ROLES_ADMIN_SUBTITLE_TEXT',acl:'role/index'},
+                                         {state:'app.notifications.list',title:'SETUP_NOTIFICATION_SCHEME_TEXT',acl:'notification_config/index'}
+                                         ]"></app-panel-admin>
+                    <app-panel-admin icon="fa fa-tags"
+                                     admin-title="ATTRIBUTES_TEXT"
+                                     app-acl-allow="attributes/index"
+                                     links="[
+                                         {state:'app.attributes.list',title:'MANAGE_ATTRIBUTES_TEXT',acl:'attributes/index'}
+                                         ]"></app-panel-admin>
+                    <app-panel-admin icon="fa fa-user"
+                                     admin-title="ASSIGNEES_ADMIN_HEADER_TEXT"
+                                     text="ASSIGNEES_ADMIN_SUBTITLE_TEXT"
+                                     ng-if="GmsAclService.validateAction('company','index') ||
+                                         GmsAclService.validateAction('office','index') ||
+                                         GmsAclService.validateAction('department','index') ||
+                                         GmsAclService.validateAction('team','index') ||
+                                         GmsAclService.validateAction('employee','index') ||
+                                         GmsAclService.validateAction('bookers','index')"
+                                     links="[
+                                         {state:'app.hr-accounts.list',title:'COMPANY_NAME_TEXT', acl:'hr_account/index'},
+                                         {state:'app.offices.list',title:'OFFICE_NAME_TEXT', acl:'office/index'},
+                                         {state:'app.departments.list',title:'DEPARTMENT_NAME_TEXT', acl:'department/index'},
+                                         {state:'app.teams.list',title:'TEAM_NAME_TEXT', acl:'team/index'},
+                                         {state:'app.employees.list',title:'EMPLOYEES_TEXT', acl:'employee/index'},
+                                         {state:'app.bookers.list',title:'BOOKERS_TEXT', acl:'bookers/index'},
+                                         ]"></app-panel-admin>
+
+                    <app-panel-admin icon="fa fa-building-o"
+                                     admin-title="REAL_ESTATE_ADMIN_HEADER_TEXT"
+                                     text="REAL_ESTATE_ADMIN_SUBTITLE_TEXT"
+                                     ng-if="GmsAclService.validateAction('property','index')"
+                                     links="[
+                                            {state:'app.properties.list',title:'MANAGE_PROPERTIES_TEXT',acl:'property/index'},
+                                            {state:'app.properties.list',title:'MANAGE_BUILDINGS_TEXT',acl:'property/index'},
+                                            {state:'app.properties.setting',title:'MANAGE_PROPERTIES_SETTING_TEXT',acl:'property/create'},
+                                            {state:'app.profile.addon',title:'ADDON_SETTING_TEXT'},
+                                         ]"></app-panel-admin>
+
+                    <app-panel-admin icon="fa fa-puzzle-piece"
+                                     admin-title="SERVICES_ADMIN_HEADER_TEXT"
+                                     text="SERVICES_ADMIN_SUBTITLE_TEXT"
+                                     app-acl-allow="service/index"
+                                     links="[
+                                         {state:'app.services.list',title:'MANAGE_SERVICES_TEXT'},
+                                         {state:'app.service-packs.list',title:'SERVICE_PACK_MANAGE_TEXT'}
+                                         ]"></app-panel-admin>
+                </div>
+
+                <div class="col-md-4 col-lg-4">
+                    <app-panel-admin icon="fa fa-male"
+                                     admin-title="HR_ADMIN_HEADER_TEXT"
+                                     text="HR_ADMIN_SUBTITLE_TEXT"
+                                     ng-if="GmsAclService.validateAction('company','index') ||
+                                         GmsAclService.validateAction('hr_member','index')"
+                                     links="[
+                                         {state:'app.hr-accounts.list',title:'HR_ACCOUNTS_TEXT', acl:'hr_account/index'},
+                                         {state:'app.hr-contacts.list',title:'HR_MEMBERS_TEXT',acl:'hr_member/index'}
+                                         ]"></app-panel-admin>
+
+
+                    <app-panel-admin icon="fa fa-male"
+                                     admin-title="GMS_ADMIN_HEADER_TEXT"
+                                     text="GMS_ADMIN_SUBTITLE_TEXT"
+                                     ng-if="GmsAclService.validateAction('my_company','index') ||
+                                         GmsAclService.validateAction('gms_member','index')"
+                                     links="[
+                                         {state:'app.my-company.index',title:'GMS_TEXT',acl:'my_company/index'},
+                                         {state:'app.gms-members.list',title:'GMS_MEMBERS_TEXT',acl:'gms_member/index'},
+                                         {state:'app.guide.list',title:'MY_GUIDES_TEXT',acl:'guide/index'}
+                                         ]"></app-panel-admin>
+
+                    <app-panel-admin icon="fa fa-bolt"
+                                     admin-title="BOOKER_ADMIN_HEADER_TEXT"
+                                     text="BOOKER_ADMIN_SUBTITLE_TEXT"
+                                     app-acl-allow="booker/index"
+                                     links="[
+                                         {state:'app.bookers.list',title:'BOOKERS_TEXT'}
+                                         ]"></app-panel-admin>
+
+                    <app-panel-admin icon="fa fa-bolt"
+                                     admin-title="SVP_ADMIN_HEADER_TEXT"
+                                     text="SVP_ADMIN_SUBTITLE_TEXT"
+                                     ng-if="GmsAclService.validateAction('svp_company','index') ||
+                                         GmsAclService.validateAction('svp_worker','index')"
+                                     links="[
+                                         {state:'app.svp-companies.list',title:'SVP_COMPANIES_TEXT',acl:'svp_company/index'},
+                                         {state:'app.svp-workers.list',title:'SVP_WORKERS_TEXT',acl:'svp_worker/index'}
+                                         ]"></app-panel-admin>
+
+                    <app-panel-admin icon="fa fa-tasks"
+                                     admin-title="MANAGE_WORKFLOWS_TITLE_TEXT"
+                                     text="MANAGE_WORKFLOWS_SUBTITLE_TEXT"
+                                     ng-if="GmsAclService.validateAction('workflow','index') ||
+                                         GmsAclService.validateAction('workflow','index')"
+                                     links="[
+                                         {state:'app.workflow.assignment',title:'ASSIGNMENT_WORKFLOWS_TEXT'},
+                                         {state:'app.workflow.relocation',title:'RELOCATION_WORKFLOWS_TEXT'}
+                                         ]"></app-panel-admin>
+
+
+                </div>
+
+
+                <div class="col-md-4 col-lg-4">
+
+
+                    <app-panel-admin icon="fa fa-question"
+                                     admin-title="NEEDS_ASSESSMENT_ADMIN_HEADER_TEXT"
+                                     text="NEEDS_ASSESSMENT_ADMIN_SUBTITLE_TEXT"
+                                     app-acl-allow="need-assessment/index"
+                                     links="[
+                                            {state:'app.needs-assessment.list',title:'MANAGE_NEEDS_ASSESSMENT_TEXT'}
+                                         ]"></app-panel-admin>
+
+
+                    <app-panel-admin icon="fa fa-comment-o"
+                                     admin-title="COMMUNICATIONS_TEXT"
+                                     admin-title="COMMENTS_TEMPLATES_TEXT"
+                                     app-acl-allow="communication-template/index"
+                                     links="[
+                                            {state:'app.communication-template.setting',title:'MANAGE_EMAIL_ACCOUNTS_TEXT'},
+                                            {state:'app.communication-template.index',title:'MANAGE_COMMENTS_TEMPLATES_TEXT', acl:'communication-template/index'},
+                                            {state:'app.communication-signature.list',title:'MANAGE_SIGNATURE_TEXT'}
+                                         ]"></app-panel-admin>
+
+
+                    <app-panel-admin icon="fa fa-bank"
+                                     admin-title="INVOICING_TEXT"
+                                     text="INVOICING_SUBTITLE_TEXT"
+                                     app-acl-allow="finance_setting/index"
+                                     links="[
+                                    {state:'app.product.list',title:'SETUP_PRODUCTS_TEXT',acl:'finance_setting/index'},
+                                    {state:'app.account-pricelist.list',title:'SETUP_PRICE_ACCOUNT_TEXT',acl:'finance_setting/index'},
+                                    {state:'app.tax-rules.list',title:'TAX_RULES_LIST_TEXT',acl:'finance_setting/index'},
+                                    {state:'app.invoicing.templates',title:'INVOICE_TEMPLATE_TEXT',acl:'finance_setting/update'},
+                                    {state:'app.expense.setting',title:'EXPENSES_ADMIN_SUBTITLE_TEXT',acl:'finance_setting/index'},
+                                    {state:'app.invoicing.financial-accounts',title:'FINANCIAL_ACCOUNTS_TEXT',acl:'finance_setting/index'},
+                                 ]"></app-panel-admin>
+
+
+                </div>
+                <div class="clearfix visible-lg-block"></div>
+            </div>
+        </div>
+    </div>
+</div>

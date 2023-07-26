@@ -1,0 +1,22 @@
+<uib-accordion close-others="true" class="setting-menu-container">
+    <div uib-accordion-group ng-repeat="item in menuSettings" ng-if="!item.noRender" app-acl-allow="{{item.acl}}"
+         class="setting-menu-item"
+         ng-class="{active: (item.subMenu | filter:{state: $state.current.name}).length } ">
+
+        <uib-accordion-heading class="setting-menu-item-heading">
+            <img ng-if="item.iconType=='svg'" ng-src="{{item.icon}}" style="width: 24px; margin-right: 20px">
+            <em ng-if="item.iconType=='fontAwesome' || item.iconType=='icon'" class="{{item.icon}} fa-fw"></em>
+            <a ng-if="item.state" ui-sref="{{item.state}}">{{item.title | translate}}</a>
+            <a ng-if="!item.state">{{item.title | translate}}</a>
+        </uib-accordion-heading>
+
+        <ul class="list-sub-setting-menu list-unstyled" ng-if="!item.state">
+            <li class="sub-item-setting-menu" ng-repeat="subItem in item.subMenu" app-acl-allow="{{subItem.acl}}">
+                <a ng-class="{active: $state.includes(subItem.state)}" ui-sref="{{subItem.state}}">{{subItem.title |
+                    translate}}</a>
+            </li>
+        </ul>
+
+    </div>
+
+</uib-accordion>

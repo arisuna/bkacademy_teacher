@@ -309,18 +309,18 @@
                 }
             }
 
-            $scope.storage = new CrossStorageClient(__env.hubCrossDomain, {
-                timeout: 30000,
-                frameId: 'storageFrame'
-            });
+            // $scope.storage = new CrossStorageClient(__env.hubCrossDomain, {
+            //     timeout: 30000,
+            //     frameId: 'storageFrame'
+            // });
 
-            $scope.storage.onConnect().then(function () {
-                let redirectUrl = $window.location.origin + "/app/#/app/admin-page/communication-setting/accounts";
-                return $scope.storage.set('redirect_url', redirectUrl);
-            }).catch(function (err) {
-                console.info('cross storage error', err);
-                console.log(__env.hubCrossDomain);
-            });
+            // $scope.storage.onConnect().then(function () {
+            //     let redirectUrl = $window.location.origin + "/app/#/app/admin-page/communication-setting/accounts";
+            //     return $scope.storage.set('redirect_url', redirectUrl);
+            // }).catch(function (err) {
+            //     console.info('cross storage error', err);
+            //     console.log(__env.hubCrossDomain);
+            // });
 
 
             $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){

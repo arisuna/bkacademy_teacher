@@ -138,18 +138,6 @@
                         <span class="" ng-if="!app.layout.isCollapsedNav">{{'ADMIN_PAGE_TEXT' | translate}}</span>
                     </a>
                 </li>
-                <li class="dropdown dropdown-list userguide-dropdown has-children"
-                    ng-class="{active: $state.includes('app.settings'), collapse_nav: !!app.layout.isCollapsedNav}">
-                    <a>
-                        <em class="fa-solid fa-circle-question"></em>
-                        <span class="" ng-if="!app.layout.isCollapsedNav">{{'HELP_TEXT' | translate}}</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="https://relotalent.gitbook.io/providers-user-guide/" target="_blank" >{{ 'USER_GUIDE_TEXT' | translate }}</a></li>
-                        <li><a href="https://relotalent.gitbook.io/providers-user-guide/faqs" target="_blank">{{ 'FAQ_TEXT' | translate }}</a></li>
-                        <li><a href="#/app/support" ui-sref="app.support.index">{{ 'SUPPORT_TEXT' | translate }}</a></li>
-                    </ul>
-                </li>
                 <li ng-class="{active: $state.includes(item.sref), collapse_nav: !!app.layout.isCollapsedNav}"
                     tooltip-placement="right"
                     tooltip-enable="!!app.layout.isCollapsedNav"

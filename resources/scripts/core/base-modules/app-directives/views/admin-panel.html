@@ -1,0 +1,16 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="card-title pull-left">
+            <em class="{{ icon }} mr-lg"></em>{{ title | translate }}
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="panel-wrapper">
+        <div class="panel-body">
+            <p ng-show="text != ''" class="mb-lg" >{{ text | translate }}</p>
+            <p class="mb-lg" ng-repeat="link in links">
+                <a ui-sref="{{ link.state }}" app-acl-allow="{{link.acl}}" >{{ link.title | translate }}</a>
+            </p>
+        </div>
+    </div>
+</div>
