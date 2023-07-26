@@ -35,6 +35,10 @@
             $scope.editConstantFn = function (constant) {
                 $state.go('app.constant.edit', {id: constant.id});
             };
+
+            $scope.cloneConstantFn = function (constant) {
+                $state.go('app.constant.clone', {id: constant.id});
+            };
             $scope.synchronizing = false;
             $scope.synchronize = function () {
                 WaitingService.questionSimple('Do you want push all updates of Constant and Translation in CLOUD and to all users devices ?', function () {
