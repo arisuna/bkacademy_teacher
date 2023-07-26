@@ -36,7 +36,9 @@
                 });
 
                 if (scope.paginationEnable == true) {
-                    scope.limitPerPage = 10;
+                    if(!scope.limitPerPage > 0){
+                        scope.limitPerPage = 10;
+                    }
                 } else {
                     scope.limitPerPage = 1000;
                 }
