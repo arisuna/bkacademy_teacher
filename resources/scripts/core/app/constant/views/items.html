@@ -1,0 +1,60 @@
+<div class="card card-nobox" ng-controller="ConstantListApiController">
+    <div class="card-heading">
+        <div class="row">
+            <div class="col-xs-8 col-md-9">
+                <h4>List of constant</h4>
+            </div>
+            <div class="col-xs-4 col-md-3 text-right">
+                <button class="btn relo-bg-bright-blue" ng-click="synchronize()">
+                    <em class="fa fa-cloud-upload mr-sm"></em>
+                    Synchronize
+                </button>
+                <button class="btn relo-bg-bright-blue" ui-sref="app.constant.create">
+                    <em class="fa fa-plus mr-sm"></em>
+                    Add new
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <angular-table
+                items="items"
+                table="table"
+                limit-per-page="50"
+                search-input-enable="true"
+                pagination-enable="true">
+
+            <div class="mt" ng-show="isLoading">
+                <line-loading-spinner options="c-l1-l2-l1" lines="10" class=""></line-loading-spinner>
+            </div>
+
+            <table class="table table-hover table-striped" ng-show="!isLoading">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th angular-table-api-sort="table" field-name="name">Name</th>
+                    <th angular-table-api-sort="table" field-name="value">Value</th>
+                    <th angular-table-api-sort="table" field-name="value_en">EN</th>
+                    <th class="none-icon-sorting"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="(key, object) in table.pagedItems[table.currentPage]">
+                    <td>{{ object.id }}</td>
+                    <td ng-style="{'width':'300px'}">
+                        <div ng-click="editConstantFn( object )"
+                             class="wrap-word text-bright-blue">{{ object.name }}
+                        </div>
+                    </td>
+                    <td>{{ object.value }}</td>
+                    <td>{{ object.value_en }}</td>
+                    <td class="text-right">
+                        <button-edit-icon ng-click="editConstantFn( object )" class="mr-sm"></button-edit-icon>
+                        <button-delete-icon ng-click="deleteFn( object )"></button-delete-icon>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </angular-table>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+<div class="card ringed {{ synchronizing ? 'whirl' : '' }}" ng-controller="ConstantListController">
+
+    <div class="card-heading">
+        <div class="row">
+            <div class="col-xs-8 col-md-9">
+                <h4>List of constant</h4>
+            </div>
+            <div class="col-xs-4 col-md-3 text-right">
+                <button class="btn relo-bg-bright-blue" ng-click="synchronize()">
+                    <em class="fa fa-cloud-upload mr-sm"></em>
+                    Synchronize
+                </button>
+                <button class="btn relo-bg-bright-blue" ui-sref="app.constant.create">
+                    <em class="fa fa-plus mr-sm"></em>
+                    Add new
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+
+        <div class="panel panel-primary filter">
+            <div class="panel-heading">
+                <h4>Filter</h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="mda-form-group">
+                            <input class="mda-form-control" type="text" ng-model="search.label"
+                                   placeholder="Enter label"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mda-form-group">
+                            <input class="mda-form-control" type="text" ng-model="search.translation"
+                                   placeholder="Enter translation"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mda-form-group">
+                            <ui-select ng-model="search.language" theme="bootstrap" class="text-left">
+                                <ui-select-match placeholder="Select language">
+                                    {{ $select.selected.value }}
+                                </ui-select-match>
+                                <ui-select-choices
+                                        repeat="language.iso as language in supported_language | filter: $select.search">
+                                    <span ng-bind-html="language.value | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        <button ng-click="resetSearch()" class="btn btn-default" title="Refresh"><i
+                                class="fa fa-refresh"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <spinner show="page_loading"></spinner>
+        <div class="custom-datatable switch-search-filter table-responsive" ng-show="!page_loading">
+            <table datatable="" class="row-border hover" dt-options="dtOptions" dt-columns="dtColumns"
+                   dt-instance="dtInstanceCallback">
+            </table>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    table th:first-child {
+        width: 20px !important;
+    }
+
+    table th:last-child {
+        width: 90px !important;
+    }
+
+    .panel.filter .mda-form-group {
+        padding: 0 0 10px 0;
+    }
+
+    .dataTables_filter {
+        display: none;
+    }
+
+    .dataTables_wrapper {
+        overflow-x: hidden;
+    }
+</style>

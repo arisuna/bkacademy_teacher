@@ -16,13 +16,13 @@
                     "noRender": !(AppAclService.validateAction('admin', 'index')),
                     "acl": "",
                     "subMenu": [
-                        {"title": "LANGUAGES_TEXT", "state": "app.language.index"},
-                        {"title": "CONSTANTS_TEXT", "state": "app.constant.index"},
-                        {"title": "CURRENCY_TEXT", "state": "app.currency.index"},
-                        {"title": "COUNTRIES_TEXT", "state": "app.country.index"},
-                        {"title": "CITIES_TEXT", "state": "app.city.index"},
-                        {"title": "SECTIONS_MODES_TEXT", "state": "app.section-mode.index"},
-                        {"title": "SYSTEM_ATTRIBUTES_TEXT", "state": "app.system-attribute.index"},
+                        {"title": "LANGUAGES_TEXT", "state": "app.language.list"},
+                        {"title": "CONSTANTS_TEXT", "state": "app.constant.list"},
+                        {"title": "CURRENCY_TEXT", "state": "app.currency.list"},
+                        {"title": "COUNTRIES_TEXT", "state": "app.country.list"},
+                        {"title": "CITIES_TEXT", "state": "app.city.list"},
+                        {"title": "SECTIONS_MODES_TEXT", "state": "app.section-mode.list"},
+                        {"title": "SYSTEM_ATTRIBUTES_TEXT", "state": "app.system-attribute.list"},
                     ]
                 },
                 {
@@ -32,9 +32,9 @@
                     "noRender": !(AppAclService.validateAction('admin', 'index')),
                     "acl": "",
                     "subMenu": [
-                        {"title": "ACLS_TEXT", "state": "app.acl.index"},
-                        {"title": "ACL_GROUPS_ROLES_TEXT", "state": "app.acl-group-role.index"},
-                        {"title": "USERS_TEXT", "state": "app.user.index"},
+                        {"title": "ACLS_TEXT", "state": "app.acl.list"},
+                        {"title": "ACL_GROUPS_ROLES_TEXT", "state": "app.acl-group-role.list"},
+                        {"title": "USERS_TEXT", "state": "app.user.list"},
                     ]
                 },
                 {
@@ -44,8 +44,8 @@
                     "noRender": !(AppAclService.validateAction('admin', 'index')),
                     "acl": "",
                     "subMenu": [
-                        {"title": "SYSTEM_EMAIL_TEMPLATES_TEXT", "state": "app.system-email-template.index"},
-                        {"title": "SYSTEM_NOTIFICATIONS_TEXT", "state": "app.system-notification.index"},
+                        {"title": "SYSTEM_EMAIL_TEMPLATES_TEXT", "state": "app.system-email-template.list"},
+                        {"title": "SYSTEM_NOTIFICATIONS_TEXT", "state": "app.system-notification.list"},
                     ]
                 },
                 {
@@ -55,8 +55,8 @@
                     "noRender": !(AppAclService.validateAction('admin', 'index')),
                     "acl": "",
                     "subMenu": [
-                        {"title": "OFFICES_TEXT", "state": "app.office.index"},
-                        {"title": "LOCATIONS_TEXT", "state": "app.location.index"},
+                        {"title": "OFFICES_TEXT", "state": "app.office.list"},
+                        {"title": "LOCATIONS_TEXT", "state": "app.location.list"},
                     ]
                 },
                 {
@@ -66,11 +66,11 @@
                     "noRender": !(AppAclService.validateAction('admin', 'index')),
                     "acl": "",
                     "subMenu": [
-                        {"title": "CATEGORIES_TEXT", "state": "app.category.index"},
-                        {"title": "PRODUCT_FIELDS_TEXT", "state": "app.product-field.index"},
-                        {"title": "PRODUCT_FIELD_GROUPS_CATEGORIES_TEXT", "state": "app.product-field-group-category.index"},
-                        {"title": "PRODUCT_ATTRIBUTES_TEXT", "state": "app.product-attribute.index"},
-                        {"title": "BRANDS_TEXT", "state": "app.brand.index"},
+                        {"title": "CATEGORIES_TEXT", "state": "app.category.list"},
+                        {"title": "PRODUCT_FIELDS_TEXT", "state": "app.product-field.list"},
+                        {"title": "PRODUCT_FIELD_GROUPS_CATEGORIES_TEXT", "state": "app.product-field-group-category.list"},
+                        {"title": "PRODUCT_ATTRIBUTES_TEXT", "state": "app.product-attribute.list"},
+                        {"title": "BRANDS_TEXT", "state": "app.brand.list"},
                     ]
                 },
             ]

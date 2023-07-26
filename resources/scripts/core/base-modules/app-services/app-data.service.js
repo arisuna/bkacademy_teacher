@@ -7910,5 +7910,90 @@
             });
             return deferred.promise;
         }
+
+        /** get list contracts with pagination **/
+        this.synchronizeConstant = function () {
+            var deferred = $q.defer();
+            AppHttp.put('/app/constant/synchronize')
+                .then(function (response) {
+                    if (angular.isDefined(response.data.success) && response.data.success === true) {
+                        deferred.resolve(response.data);
+                    } else {
+                        deferred.reject(response.data);
+                    }
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+
+
+        this.getConstantInit = function () {
+            var deferred = $q.defer();
+            AppHttp.get('/app/constant/initialize')
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.getConstantDetail = function (id) {
+            var deferred = $q.defer();
+            AppHttp.get('/app/constant/detail/' + id)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.getConstantList = function (params) {
+            var deferred = $q.defer();
+            AppHttp.put('/app/constant/search', params)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.deleteConstant = function (id) {
+            var deferred = $q.defer();
+            AppHttp.delete('/app/constant/delete/' + id)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.createConstant = function (data) {
+            var deferred = $q.defer();
+            AppHttp.post('/app/constant/create', data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+
+        this.updateConstant = function (data) {
+            var deferred = $q.defer();
+            AppHttp.put('/app/constant/update/' + data.id, data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
     }
 })();
