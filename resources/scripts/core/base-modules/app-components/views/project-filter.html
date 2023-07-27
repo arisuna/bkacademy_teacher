@@ -1,0 +1,56 @@
+<div class="project-filter">
+    <div class="pd-1x relo-bg-dark-blue-5 bd-radius-5x">
+        <div class="row mx-0">
+            <div class="col-sm-7 text-left pd-l-0">
+            </div>
+            <div class="col-sm-5 text-right pd-r-0">
+                <div class="btn-group dropdown open pull-right mg-l-1x"
+                     uib-dropdown=""
+                     style="vertical-align: unset; margin-top: 3px"
+                     ng-show="$ctrl.isSort">
+                    <button type="button" class="btn btn-round dropdown-toggle"
+                            uib-dropdown-toggle=""
+                            aria-haspopup="true" aria-expanded="true">
+                        <i class="fa-solid fa-arrow-down-wide-short txt-16" aria-hidden="true"></i>
+                    </button>
+                    <ul ng-if="$ctrl.columns" class="dropdown-menu dropdown-menu-right" uib-dropdown-menu="" role="menu"
+                        aria-labelledby="split-button">
+                        <li role="menuitem" ng-repeat="column in $ctrl.columns track by $index" ng-class="{'active': column.default == true}">
+                            <a ng-click="$ctrl.sortByColumnAndOrder($ctrl.moduleName, column.name, column.descending, $index)">
+                                {{column.label | translate}} {{ column.sortText | translate}}</a></li>
+                    </ul>
+                </div>
+                <button ng-click="$ctrl.clearFilter()"
+                        ng-show="$ctrl.isFilter"
+                        uib-tooltip="{{'CLEAR_ALL_FILTERS_BTN_TEXT' | translate}}"
+                        class="btn pointer btn-round pull-right filter-dark-blue" style="margin-top:3px;">
+<!--                    <i class="fa-solid fa-eraser txt-16"></i>-->
+                    <em class="fa-solid fa-eraser txt-16 txt-dark-blue"></em>
+                </button>
+
+                <div class="mr-lg project-filter-select pull-right"
+                     ng-show="$ctrl.isSearch">
+                    <div class="input-group search"
+                         ng-class="{'search-2': $ctrl.moduleName == 'credit_notes', 'search': $ctrl.moduleName != 'credit_notes'}">
+                        <input
+                            class="form-control form-control-custom-radius filter-search ng-valid filter-search-{{$ctrl.moduleName}}"
+                            ng-model="$ctrl.query"/>
+                        <span class="input-group-btn">
+                            <button type="button" ng-click="$ctrl.executeSearch()" class="btn btn-default btn-flat"
+                                    style="">
+                                <span class="fa fa-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script type="text/ng-template" id="managerFilterDialog.html">
+    <manager-filter module-name="ngDialogData.moduleName" is-module-archived="ngDialogData.isModuleArchived"></manager-filter>
+</script>
+
