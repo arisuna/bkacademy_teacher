@@ -18,7 +18,7 @@
                     "subMenu": [
                         {"title": "LANGUAGES_TEXT", "state": "app.language.list"},
                         {"title": "CONSTANTS_TEXT", "state": "app.constant.list"},
-                        {"title": "CURRENCY_TEXT", "state": "app.currency.list"},
+                        {"title": "CURRENCIES_TEXT", "state": "app.currency.list"},
                         {"title": "COUNTRIES_TEXT", "state": "app.country.list"},
                         {"title": "CITIES_TEXT", "state": "app.city.list"},
                         {"title": "SECTIONS_MODES_TEXT", "state": "app.section-mode.list"},
