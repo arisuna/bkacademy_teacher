@@ -192,6 +192,10 @@
     border-bottom: 1px solid $relo-white;
 }
 
+.bd-t-white {
+    border-top: 1px solid $relo-white !important;
+}
+
 .left-bd-grey {
     border-left: 5px solid #cdd0d4 !important;
 }
