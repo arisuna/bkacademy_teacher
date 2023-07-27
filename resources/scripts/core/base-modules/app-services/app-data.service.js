@@ -5405,6 +5405,17 @@
             return deferred.promise;
         }
 
+        this.changeLanguage = function (data) {
+            let deferred = $q.defer();
+            AppHttp.put('/app/profile/changeLanguage/' +  data).then(function (response) {
+                deferred.resolve(response.data);
+                return response.data;
+            }).catch(function (err) {
+                deferred.reject(err);
+            });
+            return deferred.promise;
+        }
+
         this.getUserSettingVariables = function () {
             let deferred = $q.defer();
             AppHttp.get('/app/profile/getSettingVariables')

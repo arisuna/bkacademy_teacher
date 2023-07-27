@@ -5,8 +5,8 @@
 (function () {
     'use strict';
 
-    App.controller('sideNavCtrl', ['$rootScope', '$scope', 'sideNavFactory', '$timeout', 'AppAuthService',
-        function ($rootScope, $scope, sideNavFactory, $timeout, AppAuthService) {
+    App.controller('sideNavCtrl', ['$rootScope', '$scope', 'sideNavFactory', '$timeout', '$translate', 'AppAuthService', 'AppDataService', 'WaitingService',
+        function ($rootScope, $scope, sideNavFactory, $timeout, $translate, AppAuthService, AppDataService, WaitingService) {
 
             $scope.getTheme = function(){
                 $scope.company = AppAuthService.getCompany();
@@ -93,6 +93,28 @@
                     $('#relo-nav-bottom').addClass('relo-nav-bottom');
                 }
             }
+
+            $scope.changeLanguage = function(language){
+                WaitingService.begin();
+                AppDataService.changeLanguage(language).then(
+                    function (res) {
+                        WaitingService.end();
+                        if (res.success) {
+                            if (!angular.isObject($rootScope.setting.language)) {
+                                $rootScope.setting.language = {};
+                            }
+                            $translate.use(language);
+                            WaitingService.popSuccess('SAVE_lANGUAGE_SUCCESS_TEXT');
+                        } else {
+                            WaitingService.error(res.message);
+                        }
+                    },
+                    function (err) {
+                        console.info('err', err);
+                        WaitingService.expire();
+                    }
+                )
+            };
 
 
         }

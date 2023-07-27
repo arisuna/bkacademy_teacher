@@ -138,6 +138,17 @@
                         <span class="" ng-if="!app.layout.isCollapsedNav">{{'ADMIN_PAGE_TEXT' | translate}}</span>
                     </a>
                 </li>
+                <li class="dropdown dropdown-list userguide-dropdown has-children collapse_nav"
+                    ng-class="{collapse_nav: !!app.layout.isCollapsedNav}">
+                    <a>
+                        <em class="fa-solid fa-language"></em>
+                        <span class="" ng-if="!app.layout.isCollapsedNav">{{'LANGUAGE_TEXT' | translate}}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a ng-click="changeLanguage('en')" >{{ 'ENGLISH_TEXT' | translate }}</a></li>
+                        <li><a ng-click="changeLanguage('vi')" >{{ 'VIETNAMESE_TEXT' | translate }}</a></li>
+                    </ul>
+                </li>
                 <li ng-class="{active: $state.includes(item.sref), collapse_nav: !!app.layout.isCollapsedNav}"
                     tooltip-placement="right"
                     tooltip-enable="!!app.layout.isCollapsedNav"
