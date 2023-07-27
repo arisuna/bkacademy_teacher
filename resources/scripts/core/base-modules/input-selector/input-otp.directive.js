@@ -22,7 +22,7 @@
             link: function ($scope, elem) {
 
                 $scope.options = {
-                    size: 4,
+                    size: 6,
                     type: "text",
                     onDone: function (value) {
                         console.log(value);
