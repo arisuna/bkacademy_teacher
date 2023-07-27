@@ -19,16 +19,16 @@
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
-                        <th class="text-dark-blue">#</th>
-                        <th class="text-dark-blue">{{'NAME_TEXT' | translate }}</th>
-                        <th class="text-dark-blue">{{'VALUE_TEXT' | translate }}</th>
-                        <th class="text-dark-blue">{{'VALUE_EN_TEXT' | translate }}</th>
-                        <th class="text-dark-blue">{{'VALUE_VI_TEXT' | translate }}</th>
-                        <th class="text-dark-blue"></th>
+                        <th class="text-dark-blue bd-b-white">#</th>
+                        <th class="text-dark-blue bd-b-white">{{'NAME_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'VALUE_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'VALUE_EN_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'VALUE_VI_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="(index, object) in table.pagedItems[table.currentPage]" class="relo-bg-dark-blue-5 bd-r-5 border-white">
+                    <tr ng-repeat="(index, object) in table.pagedItems[table.currentPage]" class="relo-bg-bright-gray-4 bd-r-5 border-white">
                         <td class="bd-t-white">{{ object.id }}</td>
                     <td ng-style="{'width':'300px'}" class="bd-t-white">
                         <div ng-click="editConstantFn( object )"
