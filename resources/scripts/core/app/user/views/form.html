@@ -1,0 +1,101 @@
+<div class="card card-nobox" ng-controller="ConstantFormController">
+    <div class="card-heading">
+        <div class="row">
+            <div class="col-sm-6 text-left">
+                <h4>{{ isClone ? 'Clone constant #' + object.id : (object.id ? 'Edit constant #' + object.id : 'Create
+                    new
+                    constant') }}</h4>
+            </div>
+            <div class="col-sm-6 text-right">
+                <back-button-state ui-sref="app.constant.list"></back-button-state>
+            </div>
+        </div>
+    </div>
+    <form class="form-validate" validate-form="" role="form"
+          ng-submit="saveFn()" novalidate="" ng-show="!page_loading"> <!--officeForm.$valid && -->
+
+        <div class="card-body">
+            <div class="mda-form-group float-label">
+                <input class="mda-form-control" type="text" required ng-model="object.name"
+                       data-parsley-required-message="Name is required"/>
+                <label>Name <span class="text-danger">*</span></label>
+            </div>
+
+            <div class="mda-form-group">
+                <input class="mda-form-control" type="text" ng-model="object.value"/>
+                <label>Original Value (need to translate) <span class="text-danger">*</span> </label>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h4>Translation</h4>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <button type="button" class="btn btn-primary green btn-circle"
+                                    ng-click="addDataTranslate()"><em class="fa fa-plus"></em>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row mb-lg">
+                        <div class="col-sm-3"><b>Language</b></div>
+                        <div class="col-sm-6"><b>Value</b></div>
+                        <div class="col-sm-3"></div>
+                    </div>
+                    <div class="row mb-lg" ng-repeat="(key, item) in data_translated">
+                        <div class="col-sm-3">
+                            <select class="chosen-select form-control" chosen="" ng-model="item.language"
+                                    ng-options="language.iso as language.description for language in supported_language"
+                                    data-placeholder-text-single="'- Select language'">
+                                <option></option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <input class="mda-form-control" type="text" ng-model="item.value"/>
+                        </div>
+                        <div class="col-sm-3 text-right">
+                            <button type="button" class="btn relo-bg-red btn-circle"
+                                    ng-click="removeDataTranslate(key)">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mda-form-group float-label" ng-if="object.id">
+                <input class="mda-form-control" type="text" ng-model="object.created_at" readonly/>
+                <label>Created on (Read only)</label>
+            </div>
+
+            <div class="mda-form-group float-label" ng-if="object.id">
+                <input class="mda-form-control" type="text" ng-model="object.updated_at" readonly/>
+                <label>Last updated on (Read only)</label>
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-sm-12 text-right">
+                    <button type="button" ng-if="object.id" class="btn relo-bg-red mr-lg" ng-click="deleteFn(object.id)"
+                            title="Delete">
+                        <i class="fa fa-trash mr-sm" ng-disabled="saving"></i>
+                        Delete
+                    </button>
+                    <button type="button" ng-if="object.id" class="btn relo-bg-bright-blue mr-lg"
+                            ui-sref="app.constant.clone({ id : object.id })"
+                            title="Clone" ng-disabled="saving">
+                        <i class="fa fa-copy mr-sm"></i>
+                        Clone
+                    </button>
+                    <button type="submit" class="btn relo-bg-green" title="Save" ng-disabled="saving"><i
+                            class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

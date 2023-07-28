@@ -138,19 +138,6 @@
             var self = this;
             var promiseList = [];
 
-
-            promiseList.push(
-                AppDataService.verifyDomain().then(function (res) {
-                    if (res.success) {
-                        if (angular.isDefined(res.data.redirect) && res.data.redirect == true && angular.isDefined(res.data.mainAppFrontendUrl)) {
-                            $window.location.href = res.data.mainAppFrontendUrl;
-                        }
-                    }
-                }, function (err) {
-                    deferred.reject(err);
-                })
-            )
-
             promiseList.push(
                 DataSystem.getSystemData().then(function (res) {
                     self.data.currencies = DataSystem.getCurrencies();
