@@ -1,6 +1,6 @@
 <div class="form-group" ng-class="{'mg-0': noMargin}">
 
-    <div ng-if="isEditable == true && isNumeric !=  true && !(maxLength >0) && isUrl != true && hasPattern">
+    <div ng-if="isEditable == true && isNumeric !=  true && isEmail != true && !(maxLength >0) && isUrl != true && hasPattern">
         <label class="label-text-form" ng-if="showLabel">
             {{ label | translate }}
             <tooltip text="{{ toolTipText | translate }}" ng-if="toolTipText" class="ml-sm"></tooltip>
@@ -17,7 +17,7 @@
                data-parsley-required-message="{{ requiredMessage | translate }}"
                ng-change="changeValue()">
     </div>
-    <div ng-if="isEditable == true && isNumeric !=  true && !(maxLength >0) && isUrl != true && !hasPattern">
+    <div ng-if="isEditable == true && isNumeric !=  true && !(maxLength >0) && isUrl != true && isEmail != true && !hasPattern">
         <label class="label-text-form" ng-if="showLabel">
             {{ label | translate }}
             <tooltip text="{{ toolTipText | translate }}" ng-if="toolTipText" class="ml-sm"></tooltip>
@@ -79,6 +79,23 @@
                ng-model="$parent.model"
                data-parsley-type="url"
                data-parsley-type-message="{{ 'INVALID_URL_TEXT' | translate }}"
+               data-parsley-required-message="{{ requiredMessage | translate }}"
+               ng-change="changeValue()">
+    </div>
+    <div ng-if="isEditable == true && isEmail ==  true">
+        <label class="label-text-form" ng-if="showLabel">
+            {{ label | translate }}
+            <tooltip text="{{ toolTipText | translate }}" ng-if="toolTipText" class="ml-sm"></tooltip>
+            <asterik-red ng-if="required" class="mr-sm"></asterik-red>
+        </label>
+        <input type="text"
+               step="{{step}}"
+               placeholder="{{ placeholder | translate }}"
+               class="form-control form-control-custom-radius relo-bg-bright-blue-10"
+               ng-required="isRequired"
+               ng-model="$parent.model"
+               data-parsley-type="email"
+               data-parsley-type-message="{{ 'INVALID_EMAIL_TEXT' | translate }}"
                data-parsley-required-message="{{ requiredMessage | translate }}"
                ng-change="changeValue()">
     </div>

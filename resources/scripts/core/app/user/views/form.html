@@ -5,7 +5,7 @@
       name="userForm"
       data-parsley-validate=""
       ng-submit="saveFn()"
-      ng-show="!page_loading"
+      ng-if="!page_loading"
       novalidate>
       <div class="panel panel-primary white-block height-80vh scroll-y">
         <div class="panel-body">
@@ -16,15 +16,8 @@
                                         show-label="true"
                                         is-editable="true"
                                         is-required="true"
+                                        required-message="ENTER_ROLE_TEXT"
                                         tool-tip-text="{{ 'TOOLTIP_ROLE_TEXT' | translate }}"></app-roles-selector>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <app-sex-selector label="SEX_TEXT"
-                                      is-editable="true"
-                                      ng-model="user.sex"
-                                      name="member_sex"></app-sex-selector>
                 </div>
             </div>
             <div class="row">
@@ -50,97 +43,26 @@
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <input-text is-editable="true"
-                                is-text="true"
-                                ng-model="user.jobtitle"
-                                required-message="ENTER_JOB_TITLE_TEXT"
-                                label="JOB_TITLE_TEXT"
+                    <input-text is-editable="!(user.id > 0)"
+                                is-email="true"
+                                is-required="true"
+                                ng-model="user.email"
+                                required-message="ENTER_EMAIL_TEXT"
+                                label="EMAIL_TEXT"
                                 show-label="true"></input-text>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-sm-6">
                     <input-text is-editable="true"
                                 is-telephone="true"
                                 is-required="true"
-                                ng-model="user.phonework"
-                                required-message="ENTER_PHONE_WORK_TEXT"
-                                label="PHONE_WORK_TEXT"
+                                ng-model="user.phone"
+                                required-message="ENTER_PHONE_TEXT"
+                                label="PHONE_TEXT"
                                 show-label="true"></input-text>
-                </div>
-                <div class="col-sm-6">
-                    <input-text is-editable="true"
-                                is-telephone="true"
-                                is-required="false"
-                                ng-model="user.phonehome"
-                                required-message=""
-                                label="HOME_PHONE_TEXT"
-                                show-label="true"></input-text>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <input-text is-editable="true"
-                                is-telephone="true"
-                                is-required="false"
-                                ng-model="user.mobilehome"
-                                required-message=""
-                                label="HOME_MOBILE_TEXT"
-                                show-label="true"></input-text>
-                </div>
-                <div class="col-sm-6">
-                    <input-text is-editable="true"
-                                is-fax="true"
-                                is-required="false"
-                                ng-model="user.fax"
-                                required-message=""
-                                label="FAX_TEXT"
-                                show-label="true"></input-text>
-                </div>
-                <div class="col-sm-6">
-                    <input-text is-editable="true"
-                                is-fax="true"
-                                is-required="false"
-                                ng-model="user.private_fax"
-                                required-message=""
-                                label="PRIVATE_FAX_TEXT"
-                                show-label="true"></input-text>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <input-text is-editable="true"
-                                is-email="true"
-                                is-required="true"
-                                ng-model="user.workemail"
-                                required-message="ENTER_WORK_EMAIL_TEXT"
-                                label="WORK_EMAIL_TEXT"
-                                show-label="true"></input-text>
-                </div>
-                <div class="col-sm-6">
-                    <input-text is-editable="true"
-                                is-email="true"
-                                is-required="false"
-                                ng-model="user.privateemail"
-                                required-message="ENTER_WORK_EMAIL_TEXT"
-                                invalid-message="INVALID_EMAIL_TEXT"
-                                label="PRIVATE_EMAIL_TEXT"
-                                show-label="true"></input-text>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <app-spoken-languages-selector ng-model="user.spoken_languages"
-                                                   is-editable="true"
-                                                   is-required="false"
-                                                   show-label="true"
-                                                   label="SPOKEN_LANGUAGE_TEXT"></app-spoken-languages-selector>
                 </div>
             </div>
         </div>
-
         </div>
-        </form>
 
         <div class="card-footer">
             <div class="row">
@@ -148,17 +70,11 @@
                     <button type="button" ng-if="user.id" class="btn relo-bg-red mr-lg" ng-click="deleteFn(user.id)"
                             title="Delete">
                         <i class="fa fa-trash mr-sm" ng-disabled="saving"></i>
-                        Delete
-                    </button>
-                    <button type="button" ng-if="user.id" class="btn relo-bg-bright-blue mr-lg"
-                            ui-sref="app.constant.clone({ id : user.id })"
-                            title="Clone" ng-disabled="saving">
-                        <i class="fa fa-copy mr-sm"></i>
-                        Clone
+                        {{'DELETE_TEXT' | translate}}
                     </button>
                     <button type="submit" class="btn relo-bg-green" title="Save" ng-disabled="saving"><i
                             class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
-                        Save
+                        {{'SAVE_TEXT' | translate}}
                     </button>
                 </div>
             </div>

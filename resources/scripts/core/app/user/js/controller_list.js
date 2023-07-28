@@ -173,7 +173,7 @@
                     AppDataService.deleteUser(user.id).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess();
-                            $scope.getList();
+                            $scope.reloadInit();
                         } else {
                             WaitingService.error(msg);
                         }

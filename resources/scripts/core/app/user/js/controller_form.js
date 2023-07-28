@@ -10,9 +10,6 @@
             $scope.page_loading = true;
             $scope.user = {};
 
-            $scope.user_groups = AppSystem.getSettingUserGroups();
-            console.log($scope.user_groups);
-
             $scope.getDetailFn = function () {
                 var id = angular.isDefined($stateParams.id) ? $stateParams.id : 0;
                 if (id == 0) {

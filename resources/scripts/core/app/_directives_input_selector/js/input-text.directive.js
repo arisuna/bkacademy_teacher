@@ -5,9 +5,9 @@
         .module('app.input-selector')
         .directive('inputText', inputText);
 
-    inputText.$inject = ['$translate', '$timeout', 'urlBase', '$filter'];
+    inputText.$inject = ['$translate', '$timeout', 'urlBase', '$filter', 'Utils'];
 
-    function inputText($translate, $timeout, urlBase, $filter) {
+    function inputText($translate, $timeout, urlBase, $filter, Utils) {
 
         var directive = {
             restrict: 'AE',

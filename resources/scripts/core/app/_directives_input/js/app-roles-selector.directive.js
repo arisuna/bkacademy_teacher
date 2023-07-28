@@ -86,9 +86,12 @@
                         width: 300,
                         data: {
                             roles: $scope.roles,
+                            height: 'height-100px'
                         },
 
-                        controller: ['$scope', '$element', '$timeout', 'GmsWorkersService', 'Utils', function ($scope, $element, $timeout, GmsMemberService, Utils) {
+                        controller: ['$scope', '$element', '$timeout', 'Utils', function ($scope, $element, $timeout, Utils) {
+
+                            $scope.height = $scope.ngDialogData.height ? $scope.ngDialogData.height : 'height-200px';
 
                             $scope.roles = $scope.ngDialogData.roles;
 
