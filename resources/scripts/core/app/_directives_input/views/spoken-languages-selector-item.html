@@ -1,0 +1,61 @@
+<div class="form-group">
+    <div>
+        <label class="label-text-form" ng-show="showLabel == true && label != ''">
+            {{ label | translate }}
+        </label>
+        <div class="clearfix"></div>
+    </div>
+
+    <div ng-if="isEditable == true">
+        <div>
+            <div class="pull-left">
+                <button type="button"
+                        class="btn btn-circle btn-primary"
+                        ng-click="openSearchDialog($event)">
+                    {{ data.languages_selected.length }}
+                </button>
+                <a ng-click="openSearchDialog($event)">{{'ADD_TEXT' | translate }}</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+
+        <div class="list-group list-group-flat relo-bd-gray bd-radius-3px mt bd-1x"
+             ng-show="data.languages_selected.length > 0">
+            <a class="list-group-item text-overflow-ellipsis"
+               ng-repeat="language in data.languages_selected track by language.code">
+
+                <div class="flex pull-left">
+                    <span class="">{{language.name}} </span>
+                </div>
+
+                <div class="flex pull-right">
+                    <em class="fa fa-times txt-16 text-gray"
+                        ng-click="removeLanguage(language)"></em>
+                </div>
+
+                <div class="clearfix"></div>
+            </a>
+        </div>
+    </div>
+
+    <div ng-if="isEditable == false">
+        <div>
+            <button type="button" class="btn btn-circle btn-primary">
+                {{ data.languages_selected.length }}
+            </button>
+        </div>
+
+        <div class="list-group list-group-flat relo-bd-gray bd-radius-3px mt"
+             ng-show="data.languages_selected.length > 0">
+            <a class="list-group-item text-overflow-ellipsis pd-l-0"
+               ng-repeat="language in data.languages_selected track by language.code">
+                <div class="flex">
+                    <span>{{language.name}} </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+

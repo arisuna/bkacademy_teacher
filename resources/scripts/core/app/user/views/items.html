@@ -21,26 +21,38 @@
                     <tr>
                         <th class="text-dark-blue bd-b-white">#</th>
                         <th class="text-dark-blue bd-b-white">{{'NAME_TEXT' | translate }}</th>
-                        <th class="text-dark-blue bd-b-white">{{'VALUE_TEXT' | translate }}</th>
-                        <th class="text-dark-blue bd-b-white">{{'VALUE_EN_TEXT' | translate }}</th>
-                        <th class="text-dark-blue bd-b-white">{{'VALUE_VI_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'EMAIL_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'PHONE_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'ROLE_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'STATUS_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'CREATED_AT_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white"></th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="(index, object) in table.pagedItems[table.currentPage]" class="relo-bg-bright-gray-4 bd-r-5 border-white">
-                        <td class="bd-t-white">{{ object.id }}</td>
-                    <td ng-style="{'width':'300px'}" class="bd-t-white">
-                        <div ng-click="editConstantFn( object )"
+                        <td class="bd-t-white">{{ index + 1}}</td>
+                    <td  class="bd-t-white">
+                        <div ng-click="editUserFn( object )"
                              class="wrap-word text-bright-blue">{{ object.name }}
                         </div>
                     </td>
-                    <td class="bd-t-white">{{ object.value }}</td>
-                    <td class="bd-t-white">{{ object.value_en }}</td>
-                    <td class="bd-t-white">{{ object.value_vi }}</td>
+                    <td class="bd-t-white">{{ object.email }}</td>
+                    <td class="bd-t-white">{{ object.phone }}</td>
+                    <td class="bd-t-white">{{ object.role | translate }}</td>
+                    <td class="bd-t-white">
+                        <button class="selected-status btn btn-flat btn-circle flex text-center flex-vertical"
+                                uib-dropdown-toggle=""
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                tooltip-placement="bottom"
+                                uib-tooltip="{{ object.is_active  == 1 ? ('ACTIVE_TEXT' | translate) : ('INACTIVE_TEXT' | translate) }}"
+                                ng-class="{'is-terminated': object.is_active != 1, 'is-active': object.is_active == 1}">
+                        </button>
+                    </td>
+                    <td class="bd-t-white">{{ object.created_at | amDateFormat: 'DD/MM/YY'}}</td>
                     <td class="text-right bd-t-white">
-                        <button-edit-icon ng-click="editConstantFn( object )" class="mr-sm"></button-edit-icon>
-                        <button-clone-icon ng-click="cloneConstantFn( object )" class="mr-sm"></button-clone-icon>
+                        <button-edit-icon ng-click="editUserFn( object )" class="mr-sm"></button-edit-icon>
                         <button-delete-icon ng-click="deleteFn( object )"></button-delete-icon>
                     </td>
                     </tr>

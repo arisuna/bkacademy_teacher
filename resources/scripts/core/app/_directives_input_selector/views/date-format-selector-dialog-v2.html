@@ -1,0 +1,16 @@
+<div class="panel panel-default panel-default-b">
+    <div class="panel-body height-200px overflow-y-enable" ng-style="{'padding':'5px'}">
+        <div class="list-group list-group-flat list-group-blue">
+            <a class="list-group-item text-overflow-ellipsis"
+               ng-repeat="item in dateFormats"
+               ng-class="{'active': (searchConfig.currentItem.code == item.code)}"
+               ng-click="selectItem(item)">
+                <div class="flex">
+                    <span class="ml-sm">
+                        {{item.code}}
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

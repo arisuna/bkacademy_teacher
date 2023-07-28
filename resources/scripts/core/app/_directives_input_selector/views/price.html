@@ -1,0 +1,48 @@
+<div class="form-group" ng-class="{'mg-0': noMargin}">
+
+
+    <div ng-show="isEditable == true">
+        <label class="label-text-form" ng-if="showLabel">
+            {{ label | translate }}
+            <tooltip text="{{ toolTipText | translate }}" ng-if="toolTipText" class="ml-sm"></tooltip>
+            <asterik-red ng-if="required" class="mr-sm"></asterik-red>
+        </label>
+        <input type="text"
+               step="0.01"
+               fraction-size="2"
+               min="0"
+               data-parsley-excluded=true
+               placeholder="{{ placeholder | translate }}"
+               class="form-control form-control-custom-radius relo-bg-bright-blue-10"
+               min="0"
+               ng-model="numberDisplay"
+               onfocus="angular.element(this).scope().useNumber(this)"
+               onblur="angular.element(this).scope().useText(this)">
+
+        <input  ng-show="false"
+                type="text"
+                ng-model="model"
+                ng-required="isRequired"
+                data-parsley-required-message="{{ requiredMessage | translate }}"/>
+    </div>
+
+
+    <div ng-show="isEditable == false">
+
+        <div>
+            <label class="label-text-form" ng-if="showLabel">
+                {{ label | translate }}
+                <span class="text-red" ng-if="required">*</span>
+            </label>
+            <tooltip text="{{ toolTipText | translate }}" ng-if="toolTipText" class="ml-sm"></tooltip>
+        </div>
+
+
+        <div class="text-static">
+            <info-viewer
+                ng-model="numberDisplay"
+                is-long-view-text="isLongViewText"
+                is-disabled="isDisabled"></info-viewer>
+        </div>
+    </div>
+</div>

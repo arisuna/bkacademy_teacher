@@ -1,0 +1,32 @@
+<div class="form-group">
+    <div ng-if="isEditable == true">
+        <div>
+            <label class="label-text-form pull-left">{{ label | translate }}
+                <span class="text-red" ng-if="isRequired">*</span>
+            </label>
+            <tooltip ng-show="toolTipText != '' && toolTipText != undefined" text="{{ toolTipText }}"
+                     class="pull-left ml-sm"></tooltip>
+            <div class="clearfix"></div>
+        </div>
+
+        <app-wysiwyg ng-model="$parent.model"
+                     ng-change="changeValue()"
+                     is-required="required"></app-wysiwyg>
+    </div>
+
+
+    <div ng-if="isEditable == false">
+        <div>
+            <label class="label-text-form pull-left">{{ label | translate }}
+                <span class="text-red" ng-if="isRequired">*</span>
+            </label>
+            <tooltip ng-show="toolTipText != '' && toolTipText != undefined" text="{{ toolTipText }}"
+                     class="pull-left ml-sm"></tooltip>
+            <div class="clearfix"></div>
+        </div>
+        <div class="text-static bd-radius-3x pd-1x relo-bd-gray bd-1x"
+             ng-style="{'min-height' :'120px', 'width': '100%'}">
+            <div ng-bind-html="$parent.model | trustMe"></div>
+        </div>
+    </div>
+</div>

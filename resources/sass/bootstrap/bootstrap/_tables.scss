@@ -3,7 +3,6 @@
 // --------------------------------------------------
 
 
-$relo-white: #ffffff;
 table {
   background-color: $table-bg;
 }
@@ -124,7 +123,7 @@ th {
 
 .table-hover {
   > tbody > tr:hover {
-    background-color: $relo-white;
+    background-color: $table-bg-hover;
   }
 }
 

@@ -1,0 +1,54 @@
+<div>
+
+
+
+    <div class="input-group">
+
+        <span class="input-group-addon relo-bg-bright-blue-10 noBorder"
+              ng-show="type == 2">
+            {{discountInput.prefix}}
+        </span>
+
+
+        <input class="form-control relo-bg-bright-blue-10 noBorder"
+               name="{{ realName }}"
+               type="text"
+               ng-model="model"
+               string-to-number=""
+               ng-change="discountInput.onChange()"
+               ng-keydown="discountInput.onKeyPress($event)"
+               ng-disabled="disabled"
+               data-parsley-errors-container="#error_{{ realName }}"
+               ng-blur="discountInput.onBlur()">
+
+
+        <span class="input-group-addon relo-bg-bright-blue-10 noBorder"
+              ng-show="type == 1">
+            {{discountInput.postfix}}
+        </span>
+
+
+        <div class="input-group-btn" uib-dropdown="dropdown">
+            <button class="btn dropdown-toggle pb0 relo-bg-bright-blue-10 min-height-35px btn-flat"
+                    uib-dropdown-toggle="" type="button">
+                <i class="fa fa-caret-down"></i>
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                <li>
+                    <a ng-click="type = 1;model = 0;">
+                        <span>{{'PERCENTAGE_TEXT' | translate}} ({{discountInput.postfix}})</span>
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="type = 2;model = 0;">
+                        <span>{{'AMOUNT_TEXT' | translate}} ({{discountInput.prefix}})</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div id="error_{{ realName }}"></div>
+</div>

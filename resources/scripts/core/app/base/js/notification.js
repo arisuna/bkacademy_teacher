@@ -210,7 +210,7 @@
                     function (data) {
                         toaster.pop({
                             type: 'reminder',
-                            body: 'gms-notification-reminder',
+                            body: 'app-notification-reminder',
                             showCloseButton: false,
                             bodyOutputType: 'directive',
                             timeout: 60000,
@@ -229,7 +229,7 @@
                     function (data) {
                         toaster.pop({
                             type: 'reminder',
-                            body: 'gms-notification-reminder',
+                            body: 'app-notification-reminder',
                             showCloseButton: false,
                             bodyOutputType: 'directive',
                             timeout: 60000,

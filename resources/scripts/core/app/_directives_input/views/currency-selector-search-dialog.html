@@ -1,0 +1,22 @@
+<div class="panel panel-default panel-default-b">
+    <div class="panel-heading" ng-style="{'padding':'5px'}">
+        <div class="row">
+            <div class="col-md-12">
+                <input-text-search ng-model="searchConfig.query"
+                                   ng-search="applyFilter()"></input-text-search>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body height-30vh-m70px overflow-y-enable" ng-style="{'padding':'5px'}">
+        <div class="list-group list-group-flat list-group-blue">
+            <a class="list-group-item text-overflow-ellipsis"
+               ng-repeat="currency in currencies | filter: searchConfig.filterQuery"
+               ng-class="{'active': (searchConfig.currentItem.code == currency.code)}"
+               ng-click="selectItem(currency)">
+                <div class="flex">
+                    <span class="ml-sm">{{currency.name}} {{ currency.code}} </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

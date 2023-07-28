@@ -402,7 +402,7 @@
                 {name: $translate.instant('PAID_TEXT'), value: 3, id: 3, color: 'green', text: 'PAID_TEXT'},
             ],
 
-            __gms_member_status_list: [
+            __app_member_status_list: [
                 {name: $translate.instant('INACTIVE_TEXT'), value: 1, id: 1, color: 'gray', text: 'INACTIVE_TEXT'},
                 {
                     name: $translate.instant('LOGIN_MISSING_TEXT'),
@@ -414,7 +414,7 @@
                 {name: $translate.instant('PENDING_TEXT'), value: 3, id: 3, color: 'red', text: 'PENDING_TEXT'},
                 {name: $translate.instant('HAS_ACCESS_TEXT'), value: 4, id: 4, color: 'blue', text: 'HAS_ACCESS_TEXT'},
             ],
-            __gms_member_role_list: [
+            __app_member_role_list: [
                 {name: $translate.instant('GMS_ADMIN_TEXT'), value: 1, id: 1, color: 'gray', text: 'GMS_ADMIN_TEXT'},
                 {
                     name: $translate.instant('GMS_MANAGER_TEXT'),
@@ -808,11 +808,11 @@
         };
 
         this.getGmsMemberStatusList = function () {
-            return vm.config.__gms_member_status_list;
+            return vm.config.__app_member_status_list;
         };
 
         this.getGmsMemberRoleList = function () {
-            return vm.config.__gms_member_role_list;
+            return vm.config.__app_member_role_list;
         };
 
         this.getHrAccountStatusList = function () {

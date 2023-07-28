@@ -1,0 +1,113 @@
+<div class="card">
+    <div class="card-heading card-white ">
+        <h4 class="card-title">{{'CITIES_TEXT' | translate}} {{ 'IN_TEXT' | translate }} {{ country.name }}</h4>
+    </div>
+    <div class="card-body height-60vh">
+        <div class="row box-dialog-content">
+            <div class="">
+                <div class="col-sm-12 col-sm-12 border-right">
+                    <div class="">
+                        <input-text-search ng-model="search.query"
+                                           ng-search="initSearch()"></input-text-search>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 border-right">
+                    <div class="mt" ng-if="isLoading">
+                        <line-loading-spinner lines="10" options="c-l1"
+                                              class="mt"></line-loading-spinner>
+                    </div>
+
+                    <div class="">
+                        <div class="list-group border-0 height-60vh-70px overflow-y-enable hidden-tab-scroll"
+                             ng-show="!isLoading">
+                            <a class="list-group-item border-0"
+                               ng-repeat="city in cities"
+                               ng-class="{'active': (cityPreSelected.geonameid == city.geonameid)}"
+                               ng-click="preSelectCity(city, $index);">
+                                <div>
+                                    {{ city.name }} - {{ city.state_county_name }}
+                                </div>
+                            </a>
+
+                            <div class="text-center mg-t-5s mg-b-5s" ng-show="totalCities - cities.length > 0">
+                                <button class="btn btn-oval relo-bg-bright-gray text-blue" ng-click="loadMoreCities()">
+                                <span ng-if="isLoading">
+                                    <i class="fa fa-spinner fa-spin"></i>
+                                </span>
+                                    <span class="text-bright-blue">
+                                        {{ 'MORE_CITIES_TEXT' | translate }} {{ totalCities - cities.length }} {{'CITIES_TEXT' | translate }}
+                                    </span>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 height-60vh-70px scroll-right-box overflow-y-enable">
+
+                    <spinner-v2 ng-show="isLoadingItem"
+                                type="spin"></spinner-v2>
+
+                    <div ng-if="!isLoadingItem && cityPreSelected.geonameid > 0">
+
+                        <div class="flex height-30px">
+                            <div class="flex-vertical width-40px text-center">
+                                <em class="fas fa-city text-18 text-dark-blue"></em>
+                            </div>
+                            <div class="flex-vertical">
+                                <h4>{{ cityPreSelected.name }}</h4>
+                            </div>
+                        </div>
+
+                        <div class="flex height-30px">
+                            <div class="flex-vertical width-40px text-center">
+                                <em class="fa fa-map-marker text-18 text-dark-blue"></em>
+                            </div>
+                            <div class="flex-vertical">
+                                {{ cityPreSelected.state_county_name }}
+                            </div>
+                        </div>
+
+                        <div class="flex height-30px">
+                            <div class="flex-vertical width-40px text-center">
+                                <em class="fa fa-users text-18 text-dark-blue"></em>
+                            </div>
+                            <div class="flex-vertical">
+                                {{ cityPreSelected.population | number:0 }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-b" ng-show="hasCustomCity == true">
+                        <div class="form-group">
+                            <label class="text-dark-blue label-text-form">{{ 'CUSTOM_CITY_NAME_TEXT' | translate }}</label>
+                            <input type="text"
+                                   class="form-control"
+                                   name="home_city"
+                                   ng-model="$parent.customCityName">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-right">
+
+        <button class="btn btn-flat btn-transparent text-dark-blue btn-oval pull-left"
+                ng-click="addCustomCity()">
+            {{ 'DO_NOT_FIND_CITY_TEXT' | translate }}
+        </button>
+
+
+        <button ng-click="confirmSelect()"
+                class="btn btn-oval relo-bg-green pull-right"
+                ng-disabled="!cityPreSelected.geonameid > 0 && ( hasCustomCity == false && customCityName == '' )">
+            <em ng-if="cityPreSelected.id > 0"
+                class="fa fa-check mr-sm"></em>
+            {{ 'SELECT_TEXT' | translate }}
+            <em class="fa fa-long-arrow-right ml-sm"></em>
+        </button>
+
+        <div class="clearfix"></div>
+    </div>
+</div>

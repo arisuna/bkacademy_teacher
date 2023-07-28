@@ -1,0 +1,79 @@
+<div class="form-group">
+    <div>
+        <label class="label-text-form pull-left"
+               ng-show="showLabel == true && label != ''">
+            {{ label | translate }}
+            <asterik-red ng-if="isRequired">*</asterik-red>
+        </label>
+
+        <span class="text-right text-sm pull-right"
+              ng-if="showLabel == true && isEditable == true && showRemoveLabel"
+              ng-show="!(data.selected.id == null || data.selected.id == '' || data.selected.id == undefined) && isEditable == true">
+            <a ng-click="removeItem();">
+                {{'REMOVE_TEXT'|translate}}
+            </a>
+        </span>
+        <div class="clearfix"></div>
+    </div>
+
+
+    <div ng-if="isEditable == true"
+         class="user-profile-view-rectangle relo-bg-bright-blue-10">
+        <div class="item"
+             ng-show="!(data.selected.id == null || data.selected.id == '' || data.selected.id == undefined)">
+            <country-flag circle="false"
+                          country-code="data.selected.cio"
+                          size="32"
+                          class="flag-rectangle-2 mr-sm"></country-flag>
+            <span class="principal pd-t-3">
+               <a ng-click="openSearchDialog($event)">
+                    <span class="ml-sm">{{data.selected.name}}</span>
+               </a>
+            </span>
+
+            <span class="close text-gray">
+                <a ng-click="removeItem()">
+                    <em class="fa fa-times"></em>
+                </a>
+            </span>
+
+            <div class="clearfix"></div>
+        </div>
+
+
+        <div class="item"
+             ng-show="data.selected.id == null || data.selected.id == '' || data.selected.id == undefined">
+            <em class="fa fa-earth-asia txt-16 mg-l-1x text-dark-gray mr-sm"></em>
+            <span class="principal pd-t-3">
+               <a ng-click="openSearchDialog($event)">
+                     {{'SELECT_COUNTRY_TEXT' | translate }}
+                </a>
+            </span>
+        </div>
+    </div>
+
+    <div class="user-profile-view"
+         ng-if="isEditable == false">
+        <div class="item"
+             ng-if="!(data.selected.id == null || data.selected.id == '' || data.selected.id == undefined)">
+            <country-flag circle="false"
+                          country-code="data.selected.cio" size="32"
+                          class="flag-rectangle-2 mr-sm"></country-flag>
+            <span class="ml-sm">{{data.selected.name}}</span>
+        </div>
+
+        <div class="item"
+             ng-if="data.selected.id == null || data.selected.id == '' || data.selected.id == undefined">
+            <em class="fa fa-earth-asia txt-16 mg-l-1x text-dark-gray mr-sm"></em>
+            <span class="principal pd-t-3">
+            </span>
+        </div>
+    </div>
+
+    <input type="text"
+           class="input-invisible"
+           ng-show="false"
+           ng-model="data.selected.id"
+           ng-required="isRequired"
+           data-parsley-required-message="{{ requiredMessage | translate }}"/>
+</div>

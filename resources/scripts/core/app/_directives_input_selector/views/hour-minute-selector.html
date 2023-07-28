@@ -1,0 +1,128 @@
+<div class="form-group">
+    <div>
+        <label class="label-text-form pull-left" ng-show="showLabel == true && label != ''">
+            {{ label | translate }}
+            <asterik-red ng-if="isRequired">*</asterik-red>
+        </label>
+
+        <tooltip ng-show="toolTipText != '' && toolTipText != undefined"
+                 text="{{ toolTipText }}"
+                 class="pull-left ml-sm"></tooltip>
+
+
+        <div class="clearfix"></div>
+    </div>
+
+
+    <div ng-if="isEditable == true"
+         class="user-profile-view-rectangle relo-bg-bright-blue-10">
+        <div class="item"
+             ng-if="data.selected.hour >= 0 && data.selected.hour != null">
+            <em class="fa-solid fa-clock text-16 mg-l-1x txt-dark-gray mr-sm"></em>
+            <span class="c pd-t-3">
+               <a ng-click="openSearchDialog($event)">
+                    {{ 10 > data.selected.hour ? data.selected.hour.toString().padStart(2, 0) : data.selected.hour }}:{{ 10 > data.selected.minute ? data.selected.minute.toString().padStart(2, 0) : data.selected.minute }}
+               </a>
+            </span>
+
+            <span class="close text-gray" ng-if="!!!isNotShowClear">
+                <a ng-click="removeItem()">
+                    <em class="fa fa-times"></em>
+                </a>
+            </span>
+        </div>
+
+
+        <div class="item"
+             ng-if="data.selected.hour == null || data.selected.hour == '' || data.selected.hour == undefined">
+            <em class="fa-solid fa-clock text-16 mg-l-1x txt-dark-gray mr-sm"></em>
+            <span class="c pd-t-3">
+               <a ng-click="openSearchDialog($event)">
+                   {{'SELECT_TEXT' | translate }}
+                </a>
+            </span>
+        </div>
+    </div>
+
+    <div class="user-profile-view"
+         ng-if="isEditable == false">
+        <div class="item">
+            <em class="fa-solid fa-clock text-16 mg-l-1x txt-dark-gray mr-sm"></em>
+            <span class="c pd-t-3"
+                  ng-if="data.selected.hour >= 0 && data.selected.hour != null">
+                    {{ 10 > data.selected.hour ? "0" + data.selected.hour : data.selected.hour }}:{{ 10 > data.selected.minute ? "0" + data.selected.minute : data.selected.minute }}
+            </span>
+
+            <span class="c pd-t-3"
+                  ng-if="data.selected.hour == null || data.selected.hour == '' || data.selected.hour == undefined">
+                {{ 'EMPTY_TEXT' | translate }}
+            </span>
+
+        </div>
+    </div>
+
+    <input ng-show="false"
+           class="input-invisible"
+           ng-value="data.selected.value"
+           data-parsley-validate=""
+           ng-required="isRequired"
+           data-parsley-required-message="{{ requiredMessage | translate }}"/>
+
+    <script type="text/ng-template"
+            id="hourMinuteDialog.tpl">
+
+        <div class="panel panel-default panel-default-b">
+            <div class="panel-heading overflow-y-enable">
+                <div class="col-sm-6">{{ 'HOUR_TEXT' | translate }}</div>
+                <div class="col-sm-6">{{ 'MINUTE_TEXT' | translate }}</div>
+            </div>
+            <div class="panel-body overflow-disable pd-1x pd-t-0 pb-b-0">
+                <div class="">
+                    <div class="col-sm-6 height-150px overflow-y-enable relo-bg-bright-gray pd-l-0 pd-r-0">
+                        <div class="list-group list-group-flat list-group-blue">
+                            <a class="list-group-item"
+                               ng-class="{'relo-bg-bright-blue': hourItem == hour}"
+                               ng-repeat="hourItem in hourList"
+                               ng-click="selectHour(hourItem)">
+                                <div class="flex">
+                                    <span class="flex-vertical">
+                                        {{ 10 > hourItem ? '0' + hourItem : hourItem }}
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 height-150px overflow-y-enable relo-bg-bright-gray pd-l-0 pd-r-0">
+                        <div class="list-group list-group-flat list-group-blue">
+                            <a class="list-group-item "
+                               ng-repeat="minuteItem in minuteList"
+                               ng-class="{'relo-bg-bright-blue': minuteItem == minute}"
+                               ng-click="selectMinute(minuteItem)">
+                                <div class="flex">
+                                    <span class="flex-vertical">
+                                       {{ 10 > minuteItem ? '0' + minuteItem : minuteItem }}
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body text-center pd-1x">
+                <div class="">
+                    <button class="btn btn-primary pull-right"
+                            ng-click="confirmSelect()"
+                            type="button">
+                        <span class="mr-sm" ng-if="hour != '' && hour != null">
+                            {{ 10 > hour ? "0" + hour : hour }}:{{ 10 > minute ? "0" + minute : minute }}
+                        </span>
+                        {{'CONFIRM_BTN_TEXT' | translate}}
+                    </button>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+        </div>
+    </script>
+</div>

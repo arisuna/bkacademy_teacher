@@ -4,7 +4,7 @@
 
 
     <div class="mt"></div>
-    <gms-employee-filter-full
+    <app-employee-filter-full
         name="ASSIGNEE_TEXT"
         companies="object.selected_companies"
         model="object.selected_assignees"
@@ -14,44 +14,44 @@
         auto-search="true"
         float="true"
         dropdown-size="medium"
-        inline-list="true"></gms-employee-filter-full>
+        inline-list="true"></app-employee-filter-full>
 
 
-    <gms-country-filter
+    <app-country-filter
         name="ORIGIN_TEXT"
-        model="object.selected_countries_origin"></gms-country-filter>
+        model="object.selected_countries_origin"></app-country-filter>
 
 
-    <gms-property-selector
+    <app-property-selector
         ng-model="object.property_id"
         label="PROPERTY_TEXT"
         show-label="true"
-        is-required="false"></gms-property-selector>
+        is-required="false"></app-property-selector>
 
 
-    <gms-attribute-selector
+    <app-attribute-selector
         attribute-name="PROPERTY_TYPE"
         is-required="false"
         show-label="true"
         ng-model="object.property_type"
         required-message="PROPERTY_TYPE_REQUIRED_TEXT"
-        label="PROPERTY_TYPE_TEXT"></gms-attribute-selector>
+        label="PROPERTY_TYPE_TEXT"></app-attribute-selector>
 
 
-    <gms-service-provider-single-selector
+    <app-service-provider-single-selector
         provider-type-name="landlord"
         label="LANDLORD_TEXT"
         show-label="true"
         is-editable="true"
-        ng-model="object.landlord_svp_id"></gms-service-provider-single-selector>
+        ng-model="object.landlord_svp_id"></app-service-provider-single-selector>
 
 
-    <gms-service-provider-single-selector
+    <app-service-provider-single-selector
         provider-type-name="agent"
         label="AGENT_TEXT"
         show-label="true"
         is-editable="true"
-        ng-model="object.agent_svp_id"></gms-service-provider-single-selector>
+        ng-model="object.agent_svp_id"></app-service-provider-single-selector>
 
 </div>
 <style>

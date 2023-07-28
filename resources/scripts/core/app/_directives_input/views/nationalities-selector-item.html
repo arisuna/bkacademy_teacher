@@ -1,0 +1,69 @@
+<div class="form-group">
+    <div>
+        <label class="label-text-form" ng-show="showLabel == true && label != ''">
+            {{ label | translate }}
+        </label>
+        <div class="clearfix"></div>
+    </div>
+
+    <div ng-if="isEditable == true">
+        <div>
+            <div class="pull-left">
+                <button type="button"
+                        class="btn btn-circle btn-primary"
+                        ng-click="openSearchDialog($event)">
+                    {{ data.nationalities_selected.length }}
+                </button>
+                <a ng-click="openSearchDialog($event)">{{'ADD_TEXT' | translate }}</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+
+        <div class="list-group list-group-flat relo-bd-gray bd-radius-3px mt bd-1x"
+             ng-show="data.nationalities_selected.length > 0">
+            <a class="list-group-item text-overflow-ellipsis"
+               ng-repeat="nationality in data.nationalities_selected track by nationality.code">
+
+                <div class="flex pull-left">
+                    <country-flag circle="false"
+                                  country-code="nationality.code"
+                                  size="32"
+                                  class="flag-rectangle-2 mr-sm"></country-flag>
+                    <span class="ml-sm">{{nationality.value}} </span>
+                </div>
+
+                <div class="flex pull-right">
+                    <em class="fa fa-times txt-16 text-gray"
+                        ng-click="removeNationality(nationality)"></em>
+                </div>
+
+                <div class="clearfix"></div>
+            </a>
+        </div>
+    </div>
+
+    <div ng-if="isEditable == false">
+        <div>
+            <button type="button" class="btn btn-circle btn-primary">
+                {{ data.nationalities_selected.length }}
+            </button>
+        </div>
+
+        <div class="list-group list-group-flat relo-bd-gray bd-radius-3px mt"
+             ng-show="data.nationalities_selected.length > 0">
+            <a class="list-group-item text-overflow-ellipsis pd-l-0"
+               ng-repeat="nationality in data.nationalities_selected track by nationality.code">
+                <div class="flex">
+                    <country-flag circle="false"
+                                  country-code="nationality.code"
+                                  size="32"
+                                  class="flag-rectangle-2 mr-sm"></country-flag>
+                    <span class="ml-sm">{{nationality.value}} </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+

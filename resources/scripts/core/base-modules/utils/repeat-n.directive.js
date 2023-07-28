@@ -1,5 +1,5 @@
 /**=========================================================
- * Module: gms-repeat-n.js
+ * Module: app-repeat-n.js
  * Provides a simple way to display the current time formatted
  =========================================================*/
 

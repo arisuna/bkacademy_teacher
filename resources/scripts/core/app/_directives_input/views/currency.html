@@ -1,0 +1,85 @@
+<div class="form-group" ng-class="{'mg-0': noMargin == true}">
+
+    <div>
+        <label class="label-text-form pull-left" ng-show="showLabel == true && label != ''">
+            {{ label | translate }}
+            <asterik-red ng-if="isRequired">*</asterik-red>
+        </label>
+
+        <span class="text-right text-sm pull-right"
+              ng-if="showLabel == true && isRemove == true && showRemoveLabel"
+              ng-show="!(data.selected.code == null || data.selected.code == '' || data.selected.code == undefined) && isEditable == true">
+            <a ng-click="removeItem();">
+                {{'REMOVE_TEXT' | translate}}
+            </a>
+        </span>
+        <div class="clearfix"></div>
+    </div>
+
+    <div ng-if="isEditable == true"
+         class="user-profile-view-rectangle relo-bg-bright-blue-10">
+        <div class="item"
+             ng-show="!(data.selected.code == null || data.selected.code == '' || data.selected.code == undefined)">
+
+            <span class="icon">
+                <em class="fa fa-info text-dark-gray text-16"></em>
+            </span>
+
+            <span class="principal pd-t-4">
+               <a ng-click="openSearchDialog($event)">
+                    <span class="">{{data.selected.name}} - {{data.selected.code}}</span>
+               </a>
+            </span>
+
+            <span class="close text-gray" ng-if="isRemove == true">
+                <a ng-click="removeItem()">
+                    <em class="fa fa-times"></em>
+                </a>
+            </span>
+
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="item"
+             ng-show="data.selected.code == null || data.selected.code == '' || data.selected.code == undefined">
+
+            <span class="icon">
+                <em class="fa fa-info text-dark-gray text-16"></em>
+            </span>
+
+            <span class="principal pd-t-3">
+               <a ng-click="openSearchDialog($event)">
+                     {{'SELECT_CURRENCY_TEXT' | translate }}
+                </a>
+            </span>
+        </div>
+    </div>
+
+    <div class="user-profile-view"
+         ng-if="isEditable == false">
+        <div class="item"
+             ng-if="!(data.selected.code == null || data.selected.code == '' || data.selected.code == undefined)">
+            <span class="icon">
+                <em class="ml-sm fa fa-info text-dark-gray text-16"></em>
+            </span>
+            <span class="pd-t-4">{{data.selected.name}} - {{data.selected.code}}</span>
+        </div>
+
+        <div class="item"
+             ng-if="data.selected.code == null || data.selected.code == '' || data.selected.code == undefined">
+             <span class="icon">
+                <em class="fa fa-info text-dark-gray text-16"></em>
+            </span>
+
+            <span class="principal pd-t-3">
+            </span>
+        </div>
+    </div>
+
+    <input type="text"
+           ng-model="data.selected.code"
+           ng-show="false"
+           class="input-invisible"
+           ng-required="isRequired"
+           data-parsley-required-message="{{ requiredMessage | translate }}"/>
+</div>

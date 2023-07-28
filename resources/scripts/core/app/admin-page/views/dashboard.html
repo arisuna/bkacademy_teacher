@@ -4,7 +4,7 @@
             <div class="row list-settings">
                 <div ng-repeat="item in $root.menuSettings" class="col-md-3 col-sm-6 col-xs-6 mt-15"
                      ng-if="!item.noRender" app-acl-allow="{{item.acl}}">
-                    <div class="text-center setting-item panel b {{ app.layout.openSideNav2 ? 'resize-setting-box-gms': '' }}">
+                    <div class="text-center setting-item panel b {{ app.layout.openSideNav2 ? 'resize-setting-box-app': '' }}">
                         <div class="setting-item-hover ">
                             <div class="" ng-class="{'setting-item-hover-icon': item.iconType == 'icon', 'setting-item-hover-image': item.iconType == 'svg'}">
                                 <img ng-if="item.iconType == 'svg'" class="thumb100" ng-src="{{item.icon}}"/>
@@ -92,10 +92,10 @@
                                      admin-title="GMS_ADMIN_HEADER_TEXT"
                                      text="GMS_ADMIN_SUBTITLE_TEXT"
                                      ng-if="GmsAclService.validateAction('my_company','index') ||
-                                         GmsAclService.validateAction('gms_member','index')"
+                                         GmsAclService.validateAction('app_member','index')"
                                      links="[
                                          {state:'app.my-company.index',title:'GMS_TEXT',acl:'my_company/index'},
-                                         {state:'app.gms-members.list',title:'GMS_MEMBERS_TEXT',acl:'gms_member/index'},
+                                         {state:'app.app-members.list',title:'GMS_MEMBERS_TEXT',acl:'app_member/index'},
                                          {state:'app.guide.list',title:'MY_GUIDES_TEXT',acl:'guide/index'}
                                          ]"></app-panel-admin>
 

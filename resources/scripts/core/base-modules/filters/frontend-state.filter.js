@@ -6,11 +6,11 @@
     'use strict';
     angular
         .module('app.filters')
-        .filter('gmsFrontendState', gmsFrontendState);
+        .filter('appFrontendState', appFrontendState);
 
-    gmsFrontendState.$inject = ['$filter'];
+    appFrontendState.$inject = ['$filter'];
 
-    function gmsFrontendState($filter) {
+    function appFrontendState($filter) {
 
         return filter;
 

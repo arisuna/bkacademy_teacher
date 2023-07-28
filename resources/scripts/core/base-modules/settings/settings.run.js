@@ -42,7 +42,7 @@
             offsidebarOpen: false,
             asideToggled: false,
             viewAnimation: 'ng-fadeInUp',
-            topMenuUrl: '/assets/views/partials/gms-menu.html'
+            topMenuUrl: '/assets/views/partials/app-menu.html'
         };
 
         // Setup the layout mode

@@ -24,7 +24,7 @@
             console.log('authen failed');
             console.log( $window.location.pathname );
 
-            if( $window.location.pathname == '/gms' ){
+            if( $window.location.pathname == '/app' ){
                 $window.location.assign('/app/#/login');
             }
             if( $window.location.pathname == '/employees' ){

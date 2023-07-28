@@ -1,0 +1,25 @@
+<div class="panel panel-default panel-default-b">
+    <div class="panel-heading" ng-style="{'padding':'5px'}">
+        <div class="row">
+            <div class="col-md-12">
+                <input-text-search ng-model="searchConfig.query"
+                                   ng-search="applyFilter()"></input-text-search>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body height-200 overflow-y-enable" ng-style="{'padding':'5px'}">
+        <div class="list-group list-group-flat">
+            <a class="list-group-item text-overflow-ellipsis"
+               ng-repeat="nationality in nationalities | filter: searchConfig.filterQuery"
+               ng-click="selectItem(nationality)">
+                <div class="flex">
+                    <country-flag circle="false"
+                                  country-code="nationality.code"
+                                  size="32"
+                                  class="flag-rectangle-2 mr-sm"></country-flag>
+                    <span class="ml-sm">{{nationality.value}} </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

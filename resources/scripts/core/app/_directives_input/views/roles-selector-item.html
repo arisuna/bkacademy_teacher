@@ -1,0 +1,71 @@
+<div class="form-group" ng-class="{'mg-0': noMargin}">
+    <div ng-if="showLabel == true">
+        <label class="label-text-form pull-left" ng-show="showLabel == true && label != ''">
+            {{ label | translate }}
+            <asterik-red ng-if="isRequired">*</asterik-red>
+        </label>
+
+        <tooltip ng-if="toolTipText" text="{{ toolTipText  }}" class="ml-sm"></tooltip>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <div ng-if="isEditable == true" class="user-profile-view-rectangle relo-bg-bright-blue-10">
+        <div class="item"
+             ng-show="data.selected.id > 0">
+
+
+            <span class="icon">
+                <em class="fa-solid fa-info text-dark-gray text-16"></em>
+            </span>
+
+            <span class="c pd-t-3">
+               <a ng-click="openSearchDialog($event)">
+                    {{data.selected.label | translate }}
+                </a>
+            </span>
+
+            <span class="close text-gray">
+                <a ng-click="removeItem()">
+                    <em class="fa fa-times"></em>
+                </a>
+            </span>
+        </div>
+        <div class="item"
+             ng-show="data.selected.id == null || data.selected.id == '' || data.selected.id == undefined">
+            <span class="icon">
+                <em class="fa-solid fa-info text-dark-gray text-16"></em>
+            </span>
+            <span class="c pd-t-3">
+               <a ng-click="openSearchDialog($event)">
+                     {{'SELECT_TEXT' | translate }}
+                </a>
+            </span>
+        </div>
+    </div>
+
+    <div class="user-profile-view" ng-if="isEditable == false">
+        <div class="item">
+
+            <span class="icon">
+                <em class="fa-solid fa-info text-dark-gray text-16"></em>
+            </span>
+
+            <span class="c pd-t-3" ng-if="data.selected.id > 0">
+                 {{data.selected.label | translate }}
+            </span>
+
+            <span class="c pd-t-3" ng-if="!data.selected.id > 0">
+                {{ 'EMPTY_TEXT' | translate }}
+            </span>
+
+        </div>
+    </div>
+
+    <input ng-show="false"
+           class="input-invisible"
+           ng-value="data.selected.id"
+           data-parsley-validate=""
+           ng-required="isRequired"
+           data-parsley-required-message="{{ requiredMessage | translate }}"/>
+</div>

@@ -1,0 +1,34 @@
+<div>
+    <label class="label-text-form pull-left" ng-show="showLabel == true && label != ''">
+        {{ label | translate }}
+    </label>
+    <span class="text-right mt-sm text-sm pull-right"
+          ng-show="!disabled && !isLoading && citySelected.geonameid > 0">
+        <a ng-disabled="disabled" ng-click="removeCitySelected();">
+            {{'REMOVE_TEXT'|translate}}
+        </a>
+    </span>
+    <div class="clearfix"></div>
+
+
+    <div class="user-profile-view" ng-class="{' relo-bg-bright-blue-10': !disabled}">
+        <div class="not-found"
+             ng-show="citySelected.geonameid > 0">
+            <img src="/app/assets/img/svg/city-circle1.svg" class="thumb32 img-circle mr-sm"/>
+            <a ng-show="!disabled" class="" ng-click="openModal()">
+                {{citySelected.name}} - {{citySelected.state_county_name }}
+            </a>
+            <span ng-show="disabled" class="">
+                {{citySelected.name}} - {{citySelected.state_county_name }}
+            </span>
+        </div>
+
+        <div class="not-found" ng-show="citySelected.geonameid == undefined">
+            <img src="/app/assets/img/svg/city-circle1.svg" class="thumb32 img-circle mr-sm"/>
+            <span class="">
+                <a ng-show="!disabled" ng-click="openModal()">{{'SELECT_TEXT' | translate }}</a>
+<!--                <span ng-show="disabled">{{'SELECT_TEXT' | translate }}</span>-->
+            </span>
+        </div>
+    </div>
+</div>

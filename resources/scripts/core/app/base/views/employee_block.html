@@ -21,7 +21,7 @@
             </a>
 
             <a class="color-white"
-               gms-acl-not-allow="employee/index">
+               app-acl-not-allow="employee/index">
                 <h4 class="user-block-name">{{ baseEmployee.firstname }}</h4>
                 <h4 class="user-block-name">{{ baseEmployee.lastname }}</h4>
             </a>
@@ -66,7 +66,7 @@
                    ui-sref="app.assignment.dashboard({uuid:baseAssignment.uuid})" class="text-bright-blue">
                     {{ baseAssignment.reference }}</a>
 
-                <a gms-acl-not-allow="assignment/index"
+                <a app-acl-not-allow="assignment/index"
                    class="text-bright-blue">
                     {{ baseAssignment.reference }}</a>
             </p>
@@ -79,7 +79,7 @@
                    ui-sref="app.relocation.dashboard({uuid:baseRelocation.uuid})"
                    class="text-bright-blue">{{ baseRelocation.identify }}</a>
 
-                <a gms-acl-not-allow="relocation/view"
+                <a app-acl-not-allow="relocation/view"
                    ui-sref="app.relocation.dashboard({uuid:baseRelocation.uuid})"
                    class="text-bright-blue">{{ baseRelocation.identify }}</a>
 
@@ -93,7 +93,7 @@
                    ui-sref="app.relocation.service-detail({uuid:baseService.uuid})"
                    class="text-bright-blue">{{ baseService.name }}</a>
 
-                <a gms-acl-not-allow="relocation-service/index"
+                <a app-acl-not-allow="relocation-service/index"
                    acl-remove="true"
                    class="text-bright-blue">{{ baseService.name }}</a>
 

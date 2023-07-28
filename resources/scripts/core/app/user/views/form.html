@@ -1,91 +1,157 @@
-<div class="card card-nobox" ng-controller="ConstantFormController">
-    <div class="card-heading">
-        <div class="row">
-            <div class="col-sm-6 text-left">
-                <h4>{{ isClone ? 'Clone constant #' + object.id : (object.id ? 'Edit constant #' + object.id : 'Create
-                    new
-                    constant') }}</h4>
-            </div>
-            <div class="col-sm-6 text-right">
-                <back-button-state ui-sref="app.constant.list"></back-button-state>
-            </div>
-        </div>
-    </div>
-    <form class="form-validate" validate-form="" role="form"
-          ng-submit="saveFn()" novalidate="" ng-show="!page_loading"> <!--officeForm.$valid && -->
-
-        <div class="card-body">
-            <div class="mda-form-group float-label">
-                <input class="mda-form-control" type="text" required ng-model="object.name"
-                       data-parsley-required-message="Name is required"/>
-                <label>Name <span class="text-danger">*</span></label>
-            </div>
-
-            <div class="mda-form-group">
-                <input class="mda-form-control" type="text" ng-model="object.value"/>
-                <label>Original Value (need to translate) <span class="text-danger">*</span> </label>
-            </div>
-
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h4>Translation</h4>
-                        </div>
-                        <div class="col-sm-6 text-right">
-                            <button type="button" class="btn btn-primary green btn-circle"
-                                    ng-click="addDataTranslate()"><em class="fa fa-plus"></em>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row mb-lg">
-                        <div class="col-sm-3"><b>Language</b></div>
-                        <div class="col-sm-6"><b>Value</b></div>
-                        <div class="col-sm-3"></div>
-                    </div>
-                    <div class="row mb-lg" ng-repeat="(key, item) in data_translated">
-                        <div class="col-sm-3">
-                            <select class="chosen-select form-control" chosen="" ng-model="item.language"
-                                    ng-options="language.iso as language.description for language in supported_language"
-                                    data-placeholder-text-single="'- Select language'">
-                                <option></option>
-                            </select>
-                        </div>
-                        <div class="col-sm-6">
-                            <input class="mda-form-control" type="text" ng-model="item.value"/>
-                        </div>
-                        <div class="col-sm-3 text-right">
-                            <button type="button" class="btn relo-bg-red btn-circle"
-                                    ng-click="removeDataTranslate(key)">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
+<div class="card card-nobox" ng-controller="UserFormController">
+    <form class="form-validate"
+      validate-form=""
+      role="form"
+      name="userForm"
+      data-parsley-validate=""
+      ng-submit="saveFn()"
+      ng-show="!page_loading"
+      novalidate>
+      <div class="panel panel-primary white-block height-80vh scroll-y">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <app-roles-selector ng-model="user.user_group_id"
+                                        label="ROLE_TEXT"
+                                        show-label="true"
+                                        is-editable="true"
+                                        is-required="true"
+                                        tool-tip-text="{{ 'TOOLTIP_ROLE_TEXT' | translate }}"></app-roles-selector>
                 </div>
             </div>
-
-            <div class="mda-form-group float-label" ng-if="object.id">
-                <input class="mda-form-control" type="text" ng-model="object.created_at" readonly/>
-                <label>Created on (Read only)</label>
+            <div class="row">
+                <div class="col-sm-12">
+                    <app-sex-selector label="SEX_TEXT"
+                                      is-editable="true"
+                                      ng-model="user.sex"
+                                      name="member_sex"></app-sex-selector>
+                </div>
             </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input-text is-editable="true"
+                                is-required="true"
+                                is-text="true"
+                                ng-model="user.firstname"
+                                required-message="ENTER_FIRST_NAME_TEXT"
+                                label="FIRST_NAME_TEXT"
+                                show-label="true"></input-text>
 
-            <div class="mda-form-group float-label" ng-if="object.id">
-                <input class="mda-form-control" type="text" ng-model="object.updated_at" readonly/>
-                <label>Last updated on (Read only)</label>
+                </div>
+                <div class="col-sm-6">
+                    <input-text is-editable="true"
+                                is-required="true"
+                                is-text="true"
+                                ng-model="user.lastname"
+                                required-message="ENTER_LAST_NAME_TEXT"
+                                label="LAST_NAME_TEXT"
+                                show-label="true"></input-text>
+                </div>
             </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                ng-model="user.jobtitle"
+                                required-message="ENTER_JOB_TITLE_TEXT"
+                                label="JOB_TITLE_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input-text is-editable="true"
+                                is-telephone="true"
+                                is-required="true"
+                                ng-model="user.phonework"
+                                required-message="ENTER_PHONE_WORK_TEXT"
+                                label="PHONE_WORK_TEXT"
+                                show-label="true"></input-text>
+                </div>
+                <div class="col-sm-6">
+                    <input-text is-editable="true"
+                                is-telephone="true"
+                                is-required="false"
+                                ng-model="user.phonehome"
+                                required-message=""
+                                label="HOME_PHONE_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input-text is-editable="true"
+                                is-telephone="true"
+                                is-required="false"
+                                ng-model="user.mobilehome"
+                                required-message=""
+                                label="HOME_MOBILE_TEXT"
+                                show-label="true"></input-text>
+                </div>
+                <div class="col-sm-6">
+                    <input-text is-editable="true"
+                                is-fax="true"
+                                is-required="false"
+                                ng-model="user.fax"
+                                required-message=""
+                                label="FAX_TEXT"
+                                show-label="true"></input-text>
+                </div>
+                <div class="col-sm-6">
+                    <input-text is-editable="true"
+                                is-fax="true"
+                                is-required="false"
+                                ng-model="user.private_fax"
+                                required-message=""
+                                label="PRIVATE_FAX_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input-text is-editable="true"
+                                is-email="true"
+                                is-required="true"
+                                ng-model="user.workemail"
+                                required-message="ENTER_WORK_EMAIL_TEXT"
+                                label="WORK_EMAIL_TEXT"
+                                show-label="true"></input-text>
+                </div>
+                <div class="col-sm-6">
+                    <input-text is-editable="true"
+                                is-email="true"
+                                is-required="false"
+                                ng-model="user.privateemail"
+                                required-message="ENTER_WORK_EMAIL_TEXT"
+                                invalid-message="INVALID_EMAIL_TEXT"
+                                label="PRIVATE_EMAIL_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <app-spoken-languages-selector ng-model="user.spoken_languages"
+                                                   is-editable="true"
+                                                   is-required="false"
+                                                   show-label="true"
+                                                   label="SPOKEN_LANGUAGE_TEXT"></app-spoken-languages-selector>
+                </div>
+            </div>
+        </div>
 
         </div>
+        </form>
 
         <div class="card-footer">
             <div class="row">
                 <div class="col-sm-12 text-right">
-                    <button type="button" ng-if="object.id" class="btn relo-bg-red mr-lg" ng-click="deleteFn(object.id)"
+                    <button type="button" ng-if="user.id" class="btn relo-bg-red mr-lg" ng-click="deleteFn(user.id)"
                             title="Delete">
                         <i class="fa fa-trash mr-sm" ng-disabled="saving"></i>
                         Delete
                     </button>
-                    <button type="button" ng-if="object.id" class="btn relo-bg-bright-blue mr-lg"
-                            ui-sref="app.constant.clone({ id : object.id })"
+                    <button type="button" ng-if="user.id" class="btn relo-bg-bright-blue mr-lg"
+                            ui-sref="app.constant.clone({ id : user.id })"
                             title="Clone" ng-disabled="saving">
                         <i class="fa fa-copy mr-sm"></i>
                         Clone

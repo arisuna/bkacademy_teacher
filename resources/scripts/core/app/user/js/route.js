@@ -16,7 +16,7 @@
                         templateUrl: helper.modulePath('app', 'user/index'),
                     }
                 },
-                acl: 'user/manage',
+                acl: 'admin/index',
                 params: {
                     showSideNav2: true,
                     templateSideNav2: helper.modulePath('app', 'admin-page/left')
@@ -43,18 +43,6 @@
                         templateUrl: helper.modulePath('app', 'user/form', '_=' + Math.random())
                     }
                 },
-            }).state('app.user.clone', {
-                url: '/clone/{id}',
-                title: 'CLONE_USER_TEXT',
-                parent: 'app.user.list',
-                views: {
-                    '@app.user': {
-                        templateUrl: helper.modulePath('app', 'user/form', '_=' + Math.random()),
-                    }
-                },
-                params: {
-                    clone: true
-                }
             });
         }]);
 })();

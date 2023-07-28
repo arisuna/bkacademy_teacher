@@ -930,7 +930,7 @@
         this.generateNicknameGmsMember = function (uuid) {
 
             let deferred = $q.defer();
-            AppHttp.get('/app/gms_member/generate_nickname/' + uuid).then(function (response) {
+            AppHttp.get('/app/app_member/generate_nickname/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -1250,5 +1250,61 @@
             });
             return deferred.promise;
         }
+
+        this.getUserDetail = function (id) {
+            var deferred = $q.defer();
+            AppHttp.get('/app/user/detail/' + id)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.getUserList = function (params) {
+            var deferred = $q.defer();
+            AppHttp.put('/app/user/search', params)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.deleteUser = function (id) {
+            var deferred = $q.defer();
+            AppHttp.delete('/app/user/delete/' + id)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.createUser = function (data) {
+            var deferred = $q.defer();
+            AppHttp.post('/app/user/create', data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+
+        this.updateUser = function (data) {
+            var deferred = $q.defer();
+            AppHttp.put('/app/user/update/' + data.id, data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
     }
 })();

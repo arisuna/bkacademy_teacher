@@ -1,0 +1,46 @@
+<div class="panel panel-default panel-default-b">
+    <div class="panel-heading" ng-style="{'padding':'5px'}">
+        <div class="row">
+            <div class="col-md-12">
+                <!--<input-text-search ng-model="searchConfig.query" ng-search="applyFilter()"></input-text-search>-->
+                <div class="form-group">
+                    <div class="input-group search">
+                        <input type="text"
+                               class="form-control form-control-custom-radius"
+                               placeholder="{{ 'ENTER_TO_SEARCH_TEXT' | translate }}"
+                               ng-enter-key="applyFilter()"
+                               ng-keypress="applyFilter()"
+                               ng-keyup="applyFilter()"
+                               ng-keydown="applyFilter()"
+                               ng-model="searchConfig.query" aria-invalid="false">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default btn-flat" type="button"
+                                    ng-click="applyFilter()">
+                                <em class="fa fa-search text-bright-blue"></em>
+                            </button>
+                         </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body height-30vh-m70px overflow-y-enable" ng-style="{'padding':'5px'}">
+        <div class="list-group list-group-flat list-group-blue">
+            <a class="list-group-item text-overflow-ellipsis"
+               ng-repeat="country in countries | filter: {'name': searchConfig.filterQuery}"
+               ng-class="{'active': (searchConfig.currentItem.id == country.id)}"
+               ng-click="selectItem(country)">
+
+                <div class="flex">
+                    <country-flag circle="false"
+                                  country-code="country.cio"
+                                  size="32"
+                                  class="flag-rectangle-2 mr-sm"></country-flag>
+
+                    <span class="ml-sm">{{country.name}} </span>
+                </div>
+
+            </a>
+        </div>
+    </div>
+</div>

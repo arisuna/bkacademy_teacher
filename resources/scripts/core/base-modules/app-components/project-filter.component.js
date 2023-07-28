@@ -87,8 +87,8 @@
 
                 vm.__bills_status_list = angular.copy(AppFilterConfigService.getBillStatusList());
 
-                vm.__gms_members_status_list = angular.copy(AppFilterConfigService.getGmsMemberStatusList());
-                vm.__gms_members_role_list = angular.copy(AppFilterConfigService.getGmsMemberRoleList());
+                vm.__app_members_status_list = angular.copy(AppFilterConfigService.getGmsMemberStatusList());
+                vm.__app_members_role_list = angular.copy(AppFilterConfigService.getGmsMemberRoleList());
 
                 vm.__hr_accounts_status_list = angular.copy(AppFilterConfigService.getHrAccountStatusList());
 
@@ -1030,7 +1030,7 @@
                     if (error) return;
 
                     ngDialog.open({
-                        template: urlBase.tplBase('base-modules/gms-components', 'save-filters-dialog'),
+                        template: urlBase.tplBase('base-modules/app-components', 'save-filters-dialog'),
                         className: 'ngdialog-theme-default sm-box',
                         controller: 'SaveFilterDialogController',
                         data: {
@@ -1138,7 +1138,7 @@
 
                 vm.popupFilter = function () {
                     let dtDialog = ngDialog.open({
-                        template: urlBase.tplBase('base-modules/gms-components', 'project-filter-detail.dialog'),
+                        template: urlBase.tplBase('base-modules/app-components', 'project-filter-detail.dialog'),
                         className: 'ngdialog-theme-default md-box',
                         controller: 'DetailFilterDialogController',
                         data: {
@@ -1180,7 +1180,7 @@
 
                 vm.customFilterDialog = function () {
                     let dtDialog = ngDialog.open({
-                        template: urlBase.tplBase('base-modules/gms-components', 'project-filter-detail.dialog'),
+                        template: urlBase.tplBase('base-modules/app-components', 'project-filter-detail.dialog'),
                         className: 'ngdialog-theme-default md-box',
                         controller: 'DetailFilterDialogController',
                         data: {

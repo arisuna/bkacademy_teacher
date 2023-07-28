@@ -40,6 +40,10 @@
         this.getServerTimeZone = function () {
             return vm.data.server_time_zone;
         }
+
+        this.getSettingUserGroups = function () {
+            return vm.data.user_groups;
+        }
         /**
          *
          * @returns {Array}

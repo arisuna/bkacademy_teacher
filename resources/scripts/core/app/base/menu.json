@@ -143,10 +143,10 @@
             "module": "GMS Member",
             "text": "GMS_MEMBERS_TEXT",
             "translate": "GMS_MEMBERS_TEXT",
-            "controller": "gms_member",
+            "controller": "app_member",
             "action": "index",
             "visible": "1",
-            "sref": "app.gms-members.list",
+            "sref": "app.app-members.list",
             "order": "10"
           },
           {

@@ -1,0 +1,49 @@
+<div class="panel panel-default panel-default-b">
+    <div class="panel-heading" ng-style="{'padding':'5px'}">
+        <div class="row">
+            <div class="col-md-12">
+                <input-text-search
+                    ng-model="searchConfig.query"
+                    ng-search="initSearch()"></input-text-search>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body height-30vh-m70px overflow-y-enable" ng-style="{'padding':'5px'}">
+
+        <div ng-if="isLoading == true">
+            <spinner-v2 type="spin"></spinner-v2>
+        </div>
+        <div ng-show="isLoading == false">
+            <div class="list-group list-group-flat">
+                <a class="list-group-item "
+                   ng-repeat="company in companies"
+                   ng-class="{'active': (searchConfig.currentItem.id == company.id)}"
+                   ng-click="selectItem(company)">
+                    <div class="flex">
+                        <i class="fas fa-building txt-20 text-dark-blue mr-sm"></i>
+                        <span class="flex-vertical">
+                            {{company.name}} <span class="text-gray" ng-if="company.is_booker == true"> - {{'BOOKER_TEXT' | translate}}</span>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div ng-show="isLoadingMore == true">
+            <spinner-v2 type="message"></spinner-v2>
+        </div>
+
+    </div>
+
+    <div class="panel-body text-center" ng-style="{'padding':'5px'}">
+        <a class="text-center text-bright-blue"
+           ng-click="loadMore()"
+           ng-show="totalPages > currentPage">
+            {{ 'LOAD_MORE_TEXT' | translate }}
+        </a>
+        <br ng-show="totalPages > currentPage">
+        <span class="text-center text-dark-blue" ng-show="!isLoading">
+            {{'TOTAL_TEXT' | translate}}: {{ totalItems }} {{ 'COMPANIES_TEXT' | translate }}
+        </span>
+    </div>
+</div>
