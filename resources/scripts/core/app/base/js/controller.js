@@ -291,23 +291,7 @@
 
             $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
                 $scope.checkParamsMenu();
-                $scope.checkAppCues();
             });
-
-            $scope.checkAppCues = function () {
-                var user = AppAuthService.getUser();
-                var company = AppAuthService.getCompany();
-
-                if (typeof Appcues != 'undefined' && angular.isDefined(Appcues)) {
-                    Appcues.identify(user.uuid, {
-                        name: user.firstname + ' ' + user.lastname,
-                        email: user.workemail,
-                        created_at: user.created_at
-                        // Additional user properties.
-                    });
-
-                }
-            }
 
             // $scope.storage = new CrossStorageClient(__env.hubCrossDomain, {
             //     timeout: 30000,

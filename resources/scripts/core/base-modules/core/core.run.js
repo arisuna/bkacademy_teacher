@@ -109,12 +109,6 @@
         $rootScope.validateAction = function (controller, action) {
             return false;
         }
-
-        $rootScope.$on('$locationChangeSuccess', function() {
-            if ($window.Appcues) {
-                $window.Appcues.start();
-            }
-        });
     }
 
 })();

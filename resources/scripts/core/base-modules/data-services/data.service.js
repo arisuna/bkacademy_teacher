@@ -645,17 +645,6 @@
             return deferred.promise;
         }
 
-        this.getAppCues = function () {
-            var deferred = $q.defer();
-            DataHttp.get('/app/setting/getAppCusesConfig')
-                .then(function (response) {
-                    deferred.resolve(response.data);
-                }).catch(function (err, status) {
-                deferred.reject(err.data);
-            });
-            return deferred.promise;
-        }
-
 
         this.resetPassword = function (data) {
             var deferred = $q.defer();

@@ -453,18 +453,6 @@
 
                     ]).then(function onSuccess() {
 
-                        if (typeof Appcues != 'undefined' &&
-                            angular.isDefined(Appcues) &&
-                            angular.isDefined($rootScope.currentUser) &&
-                            $rootScope.currentUser != null &&
-                            angular.isDefined($rootScope.currentUser.id)) {
-                            Appcues.identify($rootScope.currentUser.id, {
-                                name: $rootScope.currentUser.firstname + ' ' + $rootScope.currentUser.lastname,
-                                email: $rootScope.currentUser.workemail,
-                                created_at: $rootScope.currentUser.created_at
-                            });
-                        }
-
                         deferredAll.resolve({success: true, message: 'LOGIN_SUCCESS_TEXT'});
 
                     }, function onError() {
