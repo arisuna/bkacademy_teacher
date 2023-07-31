@@ -172,7 +172,7 @@
                 WaitingService.questionSimple('Are you sure want DELETE this user?', function () {
                     AppDataService.deleteAdminUser(user.id).then(function (res) {
                         if (res.success) {
-                            WaitingService.popSuccess();
+                            WaitingService.popSuccess(res.message);
                             $scope.reloadInit();
                         } else {
                             WaitingService.error(msg);

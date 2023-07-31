@@ -70,7 +70,7 @@
             }; // End save function
 
             $scope.deleteFn = function (id) {
-                WaitingService.questionSimple('Are you sure want DELETE this user?',
+                WaitingService.questionSimple('QUESTION_DELETE_CRM_USER_TEXT',
                     function (res) {
                         AppDataService.deleteCrmUser(id).then(function (res) {
                             if (res.success) {

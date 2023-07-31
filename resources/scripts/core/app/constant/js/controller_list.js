@@ -172,7 +172,7 @@
                 WaitingService.questionSimple('Are you sure want DELETE this constant?', function () {
                     AppDataService.deleteConstant(constant.id).then(function (res) {
                         if (res.success) {
-                            WaitingService.popSuccess();
+                            WaitingService.popSuccess(res.message);
                             $scope.reloadInit();
                         } else {
                             WaitingService.error(msg);
@@ -195,9 +195,9 @@
                     WaitingService.begin();
                     AppDataService.synchronizeConstant().then(function (res) {
                         if (res.success) {
-                            WaitingService.popSuccess('You have synchronized successful');
+                            WaitingService.popSuccess('SYNCHORNIZED_SUCCESS_TEXT');
                         } else {
-                            WaitingService.error('Synchronize has been error');
+                            WaitingService.error('SYNCHORNIZED_FAILED_TEXT');
                         }
                         $scope.synchronizing = false;
                     });
