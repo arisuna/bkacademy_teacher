@@ -104,7 +104,7 @@
                                 $rootScope.setting.language = {};
                             }
                             $translate.use(language);
-                            WaitingService.popSuccess('SAVE_lANGUAGE_SUCCESS_TEXT');
+                            WaitingService.popSuccess('SAVE_LANGUAGE_SUCCESS_TEXT');
                         } else {
                             WaitingService.error(res.message);
                         }
