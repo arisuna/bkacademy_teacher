@@ -110,7 +110,7 @@
                     class="{{item.class}}"
                     tooltip-placement="right"
                     ng-if="!item.noRender"
-                    tooltip-enable="!!app.layout.isCollapsedNav"
+                    tooltip-enable="!!app.layout.isCollapsedNav && !item.hasChild"
                     uib-tooltip="{{ item.text | translate }}">
                     <!--&lt;!&ndash;popover-trigger="'mouseenter'"&ndash;&gt;-->
                     <!--&lt;!&ndash;uib-popover="I appeared on mouse enter!"&ndash;&gt;-->
@@ -126,7 +126,7 @@
                              ng-class="{'mr':!app.layout.isCollapsedNav}">
                         <span ng-if="!app.layout.isCollapsedNav">{{ item.text | translate }}</span>
                     </a>
-                    <a ng-if="!item.deliver && item.hasChild" title="{{ item.text | translate }}"
+                    <a ng-if="!item.deliver && item.hasChild"
                        app-acl-allow="{{item.appAclAllow}}" acl-remove="{{item.aclRemove}}">
                         <em ng-if="item.iconType=='fontawesome'" class="{{item.icon}}"></em>
                         <img ng-if="item.iconType=='svg'" ng-src="{{item.icon}}"
