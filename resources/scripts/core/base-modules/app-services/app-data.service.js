@@ -1240,20 +1240,9 @@
             return deferred.promise;
         };
 
-        this.verfifyPrincipalEmail = function (data) {
-            let deferred = $q.defer();
-            AppHttp.put('/app/user/checkEmail', data).then(function (response) {
-                deferred.resolve(response.data);
-                return response.data;
-            }).catch(function (err) {
-                deferred.reject(err);
-            });
-            return deferred.promise;
-        }
-
-        this.getUserDetail = function (id) {
+        this.getAdminUserDetail = function (id) {
             var deferred = $q.defer();
-            AppHttp.get('/app/user/detail/' + id)
+            AppHttp.get('/app/admin-user/detail/' + id)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err, status) {
@@ -1262,9 +1251,9 @@
             return deferred.promise;
         };
 
-        this.getUserList = function (params) {
+        this.getAdminUserList = function (params) {
             var deferred = $q.defer();
-            AppHttp.put('/app/user/search', params)
+            AppHttp.put('/app/admin-user/search', params)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err, status) {
@@ -1273,9 +1262,9 @@
             return deferred.promise;
         };
 
-        this.deleteUser = function (id) {
+        this.deleteAdminUser = function (id) {
             var deferred = $q.defer();
-            AppHttp.delete('/app/user/delete/' + id)
+            AppHttp.delete('/app/admin-user/delete/' + id)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err, status) {
@@ -1284,9 +1273,9 @@
             return deferred.promise;
         };
 
-        this.createUser = function (data) {
+        this.createAdminUser = function (data) {
             var deferred = $q.defer();
-            AppHttp.post('/app/user/create', data)
+            AppHttp.post('/app/admin-user/create', data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err, status) {
@@ -1296,9 +1285,67 @@
         };
 
 
-        this.updateUser = function (data) {
+        this.updateAdminUser = function (data) {
             var deferred = $q.defer();
-            AppHttp.put('/app/user/update/' + data.id, data)
+            AppHttp.put('/app/admin-user/update/' + data.id, data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+
+
+        this.getCrmUserDetail = function (id) {
+            var deferred = $q.defer();
+            AppHttp.get('/app/crm-user/detail/' + id)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.getCrmUserList = function (params) {
+            var deferred = $q.defer();
+            AppHttp.put('/app/crm-user/search', params)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.deleteCrmUser = function (id) {
+            var deferred = $q.defer();
+            AppHttp.delete('/app/crm-user/delete/' + id)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.createCrmUser = function (data) {
+            var deferred = $q.defer();
+            AppHttp.post('/app/crm-user/create', data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+
+        this.updateCrmUser = function (data) {
+            var deferred = $q.defer();
+            AppHttp.put('/app/crm-user/update/' + data.id, data)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err, status) {

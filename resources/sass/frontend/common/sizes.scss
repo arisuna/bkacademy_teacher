@@ -405,7 +405,7 @@
 .width {
     @for $i from 1 through 1000 {
         &-#{$i}px {
-            width: #{$i}px;
+            width: #{$i}px !important;
         }
     }
 

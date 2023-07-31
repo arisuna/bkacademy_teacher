@@ -12,7 +12,7 @@
             restrict: 'EA',
             replace: true,
             template:
-                '<button class="btn btn-round-cus btn-delete-grey btn-outline" type="button" title=" {{ \'DELETE_BTN_TEXT\'|translate }}"><em class="fa-solid fa-trash text-danger"></em></button>',
+                '<button class="btn btn-round-cus btn-delete-grey btn-outline" type="button" title=" {{ \'DELETE_BTN_TEXT\'|translate }}"><em class="fa-solid fa-trash"></em></button>',
             link: function (scope, element, attrs) {
 
             },

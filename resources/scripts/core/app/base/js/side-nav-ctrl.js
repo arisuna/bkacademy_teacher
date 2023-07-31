@@ -120,7 +120,7 @@
         }
     ]);
 
-    App.factory('sideNavFactory', function ($http, $q) {
+    App.factory('sideNavFactory', function ($http, $q, AppAclService) {
 
         let service = {
             menuItems: [
@@ -135,59 +135,29 @@
                     "controller": ""
                 },
                 {
-                    "text": "ASSIGNMENTS_TEXT",
-                    "sref": "app.assignment.list",
-                    "icon": "fa-solid fa-compass",
+                    "text": "USERS_TEXT",
+                    "icon": "fa-solid fa-users",
                     "iconType": "fontawesome",
-                    "appAclAllow": "assignment/index",
+                    "appAclAllow": "user/manage",
+                    "noRender": !(AppAclService.validateAction('user', 'manage_crm_user')) && !(AppAclService.validateAction('user', 'manage_end_user')),
                     "aclRemove": true,
-                    "class": ""
+                    "hasChild": true,
+                    "class": "",
+                    "items": [
+                        {
+                            "text": "CRM_USERS_TEXT",
+                            "sref": "app.crm_user.list",
+                            "appAclAllow": "user/manage_crm_user",
+                            "aclRemove": true,
+                        },
+                        {
+                            "text": "END_USERS_TEXT",
+                            "sref": "app.end_user.list",
+                            "appAclAllow": "user/manage_end_user",
+                            "aclRemove": true,
+                        }
+                    ]
                 },
-                {
-                    "text": "RELOCATIONS_TEXT",
-                    "sref": "app.relocation.list",
-                    "icon": "fa-solid fa-plane",
-                    "iconType": "fontawesome",
-                    "appAclAllow": "relocation/index",
-                    "aclRemove": true,
-                    "class": ""
-                },
-                {
-                    "text": "SERVICES_TEXT",
-                    "sref": "app.relocation-service.list",
-                    "icon": "fa-solid fa-puzzle-piece",
-                    "iconType": "fontawesome",
-                    "appAclAllow": "relocation-service/index",
-                    "aclRemove": true,
-                    "class": "side-nav-service"
-                },
-                {
-                    "text": "TASKS_TEXT",
-                    "sref": "app.tasks.list",
-                    "icon": "fa-solid fa-list-check",
-                    "iconType": "fontawesome",
-                    "appAclAllow": "task/index",
-                    "aclRemove": true,
-                    "class": ""
-                },
-                {
-                    "text": "INVOICING_TEXT",
-                    "sref": "app.finance-page.dashboard",
-                    "icon": "fa-solid fa-sack-dollar",
-                    "iconType": "fontawesome",
-                    "appAclAllow": "invoicing/index",
-                    "aclRemove": true,
-                    "class": ""
-                },
-                {
-                    "text": "REPORTS_TEXT",
-                    "sref": "app.report.index",
-                    "icon": "fa-solid fa-chart-pie",
-                    "iconType": "fontawesome",
-                    "appAclAllow": "report/index",
-                    "aclRemove": true,
-                    "class": ""
-                }
             ]
         };
 

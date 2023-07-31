@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    App.controller('UserListController', ['$scope', '$state', '$timeout', '$rootScope', '$translate', 'WaitingService', 'AppDataService',
+    App.controller('CrmUserListController', ['$scope', '$state', '$timeout', '$rootScope', '$translate', 'WaitingService', 'AppDataService',
         function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppDataService) {
 
 
@@ -69,7 +69,7 @@
                 $scope.params.is_tmp = $scope.search.isTmp;
 
 
-                AppDataService.getAdminUserList($scope.params).then(function (res) {
+                AppDataService.getCrmUserList($scope.params).then(function (res) {
                     if (res.success) {
                         $scope.items = res.data;
                         $scope.totalPages = res.total_pages;
@@ -103,7 +103,7 @@
                     $scope.params.filter_config_id = $scope.search.filterConfigId;
                     $scope.params.is_tmp = $scope.search.isTmp;
 
-                    AppDataService.getAdminUserList($scope.params).then(function (res) {
+                    AppDataService.getCrmUserList($scope.params).then(function (res) {
                         if (res.success) {
                             $scope.items = $scope.items.concat(res.data);
                             $scope.totalPages = res.total_pages;
@@ -170,7 +170,7 @@
 
             $scope.deleteFn = function (user, index) {
                 WaitingService.questionSimple('Are you sure want DELETE this user?', function () {
-                    AppDataService.deleteAdminUser(user.id).then(function (res) {
+                    AppDataService.deleteCrmUser(user.id).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess();
                             $scope.reloadInit();

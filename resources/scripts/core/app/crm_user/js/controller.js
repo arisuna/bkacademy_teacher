@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    App.controller('UserIndexController', ['$scope', '$http', '$timeout', 'DTOptionsBuilder', 'DTColumnBuilder', '$compile', 'WaitingService', '$rootScope',
+    App.controller('CrmUserIndexController', ['$scope', '$http', '$timeout', 'DTOptionsBuilder', 'DTColumnBuilder', '$compile', 'WaitingService', '$rootScope',
         function ($scope, $http, $timeout, DTOptionsBuilder, DTColumnBuilder, $compile, WaitingService, $rootScope) {
 
             if ($rootScope.globalSearch === undefined) {

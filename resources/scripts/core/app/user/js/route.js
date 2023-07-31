@@ -7,7 +7,7 @@
     Routes.config(['$stateProvider', 'RouteHelpersProvider', function ($stateProvider, helper) {
             $stateProvider.state('app.user', {
                 url: '/user',
-                title: 'USERS_TEXT',
+                title: 'ADMIN_USERS_TEXT',
                 resolve: helper.resolveFor('modernizr', 'icons', 'parsley'),
                 abstract: true,
                 parent: 'app.admin-page.dashboard',
@@ -23,11 +23,11 @@
                 }
             }).state('app.user.list', {
                 url: '',
-                title: 'USERS_TEXT',
+                title: 'ADMIN_USERS_TEXT',
                 templateUrl: helper.modulePath('app', 'user/items', '_=' + Math.random())
             }).state('app.user.create', {
                 url: '/create',
-                title: 'CREATE_USER_TEXT',
+                title: 'CREATE_ADMIN_USER_TEXT',
                 parent: 'app.user.list',
                 views: {
                     '@app.user': {
@@ -36,7 +36,7 @@
                 },
             }).state('app.user.edit', {
                 url: '/edit/{id}',
-                title: 'EDIT_USER_TEXT',
+                title: 'EDIT_ADMIN_USER_TEXT',
                 parent: 'app.user.list',
                 views: {
                     '@app.user': {

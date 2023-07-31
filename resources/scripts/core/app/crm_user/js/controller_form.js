@@ -5,7 +5,7 @@
 (function () {
     'use strict';
 
-    App.controller('UserFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem',
+    App.controller('CrmUserFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem',
         function ($scope, $http, $stateParams, $state, WaitingService, AppDataService, AppSystem) {
             $scope.page_loading = true;
             $scope.user = {};
@@ -17,7 +17,7 @@
                     return;
                 }
 
-                AppDataService.getAdminUserDetail(id).then(
+                AppDataService.getCrmUserDetail(id).then(
                     function (res) {
                         if (res.success) {
                             $scope.user = res.data;
@@ -40,7 +40,7 @@
                 $scope.saving = true;
 
                 if ($scope.user.id > 0) {
-                    AppDataService.updateAdminUser($scope.user).then(function (res) {
+                    AppDataService.updateCrmUser($scope.user).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
                         } else {
@@ -51,7 +51,7 @@
                         WaitingService.error(err);
                     })
                 } else {
-                    AppDataService.createAdminUser($scope.user).then(function (res) {
+                    AppDataService.createCrmUser($scope.user).then(function (res) {
                         if (res.success) {
                             // WaitingService.success(res.message, function () {
                             //     $state.go('app.user.list');
@@ -72,7 +72,7 @@
             $scope.deleteFn = function (id) {
                 WaitingService.questionSimple('Are you sure want DELETE this user?',
                     function (res) {
-                        AppDataService.deleteAdminUser(id).then(function (res) {
+                        AppDataService.deleteCrmUser(id).then(function (res) {
                             if (res.success) {
                                 // WaitingService.success(res.message, function () {
                                 //     $state.go('app.user.list');
