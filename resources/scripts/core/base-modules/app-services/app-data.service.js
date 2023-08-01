@@ -1298,6 +1298,63 @@
 
 
 
+        this.getUserGroupDetail = function (id) {
+            var deferred = $q.defer();
+            AppHttp.get('/app/user-group/detail/' + id)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.getUserGroupList = function (params) {
+            var deferred = $q.defer();
+            AppHttp.put('/app/user-group/search', params)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.deleteUserGroup = function (id) {
+            var deferred = $q.defer();
+            AppHttp.delete('/app/user-group/delete/' + id)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.createUserGroup = function (data) {
+            var deferred = $q.defer();
+            AppHttp.post('/app/user-group/create', data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+
+        this.updateUserGroup = function (data) {
+            var deferred = $q.defer();
+            AppHttp.put('/app/user-group/update/' + data.id, data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+
         this.getCrmUserDetail = function (id) {
             var deferred = $q.defer();
             AppHttp.get('/app/crm-user/detail/' + id)

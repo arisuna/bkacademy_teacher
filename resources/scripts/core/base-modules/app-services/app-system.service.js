@@ -44,6 +44,11 @@
         this.getSettingUserGroups = function () {
             return vm.data.user_groups;
         }
+
+        this.setSettingUserGroups = function (list) {
+            vm.data.user_groups = angular.copy(list);
+            return;
+        }
         /**
          *
          * @returns {Array}

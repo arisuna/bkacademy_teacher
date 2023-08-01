@@ -33,7 +33,7 @@
                     "acl": "",
                     "subMenu": [
                         {"title": "ACLS_TEXT", "state": "app.acl.list"},
-                        {"title": "ACL_GROUPS_ROLES_TEXT", "state": "app.acl-group-role.list"},
+                        {"title": "ACL_GROUPS_ROLES_TEXT", "state": "app.user-group.list"},
                         {"title": "ADMIN_USERS_TEXT ", "state": "app.user.list"},
                     ]
                 },
