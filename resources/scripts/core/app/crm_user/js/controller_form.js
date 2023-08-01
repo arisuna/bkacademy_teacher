@@ -58,7 +58,7 @@
                             // });
 
                             WaitingService.popSuccess(res.message);
-                            $state.go('app.user.list');
+                            $state.go('app.crm-user.list');
                         } else {
                             WaitingService.error(res.message);
                         }
@@ -80,7 +80,7 @@
 
                                 WaitingService.popSuccess(res.message);
                                 console.log('go', res.message);
-                                $state.go('app.user.list');
+                                $state.go('app.crm-user.list');
                             } else {
                                 WaitingService.error(res.message);
                             }

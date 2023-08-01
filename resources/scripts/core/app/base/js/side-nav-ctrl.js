@@ -146,7 +146,7 @@
                     "items": [
                         {
                             "text": "CRM_USERS_TEXT",
-                            "sref": "app.crm_user.list",
+                            "sref": "app.crm-user.list",
                             "appAclAllow": "user/manage_crm_user",
                             "aclRemove": true,
                         },

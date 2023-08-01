@@ -1,11 +1,50 @@
 <div class="" ng-controller="CrmUserListController">
     <div ng-include="'/app/views/crm_user/buttons.html'"></div>
-    <div class="min-height-70px">
-        <project-filter
-            columns="column_array"
-            is-sort="false"
-            is-filter="false"
-            module-name="module_name"></project-filter>
+    <div class="project-filter">
+        <div class="pd-1x relo-bg-dark-blue-5 bd-radius-5x">
+            <div class="row mx-0">
+                <div class="col-sm-7 text-left pd-l-0 pd-r-5">
+                    <ng-include src="'/app/views/crm_user/filter.html'"></ng-include>
+                </div>
+                <div class="col-sm-5 text-right pd-r-0">
+                    <button ng-click="clearFilter()"
+                            uib-tooltip="{{'CLEAR_ALL_FILTERS_BTN_TEXT' | translate}}"
+                            class="btn pointer btn-round pull-right filter-dark-blue" style="margin-top:3px;">
+                        <i class="fa-solid fa-eraser txt-16"></i>
+                    </button>
+                    <div class="btn-group dropdown open pull-right mr-sm "
+                         uib-dropdown=""
+                         style="vertical-align: unset; margin-top: 3px">
+                        <button type="button" class="btn btn-round dropdown-toggle"
+                                uib-dropdown-toggle=""
+                                aria-haspopup="true" aria-expanded="true">
+                            <i class="fa-solid fa-arrow-down-wide-short txt-16" aria-hidden="true"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu="" role="menu"
+                            aria-labelledby="split-button">
+                            <li role="menuitem" ng-repeat="column in columns">
+                                <a ng-click="sortByColumnAndOrder(column.name, column.descending)">
+                                    {{column.label | translate}} {{ column.sortText | translate}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="project-filter-select pull-right mr-sm">
+                        <div class="input-group search">
+                            <input
+                                class="form-control form-control-custom-radius filter-search ng-valid filter-search-timelog"
+                                placeholder="{{('SEARCH_TEXT') | translate}}"
+                                ng-model="query"
+                                ng-keypress="($event.which === 13) ? loadPage():0"/>
+                            <span class="input-group-btn">
+                                <button type="button" ng-click="loadPage()" class="btn btn-default btn-flat"
+                                        style="">
+                                    <span class="fa fa-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
     </div>
 
     <div class="scroll-append scroll-y height-100vh-m140px overflow-x-disable" when-scrolled="loadMore()">
