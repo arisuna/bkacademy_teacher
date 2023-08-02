@@ -25,24 +25,6 @@
                 url: '',
                 title: 'USER_GROUPS_TEXT',
                 templateUrl: helper.modulePath('app', 'user-group/items', '_=' + Math.random())
-            }).state('app.user-group.create', {
-                url: '/create',
-                title: 'CREATE_USER_GROUP_TEXT',
-                parent: 'app.user-group.list',
-                views: {
-                    '@app.user-group': {
-                        templateUrl: helper.modulePath('app', 'user-group/form', '_=' + Math.random())
-                    }
-                },
-            }).state('app.user-group.edit', {
-                url: '/edit/{id}',
-                title: 'EDIT_USER_GROUP_TEXT',
-                parent: 'app.user-group.list',
-                views: {
-                    '@app.user-group': {
-                        templateUrl: helper.modulePath('app', 'user-group/form', '_=' + Math.random())
-                    }
-                },
             });
         }]);
 })();

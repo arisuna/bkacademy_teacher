@@ -5,34 +5,13 @@
 (function () {
     'use strict';
 
-    App.controller('UserGroupFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem',
-        function ($scope, $http, $stateParams, $state, WaitingService, AppDataService, AppSystem) {
-            $scope.page_loading = true;
+    App.controller('UserGroupFormController', ['$scope', '$http', '$stateParams', '$state', 'ngDialog', 'urlBase', 'WaitingService', 'AppDataService', 'AppSystem',
+        function ($scope, $http, $stateParams, $state, ngDialog, urlBase, WaitingService, AppDataService, AppSystem) {
+            $scope.page_loading = false;
             $scope.user_group = {};
-
-            $scope.getDetailFn = function () {
-                var id = angular.isDefined($stateParams.id) ? $stateParams.id : 0;
-                if (id == 0) {
-                    $scope.page_loading = false;
-                    return;
-                }
-
-                AppDataService.getUserGroupDetail(id).then(
-                    function (res) {
-                        if (res.success) {
-                            $scope.user_group = res.data;
-                        } else {
-                            WaitingService.error(res.msg);
-                        }
-                        $scope.page_loading = false;
-                    },
-                    function (error) {
-                        WaitingService.expire(error);
-                        $scope.page_loading = false;
-                    }
-                );
-            };
-            $scope.getDetailFn();
+            if (angular.isDefined($scope.ngDialogData) && $scope.ngDialogData.user_group != undefined) {
+                $scope.user_group = $scope.ngDialogData.user_group;
+            }
 
             $scope.saving = false;
 
@@ -43,6 +22,7 @@
                     AppDataService.updateUserGroup($scope.user_group).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
+                            $scope.closeThisDialog(res);
                         } else {
                             WaitingService.error(res.message);
                         }
@@ -58,7 +38,7 @@
                             // });
 
                             WaitingService.popSuccess(res.message);
-                            $state.go('app.user-group.list');
+                                $scope.closeThisDialog(res);
                         } else {
                             WaitingService.error(res.message);
                         }
@@ -79,8 +59,7 @@
                                 // });
 
                                 WaitingService.popSuccess(res.message);
-                                console.log('go', res.message);
-                                $state.go('app.user-group.list');
+                                $scope.closeThisDialog(res);
                             } else {
                                 WaitingService.error(res.message);
                             }

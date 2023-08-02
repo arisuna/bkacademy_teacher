@@ -1,5 +1,8 @@
-<div class="card card-nobox" ng-controller="UserGroupFormController">
-    <form class="form-validate"
+<div class="card" ng-controller="UserGroupFormController">
+    <div class="card-heading relo-bg-bright-gray ">
+        <span class="text-dark-blue">{{(user_group.id > 0 ? 'EDIT_USER_GROUP_TEXT' : 'CREATE_USER_GROUP_TEXT') | translate}}</span>
+    </div>
+    <form class="form-validate noPadding"
       validate-form=""
       role="form"
       name="userForm"
@@ -7,8 +10,8 @@
       ng-submit="saveFn()"
       ng-if="!page_loading"
       novalidate>
-      <div class="panel panel-primary white-block height-80vh scroll-y">
-        <div class="panel-body">
+
+        <div class="pd-2x custom-dialog-overflow ngdialog-content-body">
             <div class="row">
                 <div class="col-sm-6">
                     <input-text is-editable="true"
@@ -42,10 +45,13 @@
                                 show-label="true"></input-text>
                 </div>
             </div>
-        </div>
+
+
+
         </div>
 
-        <div class="card-footer">
+
+        <div class="card-footer text-right border-0">
             <div class="row">
                 <div class="col-sm-12 text-right">
                     <button type="button" ng-if="user_group.id" class="btn relo-bg-red mr-lg" ng-click="deleteFn(user_group.id)"
