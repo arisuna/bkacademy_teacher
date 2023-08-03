@@ -5,23 +5,23 @@
 @import url(//fonts.googleapis.com/css?family=Roboto:400italic,300,700,300italic,400);
 
 @font-face {
-    font-family: "Nunito Sans";
-    src: url(../font/Nunito_Sans/NunitoSans-Regular.ttf);
+  font-family: "Montserrat";
+  src: url(../font/Montserrat/Montserrat-Regular.ttf);
 }
 
 @font-face {
-    font-family: "Nunito Sans";
-    src: url(../font/Nunito_Sans/NunitoSans-Bold.ttf);
-    font-weight: bold;
+  font-family: "Montserrat";
+  src: url(../font/Montserrat/Montserrat-Bold.ttf);
+  font-weight: bold;
 }
 
 body {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    color: #0A142B;
-    font-size: 13px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #0A142B;
+  font-size: 13px;
 }
 
 h1, h2, h3, h4 {
-    font-weight: bold;
+  font-weight: bold;
 }

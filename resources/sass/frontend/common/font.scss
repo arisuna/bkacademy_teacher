@@ -1,231 +1,240 @@
-body, button, p, div, input, textarea, .ee-environment, .ngdialog{
-    font-family: 'Nunito Sans' !important;
-    font-weight: 400;
+body, button, p, div, input, textarea, .ee-environment, .ngdialog {
+  font-family: 'Montserrat' !important;
+  font-weight: 400;
 }
-body, .ee-environment, button, .ngdialog, p, div, input, textarea, select{
-    font-family: 'Nunito Sans' !important;
-    font-weight: 400;
+
+body, .ee-environment, button, .ngdialog, p, div, input, textarea, select {
+  font-family: 'Montserrat' !important;
+  font-weight: 400;
 }
 
 .font-300 {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 .font-400 {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 .font-100 {
-    font-weight: 100;
+  font-weight: 100;
 }
 
 .text-8 {
-    font-size: 8px !important;
+  font-size: 8px !important;
 }
 
 .text-10 {
-    font-size: 10px !important;
+  font-size: 10px !important;
 }
 
 .text-12 {
-    font-size: 12px !important;
+  font-size: 12px !important;
 }
 
 .text-13 {
-    font-size: 13px !important;
+  font-size: 13px !important;
 }
 
 .text-14 {
-    font-size: 14px !important;
+  font-size: 14px !important;
 }
 
 .text-15 {
-    font-size: 15px !important;
+  font-size: 15px !important;
 }
 
 .text-16 {
-    font-size: 16px !important;
+  font-size: 16px !important;
 }
 
 .text-17 {
-    font-size: 17px !important;
+  font-size: 17px !important;
 }
 
 .text-18 {
-    font-size: 18px !important;
+  font-size: 18px !important;
 }
 
 .text-20 {
-    font-size: 20px !important;
+  font-size: 20px !important;
 }
 
 .text-28 {
-    font-size: 28px !important;
+  font-size: 28px !important;
 }
 
 .text-24 {
-    font-size: 24px !important;
+  font-size: 24px !important;
 }
 
 .text-26 {
-    font-size: 26px !important;
+  font-size: 26px !important;
 }
 
 .text-35 {
-    font-size: 35px !important;
+  font-size: 35px !important;
 }
 
 .text-32 {
-    font-size: 32px !important;
+  font-size: 32px !important;
 }
 
 .text-40 {
-    font-size: 40px !important;
+  font-size: 40px !important;
 }
 
 .text-block {
-    display: block;
+  display: block;
 }
 
 .text-black {
-    color: black !important;
+  color: black !important;
 }
 
 .text-dark-blue {
-    color: #0A142B !important;
+  color: #0A142B !important;
 }
 
 .text-red {
-    color: $relo-red !important;
+  color: $relo-red !important;
 }
 
 .text-bright-blue {
-    color: $relo-bright-blue !important;
+  color: $relo-bright-blue !important;
 }
 
-.text-dark-blue{
-    color: $relo-dark-blue !important;
+.text-dark-blue {
+  color: $relo-dark-blue !important;
 }
 
 .text-gray {
-    color: $relo-gray !important;
+  color: $relo-gray !important;
 }
 
 .text-bright-gray {
-    color: $relo-bright-gray !important;
+  color: $relo-bright-gray !important;
 }
 
 .text-dark-gray {
-    color: $relo-dark-gray !important;
+  color: $relo-dark-gray !important;
 }
 
 
 .text-green {
-    color: $relo-green !important;
+  color: $relo-green !important;
 }
 
 .text-bright-green {
-    color: $relo-bright-green !important;
+  color: $relo-bright-green !important;
 }
 
 .text-dark-green {
-    color: $relo-dark-green !important;
+  color: $relo-dark-green !important;
 }
 
 
 .text-primary {
-    color: $relo-blue !important;
+  color: $relo-blue !important;
 }
 
 .text-orange {
-    color: $relo-yellow;
+  color: $relo-yellow;
 }
 
 .text-yellow-origin {
-    color: $relo-yellow !important;
+  color: $relo-yellow !important;
 }
 
 .text-plum-red {
-    color: $relo-plum-red !important;
+  color: $relo-plum-red !important;
 }
 
 .text-italic {
-    font-style: italic !important;
+  font-style: italic !important;
 }
 
 .text-roboto {
-    font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .text-strike {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 .text-vertical {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .text-roboto {
-    font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .lh-20 {
-    line-height: 20px;
+  line-height: 20px;
 }
 
 .lh-22 {
-    line-height: 22px;
+  line-height: 22px;
 }
 
 .text-underline {
-    text-decoration: underline;
-}
-.font-600 {
-    font-weight: 600;
+  text-decoration: underline;
 }
 
-.popover{
-    font-family: "Nunito Sans";
+.font-600 {
+  font-weight: 600;
+}
+
+.popover {
+  font-family: "Montserrat";
 }
 
 body.mce-font-nunito-sans {
-    font-family: 'Nunito Sans';
-    font-weight: 400;
+  font-family: 'Montserrat';
+  font-weight: 400;
 }
 
-.mce-txt{
-    font-family: 'Nunito Sans' !important;
-    font-weight: 400;
+.mce-txt {
+  font-family: 'Montserrat' !important;
+  font-weight: 400;
 }
+
 //.mce-container, .mce-container *, .mce-widget, .mce-widget *, .mce-reset{
-//    font-family: 'Nunito Sans' !important;;
+//    font-family: 'Montserrat' !important;;
 //    font-weight: 400;
 //}
 .swal2-modal {
-    font-family: 'Nunito Sans' !important;
-    font-weight: 400;
+  font-family: 'Montserrat' !important;
+  font-weight: 400;
 }
-.font-nunito{
-    font-family: 'Nunito Sans';
-    font-weight: 400;
+
+.font-nunito {
+  font-family: 'Montserrat';
+  font-weight: 400;
 }
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    font-family: 'Nunito Sans' !important;
-    font-weight: 400;
+  font-family: 'Montserrat' !important;
+  font-weight: 400;
 }
+
 ::-moz-placeholder { /* Firefox 19+ */
-    font-family: 'Nunito Sans' !important;
-    font-weight: 400;
+  font-family: 'Montserrat' !important;
+  font-weight: 400;
 }
+
 :-ms-input-placeholder { /* IE 10+ */
-    font-family: 'Nunito Sans' !important;
-    font-weight: 400;
+  font-family: 'Montserrat' !important;
+  font-weight: 400;
 }
+
 :-moz-placeholder { /* Firefox 18- */
-    font-family: 'Nunito Sans' !important;
-    font-weight: 400;
+  font-family: 'Montserrat' !important;
+  font-weight: 400;
 }
-.btn{
-    font-family: 'Nunito Sans' !important;
-    font-weight: 400;
+
+.btn {
+  font-family: 'Montserrat' !important;
+  font-weight: 400;
 }
