@@ -1,0 +1,20 @@
+<div class="form-group {{ className }}">
+    <label>
+        Service Parent ACL
+    </label>
+    <select class="form-control" ng-model="model"
+            ng-options="item.id as item.name + ' - Level: ' + item.lvl  for item in parentAcls"
+            ng-required="required"
+            chosen=""
+            allow-remove="true"
+            ng-disabled="disabled"
+            allow-single-deselect="true"
+            ng-change="changeValue()"
+            data-placeholder-text-single="'{{ placeholder }}'"
+            data-parsley-errors-container="#id_error_service_template_{{realName}}"
+            data-parsley-required-message="Service Template Required">
+        <option value=""></option>
+    </select>
+
+    <div id="id_error_service_template_{{realName}}"></div>
+</div>

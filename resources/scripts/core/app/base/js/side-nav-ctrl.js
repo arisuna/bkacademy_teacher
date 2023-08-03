@@ -138,8 +138,8 @@
                     "text": "USERS_TEXT",
                     "icon": "fa-solid fa-users",
                     "iconType": "fontawesome",
-                    "appAclAllow": "user/manage",
-                    "noRender": !(AppAclService.validateAction('user', 'manage_crm_user')) && !(AppAclService.validateAction('user', 'manage_end_user')),
+                    "appAclAllow": "user/index",
+                    "noRender": !(AppAclService.validateAction('crm_user', 'index')) && !(AppAclService.validateAction('end_user', 'index')),
                     "aclRemove": true,
                     "hasChild": true,
                     "class": "",
@@ -147,13 +147,13 @@
                         {
                             "text": "CRM_USERS_TEXT",
                             "sref": "app.crm-user.list",
-                            "appAclAllow": "user/manage_crm_user",
+                            "appAclAllow": "crm_user/index",
                             "aclRemove": true,
                         },
                         {
                             "text": "END_USERS_TEXT",
                             "sref": "app.end_user.list",
-                            "appAclAllow": "user/manage_end_user",
+                            "appAclAllow": "end_user/index",
                             "aclRemove": true,
                         }
                     ]

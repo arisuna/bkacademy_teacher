@@ -1,0 +1,72 @@
+<div>
+    <div class="pd-t-5">
+        <h4 class="pull-left">{{ title | translate}}</h4>
+        <button class="btn btn-circle relo-bg-bright-blue pull-right"
+                type="button"
+                ng-if="aclParent.id >= 0 && aclParent.id != null"
+                uib-tooltip="{{ 'ADD_NEW_TEXT' | translate }}"
+                tooltip-placement="bottom"
+                ng-click="openCreateDialog()">
+            <em class="fas fa-plus"></em>
+        </button>
+        <button type="button" class="btn btn-round pull-right mr-sm" ng-click="getAclChildrenItems()"
+                ng-if="aclParent.id != null"
+                uib-tooltip="{{ 'REFRESH_BTN_TEXT' | translate }}"
+                tooltip-placement="bottom">
+            <em class="fa-solid fa-rotate text-gray-dark"></em>
+        </button>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="height-100vh-m175px relo-bd-gray bd-r-1px overflow-y-enable">
+        <div class="mt"
+             ng-show="!isLoading"
+             data-as-sortable="sortItemsListener"
+             data-ng-model="aclChildrenItems">
+
+            <div data-as-sortable-item
+                 draggable=""
+                 ng-repeat="(key, acl) in aclChildrenItems">
+                <div class="panel"
+                     ng-class="{'relo-bd-dark-blue bd-wd-2px': acl.id == aclSelected.id }"
+                     data-as-sortable-item-handle>
+                    <div class="panel-heading relo-bg-bright-gray">
+
+                        <div class="pull-left text-bold">
+                            <a ng-click="selectAclItem(acl)">({{ acl.id }}) {{ acl.name }}</a>
+                        </div>
+
+                        <label class="label label-primary custom-size pull-right mr-sm" ng-if="acl.is_hr == 1">HRM</label>
+                        <label class="label label-gray custom-size pull-right mr-sm" ng-if="acl.is_hr == 0">HRM</label>
+
+                        <label class="label label-warning custom-size pull-right mr-sm" ng-if="acl.is_gms == 1">DSP</label>
+                        <label class="label label-gray custom-size pull-right mr-sm" ng-if="acl.is_gms == 0">DSP</label>
+
+                        <label class="label label-danger blue custom-size pull-right mr-sm"
+                               ng-if="acl.is_admin_only == 1">admin</label>
+
+                        <label class="label label-warning blue custom-size pull-right mr-sm text-strike"
+                               ng-if="acl.is_active == 0">active</label>
+
+                        <div class="clearfix"></div>
+
+                        <div class="">
+                            <div class="pull-left">
+                                <span>{{ acl.controller }} / {{ acl.action }}</span>
+                            </div>
+
+                            <div class="pull-right text-right">
+                                <button-edit-icon ng-click="openEditDialog(acl)"></button-edit-icon>
+                                <button-delete-icon ng-click="deleteFn(acl)"></button-delete-icon>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

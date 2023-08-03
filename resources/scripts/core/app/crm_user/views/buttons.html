@@ -3,6 +3,8 @@
                    type="button"
                     uib-tooltip="{{ 'ADD_NEW_TEXT' | translate }}"
                     tooltip-placement="bottom"
+                    app-acl-allow="crm_user/create"
+                    acl-remove="true"
                     ui-sref="app.crm-user.create">
         <em class="fas fa-plus"></em>
     </button>

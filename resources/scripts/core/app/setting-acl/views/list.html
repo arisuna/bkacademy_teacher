@@ -1,0 +1,24 @@
+<div class="" ng-controller="AclSettingController">
+    <div>
+        <div class="row">
+            <div class="col-md-4">
+                <app-acl-level-list acl-parent="{id:0}"
+                                    acl-children-items="data.acl_level_1_items"
+                                    acl-selected="data.acl_selected_level_1"
+                                    title="LEVEL_1_TEXT"></app-acl-level-list>
+            </div>
+            <div class="col-md-4">
+                <app-acl-level-list acl-parent="data.acl_selected_level_1"
+                                    acl-children-items="data.acl_level_2_items"
+                                    acl-selected="data.acl_selected_level_2"
+                                    title="LEVEL_2_TEXT"></app-acl-level-list>
+            </div>
+            <div class="col-md-4">
+                <app-acl-level-list acl-parent="data.acl_selected_level_2"
+                                    acl-children-items="data.acl_level_3_items"
+                                    acl-selected="data.acl_selected_level_3"
+                                    title="LEVEL_3_TEXT"></app-acl-level-list>
+            </div>
+        </div>
+    </div>
+</div>

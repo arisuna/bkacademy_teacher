@@ -5,10 +5,13 @@
 (function () {
     'use strict';
 
-    App.controller('CrmUserFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem',
-        function ($scope, $http, $stateParams, $state, WaitingService, AppDataService, AppSystem) {
+    App.controller('CrmUserFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem', 'AppAclService',
+        function ($scope, $http, $stateParams, $state, WaitingService, AppDataService, AppSystem, AppAclService) {
             $scope.page_loading = true;
             $scope.user = {};
+            $scope.canSave = false;
+
+            $scope.canSave =  angular.isDefined($stateParams.id) ? AppAclService.validateAction('crm_user', 'edit') : AppAclService.validateAction('crm_user', 'create');
 
             $scope.getDetailFn = function () {
                 var id = angular.isDefined($stateParams.id) ? $stateParams.id : 0;

@@ -1,0 +1,66 @@
+<div class="form-group">
+    <div>
+        <label class="label-text-form pull-left" ng-show="showLabel == true && label != ''">
+            {{ label | translate }}
+            <asterik-red ng-if="isRequired">*</asterik-red>
+        </label>
+
+        <tooltip text="{{ toolTipText  }}"
+                 ng-if="toolTipText != undefined && toolTipText !=''"
+                 class="ml-sm"></tooltip>
+
+        <span class="text-right text-sm pull-right"
+              ng-show="!(model.selected.code == null || model.selected.code == '' || model.selected.code == undefined) && isEditable == true">
+            <a ng-click="removeItem();">
+                {{'REMOVE_TEXT'|translate}}
+            </a>
+        </span>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="radio c-radio c-radio-nofont"
+         ng-class="{'mt0': labelFloating == false, 'mt': labelFloating == true }"
+         ng-show="isEditable == true">
+        <label class="text-muted pd-l-0 text-bold mr-sm" ng-if="labelFloating == true && showLabel == true">{{ label |
+            translate }}</label>
+        <label class="">
+            <input type="radio"
+                   name="{{ realName }}"
+                   ng-model="input.selected"
+                   ng-click="changeValue()"
+                   ng-disabled="disabled"
+                   ng-value="1"
+                   multiple convert-to-number=""/>
+            <span class=""></span><strong class="text-dark-blue">{{ titleYes | translate }}</strong>
+        </label>
+
+        <label class="ml-lg">
+            <input type="radio"
+                   name="{{ realName }}"
+                   ng-model="input.selected"
+                   ng-click="changeValue()"
+                   ng-disabled="disabled"
+                   ng-value="0"
+                   multiple convert-to-number=""/>
+            <span class=""></span><strong class="text-dark-blue">{{ titleNo | translate }}</strong>
+        </label>
+    </div>
+    <div ng-if="isEditable == false" class="mt-sm">
+                    <span class="label custom-size mr-sm"
+                          ng-class="{'label-primary': input.selected == 1,'label-gray': input.selected == 0}">
+                        {{ titleYes | translate  }}
+                    </span>
+
+        <span class="label custom-size"
+              ng-class="{'label-primary': input.selected == 0,'label-gray': input.selected == 1}">
+                        {{ titleNo | translate  }}
+                    </span>
+    </div>
+
+    <input type="text"
+           ng-model="input.selected"
+           ng-show="false"
+           ng-required="isRequired"
+           data-parsley-required-message="{{ requiredMessage | translate }}"/>
+</div>

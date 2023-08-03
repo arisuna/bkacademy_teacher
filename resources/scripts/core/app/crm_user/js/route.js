@@ -11,7 +11,7 @@
                 resolve: helper.resolveFor('modernizr', 'icons', 'parsley'),
                 abstract: true,
                 templateUrl: helper.modulePath('app', 'crm_user/index'),
-                acl: 'user/manage_crm_user',
+                acl: 'crm_user/index',
             }).state('app.crm-user.list', {
                 url: '',
                 title: 'CRM_USERS_TEXT',
