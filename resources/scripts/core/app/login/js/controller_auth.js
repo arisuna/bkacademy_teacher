@@ -132,14 +132,18 @@
                         $scope.account.challengeName = res.challengeName;
                         $scope.step = 3;
                     } else if (res.message == "NotAuthorizedException") {
-                        WaitingService.error("{{'INVALID_LOGIN_CREDENTIALS_TEXT' | translate}}");
+                        WaitingService.end();
+                        WaitingService.error("INVALID_LOGIN_CREDENTIALS_TEXT'");
+                        $scope.step = 1;
                     } else {
                         WaitingService.end();
                         WaitingService.error(res.message);
+                        $scope.step = 1;
                     }
                 }, function (err) {
                     WaitingService.end();
                     WaitingService.expire();
+                    $scope.step = 1;
                 });
             };
 
