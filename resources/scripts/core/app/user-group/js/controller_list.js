@@ -148,27 +148,7 @@
             };
 
             $scope.editUserGroupFn = function (item) {
-                WaitingService.begin();
-                AppDataService.getUserGroupDetail(item.id).then(function (res) {
-                    WaitingService.end();
-                    if (res.success) {
-                        let dialog = ngDialog.open({
-                            template: urlBase.tplApp('app', 'user-group', 'form'),
-                            className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue',
-                            closeByDocument: true,
-                            data: {
-                                user_group: res.data,
-                            },
-                        });
-                        dialog.closePromise.then(function (data) {
-                            $scope.reloadInit();
-                        });
-                    } else {
-                        WaitingService.popError(res.message);
-                    }
-                }, function (error) {
-                    WaitingService.expire(error);
-                });
+                $state.go('app.user-group.edit', {id: item.id});
             };
 
             $scope.addUserGroupDialogFn = function () {

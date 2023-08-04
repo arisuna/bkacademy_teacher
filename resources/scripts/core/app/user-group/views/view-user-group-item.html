@@ -1,0 +1,80 @@
+<div class="pull-left">
+    <p class="mg-0 txt-bold txt-18 txt-black-60">{{ controller_action.name|translate }}</p>
+</div>
+
+<div class="pull-right" ng-if="true">
+    <label class="switch switch-lg">
+        <input type="checkbox"
+               class="privilege"
+               ng-model="controller_action.selected"
+               ng-change="onAclItemChanged(controller_action)"/>
+        <span></span>
+    </label>
+</div>
+
+<div class="clearfix"></div>
+
+
+<div ng-repeat="controller_action_sub in controller_action.sub" class="role-tree">
+
+    <div class="pull-left">
+        <p class="mg-0 txt-bold txt-16 txt-black-60">
+            {{ $index + 1 }}.
+            {{ controller_action_sub.name | translate }}
+        </p>
+    </div>
+
+
+    <div class="pull-right" ng-if="true">
+        <label class="switch switch-lg">
+            <input type="checkbox" class="privilege"
+                   ng-disabled="!controller_action.selected"
+                   ng-model="controller_action_sub.selected"
+                   data-checkname="{{ controller_action_sub.id }}"
+                   ng-change="onAclItemChanged(controller_action_sub)"/>
+            <span></span>
+        </label>
+    </div>
+    <div class="clearfix"></div>
+
+    <div ng-repeat="controller_action_sub_sub in controller_action_sub.sub" class="role-tree">
+        <div class="pull-left pd-l-3x">
+            <p class="mg-0 txt-bold txt-black-60">
+                <i class="fa fa-caret-right"></i>
+                {{ controller_action_sub_sub.name | translate }}
+            </p>
+        </div>
+        <div class="pull-right" ng-if="true">
+            <label class="switch switch-lg">
+                <input type="checkbox"
+                       ng-disabled="!controller_action.selected || !controller_action_sub.selected"
+                       ng-model="controller_action_sub_sub.selected"
+                       class="privilege check{{ controller_action_sub.id }}"
+                       ng-change="onAclItemChanged( controller_action_sub_sub )"/>
+                <span ></span>
+            </label>
+        </div>
+        <div class="clearfix"></div>
+
+        <div ng-repeat="controller_action_sub_sub_sub in controller_action_sub_sub.sub"  class="role-tree">
+            <div class="pull-left pd-l-6x">
+                <p class="mg-0 txt-black-60">
+                    <i class="fa fa-caret-right"></i>
+                    {{ controller_action_sub_sub_sub.name | translate }}
+                </p>
+            </div>
+            <div class="pull-right" ng-if="true">
+                <label class="switch switch-lg">
+                    <input type="checkbox" class="privilege"
+                           ng-disabled="!controller_action.selected || !controller_action_sub.selected || !controller_action_sub_sub.selected"
+                           ng-model="controller_action_sub_sub_sub.selected"
+                           ng-change="onAclItemChanged(controller_action_sub_sub_sub)"/>
+                    <span ></span>
+                </label>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+
+</div>

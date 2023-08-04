@@ -1,0 +1,45 @@
+<div class="card card-nobox">
+    <div class="project-filter">
+        <div class="pd-1x relo-bg-dark-blue-5 bd-radius-5x">
+            <div class="row mx-0">
+                <div class="col-sm-10 text-left pd-l-0 pd-r-5">
+                    <label class="label-text-form" >
+                        {{ user_group.name | translate }}
+                    </label>
+                </div>
+                <div class="col-sm-2 text-right pd-r-0">
+                    <button-edit-icon ng-click="openEditDialogFn()" class="mr-sm"></button-edit-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-append scroll-y height-100vh-m140px overflow-x-disable mg-t-20">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel">
+                    <div class="panel-heading bg-gray-lighter text-bold">
+                        {{ 'MODULE_LIST_TEXT' | translate}}
+                    </div>
+                    <div class="list-group" ng-repeat="controller_action in controller_action_items">
+                        <a class="list-group-item"
+                           ng-class="{'active': (settingActive == $index)}"
+                           ng-click="clickActive($index)">{{ controller_action.name|translate }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div ng-repeat="controller_action in controller_action_items"
+                     ng-show="settingActive == $index">
+                    <div class="panel">
+                        <div class="panel-heading bg-gray-lighter text-bold">
+                            {{ 'PERMISSIONS_LIST_TEXT' | translate}}
+                        </div>
+                        <div class="panel-body">
+                            <ng-include src="'/app/views/user-group/view-user-group-item.html'"></ng-include>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

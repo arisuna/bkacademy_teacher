@@ -92,51 +92,6 @@
             return deferred.promise;
         }
 
-
-        this.getRoleByName = function (name) {
-            let deferred = $q.defer();
-            AppHttp.put('/app/role/getRoleByName', {name: name})
-                .then(function (response) {
-                    deferred.resolve(response.data);
-                }).catch(function (err) {
-                deferred.reject(err.data);
-            });
-            return deferred.promise;
-        }
-
-        this.getRolesList = function () {
-            let deferred = $q.defer();
-            AppHttp.get('/app/role/getRolesList?_=' + Math.random())
-                .then(function (response) {
-                    deferred.resolve(response.data);
-                }).catch(function (err) {
-                deferred.reject(err.data);
-            });
-            return deferred.promise;
-        }
-
-        this.getAclList = function () {
-            let deferred = $q.defer();
-            AppHttp.get('/app/role/getAclList?_=' + Math.random())
-                .then(function (response) {
-                    deferred.resolve(response.data);
-                }).catch(function (err) {
-                deferred.reject(err.data);
-            });
-            return deferred.promise;
-        }
-
-        this.getControllerActionItemList = function () {
-            let deferred = $q.defer();
-            AppHttp.get('/app/role/getControllerActionItemList?_=' + Math.random())
-                .then(function (response) {
-                    deferred.resolve(response.data);
-                }).catch(function (err) {
-                deferred.reject(err.data);
-            });
-            return deferred.promise;
-        }
-
         this.initAllSetting = function () {
             let deferred = $q.defer();
             AppHttp.get('/app/setting/init?_=' + Math.random())
@@ -1358,6 +1313,66 @@
             return deferred.promise;
         };
 
+        this.showGroupAcl = function (id) {
+            let deferred = $q.defer();
+            AppHttp.get('/app/user-group/showAcl/' + id).then(function (response) {
+                deferred.resolve(response.data);
+            }).catch(function (err) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        }
+
+        this.getControllerActionItemList = function () {
+            let deferred = $q.defer();
+            AppHttp.get('/app/user-group/getControllerActionItemList?_=' + Math.random())
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        }
+
+
+        this.getAclList = function () {
+            let deferred = $q.defer();
+            AppHttp.get('/app/user-group/getAclList?_=' + Math.random())
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        }
+
+        this.addAclItem = function (data) {
+            let deferred = $q.defer();
+            if (angular.isUndefined(data.user_group_id) || angular.isUndefined(data.acl)) {
+                deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
+            } else {
+                AppHttp.post('/app/user-group/addAclItem', data).then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err) {
+                    deferred.reject(err.data);
+                });
+            }
+            return deferred.promise;
+        }
+
+        this.removeAclItem = function (data) {
+            let deferred = $q.defer();
+            if (angular.isUndefined(data.user_group_id) || angular.isUndefined(data.acl)) {
+                deferred.resolve({success: false, msg: 'DATA_NOT_FOUND_TEXT'});
+            } else {
+                AppHttp.put('/app/user-group/removeAclItem', data).then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err) {
+                    deferred.reject(err.data);
+                });
+            }
+            return deferred.promise;
+        }
 
         this.getCrmUserDetail = function (id) {
             var deferred = $q.defer();
