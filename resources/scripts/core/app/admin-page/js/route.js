@@ -10,6 +10,7 @@
             url: '/admin-page',
             abstract: true,
             title: 'ADMIN_PAGE_TEXT',
+            resolve: helper.resolveFor('modernizr', 'icons', 'parsley'),
             templateUrl: helper.modulePath('app', 'admin-page/index'),
             acl: 'admin/index',
             params: {

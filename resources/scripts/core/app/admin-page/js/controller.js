@@ -5,8 +5,8 @@
 (function () {
     'use strict';
 
-    App.controller('AdminPageController', ['$scope', '$rootScope', '$http', '$state', '$window', 'urlBase', 'AppAclService', 'AppDataService', 'WaitingService',
-        function ($scope, $rootScope, $http, $state, $window, urlBase, AppAclService, AppDataService, WaitingService) {
+    App.controller('AdminPageController', ['$scope', '$rootScope', '$timeout', '$http', '$state', '$window', 'urlBase', 'AppAclService', 'AppDataService', 'WaitingService',
+        function ($scope, $rootScope,  $timeout, $http, $state, $window, urlBase, AppAclService, AppDataService, WaitingService) {
 
             $rootScope.menuSettings = [
                 {
@@ -80,7 +80,10 @@
                     AppDataService.clearCache().then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
-                            $state.reload();
+                            $timeout(function () {
+                                $state.reload();
+                            }, 1000);
+                            
                         } else {
                             WaitingService.error(res.message);
                         }
