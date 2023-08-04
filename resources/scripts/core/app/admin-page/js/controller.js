@@ -5,8 +5,8 @@
 (function () {
     'use strict';
 
-    App.controller('AdminPageController', ['$scope', '$rootScope', '$http', '$state', '$window', 'urlBase', 'AppAclService',
-        function ($scope, $rootScope, $http, $state, $window, urlBase, AppAclService) {
+    App.controller('AdminPageController', ['$scope', '$rootScope', '$http', '$state', '$window', 'urlBase', 'AppAclService', 'AppDataService', 'WaitingService',
+        function ($scope, $rootScope, $http, $state, $window, urlBase, AppAclService, AppDataService, WaitingService) {
 
             $rootScope.menuSettings = [
                 {
@@ -73,6 +73,21 @@
                         {"title": "BRANDS_TEXT", "state": "app.brand.list"},
                     ]
                 },
-            ]
+            ];
+
+            $scope.clearCache = function() {
+                WaitingService.questionSimple('QUESTION_CLEAR_CACHE_TEXT', function () {
+                    AppDataService.clearCache().then(function (res) {
+                        if (res.success) {
+                            WaitingService.popSuccess(res.message);
+                            $state.reload();
+                        } else {
+                            WaitingService.error(res.message);
+                        }
+                    }, function(err){
+                        WaitingService.error(err.message);
+                    });
+                });
+            }
         }]);
 })();

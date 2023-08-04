@@ -11,11 +11,15 @@
 
         var vm = this;
 
-        /**
-         * function login
-         * @param data
-         * @returns {*}
-         */
+        this.clearCache = function () {
+            var deferred = $q.defer();
+            AppHttp.get('/app/setting/clearCache').then(function (response) {
+                deferred.resolve(response.data);
+            }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
 
         this.loginFn = function (data) {
             let deferred = $q.defer();
