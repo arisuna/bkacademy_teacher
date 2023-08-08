@@ -16,7 +16,7 @@
                     "noRender": !(AppAclService.validateAction('admin', 'index')),
                     "acl": "",
                     "subMenu": [
-                        {"title": "LANGUAGES_TEXT", "state": "app.language.list"},
+                        // {"title": "LANGUAGES_TEXT", "state": "app.language.list"},
                         {"title": "CONSTANTS_TEXT", "state": "app.constant.list"},
                         {"title": "CURRENCIES_TEXT", "state": "app.currency.list"},
                         {"title": "COUNTRIES_TEXT", "state": "app.country.list"},
