@@ -167,7 +167,9 @@
                         //     $window.location.href = result.data.appUrl + '#/login?email=' + $scope.account.email;
                         // }
                     } else {
-                        $scope.step = 2;
+                        WaitingService.end();
+                        WaitingService.error(result.message);
+                        $scope.step = 1;
                     }
                 })
             }

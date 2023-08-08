@@ -142,6 +142,7 @@
             </ul>
             <ul class="sidebar-nav relo-nav-bottom" id="relo-nav-bottom">
                 <li ng-class="{active: $state.includes('app.admin-page'), collapse_nav: !!app.layout.isCollapsedNav}"
+                    app-acl-allow="admin/index" acl-remove="true"
                     tooltip-placement="right"
                     tooltip-enable="!!app.layout.isCollapsedNav"
                     uib-tooltip="{{ 'ADMIN_PAGE_TEXT' | translate }}">
