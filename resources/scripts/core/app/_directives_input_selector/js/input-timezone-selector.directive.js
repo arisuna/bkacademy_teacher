@@ -110,7 +110,7 @@
                         cache: true,
                         width: 300,
                         data: dialogPosition,
-                        controller: ['$scope', '$element', '$timeout', 'GmsMemberService', 'Utils', function ($scope, $element, $timeout, GmsMemberService, Utils) {
+                        controller: ['$scope', '$element', '$timeout', 'AppMemberService', 'Utils', function ($scope, $element, $timeout, AppMemberService, Utils) {
 
                             Utils.setPositionDropdownDialog(dialogPosition);
 

@@ -22,8 +22,8 @@
                         showClose: false,
                         scope: scope,
                         className: 'ngdialog-theme-default media-view',
-                        controller: ['$scope', '$location', '$window', '$timeout', '$sce', 'GmsMediaService',
-                            function ($scope, $location, $window, $timeout, $sce, GmsMediaService) {
+                        controller: ['$scope', '$location', '$window', '$timeout', '$sce', 'AppMediaService',
+                            function ($scope, $location, $window, $timeout, $sce, AppMediaService) {
 
                                 $scope.index = 0;
                                 $scope.zoom = 100;
@@ -89,7 +89,7 @@
                                 };
 
                                 $scope.getFileType = function(extension){
-                                    return GmsMediaService.getFileTypeFromExtension(extension);
+                                    return AppMediaService.getFileTypeFromExtension(extension);
                                 };
                             }]
                     });

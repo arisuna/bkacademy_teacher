@@ -1,0 +1,39 @@
+<div class="card noBorder">
+    <div class="card-heading relo-bg-bright-gray card-title-heading">
+        <span>{{'CREATE_NEW_EMAIL_TEMPLATE_TEXT' | translate}}</span>
+    </div>
+    <form novalidate validate-form="" ng-submit="saveFn()">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                ng-required="true"
+                                label="NAME_TEXT"
+                                placeholder="ENTER_NAME_TEXT"
+                                show-label="true"
+                                error-message="NAME_REQUIRED_TEXT"
+                                ng-model="emailTemplate.name"
+                                is-required="true">
+                    </input-text>
+                </div>
+
+                <div class="col-sm-12">
+                    <input-text-area is-editable="true"
+                                     is-text="true"
+                                     label="DESCRIPTION_TEXT"
+                                     placeholder="ENTER_DESCRIPTION_TEXT"
+                                     error-message="DESCRIPTION_REQUIRED_TEXT"
+                                     show-label="true"
+                                     ng-model="emailTemplate.description"
+                                     is-required="false">
+                    </input-text-area>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-footer text-right">
+            <save-button-submit title="SAVE_TEXT"></save-button-submit>
+        </div>
+    </form>
+</div>

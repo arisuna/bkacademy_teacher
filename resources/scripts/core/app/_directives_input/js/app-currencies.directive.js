@@ -10,9 +10,9 @@
         .module('app.app-directives')
         .directive('appCurrencySelector', appCurrency);
 
-    appCurrency.$inject = ['$translate', '$window', '$timeout', 'urlBase', 'ngDialog', 'Utils', 'GmsSystem', 'GmsAuthService'];
+    appCurrency.$inject = ['$translate', '$window', '$timeout', 'urlBase', 'ngDialog', 'Utils', 'GmsSystem', 'AppAuthService'];
 
-    function appCurrency($translate, $window, $timeout, urlBase, ngDialog, Utils, GmsSystem, GmsAuthService) {
+    function appCurrency($translate, $window, $timeout, urlBase, ngDialog, Utils, GmsSystem, AppAuthService) {
         var directive = {
             restrict: 'E',
             replace: true,
@@ -71,7 +71,7 @@
             controller: function ($scope, $element, $attrs) {
 
                 $scope.currencies = [];
-                $scope.current_currency = GmsAuthService.getCompanyCurrency();
+                $scope.current_currency = AppAuthService.getCompanyCurrency();
 
                 $scope.highlight = false;
                 $scope.data = {
