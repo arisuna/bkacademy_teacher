@@ -152,7 +152,7 @@
                         },
                         {
                             "text": "END_USERS_TEXT",
-                            "sref": "app.end_user.list",
+                            "sref": "app.user.list",
                             "appAclAllow": "end_user/index",
                             "aclRemove": true,
                         }
