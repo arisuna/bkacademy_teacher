@@ -9,8 +9,9 @@
             $scope.page_loading = true;
             $scope.emailTemplate = emailTemplate;
             $scope.languages = AppSystem.getLanguages();
+            $scope.current_language = AppSystem.getCurrentLanguage();
 
-            console.log("$scope.emailTemplate.items", $scope.emailTemplate.items)
+            console.log("$scope.emailTemplate.items", $scope.emailTemplate.items, $scope.languages)
 
             if (angular.isUndefined($scope.emailTemplate.items) || $scope.emailTemplate.items == null) {
                 $scope.emailTemplate.items = [];
@@ -42,6 +43,17 @@
                     });
                 })
             };
+
+            $scope.getLangName = function (code) {
+                console.log($scope.languages[code])
+                return angular.isDefined($scope.languages[code]) ? $scope.languages[code].options[$scope.current_language] : "";
+            }
+
+            $scope.close = function () {
+                $scope.closeThisDialog();
+                // $state.go('app.email-template.list');
+            };
+
         }
     ]);
 })();
