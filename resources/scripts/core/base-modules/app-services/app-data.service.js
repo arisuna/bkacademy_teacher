@@ -1415,8 +1415,7 @@
             });
             return deferred.promise;
         };
-
-
+        
         this.updateCrmUser = function (data) {
             var deferred = $q.defer();
             AppHttp.put('/app/crm-user/update/' + data.id, data)
@@ -1470,5 +1469,70 @@
             });
             return deferred.promise;
         };
+
+        this.getCountries = function (data) {
+            var deferred = $q.defer();
+            AppHttp.put('/app/country/index', data).then(function (response) {
+                deferred.resolve(response.data);
+            }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        }
+
+        this.createCountry = function (data) {
+            var deferred = $q.defer();
+            AppHttp.post('/app/country/create', data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.getCountryDetail = function (id) {
+            var deferred = $q.defer();
+            AppHttp.get('/app/country/detail/' +  id).then(function (response) {
+                deferred.resolve(response.data);
+            }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        }
+
+        this.importCountryTranslation = function (data) {
+            var deferred = $q.defer();
+            var url = '/app/country/importTranslation';
+            AppHttp.post(url, data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.updateCountry = function (data) {
+            var deferred = $q.defer();
+            AppHttp.post('/app/country/update', data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.deleteCountry = function (id) {
+            var deferred = $q.defer();
+            AppHttp.delete('/app/country/delete/' +  id).then(function (response) {
+                deferred.resolve(response.data);
+            }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        }
+
     }
 })();

@@ -6,15 +6,15 @@
      */
     Routes.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'RouteHelpersProvider',
         function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
-            $stateProvider.state('app.currency', {
-                url: '/currency',
-                title: 'CURRENCIES_TEXT',
+            $stateProvider.state('app.country', {
+                url: '/country',
+                title: 'COUNTRIES_TEXT',
                 resolve: helper.resolveFor('modernizr', 'icons', 'parsley', 'file-saver', 'tinyMce'),
                 parent: 'app.admin-page.dashboard',
                 abstract: true,
                 views: {
                     '@app.admin-page': {
-                        templateUrl: helper.modulePath('app', 'currency/index'),
+                        templateUrl: helper.modulePath('app', 'country/index'),
                     }
                 },
                 acl: 'admin/index',
@@ -22,10 +22,10 @@
                     showSideNav2: true,
                     templateSideNav2: helper.modulePath('app', 'admin-page/left')
                 }
-            }).state('app.currency.list', {
+            }).state('app.country.list', {
                 url: '',
-                title: 'CURRENCIES_TEXT',
-                templateUrl: helper.modulePath('app', 'currency/list', '_=' + Math.random()),
+                title: 'COUNTRIES_TEXT',
+                templateUrl: helper.modulePath('app', 'country/list', '_=' + Math.random()),
             })
         }]);
 
