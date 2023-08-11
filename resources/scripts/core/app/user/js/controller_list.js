@@ -1,12 +1,18 @@
 (function () {
     'use strict';
-    App.controller('UserListController', ['$scope', '$state', '$timeout', '$rootScope', '$translate', 'WaitingService', 'AppDataService',
-        function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppDataService) {
+    App.controller('EndUserListController', ['$scope', '$state', '$timeout', '$rootScope', '$translate', 'WaitingService', 'AppDataService', 'AppUserService',
+        function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppDataService, AppUserService) {
+            $scope.params = {
+                roles: [],
+            };
+            $scope.isLoadingMore = false;
+            $scope.isLoading = true;
+            $scope.loadCount = 0;
+            $scope.currentPage = 0;
+            $scope.items = [];
+            $scope.totalPages = 1;
 
-
-            $scope.module_name = 'users';
-
-            $scope.column_array = [
+            $scope.columns = [
                 {
                     "name": "created_at",
                     "datatype": "datetime",
@@ -36,141 +42,131 @@
                     "sortText" : $translate.instant("ALPHABET_DOWN_TEXT")
                 },
             ];
-            $scope.loading = true;
-            $scope.items = [];
-            $scope.totalPages = 0;
-            $scope.totalItems = 0;
-            $scope.current = 0;
 
-            $scope.loadingMore = false;
-            $scope.isInitialisInitialLoading = false;
-
-            $scope.loadCount = 0;
-            $scope.totalPages = 1;
-            $scope.currentPage = 0;
-
-            $scope.search = {
-                query: null,
-                filterConfigId: null,
-                isTmp: false,
-                orders: {},
+            $scope.sort = {
+                column: '',
+                descending: undefined
             };
 
-            $scope.loadUsers = function () {
-                $scope.params = {};
-                $scope.params.page = 0;
-                $scope.params.query = $scope.search.query;
-                $scope.params.limit = 20;
-                $scope.params.orders = $scope.search.orders;
-                if (!_.isEmpty($scope.sort)){
-                    $scope.params.orders = [$scope.sort];
-                }
-                $scope.params.filter_config_id = $scope.search.filterConfigId;
-                $scope.params.is_tmp = $scope.search.isTmp;
+            $scope.loadPage = function () {
+                $timeout(function () {
+                    $scope.loadItems();
+                }, 100);
+            };
 
+            $scope.loadItems = function () {
+                $scope.items = [];
+                $scope.loadCount = 1;
+                $scope.currentPage = 0;
+                $scope.isLoading = true;
+                $scope.initItems();
+            };
 
-                AppDataService.getAdminUserList($scope.params).then(function (res) {
+            $scope.initItems = function () {
+                $scope.params.draw = $scope.loadCount;
+                $scope.params.length = 20;
+                $scope.params.start = ($scope.loadCount - 1) * 20;
+                $scope.params.orders = [$scope.sort];
+                $scope.params.query = $scope.query;
+
+                AppUserService.getUserList($scope.params).then(function (res) {
                     if (res.success) {
-                        $scope.items = res.data;
+                        $scope.items = $scope.loadCount > 1 ? $scope.dataList.concat(res.data) : res.data;
                         $scope.totalPages = res.total_pages;
-                        $scope.currentPage = res.current;
+                        $scope.currentPage = res.page;
+
                     } else {
                         WaitingService.expire();
                     }
                     $timeout(function () {
-                        $scope.loadingMore = false;
-                        $scope.isInitialLoading = false;
+                        $scope.isLoadingMore = false;
+                        $scope.isLoading = false;
                     }, 1000)
-                }, function () {
+                }, function (err) {
                     WaitingService.expire();
                     $timeout(function () {
-                        $scope.loadingMore = false;
-                        $scope.isInitialLoading = false;
+                        $scope.isLoadingMore = false;
+                        $scope.isLoading = false;
                     }, 1000)
                 });
-            }
+            };
 
             $scope.loadMore = function () {
-                if ($scope.loadingMore === false && $scope.currentPage < $scope.totalPages) {
-                    $scope.loadingMore = true;
-                    $scope.params = {};
-                    $scope.params.limit = 20;
-                    $scope.params.page = $scope.currentPage + 1;
-                    $scope.params.orders = $scope.search.orders;
-                    if (!_.isEmpty($scope.sort)){
-                        $scope.params.orders = [$scope.sort];
-                    }
-                    $scope.params.filter_config_id = $scope.search.filterConfigId;
-                    $scope.params.is_tmp = $scope.search.isTmp;
+                console.log('loadMore');
+                if ($scope.isLoadingMore == false){
+                    $scope.loadCount += 1;
+                    $scope.getListMore();
+                }
+            };
 
-                    AppDataService.getAdminUserList($scope.params).then(function (res) {
+            $scope.getListMore = function () {
+                $scope.params.draw = $scope.loadCount;
+                $scope.params.length = 20;
+                $scope.params.start = ($scope.loadCount - 1) * 20;
+                $scope.params.orders = [$scope.sort];
+                $scope.params.query = $scope.query;
+                if ($scope.currentPage > 0 && $scope.loadCount <= $scope.totalPages){
+                    $scope.isLoadingMore = true;
+                }
+
+                //console.log($scope.loadCount);
+                if ($scope.loadCount == 1 || $scope.loadCount <= $scope.totalPages) {
+
+                    AppUserService.getUserList($scope.params).then(function (res) {
                         if (res.success) {
-                            $scope.items = $scope.items.concat(res.data);
+                            $scope.dataList = $scope.loadCount > 1 ? $scope.dataList.concat(res.data) : res.data;
                             $scope.totalPages = res.total_pages;
-                            $scope.currentPage = res.current;
+                            $scope.currentPage = res.page;
+
                         } else {
                             WaitingService.expire();
                         }
                         $timeout(function () {
-                            $scope.loadingMore = false;
-                            $scope.isInitialLoading = false;
+                            $scope.isLoadingMore = false;
+                            $scope.isLoading = false;
                         }, 1000)
-                    }, function () {
+                    }, function (err) {
                         WaitingService.expire();
                         $timeout(function () {
-                            $scope.loadingMore = false;
-                            $scope.isInitialLoading = false;
+                            $scope.isLoadingMore = false;
+                            $scope.isLoading = false;
                         }, 1000)
                     });
+
+                }else{
+                    $timeout(function () {
+                        $scope.isLoadingMore = false;
+                        $scope.isLoading = false;
+                    }, 1000)
                 }
             };
 
-            $scope.reloadInit = function () {
-                $scope.isInitialLoading = true;
+            $rootScope.$on('user_filter_update', function (data) {
+                $scope.isLoading = true;
                 $scope.loadCount = 0;
-                $scope.totalPages = 1;
-                $scope.currentPage = 1;
-                $scope.items = [];
-                $scope.loadUsers();
+                $timeout(function () {
+                    $scope.items = [];
+                    $scope.loadItems();
+                }, 1000);
+            });
+
+            $scope.sortByColumnAndOrder = function (columnName, isDescending) {
+                $scope.sort = {
+                    column: columnName.toUpperCase(),
+                    descending: isDescending
+                };
+                $scope.loadItems();
             };
 
-            $scope.reloadInit();
-
-            $scope.subscribe('apply_filter_config_users', function (filterConfigId) {
-                angular.element('.scroll-append').scrollTop(0);
-                $scope.search.filterConfigId = filterConfigId;
-                $scope.search.isTmp = true;
-                console.log('Execute filter');
-                $scope.reloadInit();
-            });
-
-            $scope.subscribe('sort_by_column_and_order_users', function (data) {
-                angular.element('.scroll-append').scrollTop(0);
-                $scope.search.orders = [data];
+            $scope.clearFilter = function () {
+                $scope.query = "";
                 $scope.sort = {};
-                $scope.reloadInit();
-            });
-
-            $scope.subscribe('text_search_users', function (data) {
-                angular.element('.scroll-append').scrollTop(0);
-                $scope.search.query = data;
-                // GmsFilterConfigService.setFilterQuery($scope.module_name, $scope.currentUser.uuid, data);
-                $scope.reloadInit();
-            });
-
-            $scope.subscribe('clear_filter_config', function () {
-                angular.element('.scroll-append').scrollTop(0);
-                $scope.search.filterConfigId = null;
-                $scope.search.isTmp = false;
-                $scope.search.orders = {};
-                $scope.sort = {};
-                $scope.search.query = null;
-                $scope.reloadInit();
-            });
+                $scope.publish('clearFilter');
+            };
 
             $scope.deleteFn = function (user, index) {
-                WaitingService.questionSimple('Are you sure want DELETE this user?', function () {
-                    AppDataService.deleteAdminUser(user.id).then(function (res) {
+                WaitingService.questionSimple('QUESTION_DELETE_USER_TEXT', function () {
+                    AppDataService.deleteCrmUser(user.id).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
                             $scope.reloadInit();
@@ -185,8 +181,6 @@
                 $state.go('app.user.edit', {id: user.id});
             };
 
-            $scope.cloneUserFn = function (user) {
-                $state.go('app.user.clone', {id: user.id});
-            };
+            $scope.loadItems();
         }]);
 })();

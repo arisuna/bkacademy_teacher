@@ -1,4 +1,4 @@
-<div class="card card-nobox" ng-controller="EndUserFormController">
+<div class="card card-nobox" ng-controller="AdminUserFormController">
     <form class="form-validate"
       validate-form=""
       role="form"
@@ -9,7 +9,6 @@
       novalidate>
       <div class="panel panel-primary white-block height-80vh scroll-y">
         <div class="panel-body">
-
             <div class="row">
                 <div class="col-sm-6">
                     <input-text is-editable="true"
@@ -58,13 +57,11 @@
             <div class="row">
                 <div class="col-sm-12 text-right">
                     <button type="button" ng-if="user.id" class="btn relo-bg-red mr-lg" ng-click="deleteFn(user.id)"
-                    app-acl-allow="end_user/delete"
-                    acl-remove="true"
                             title="Delete">
                         <i class="fa fa-trash mr-sm" ng-disabled="saving"></i>
                         {{'DELETE_BTN_TEXT' | translate}}
                     </button>
-                    <button type="submit" class="btn relo-bg-green" title="Save" ng-disabled="saving" ng-if="canSave"><i
+                    <button type="submit" class="btn relo-bg-green" title="Save" ng-disabled="saving"><i
                             class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
                         {{'SAVE_BTN_TEXT' | translate}}
                     </button>

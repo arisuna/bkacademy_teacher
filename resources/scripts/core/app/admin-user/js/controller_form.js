@@ -5,13 +5,10 @@
 (function () {
     'use strict';
 
-    App.controller('EndUserFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem', 'AppAclService', 'AppUserService',
-        function ($scope, $http, $stateParams, $state, WaitingService, AppDataService, AppSystem, AppAclService, AppUserService) {
+    App.controller('AdminUserFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem',
+        function ($scope, $http, $stateParams, $state, WaitingService, AppDataService, AppSystem) {
             $scope.page_loading = true;
             $scope.user = {};
-            $scope.canSave = false;
-
-            $scope.canSave =  angular.isDefined($stateParams.id) ? AppAclService.validateAction('crm_user', 'edit') : AppAclService.validateAction('crm_user', 'create');
 
             $scope.getDetailFn = function () {
                 var id = angular.isDefined($stateParams.id) ? $stateParams.id : 0;
@@ -20,7 +17,7 @@
                     return;
                 }
 
-                AppUserService.getUserDetail(id).then(
+                AppDataService.getAdminUserDetail(id).then(
                     function (res) {
                         if (res.success) {
                             $scope.user = res.data;
@@ -43,7 +40,7 @@
                 $scope.saving = true;
 
                 if ($scope.user.id > 0) {
-                    AppUserService.updateUser($scope.user).then(function (res) {
+                    AppDataService.updateAdminUser($scope.user).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
                         } else {
@@ -54,14 +51,14 @@
                         WaitingService.error(err);
                     })
                 } else {
-                    AppUserService.createUser($scope.user).then(function (res) {
+                    AppDataService.createAdminUser($scope.user).then(function (res) {
                         if (res.success) {
                             // WaitingService.success(res.message, function () {
-                            //     $state.go('app.user.list');
+                            //     $state.go('app.admin-user.list');
                             // });
 
                             WaitingService.popSuccess(res.message);
-                            $state.go('app.user.list');
+                            $state.go('app.admin-user.list');
                         } else {
                             WaitingService.error(res.message);
                         }
@@ -73,17 +70,17 @@
             }; // End save function
 
             $scope.deleteFn = function (id) {
-                WaitingService.questionSimple('QUESTION_DELETE_USER_TEXT',
+                WaitingService.questionSimple('Are you sure want DELETE this user?',
                     function (res) {
-                        AppUserService.deleteUser(id).then(function (res) {
+                        AppDataService.deleteAdminUser(id).then(function (res) {
                             if (res.success) {
                                 // WaitingService.success(res.message, function () {
-                                //     $state.go('app.user.list');
+                                //     $state.go('app.admin-user.list');
                                 // });
 
                                 WaitingService.popSuccess(res.message);
                                 console.log('go', res.message);
-                                $state.go('app.user.list');
+                                $state.go('app.admin-user.list');
                             } else {
                                 WaitingService.error(res.message);
                             }
