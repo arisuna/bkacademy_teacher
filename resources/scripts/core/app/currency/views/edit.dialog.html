@@ -1,0 +1,49 @@
+<div class="card noBorder">
+    <div class="card-heading relo-bg-bright-gray card-title-heading">
+        <span>{{'EDIT_CURRENCY_TEXT' | translate}} - {{currency.name}}</span>
+    </div>
+    <form novalidate validate-form="" ng-submit="updateCurrencyFn()" ng-show="!isLoading">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                ng-required="true"
+                                label="CURRENCY_NAME_TEXT"
+                                placeholder="ENTER_NAME_TEXT"
+                                show-label="true"
+                                error-message="CURRENCY_NAME_REQUIRED_TEXT"
+                                ng-model="currency.name"
+                                is-required="true">
+                    </input-text>
+                </div>
+
+                <div class="col-md-6">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                ng-required="true"
+                                label="CODE_TEXT"
+                                placeholder="ENTER_CODE_TEXT"
+                                show-label="true"
+                                error-message="CODE_REQUIRED_TEXT"
+                                ng-model="currency.code"
+                                is-required="true">
+                    </input-text>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <app-yes-no-input ng-model="currency.active" label="ACTIVE_TEXT" required="true">
+                    </app-yes-no-input>
+                </div>
+                <div class="col-sm-6">
+                    <app-yes-no-input ng-model="currency.principal" label="PRINCIPAL_TEXT" required="true">
+                    </app-yes-no-input>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <save-button-submit title="SAVE_TEXT"></save-button-submit>
+        </div>
+    </form>
+</div>

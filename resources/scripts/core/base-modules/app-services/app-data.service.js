@@ -85,7 +85,6 @@
             return deferred.promise;
         }
 
-
         this.getMenuItems = function () {
             let deferred = $q.defer();
             deferred.resolve({success: true, data: []});
@@ -814,7 +813,7 @@
 
         this.changeLanguage = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/app/profile/changeLanguage/' +  data).then(function (response) {
+            AppHttp.put('/app/profile/changeLanguage/' + data).then(function (response) {
                 deferred.resolve(response.data);
                 return response.data;
             }).catch(function (err) {
@@ -1256,7 +1255,6 @@
         };
 
 
-
         this.getUserGroupDetail = function (id) {
             var deferred = $q.defer();
             AppHttp.get('/app/user-group/detail/' + id)
@@ -1422,6 +1420,49 @@
         this.updateCrmUser = function (data) {
             var deferred = $q.defer();
             AppHttp.put('/app/crm-user/update/' + data.id, data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.listCurrency = function (data) {
+            const deferred = $q.defer();
+            AppHttp.put('/app/currency/index', data).then(function (response) {
+                deferred.resolve(response.data);
+            }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        }
+
+        this.createCurrency = function (data) {
+            const deferred = $q.defer();
+            AppHttp.post('/app/currency/create', data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.updateCurrency = function (data) {
+            const deferred = $q.defer();
+            AppHttp.put('/app/currency/update', data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.deleteCurrency = function (code) {
+            const deferred = $q.defer();
+            AppHttp.delete('/app/currency/delete/' + code)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err, status) {
