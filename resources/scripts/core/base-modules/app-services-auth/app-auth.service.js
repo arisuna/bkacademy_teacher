@@ -254,6 +254,10 @@
             $localStorage.redirectUrl = url;
         }
 
+        this.setUser = function (user) {
+            this.data.user = user;
+        }
+
         this.getUser = function () {
             return this.data.user;
         }

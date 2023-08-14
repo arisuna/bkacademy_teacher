@@ -48,10 +48,19 @@
                     <td class="bd-t-white">{{ object.code }}</td>
                     <td class="bd-t-white">{{ object.description }}</td>
                     <td class="bd-t-white">
-                        <div class="txt-ellipsis">
-                            <span class="text-green" ng-if="object.status == 1">{{'ACTIVE_TEXT' | translate}}</span>
-                            <span class="text-red" ng-if="object.status != 1">{{'INACTIVE_TEXT' | translate}}</span>
-                        </div>
+<!--                        <div class="txt-ellipsis">-->
+<!--                            <span class="text-green" ng-if="object.status == 1">{{'ACTIVE_TEXT' | translate}}</span>-->
+<!--                            <span class="text-red" ng-if="object.status != 1">{{'INACTIVE_TEXT' | translate}}</span>-->
+<!--                        </div>-->
+
+                        <button class="selected-status btn btn-flat btn-circle flex text-center flex-vertical width-18px height-18px bd-radius-9px"
+                                uib-dropdown-toggle=""
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                tooltip-placement="bottom"
+                                uib-tooltip="{{ object.status  == 1 ? ('ACTIVE_TEXT' | translate) : ('INACTIVE_TEXT' | translate) }}"
+                                ng-class="{'is-terminated': object.status != 1, 'is-active': object.status == 1}">
+                        </button>
                     </td>
                     <td class="bd-t-white">{{ object.updated_at | amDateFormat: 'DD/MM/YYYY' }}</td>
                     <td class="text-right bd-t-white noWrap">
