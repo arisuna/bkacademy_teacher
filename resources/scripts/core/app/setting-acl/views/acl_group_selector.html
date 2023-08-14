@@ -1,23 +1,27 @@
 <div class="form-group">
     <label class="label-text-form">
-        {{'GROUP_OF_ACTION_ACL' | translate}}
+        {{'GROUP_OF_ACTION_ACL_TEXT' | translate}}
         <asterik-red ng-if="isRequired"></asterik-red>
     </label>
 
-    <div class="radio c-radio c-radio-nofont">
-        <label class="mr"
-               ng-repeat="group in groups">
-            <input type="radio"
-                   name="acl_group_index"
-                   ng-change="changeValue()"
-                   ng-model="data.selectedId"
-                   id="acl_group_index_{{ $index }}"
-                   data-parsley-errors-container="#error_acl_group_index"
-                   ng-value="group.id"
-                   multiple convert-to-number=""/>
-            <span class=""></span>{{ group.text }}
-        </label>
-        <div id="error_acl_group_index"></div>
+    <div  class="flex">
+        <div class="flex-middle"ng-repeat="(index1,group) in groups">
+            <div class="radio c-radio c-radio-nofont mg-r-20">
+                <label class="flex"
+                       >
+                    <input type="radio"
+                           name="acl_group_index"
+                           ng-change="changeValue()"
+                           ng-model="data.selectedId"
+                           id="acl_group_index_{{ $index }}"
+                           data-parsley-errors-container="#error_acl_group_index"
+                           ng-value="group.id"
+                           multiple convert-to-number=""/>
+                    <span class="flex-middle pd-l-20"></span>{{ group.text }}
+                </label>
+                <div id="error_acl_group_index"></div>
+            </div>
+        </div>
     </div>
 
 </div>

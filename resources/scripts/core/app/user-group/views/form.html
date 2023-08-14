@@ -13,7 +13,7 @@
 
         <div class="pd-2x custom-dialog-overflow ngdialog-content-body">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <input-text is-editable="true"
                                 is-required="true"
                                 is-text="true"
@@ -23,7 +23,9 @@
                                 show-label="true"></input-text>
 
                 </div>
-                <div class="col-sm-6">
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
                     <input-text is-editable="true"
                                 is-required="true"
                                 is-text="true"
@@ -35,7 +37,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <input-text is-editable="true"
                                 is-text="true"
                                 is-required="false"
@@ -43,6 +45,32 @@
                                 required-message="ENTER_DESCRIPTION_TEXT"
                                 label="DESCRIPTION_TEXT"
                                 show-label="true"></input-text>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <app-level-selector ng-model="user_group.level"
+                                        label="LEVEL_TEXT"
+                                        show-label="true"
+                                        is-editable="!user_group.id > 0"
+                                        is-required="true"
+                                        required-message="ENTER_LEVEL_TEXT"
+                                        tool-tip-text="{{ 'TOOLTIP_LEVEL_TEXT' | translate }}"></app-level-selector>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                        <label class="label-text-form">{{ 'SCOPE_TEXT' | translate }} </label>
+                </div>
+                <div class="col-md-4" ng-repeat="scope in user_group.scopes">
+                    <div class="form-group flex">
+                        <input type="checkbox" class="mg-0"
+                        ng-disabled="user_group.id > 0"
+                               style="width: 20px; height:20px;"
+                               ng-checked="scope.is_selected == 1"
+                               ng-click="scope.is_selected = scope.is_selected == 1 ? 0 : 1"/>
+                        <span class="flex-middle mg-t-5 mg-l-5">{{scope.label | translate}}</span>
+                    </div>
                 </div>
             </div>
 

@@ -21,7 +21,8 @@
                     <tr>
                         <th class="text-dark-blue bd-b-white">#</th>
                         <th class="text-dark-blue bd-b-white">{{'NAME_TEXT' | translate }}</th>
-                        <th class="text-dark-blue bd-b-white">{{'LABEL_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'LEVEL_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'SCOPE_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white"></th>
                     </tr>
                     </thead>
@@ -33,7 +34,10 @@
                              class="wrap-word text-bright-blue">{{ object.name }}
                         </div>
                     </td>
-                    <td class="bd-t-white">{{ object.label }}</td>
+                    <td class="bd-t-white">{{ object.level_label }}</td>
+                    <td class="bd-t-white">
+                        <span ng-repeat="(index1,item) in object.scopes"><span ng-show="index1 > 0">, </span>{{item| translate}} </span>
+                    </td>
                     <td class="text-right bd-t-white">
                         <button-edit-icon ng-click="editUserGroupFn( object )" class="mr-sm"></button-edit-icon>
                         <button-delete-icon ng-click="deleteFn( object )" ng-if="object.id !=2 "></button-delete-icon>

@@ -14,7 +14,7 @@
                 aclParent: "=",
                 aclSelected: "=",
                 aclChildrenItems: "=?",
-                title: "@?"
+                columnTitle: "@?"
             },
             link: function (scope, element, attrs) {
 
@@ -156,8 +156,8 @@
                                     } else {
                                         WaitingService.error(res.message);
                                     }
-                                }, function () {
-                                    WaitingService.expire();
+                                }, function (res) {
+                                    WaitingService.error(res.message);
                                 });
                             }
                         }],

@@ -582,16 +582,6 @@
             return deferred.promise;
         }
 
-        this.showGroupAcl = function (id) {
-            let deferred = $q.defer();
-            AppHttp.get('/app/role/showgroup/' + id).then(function (response) {
-                deferred.resolve(response.data);
-            }).catch(function (err) {
-                deferred.reject(err.data);
-            });
-            return deferred.promise;
-        }
-
         this.resetAclGroup = function (id) {
             let deferred = $q.defer();
             AppHttp.put('/app/role/reset/' + id).then(function (response) {

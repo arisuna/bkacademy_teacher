@@ -32,7 +32,35 @@
             controller_action_items: [],
             acls: [],
             server_time_zone: '',
-            document_types: []
+            document_types: [],
+            levels: [
+                {
+                    id: 1,
+                    label: 'ASSIGNED_TEXT'
+                },
+                {
+                    id: 2,
+                    label: 'OFFICE_TEXT'
+                },
+                {
+                    id: 3,
+                    label: 'ALL_TEXT'
+                }
+            ],
+            scopes: [
+                {
+                    id: 1,
+                    label: 'HANOI_TEXT'
+                },
+                {
+                    id: 2,
+                    label: 'DANANG_TEXT'
+                },
+                {
+                    id: 3,
+                    label: 'HOCHIMINHCITY_TEXT'
+                }
+            ]
         };
 
         this.initied = false;
@@ -43,6 +71,14 @@
 
         this.getSettingUserGroups = function () {
             return vm.data.user_groups;
+        }
+
+        this.getLevels = function () {
+            return vm.data.levels;
+        }
+
+        this.getScopes = function () {
+            return vm.data.scopes;
         }
 
         this.setSettingUserGroups = function (list) {

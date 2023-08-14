@@ -8,9 +8,12 @@
     App.controller('UserGroupFormController', ['$scope', '$http', '$stateParams', '$state', 'ngDialog', 'urlBase', 'WaitingService', 'AppDataService', 'AppSystem',
         function ($scope, $http, $stateParams, $state, ngDialog, urlBase, WaitingService, AppDataService, AppSystem) {
             $scope.page_loading = false;
-            $scope.user_group = {};
             if (angular.isDefined($scope.ngDialogData) && $scope.ngDialogData.user_group != undefined) {
                 $scope.user_group = $scope.ngDialogData.user_group;
+            } else {
+                $scope.user_group = {
+                    scopes: angular.copy(AppSystem.getScopes())
+                };
             }
 
             $scope.saving = false;
