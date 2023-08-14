@@ -156,8 +156,8 @@
                                     } else {
                                         WaitingService.error(res.message);
                                     }
-                                }, function () {
-                                    WaitingService.expire();
+                                }, function (res) {
+                                    WaitingService.error(res.message);
                                 });
                             }
                         }],
