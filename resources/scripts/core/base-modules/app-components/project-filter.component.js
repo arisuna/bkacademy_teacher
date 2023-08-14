@@ -1045,6 +1045,10 @@
                     });
                 }
 
+                $scope.subscribe('clear_text_search_' + vm.moduleName, function (){
+                    vm.query = '';
+                });
+
                 $scope.subscribe('after_save_manage_filter', function () {
                     // Refresh after change on Manage panel
 

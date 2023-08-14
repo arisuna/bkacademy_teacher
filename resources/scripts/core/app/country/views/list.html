@@ -1,0 +1,68 @@
+<div class="" ng-controller="CountryListController">
+    <div ng-include="'/app/views/country/buttons.html'"></div>
+    <div class="min-height-70px">
+        <project-filter
+                columns="column_array"
+                is-sort="false"
+                is-filter="false"
+                module-name="module_name"></project-filter>
+    </div>
+
+    <div class="scroll-append scroll-y height-100vh-m140px overflow-x-disable" when-scrolled="loadMore()">
+        <div>
+            <spinner-v2 type="spin" ng-show="isInitialLoading"></spinner-v2>
+
+            <angular-table table="table"
+                           items="items"
+                           ng-if="!isInitialLoading && items.length > 0"
+                           search-input-enable="false">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th angular-table-sort="table" field-name="id">#</th>
+                            <th angular-table-sort="table" field-name="name">{{'NAME_TEXT' | translate }}</th>
+                            <th angular-table-sort="table" field-name="cio">{{'COUNTRY_CODE_TEXT' | translate }}</th>
+                            <th angular-table-sort="table" field-name="capital">{{'CAPITAL_TEXT' | translate }}</th>
+                            <th angular-table-sort="table" field-name="phone">{{'PHONE_PREFIX_TEXT' | translate }}</th>
+                            <th angular-table-sort="table" field-name="active">{{'ACTIVE_TEXT' | translate }}</th>
+                            <!--                            <th class="none-icon-sorting text-right"></th>-->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(index, object) in table.pagedItems[table.currentPage]"
+                            class=" ">
+                            <td class="">{{ object.id }}</td>
+                            <td ng-style="{'width':'300px'}" class="">
+                                <div ng-click="editCountryDialog( object )"
+                                     class="wrap-word text-bright-blue">{{ object.name }}
+                                </div>
+                            </td>
+                            <td class="">{{ object.cio }}</td>
+                            <td class="">{{ object.capital }}</td>
+                            <td class="">{{ object.phone }}</td>
+
+                            <td class="">
+                                <div uib-tooltip="{{ object.active == 1 ? ('ACTIVATED_TEXT' | translate) : ('INACTIVATED_TEXT'| translate) }}"
+                                     class="circle circle-lg circle-{{ object.active == '1' ? 'success' : 'warning' }}">
+                                </div>
+                            </td>
+
+                            <!--                            <td class="text-right">-->
+                            <!--                                <button-edit-icon ng-click="editCountryDialog( object )"-->
+                            <!--                                                  class="mr-sm"></button-edit-icon>-->
+
+                            <!--                                <button-delete-icon ng-click="deleteFn( object, index )"></button-delete-icon>-->
+                            <!--                            </td>-->
+                        </tr>
+                    </tbody>
+                </table>
+            </angular-table>
+            <div class="row" ng-if="loadingMore">
+                <div class="col-lg-12">
+                    <spinner-v2 type="spin"></spinner-v2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

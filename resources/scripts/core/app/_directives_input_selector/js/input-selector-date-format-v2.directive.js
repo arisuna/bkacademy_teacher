@@ -99,7 +99,7 @@
                         cache: true,
                         width: 300,
                         data: dialogPosition,
-                        controller: ['$scope', '$element', '$timeout', 'GmsSystem', 'Utils', function ($scope, $element, $timeout, GmsSystem, Utils) {
+                        controller: ['$scope', '$element', '$timeout', 'AppSystem', 'Utils', function ($scope, $element, $timeout, AppSystem, Utils) {
 
                             $scope.dateFormats = [
                                 {

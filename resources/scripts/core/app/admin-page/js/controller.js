@@ -44,7 +44,7 @@
                     "noRender": !(AppAclService.validateAction('admin', 'index')),
                     "acl": "",
                     "subMenu": [
-                        {"title": "SYSTEM_EMAIL_TEMPLATES_TEXT", "state": "app.system-email-template.list"},
+                        {"title": "SYSTEM_EMAIL_TEMPLATES_TEXT", "state": "app.email-template.list"},
                         {"title": "SYSTEM_NOTIFICATIONS_TEXT", "state": "app.system-notification.list"},
                     ]
                 },

@@ -1,8 +1,7 @@
 (function () {
     'use strict';
-    App.controller('AdminUserListController', ['$scope', '$state', '$timeout', '$rootScope', '$translate', 'WaitingService', 'AppDataService',
-        function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppDataService) {
-
+    App.controller('AdminUserListController', ['$scope', '$state', '$timeout', '$rootScope', '$translate', 'WaitingService', 'AppDataService', 'urlBase', 'ngDialog',
+        function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppDataService, urlBase, ngDialog) {
 
             $scope.module_name = 'users';
 
@@ -24,16 +23,16 @@
                 {
                     "name": "name",
                     "datatype": "string",
-                    "label" : "NAME_TEXT",
+                    "label": "NAME_TEXT",
                     'descending': false,
-                    "sortText" : $translate.instant("ALPHABET_UP_TEXT"),
+                    "sortText": $translate.instant("ALPHABET_UP_TEXT"),
                 },
                 {
                     "name": "name",
                     "datatype": "string",
-                    "label" : "NAME_TEXT",
+                    "label": "NAME_TEXT",
                     'descending': true,
-                    "sortText" : $translate.instant("ALPHABET_DOWN_TEXT")
+                    "sortText": $translate.instant("ALPHABET_DOWN_TEXT")
                 },
             ];
             $scope.loading = true;
@@ -62,7 +61,7 @@
                 $scope.params.query = $scope.search.query;
                 $scope.params.limit = 20;
                 $scope.params.orders = $scope.search.orders;
-                if (!_.isEmpty($scope.sort)){
+                if (!_.isEmpty($scope.sort)) {
                     $scope.params.orders = [$scope.sort];
                 }
                 $scope.params.filter_config_id = $scope.search.filterConfigId;
@@ -97,7 +96,7 @@
                     $scope.params.limit = 20;
                     $scope.params.page = $scope.currentPage + 1;
                     $scope.params.orders = $scope.search.orders;
-                    if (!_.isEmpty($scope.sort)){
+                    if (!_.isEmpty($scope.sort)) {
                         $scope.params.orders = [$scope.sort];
                     }
                     $scope.params.filter_config_id = $scope.search.filterConfigId;
@@ -181,12 +180,58 @@
                 });
             };
 
-            $scope.editUserFn = function (user) {
-                $state.go('app.admin-user.edit', {id: user.id});
-            };
-
             $scope.cloneUserFn = function (user) {
                 $state.go('app.admin-user.clone', {id: user.id});
             };
+
+            $scope.openCreateAdminDialog = function () {
+
+                $scope.createAdminUserDialog = ngDialog.open({
+                    template: urlBase.tplApp('app', 'admin-user', 'add-admin-user-right-dialog'),
+                    className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
+                    scope: $scope,
+                    resolve: {
+                        currentAdmin: ['', function () {
+                            return {};
+                        }]
+                    },
+                    closeByDocument: true,
+                    controller: 'AdminUserFormController'
+                });
+
+                $scope.createAdminUserDialog.closePromise.then(function (data) {
+                    if (angular.isDefined(data.value.adminUser)) {
+                        $scope.reLoadUsers();
+                    }
+                });
+            };
+
+            $scope.openEditAdminDialog = function (object) {
+                $scope.currentAdmin = object
+                $scope.editAdminUserDialog = ngDialog.open({
+                    template: urlBase.tplApp('app', 'admin-user', 'edit-admin-user-right-dialog'),
+                    className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
+                    scope: $scope,
+                    resolve: {
+                        currentAdmin: ['AppDataService', function (AppDataService) {
+                            return $scope.currentAdmin;
+                        }]
+                    },
+                    closeByDocument: true,
+                    controller: 'AdminUserFormController'
+                });
+
+                $scope.editAdminUserDialog.closePromise.then(function (data) {
+                    if (angular.isDefined(data.value.adminUser)) {
+                        $scope.reLoadUsers();
+                    }
+                });
+            };
+
+            $scope.reLoadUsers = function () {
+                $scope.isInitialLoading = true;
+                $scope.loadUsers();
+            }
+
         }]);
 })();

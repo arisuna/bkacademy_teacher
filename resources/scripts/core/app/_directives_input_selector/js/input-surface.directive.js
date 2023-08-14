@@ -5,9 +5,9 @@
         .module('app.input-selector')
         .directive('inputSurface', inputSurface);
 
-    inputSurface.$inject = ['$translate','$http','urlBase','$filter','GmsSystem'];
+    inputSurface.$inject = ['$translate','$http','urlBase','$filter','AppSystem'];
 
-    function inputSurface( $translate, $http, urlBase, $filter , GmsSystem) {
+    function inputSurface( $translate, $http, urlBase, $filter , AppSystem) {
         var directive = {
             restrict: 'AE',
             replace: true,
@@ -24,7 +24,7 @@
                 $scope.amount = 0.00;
 
                 if( $scope.currencies == null || $scope.currencies.length == 0 ){
-                    $scope.currencies = GmsSystem.getCurrencies();
+                    $scope.currencies = AppSystem.getCurrencies();
                 }
 
                 $scope.parseAmountValue = function(){

@@ -107,7 +107,7 @@
                         data: {
                             nationalities: $scope.nationalities
                         },
-                        controller: ['$scope', '$element', 'GmsSystem', 'Utils', function ($scope, $element, GmsSystem, Utils) {
+                        controller: ['$scope', '$element', 'AppSystem', 'Utils', function ($scope, $element, AppSystem, Utils) {
 
                             $scope.nationalities = $scope.ngDialogData.nationalities;
 

@@ -88,7 +88,7 @@
                         cache: true,
                         width: 300,
                         data: dialogPosition,
-                        controller: ['$scope', '$element', '$timeout', 'GmsWorkersService', 'Utils', function ($scope, $element, $timeout, GmsMemberService, Utils) {
+                        controller: ['$scope', '$element', '$timeout', 'GmsWorkersService', 'Utils', function ($scope, $element, $timeout, AppMemberService, Utils) {
 
                             $scope.zone_langs = [];
 

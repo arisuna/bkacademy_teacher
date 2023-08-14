@@ -1,0 +1,68 @@
+<div class="card text-dark-blue">
+    <div class="card-heading card-white card-title-heading height-58px">
+        <div class="row mg-t-10">
+            <div class="col-sm-7 txt-14">
+                <span class="">{{ 'EMAIL_TEMPLATE_TEXT' | translate }}</span>
+            </div>
+
+            <button type="button" class="btn-close btn-close-new pull-right txt-grey" style="margin-top: -7px"
+                    ng-click="close()" aria-label="Close"></button>
+        </div>
+    </div>
+
+    <form class="form-validate"
+          validate-form=""
+          role="form"
+          ng-submit="saveFn()" novalidate="">
+
+        <div class="card-body height-100vh-m133px overflow-y-enable">
+            <div>
+                <input-text is-editable="true"
+                            is-required="true"
+                            ng-model="emailTemplate.name"
+                            label="NAME_TEXT"
+                            show-label="true"
+                            required-message="ENTER_NAME_TEXT">
+                </input-text>
+            </div>
+
+            <div>
+                <input-text-area is-editable="true"
+                                 label="DESCRIPTION_TEXT"
+                                 placeholder="ENTER_DESCRIPTION_TEXT"
+                                 show-label="true"
+                                 rows="5"
+                                 ng-model="emailTemplate.description">
+                </input-text-area>
+            </div>
+            <h4>{{'MAIL_TRANSLATIONS_TEXT' | translate}}</h4>
+            <uib-tabset class="uib-tabset-custom">
+                <uib-tab ng-repeat="item in emailTemplate.items">
+                    <uib-tab-heading>
+                        <em class="fa fa-language mr-sm"></em>
+                        {{item.language}}-<b>{{getLangName(item.language)}}</b>
+                    </uib-tab-heading>
+
+                    <div>
+                        <input-text is-editable="true"
+                                    is-required="true"
+                                    ng-model="item.subject"
+                                    label="SUBJECT_TEXT"
+                                    show-label="true"
+                                    required-message="ENTER_SUBJECT_TEXT">
+                        </input-text>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="text-label">{{'TEXT_TEXT' | translate}}</label>
+                        <app-wysiwyg ng-model="item.text" mention="false"></app-wysiwyg>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+
+        <div class="card-footer text-right">
+            <save-button-submit title="SAVE_BTN_TEXT"></save-button-submit>
+        </div>
+    </form>
+</div>

@@ -1,9 +1,14 @@
 <div id="top-button-container">
     <button class="btn btn-circle relo-bg-bright-blue"
-                   type="button"
-                    uib-tooltip="{{ 'ADD_NEW_TEXT' | translate }}"
-                    tooltip-placement="bottom"
-                    ui-sref="app.admin-user.create">
+            type="button"
+            uib-tooltip="{{ 'ADD_NEW_TEXT' | translate }}"
+            tooltip-placement="bottom"
+            ng-click="openCreateAdminDialog()">
         <em class="fas fa-plus"></em>
+    </button>
+
+    <button ng-click="reLoadUsers()"
+            class="btn pointer btn-round filter-dark-blue">
+        <em class="fa fa-rotate" aria-hidden="true"></em>
     </button>
 </div>

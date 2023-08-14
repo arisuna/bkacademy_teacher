@@ -5,9 +5,9 @@
         .module('app.app-directives')
         .directive('appCountrySelector', appCountrySelector);
 
-    appCountrySelector.$inject = ['ngDialog', 'Utils', 'urlBase', 'DataService', 'GmsSystem', '$timeout'];
+    appCountrySelector.$inject = ['ngDialog', 'Utils', 'urlBase', 'DataService', 'AppSystem', '$timeout'];
 
-    function appCountrySelector(ngDialog, Utils, urlBase, DataService, GmsSystem, $timeout) {
+    function appCountrySelector(ngDialog, Utils, urlBase, DataService, AppSystem, $timeout) {
         var directive = {
             restrict: 'EA',
             replace: true,
@@ -88,7 +88,7 @@
                     },
                 };
 
-                $scope.countries = GmsSystem.getCountries();
+                $scope.countries = AppSystem.getCountries();
 
                 $scope.initFn = function () {
 
@@ -153,9 +153,9 @@
                         cache: false,
                         width: 300,
                         data: dialogPosition,
-                        controller: ['$scope', '$element', 'GmsSystem', 'Utils', function ($scope, $element, GmsSystem, Utils) {
+                        controller: ['$scope', '$element', 'AppSystem', 'Utils', function ($scope, $element, AppSystem, Utils) {
 
-                            $scope.countries = GmsSystem.getCountries();
+                            $scope.countries = AppSystem.getCountries();
 
                             Utils.setPositionDropdownDialog(dialogPosition);
 

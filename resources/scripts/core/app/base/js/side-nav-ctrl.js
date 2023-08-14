@@ -155,6 +155,12 @@
                             "sref": "app.user.list",
                             "appAclAllow": "end_user/index",
                             "aclRemove": true,
+                        },
+                        {
+                            "text": "COMPANIES_TEXT",
+                            "sref": "app.company.list",
+                            "appAclAllow": "crm_user/index",
+                            "aclRemove": true,
                         }
                     ]
                 },

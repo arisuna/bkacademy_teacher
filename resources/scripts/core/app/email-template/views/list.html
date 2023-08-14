@@ -1,0 +1,56 @@
+<div class="text-dark-blue " ng-controller="EmailTemplateListController">
+    <div ng-include="'/app/views/email-template/buttons.html'"></div>
+    <div class="min-height-70px">
+        <project-filter
+                columns=""
+                is-sort="false"
+                is-filter="false"
+                module-name="module_name"></project-filter>
+    </div>
+
+    <div class="scroll-append scroll-y height-100vh-m140px overflow-x-disable">
+        <spinner-v2 type="spin" ng-show="isLoading" class="mb"></spinner-v2>
+
+        <div class="flex-vertical" ng-if="!isInitialLoading &&  items.length == 0"
+             ng-style="{'height' : '100%', 'width': '100%', 'text-align': 'center'}">
+            <div class="align-centers">
+                <div class="mg-0 mg-b-4s text-16 text-muted align-middle">
+                    {{ 'NO_DATA_AVAILABLE_TEXT' | translate }}
+                </div>
+            </div>
+        </div>
+
+        <angular-table table="table"
+                       items="items"
+                       ng-if="!isLoading && items.length > 0"
+                       search-input-enable="false">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th angular-table-sort="table" field-name="id">#</th>
+                    <th angular-table-sort="table" field-name="name">{{'NAME_TEXT' | translate}}</th>
+                    <th angular-table-sort="table" field-name="description">{{'DESCRIPTION_TEXT' | translate}}</th>
+                    <th class="none-icon-sorting text-right"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="(key, object) in table.pagedItems[table.currentPage]">
+                    <td>{{ object.id }}</td>
+                    <td>
+                        <div ng-click="openDetailEmailTemplate( object )"
+                             class="wrap-word text-bright-blue">{{ object.name }}
+                        </div>
+                    </td>
+                    <td>{{ object.description }}</td>
+
+                    <td class="noWrap text-right">
+                        <button-edit-icon class="mr-sm"
+                                          ng-click="openDetailEmailTemplate(object)"></button-edit-icon>
+                        <button-delete-icon class="mr-sm" ng-click="deleteFn(object)"></button-delete-icon>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </angular-table>
+    </div>
+</div>

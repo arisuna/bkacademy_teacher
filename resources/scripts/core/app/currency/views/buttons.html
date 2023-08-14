@@ -1,0 +1,15 @@
+<div id="top-button-container">
+    <button class="btn btn-circle relo-bg-bright-blue"
+            type="button"
+            uib-tooltip="{{ 'NEW_CURRENCY_TEXT' | translate }}"
+            tooltip-placement="bottom"
+            ng-click="openCreateCurrencyDialog()"
+    >
+        <em class="fas fa-plus"></em>
+    </button>
+
+    <button ng-click="getListFn()"
+            class="btn pointer btn-round filter-dark-blue">
+        <em class="fa fa-rotate" aria-hidden="true"></em>
+    </button>
+</div>

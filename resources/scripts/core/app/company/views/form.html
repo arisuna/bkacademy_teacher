@@ -1,0 +1,110 @@
+<div class="card noBorder">
+    <div class="card-heading relo-bg-bright-gray card-title-heading">
+        <span>{{'CREATE_COMPANY_TEXT' | translate}}</span>
+    </div>
+    <form class=""
+          validate-form=""
+          ng-submit="saveFn()"
+          ng-if="!isLoading"
+          novalidate>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                is-required="true"
+                                ng-model="company.name"
+                                required-message="ENTER_COMPANY_NAME_TEXT"
+                                label="NAME_TEXT"
+                                show-label="true"></input-text>
+
+                </div>
+                <div class="col-sm-6">
+                    <input-text is-editable="true"
+                                is-email="true"
+                                is-lower-case="true"
+                                is-required="true"
+                                ng-model="company.email"
+                                label="EMAIL_TEXT"
+                                invalid-message="INVALID_EMAIL_TEXT"
+                                required-message="ENTER_EMAIL_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                is-required="false"
+                                ng-model="company.address"
+                                required-message="ADDRESS_TEXT"
+                                label="ADDRESS_TEXT"
+                                show-label="true"></input-text>
+                </div>
+
+                <div class="col-md-6">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                is-required="false"
+                                ng-model="company.street"
+                                required-message="STREET_TEXT"
+                                label="STREET_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input-text is-editable="true"
+                                is-city="true"
+                                is-required="true"
+                                ng-model="company.town"
+                                label="TOWN_TEXT"
+                                required-message="CITY_REQUIRED_TEXT"
+                                show-label="true"></input-text>
+                </div>
+
+                <div class="col-md-6">
+                    <app-country-selector ng-model="company.country_id"
+                                          show-label="true"
+                                          is-editable="true"
+                                          is-required="true"
+                                          label="COUNTRY_TEXT"
+                                          required-message="{{ 'COUNTRY_REQUIRED_TEXT' | translate }}"></app-country-selector>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input-text is-editable="true"
+                                is-telephone="true"
+                                is-required="false"
+                                ng-model="company.fax"
+                                required-message="FAX_TEXT"
+                                label="FAX_TEXT"
+                                show-label="true"></input-text>
+
+                </div>
+                <div class="col-md-6">
+                    <input-text is-editable="true"
+                                is-telephone="true"
+                                is-required="false"
+                                ng-model="company.phone"
+                                required-message="PHONE_TEXT"
+                                label="PHONE_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer text-right">
+            <button type="button" ng-if="user.id" class="btn relo-bg-red mr-lg" ng-click="deleteFn(user.id)"
+                    app-acl-allow="end_user/delete"
+                    acl-remove="true"
+                    title="Delete">
+                <i class="fa fa-trash mr-sm" ng-disabled="saving"></i>
+                {{'DELETE_BTN_TEXT' | translate}}
+            </button>
+
+            <save-button-submit title="SAVE_BTN_TEXT" ng-disabled="saving" ng-if="canSave"></save-button-submit>
+        </div>
+    </form>
+</div>

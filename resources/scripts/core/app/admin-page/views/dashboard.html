@@ -50,12 +50,12 @@
                     <app-panel-admin icon="fa fa-user"
                                         admin-title="ASSIGNEES_ADMIN_HEADER_TEXT"
                                         text="ASSIGNEES_ADMIN_SUBTITLE_TEXT"
-                                        ng-if="GmsAclService.validateAction('company','index') ||
-                                            GmsAclService.validateAction('office','index') ||
-                                            GmsAclService.validateAction('department','index') ||
-                                            GmsAclService.validateAction('team','index') ||
-                                            GmsAclService.validateAction('employee','index') ||
-                                            GmsAclService.validateAction('bookers','index')"
+                                        ng-if="AppAclService.validateAction('company','index') ||
+                                            AppAclService.validateAction('office','index') ||
+                                            AppAclService.validateAction('department','index') ||
+                                            AppAclService.validateAction('team','index') ||
+                                            AppAclService.validateAction('employee','index') ||
+                                            AppAclService.validateAction('bookers','index')"
                                         links="[
                                             {state:'app.hr-accounts.list',title:'COMPANY_NAME_TEXT', acl:'hr_account/index'},
                                             {state:'app.offices.list',title:'OFFICE_NAME_TEXT', acl:'office/index'},
@@ -68,7 +68,7 @@
                     <app-panel-admin icon="fa fa-building-o"
                                         admin-title="REAL_ESTATE_ADMIN_HEADER_TEXT"
                                         text="REAL_ESTATE_ADMIN_SUBTITLE_TEXT"
-                                        ng-if="GmsAclService.validateAction('property','index')"
+                                        ng-if="AppAclService.validateAction('property','index')"
                                         links="[
                                             {state:'app.properties.list',title:'MANAGE_PROPERTIES_TEXT',acl:'property/index'},
                                             {state:'app.properties.list',title:'MANAGE_BUILDINGS_TEXT',acl:'property/index'},
@@ -90,8 +90,8 @@
                     <app-panel-admin icon="fa fa-male"
                                         admin-title="HR_ADMIN_HEADER_TEXT"
                                         text="HR_ADMIN_SUBTITLE_TEXT"
-                                        ng-if="GmsAclService.validateAction('company','index') ||
-                                            GmsAclService.validateAction('hr_member','index')"
+                                        ng-if="AppAclService.validateAction('company','index') ||
+                                            AppAclService.validateAction('hr_member','index')"
                                         links="[
                                             {state:'app.hr-accounts.list',title:'HR_ACCOUNTS_TEXT', acl:'hr_account/index'},
                                             {state:'app.hr-contacts.list',title:'HR_MEMBERS_TEXT',acl:'hr_member/index'}
@@ -101,8 +101,8 @@
                     <app-panel-admin icon="fa fa-male"
                                         admin-title="GMS_ADMIN_HEADER_TEXT"
                                         text="GMS_ADMIN_SUBTITLE_TEXT"
-                                        ng-if="GmsAclService.validateAction('my_company','index') ||
-                                            GmsAclService.validateAction('app_member','index')"
+                                        ng-if="AppAclService.validateAction('my_company','index') ||
+                                            AppAclService.validateAction('app_member','index')"
                                         links="[
                                             {state:'app.my-company.index',title:'GMS_TEXT',acl:'my_company/index'},
                                             {state:'app.app-members.list',title:'GMS_MEMBERS_TEXT',acl:'app_member/index'},
@@ -120,8 +120,8 @@
                     <app-panel-admin icon="fa fa-bolt"
                                         admin-title="SVP_ADMIN_HEADER_TEXT"
                                         text="SVP_ADMIN_SUBTITLE_TEXT"
-                                        ng-if="GmsAclService.validateAction('svp_company','index') ||
-                                            GmsAclService.validateAction('svp_worker','index')"
+                                        ng-if="AppAclService.validateAction('svp_company','index') ||
+                                            AppAclService.validateAction('svp_worker','index')"
                                         links="[
                                             {state:'app.svp-companies.list',title:'SVP_COMPANIES_TEXT',acl:'svp_company/index'},
                                             {state:'app.svp-workers.list',title:'SVP_WORKERS_TEXT',acl:'svp_worker/index'}
@@ -130,8 +130,8 @@
                     <app-panel-admin icon="fa fa-tasks"
                                         admin-title="MANAGE_WORKFLOWS_TITLE_TEXT"
                                         text="MANAGE_WORKFLOWS_SUBTITLE_TEXT"
-                                        ng-if="GmsAclService.validateAction('workflow','index') ||
-                                            GmsAclService.validateAction('workflow','index')"
+                                        ng-if="AppAclService.validateAction('workflow','index') ||
+                                            AppAclService.validateAction('workflow','index')"
                                         links="[
                                             {state:'app.workflow.assignment',title:'ASSIGNMENT_WORKFLOWS_TEXT'},
                                             {state:'app.workflow.relocation',title:'RELOCATION_WORKFLOWS_TEXT'}

@@ -2,10 +2,10 @@
     <div ng-include="'/app/views/admin-user/buttons.html'"></div>
     <div class="min-height-70px">
         <project-filter
-            columns="column_array"
-            is-sort="false"
-            is-filter="false"
-            module-name="module_name"></project-filter>
+                columns="column_array"
+                is-sort="false"
+                is-filter="false"
+                module-name="module_name"></project-filter>
     </div>
 
     <div class="scroll-append scroll-y height-100vh-m140px overflow-x-disable" when-scrolled="loadMore()">
@@ -22,39 +22,40 @@
                         <th class="text-dark-blue bd-b-white">#</th>
                         <th class="text-dark-blue bd-b-white">{{'NAME_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white">{{'EMAIL_TEXT' | translate }}</th>
-                        <th class="text-dark-blue bd-b-white">{{'PHONE_TEXT' | translate }}</th>
-                        <th class="text-dark-blue bd-b-white">{{'ROLE_TEXT' | translate }}</th>
+                        <!--                        <th class="text-dark-blue bd-b-white">{{'PHONE_TEXT' | translate }}</th>-->
+                        <!--                        <th class="text-dark-blue bd-b-white">{{'ROLE_TEXT' | translate }}</th>-->
                         <th class="text-dark-blue bd-b-white">{{'STATUS_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white">{{'CREATED_AT_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="(index, object) in table.pagedItems[table.currentPage]" class="relo-bg-bright-gray-4 bd-r-5 border-white">
+                    <tr ng-repeat="(index, object) in table.pagedItems[table.currentPage]"
+                        class="relo-bg-bright-gray-4 bd-r-5 border-white">
                         <td class="bd-t-white">{{ index + 1}}</td>
-                    <td  class="bd-t-white">
-                        <div ng-click="editUserFn( object )"
-                             class="wrap-word text-bright-blue">{{ object.name }}
-                        </div>
-                    </td>
-                    <td class="bd-t-white">{{ object.email }}</td>
-                    <td class="bd-t-white">{{ object.phone }}</td>
-                    <td class="bd-t-white">{{ object.role | translate }}</td>
-                    <td class="bd-t-white">
-                        <button class="selected-status btn btn-flat btn-circle flex text-center flex-vertical width-18px height-18px bd-radius-9px"
-                                uib-dropdown-toggle=""
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                                tooltip-placement="bottom"
-                                uib-tooltip="{{ object.is_active  == 1 ? ('ACTIVE_TEXT' | translate) : ('INACTIVE_TEXT' | translate) }}"
-                                ng-class="{'is-terminated': object.is_active != 1, 'is-active': object.is_active == 1}">
-                        </button>
-                    </td>
-                    <td class="bd-t-white">{{ object.created_at | amDateFormat: 'DD/MM/YYYY'}}</td>
-                    <td class="text-right bd-t-white">
-                        <button-edit-icon ng-click="editUserFn( object )" class="mr-sm"></button-edit-icon>
-                        <button-delete-icon ng-click="deleteFn( object )"></button-delete-icon>
-                    </td>
+                        <td class="bd-t-white">
+                            <div ng-click="openEditAdminDialog( object )"
+                                 class="wrap-word text-bright-blue">{{ object.name }}
+                            </div>
+                        </td>
+                        <td class="bd-t-white">{{ object.email }}</td>
+                        <!--                    <td class="bd-t-white">{{ object.phone }}</td>-->
+                        <!--                    <td class="bd-t-white">{{  object.role | translate }}</td>-->
+                        <td class="bd-t-white">
+                            <button class="selected-status btn btn-flat btn-circle flex text-center flex-vertical width-18px height-18px bd-radius-9px"
+                                    uib-dropdown-toggle=""
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                    tooltip-placement="bottom"
+                                    uib-tooltip="{{ object.is_active  == 1 ? ('ACTIVE_TEXT' | translate) : ('INACTIVE_TEXT' | translate) }}"
+                                    ng-class="{'is-terminated': object.is_active != 1, 'is-active': object.is_active == 1}">
+                            </button>
+                        </td>
+                        <td class="bd-t-white">{{ object.created_at | amDateFormat: 'DD/MM/YYYY'}}</td>
+                        <td class="text-right bd-t-white">
+                            <button-edit-icon ng-click="openEditAdminDialog( object )" class="mr-sm"></button-edit-icon>
+                            <button-delete-icon ng-click="deleteFn( object )"></button-delete-icon>
+                        </td>
                     </tr>
 
                     </tbody>
@@ -62,7 +63,7 @@
             </angular-table>
             <div class="row" ng-if="loadingMore">
                 <div class="col-lg-12">
-                    <spinner-v2 type="spin" ></spinner-v2>
+                    <spinner-v2 type="spin"></spinner-v2>
                 </div>
             </div>
         </div>
