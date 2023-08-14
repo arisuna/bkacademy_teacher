@@ -14,7 +14,7 @@
                 aclParent: "=",
                 aclSelected: "=",
                 aclChildrenItems: "=?",
-                title: "@?"
+                columnTitle: "@?"
             },
             link: function (scope, element, attrs) {
 

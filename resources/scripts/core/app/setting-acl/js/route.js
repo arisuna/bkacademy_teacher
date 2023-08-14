@@ -8,7 +8,7 @@
             $stateProvider.state('app.setting-acl', {
                 url: '/setting-acl',
                 title: 'ACL_SETTINGS_TEXT',
-                resolve: helper.resolveFor('modernizr', 'icons', 'parsley'),
+                resolve: helper.resolveFor('modernizr', 'icons', 'ng-sortable'),
                 abstract: true,
                 parent: 'app.admin-page.dashboard',
                 views: {
