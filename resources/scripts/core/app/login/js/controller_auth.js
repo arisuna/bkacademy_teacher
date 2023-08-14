@@ -133,7 +133,7 @@
                         $scope.step = 3;
                     } else if (res.message == "NotAuthorizedException") {
                         WaitingService.end();
-                        WaitingService.error("INVALID_LOGIN_CREDENTIALS_TEXT'");
+                        WaitingService.error("INVALID_LOGIN_CREDENTIALS_TEXT");
                         $scope.step = 1;
                     } else {
                         WaitingService.end();
