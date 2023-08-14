@@ -10,9 +10,9 @@
         .module('app.app-directives')
         .directive('appCurrencySelector', appCurrency);
 
-    appCurrency.$inject = ['$translate', '$window', '$timeout', 'urlBase', 'ngDialog', 'Utils', 'GmsSystem', 'AppAuthService'];
+    appCurrency.$inject = ['$translate', '$window', '$timeout', 'urlBase', 'ngDialog', 'Utils', 'AppSystem', 'AppAuthService'];
 
-    function appCurrency($translate, $window, $timeout, urlBase, ngDialog, Utils, GmsSystem, AppAuthService) {
+    function appCurrency($translate, $window, $timeout, urlBase, ngDialog, Utils, AppSystem, AppAuthService) {
         var directive = {
             restrict: 'E',
             replace: true,
@@ -81,7 +81,7 @@
                     },
                 };
 
-                $scope.currencies = GmsSystem.getCurrencies();
+                $scope.currencies = AppSystem.getCurrencies();
 
                 $scope.initFn = function () {
                     let currency = null;
@@ -156,9 +156,9 @@
                         data: {
                             position: $scope.position
                         },
-                        controller: ['$scope', '$element', 'GmsSystem', 'Utils', function ($scope, $element, GmsSystem, Utils) {
+                        controller: ['$scope', '$element', 'AppSystem', 'Utils', function ($scope, $element, AppSystem, Utils) {
 
-                            $scope.currencies = GmsSystem.getCurrencies();
+                            $scope.currencies = AppSystem.getCurrencies();
                             document.documentElement.style.setProperty('--ng-dialog-custom-position-top', dialogTop);
                             if ($scope.ngDialogData.position === 'right') {
                                 console.log('right dialog');

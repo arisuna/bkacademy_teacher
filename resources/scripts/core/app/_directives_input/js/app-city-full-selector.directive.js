@@ -5,9 +5,9 @@
         .module('app.app-directives')
         .directive('appCityFullSelector', appCityFullSelector);
 
-    appCityFullSelector.$inject = ['$timeout', 'GmsGeonameService', 'urlBase', 'ngDialog', 'GmsSystem'];
+    appCityFullSelector.$inject = ['$timeout', 'GmsGeonameService', 'urlBase', 'ngDialog', 'AppSystem'];
 
-    function appCityFullSelector($timeout, GmsGeonameService, urlBase, ngDialog, GmsSystem) {
+    function appCityFullSelector($timeout, GmsGeonameService, urlBase, ngDialog, AppSystem) {
         var directive = {
             restrict: 'EA',
             replace: true,
@@ -90,8 +90,8 @@
                         template: urlBase.tplApp('app', '_directives_input', 'city-full-selector-modal-search'),
                         className: 'ngdialog-theme-default md-box',
                         scope: $scope,
-                        controller: ['GmsGeonameService', 'GmsSystem', function (GmsGeonameService, GmsSystem) {
-                            let countries = GmsSystem.getCountries();
+                        controller: ['GmsGeonameService', 'AppSystem', function (GmsGeonameService, AppSystem) {
+                            let countries = AppSystem.getCountries();
                             $timeout(function () {
                                 $scope.country = _.find(countries, function (o) {
                                     return o.id == $scope.countryId;

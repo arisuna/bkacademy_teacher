@@ -107,7 +107,7 @@
                         data: {
                             languages: $scope.languages
                         },
-                        controller: ['$scope', '$element', 'GmsSystem', 'Utils', function ($scope, $element, GmsSystem, Utils) {
+                        controller: ['$scope', '$element', 'AppSystem', 'Utils', function ($scope, $element, AppSystem, Utils) {
 
                             $scope.languages = $scope.ngDialogData.languages;
 

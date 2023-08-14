@@ -190,6 +190,11 @@
                     template: urlBase.tplApp('app', 'admin-user', 'add-admin-user-right-dialog'),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
                     scope: $scope,
+                    resolve: {
+                        currentAdmin: ['', function () {
+                            return {};
+                        }]
+                    },
                     closeByDocument: true,
                     controller: 'AdminUserFormController'
                 });

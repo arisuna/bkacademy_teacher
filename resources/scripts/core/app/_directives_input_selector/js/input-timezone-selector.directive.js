@@ -5,9 +5,9 @@
         .module('app.input-selector')
         .directive('inputTimezoneSelector', inputTimezoneSelector);
 
-    inputTimezoneSelector.$inject = ['ngDialog', 'GmsSystem', 'urlBase', 'DataService', 'AppDataService', 'Utils'];
+    inputTimezoneSelector.$inject = ['ngDialog', 'AppSystem', 'urlBase', 'DataService', 'AppDataService', 'Utils'];
 
-    function inputTimezoneSelector(ngDialog, GmsSystem, urlBase, DataService, AppDataService, Utils) {
+    function inputTimezoneSelector(ngDialog, AppSystem, urlBase, DataService, AppDataService, Utils) {
         var directive = {
             restrict: 'E',
             replace: true,
