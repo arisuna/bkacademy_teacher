@@ -34,6 +34,7 @@
                          ng-class="{'search-2': $ctrl.moduleName == 'credit_notes', 'search': $ctrl.moduleName != 'credit_notes'}">
                         <input
                             class="form-control form-control-custom-radius filter-search ng-valid filter-search-{{$ctrl.moduleName}}"
+                            placeholder="{{ 'SEARCH_TEXT' | translate }}"
                             ng-model="$ctrl.query"/>
                         <span class="input-group-btn">
                             <button type="button" ng-click="$ctrl.executeSearch()" class="btn btn-default btn-flat"

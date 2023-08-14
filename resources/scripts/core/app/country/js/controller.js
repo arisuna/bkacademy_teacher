@@ -10,6 +10,7 @@
             $scope.isInitialLoading = true;
             $scope.items = [];
             $scope.query = null
+            $scope.tel = '0987654321'
             $scope.module_name = 'countries';
             $scope.column_array = []
 
@@ -127,7 +128,7 @@
                                 });
                         };
                         $scope.getDetailFn();
-                        
+
                         $scope.updateCountryFn = function () {
                             WaitingService.begin();
                             AppDataService.updateCountry($scope.country).then(

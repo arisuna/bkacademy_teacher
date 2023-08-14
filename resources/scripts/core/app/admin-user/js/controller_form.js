@@ -5,15 +5,15 @@
 (function () {
     'use strict';
 
-    App.controller('AdminUserFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem',
-        function ($scope, $http, $stateParams, $state, WaitingService, AppDataService, AppSystem) {
-            $scope.page_loading = true;
+    App.controller('AdminUserFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem', 'currentAdmin',
+        function ($scope, $http, $stateParams, $state, WaitingService, AppDataService, AppSystem, currentAdmin) {
+            $scope.isLoading = true;
             $scope.user = {};
 
             $scope.getDetailFn = function () {
-                var id = angular.isDefined($stateParams.id) ? $stateParams.id : 0;
+                let id = angular.isDefined(currentAdmin.id) ? currentAdmin.id : 0;
                 if (id == 0) {
-                    $scope.page_loading = false;
+                    $scope.isLoading = false;
                     return;
                 }
 
@@ -24,11 +24,11 @@
                         } else {
                             WaitingService.error(res.msg);
                         }
-                        $scope.page_loading = false;
+                        $scope.isLoading = false;
                     },
                     function (error) {
                         WaitingService.expire(error);
-                        $scope.page_loading = false;
+                        $scope.isLoading = false;
                     }
                 );
             };
@@ -43,28 +43,34 @@
                     AppDataService.updateAdminUser($scope.user).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
+                            $scope.closeThisDialog({adminUser: res.data});
                         } else {
-                            WaitingService.error(res.message);
+                            WaitingService.error(res.message, function () {
+                                $scope.closeThisDialog();
+                            });
                         }
                         $scope.saving = false;
                     }, function (err) {
-                        WaitingService.error(err);
+                        WaitingService.error(err, function () {
+                            $scope.closeThisDialog();
+                        });
                     })
                 } else {
                     AppDataService.createAdminUser($scope.user).then(function (res) {
                         if (res.success) {
-                            // WaitingService.success(res.message, function () {
-                            //     $state.go('app.admin-user.list');
-                            // });
-
                             WaitingService.popSuccess(res.message);
-                            $state.go('app.admin-user.list');
+                            $scope.closeThisDialog({adminUser: res.data});
+                            // $state.go('app.admin-user.list');
                         } else {
-                            WaitingService.error(res.message);
+                            WaitingService.error(res.message, function () {
+                                $scope.closeThisDialog();
+                            });
                         }
                         $scope.saving = false;
                     }, function (err) {
-                        WaitingService.error(err);
+                        WaitingService.error(err, function () {
+                            $scope.closeThisDialog();
+                        });
                     })
                 }
             }; // End save function

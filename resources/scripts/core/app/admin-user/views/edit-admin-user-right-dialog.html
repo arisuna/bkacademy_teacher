@@ -1,0 +1,84 @@
+<div class="card noBorder">
+    <div class="card-heading relo-bg-bright-gray text-dark-blue">
+        <span class="">{{'EDIT_ADMIN_USER_TEXT' | translate}}</span>
+    </div>
+
+    <spinner-v2 type="spin" ng-if="isLoading"></spinner-v2>
+
+    <form validate-form=""
+          class="form-validate pd-0 mg-0"
+          role="form" name="userForm"
+          editable-form=""
+          noValidate=""
+          ng-keypress="($event.which === 13) ? 0 :0"
+          ng-if="!isLoading"
+          ng-submit="saveFn()">
+
+        <div class="card-body custom-dialog-overflow height-100vh-m93px">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-required="true"
+                                is-text="true"
+                                ng-model="user.firstname"
+                                required-message="ENTER_FIRST_NAME_TEXT"
+                                label="FIRST_NAME_TEXT"
+                                show-label="true"></input-text>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-required="true"
+                                is-text="true"
+                                ng-model="user.lastname"
+                                required-message="ENTER_LAST_NAME_TEXT"
+                                label="LAST_NAME_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="false"
+                                is-email="true"
+                                is-required="true"
+                                ng-model="user.email"
+                                required-message="ENTER_EMAIL_TEXT"
+                                label="EMAIL_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="false"
+                                is-text="true"
+                                ng-model="user.aws_cognito_uuid"
+                                label="AWS_UUID_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-sm-12 text-right">
+                    <button type="button" class="btn relo-bg-red mr-lg" ng-click="deleteFn(user.id)"
+                            title="Delete">
+                        <i class="fa fa-trash mr-sm" ng-disabled="saving"></i>
+                        {{'DELETE_BTN_TEXT' | translate}}
+                    </button>
+
+                    <button type="submit" class="btn relo-bg-green" title="Save" ng-disabled="saving"><i
+                            class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
+                        {{'SAVE_BTN_TEXT' | translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
