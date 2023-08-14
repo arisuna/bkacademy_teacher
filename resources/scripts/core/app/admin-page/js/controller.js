@@ -49,13 +49,13 @@
                     ]
                 },
                 {
-                    "title": "OFFICES_AND_LOCATIONS_TEXT",
+                    "title": "BUSINESS_ZONES_AND_LOCATIONS_TEXT",
                     "icon": "fa-solid fa-map-location-dot",
                     "iconType": "icon",
                     "noRender": !(AppAclService.validateAction('admin', 'index')),
                     "acl": "",
                     "subMenu": [
-                        {"title": "OFFICES_TEXT", "state": "app.office.list"},
+                        {"title": "BUSINESS_ZONES_TEXT", "state": "app.business-zone.list"},
                         {"title": "LOCATIONS_TEXT", "state": "app.location.list"},
                     ]
                 },
