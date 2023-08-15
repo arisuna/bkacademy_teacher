@@ -5,16 +5,32 @@
 (function () {
     'use strict';
 
-    App.controller('UserGroupFormController', ['$scope', '$http', '$stateParams', '$state', 'ngDialog', 'urlBase', 'WaitingService', 'AppDataService', 'AppSystem',
-        function ($scope, $http, $stateParams, $state, ngDialog, urlBase, WaitingService, AppDataService, AppSystem) {
+    App.controller('UserGroupFormController', ['$scope', '$http', '$stateParams', '$state', 'ngDialog', 'urlBase', 'WaitingService', 'AppDataService', 'AppBusinessZoneService',
+        function ($scope, $http, $stateParams, $state, ngDialog, urlBase, WaitingService, AppDataService, AppBusinessZoneService) {
             $scope.page_loading = false;
-            if (angular.isDefined($scope.ngDialogData) && $scope.ngDialogData.user_group != undefined) {
-                $scope.user_group = $scope.ngDialogData.user_group;
-            } else {
-                $scope.user_group = {
-                    scopes: angular.copy(AppSystem.getScopes())
-                };
+            $scope.getDetail = function(){ 
+                if (angular.isDefined($scope.ngDialogData) && $scope.ngDialogData.user_group != undefined) {
+                    $scope.user_group = $scope.ngDialogData.user_group;
+                } else {
+                    $scope.page_loading = true;
+                    AppBusinessZoneService.getList().then(function (res) {
+                        if (res.success) {
+                            $scope.user_group = {
+                                scopes: res.data
+                            };
+                        } else {
+                            WaitingService.expire();
+                        }
+                        $scope.page_loading = false;
+                    }, function () {
+                        WaitingService.expire();
+                        $timeout(function () {
+                            $scope.page_loading = false;
+                        }, 1000)
+                    });
+                }
             }
+            $scope.getDetail();
 
             $scope.saving = false;
 

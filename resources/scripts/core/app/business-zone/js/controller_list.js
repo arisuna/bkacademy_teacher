@@ -70,7 +70,7 @@
                 $scope.params.is_tmp = $scope.search.isTmp;
 
 
-                AppBusinessZoneService.getList($scope.params).then(function (res) {
+                AppBusinessZoneService.search($scope.params).then(function (res) {
                     if (res.success) {
                         $scope.items = res.data;
                         $scope.totalPages = res.total_pages;
@@ -104,7 +104,7 @@
                     $scope.params.filter_config_id = $scope.search.filterConfigId;
                     $scope.params.is_tmp = $scope.search.isTmp;
 
-                    AppBusinessZoneService.getList($scope.params).then(function (res) {
+                    AppBusinessZoneService.search($scope.params).then(function (res) {
                         if (res.success) {
                             $scope.items = $scope.items.concat(res.data);
                             $scope.totalPages = res.total_pages;

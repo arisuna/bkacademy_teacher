@@ -46,20 +46,6 @@
                     id: 3,
                     label: 'ALL_TEXT'
                 }
-            ],
-            scopes: [
-                {
-                    id: 1,
-                    label: 'HANOI_TEXT'
-                },
-                {
-                    id: 2,
-                    label: 'DANANG_TEXT'
-                },
-                {
-                    id: 3,
-                    label: 'HOCHIMINHCITY_TEXT'
-                }
             ]
         };
 
@@ -75,10 +61,6 @@
 
         this.getLevels = function () {
             return vm.data.levels;
-        }
-
-        this.getScopes = function () {
-            return vm.data.scopes;
         }
 
         this.setSettingUserGroups = function (list) {
