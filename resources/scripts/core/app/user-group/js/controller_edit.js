@@ -21,6 +21,18 @@
                 $scope.settingActive = index;
             }
 
+            $scope.initAclsValue = function (acls) {
+                for (var index in acls) {
+                    var acl = acls[index];
+                    var id = acl.id;
+                    acl.selected = ($scope.group_acls[id] && $scope.group_acls[id].accessible);
+                    if (acl.sub && Object.keys(acl.sub).length > 0) {
+                        $scope.initAclsValue(acl.sub);
+                    }
+                }
+            };
+            $scope.initAclsValue($scope.controller_action_items);
+
             $scope.openEditDialogFn = function () {
                 $scope.dialog = ngDialog.open({
                     template: urlBase.tplApp('app', 'user-group', 'form'),

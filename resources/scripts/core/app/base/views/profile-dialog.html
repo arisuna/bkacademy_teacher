@@ -1,0 +1,72 @@
+<div class="card">
+    <div class="card-heading relo-bg-bright-gray text-dark-blue txt-ellipsis pd-r-35 txt-14">
+        <span>{{ 'MY_USER_PROFILE_TEXT' | translate }}</span>
+    </div>
+
+    <form class="form-validate noPadding" validate-form="true"
+          id="" name="userProfileForm"
+          role="form" ng-submit="" novalidate="">
+        <div class="card-body custom-dialog-overflow height-100vh-m90px txt-14">
+            <div class="row">
+                <div class="col-md-12">
+                    <input-text is-editable="true"
+                                is-required="true"
+                                is-text="true"
+                                ng-model="user.lastname"
+                                required-message="ENTER_LAST_NAME_TEXT"
+                                label="LAST_NAME_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <input-text is-editable="true"
+                                is-required="true"
+                                is-text="true"
+                                ng-model="user.firstname"
+                                required-message="ENTER_FIRST_NAME_TEXT"
+                                label="FIRST_NAME_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <input-text is-editable="false"
+                                is-disabled="true"
+                                is-required="true"
+                                is-text="true"
+                                ng-model="user.email"
+                                required-message="ENTER_EMAIL_TEXT"
+                                label="EMAIL_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <input-text is-editable="true"
+                                is-required="false"
+                                is-text="true"
+                                ng-model="user.phone"
+                                label="PHONE_NUMBER_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <div class="pull-right text-right">
+
+                <button type="submit" class="btn relo-bg-green"
+                        ng-disabled="saving"
+                        ng-click="userProfileForm.$valid && saveFn();">
+                    <em class="fa-solid  mr-sm {{ saving ? 'fa-spin fa-spinner' : 'fa-floppy-disk'}}"></em>
+                    {{ 'SAVE_BTN_TEXT' | translate }}
+                </button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </form>
+</div>

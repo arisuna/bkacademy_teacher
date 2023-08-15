@@ -21,49 +21,47 @@
                 <!-- START user info-->
                 <li class="dropdown dropdown-list has-children"
                     id="userAccessTrigger"
-                    ng-mouseover="showDropDown()"
-                    ng-mouseleave="hideDropDown()"
-                    uib-dropdown=""
+                    ng-click="openLeftDialog()"
                     auto-close="outsideClick"
                     ng-controller="AppProfileMenuController"
                     ng-class="{active: $state.includes('app.profile'), collapse_nav: !!app.layout.isCollapsedNav}"
                     tooltip-placement="right"
                     tooltip-enable="!!app.layout.isCollapsedNav">
 <!--                    <a uib-dropdown-toggle="" style="padding-top: 7px !important;" ui-sref="app.profile">-->
-                    <a uib-dropdown-toggle="" style="padding-top: 7px !important;" >
+                    <a style="padding-top: 7px !important;" >
                         <user-avatar-thumb uuid="{{ user.uuid }}" size="small"></user-avatar-thumb>
                         <span class="ml" ng-if="!app.layout.isCollapsedNav">{{ 'PROFILE_TEXT' | translate }}</span>
                     </a>
 
-                    <ul id="userAccessMenu" uib-dropdown-menu
-                        class="dropdown-menu animated fadeInLeftBig user-access-policy">
-                        <div class="col-lg-12 align-center pd-15x">
-                            <user-avatar-thumb uuid="{{ user.uuid }}" size="large"></user-avatar-thumb>
-                        </div>
-                        <div class="col-lg-12 align-center mg-b-md">
-                            <p class="mb0 text-16" style="color:black"><strong>{{user.firstname}} {{user.lastname}}</strong></p>
-                            <p class="mb0 text-16" style="color:black"><strong>{{company.name}}</strong></p>
-                            <p class="mb0" style="color:black">{{user.workemail}}</p>
-                        </div>
-                        <div class="col-lg-12 align-center mg-b-md">
-                            <a ui-sref="app.profile" ng-click="hideDropDown($event)">
-                                {{ 'PROFILE_PREFERENCES_TEXT' | translate }}
-                            </a>
-                        </div>
-                        <div class="col-lg-12 align-center mg-t-md mg-b-sm">
-                            <div
-                                class="col-lg-6 align-left pd-l-0 text-12"
-                                ng-bind-html="'TERMS_CONDITIONS_HTML' | translate | trustMe"
-                            >
-                            </div>
-                            <div
-                                class="col-lg-6 align-right pd-r-0 text-12"
-                                ng-bind-html="'PRIVACY_POLICY_HTML' | translate | trustMe"
-                            >
-                            </div>
-                        </div>
+<!--                    <ul id="userAccessMenu" uib-dropdown-menu-->
+<!--                        class="dropdown-menu animated fadeInLeftBig user-access-policy">-->
+<!--                        <div class="col-lg-12 align-center pd-15x">-->
+<!--                            <user-avatar-thumb uuid="{{ user.uuid }}" size="large"></user-avatar-thumb>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-12 align-center mg-b-md">-->
+<!--                            <p class="mb0 text-16" style="color:black"><strong>{{user.firstname}} {{user.lastname}}</strong></p>-->
+<!--                            <p class="mb0 text-16" style="color:black"><strong>{{company.name}}</strong></p>-->
+<!--                            <p class="mb0" style="color:black">{{user.workemail}}</p>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-12 align-center mg-b-md">-->
+<!--                            <a ui-sref="app.profile" ng-click="hideDropDown($event)">-->
+<!--                                {{ 'PROFILE_PREFERENCES_TEXT' | translate }}-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-12 align-center mg-t-md mg-b-sm">-->
+<!--                            <div-->
+<!--                                class="col-lg-6 align-left pd-l-0 text-12"-->
+<!--                                ng-bind-html="'TERMS_CONDITIONS_HTML' | translate | trustMe"-->
+<!--                            >-->
+<!--                            </div>-->
+<!--                            <div-->
+<!--                                class="col-lg-6 align-right pd-r-0 text-12"-->
+<!--                                ng-bind-html="'PRIVACY_POLICY_HTML' | translate | trustMe"-->
+<!--                            >-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                    </ul>
+<!--                    </ul>-->
                 </li>
 
                 <!--<li ng-class="{active: $state.includes('app.notifications.list'), collapse_nav: !!app.layout.isCollapsedNav}"-->
@@ -142,6 +140,7 @@
             </ul>
             <ul class="sidebar-nav relo-nav-bottom" id="relo-nav-bottom">
                 <li ng-class="{active: $state.includes('app.admin-page'), collapse_nav: !!app.layout.isCollapsedNav}"
+                    app-acl-allow="admin/index" acl-remove="true"
                     tooltip-placement="right"
                     tooltip-enable="!!app.layout.isCollapsedNav"
                     uib-tooltip="{{ 'ADMIN_PAGE_TEXT' | translate }}">

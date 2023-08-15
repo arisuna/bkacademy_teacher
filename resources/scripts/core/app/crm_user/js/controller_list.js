@@ -141,9 +141,10 @@
                 }
             };
 
-            $rootScope.$on('crm_user_filter_update', function (data) {
+            $rootScope.$on('crm_user_filter_update', function (event, data) {
                 $scope.isLoading = true;
                 $scope.loadCount = 0;
+                $scope.params.roles = data.roles;
                 $timeout(function () {
                     $scope.items = [];
                     $scope.loadItems();
@@ -169,7 +170,7 @@
                     AppDataService.deleteCrmUser(user.id).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
-                            $scope.reloadInit();
+                            $scope.loadItems();
                         } else {
                             WaitingService.error(msg);
                         }

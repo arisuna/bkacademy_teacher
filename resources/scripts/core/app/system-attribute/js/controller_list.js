@@ -169,7 +169,7 @@
             });
 
             $scope.deleteFn = function (attribute, index) {
-                WaitingService.questionSimple('Are you sure want DELETE this attribute?', function () {
+                WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_ATTRIBUTE_TEXT', function () {
                     AppAttributeService.deleteAttribute(attribute.id).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
@@ -188,20 +188,6 @@
             $scope.cloneAttributeFn = function (attribute) {
                 $state.go('app.system-attribute.clone', {id: attribute.id});
             };
-            $scope.synchronizing = false;
-            $scope.synchronize = function () {
-                WaitingService.questionSimple('Do you want push all updates of Attribute and Translation in CLOUD and to all users devices ?', function () {
-                    $scope.synchronizing = true;
-                    WaitingService.begin();
-                    AppAttributeService.synchronizeAttribute().then(function (res) {
-                        if (res.success) {
-                            WaitingService.popSuccess('SYNCHORNIZED_SUCCESS_TEXT');
-                        } else {
-                            WaitingService.error('SYNCHORNIZED_FAILED_TEXT');
-                        }
-                        $scope.synchronizing = false;
-                    });
-                });
-            };
+
         }]);
 })();

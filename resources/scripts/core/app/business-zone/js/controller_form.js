@@ -5,10 +5,10 @@
 (function () {
     'use strict';
 
-    App.controller('SystemAttributeFormController', ['$scope', '$http', '$stateParams', '$state', '$location', '$anchorScroll',
-        'WaitingService', 'AppDataService', 'AppAttributeService', 'AppSystem',
+    App.controller('BusinessZoneFormController', ['$scope', '$http', '$stateParams', '$state', '$location', '$anchorScroll',
+        'WaitingService', 'AppDataService', 'AppBusinessZoneService', 'AppSystem',
         function ($scope, $http, $stateParams, $state, $location, $anchorScroll,
-                  WaitingService, AppDataService, AppAttributeService, AppSystem) {
+                  WaitingService, AppDataService, AppBusinessZoneService, AppSystem) {
             $scope.page_loading = true;
             $scope.object = {};
             $scope.data_translated = [];
@@ -25,7 +25,7 @@
                     return;
                 }
 
-                AppAttributeService.detailAttribute(id).then(
+                AppBusinessZoneService.detailBusinessZone(id).then(
                     function (res) {
                         if (res.success) {
                             if ($scope.isClone) {
@@ -70,7 +70,7 @@
 
 
                 if ($scope.object.id > 0) {
-                    AppAttributeService.updateAttribute($scope.object).then(function (res) {
+                    AppBusinessZoneService.updateBusinessZone($scope.object).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
                         } else {
@@ -81,7 +81,7 @@
                         WaitingService.error(err);
                     })
                 } else {
-                    AppAttributeService.createAttribute($scope.object).then(function (res) {
+                    AppBusinessZoneService.createBusinessZone($scope.object).then(function (res) {
                         if (res.success) {
                             // WaitingService.success(res.message, function () {
                             //     $state.go('app.system-attribute.list');
@@ -100,9 +100,9 @@
             }; // End save function
 
             $scope.deleteFn = function (id) {
-                WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_ATTRIBUTE_TEXT',
+                WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_BUSINESS_ZONE_TEXT',
                     function (res) {
-                        AppAttributeService.deleteAttribute(id).then(function (res) {
+                        AppBusinessZoneService.deleteBusinessZone(id).then(function (res) {
                             if (res.success) {
                                 // WaitingService.success(res.message, function () {
                                 //     $state.go('app.system-attribute.list');
@@ -121,7 +121,7 @@
             }; // End delete function
 
 
-            $scope.addAttributeValueFn = function (key) {
+            $scope.addBusinessZoneValueFn = function (key) {
                 if (!angular.isDefined($scope.object.data_value)) {
                     $scope.object.data_value = [];
                 }
