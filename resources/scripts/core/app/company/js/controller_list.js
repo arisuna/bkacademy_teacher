@@ -165,31 +165,56 @@
             };
 
             $scope.deleteFn = function (company, index) {
-                WaitingService.questionSimple('QUESTION_DELETE_USER_TEXT', function () {
-                    AppDataService.deleteCrmUser(company.id).then(function (res) {
-                        if (res.success) {
-                            WaitingService.popSuccess(res.message);
-                            $scope.reloadInit();
-                        } else {
-                            WaitingService.error(msg);
-                        }
+                WaitingService.questionSimple('QUESTION_DELETE_COMPANY_TEXT',
+                    function (res) {
+                        AppCompanyService.deleteCompany(company.id).then(function (res) {
+                            if (res.success) {
+                                WaitingService.popSuccess(res.message);
+                                $scope.loadItems()
+                            } else {
+                                WaitingService.error(res.message);
+                            }
+                        }, function (err) {
+                            WaitingService.error(err);
+                        });
                     });
-                });
             };
 
             $scope.editCompanyFn = function (company) {
-                $state.go('app.company.edit', {id: company.id});
+                $scope.currentCompany = company
+
+                $scope.editCompanyDialog = ngDialog.open({
+                    template: urlBase.tplApp('app', 'company', 'form', '_=' + Math.random()),
+                    className: 'ngdialog-theme-default md-box',
+                    scope: $scope,
+                    resolve: {
+                        currentCompany: ['AppDataService', function (AppDataService) {
+                            return $scope.currentCompany;
+                        }]
+                    },
+                    closeByDocument: true,
+                    controller: 'CompanyFormController'
+                });
+
+                $scope.editCompanyDialog.closePromise.then(function (data) {
+                    if (angular.isDefined(data.value) && angular.isDefined(data.value.company)) {
+                        console.log('data.value', data.value);
+                        $scope.loadItems()
+                    }
+                });
             };
 
             $scope.openCreateCompanyDialog = function () {
-                // $scope.company = {};
+                $scope.currentCompany = {id: 0};
                 $scope.createCompanyDialog = ngDialog.open({
                     template: urlBase.tplApp('app', 'company', 'form', '_=' + Math.random()),
                     className: 'ngdialog-theme-default md-box',
                     scope: $scope,
                     resolve: {
-                        currentCompany: ['', function () {
-                            return {};
+                        currentCompany: ['AppDataService', function (AppDataService) {
+                            return {
+                                id: 0
+                            };
                         }]
                     },
                     closeByDocument: false,

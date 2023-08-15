@@ -1,13 +1,14 @@
 <div class="card noBorder">
     <div class="card-heading relo-bg-bright-gray card-title-heading">
-        <span>{{'CREATE_COMPANY_TEXT' | translate}}</span>
+        <span ng-show="!company.id">{{'CREATE_COMPANY_TEXT' | translate}}</span>
+        <span ng-show="company.id">{{'EDIT_COMPANY_TEXT' | translate}}</span>
     </div>
     <form class=""
           validate-form=""
           ng-submit="saveFn()"
           ng-if="!isLoading"
           novalidate>
-        <div class="card-body">
+        <div class="card-body scroll-append scroll-y height-70vh overflow-x-disable">
             <div class="row">
                 <div class="col-sm-6">
                     <input-text is-editable="true"
@@ -59,7 +60,7 @@
                                 is-required="true"
                                 ng-model="company.town"
                                 label="TOWN_TEXT"
-                                required-message="CITY_REQUIRED_TEXT"
+                                required-message="TOWN_REQUIRED_TEXT"
                                 show-label="true"></input-text>
                 </div>
 
@@ -75,7 +76,6 @@
             <div class="row">
                 <div class="col-md-6">
                     <input-text is-editable="true"
-                                is-telephone="true"
                                 is-required="false"
                                 ng-model="company.fax"
                                 required-message="FAX_TEXT"
@@ -93,13 +93,29 @@
                                 show-label="true"></input-text>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input-text is-editable="true"
+                                is-required="true"
+                                ng-model="company.tax_number"
+                                required-message="TAX_NUMBER_REQUIRED_TEXT"
+                                label="TAX_NUMBER_TEXT"
+                                show-label="true"></input-text>
+
+                </div>
+                <div class="col-md-6">
+                    <input-text is-editable="true"
+                                is-website="true"
+                                ng-model="company.website"
+                                label="WEBSITE_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
         </div>
 
         <div class="card-footer text-right">
-            <button type="button" ng-if="user.id" class="btn relo-bg-red mr-lg" ng-click="deleteFn(user.id)"
-                    app-acl-allow="end_user/delete"
-                    acl-remove="true"
-                    title="Delete">
+            <button type="button" ng-if="company.id" class="btn relo-bg-red mr-lg" ng-click="deleteFn(company.id)"
+                    title="{{'DELETE_BTN_TEXT' | translate}}">
                 <i class="fa fa-trash mr-sm" ng-disabled="saving"></i>
                 {{'DELETE_BTN_TEXT' | translate}}
             </button>

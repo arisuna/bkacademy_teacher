@@ -185,14 +185,14 @@
             };
 
             $scope.openCreateAdminDialog = function () {
-
+                $scope.currentAdmin = {id: 0}
                 $scope.createAdminUserDialog = ngDialog.open({
                     template: urlBase.tplApp('app', 'admin-user', 'add-admin-user-right-dialog'),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
                     scope: $scope,
                     resolve: {
-                        currentAdmin: ['', function () {
-                            return {};
+                        currentAdmin: ['AppDataService', function (AppDataService) {
+                            return {id: 0};
                         }]
                     },
                     closeByDocument: true,
