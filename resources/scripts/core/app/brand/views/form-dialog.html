@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-heading relo-bg-bright-gray">
         <span class="text-dark-blue">
-           {{ isClone == true ?  ('CLONE_BUSINESS_ZONE_TEXT' | translate) + (' #' + object.id) : (object.id ?  ('EDIT_BUSINESS_ZONE_TEXT' | translate) + ' #' + object.id : ('CREATE_BUSINESS_ZONE_TEXT' | translate)) }}
+           {{ isClone == true ?  ('CLONE_BRAND_TEXT' | translate) + (' #' + object.id) : (object.id ?  ('EDIT_BRAND_TEXT' | translate) + ' #' + object.id : ('CREATE_BRAND_TEXT' | translate)) }}
         </span>
     </div>
     <form class="form-validate noPadding" validate-form="true"
@@ -16,20 +16,8 @@
                                     is-required="true"
                                     is-text="true"
                                     ng-model="object.name"
-                                    required-message="ENTER_BUSINESS_ZONE_NAME_TEXT"
+                                    required-message="ENTER_BRAND_NAME_TEXT"
                                     label="NAME_TEXT"
-                                    show-label="true"></input-text>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <input-text is-editable="true"
-                                    is-required="false"
-                                    is-text="true"
-                                    ng-model="object.code"
-                                    label="CODE_TEXT"
                                     show-label="true"></input-text>
                     </div>
                 </div>
