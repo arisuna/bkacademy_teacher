@@ -107,7 +107,7 @@
                                         $scope.closeThisDialog({newCountry: res.data});
                                     } else {
                                         WaitingService.error(res.message, function () {
-                                            $scope.closeThisDialog();
+                                            // $scope.closeThisDialog();
                                         });
                                     }
                                     $scope.isLoading = false;
@@ -172,7 +172,7 @@
                                             $scope.closeThisDialog({country: res.data});
                                         } else {
                                             WaitingService.error(res.message, function () {
-                                                $scope.closeThisDialog();
+                                                // $scope.closeThisDialog();
                                             });
                                         }
                                         $scope.isLoading = false;

@@ -60,7 +60,7 @@
                                 is-required="true"
                                 ng-model="company.town"
                                 label="TOWN_TEXT"
-                                required-message="TOWN_REQUIRED_TEXT"
+                                required-message="FIELD_IS_REQUIRED_TEXT"
                                 show-label="true"></input-text>
                 </div>
 
@@ -70,7 +70,7 @@
                                           is-editable="true"
                                           is-required="true"
                                           label="COUNTRY_TEXT"
-                                          required-message="{{ 'COUNTRY_REQUIRED_TEXT' | translate }}"></app-country-selector>
+                                          required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}"></app-country-selector>
                 </div>
             </div>
             <div class="row">
@@ -98,7 +98,7 @@
                     <input-text is-editable="true"
                                 is-required="true"
                                 ng-model="company.tax_number"
-                                required-message="TAX_NUMBER_REQUIRED_TEXT"
+                                required-message="FIELD_IS_REQUIRED_TEXT"
                                 label="TAX_NUMBER_TEXT"
                                 show-label="true"></input-text>
 

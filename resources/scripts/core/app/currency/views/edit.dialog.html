@@ -9,23 +9,23 @@
                     <input-text is-editable="true"
                                 is-text="true"
                                 ng-required="true"
-                                label="CURRENCY_NAME_TEXT"
+                                label="NAME_TEXT"
                                 placeholder="ENTER_NAME_TEXT"
                                 show-label="true"
-                                error-message="CURRENCY_NAME_REQUIRED_TEXT"
+                                error-message="FIELD_IS_REQUIRED_TEXT"
                                 ng-model="currency.name"
                                 is-required="true">
                     </input-text>
                 </div>
 
                 <div class="col-md-6">
-                    <input-text is-editable="true"
+                    <input-text is-editable="false"
                                 is-text="true"
                                 ng-required="true"
                                 label="CODE_TEXT"
                                 placeholder="ENTER_CODE_TEXT"
                                 show-label="true"
-                                error-message="CODE_REQUIRED_TEXT"
+                                error-message="FIELD_IS_REQUIRED_TEXT"
                                 ng-model="currency.code"
                                 is-required="true">
                     </input-text>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-footer">
+        <div class="card-footer text-right">
             <save-button-submit title="SAVE_TEXT"></save-button-submit>
         </div>
     </form>
