@@ -49,14 +49,14 @@
                     ]
                 },
                 {
-                    "title": "BUSINESS_ZONES_AND_LOCATIONS_TEXT",
+                    "title": "BUSINESS_ZONES_AND_WAREHOUSES_PARKS_TEXT",
                     "icon": "fa-solid fa-map-location-dot",
                     "iconType": "icon",
                     "noRender": !(AppAclService.validateAction('admin', 'index')),
                     "acl": "",
                     "subMenu": [
                         {"title": "BUSINESS_ZONES_TEXT", "state": "app.business-zone.list"},
-                        {"title": "LOCATIONS_TEXT", "state": "app.location.list"},
+                        {"title": "WAREHOUSES_PARKS_TEXT", "state": "app.location.list"},
                     ]
                 },
                 {
@@ -70,7 +70,7 @@
                         {"title": "PRODUCT_FIELDS_TEXT", "state": "app.product-field.list"},
                         {"title": "PRODUCT_FIELD_GROUPS_CATEGORIES_TEXT", "state": "app.product-field-group-category.list"},
                         {"title": "PRODUCT_ATTRIBUTES_TEXT", "state": "app.product-attribute.list"},
-                        {"title": "BRANDS_TEXT", "state": "app.brand.list"},
+                        {"title": "MAKES_AND_MODELS_TEXT", "state": "app.brand.list"},
                     ]
                 },
             ];

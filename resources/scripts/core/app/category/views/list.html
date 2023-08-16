@@ -1,0 +1,19 @@
+<div class="">
+    <div>
+        <div class="row">
+            <div class="col-md-6">
+                <app-category-level-list
+                        item-parent="data.level1ParentId"
+                        item-children-items="data.category_level_1_items"
+                        item-selected="data.category_selected_level_1"
+                        column-title="LEVEL_1_TEXT"></app-category-level-list>
+            </div>
+            <div class="col-md-6">
+                <app-category-level-list item-parent="data.category_selected_level_1"
+                                         item-children-items="data.category_level_2_items"
+                                         item-selected="data.category_selected_level_2"
+                                    column-title="LEVEL_2_TEXT"></app-category-level-list>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,125 @@
+<div class="card">
+    <div class="card-heading relo-bg-bright-gray ">
+        <span class="text-dark-blue text-bold">{{('EDIT_CATEGORY_TEXT') | translate}}</span>
+    </div>
+
+    <div class="">
+        <uib-tabset class="uib-tabset-custom">
+            <uib-tab>
+                <uib-tab-heading>
+                    <em class="fa fa-info-circle"></em> {{'BASIC_SETTING_TEXT' | translate}}
+                </uib-tab-heading>
+                <uib-tab-body>
+                    <form class="form-validate noPadding"
+                    validate-form=""
+                    role="form"
+                    name="aclForm"
+                    data-parsley-validate=""
+                    ng-submit="updateFn()"
+                    ng-if="!page_loading"
+                    novalidate>
+
+
+                          <div class="pd-2x custom-dialog-overflow height-100vh-m150px">
+
+
+                            <div class="" ng-if="!(itemParent.id > 0)">
+                                <notification-flat type="gray">{{'THIS_CATEGORY_HAVE_NO_PARENT_TEXT' | translate}}</notification-flat>
+                            </div>
+                            <div class="" ng-if="itemParent.id > 0">
+                                <notification-flat type="info">
+                                    <div class="text-bold">{{'PARENT_TEXT' | translate}}: {{ itemParent.name }}</div>
+                                </notification-flat>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input-text is-text="true"
+                                                label="NAME_TEXT"
+                                                show-label="true"
+                                                is-editable="true"
+                                                is-required="true"
+                                                ng-model="categoryConfig.name"></input-text>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input-text is-label="true"
+                                                label="LABEL_TEXT"
+                                                is-upper-case="true"
+                                                show-label="true"
+                                                is-editable="true"
+                                                is-required="true"
+                                                ng-model="categoryConfig.label"></input-text>
+                                </div>
+                            </div>
+
+                
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <input-text-area ng-model="categoryConfig.description"
+                                                     label="DESCRIPTION_TEXT"
+                                                     show-label="true"
+                                                     is-editable="true"></input-text-area>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="card-footer text-right">
+                            <button type="submit" class="btn relo-bg-green"><i
+                                class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
+                            {{'SAVE_BTN_TEXT' | translate}}
+                        </button>
+                        </div>
+                    </form>
+                </uib-tab-body>
+            </uib-tab>
+
+            <uib-tab>
+                <uib-tab-heading>
+                    <em class="fa fa-level-up"></em> {{'LEVEL_INFORMATION_TEXT' | translate}}
+                </uib-tab-heading>
+                <uib-tab-body>
+                    <form class="form-validate noPadding"
+                    validate-form=""
+                    role="form"
+                    name="aclForm"
+                    data-parsley-validate=""
+                    ng-submit="updateAclFn()"
+                    ng-if="!page_loading"
+                    novalidate>
+
+
+                          <div class="pd-2x custom-dialog-overflow height-100vh-m150px">
+
+                            <div class="" ng-if="!(itemParent.id > 0)">
+                                <notification-flat type="gray">{{'THIS_CATEGORY_HAVE_NO_PARENT_TEXT' | translate}}</notification-flat>
+                            </div>
+                            <div class="" ng-if="itemParent.id > 0">
+                                <notification-flat type="info">
+                                    <div class="text-bold">{{'PARENT_TEXT' | translate}}: {{ itemParent.name }}</div>
+                                </notification-flat>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <app-category-parent-selector current-id="categoryConfig.id"
+                                                                  ng-model="categoryConfig.parent_category_id"
+                                                                  level="categoryConfig.level"></app-category-parent-selector>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer text-right">
+                            <button type="submit" class="btn relo-bg-green"><i
+                                    class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
+                                {{'SAVE_BTN_TEXT' | translate}}
+                            </button>
+                        </div>
+                    </form>
+                </uib-tab-body>
+            </uib-tab>
+
+    </div>
+
+</div>

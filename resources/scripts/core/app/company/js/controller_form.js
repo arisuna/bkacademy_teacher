@@ -4,8 +4,8 @@
 
 (function () {
     'use strict';
-    App.controller('CompanyFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem', 'currentCompany',
-        function ($scope, $http, $stateParams, $state, WaitingService, AppDataService, AppSystem, currentCompany) {
+    App.controller('CompanyFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem', 'AppCompanyService', 'currentCompany',
+        function ($scope, $http, $stateParams, $state, WaitingService, AppDataService, AppSystem, AppCompanyService, currentCompany) {
             $scope.isLoading = true;
             $scope.company = {};
             $scope.canSave = true;
@@ -17,7 +17,6 @@
                     return;
                 }
 
-                $scope.isLoading = false;
                 AppCompanyService.getCompanyDetail(id).then(
                     function (res) {
                         if (res.success) {
@@ -28,6 +27,7 @@
                         $scope.isLoading = false;
                     },
                     function (error) {
+                        console.log("error", error)
                         WaitingService.expire(error);
                         $scope.isLoading = false;
                     }
@@ -44,6 +44,7 @@
                     AppCompanyService.updateCompany($scope.company).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
+                            $scope.closeThisDialog({company: res.data});
                         } else {
                             WaitingService.error(res.message);
                         }
@@ -55,12 +56,13 @@
                     AppCompanyService.createCompany($scope.company).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
-                            $state.go('app.company.list');
+                            $scope.closeThisDialog({company: res.data});
                         } else {
                             WaitingService.error(res.message);
                         }
                         $scope.saving = false;
                     }, function (err) {
+                        $scope.closeThisDialog();
                         WaitingService.error(err);
                     })
                 }
@@ -73,7 +75,7 @@
                             if (res.success) {
                                 WaitingService.popSuccess(res.message);
                                 console.log('go', res.message);
-                                $state.go('app.company.list');
+                                $scope.closeThisDialog({company: res.data});
                             } else {
                                 WaitingService.error(res.message);
                             }

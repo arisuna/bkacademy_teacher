@@ -1,0 +1,171 @@
+<div class="">
+    <form novalidate validate-form="" ng-show="!isLoading" ng-submit="saveFn()">
+        <div class="card-body scroll-append scroll-y height-70vh overflow-x-disable">
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <h4>{{'INFORMATION_TEXT' | translate}}</h4>
+                    </div>
+                    <div>
+                        <input-text is-editable="true"
+                                    is-text="true"
+                                    ng-required="true"
+                                    label="COUNTRY_NAME_TEXT"
+                                    placeholder="ENTER_COUNTRY_NAME_TEXT"
+                                    show-label="true"
+                                    error-message="FIELD_IS_REQUIRED_TEXT"
+                                    ng-model="country.name"
+                                    is-required="true">
+                        </input-text>
+                    </div>
+                    <div>
+                        <input-text-area is-editable="true"
+                                         label="ALTERNATIVES_NAMES_text"
+                                         placeholder="ALTERNATIVES_NAMES_text"
+                                         show-label="true"
+                                         rows="3"
+                                         ng-model="country.alternative_names">
+                        </input-text-area>
+                    </div>
+                    <div>
+                        <input-text is-editable="true"
+                                    is-text="true"
+                                    label="CAPITAL_TEXT"
+                                    placeholder="ENTER_CAPITAL_TEXT"
+                                    show-label="true"
+                                    ng-model="country.capital"
+                        >
+                        </input-text>
+                    </div>
+                    <div>
+                        <input-text is-editable="true"
+                                    is-text="true"
+                                    ng-required="true"
+                                    label="LABEL_TEXT"
+                                    placeholder="ENTER_LABEL_TEXT"
+                                    show-label="true"
+                                    error-message="FIELD_IS_REQUIRED_TEXT"
+                                    ng-model="country.label"
+                                    is-required="true">
+                        </input-text>
+                    </div>
+                    <div>
+                        <input-text is-editable="true"
+                                    is-text="true"
+                                    label="SLUG_TEXT"
+                                    placeholder="ENTER_SLUG_TEXT"
+                                    show-label="true"
+                                    ng-model="country.slug"
+                        >
+                        </input-text>
+                    </div>
+                    <div>
+                        <input-text is-editable="true"
+                                    is-text="true"
+                                    ng-required="true"
+                                    label="COUNTRY_CODE_TEXT"
+                                    max-length="2"
+                                    max-length-message="COUNTRY_CODE_MAX_LENGTH_TEXT"
+                                    placeholder="ENTER_COUNTRY_CODE_TEXT"
+                                    show-label="true"
+                                    error-message="FIELD_IS_REQUIRED_TEXT"
+                                    ng-model="country.cio"
+                                    is-required="true">
+                        </input-text>
+                    </div>
+                    <div>
+                        <input-text is-editable="true"
+                                    is-text="true"
+                                    label="COUNTRY_CODE_FLAG_TEXT"
+                                    max-length="3"
+                                    max-length-message="COUNTRY_CODE_FLAG_MAX_LENGTH_TEXT"
+                                    placeholder="ENTER_COUNTRY_CODE_FLAG_TEXT"
+                                    show-label="true"
+                                    ng-model="country.cio_flag"
+                        >
+                        </input-text>
+                    </div>
+
+                    <div>
+                        <input-text is-editable="true"
+                                    is-text="true"
+                                    label="CONTINENT_TEXT"
+                                    max-length="2"
+                                    max-length-message="CONTINENT_MAX_LENGTH_TEXT"
+                                    placeholder="ENTER_CONTINENT_TEXT"
+                                    show-label="true"
+                                    ng-model="country.continent"
+                        >
+                        </input-text>
+                    </div>
+                    <div>
+                        <input-text is-editable="true"
+                                    is-text="true"
+                                    label="GEO_NAME_TEXT"
+                                    placeholder="ENTER_GEO_NAME_TEXT"
+                                    show-label="true"
+                                    ng-model="country.geonameid"
+                        >
+                        </input-text>
+                    </div>
+                    <div>
+                        <input-text is-editable="true"
+                                    is-text="true"
+                                    label="ISO_NUMERIC_TEXT"
+                                    placeholder="ENTER_ISO_NUMERIC_TEXT"
+                                    show-label="true"
+                                    ng-model="country.iso_numeric"
+                        >
+                        </input-text>
+                    </div>
+                    <div>
+                        <input-text is-editable="true"
+                                    is-text="true"
+                                    label="PHONE_PREFIX_TEXT"
+                                    placeholder="ENTER_PHONE_PREFIX_TEXT"
+                                    show-label="true"
+                                    ng-model="country.phone"
+                        >
+                        </input-text>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <app-yes-no-input ng-model="object.top" label-floating="false"
+                                              label="IS_TOP_COUNTRY_TEXT">
+                            </app-yes-no-input>
+                        </div>
+                        <div class="col-sm-6">
+                            <app-yes-no-input ng-model="object.active" label-floating="false" label="ACTIVE_TEXT"
+                                              required="true">
+                            </app-yes-no-input>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div>
+                        <h4>{{'TRANSLATE_NAME_OF_COUNTRY_TEXT' | translate}}</h4>
+                    </div>
+                    <div class="row" ng-repeat="language in supportedLanguages">
+                        <div class="col-sm-12">
+                            <div class="form-group float-label">
+                                <input-text is-editable="true"
+                                            is-text="true"
+                                            label="{{language.description}}"
+                                            placeholder="ENTER_TEXT"
+                                            show-label="true"
+                                            ng-model="countryTranslations[language.id]">
+                                </input-text>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer text-right">
+            <save-button-submit title="SAVE_TEXT"></save-button-submit>
+        </div>
+    </form>
+</div>

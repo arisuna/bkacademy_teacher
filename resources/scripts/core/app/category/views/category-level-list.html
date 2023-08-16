@@ -1,0 +1,65 @@
+<div>
+    <div class="pd-t-5">
+        <h4 class="pull-left">{{ columnTitle | translate}}</h4>
+        <button class="btn btn-circle relo-bg-bright-blue pull-right"
+                type="button"
+                ng-if="itemParent.id >= 0 && itemParent.id != null"
+                uib-tooltip="{{ 'ADD_NEW_TEXT' | translate }}"
+                tooltip-placement="bottom"
+                ng-click="openCreateDialog()">
+            <em class="fas fa-plus"></em>
+        </button>
+        <button type="button" class="btn btn-round pull-right mr-sm" ng-click="getCategoryChildrenItems()"
+                ng-if="itemParent.id != null"
+                uib-tooltip="{{ 'REFRESH_BTN_TEXT' | translate }}"
+                tooltip-placement="bottom">
+            <em class="fa-solid fa-rotate text-gray-dark"></em>
+        </button>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="height-100vh-m175px relo-bd-gray bd-r-1px overflow-y-enable">
+        <div class="mt" ng-if="isLoading">
+            <spinner-v2 type="spin" ></spinner-v2>
+
+        </div>
+
+        <div class="mt"
+             ng-show="!isLoading"
+             data-as-sortable="sortItemsListener"
+             data-ng-model="itemChildrenItems">
+
+            <div data-as-sortable-item
+                 draggable=""
+                 ng-repeat="(key, item) in itemChildrenItems">
+                <div class="panel"
+                     ng-class="{'panel-selected-item': item.id == itemSelected.id && item.level == 1}"
+                     data-as-sortable-item-handle>
+                    <div class="panel-heading relo-bg-bright-gray">
+
+                        <div class="pull-left text-bold">
+                            <a ng-click="selectCategoryItem(item)">({{ item.id }}) {{ item.name }}</a>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="">
+                            <div class="pull-left">
+                                <span>{{ item.name }} / {{ item.label }}</span>
+                            </div>
+
+                            <div class="pull-right text-right">
+                                <button-edit-icon ng-click="openEditDialog(item)"></button-edit-icon>
+                                <button-delete-icon ng-click="deleteFn(item)"></button-delete-icon>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

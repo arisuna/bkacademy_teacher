@@ -1,0 +1,167 @@
+<div class="card card-nobox" ng-controller="BrandFormController">
+    <div class="card-heading">
+        <div class="row">
+            <div class="col-sm-6 text-left">
+                <h4>{{ isClone ? 'Clone attribute #' + object.id : (object.id ? 'Edit attribute #' + object.id : 'Create new attribute') }}</h4>
+            </div>
+            <div class="col-sm-6 text-right">
+                <back-button-state ui-sref="app.system-attribute.list"></back-button-state>
+            </div>
+        </div>
+    </div>
+    <form class="form-validate" validate-form="" role="form"
+          ng-submit="saveFn()" novalidate="" ng-show="!page_loading"> <!--officeForm.$valid && -->
+
+        <div class="card-body">
+            <div class="">
+                <input-text is-editable="true"
+                            is-required="true"
+                            is-text="true"
+                            ng-model="object.name"
+                            required-message="ENTER_ATTRIBUTE_NAME_TEXT"
+                            label="NAME_TEXT"
+                            show-label="true"></input-text>
+            </div>
+
+            <div class="">
+                <input-text is-editable="true"
+                            is-required="true"
+                            is-upper-case="true"
+                            is-text="true"
+                            ng-model="object.code"
+                            required-message="ENTER_ATTRIBUTE_CODE_TEXT"
+                            label="CODE_TEXT"
+                            show-label="true"></input-text>
+            </div>
+
+            <div class="row mda-form-group">
+                <div class="col-sm-12 mb-sm">
+                    <button type="button" class="btn relo-bg-green "
+                            ng-click="addAttributeValueFn()"><i class="fa fa-plus"></i>
+                        Add value
+                    </button>
+                </div>
+            </div>
+
+            <div ng-repeat="(key, value) in object.data_value">
+                <div class="panel" id="panelValue_{{ key }}">
+
+                    <div class="panel-heading bg-white" ng-class="{'panel-heading-collapsed': 'panelValue_' + key }">
+
+                        <h4 class="custom-size pull-left">{{'VALUE_OF_ATTRIBUTE_TEXT' | translate}}</h4>
+
+                        <paneltool
+                                tool-collapse="tool-collapse"
+                                ng-init="true"
+                                class="pull-right"></paneltool>
+
+                        <button
+                                class="btn btn-danger btn-circle pull-right mr-sm"
+                                ng-click="removeValueFn(key, value.id, $event)"
+                                ng-show="value.archived != 1">
+                            <em class="fa fa-trash"></em>
+                        </button>
+
+
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="panel-wrapper" uib-collapse="panelValue_{{ key}}">
+                        <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+<!--                                    <label>Value <span class="text-danger">*</span></label>-->
+<!--                                    <input class="form-control" type="text" required ng-model="value.value"-->
+<!--                                           data-parsley-required-message="Value is required"/>-->
+
+                                    <input-text is-editable="true"
+                                                is-required="true"
+                                                is-text="true"
+                                                ng-model="value.value"
+                                                required-message="ENTER_VALUE_TEXT"
+                                                label="VALUE_TEXT"
+                                                show-label="true"></input-text>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <backend-yes-no-input
+                                            ng-model="value.standard"
+                                            label-floating="false"
+                                            label="Standard?"
+                                            show-label="true"></backend-yes-no-input>
+                                </div>
+                            </div>
+
+
+                            <div class="clearfix"></div>
+
+                            <p><b>{{'VALUE_TRANSLATION_TEXT' | translate}}</b></p>
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th>{{'LANGUAGE_TEXT' | translate}}</th>
+                                        <th>{{'VALUE_TEXT' | translate}}</th>
+                                    </tr>
+                                    <tr ng-repeat="(key, language) in languages">
+                                        <td>
+                                            {{ language.name}}
+                                            <input type="hidden" ng-model="value.data_translation[key].language"
+                                                   ng-init="value.data_translation[key].language = language.name"/>
+                                        </td>
+                                        <td>
+<!--                                            <input class="form-control" ng-model="value.data_translation[key].value"-->
+<!--                                                   type="text"-->
+<!--                                                   placeholder="Enter translate value here">-->
+
+                                            <input-text is-editable="true"
+                                                        is-required="false"
+                                                        is-text="true"
+                                                        ng-model="value.data_translation[key].value"
+                                                        label="ENTER_TRANSLATE_VALUE_TEXT"
+                                                        show-label="true"></input-text>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mda-form-group float-label" ng-if="object.id">
+                <input class="mda-form-control" type="text" ng-model="object.created_at" readonly/>
+                <label>Created on (Read only)</label>
+            </div>
+
+            <div class="mda-form-group float-label" ng-if="object.id">
+                <input class="mda-form-control" type="text" ng-model="object.updated_at" readonly/>
+                <label>Last updated on (Read only)</label>
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-sm-12 text-right">
+                    <button type="button" ng-if="object.id" class="btn relo-bg-red mr-lg" ng-click="deleteFn(object.id)"
+                            title="Delete">
+                        <i class="fa fa-trash mr-sm" ng-disabled="saving"></i>
+                        Delete
+                    </button>
+                    <button type="button" ng-if="object.id" class="btn relo-bg-bright-blue mr-lg"
+                            ui-sref="app.system-attribute.clone({ id : object.id })"
+                            title="Clone" ng-disabled="saving">
+                        <i class="fa fa-copy mr-sm"></i>
+                        Clone
+                    </button>
+                    <button type="submit" class="btn relo-bg-green" title="Save" ng-disabled="saving"><i
+                            class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

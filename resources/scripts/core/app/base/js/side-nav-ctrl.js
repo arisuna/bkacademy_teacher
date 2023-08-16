@@ -8,9 +8,9 @@
     App.controller('sideNavCtrl', ['$rootScope', '$scope', 'sideNavFactory', '$timeout', '$translate', 'AppAuthService', 'AppDataService', 'WaitingService',
         function ($rootScope, $scope, sideNavFactory, $timeout, $translate, AppAuthService, AppDataService, WaitingService) {
 
-            $scope.getTheme = function(){
+            $scope.getTheme = function () {
                 $scope.company = AppAuthService.getCompany();
-                if(angular.isDefined($scope.company.theme) && angular.isDefined($scope.company.theme.id)) {
+                if (angular.isDefined($scope.company.theme) && angular.isDefined($scope.company.theme.id)) {
                     $scope.theme = $scope.company.theme;
                 } else {
                     $scope.theme = {
@@ -94,7 +94,7 @@
                 }
             }
 
-            $scope.changeLanguage = function(language){
+            $scope.changeLanguage = function (language) {
                 WaitingService.begin();
                 AppDataService.changeLanguage(language).then(
                     function (res) {
@@ -136,7 +136,7 @@
                 },
                 {
                     "text": "USERS_TEXT",
-                    "icon": "fa-solid fa-users",
+                    "icon": "fa-solid fa-ellipsis-h txt-18",
                     "iconType": "fontawesome",
                     "appAclAllow": "user/index",
                     "noRender": !(AppAclService.validateAction('crm_user', 'index')) && !(AppAclService.validateAction('end_user', 'index')),
