@@ -1,0 +1,64 @@
+<div class="card">
+    <div class="card-heading relo-bg-bright-gray ">
+        <span class="text-dark-blue text-bold">{{('CREATE_CATEGORY_TEXT') | translate}}</span>
+    </div>
+    <form class="form-validate noPadding"
+        validate-form=""
+        role="form"
+        name="aclForm"
+        data-parsley-validate=""
+        ng-submit="createFn()"
+        ng-if="!page_loading"
+        novalidate>
+        <div class="pd-2x custom-dialog-overflow ngdialog-content-body">
+
+            <div class="" ng-if="!(itemParent.id > 0)">
+                <notification-flat type="gray">{{'THIS_CATEGORY_HAVE_NO_PARENT_TEXT' | translate}}</notification-flat>
+            </div>
+            <div class="" ng-if="itemParent.id > 0">
+                <notification-flat type="gray">
+                    <div class="text-bold">{{'PARENT_TEXT' | translate}}: {{ itemParent.name }}</div>
+                </notification-flat>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <input-text is-text="true"
+                                label="NAME_TEXT"
+                                show-label="true"
+                                is-editable="true"
+                                is-required="true"
+                                ng-model="categoryConfig.name"></input-text>
+                </div>
+                <div class="col-sm-6">
+                    <input-text is-label="true"
+                                label="LABEL_TEXT"
+                                is-upper-case="true"
+                                show-label="true"
+                                is-editable="true"
+                                is-required="true"
+                                ng-model="categoryConfig.label"></input-text>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text-area ng-model="categoryConfig.description"
+                                     label="DESCRIPTION_TEXT"
+                                     show-label="true"
+                                     is-editable="true"></input-text-area>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-right border-0">
+            <div class="row">
+                <div class="col-sm-12 text-right">
+                    <button type="submit" class="btn relo-bg-green"><i
+                            class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
+                        {{'SAVE_BTN_TEXT' | translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

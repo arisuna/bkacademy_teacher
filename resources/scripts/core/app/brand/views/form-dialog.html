@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-heading relo-bg-bright-gray">
         <span class="text-dark-blue">
-           {{ isClone == true ?  ('CLONE_BRAND_TEXT' | translate) + (' #' + object.id) : (object.id ?  ('EDIT_BRAND_TEXT' | translate) + ' #' + object.id : ('CREATE_BRAND_TEXT' | translate)) }}
+           {{ isClone == true ?  ('CLONE_MAKE_TEXT' | translate) + (' #' + object.id) : (object.id ?  ('EDIT_MAKE_TEXT' | translate) + ' #' + object.id : ('CREATE_MAKE_TEXT' | translate)) }}
         </span>
     </div>
     <form class="form-validate noPadding" validate-form="true"
@@ -16,7 +16,7 @@
                                     is-required="true"
                                     is-text="true"
                                     ng-model="object.name"
-                                    required-message="ENTER_BRAND_NAME_TEXT"
+                                    required-message="FIELD_IS_REQUIRED_TEXT"
                                     label="NAME_TEXT"
                                     show-label="true"></input-text>
                     </div>
