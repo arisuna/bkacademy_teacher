@@ -197,7 +197,7 @@
                 });
 
                 $scope.editCompanyDialog.closePromise.then(function (data) {
-                    if (angular.isDefined(data.value) && angular.isDefined(data.value.company)) {
+                    if (angular.isDefined(data.value)) {
                         console.log('data.value', data.value);
                         $scope.loadItems()
                     }
@@ -222,7 +222,7 @@
                 });
 
                 $scope.createCompanyDialog.closePromise.then(function (data) {
-                    if (angular.isDefined(data.value) && angular.isDefined(data.value.company)) {
+                    if (angular.isDefined(data.value)) {
                         console.log('data.value', data.value);
                         $scope.items.unshift(data.value.company);
                     }
