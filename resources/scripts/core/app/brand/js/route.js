@@ -7,7 +7,7 @@
     Routes.config(['$stateProvider', 'RouteHelpersProvider', function ($stateProvider, helper) {
             $stateProvider.state('app.brand', {
                 url: '/brand',
-                title: 'BRANDS_TEXT',
+                title: 'MAKES_AND_MODELS_TEXT',
                 resolve: helper.resolveFor('modernizr', 'icons', 'parsley'),
                 abstract: true,
                 parent: 'app.admin-page.dashboard',
@@ -23,7 +23,7 @@
                 }
             }).state('app.brand.list', {
                 url: '',
-                title: 'BRANDS_TEXT',
+                title: 'MAKES_AND_MODELS_TEXT',
                 templateUrl: helper.modulePath('app', 'brand/items', '_=' + Math.random())
             }).state('app.brand.create', {
                 url: '/create',

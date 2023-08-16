@@ -434,3 +434,7 @@
 .border-bottom-light-gray{
     border-bottom: 1px solid $relo-bright-gray;
 }
+
+.panel-selected-item{
+    box-shadow: 0 3px 1px -2px #00000099, 0 2px 2px 0 #00000099, 0 1px 5px 0 #00000099;
+}
