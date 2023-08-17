@@ -18,7 +18,8 @@
                 showLabel: '<?',
                 label: '@',
                 requiredMessage: '@',
-                toolTipText: '@?'
+                toolTipText: '@?',
+                ngChange: '&?'
             },
             templateUrl: urlBase.tplApp('app', '_directives_input', 'level-selector-item'),
             link: function (scope, element, attrs) {
@@ -55,12 +56,18 @@
                         label: null
                     }
                     $scope.model = null;
+                    if (typeof $scope.ngChange == 'function' && angular.isDefined($scope.ngChange)) {
+                        $scope.ngChange();
+                    }
                 };
 
 
                 $scope.setItem = function (item) {
                     $scope.model = angular.copy(item.id);
                     $scope.data.selected = angular.copy(item);
+                    if (typeof $scope.ngChange == 'function' && angular.isDefined($scope.ngChange)) {
+                        $scope.ngChange();
+                    }
                 }
 
 
