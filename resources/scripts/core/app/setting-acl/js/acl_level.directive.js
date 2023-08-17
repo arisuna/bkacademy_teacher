@@ -128,6 +128,7 @@
                     let createDialog = ngDialog.open({
                         template: urlBase.tplApp('app', 'setting-acl', 'create.dialog'),
                         className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue',
+                        closeByDocument: true,
                         resolve: {
                             aclParent: function () {
                                 return $scope.aclParent
@@ -161,7 +162,6 @@
                                 });
                             }
                         }],
-                        closeByDocument: false,
                     });
 
                     createDialog.closePromise.then(function (dialogData) {
@@ -178,6 +178,7 @@
                     let editDialog = ngDialog.open({
                         template: urlBase.tplApp('app', 'setting-acl', 'edit.dialog'),
                         className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue',
+                        closeByDocument: true,
                         resolve: {
                             aclConfig: ['AppAclService', function (AppAclService) {
                                 WaitingService.begin();
@@ -233,7 +234,6 @@
                                 });
                             }
                         }],
-                        closeByDocument: false,
                     });
 
                     editDialog.closePromise.then(function (dialogData) {
