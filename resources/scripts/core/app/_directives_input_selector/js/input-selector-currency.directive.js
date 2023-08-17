@@ -32,7 +32,7 @@
                 }
 
                 if( angular.isUndefined( scope.requiredMessage) || scope.requiredMessage == ''){
-                    scope.requiredMessage = 'CURRENCY_REQUIRED_TEXT';
+                    scope.requiredMessage = 'FIELD_IS_REQUIRED_TEXT';
                 }
 
                 if( angular.isUndefined( scope.labelFloating ) || scope.labelFloating == false ){

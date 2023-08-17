@@ -144,7 +144,7 @@
                     tooltip-placement="right"
                     tooltip-enable="!!app.layout.isCollapsedNav"
                     uib-tooltip="{{ 'ADMIN_PAGE_TEXT' | translate }}">
-                    <a ui-sref="app.admin-page.dashboard" title="Admin Page" app-acl-allow="admin/index" acl-remove="true">
+                    <a ui-sref="app.admin-page.dashboard" title="{{ 'ADMIN_PAGE_TEXT' | translate }}" app-acl-allow="admin/index" acl-remove="true">
                         <em class="fa-solid fa-gear"></em>
                         <span class="" ng-if="!app.layout.isCollapsedNav">{{'ADMIN_PAGE_TEXT' | translate}}</span>
                     </a>

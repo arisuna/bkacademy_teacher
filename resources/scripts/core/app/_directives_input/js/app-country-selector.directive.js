@@ -49,7 +49,7 @@
                 }
 
                 if (angular.isUndefined(scope.requiredMessage) || scope.requiredMessage == '') {
-                    scope.requiredMessage = 'COUNTRY_REQUIRED_TEXT';
+                    scope.requiredMessage = 'FIELD_IS_REQUIRED_TEXT';
                 }
 
                 if (angular.isUndefined(scope.placeHolder) || scope.placeHolder == '') {

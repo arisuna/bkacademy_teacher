@@ -4,8 +4,8 @@
 (function () {
     'use strict';
 
-    App.controller('CountryListController', ['$scope', '$http', '$timeout', 'urlBase', 'WaitingService', 'AppDataService', 'ngDialog',
-        function ($scope, $http, $timeout, urlBase, WaitingService, AppDataService, ngDialog) {
+    App.controller('CountryListController', ['$scope', '$http', '$timeout', 'urlBase', 'WaitingService', 'AppDataService', 'ngDialog', 'AppSystem',
+        function ($scope, $http, $timeout, urlBase, WaitingService, AppDataService, ngDialog, AppSystem) {
             $scope.isLoading = false;
             $scope.isInitialLoading = true;
             $scope.items = [];
@@ -13,6 +13,7 @@
             $scope.tel = '0987654321'
             $scope.module_name = 'countries';
             $scope.column_array = []
+            $scope.languages = AppSystem.getLanguages();
 
             $scope.getListFn = function (isReload = false) {
                 $scope.items = [];
@@ -60,13 +61,45 @@
             };
 
             $scope.openCreateCountryDialog = function () {
+                let supportedLanguages = Object.values($scope.languages);
+
                 $scope.createCountryDialog = ngDialog.open({
                     template: urlBase.tplApp('app', 'country', 'create.dialog'),
                     className: 'ngdialog-theme-default md-box',
                     scope: $scope,
                     controller: ['$scope', 'AppDataService', 'WaitingService', function ($scope, AppDataService, WaitingService) {
-                        $scope.createCountryFn = function () {
+                        $scope.supportedLanguages = supportedLanguages;
+                        $scope.countryTranslations = {}
+                        $scope.country = {
+                            active: 0,
+                            name: null,
+                            alternative_names: null,
+                            capital: null,
+                            label: null,
+                            slug: null,
+                            cio: null,
+                            cio_flag: null,
+                            continent: null,
+                            iso3: null,
+                            currency_iso: null,
+                            currency_name: null,
+                            population: null,
+                            geonameid: 0,
+                            iso_numeric: 0,
+                            secondary: 1,
+                            phone: null,
+                        };
+
+                        $scope.isLoading = false;
+                        console.log(" $scope.supportedLanguages", $scope.supportedLanguages)
+
+                        for (let supportedLanguages of $scope.supportedLanguages) {
+                            $scope.countryTranslations[supportedLanguages.id] = ''
+                        }
+
+                        $scope.saveFn = function () {
                             WaitingService.begin();
+                            $scope.country.translations = $scope.countryTranslations
                             AppDataService.createCountry($scope.country).then(
                                 function (res) {
                                     if (res.success) {
@@ -74,7 +107,7 @@
                                         $scope.closeThisDialog({newCountry: res.data});
                                     } else {
                                         WaitingService.error(res.message, function () {
-                                            $scope.closeThisDialog();
+                                            // $scope.closeThisDialog();
                                         });
                                     }
                                     $scope.isLoading = false;
@@ -129,21 +162,22 @@
                         };
                         $scope.getDetailFn();
 
-                        $scope.updateCountryFn = function () {
+                        $scope.saveFn = function () {
                             WaitingService.begin();
-                            AppDataService.updateCountry($scope.country).then(
-                                function (res) {
-                                    if (res.success) {
-                                        WaitingService.popSuccess(res.message);
-                                        $scope.closeThisDialog({country: res.data});
-                                    } else {
-                                        WaitingService.error(res.message, function () {
-                                            $scope.closeThisDialog();
-                                        });
+                            $scope.country.translations = $scope.countryTranslations,
+                                AppDataService.updateCountry($scope.country).then(
+                                    function (res) {
+                                        if (res.success) {
+                                            WaitingService.popSuccess(res.message);
+                                            $scope.closeThisDialog({country: res.data});
+                                        } else {
+                                            WaitingService.error(res.message, function () {
+                                                // $scope.closeThisDialog();
+                                            });
+                                        }
+                                        $scope.isLoading = false;
                                     }
-                                    $scope.isLoading = false;
-                                }
-                            )
+                                )
                         };
                     }]
                 });

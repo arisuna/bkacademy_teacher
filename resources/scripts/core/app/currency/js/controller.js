@@ -74,7 +74,7 @@
                                         $scope.closeThisDialog({newCurrency: res.data});
                                     } else {
                                         WaitingService.error(res.message, function () {
-                                            $scope.closeThisDialog();
+                                            // $scope.closeThisDialog();
                                         });
                                     }
                                     $scope.isLoading = false;
@@ -111,7 +111,7 @@
                                         $scope.closeThisDialog({currency: res.data});
                                     } else {
                                         WaitingService.error(res.message, function () {
-                                            $scope.closeThisDialog();
+                                            // $scope.closeThisDialog();
                                         });
                                     }
                                     $scope.isLoading = false;

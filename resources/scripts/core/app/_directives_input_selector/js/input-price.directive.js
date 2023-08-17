@@ -40,7 +40,7 @@
             link: function (scope, element, attrs, ngModelCtrl) {
                 scope.required = scope.required || scope.isRequired;
                 if (angular.isUndefined(scope.requiredMessage)) {
-                    scope.requiredMessage = 'DATA_REQUIRED_TEXT';
+                    scope.requiredMessage = 'FIELD_IS_REQUIRED_TEXT';
                 }
 
                 if (angular.isUndefined(scope.hasPattern)) {
