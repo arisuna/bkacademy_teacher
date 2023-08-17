@@ -36,11 +36,11 @@
             levels: [
                 {
                     id: 1,
-                    label: 'ASSIGNED_TEXT'
+                    label: 'ASSIGNED_ONLY_TEXT'
                 },
                 {
                     id: 2,
-                    label: 'OFFICE_TEXT'
+                    label: 'BUSINESS_ZONE_TEXT'
                 },
                 {
                     id: 3,
