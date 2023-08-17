@@ -71,7 +71,7 @@
                         $scope.supportedLanguages = supportedLanguages;
                         $scope.countryTranslations = {}
                         $scope.country = {
-                            active: 0,
+                            active: 1,
                             name: null,
                             alternative_names: null,
                             capital: null,
@@ -85,6 +85,7 @@
                             currency_name: null,
                             population: null,
                             geonameid: 0,
+                            top: 0,
                             iso_numeric: 0,
                             secondary: 1,
                             phone: null,
@@ -104,7 +105,7 @@
                                 function (res) {
                                     if (res.success) {
                                         WaitingService.popSuccess(res.message);
-                                        $scope.closeThisDialog({newCountry: res.data});
+                                        $scope.closeThisDialog({newCountry: $scope.country});
                                     } else {
                                         WaitingService.error(res.message, function () {
                                             // $scope.closeThisDialog();
@@ -169,7 +170,7 @@
                                     function (res) {
                                         if (res.success) {
                                             WaitingService.popSuccess(res.message);
-                                            $scope.closeThisDialog({country: res.data});
+                                            $scope.closeThisDialog({country: $scope.country});
                                         } else {
                                             WaitingService.error(res.message, function () {
                                                 // $scope.closeThisDialog();
@@ -181,12 +182,9 @@
                         };
                     }]
                 });
+
                 $scope.detailCountryDialog.closePromise.then(function (data) {
                     if (angular.isDefined(data.value.country)) {
-                        $scope.isLoading = true;
-                        $scope.getListFn();
-                    }
-                    if (angular.isDefined(data.value) && angular.isDefined(data.value.deletedCountry)) {
                         $scope.isLoading = true;
                         $scope.getListFn();
                     }

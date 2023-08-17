@@ -10,8 +10,8 @@
                         <input-text is-editable="true"
                                     is-text="true"
                                     ng-required="true"
-                                    label="COUNTRY_NAME_TEXT"
-                                    placeholder="ENTER_COUNTRY_NAME_TEXT"
+                                    label="NAME_TEXT"
+                                    placeholder="ENTER_NAME_TEXT"
                                     show-label="true"
                                     error-message="FIELD_IS_REQUIRED_TEXT"
                                     ng-model="country.name"
@@ -20,8 +20,8 @@
                     </div>
                     <div>
                         <input-text-area is-editable="true"
-                                         label="ALTERNATIVES_NAMES_text"
-                                         placeholder="ALTERNATIVES_NAMES_text"
+                                         label="ALTERNATIVES_NAMES_TEXT"
+                                         placeholder="ENTER_ALTERNATIVES_NAMES_TEXT"
                                          show-label="true"
                                          rows="3"
                                          ng-model="country.alternative_names">
@@ -77,7 +77,7 @@
                         <input-text is-editable="true"
                                     is-text="true"
                                     label="COUNTRY_CODE_FLAG_TEXT"
-                                    max-length="3"
+                                    max-length="2"
                                     max-length-message="COUNTRY_CODE_FLAG_MAX_LENGTH_TEXT"
                                     placeholder="ENTER_COUNTRY_CODE_FLAG_TEXT"
                                     show-label="true"
@@ -130,12 +130,12 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <app-yes-no-input ng-model="object.top" label-floating="false"
+                            <app-yes-no-input ng-model="country.top" label-floating="false"
                                               label="IS_TOP_COUNTRY_TEXT">
                             </app-yes-no-input>
                         </div>
                         <div class="col-sm-6">
-                            <app-yes-no-input ng-model="object.active" label-floating="false" label="ACTIVE_TEXT"
+                            <app-yes-no-input ng-model="country.active" label-floating="false" label="ACTIVE_TEXT" init-value="1"
                                               required="true">
                             </app-yes-no-input>
                         </div>
