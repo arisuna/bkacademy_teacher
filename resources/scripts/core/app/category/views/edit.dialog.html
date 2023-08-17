@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-heading relo-bg-bright-gray ">
-        <span class="text-dark-blue text-bold">{{('EDIT_CATEGORY_TEXT') | translate}}</span>
+        <span class="text-dark-blue ">{{('EDIT_CATEGORY_TEXT') | translate}}</span>
     </div>
 
     <div class="">
@@ -24,7 +24,7 @@
 
 
                             <div class="" ng-if="!(itemParent.id > 0)">
-                                <notification-flat type="gray">{{'THIS_CATEGORY_HAVE_NO_PARENT_TEXT' | translate}}</notification-flat>
+                                <notification-flat type="info">{{'THIS_CATEGORY_HAVE_NO_PARENT_TEXT' | translate}}</notification-flat>
                             </div>
                             <div class="" ng-if="itemParent.id > 0">
                                 <notification-flat type="info">
@@ -75,7 +75,7 @@
                 </uib-tab-body>
             </uib-tab>
 
-            <uib-tab>
+            <uib-tab ng-if="categoryConfig.level > 1">
                 <uib-tab-heading>
                     <em class="fa fa-level-up"></em> {{'LEVEL_INFORMATION_TEXT' | translate}}
                 </uib-tab-heading>
@@ -85,7 +85,7 @@
                     role="form"
                     name="aclForm"
                     data-parsley-validate=""
-                    ng-submit="updateAclFn()"
+                    ng-submit="updateCategoryFn()"
                     ng-if="!page_loading"
                     novalidate>
 
@@ -93,7 +93,7 @@
                           <div class="pd-2x custom-dialog-overflow height-100vh-m150px">
 
                             <div class="" ng-if="!(itemParent.id > 0)">
-                                <notification-flat type="gray">{{'THIS_CATEGORY_HAVE_NO_PARENT_TEXT' | translate}}</notification-flat>
+                                <notification-flat type="info">{{'THIS_CATEGORY_HAVE_NO_PARENT_TEXT' | translate}}</notification-flat>
                             </div>
                             <div class="" ng-if="itemParent.id > 0">
                                 <notification-flat type="info">

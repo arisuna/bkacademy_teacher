@@ -109,7 +109,7 @@
 
 
                 $scope.deleteFn = function (item) {
-                    WaitingService.question('QUESTION_DELETE_ACL_TEXT', function () {
+                    WaitingService.question('QUESTION_DELETE_CATEGORY_TEXT', function () {
                         AppCategoryService.deleteCategory(item.uuid).then(function (res) {
                             if (res.success) {
                                 let findIndex = _.findIndex($scope.itemChildrenItems, function (e) {
@@ -188,7 +188,7 @@
                                 }, function () {
                                     WaitingService.error();
                                 });
-                            }]
+                            }],
                         },
                         controller: ['$scope', 'categoryConfig', 'AppCategoryService', 'WaitingService', function ($scope, categoryConfig, AppCategoryService, WaitingService) {
                             $scope.itemParent = {id: null};
@@ -204,7 +204,7 @@
 
                             $scope.updateFn = function () {
                                 WaitingService.begin();
-                                AppCategoryService.updateCategoryItem($scope.categoryConfig).then(function (res) {
+                                AppCategoryService.updateCategory($scope.categoryConfig).then(function (res) {
                                     if (res.success) {
                                         WaitingService.success(res.message);
                                         $scope.categoryConfig = angular.copy(res.data);

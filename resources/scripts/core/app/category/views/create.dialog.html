@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-heading relo-bg-bright-gray ">
-        <span class="text-dark-blue text-bold">{{('CREATE_CATEGORY_TEXT') | translate}}</span>
+        <span class="text-dark-blue">{{('CREATE_CATEGORY_TEXT') | translate}}</span>
     </div>
     <form class="form-validate noPadding"
         validate-form=""
@@ -13,10 +13,10 @@
         <div class="pd-2x custom-dialog-overflow ngdialog-content-body">
 
             <div class="" ng-if="!(itemParent.id > 0)">
-                <notification-flat type="gray">{{'THIS_CATEGORY_HAVE_NO_PARENT_TEXT' | translate}}</notification-flat>
+                <notification-flat type="info">{{'THIS_CATEGORY_HAVE_NO_PARENT_TEXT' | translate}}</notification-flat>
             </div>
             <div class="" ng-if="itemParent.id > 0">
-                <notification-flat type="gray">
+                <notification-flat type="info">
                     <div class="text-bold">{{'PARENT_TEXT' | translate}}: {{ itemParent.name }}</div>
                 </notification-flat>
             </div>
