@@ -46,12 +46,10 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <input-text is-editable="true"
-                                is-required="false"
-                                is-text="true"
-                                ng-model="user.phone"
-                                label="PHONE_NUMBER_TEXT"
-                                show-label="true"></input-text>
+                    <app-phone-selector ng-model="user.phone"
+                                                      show-label="true"
+                                                      is-editable="true"
+                                                      label="PHONE_NUMBER_TEXT"></app-phone-selector>
                 </div>
             </div>
         </div>
