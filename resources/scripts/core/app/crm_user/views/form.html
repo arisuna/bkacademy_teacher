@@ -1,83 +1,91 @@
-<div class="card card-nobox" ng-controller="CrmUserFormController">
-    <form class="form-validate"
-      validate-form=""
-      role="form"
-      name="userForm"
-      data-parsley-validate=""
-      ng-submit="saveFn()"
-      ng-if="!page_loading"
-      novalidate>
-      <div class="panel panel-primary white-block height-80vh scroll-y">
-        <div class="panel-body">
+<div class="card card-nobox">
+    <form class="form-validate pd-0 mg-0"
+          validate-form=""
+          role="form"
+          name="crmUserForm"
+          data-parsley-validate=""
+          ng-submit="saveFn()"
+          ng-if="!isLoading"
+          novalidate>
+        <div class="card-body custom-dialog-overflow height-100vh-m93px">
             <div class="row">
-                <div class="col-sm-6">
-                    <app-roles-selector ng-model="user.user_group_id"
-                                        label="ROLE_TEXT"
-                                        show-label="true"
-                                        is-editable="true"
-                                        is-required="true"
-                                        required-message="ENTER_ROLE_TEXT"
-                                        tool-tip-text="{{ 'TOOLTIP_ROLE_TEXT' | translate }}"></app-roles-selector>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <input-text is-editable="true"
                                 is-required="true"
                                 is-text="true"
                                 ng-model="user.firstname"
-                                required-message="ENTER_FIRST_NAME_TEXT"
+                                required-message="FIELD_IS_REQUIRED_TEXT"
+                                placeholder="ENTER_FIRST_NAME_TEXT"
                                 label="FIRST_NAME_TEXT"
                                 show-label="true"></input-text>
 
                 </div>
-                <div class="col-sm-6">
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
                     <input-text is-editable="true"
                                 is-required="true"
                                 is-text="true"
                                 ng-model="user.lastname"
-                                required-message="ENTER_LAST_NAME_TEXT"
+                                placeholder="ENTER_LAST_NAME_TEXT"
+                                required-message="FIELD_IS_REQUIRED_TEXT"
                                 label="LAST_NAME_TEXT"
                                 show-label="true"></input-text>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <input-text is-editable="!(user.id > 0)"
                                 is-email="true"
                                 is-required="true"
                                 ng-model="user.email"
-                                required-message="ENTER_EMAIL_TEXT"
+                                placeholder="ENTER_EMAIL_TEXT"
+                                required-message="FIELD_IS_REQUIRED_TEXT"
                                 label="EMAIL_TEXT"
                                 show-label="true"></input-text>
                 </div>
-                <div class="col-sm-6">
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
                     <input-text is-editable="true"
                                 is-telephone="true"
-                                is-required="true"
+                                is-required="false"
                                 ng-model="user.phone"
-                                required-message="ENTER_PHONE_TEXT"
+                                placeholder="ENTER_PHONE_TEXT"
+                                required-message="FIELD_IS_REQUIRED_TEXT"
                                 label="PHONE_TEXT"
                                 show-label="true"></input-text>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <app-roles-selector ng-model="user.user_group_id"
+                                        label="ROLE_TEXT"
+                                        show-label="true"
+                                        is-editable="true"
+                                        is-required="true"
+                                        placeholder="ENTER_ROLE_TEXT"
+                                        required-message="FIELD_IS_REQUIRED_TEXT"
+                                        tool-tip-text="{{ 'TOOLTIP_ROLE_TEXT' | translate }}"></app-roles-selector>
+                </div>
+            </div>
         </div>
-        </div>
-
         <div class="card-footer">
             <div class="row">
-                <div class="col-sm-12 text-right">
-                    <button type="button" ng-if="user.id" class="btn relo-bg-red mr-lg" ng-click="deleteFn(user.id)"
-                    app-acl-allow="crm_user/delete"
-                    acl-remove="true"
-                            title="Delete">
+                <div class="col-sm-12 ">
+                    <button type="button" ng-if="user.id" class="btn relo-bg-red pull-left" ng-click="deleteFn(user.id)"
+                            app-acl-allow="crm_user/delete"
+                            acl-remove="true"
+                            title="{{'DELETE_BTN_TEXT' | translate}}">
                         <i class="fa fa-trash mr-sm" ng-disabled="saving"></i>
                         {{'DELETE_BTN_TEXT' | translate}}
                     </button>
-                    <button type="submit" class="btn relo-bg-green" title="Save" ng-disabled="saving" ng-if="canSave"><i
+                    <button type="submit" class="btn relo-bg-green pull-right" title="{{'SAVE_BTN_TEXT' | translate}}"
+                            ng-disabled="saving" ng-if="canSave"><i
                             class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
                         {{'SAVE_BTN_TEXT' | translate}}
                     </button>
+                    <div class="clearfix"></div>
                 </div>
             </div>
         </div>

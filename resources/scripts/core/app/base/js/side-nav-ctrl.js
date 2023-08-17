@@ -5,8 +5,8 @@
 (function () {
     'use strict';
 
-    App.controller('sideNavCtrl', ['$rootScope', '$scope', 'sideNavFactory', '$timeout', '$translate', 'AppAuthService', 'AppDataService', 'WaitingService',
-        function ($rootScope, $scope, sideNavFactory, $timeout, $translate, AppAuthService, AppDataService, WaitingService) {
+    App.controller('sideNavCtrl', ['$rootScope', '$scope', 'sideNavFactory', '$timeout', '$translate', 'AppAuthService', 'AppDataService', 'WaitingService', '$state',
+        function ($rootScope, $scope, sideNavFactory, $timeout, $translate, AppAuthService, AppDataService, WaitingService, $state) {
 
             $scope.getTheme = function () {
                 $scope.company = AppAuthService.getCompany();
@@ -116,7 +116,6 @@
                 )
             };
 
-
         }
     ]);
 
@@ -136,7 +135,7 @@
                 },
                 {
                     "text": "USERS_TEXT",
-                    "icon": "fa-solid fa-ellipsis-h txt-18",
+                    "icon": "fa-solid fa-ellipsis-h",
                     "iconType": "fontawesome",
                     "appAclAllow": "user/index",
                     "noRender": !(AppAclService.validateAction('crm_user', 'index')) && !(AppAclService.validateAction('end_user', 'index')),
@@ -173,6 +172,5 @@
 
         return service;
     });
-
 
 })();

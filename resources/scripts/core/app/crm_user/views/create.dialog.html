@@ -1,0 +1,9 @@
+<div class="card noBorder">
+    <div class="card-heading relo-bg-bright-gray card-title-heading">
+        <span>{{'CREATE_USER_TEXT' | translate}}</span>
+    </div>
+
+    <spinner-v2 type="spin" ng-if="isLoading"></spinner-v2>
+
+    <div ng-include="'/app/views/crm_user/form.html'"></div>
+</div>

@@ -5,18 +5,18 @@
 (function () {
     'use strict';
 
-    App.controller('CrmUserFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem', 'AppAclService',
-        function ($scope, $http, $stateParams, $state, WaitingService, AppDataService, AppSystem, AppAclService) {
-            $scope.page_loading = true;
+    App.controller('CrmUserFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem', 'AppAclService', 'currentObj',
+        function ($scope, $http, $stateParams, $state, WaitingService, AppDataService, AppSystem, AppAclService, currentObj) {
+            $scope.isLoading = true;
             $scope.user = {};
             $scope.canSave = false;
 
-            $scope.canSave =  angular.isDefined($stateParams.id) ? AppAclService.validateAction('crm_user', 'edit') : AppAclService.validateAction('crm_user', 'create');
+            $scope.canSave = angular.isDefined(currentObj.id) ? AppAclService.validateAction('crm_user', 'edit') : AppAclService.validateAction('crm_user', 'create');
 
             $scope.getDetailFn = function () {
-                var id = angular.isDefined($stateParams.id) ? $stateParams.id : 0;
-                if (id == 0) {
-                    $scope.page_loading = false;
+                let id = angular.isDefined(currentObj.id) ? currentObj.id : 0;
+                if (!id) {
+                    $scope.isLoading = false;
                     return;
                 }
 
@@ -27,11 +27,11 @@
                         } else {
                             WaitingService.error(res.msg);
                         }
-                        $scope.page_loading = false;
+                        $scope.isLoading = false;
                     },
                     function (error) {
                         WaitingService.expire(error);
-                        $scope.page_loading = false;
+                        $scope.isLoading = false;
                     }
                 );
             };
@@ -46,27 +46,27 @@
                     AppDataService.updateCrmUser($scope.user).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
+                            $scope.closeThisDialog({data: res.data});
                         } else {
                             WaitingService.error(res.message);
                         }
                         $scope.saving = false;
                     }, function (err) {
+                        $scope.closeThisDialog();
+
                         WaitingService.error(err);
                     })
                 } else {
                     AppDataService.createCrmUser($scope.user).then(function (res) {
                         if (res.success) {
-                            // WaitingService.success(res.message, function () {
-                            //     $state.go('app.user.list');
-                            // });
-
                             WaitingService.popSuccess(res.message);
-                            $state.go('app.crm-user.list');
+                            $scope.closeThisDialog({data: res.data});
                         } else {
                             WaitingService.error(res.message);
                         }
                         $scope.saving = false;
                     }, function (err) {
+                        $scope.closeThisDialog();
                         WaitingService.error(err);
                     })
                 }
@@ -77,13 +77,8 @@
                     function (res) {
                         AppDataService.deleteCrmUser(id).then(function (res) {
                             if (res.success) {
-                                // WaitingService.success(res.message, function () {
-                                //     $state.go('app.user.list');
-                                // });
-
                                 WaitingService.popSuccess(res.message);
-                                console.log('go', res.message);
-                                $state.go('app.crm-user.list');
+                                $scope.closeThisDialog({data: id});
                             } else {
                                 WaitingService.error(res.message);
                             }
