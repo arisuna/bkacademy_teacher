@@ -6,6 +6,7 @@
     <label class="switch switch-lg">
         <input type="checkbox"
                class="privilege"
+               ng-disabled="user_group.is_crm_admin"
                ng-model="controller_action.selected"
                ng-change="onAclItemChanged(controller_action)"/>
         <span></span>
@@ -28,7 +29,7 @@
     <div class="pull-right" ng-if="true">
         <label class="switch switch-lg">
             <input type="checkbox" class="privilege"
-                   ng-disabled="!controller_action.selected"
+                   ng-disabled="user_group.is_crm_admin || !controller_action.selected"
                    ng-model="controller_action_sub.selected"
                    data-checkname="{{ controller_action_sub.id }}"
                    ng-change="onAclItemChanged(controller_action_sub)"/>
@@ -47,7 +48,7 @@
         <div class="pull-right" ng-if="true">
             <label class="switch switch-lg">
                 <input type="checkbox"
-                       ng-disabled="!controller_action.selected || !controller_action_sub.selected"
+                       ng-disabled="user_group.is_crm_admin || !controller_action.selected || !controller_action_sub.selected"
                        ng-model="controller_action_sub_sub.selected"
                        class="privilege check{{ controller_action_sub.id }}"
                        ng-change="onAclItemChanged( controller_action_sub_sub )"/>
@@ -66,7 +67,7 @@
             <div class="pull-right" ng-if="true">
                 <label class="switch switch-lg">
                     <input type="checkbox" class="privilege"
-                           ng-disabled="!controller_action.selected || !controller_action_sub.selected || !controller_action_sub_sub.selected"
+                           ng-disabled="user_group.is_crm_admin || !controller_action.selected || !controller_action_sub.selected || !controller_action_sub_sub.selected"
                            ng-model="controller_action_sub_sub_sub.selected"
                            ng-change="onAclItemChanged(controller_action_sub_sub_sub)"/>
                     <span ></span>
