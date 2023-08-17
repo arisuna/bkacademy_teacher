@@ -68,8 +68,7 @@
                 $scope.params.start = ($scope.loadCount - 1) * 20;
                 $scope.params.orders = [$scope.sort];
                 $scope.params.query = $scope.query;
-                $scope.params.statuses = [-1, 0, 1];
-                
+
                 AppDataService.getCrmUserList($scope.params).then(function (res) {
                     if (res.success) {
                         $scope.items = $scope.loadCount > 1 ? $scope.dataList.concat(res.data) : res.data;
@@ -106,7 +105,6 @@
                 $scope.params.start = ($scope.loadCount - 1) * 20;
                 $scope.params.orders = [$scope.sort];
                 $scope.params.query = $scope.query;
-                $scope.params.statuses = [-1, 0, 1];
                 if ($scope.currentPage > 0 && $scope.loadCount <= $scope.totalPages) {
                     $scope.isLoadingMore = true;
                 }

@@ -18,7 +18,7 @@
 
             <div class="row">
                 <div class="col-sm-12">
-                    <input-text is-editable="true"
+                    <input-text is-editable="user.status != -1"
                                 is-required="true"
                                 is-text="true"
                                 ng-model="user.firstname"
@@ -30,7 +30,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <input-text is-editable="true"
+                    <input-text is-editable="user.status != -1"
                                 is-required="true"
                                 is-text="true"
                                 ng-model="user.lastname"
@@ -42,7 +42,7 @@
 
             <div class="row">
                 <div class="col-sm-12">
-                    <input-text is-editable="false"
+                    <input-text is-editable="user.status != -1"
                                 is-email="true"
                                 is-required="true"
                                 ng-model="user.email"
@@ -66,17 +66,19 @@
 
         <div class="card-footer">
             <div class="row">
-                <div class="col-sm-12 text-right">
-                    <button type="button" class="btn relo-bg-red mr-lg" ng-click="deleteFn(user.id)"
-                            title="Delete">
+                <div class="col-sm-12 ">
+                    <button type="button" class="btn relo-bg-red pull-left" ng-click="deleteFn(user.id)"
+                            title="Delete" ng-class="{'disabled': user.status == -1}">
                         <i class="fa fa-trash mr-sm" ng-disabled="saving"></i>
                         {{'DELETE_BTN_TEXT' | translate}}
                     </button>
 
-                    <button type="submit" class="btn relo-bg-green" title="Save" ng-disabled="saving"><i
+                    <button type="submit" class="btn relo-bg-green pull-right" title="Save" ng-disabled="saving"
+                            ng-class="{'disabled': user.status == -1}"><i
                             class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
                         {{'SAVE_BTN_TEXT' | translate}}
                     </button>
+                    <div class="clearfix"></div>
                 </div>
             </div>
         </div>
