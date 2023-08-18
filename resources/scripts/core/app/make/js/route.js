@@ -5,15 +5,15 @@
      * Routes
      */
     Routes.config(['$stateProvider', 'RouteHelpersProvider', function ($stateProvider, helper) {
-            $stateProvider.state('app.brand', {
-                url: '/brand',
+            $stateProvider.state('app.make', {
+                url: '/make',
                 title: 'MAKES_AND_MODELS_TEXT',
                 resolve: helper.resolveFor('modernizr', 'icons', 'parsley'),
                 abstract: true,
                 parent: 'app.admin-page.dashboard',
                 views: {
                     '@app.admin-page': {
-                        templateUrl: helper.modulePath('app', 'brand/index'),
+                        templateUrl: helper.modulePath('app', 'make/index'),
                     }
                 },
                 acl: 'admin/index',
@@ -21,35 +21,35 @@
                     showSideNav2: true,
                     templateSideNav2: helper.modulePath('app', 'admin-page/left')
                 }
-            }).state('app.brand.list', {
+            }).state('app.make.list', {
                 url: '',
                 title: 'MAKES_AND_MODELS_TEXT',
-                templateUrl: helper.modulePath('app', 'brand/items', '_=' + Math.random())
-            }).state('app.brand.create', {
+                templateUrl: helper.modulePath('app', 'make/items', '_=' + Math.random())
+            }).state('app.make.create', {
                 url: '/create',
                 title: 'CREATE_BRAND_TEXT',
-                parent: 'app.brand.list',
+                parent: 'app.make.list',
                 views: {
-                    '@app.brand': {
-                        templateUrl: helper.modulePath('app', 'brand/form', '_=' + Math.random())
+                    '@app.make': {
+                        templateUrl: helper.modulePath('app', 'make/form', '_=' + Math.random())
                     }
                 },
-            }).state('app.brand.edit', {
+            }).state('app.make.edit', {
                 url: '/edit/{id}',
                 title: 'EDIT_BRAND_TEXT',
-                parent: 'app.brand.list',
+                parent: 'app.make.list',
                 views: {
-                    '@app.brand': {
-                        templateUrl: helper.modulePath('app', 'brand/form', '_=' + Math.random())
+                    '@app.make': {
+                        templateUrl: helper.modulePath('app', 'make/form', '_=' + Math.random())
                     }
                 },
-            }).state('app.brand.clone', {
+            }).state('app.make.clone', {
                 url: '/clone/{id}',
                 title: 'CLONE_BRAND_TEXT',
-                parent: 'app.brand.list',
+                parent: 'app.make.list',
                 views: {
-                    '@app.brand': {
-                        templateUrl: helper.modulePath('app', 'brand/form', '_=' + Math.random()),
+                    '@app.make': {
+                        templateUrl: helper.modulePath('app', 'make/form', '_=' + Math.random()),
                     }
                 },
                 params: {

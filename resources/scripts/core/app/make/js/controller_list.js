@@ -1,11 +1,11 @@
 (function () {
     'use strict';
-    App.controller('BrandListApiController', ['$scope', '$state', '$timeout', '$rootScope', '$translate',
-        'WaitingService', 'AppBrandService', 'ngDialog', 'urlBase',
-        function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppBrandService, ngDialog, urlBase) {
+    App.controller('MakeListApiController', ['$scope', '$state', '$timeout', '$rootScope', '$translate',
+        'WaitingService', 'AppMakeService', 'ngDialog', 'urlBase',
+        function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppMakeService, ngDialog, urlBase) {
 
 
-            $scope.module_name = 'brands';
+            $scope.module_name = 'makes';
 
             $scope.column_array = [
                 {
@@ -70,7 +70,7 @@
                 $scope.params.is_tmp = $scope.search.isTmp;
 
 
-                AppBrandService.getList($scope.params).then(function (res) {
+                AppMakeService.getList($scope.params).then(function (res) {
                     if (res.success) {
                         $scope.items = res.data;
                         $scope.totalPages = res.total_pages;
@@ -104,7 +104,7 @@
                     $scope.params.filter_config_id = $scope.search.filterConfigId;
                     $scope.params.is_tmp = $scope.search.isTmp;
 
-                    AppBrandService.getList($scope.params).then(function (res) {
+                    AppMakeService.getList($scope.params).then(function (res) {
                         if (res.success) {
                             $scope.items = $scope.items.concat(res.data);
                             $scope.totalPages = res.total_pages;
@@ -137,7 +137,7 @@
 
             $scope.reloadInit();
 
-            $scope.subscribe('apply_filter_config_brands', function (filterConfigId) {
+            $scope.subscribe('apply_filter_config_makes', function (filterConfigId) {
                 angular.element('.scroll-append').scrollTop(0);
                 $scope.search.filterConfigId = filterConfigId;
                 $scope.search.isTmp = true;
@@ -145,14 +145,14 @@
                 $scope.reloadInit();
             });
 
-            $scope.subscribe('sort_by_column_and_order_brands', function (data) {
+            $scope.subscribe('sort_by_column_and_order_makes', function (data) {
                 angular.element('.scroll-append').scrollTop(0);
                 $scope.search.orders = [data];
                 $scope.sort = {};
                 $scope.reloadInit();
             });
 
-            $scope.subscribe('text_search_brands', function (data) {
+            $scope.subscribe('text_search_makes', function (data) {
                 angular.element('.scroll-append').scrollTop(0);
                 $scope.search.query = data;
                 // GmsFilterConfigService.setFilterQuery($scope.module_name, $scope.currentUser.uuid, data);
@@ -171,7 +171,7 @@
 
             $scope.deleteFn = function (item, index) {
                 WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_BUSINESS_ZONE_TEXT', function () {
-                    AppBrandService.deleteBrand(item.uuid).then(function (res) {
+                    AppMakeService.deleteMake(item.uuid).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
                             $scope.reloadInit();
@@ -183,23 +183,23 @@
             };
 
 
-            $scope.cloneFn = function(brand){
+            $scope.cloneFn = function(make){
                 $scope.cloneDialog = ngDialog.open({
-                    template: urlBase.tplApp('app', 'brand', 'form-dialog', '_=' + Math.random()),
+                    template: urlBase.tplApp('app', 'make', 'form-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue',
                     closeByDocument: true,
                     showClose: true,
                     data: {
-                        brand: brand,
+                        make: make,
                         view: false
                     },
-                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppBrandService', '$state',
-                        function ($scope, $element, $timeout, WaitingService, AppBrandService, $state) {
-                            $scope.object = $scope.ngDialogData.brand;
+                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppMakeService', '$state',
+                        function ($scope, $element, $timeout, WaitingService, AppMakeService, $state) {
+                            $scope.object = $scope.ngDialogData.make;
                             $scope.page_loading = true;
                             $scope.isClone = true;
                             $scope.getDetailFn = function () {
-                                AppBrandService.detailBrand($scope.object.uuid).then(
+                                AppMakeService.detailMake($scope.object.uuid).then(
                                     function (res) {
                                         if (res.success) {
                                             $scope.object = res.data;
@@ -222,7 +222,7 @@
                                 object.id = 0;
                                 object.uuid = 0;
 
-                                AppBrandService.createBrand(object).then(function (res) {
+                                AppMakeService.createMake(object).then(function (res) {
                                     if (res.success) {
                                         $scope.closeThisDialog(res.data);
                                         WaitingService.popSuccess('DATA_CLONE_SUCCESS_TEXT');
@@ -247,24 +247,24 @@
 
 
             $scope.createFn = function(){
-                let brand = {
+                let make = {
                     uuid: "",
                     status: 1,
                 };
                 $scope.createDialog = ngDialog.open({
-                    template: urlBase.tplApp('app', 'brand', 'form-dialog', '_=' + Math.random()),
+                    template: urlBase.tplApp('app', 'make', 'form-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue',
                     closeByDocument: true,
                     showClose: true,
                     data: {
-                        brand: brand,
+                        make: make,
                         view: false
                     },
-                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppBrandService', '$state',
-                    function ($scope, $element, $timeout, WaitingService, AppBrandService, $state) {
-                        $scope.object = $scope.ngDialogData.brand;
+                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppMakeService', '$state',
+                    function ($scope, $element, $timeout, WaitingService, AppMakeService, $state) {
+                        $scope.object = $scope.ngDialogData.make;
                         $scope.saveFn = function(){
-                            AppBrandService.createBrand($scope.object).then(function (res) {
+                            AppMakeService.createMake($scope.object).then(function (res) {
                                 if (res.success) {
                                     $scope.closeThisDialog(res.data);
                                     WaitingService.popSuccess(res.message);
@@ -288,24 +288,24 @@
                 });
             }
 
-            $scope.editFn = function(brand){
-                console.log('brand', brand);
+            $scope.editFn = function(make){
+                console.log('make', make);
                 $scope.createDialog = ngDialog.open({
-                    template: urlBase.tplApp('app', 'brand', 'form-dialog', '_=' + Math.random()),
+                    template: urlBase.tplApp('app', 'make', 'form-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue',
                     closeByDocument: true,
                     showClose: true,
                     data: {
-                        brand: brand,
+                        make: make,
                         view: false
                     },
-                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppBrandService', '$state',
-                        function ($scope, $element, $timeout, WaitingService, AppBrandService, $state) {
-                            $scope.object = $scope.ngDialogData.brand;
+                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppMakeService', '$state',
+                        function ($scope, $element, $timeout, WaitingService, AppMakeService, $state) {
+                            $scope.object = $scope.ngDialogData.make;
                             $scope.page_loading = true;
 
                             $scope.getDetailFn = function () {
-                                AppBrandService.detailBrand($scope.object.uuid).then(
+                                AppMakeService.detailMake($scope.object.uuid).then(
                                     function (res) {
                                         if (res.success) {
                                             $scope.object = res.data;
@@ -324,7 +324,7 @@
 
                             $scope.saveFn  = function(){
                                 if($scope.object.id > 0){
-                                    AppBrandService.updateBrand($scope.object).then(function (res) {
+                                    AppMakeService.updateMake($scope.object).then(function (res) {
                                         if (res.success) {
                                             $scope.closeThisDialog(res.data);
 
