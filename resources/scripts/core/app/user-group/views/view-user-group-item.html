@@ -1,15 +1,26 @@
 <div class="pull-left">
-    <p class="mg-0 txt-bold txt-18 txt-black-60">{{ controller_action.name|translate }}</p>
+    <p class="mg-0 txt-bold txt-18 txt-black-60 mg-t-25">{{ controller_action.name|translate }}</p>
 </div>
 
-<div class="pull-right" ng-if="true">
-    <label class="switch switch-lg">
+<div class="pull-right width-350px flex" ng-if="true">
+    <label class="switch switch-lg flex-middle mg-t-10 mr-sm flex-1">
         <input type="checkbox"
                class="privilege"
+               ng-disabled="user_group.is_crm_admin"
                ng-model="controller_action.selected"
                ng-change="onAclItemChanged(controller_action)"/>
         <span></span>
     </label>
+    <div class="flex-middle flex-4">
+        <app-level-selector ng-model="controller_action.level"
+            label="LEVEL_TEXT"
+            show-label="true"
+            is-editable="!user_group.is_crm_admin && controller_action.selected"
+            is-required="true"
+            ng-change="onAclItemLevelChanged(controller_action)"
+            required-message="ENTER_LEVEL_TEXT"
+            tool-tip-text="{{ 'TOOLTIP_LEVEL_TEXT' | translate }}"></app-level-selector>
+    </div>
 </div>
 
 <div class="clearfix"></div>
@@ -18,59 +29,89 @@
 <div ng-repeat="controller_action_sub in controller_action.sub" class="role-tree">
 
     <div class="pull-left">
-        <p class="mg-0 txt-bold txt-16 txt-black-60">
+        <p class="mg-0 txt-bold txt-16 txt-black-60 mg-t-25">
             {{ $index + 1 }}.
             {{ controller_action_sub.name | translate }}
         </p>
     </div>
 
 
-    <div class="pull-right" ng-if="true">
-        <label class="switch switch-lg">
+    <div class="pull-right width-350px flex" ng-if="true">
+        <label class="switch switch-lg flex-middle mg-t-10 mr-sm flex-1">
             <input type="checkbox" class="privilege"
-                   ng-disabled="!controller_action.selected"
+                   ng-disabled="user_group.is_crm_admin || !controller_action.selected"
                    ng-model="controller_action_sub.selected"
                    data-checkname="{{ controller_action_sub.id }}"
                    ng-change="onAclItemChanged(controller_action_sub)"/>
             <span></span>
         </label>
+        <div class="flex-middle flex-4">
+        <app-level-selector ng-model="controller_action_sub.level"
+            label="LEVEL_TEXT"
+            show-label="true"
+            is-required="true"
+            ng-change="onAclItemLevelChanged(controller_action_sub)"
+            is-editable="!user_group.is_crm_admin && controller_action_sub.selected"
+            required-message="ENTER_LEVEL_TEXT"
+            tool-tip-text="{{ 'TOOLTIP_LEVEL_TEXT' | translate }}"></app-level-selector>
+        </div>
     </div>
     <div class="clearfix"></div>
 
     <div ng-repeat="controller_action_sub_sub in controller_action_sub.sub" class="role-tree">
         <div class="pull-left pd-l-3x">
-            <p class="mg-0 txt-bold txt-black-60">
+            <p class="mg-0 txt-bold txt-black-60 mg-t-25">
                 <i class="fa fa-caret-right"></i>
                 {{ controller_action_sub_sub.name | translate }}
             </p>
         </div>
-        <div class="pull-right" ng-if="true">
-            <label class="switch switch-lg">
+        <div class="pull-right width-350px flex" ng-if="true">
+            <label class="switch switch-lg flex-middle mg-t-10 mr-sm flex-1">
                 <input type="checkbox"
-                       ng-disabled="!controller_action.selected || !controller_action_sub.selected"
+                       ng-disabled="user_group.is_crm_admin || !controller_action.selected || !controller_action_sub.selected"
                        ng-model="controller_action_sub_sub.selected"
                        class="privilege check{{ controller_action_sub.id }}"
                        ng-change="onAclItemChanged( controller_action_sub_sub )"/>
                 <span ></span>
             </label>
+            <div class="flex-middle flex-4">
+            <app-level-selector ng-model="controller_action_sub_sub.level"
+                label="LEVEL_TEXT"
+                show-label="true"
+                is-required="true"
+                is-editable="!user_group.is_crm_admin && controller_action_sub_sub.selected"
+                required-message="ENTER_LEVEL_TEXT"
+                ng-change="onAclItemLevelChanged(controller_action_sub_sub)"
+                tool-tip-text="{{ 'TOOLTIP_LEVEL_TEXT' | translate }}"></app-level-selector>
+            </div>
         </div>
         <div class="clearfix"></div>
 
         <div ng-repeat="controller_action_sub_sub_sub in controller_action_sub_sub.sub"  class="role-tree">
             <div class="pull-left pd-l-6x">
-                <p class="mg-0 txt-black-60">
+                <p class="mg-0 txt-black-60 mg-t-25">
                     <i class="fa fa-caret-right"></i>
                     {{ controller_action_sub_sub_sub.name | translate }}
                 </p>
             </div>
-            <div class="pull-right" ng-if="true">
-                <label class="switch switch-lg">
+            <div class="pull-right width-350px flex" ng-if="true">
+                <label class="switch switch-lg flex-middle mg-t-10 mr-sm flex-1">
                     <input type="checkbox" class="privilege"
-                           ng-disabled="!controller_action.selected || !controller_action_sub.selected || !controller_action_sub_sub.selected"
+                           ng-disabled="user_group.is_crm_admin || !controller_action.selected || !controller_action_sub.selected || !controller_action_sub_sub.selected"
                            ng-model="controller_action_sub_sub_sub.selected"
                            ng-change="onAclItemChanged(controller_action_sub_sub_sub)"/>
                     <span ></span>
                 </label>
+                <div class="flex-middle flex-4">
+                <app-level-selector ng-model="controller_action_sub_sub_sub.level"
+                    label="LEVEL_TEXT"
+                    show-label="true"
+                    is-required="true"
+                    is-editable="!user_group.is_crm_admin && controller_action_sub_sub_sub.selected"
+                    ng-change="onAclItemLevelChanged(controller_action_sub_sub_sub)"
+                    required-message="ENTER_LEVEL_TEXT"
+                    tool-tip-text="{{ 'TOOLTIP_LEVEL_TEXT' | translate }}"></app-level-selector>
+                </div>
             </div>
             <div class="clearfix"></div>
         </div>
