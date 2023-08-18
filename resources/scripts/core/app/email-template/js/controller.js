@@ -42,6 +42,11 @@
                     controller: 'EmailTemplateCreateController',
                     scope: $scope,
                     closeByDocument: false,
+                    resolve: {
+                        emailTemplate: ['AppEmailTemplateService', function (AppEmailTemplateService) {
+                            return {id: ''}
+                        }]
+                    }
                 });
 
                 createDialog.closePromise.then(function (dialogData) {

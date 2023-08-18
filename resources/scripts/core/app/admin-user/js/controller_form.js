@@ -59,7 +59,7 @@
                     AppDataService.createAdminUser($scope.user).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
-                            $scope.closeThisDialog({adminUser: res.data});
+                            $scope.closeThisDialog({adminUser: id});
                             // $state.go('app.admin-user.list');
                         } else {
                             WaitingService.error(res.message, function () {
@@ -80,17 +80,14 @@
                     function (res) {
                         AppDataService.deleteAdminUser(id).then(function (res) {
                             if (res.success) {
-                                // WaitingService.success(res.message, function () {
-                                //     $state.go('app.admin-user.list');
-                                // });
-
                                 WaitingService.popSuccess(res.message);
-                                console.log('go', res.message);
-                                $state.go('app.admin-user.list');
+                                $scope.closeThisDialog({adminUser: id});
                             } else {
                                 WaitingService.error(res.message);
                             }
                         }, function (err) {
+                            $scope.closeThisDialog();
+
                             WaitingService.error(err);
                         });
                     });
