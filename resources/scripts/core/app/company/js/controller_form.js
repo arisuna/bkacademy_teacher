@@ -4,20 +4,22 @@
 
 (function () {
     'use strict';
-    App.controller('CompanyFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem', 'AppCompanyService', 'currentCompany',
-        function ($scope, $http, $stateParams, $state, WaitingService, AppDataService, AppSystem, AppCompanyService, currentCompany) {
+    App.controller('CompanyFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem', 'AppCompanyService',
+        function ($scope, $http, $stateParams, $state, WaitingService, AppDataService, AppSystem, AppCompanyService) {
             $scope.isLoading = true;
             $scope.company = {};
             $scope.canSave = true;
+            $scope.tabActive = 1;
 
             $scope.getDetailFn = function () {
-                let id = angular.isDefined(currentCompany.id) ? currentCompany.id : 0;
-                if (id == 0) {
+                console.log("$stateParams.uuid", $stateParams.uuid)
+                let uuid = angular.isDefined($stateParams.uuid) ? $stateParams.uuid : 0;
+                if (!uuid) {
                     $scope.isLoading = false;
                     return;
                 }
 
-                AppCompanyService.getCompanyDetail(id).then(
+                AppCompanyService.getCompanyDetail(uuid).then(
                     function (res) {
                         if (res.success) {
                             $scope.company = res.data;

@@ -57,42 +57,52 @@
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
-                        <th class="text-dark-blue bd-b-white">{{'ID_TEXT' | translate}}</th>
+                        <th class="text-dark-blue bd-b-white">#</th>
                         <th class="text-dark-blue bd-b-white">{{'NAME_TEXT' | translate }}</th>
-                        <th class="text-dark-blue bd-b-white">{{'CREATOR_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'PHONE_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white">{{'EMAIL_TEXT' | translate }}</th>
-                        <th class="text-dark-blue bd-b-white">{{'COUNTRY_TEXT' | translate }}</th>
-                        <th class="text-dark-blue bd-b-white">{{'STATUS_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'TOWN_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white">{{'CREATED_AT_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'STATUS_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white"></th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="(index, object) in table.pagedItems[table.currentPage]"
                         class="relo-bg-bright-gray-4 bd-r-5 border-white">
-                        <td class="bd-t-white">{{ object.id }}</td>
+                        <td class="bd-t-white">{{ index + 1 }}</td>
                         <td class="bd-t-white">
-                            <div ng-click="editCompanyFn( object )"
+                            <div ng-click="editFn( object )"
                                  class="wrap-word text-bright-blue">{{ object.name }}
                             </div>
                         </td>
-                        <td class="bd-t-white"><span ng-if="object.creator_uuid">{{ object.creator_name }}</span></td>
+                        <td class="bd-t-white">{{ object.phone }}</td>
                         <td class="bd-t-white">{{ object.email }}</td>
-                        <td class="bd-t-white">{{ object.country_name | translate }}</td>
+                        <td class="bd-t-white">{{ object.town | translate }}</td>
+                        <td class="bd-t-white">{{ object.created_at | amDateFormat: 'DD/MM/YYYY'}}</td>
                         <td class="bd-t-white">
                             <button class="selected-status btn btn-flat btn-circle flex text-center flex-vertical width-18px height-18px bd-radius-9px"
                                     uib-dropdown-toggle=""
                                     aria-haspopup="true"
                                     aria-expanded="false"
                                     tooltip-placement="bottom"
-                                    uib-tooltip="{{ object.status  == 1 ? ('ACTIVE_TEXT' | translate) : ('INACTIVE_TEXT' | translate) }}"
-                                    ng-class="{'is-terminated': object.status != 1, 'is-active': object.status == 1}">
+                                    ng-if="object.is_deleted != 1"
+                                    uib-tooltip="{{ object.status == 1 ? ('VERIFIED_TEXT' | translate) : ('UNVERIFIED_TEXT' | translate) }}"
+                                    ng-class="{'unverified': object.status != 1, 'is-active': object.status == 1}">
+                            </button>
+
+                            <button class="selected-status btn btn-flat btn-circle flex text-center flex-vertical width-18px height-18px bd-radius-9px cancelled"
+                                    uib-dropdown-toggle=""
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                    tooltip-placement="bottom"
+                                    ng-if="object.is_deleted == 1"
+                                    uib-tooltip="{{ 'ARCHIVED_TEXT' | translate }}">
                             </button>
                         </td>
-                        <td class="bd-t-white">{{ object.created_at | amDateFormat: 'DD/MM/YYYY'}}</td>
                         <td class="text-right bd-t-white">
-                            <button-edit-icon ng-click="editCompanyFn( object )" class="mr-sm"></button-edit-icon>
-                            <button-delete-icon ng-click="deleteFn( object )"></button-delete-icon>
+                            <button-edit-icon ng-click="editFn( object )" class="mr-sm"></button-edit-icon>
+                            <button-delete-icon ng-click="deleteFn( object )" ng-class="{'disabled': object.is_deleted == 1}"></button-delete-icon>
                         </td>
                     </tr>
 

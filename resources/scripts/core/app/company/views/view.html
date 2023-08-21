@@ -1,0 +1,118 @@
+<div ng-controller="CompanyFormController">
+    <div ng-include="'/app/views/company/detail_buttons.html'"></div>
+    <!--    <div class="row">-->
+    <!--        <div class="col-md-12">-->
+    <!--            <div class="notification-flat notification-flat-primary">-->
+    <!--                <div class="notification-flat-title"><i class="icon-info"></i></div>-->
+    <!--                <div class="notification-flat-text">-->
+    <!--                    <div class="row flex">-->
+    <!--                        <div class="col-md-6 flex-middle">-->
+    <!--                            {{ 'PLS_VERIFY_COMPANY_TEXT' | translate }}-->
+    <!--                        </div>-->
+    <!--                        <div class="col-md-6 text-right">-->
+    <!--                            <button class="btn-oval btn btn-primary mr-sm"-->
+    <!--                            >-->
+    <!--                                <em class="fa fa-plus mr-sm"></em>{{'VERIFY_TEXT' | translate}}-->
+    <!--                            </button>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+    <div ng-if="isLoading">
+        <spinner-v2 type="spin"></spinner-v2>
+    </div>
+
+    <div class="mt-sm" ng-if="!isLoading">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-default-b white-block pd-b-0">
+                    <div class="panel-body">
+                        <div>
+                            <app-logo-upload button-text="{{ 'CHANGE_LOGO_TEXT' | translate }}"
+                                             media-type="'logo'"
+                                             uuid="company.uuid">
+                            </app-logo-upload>
+                            logo
+                        </div>
+
+                        <h4 class="text-dark-blue text-center">
+                            {{ company.name }}
+                        </h4>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb">{{'TAX_NUMBER_TEXT'}}: {{company.tax_number}}</div>
+                                <div class="mb">
+                                    <div class="" ng-if="company.is_deleted != 1">
+                                        <em class="fa-solid fa-circle txt-18 mr-sm "
+                                            ng-class="{'text-dark-gray': company.status != 1, 'text-green': company.status == 1}"></em>
+
+                                        {{ company.status == 1 ? ('VERIFIED_TEXT' | translate) : ('UNVERIFIED_TEXT' | translate)}}
+                                    </div>
+
+                                    <div class="" ng-if="company.is_deleted == 1">
+                                        <em class="fa-solid fa-circle txt-18 mr-sm text-red"></em>
+                                        {{ 'ARCHIVED_TEXT' | translate}}
+                                    </div>
+                                </div>
+                                <div class="mb-sm">{{'CREATED_AT_TEXT'}}:
+                                    {{ company.created_at | amDateFormat: 'DD/MM/YYYY'}}
+                                </div>
+                                <div class="pd-b-15">{{'UPDATED_AT_TEXT'}}:
+                                    {{ company.updated_at | amDateFormat: 'DD/MM/YYYY'}}
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="divider">
+                    </div>
+                    <div class="list-group mt" ng-init="tabActive = 1">
+                        <a class="list-group-item"
+                           ng-class="{'active': (tabActive == 1)}"
+                           ng-click="tabActive = 1">{{ 'BASIC_INFO_TEXT' | translate }}</a>
+
+                        <a class="list-group-item"
+                           ng-class="{'active': (tabActive == 2)}"
+                           ng-click="tabActive = 2">{{ 'ADDRESSES_TEXT' | translate }}</a>
+
+                        <a class="list-group-item"
+                           ng-class="{'active': (tabActive == 3)}"
+                           ng-click="tabActive = 3">{{ 'VERIFICATION_AND_TAX_NUMBER_TEXT' | translate }}</a>
+
+
+                        <a class="list-group-item"
+                           ng-class="{'active': (tabActive == 4)}"
+                           ng-click="tabActive = 4">{{ 'USERS_TEXT' | translate }}</a>
+
+
+                        <a class="list-group-item"
+                           ng-class="{'active': (tabActive == 5)}"
+                           ng-click="tabActive = 5">{{ 'ORDERS_TEXT' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div ng-show="tabActive == 1">
+                    <div ng-include="'/app/views/company/view_basic.html'"></div>
+                </div>
+
+                <div ng-show="tabActive == 2">
+                    <div ng-include="'/app/views/company/view_basic.html'"></div>
+                </div>
+
+                <div ng-show="tabActive == 3">
+                    <div ng-include="'/app/views/company/view_basic.html'"></div>
+                </div>
+
+                <div ng-show="tabActive == 4">
+<!--                    <div ng-include="'/app/views/company/view_basic.html'"></div>-->
+                </div>
+                <div ng-show="tabActive == 5">
+<!--                    <div ng-include="'/app/views/company/view_basic.html'"></div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

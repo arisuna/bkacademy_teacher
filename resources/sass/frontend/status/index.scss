@@ -102,4 +102,8 @@
     &.is-active {
         background-color: $relo-green;
     }
+
+    &.unverified {
+        background-color: $relo-dark-gray;
+    }
 }
