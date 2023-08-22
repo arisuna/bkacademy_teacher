@@ -106,4 +106,8 @@
     &.is-active {
         background-color: $relo-green;
     }
+
+    &.in-active {
+        background-color: $relo-grey;
+    }
 }
