@@ -35,7 +35,6 @@
                                              media-type="'logo'"
                                              uuid="company.uuid">
                             </app-logo-upload>
-                            logo
                         </div>
 
                         <h4 class="text-dark-blue text-center">
@@ -68,6 +67,7 @@
                         </div>
                         <hr class="divider">
                     </div>
+
                     <div class="list-group mt" ng-init="tabActive = 1">
                         <a class="list-group-item"
                            ng-class="{'active': (tabActive == 1)}"
@@ -99,11 +99,11 @@
                 </div>
 
                 <div ng-show="tabActive == 2">
-                    <div ng-include="'/app/views/company/view_basic.html'"></div>
+                    <div ng-include="'/app/views/company/addresses.html'"></div>
                 </div>
 
                 <div ng-show="tabActive == 3">
-                    <div ng-include="'/app/views/company/view_basic.html'"></div>
+                    <div ng-include="'/app/views/company/verification.html'"></div>
                 </div>
 
                 <div ng-show="tabActive == 4">

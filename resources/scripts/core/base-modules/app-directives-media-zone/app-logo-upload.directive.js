@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.app-directives')
+        .module('app.app-directives-media-zone')
         .directive('appLogoUpload', appLogoUpload);
 
     appLogoUpload.$inject = ['FileUploader', '$document', '$http', 'urlBase', '$translate', '$rootScope', '$timeout', 'AppDataService', 'DataService', 'WaitingService', 'AppAvatarService', 'DataThumbCache'];
@@ -32,7 +32,7 @@
 
                         <div class="user-block-status text-center">
                             <img id="previewLogo_{{name}}" class="img-avatar img-responsive" ng-src="" ng-show="preview == true">
-                        </div>vxvcxv
+                        </div>
 
                         <div class="user-block-status text-center"
                              ng-if="avatar.image_data.url_thumb"
@@ -76,7 +76,7 @@
                     console.log("scope.name ", scope.name)
                     scope.name = "";
                 }
-                debugger
+
                 if (scope.buttonText == '' || scope.buttonText == 'undefined') {
                     scope.buttonText = 'CHANGE_LOGO_TEXT';
                 }

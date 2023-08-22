@@ -4,12 +4,24 @@
 
 (function () {
     'use strict';
-    App.controller('CompanyFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem', 'AppCompanyService',
-        function ($scope, $http, $stateParams, $state, WaitingService, AppDataService, AppSystem, AppCompanyService) {
+    App.controller('CompanyFormController', ['$scope', '$http', '$stateParams', '$state', '$translate', '$timeout', 'WaitingService', 'AppDataService', 'AppSystem', 'AppCompanyService', 'AppAddressService',
+        function ($scope, $http, $stateParams, $state, $timeout, $translate, WaitingService, AppDataService, AppSystem, AppCompanyService, AppAddressService) {
             $scope.isLoading = true;
+            $scope.isLoadingAddress = true;
             $scope.company = {};
-            $scope.canSave = true;
+            $scope.isEditable = false;
             $scope.tabActive = 1;
+            $scope.saving = false;
+
+            $scope.addresses = [];
+            $scope.billAddresses = [];
+            $scope.siteAddresses = [];
+            $scope.mailAddresses = [];
+
+            $scope.statuses = [
+                {name: 'UNVERIFIED_TEXT', value: 0, color: 'dark-gray', text: 'UNVERIFIED_TEXT'},
+                {name: 'VERIFIED_TEXT', value: 1, color: 'green', text: 'VERIFIED_TEXT'},
+            ]
 
             $scope.getDetailFn = function () {
                 console.log("$stateParams.uuid", $stateParams.uuid)
@@ -23,6 +35,10 @@
                     function (res) {
                         if (res.success) {
                             $scope.company = res.data;
+
+                            $scope.company.statusSelected = $scope.statuses.find(o => o.value == $scope.company.status)
+
+                            $scope.getListAddress(res.data.id)
                         } else {
                             WaitingService.error(res.msg);
                         }
@@ -37,22 +53,51 @@
             };
             $scope.getDetailFn();
 
-            $scope.saving = false;
+            $scope.getListAddress = (companyId) => {
+                AppAddressService.getAddressList({
+                    company_id: companyId
+                }).then((res) => {
+                    if (res.success) {
+                        $scope.addresses = res.data
+                    } else {
+                        WaitingService.expire();
+                    }
 
-            $scope.saveFn = function () {
-                $scope.saving = true;
+                    $timeout(function () {
+                        $scope.isLoadingAddress = false;
+                    }, 500)
+
+                }, (err) => {
+                    WaitingService.expire();
+                    $timeout(function () {
+                        $scope.isLoadingAddress = false;
+                    }, 500)
+                });
+            };
+
+
+            $scope.saveFn = function ($event) {
+                $event.preventDefault();
+                $event.stopPropagation();
 
                 if ($scope.company.id > 0) {
                     AppCompanyService.updateCompany($scope.company).then(function (res) {
+                        $scope.saving = false;
+                        $scope.isEditable = false
+
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
                             $scope.closeThisDialog({company: res.data});
                         } else {
                             WaitingService.error(res.message);
                         }
-                        $scope.saving = false;
-                    }, function (err) {
+                    }, (err) => {
                         WaitingService.error(err);
+                        $scope.saving = false;
+                        $timeout(function () {
+                            $scope.saving = false;
+                            $scope.isEditable = false
+                        }, 500)
                     })
                 } else {
                     AppCompanyService.createCompany($scope.company).then(function (res) {
@@ -62,12 +107,18 @@
                         } else {
                             WaitingService.error(res.message);
                         }
-                        $scope.saving = false;
+                        $timeout(function () {
+                            $scope.saving = false;
+                        }, 500)
                     }, function (err) {
                         $scope.closeThisDialog();
                         WaitingService.error(err);
+                        $timeout(function () {
+                            $scope.saving = false;
+                        }, 500)
                     })
                 }
+
             }; // End save function
 
             $scope.deleteFn = function (id) {
@@ -87,5 +138,21 @@
                     });
             }; // End delete function
 
+            $scope.createAddress = function (type = 1) {
+                alert('createAddress')
+            }
+
+            $scope.onEditable = ($event) => {
+                $event.preventDefault();
+                $event.stopPropagation();
+                $scope.$evalAsync(function () {
+                    $scope.isEditable = !$scope.isEditable
+                })
+            }
+
+            $scope.changeStatus = (item) => {
+                $scope.company.status = item.value
+            }
         }]);
+
 })();
