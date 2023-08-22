@@ -23,7 +23,7 @@
                 <div class="input-group search">
                     <input type="text"
                            class="form-control form-control-custom-radius"
-                           placeholder="{{ 'ENTER_TO_SEARCH_TEXT' | translate }}"
+                           placeholder="{{ 'SEARCH_TEXT' | translate }}"
                            ng-enter-key="executeSearch()"
                            ng-style="isOval == true && {'border-top-left-radius':'15px', 'border-bottom-left-radius':'15px'} || {'border-radius':'3px'}"
                            ng-model="model" aria-invalid="false">

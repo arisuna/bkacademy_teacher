@@ -41,7 +41,7 @@
             controller: function ($scope, $element, $attrs) {
 
                 if (angular.isUndefined($scope.countryCode)){
-                    $scope.countryCode = DataSystem.getCountriesIso();
+                    $scope.countryCode = 'VN';
                 }
 
                 $scope.highlight = false;
@@ -75,14 +75,15 @@
                                 $scope.data.telephone_number = telephoneSplit[1];
                             }
                         }else{
-                            // $scope.initPrefix();
+                            $scope.initPrefix();
                         }
                     }else{
-                        // $scope.initPrefix();
+                        $scope.initPrefix();
                     }
                 };
 
                 $scope.initPrefix = function(){
+                    console.log('initPrefix', $scope.countryCode);
                     if ($scope.countryCode != '' && $scope.countryCode != null && $scope.countryCode != undefined){
                         let telephonePrefixCountry = _.findLast(TELEPHONE_PREFIX, function (o) {
                             return o.code == $scope.countryCode;
@@ -168,7 +169,7 @@
 
                 $scope.openCodeDialog = function ($event) {
 
-                    let dialogPosition = Utils.getPositionDropdownDialog($event, 300, 300)
+                    let dialogPosition = Utils.getPositionDropdownDialog($event, 300, 300, 0)
                     let searchDialog = ngDialog.open({
                         template: urlBase.tplApp('app', '_directives_input', 'app-phone-input-selector-code-dialog'),
                         className: 'ngdialog-custom-position no-background ' + dialogPosition['className'],
@@ -180,6 +181,9 @@
                         data: dialogPosition,
                         controller: ['$scope', '$element', 'TELEPHONE_PREFIX', 'Utils', function ($scope, $element, TELEPHONE_PREFIX, Utils) {
                             $scope.countryCode = $scope.ngDialogData.countryCode;
+
+                            console.log('$scope.countryCode', $scope.countryCode);
+
                             $scope.telephone_prefix_items = TELEPHONE_PREFIX;
 
                             Utils.setPositionDropdownDialog(dialogPosition)

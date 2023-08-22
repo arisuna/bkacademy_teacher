@@ -12,6 +12,13 @@
         <div>
             <spinner-v2 type="spin" ng-show="isInitialLoading"></spinner-v2>
 
+            <div class="flex-middle align-center centered" ng-show="!isInitialLoading && items.length == 0 ">
+                <!--                <img class="height-96px margin-auto mg-t-15 mg-b-10" src="/gms/assets/img/svg/no_activity_log.svg">-->
+                <div class="mg-0 mg-b-4s text-muted">
+                    {{'NO_DATA_AVAILABLE_TEXT'|translate}}
+                </div>
+            </div>
+
             <angular-table table="table"
                            items="items"
                            ng-if="!isInitialLoading && items.length > 0"
