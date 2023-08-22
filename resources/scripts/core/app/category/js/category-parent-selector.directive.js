@@ -9,7 +9,7 @@
         return {
             restrict: 'E',
             replace: true,
-            templateUrl: urlBase.tplApp('app', 'setting-acl', 'acl_parent_selector'),
+            templateUrl: urlBase.tplApp('app', 'category', 'category-parent-selector'),
             scope: {
                 model: '=ngModel',
                 currentId: '=?',
@@ -33,6 +33,10 @@
                 if (angular.isUndefined(scope.required)) {
                     scope.required = false;
                     scope.requiredMessage = '';
+                }
+
+                if (angular.isUndefined(scope.disabled)) {
+                    scope.disabled = false;
                 }
 
                 scope.realName = _.random(1000);

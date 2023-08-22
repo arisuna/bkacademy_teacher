@@ -3,11 +3,11 @@
 
     angular
         .module('app.app-services')
-        .service('AppBrandService', AppBrandService);
+        .service('AppMakeService', AppMakeService);
 
-    AppBrandService.$inject = ['$http', '$q', '$httpParamSerializer', '$localStorage', '$filter', 'moment', 'AppHttp'];
+    AppMakeService.$inject = ['$http', '$q', '$httpParamSerializer', '$localStorage', '$filter', 'moment', 'AppHttp'];
 
-    function AppBrandService($http, $q, $httpParamSerializer, $localStorage, $filter, moment, AppHttp) {
+    function AppMakeService($http, $q, $httpParamSerializer, $localStorage, $filter, moment, AppHttp) {
 
         var vm = this;
 
@@ -24,7 +24,7 @@
 
 
 
-        this.deleteBrand = function (id) {
+        this.deleteMake = function (id) {
             var deferred = $q.defer();
             AppHttp.delete('/app/brand/delete/' + id).then(function (response) {
                 deferred.resolve(response.data);
@@ -35,7 +35,7 @@
         };
 
 
-        this.createBrand = function (data) {
+        this.createMake = function (data) {
             var deferred = $q.defer();
             AppHttp.post('/app/brand/create', data).then(function (response) {
                 deferred.resolve(response.data);
@@ -45,7 +45,7 @@
             return deferred.promise;
         };
 
-        this.updateBrand = function (data) {
+        this.updateMake = function (data) {
             var deferred = $q.defer();
             AppHttp.put('/app/brand/update/' + data.id, data).then(function (response) {
                 deferred.resolve(response.data);
@@ -55,7 +55,7 @@
             return deferred.promise;
         };
 
-        this.detailBrand = function (id) {
+        this.detailMake = function (id) {
             var deferred = $q.defer();
             AppHttp.get('/app/brand/detail/' + id).then(function (response) {
                 deferred.resolve(response.data);

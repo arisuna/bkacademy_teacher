@@ -36,29 +36,15 @@
             levels: [
                 {
                     id: 1,
-                    label: 'ASSIGNED_TEXT'
+                    label: 'ASSIGNED_ONLY_TEXT'
                 },
                 {
                     id: 2,
-                    label: 'OFFICE_TEXT'
+                    label: 'BUSINESS_ZONE_TEXT'
                 },
                 {
                     id: 3,
                     label: 'ALL_TEXT'
-                }
-            ],
-            scopes: [
-                {
-                    id: 1,
-                    label: 'HANOI_TEXT'
-                },
-                {
-                    id: 2,
-                    label: 'DANANG_TEXT'
-                },
-                {
-                    id: 3,
-                    label: 'HOCHIMINHCITY_TEXT'
                 }
             ]
         };
@@ -75,10 +61,6 @@
 
         this.getLevels = function () {
             return vm.data.levels;
-        }
-
-        this.getScopes = function () {
-            return vm.data.scopes;
         }
 
         this.setSettingUserGroups = function (list) {

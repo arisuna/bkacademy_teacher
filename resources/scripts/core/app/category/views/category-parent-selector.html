@@ -1,7 +1,8 @@
 <div class="form-group {{ className }}">
     <label>
-        Service Parent ACL
+        {{'PARENT_CATEGORY_TEXT' | translate}}
     </label>
+
     <select class="form-control" ng-model="model"
             ng-options="item.id as item.name + ' - Level: ' + item.level  for item in parentCategories"
             ng-required="required"

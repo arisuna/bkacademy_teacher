@@ -5,8 +5,8 @@
 (function () {
     'use strict';
 
-    App.controller('UserGroupEditController', ['$scope', '$http', '$stateParams', '$state', 'ngDialog', 'urlBase', 'WaitingService', 'AppDataService', 'AppSystem', 'group_acls', 'controller_action_items', 'user_groups', 'acls', 'user_group',
-        function ($scope, $http, $stateParams, $state, ngDialog, urlBase, WaitingService, AppDataService, AppSystem, group_acls, controller_action_items, user_groups, acls, user_group) {
+    App.controller('UserGroupEditController', ['$scope', '$http', '$stateParams', '$state', 'ngDialog', 'urlBase', '$timeout', 'WaitingService', 'AppDataService', 'AppSystem', 'group_acls', 'controller_action_items', 'user_groups', 'acls', 'user_group',
+        function ($scope, $http, $stateParams, $state, ngDialog, urlBase, $timeout,  WaitingService, AppDataService, AppSystem, group_acls, controller_action_items, user_groups, acls, user_group) {
             $scope.page_loading = false;
             $scope.user_groups = user_groups;
             $scope.acls = acls;
@@ -26,6 +26,7 @@
                     var acl = acls[index];
                     var id = acl.id;
                     acl.selected = ($scope.group_acls[id] && $scope.group_acls[id].accessible);
+                    acl.level = $scope.group_acls[id].level;
                     if (acl.sub && Object.keys(acl.sub).length > 0) {
                         $scope.initAclsValue(acl.sub);
                     }
@@ -89,6 +90,22 @@
                     .catch(function (err) {
                         WaitingService.expire();
                     });
+            };
+
+            $scope.onAclItemLevelChanged = function (acl) {
+                $timeout(function () {
+                console.log(acl);
+                $scope.saveAclItem(acl).then(function (res) {
+                        if (res.success) {
+                            WaitingService.popSuccess(res.message);
+                        } else {
+                            WaitingService.popError(res.message);
+                        }
+                    })
+                    .catch(function (err) {
+                        WaitingService.expire();
+                    });
+                }, 500);
             };
 
         }]);

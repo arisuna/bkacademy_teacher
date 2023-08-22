@@ -1,0 +1,28 @@
+<div class="panel white-block">
+    <div class="panel-heading" ng-style="{'padding':'5px'}">
+        <div class="row">
+            <div class="col-md-12">
+                <input-text-search ng-model="searchConfig.query" ng-search="applyFilter()"></input-text-search>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body height-20vh overflow-y-enable" ng-style="{'padding':'5px'}">
+        <div class="list-group list-group-blue list-group-flat">
+            <a class="list-group-item text-overflow-ellipsis"
+               ng-repeat="telephone_prefix in telephone_prefix_items | filter: searchConfig.filterQuery"
+               ng-class="{'active': (searchConfig.currentItem.dial_code == telephone_prefix.dial_code)}"
+               ng-click="selectItem(telephone_prefix)">
+
+                <div class="flex">
+                    <country-flag size="24"
+                                  class="mr-sm"
+                                  country-code="telephone_prefix.code"></country-flag>
+                    <div>
+                        {{ telephone_prefix.dial_code }} ({{ telephone_prefix.name }})
+                    </div>
+                </div>
+
+            </a>
+        </div>
+    </div>
+</div>

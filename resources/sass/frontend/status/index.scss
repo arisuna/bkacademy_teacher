@@ -71,6 +71,10 @@
         background-color: $relo-red;
     }
 
+    &.archived {
+        background-color: $relo-red;
+    }
+
     &.deleted {
         background-color: $relo-dark-gray;
     }

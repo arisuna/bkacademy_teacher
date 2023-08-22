@@ -5,10 +5,10 @@
 (function () {
     'use strict';
 
-    App.controller('BrandFormController', ['$scope', '$http', '$stateParams', '$state', '$location', '$anchorScroll',
-        'WaitingService', 'AppDataService', 'AppBrandService', 'AppSystem',
+    App.controller('MakeFormController', ['$scope', '$http', '$stateParams', '$state', '$location', '$anchorScroll',
+        'WaitingService', 'AppDataService', 'AppMakeService', 'AppSystem',
         function ($scope, $http, $stateParams, $state, $location, $anchorScroll,
-                  WaitingService, AppDataService, AppBrandService, AppSystem) {
+                  WaitingService, AppDataService, AppMakeService, AppSystem) {
             $scope.page_loading = true;
             $scope.object = {};
             $scope.data_translated = [];
@@ -25,7 +25,7 @@
                     return;
                 }
 
-                AppBrandService.detailBrand(id).then(
+                AppMakeService.detailMake(id).then(
                     function (res) {
                         if (res.success) {
                             if ($scope.isClone) {
@@ -70,7 +70,7 @@
 
 
                 if ($scope.object.id > 0) {
-                    AppBrandService.updateBrand($scope.object).then(function (res) {
+                    AppMakeService.updateMake($scope.object).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
                         } else {
@@ -81,7 +81,7 @@
                         WaitingService.error(err);
                     })
                 } else {
-                    AppBrandService.createBrand($scope.object).then(function (res) {
+                    AppMakeService.createMake($scope.object).then(function (res) {
                         if (res.success) {
                             // WaitingService.success(res.message, function () {
                             //     $state.go('app.system-attribute.list');
@@ -102,7 +102,7 @@
             $scope.deleteFn = function (id) {
                 WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_BUSINESS_ZONE_TEXT',
                     function (res) {
-                        AppBrandService.deleteBrand(id).then(function (res) {
+                        AppMakeService.deleteMake(id).then(function (res) {
                             if (res.success) {
                                 // WaitingService.success(res.message, function () {
                                 //     $state.go('app.system-attribute.list');
@@ -121,7 +121,7 @@
             }; // End delete function
 
 
-            $scope.addBrandValueFn = function (key) {
+            $scope.addMakeValueFn = function (key) {
                 if (!angular.isDefined($scope.object.data_value)) {
                     $scope.object.data_value = [];
                 }

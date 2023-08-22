@@ -1,0 +1,70 @@
+<div>
+    <div class="form-group">
+
+        <div class="">
+            <label class="label-text-form pull-left"
+                   app-dynamic-label-hover=""
+                   ng-if="showLabel == true">
+                {{ label | translate }}
+            </label>
+            <asterik-red ng-if="isRequired" class="pull-left"></asterik-red>
+            <tooltip text="{{ toolTipText  }}" class="pull-right"></tooltip>
+            <div class="clearfix"></div>
+        </div>
+
+
+        <div class="input-group m-b input-group-amount"
+             ng-if="isEditable == true">
+            <div class="input-group-btn">
+                <button class="btn btn-flat btn-default"
+                        ng-class="{'form-highlight' : prefixHighlight}"
+                        type="button"
+                        tabindex="1"
+                        ng-click="openCodeDialog($event)">
+
+                    <country-flag size="16"
+                                  class="mr-sm"
+                                  country-code="data.telephone_country_iso2"
+                                  ng-if="data.telephone_prefix != null && data.telephone_prefix != undefined && data.telephone_prefix != ''"></country-flag>
+                    <span
+                        ng-if="data.telephone_prefix != null && data.telephone_prefix != undefined && data.telephone_prefix != ''">
+                            {{ data.telephone_prefix }}
+                        </span>
+
+
+                    <!--<span-->
+                        <!--ng-if="data.telephone_prefix != null && data.telephone_prefix != undefined && data.telephone_prefix != ''"-->
+                        <!--class="caret ml-sm"></span>-->
+
+                    <em class="fa fa-phone"
+                        ng-if="data.telephone_prefix == null || data.telephone_prefix == undefined || data.telephone_prefix == ''"></em>
+
+                    <span ng-if="data.telephone_prefix == null || data.telephone_prefix == undefined || data.telephone_prefix == ''">
+                           +00
+                        </span>
+
+                    <span class="caret ml-sm"></span>
+
+                </button>
+            </div>
+
+
+            <input class="form-control form-control-custom-radius relo-bg-bright-blue-10"
+                   ng-class="{'form-highlight' : highlight}"
+                   type="text"
+                   ng-model="data.telephone_number"
+                   ng-init="config.isReadOnly = true"
+                   ng-readonly="config.isReadOnly"
+                   tabindex="1"
+                   ng-click="activeFn()"
+                   ng-focus="activeFn()"
+                   ng-blur="desactiveFn()"
+                   ng-model-options="{ updateOn: 'blur' }"
+                   update-on-enter=""
+                   ng-change="updateValue()">
+        </div>
+
+
+        <telephone-viewer ng-model="model" ng-if="isEditable == false" no-border="noBorderViewer"></telephone-viewer>
+    </div>
+</div>
