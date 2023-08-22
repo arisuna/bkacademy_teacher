@@ -14,7 +14,7 @@
             <div class="flex-middle align-center centered" ng-show="!isInitialLoading && items.length == 0 ">
 <!--                <img class="height-96px margin-auto mg-t-15 mg-b-10" src="/gms/assets/img/svg/no_activity_log.svg">-->
                 <div class="mg-0 mg-b-4s text-muted">
-                    {{'NO_DATA_TEXT'|translate}}
+                    {{'NO_DATA_AVAILABLE_TEXT'|translate}}
                 </div>
             </div>
 
@@ -64,7 +64,7 @@
                                 ng-class="{'in-active': object.status == 0, 'is-active': object.status == 1, 'archived': object.status == -1}">
                         </button>
                     </td>
-                    <td class="bd-t-white">{{ object.updated_at | amDateFormat: 'DD/MM/YYYY' }}</td>
+                    <td class="bd-t-white">{{ object.updated_at  | amUtc | amLocal | amDateFormat: 'DD/MM/YYYY HH:mm:ss' }}</td>
                     <td class="text-right bd-t-white noWrap">
                         <button-edit-icon ng-if="object.status != -1" ng-click="editFn( object )" class="mr-sm"></button-edit-icon>
                         <button-clone-icon ng-if="object.status != -1" ng-click="cloneFn( object )" class="mr-sm"></button-clone-icon>

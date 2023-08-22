@@ -37,7 +37,7 @@
                     </td>
                     <td class="bd-t-white">{{ object.code }}</td>
                     <td class="bd-t-white">{{ object.description }}</td>
-                    <td class="bd-t-white">{{ object.updated_at | amDateFormat: 'DD/MM/YYYY' }}</td>
+                    <td class="bd-t-white">{{ object.updated_at | amUtc | amLocal  | amDateFormat : 'DD/MM/YYYY HH:mm:ss' }}</td>
                     <td class="text-right bd-t-white">
                         <button-edit-icon ng-click="editAttributeFn( object )" class="mr-sm"></button-edit-icon>
                         <button-clone-icon ng-click="cloneAttributeFn( object )" class="mr-sm"></button-clone-icon>
