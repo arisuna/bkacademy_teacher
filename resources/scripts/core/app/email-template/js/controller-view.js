@@ -33,7 +33,7 @@
                     AppEmailTemplateService.update($scope.emailTemplate).then(function (res) {
                         if (res.success) {
 
-                            WaitingService.popSuccess('Content updated');
+                            WaitingService.popSuccess(res.message);
                             $scope.closeThisDialog($scope.emailTemplate);
                         } else {
                             WaitingService.expire(res);
@@ -46,7 +46,7 @@
 
             $scope.getLangName = function (code) {
                 console.log($scope.languages[code])
-                return angular.isDefined($scope.languages[code]) ? $scope.languages[code].options[$scope.current_language] : "";
+                return angular.isDefined($scope.languages[code]) ? $scope.languages[code].description : "";
             }
 
             $scope.close = function () {

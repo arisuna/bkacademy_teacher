@@ -77,11 +77,11 @@
                                     return res.data;
                                 } else {
                                     WaitingService.end();
-                                    throw new Error('DATA_NOT_FOUND');
+                                    throw new Error('DATA_NOT_FOUND_TEXT');
                                 }
                             }, function () {
                                 WaitingService.end();
-                                throw new Error('DATA_NOT_FOUND');
+                                throw new Error('DATA_NOT_FOUND_TEXT');
                             })
                         }],
                     },
@@ -99,10 +99,12 @@
             };
 
             $scope.deleteFn = function (template) {
-                WaitingService.questionSimple('Are you sure want DELETE this email template?',
+                WaitingService.questionSimple('ARE_YOU_SURE_WANT_DELETE_THIS_EMAIL_TEMPLATE_TEXT',
                     function () {
                         AppEmailTemplateService.delete(template).then(function (res) {
                             if (res.success) {
+                                WaitingService.popSuccess(res.message);
+
                                 _.remove($scope.items, function (o) {
                                     return o.id == template.id;
                                 });

@@ -40,7 +40,7 @@
                 <uib-tab ng-repeat="item in emailTemplate.items">
                     <uib-tab-heading>
                         <em class="fa fa-language mr-sm"></em>
-                        {{item.language}}-<b>{{getLangName(item.language)}}</b>
+                        <b>{{getLangName(item.language) | translate}}</b>
                     </uib-tab-heading>
 
                     <div>
@@ -54,7 +54,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="text-label">{{'TEXT_TEXT' | translate}}</label>
+                        <label class="text-label">{{'TEXT_TEXT' | translate}}
+<!--                            <asterik-red>*</asterik-red>-->
+                        </label>
                         <app-wysiwyg ng-model="item.text" mention="false"></app-wysiwyg>
                     </div>
                 </uib-tab>
