@@ -58,10 +58,10 @@
                                     aria-expanded="false"
                                     tooltip-placement="bottom"
                                     uib-tooltip="{{ object.is_active  == 1 ? ('ACTIVE_TEXT' | translate) : ('INACTIVE_TEXT' | translate) }}"
-                                    ng-class="{'is-terminated': object.is_active != 1, 'is-active': object.is_active == 1}">
+                                    ng-class="{'unverified': object.is_active != 1, 'is-active': object.is_active == 1}">
                             </button>
 
-                            <button class="selected-status btn btn-flat btn-circle flex text-center flex-vertical width-18px height-18px bd-radius-9px is-deleted"
+                            <button class="selected-status btn btn-flat btn-circle flex text-center flex-vertical width-18px height-18px bd-radius-9px cancelled"
                                     uib-dropdown-toggle=""
                                     aria-haspopup="true"
                                     ng-if="object.status == -1"

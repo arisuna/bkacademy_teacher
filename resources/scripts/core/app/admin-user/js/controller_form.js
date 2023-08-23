@@ -49,14 +49,18 @@
                                 $scope.closeThisDialog();
                             });
                         }
+
                         $scope.saving = false;
                     }, function (err) {
+                        $scope.saving = false;
                         WaitingService.error(err, function () {
                             $scope.closeThisDialog();
                         });
                     })
                 } else {
                     AppDataService.createAdminUser($scope.user).then(function (res) {
+                        $scope.saving = false;
+
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
                             $scope.closeThisDialog({adminUser: id});
@@ -66,8 +70,8 @@
                                 $scope.closeThisDialog();
                             });
                         }
-                        $scope.saving = false;
                     }, function (err) {
+                        $scope.saving = false;
                         WaitingService.error(err, function () {
                             $scope.closeThisDialog();
                         });

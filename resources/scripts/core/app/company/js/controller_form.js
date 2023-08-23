@@ -92,30 +92,26 @@
                             WaitingService.error(res.message);
                         }
                     }, (err) => {
-                        WaitingService.error(err);
                         $scope.saving = false;
-                        $timeout(function () {
-                            $scope.saving = false;
-                            $scope.isEditable = false
-                        }, 500)
+                        $scope.isEditable = false
+
+                        WaitingService.error(err);
                     })
                 } else {
                     AppCompanyService.createCompany($scope.company).then(function (res) {
+                        $scope.saving = false;
+
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
                             $scope.closeThisDialog({company: res.data});
                         } else {
                             WaitingService.error(res.message);
                         }
-                        $timeout(function () {
-                            $scope.saving = false;
-                        }, 500)
                     }, function (err) {
+                        $scope.saving = false;
+
                         $scope.closeThisDialog();
                         WaitingService.error(err);
-                        $timeout(function () {
-                            $scope.saving = false;
-                        }, 500)
                     })
                 }
 
