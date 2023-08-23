@@ -36,14 +36,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
-                    <input-text is-editable="true"
-                                is-telephone="true"
-                                is-required="false"
-                                ng-model="company.phone"
-                                required-message="PHONE_TEXT"
-                                label="PHONE_TEXT"
-                                show-label="true"></input-text>
+                <div class="col-md-12">
+                    <app-phone-selector ng-model="company.phone"
+                                        show-label="true"
+                                        is-editable="true"
+                                        label="PHONE_TEXT">
+                    </app-phone-selector>
                 </div>
             </div>
             <div class="row">
@@ -53,13 +51,14 @@
                                           is-editable="true"
                                           is-required="true"
                                           label="COUNTRY_TEXT"
-                                          required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}"></app-country-selector>
+                                          required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}">
+                    </app-country-selector>
                 </div>
             </div>
         </div>
 
         <div class="card-footer text-right">
-            <save-button-submit title="SAVE_BTN_TEXT" ng-disabled="saving" ng-if="canSave"></save-button-submit>
+            <save-button-submit title="SAVE_BTN_TEXT" ng-disabled="saving"></save-button-submit>
         </div>
     </form>
 </div>

@@ -63,7 +63,7 @@
                            class="text-center btn-block"
                            data-button-text=""
                            data-badge="false"
-                           data-button-name="btn btn-xs btn-oval btn-flat btn-primary btn-outline"
+                           data-button-name="btn btn-flat btn-link"
                            data-icon-name="fa fa-cloud-upload"/>
 
                            <a ng-if="avatar.image_data.url_thumb || preview == true" ng-click="removeLogo()"><i class="fa fa-trash"></i> {{'REMOVE_LOGO_TEXT' | translate }}</a>

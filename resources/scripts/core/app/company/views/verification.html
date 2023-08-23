@@ -6,7 +6,7 @@
     <div class="custom-dialog-overflow scroll-append scroll-y overflow-x-disable pd-l-20">
         <div class="row">
             <div class="col-sm-12">
-                <input-text is-editable="isEditable"
+                <input-text is-editable="isEditable && company.status != 1"
                             is-text="true"
                             is-required="true"
                             ng-model="company.taxpayer_name"
@@ -19,7 +19,7 @@
 
         <div class="row">
             <div class="col-sm-12">
-                <input-text is-editable="isEditable"
+                <input-text is-editable="isEditable && company.status != 1"
                             is-text="true"
                             is-required="true"
                             ng-model="company.address"
@@ -33,7 +33,7 @@
 
         <div class="row">
             <div class="col-sm-6">
-                <input-text is-editable="isEditable"
+                <input-text is-editable="isEditable && company.status != 1"
                             is-text="true"
                             is-required="true"
                             ng-model="company.tax_number"
@@ -50,7 +50,7 @@
                 </div>
                 <ui-select ng-model="company.statusSelected"
                            required="true"
-                           ng-disabled="!isEditable"
+                           ng-disabled="!isEditable || company.status == 1"
                            ng-class="{'uib-select-bright-blue-10': isEditable, 'uib-select-white': !isEditable}"
                            class="w-100 uib-select-95-per form-control-custom-radius"
                            theme="bootstrap">
@@ -72,9 +72,22 @@
                 </ui-select>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <label class="label-text-form">
+                        {{'VAT_REGISTRATION_CERTIFICATE_TEXT'}}
+                    </label>
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
 
         <div class="text-right mg-t-20">
-            <save-button-submit label="VERIFY_BTN_TEXT" ng-if="isEditable" ng-disabled="saving"></save-button-submit>
+            <save-button-submit label="VERIFY_BTN_TEXT" ng-if="isEditable && company.status != 1"
+                                ng-disabled="saving"></save-button-submit>
         </div>
     </div>
 </form>
