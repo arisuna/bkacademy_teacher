@@ -61,3 +61,16 @@ li{
     filter: none !important
 
 }
+
+
+.squared-standard{
+    object-fit: cover;
+    width: 144px;
+    height: 144px;
+}
+
+.rectangular-standard{
+    object-fit: cover;
+    width: 400px;
+    height: 144px;
+}
