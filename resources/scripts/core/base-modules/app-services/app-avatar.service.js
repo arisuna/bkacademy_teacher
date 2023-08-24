@@ -11,13 +11,20 @@
 
         var vm = this;
 
+        const squaredLogoUploadUrl = __env.apiHostname + '/app/object-image/uploadSquaredLogo';
+        const rectangularLogoUploadUrl = __env.apiHostname + '/app/object-image/uploadRectangularLogo';
+
         vm.config = {
             queueLimit: 1,
             maxSizeLimit: 10485760,
             // maxSizeLimit: 2096000,
             avatarType: 'avatar',
+            squaredLogoType: 'squared_logo',
+            rectangularLogoType: 'rectangular_logo',
             logoType: 'logo',
             defaultUploadUrl: __env.apiHostname + '/app/object-avatar/upload',
+            squaredLogoUploadUrl: __env.apiHostname + '/app/object-image/uploadSquaredLogo',
+            rectangularLogoUploadUrl: __env.apiHostname + '/app/object-image/uploadRectangularLogo',
         };
 
         vm.types = {
@@ -46,10 +53,19 @@
          * @returns {*}
          */
         vm.createFileUploaderEngine = function (uploadParams) {
-            var uploadUrl = vm.config.defaultUploadUrl;
-
+            let uploadUrl = vm.config.defaultUploadUrl;
             if (uploadParams) {
                 if(uploadParams.objectName != '' && uploadParams.objectUuid != ''){
+                    switch (uploadParams.objectName){
+                        case 'squared_logo':
+                            uploadUrl = vm.config.squaredLogoUploadUrl;
+                            break;
+                        case 'rectangular_logo':
+                            uploadUrl = vm.config.rectangularLogoUploadUrl;
+                            break;
+                        default:
+                            break;
+                    }
                     uploadUrl = uploadUrl + '?objectUuid=' + uploadParams.objectUuid + '&objectName=' + uploadParams.objectName;
                 }
             }
@@ -198,6 +214,53 @@
             }
 
             AppHttp.delete('/app/object-avatar/removeAvatar/' + uuid).then(function (response) {
+                if (angular.isDefined(response.data.success) && response.data.success == true) {
+                    deferred.resolve(response.data);
+                } else {
+                    deferred.reject(response.data);
+                }
+            }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        /**
+         * getAvatarObject
+         */
+        vm.getImageObject = function (data) {
+            var deferred = $q.defer();
+            if (angular.isUndefined(data.uuid) || data.uuid == '' ||
+                angular.isUndefined(data.type) || data.type == '') {
+                deferred.resolve({
+                    success: false,
+                    message: 'PARAMS_NOT_FOUND_TEXT'
+                });
+                return deferred.promise;
+            }
+
+            AppHttp.post('/app/object-image/getObject', data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        }
+
+        vm.removeImage = function (data) {
+            var deferred = $q.defer();
+
+            if (angular.isUndefined(data.uuid) || data.uuid == '' ||
+                angular.isUndefined(data.type) || data.type == '') {
+                deferred.resolve({
+                    success: true,
+                    message: 'PARAMS_NOT_FOUND_TEXT'
+                });
+                return deferred.promise;
+            }
+
+            AppHttp.delete('/app/object-image/removeImage/' + data.uuid, data).then(function (response) {
                 if (angular.isDefined(response.data.success) && response.data.success == true) {
                     deferred.resolve(response.data);
                 } else {

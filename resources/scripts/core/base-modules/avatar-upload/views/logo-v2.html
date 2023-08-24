@@ -1,0 +1,47 @@
+<div class="text-center avatar-upload">
+    <div data-text="" class="imgcrop-preview" style="background:transparent;margin-top:10px;">
+        <div class="user-block-picture">
+            <div class="user-block-status text-center" ng-show="uploading == true && preview == false">
+                <spinner show="true"></spinner>
+            </div>
+            <div class="user-block-status text-center" ng-show="preview == true">
+                <img id="previewLogo_{{type}}_{{uuid}}" class="img-avatar img-responsive" src="">
+            </div>
+            <div class="user-block-status text-center" ng-show="uploading == false && preview == false">
+                <img class=" img-avatar img-responsive"
+                     ng-if="image.image_data.url_thumb != undefined && image.image_data.url_thumb != ''"
+                     ng-src="{{image.image_data.url_thumb }}"/>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="image.image_data.url_thumb == undefined || image.image_data.url_thumb == ''"
+         ng-hide="uploading == true || preview == true"
+         class="mt-xl text-center">
+        <img class="img-avatar img-responsive margin-auto"
+             ng-src="/app/assets/img/company-logo.png"/>
+    </div>
+
+
+    <div class="clearfix"></div>
+    <div class="text-center" style="width:100%;margin:auto;"
+         ng-if="aclEditAllow"
+         tooltip-placement=""
+         uib-tooltip="{{toolTipText | translate}}">
+        <input filestyle=""
+               type="file"
+               data-input="false"
+               data-class-button="btn btn-dark-blue btn-block mg-auto"
+               nv-file-select=""
+               uploader="uploader"
+               class="text-center btn-block"
+               data-button-text=""
+               data-badge="false"
+               data-button-name="btn btn-link"
+               data-icon-name="fa fa-cloud-upload"/>
+
+    </div>
+    <div class="text-center" style="width:100%;margin:auto;">
+        <a ng-if="image.image_data.url_thumb || preview == true" ng-click="removeImage()"><i class="fa fa-trash"></i> Remove</a>
+    </div>
+</div>

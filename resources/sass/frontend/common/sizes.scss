@@ -435,6 +435,12 @@
             min-height: #{$i}px;
         }
     }
+
+    @for $i from 1 through 100 {
+        &-#{$i}vh {
+            min-height: #{$i}vh;
+        }
+    }
 }
 
 .width-100per {

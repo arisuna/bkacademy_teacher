@@ -1,0 +1,41 @@
+<div class=""  ng-controller="MakeEditApiController">
+
+    <spinner ng-show="loading"></spinner>
+
+    <div class="row" ng-if="!loading" ng-show="!loading">
+
+        <div class="col-lg-3 col-sm-4">
+            <div class="panel panel-primary white-block">
+                <div class="panel-body">
+
+                    <h3 class="txt-2x txt-black-70 mg-0 mg-b-2s text-center">{{ object.name }}</h3>
+                </div>
+                <div class="list-group">
+                    <a class="list-group-item"
+                       ng-class="{'active': (settingActive == 1)}"
+                       ng-click="settingActive = 1">{{ 'BASIC_INFO_TEXT' |translate }}</a>
+
+                    <a class="list-group-item"
+                       ng-class="{'active': (settingActive == 2)}"
+                       ng-click="settingActive = 2">{{ 'MODEL_TEXT' |translate }}</a>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-9 col-sm-8">
+
+            <div ng-show="settingActive == 1">
+                <ng-include src="'/app/views/make/edit_basic.html'" include-replace=""></ng-include>
+            </div>
+
+            <div ng-show="settingActive == 2" ng-if="object.id">
+                <ng-include src="'/app/views/make/edit-product-model-list.html'" include-replace=""></ng-include>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
