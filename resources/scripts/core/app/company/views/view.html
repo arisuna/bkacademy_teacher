@@ -33,6 +33,7 @@
                         <div>
                             <app-logo-upload button-text="{{ 'CHANGE_LOGO_TEXT' | translate }}"
                                              media-type="'logo'"
+                                             acl-edit-allow="!company.is_deleted"
                                              uuid="company.uuid">
                             </app-logo-upload>
                         </div>

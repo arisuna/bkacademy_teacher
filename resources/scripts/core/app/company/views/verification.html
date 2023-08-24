@@ -50,7 +50,7 @@
                 </div>
                 <ui-select ng-model="company.statusSelected"
                            required="true"
-                           ng-disabled="!isEditable || company.status == 1"
+                           ng-disabled="!isEditable"
                            ng-class="{'uib-select-bright-blue-10': isEditable, 'uib-select-white': !isEditable}"
                            class="w-100 uib-select-95-per form-control-custom-radius"
                            theme="bootstrap">

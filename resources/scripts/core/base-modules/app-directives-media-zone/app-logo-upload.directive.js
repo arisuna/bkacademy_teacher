@@ -48,7 +48,7 @@
                 <div ng-if="avatar.image_data.url_thumb == undefined || avatar.image_data.url_thumb == ''"
                      ng-show="uploading == false && preview == false"
                      class="mt-lg text-center">
-                    <img class="img-circle img-avatar"
+                    <img class="img-avatar thumb128"
                          ng-src="/app/assets/img/company-logo.png"/>
                 </div>
 

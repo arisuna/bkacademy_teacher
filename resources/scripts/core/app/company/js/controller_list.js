@@ -214,7 +214,7 @@
                     template: urlBase.tplApp('app', 'company', 'add-company-right-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
                     scope: $scope,
-                    closeByDocument: false,
+                    closeByDocument: true,
                     controller: 'CompanyFormController'
                 });
 
