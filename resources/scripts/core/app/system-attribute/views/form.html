@@ -18,7 +18,7 @@
                             is-required="true"
                             is-text="true"
                             ng-model="object.name"
-                            required-message="ENTER_ATTRIBUTE_NAME_TEXT"
+                            required-message="FIELD_IS_REQUIRED_TEXT"
                             label="NAME_TEXT"
                             show-label="true"></input-text>
             </div>
@@ -29,9 +29,18 @@
                             is-upper-case="true"
                             is-text="true"
                             ng-model="object.code"
-                            required-message="ENTER_ATTRIBUTE_CODE_TEXT"
+                            required-message="FIELD_IS_REQUIRED_TEXT"
                             label="CODE_TEXT"
                             show-label="true"></input-text>
+            </div>
+
+            <div class="">
+                <div class="">
+                    <input-text-area ng-model="object.description"
+                                     label="DESCRIPTION_TEXT"
+                                     show-label="true"
+                                     is-editable="true"></input-text-area>
+                </div>
             </div>
 
             <div class="row mda-form-group">
@@ -79,7 +88,7 @@
                                                 is-required="true"
                                                 is-text="true"
                                                 ng-model="value.value"
-                                                required-message="ENTER_VALUE_TEXT"
+                                                required-message="FIELD_IS_REQUIRED_TEXT"
                                                 label="VALUE_TEXT"
                                                 show-label="true"></input-text>
                                 </div>

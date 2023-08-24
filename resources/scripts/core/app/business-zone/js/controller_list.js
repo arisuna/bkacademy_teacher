@@ -239,7 +239,7 @@
                         }]
                 });
                 $scope.cloneDialog.closePromise.then(function (data) {
-                    if(data.value && data.value.uuid){
+                    if(data && data.value && data.value.uuid){
                         $scope.items.unshift(data.value);
                     }
                 });
@@ -280,7 +280,7 @@
                 });
                 $scope.createDialog.closePromise.then(function (data) {
                     console.log('data', data);
-                    if(data.value && data.value.uuid){
+                    if(data && data.value && data.value.uuid){
                         $scope.items.unshift(data.value);
                     }
 
@@ -289,7 +289,7 @@
 
             $scope.editFn = function(business_zone){
                 console.log('business_zone', business_zone);
-                $scope.createDialog = ngDialog.open({
+                $scope.editDialog = ngDialog.open({
                     template: urlBase.tplApp('app', 'business-zone', 'form-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue',
                     closeByDocument: true,
@@ -343,14 +343,16 @@
 
                     }]
                 });
-                $scope.createDialog.closePromise.then(function (data) {
-                    if(data.value && data.value.uuid){
+                $scope.editDialog.closePromise.then(function (data) {
+                    if(data && data.value && data.value.uuid){
                         let _index = _.findIndex($scope.items, function(o){
                             return o.uuid == data.value.uuid;
                         })
-
+                        console.log('data.value', data.value)
                         if (_index != 1){
-                            $scope.items[_index] = data.value;
+                            $scope.$evalAsync(function(){
+                                $scope.items[_index] = _.cloneDeep(data.value);
+                            })
                         }
                     }
                 });

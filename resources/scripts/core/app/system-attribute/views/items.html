@@ -12,6 +12,13 @@
         <div>
             <spinner-v2 type="spin" ng-show="isInitialLoading"></spinner-v2>
 
+            <div class="flex-middle align-center centered" ng-show="!isInitialLoading && items.length == 0 ">
+                <!--                <img class="height-96px margin-auto mg-t-15 mg-b-10" src="/gms/assets/img/svg/no_activity_log.svg">-->
+                <div class="mg-0 mg-b-4s text-muted">
+                    {{'NO_DATA_AVAILABLE_TEXT'|translate}}
+                </div>
+            </div>
+
             <angular-table table="table"
                            items="items"
                            ng-if="!isInitialLoading && items.length > 0"
@@ -37,7 +44,7 @@
                     </td>
                     <td class="bd-t-white">{{ object.code }}</td>
                     <td class="bd-t-white">{{ object.description }}</td>
-                    <td class="bd-t-white">{{ object.updated_at | amDateFormat: 'DD/MM/YYYY' }}</td>
+                    <td class="bd-t-white">{{ object.updated_at | amUtc | amLocal  | amDateFormat : 'DD/MM/YYYY HH:mm:ss' }}</td>
                     <td class="text-right bd-t-white">
                         <button-edit-icon ng-click="editAttributeFn( object )" class="mr-sm"></button-edit-icon>
                         <button-clone-icon ng-click="cloneAttributeFn( object )" class="mr-sm"></button-clone-icon>
