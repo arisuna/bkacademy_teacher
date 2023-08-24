@@ -3,17 +3,18 @@
 
     angular
         .module('app.app-services')
-        .service('AppMakeService', AppMakeService);
+        .service('AppProductModelService', AppProductModelService);
 
-    AppMakeService.$inject = ['$http', '$q', '$httpParamSerializer', '$localStorage', '$filter', 'moment', 'AppHttp'];
+    AppProductModelService.$inject = ['$http', '$q', '$httpParamSerializer', '$localStorage', '$filter', 'moment', 'AppHttp'];
 
-    function AppMakeService($http, $q, $httpParamSerializer, $localStorage, $filter, moment, AppHttp) {
+    function AppProductModelService($http, $q, $httpParamSerializer, $localStorage, $filter, moment, AppHttp) {
 
         var vm = this;
 
-        this.preCreate = function () {
+        
+        this.search = function (data) {
             let deferred = $q.defer();
-            AppHttp.post('/app/brand/preCreate').then(function (response) {
+            AppHttp.put('/app/product-model/search', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -21,10 +22,9 @@
             return deferred.promise;
         }
 
-        
         this.getList = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/app/brand/search', data).then(function (response) {
+            AppHttp.put('/app/product-model/getList', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -34,9 +34,9 @@
 
 
 
-        this.deleteMake = function (uuid) {
+        this.deleteProductModel = function (uuid) {
             var deferred = $q.defer();
-            AppHttp.delete('/app/brand/delete/' + uuid).then(function (response) {
+            AppHttp.delete('/app/product-model/delete/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);
@@ -45,9 +45,9 @@
         };
 
 
-        this.createMake = function (data) {
+        this.createProductModel = function (data) {
             var deferred = $q.defer();
-            AppHttp.post('/app/brand/create', data).then(function (response) {
+            AppHttp.post('/app/product-model/create', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);
@@ -55,9 +55,9 @@
             return deferred.promise;
         };
 
-        this.cloneMake = function (data) {
+        this.updateProductModel = function (data) {
             var deferred = $q.defer();
-            AppHttp.post('/app/brand/clone', data).then(function (response) {
+            AppHttp.put('/app/product-model/update/' + data.id, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);
@@ -65,19 +65,9 @@
             return deferred.promise;
         };
 
-        this.updateMake = function (data) {
+        this.detailProductModel = function (id) {
             var deferred = $q.defer();
-            AppHttp.put('/app/brand/update/' + data.id, data).then(function (response) {
-                deferred.resolve(response.data);
-            }).catch(function (err, status) {
-                deferred.reject(err.data);
-            });
-            return deferred.promise;
-        };
-
-        this.detailMake = function (id) {
-            var deferred = $q.defer();
-            AppHttp.get('/app/brand/detail/' + id).then(function (response) {
+            AppHttp.get('/app/product-model/detail/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);

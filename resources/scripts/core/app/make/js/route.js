@@ -27,7 +27,7 @@
                 templateUrl: helper.modulePath('app', 'make/items', '_=' + Math.random())
             }).state('app.make.create', {
                 url: '/create',
-                title: 'CREATE_BRAND_TEXT',
+                title: 'CREATE_MAKE_TEXT',
                 parent: 'app.make.list',
                 views: {
                     '@app.make': {
@@ -35,17 +35,17 @@
                     }
                 },
             }).state('app.make.edit', {
-                url: '/edit/{id}',
-                title: 'EDIT_BRAND_TEXT',
+                url: '/edit/{uuid}',
+                title: 'EDIT_MAKE_TEXT',
                 parent: 'app.make.list',
                 views: {
                     '@app.make': {
-                        templateUrl: helper.modulePath('app', 'make/form', '_=' + Math.random())
+                        templateUrl: helper.modulePath('app', 'make/edit', '_=' + Math.random())
                     }
                 },
             }).state('app.make.clone', {
                 url: '/clone/{id}',
-                title: 'CLONE_BRAND_TEXT',
+                title: 'CLONE_MAKE_TEXT',
                 parent: 'app.make.list',
                 views: {
                     '@app.make': {

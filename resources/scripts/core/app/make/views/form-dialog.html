@@ -7,7 +7,7 @@
     <form class="form-validate noPadding" validate-form="true"
           id="" name="crudForm"
           role="form" ng-submit="" novalidate="">
-        <div class="card-body custom-dialog-overflow height-100vh-m90px">
+        <div class="card-body custom-dialog-overflow height-60vh">
             <spinner-v2 type="spin" ng-show="page_loading"></spinner-v2>
             <div ng-show="!page_loading">
                 <div class="row">
@@ -23,6 +23,24 @@
                 </div>
 
                 <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <logo-upload-v2 class="mg-b-2s"
+                                     button-text="UPLOAD_SQUARED_LOGO_TEXT"
+                                     type="squared_logo"
+                                     acl-edit-allow="true"
+                                     uuid="object.uuid"></logo-upload-v2>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <logo-upload-v2 class="mg-b-2s"
+                                     button-text="UPLOAD_RECTANGULAR_LOGO_TEXT"
+                                     type="rectangular_logo"
+                                     acl-edit-allow="true"
+                                     uuid="object.uuid"></logo-upload-v2>
+                    </div>
+                </div>
+
+                <div class="row mg-t-15">
                     <div class="col-md-12">
                         <input-text-area
                                 is-editable="true"
