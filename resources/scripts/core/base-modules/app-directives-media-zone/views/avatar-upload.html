@@ -1,0 +1,45 @@
+<div class="text-center avatar-upload">
+    <div data-text=""
+         class="imgcrop-preview"
+         style="background:transparent;">
+
+        <div class="user-block-picture">
+            <spinner-v2 type="spin" ng-show="uploading == true && preview == false"></spinner-v2>
+            <div class="user-block-status text-center">
+                <img id="previewAvatar"
+                     class="img-avatar img-circle img-responsive thumb128 bd-1x relo-bd-bright-gray"
+                     ng-src="{{avatar.image_data.url_thumb}}" ng-show="preview == true">
+            </div>
+            <div class="user-block-status text-center"
+                 ng-if="avatar.image_data.url_thumb"
+                 ng-show="uploading == false && preview == false">
+                <img class="img-avatar img-circle img-responsive thumb128 bd-1x relo-bd-bright-gray"
+                     ng-if="avatar.image_data.url_thumb"
+                     ng-src="{{avatar.image_data.url_thumb }}"/>
+            </div>
+        </div>
+    </div>
+    <div ng-if="avatar.image_data.url_thumb == undefined || avatar.image_data.url_thumb == ''"
+         ng-show="uploading == false && preview == false">
+        <img class="img-avatar"
+             ng-src="/app/assets/img/uploadavatar.png"/>
+    </div>
+    <div class="clearfix"></div>
+    <div class="text-center" style="width:100%;margin:auto;" ng-if="aclEditAllow">
+        <input filestyle=""
+               type="file"
+               accept="image/*"
+               data-input="false"
+               data-class-button="btn btn-dark-blue btn-block mg-auto"
+               nv-file-select=""
+               uploader="uploader"
+               class="text-center btn-block"
+               data-button-text=""
+               data-badge="false"
+               data-button-name="btn btn-flat btn-link"
+               data-icon-name="fa fa-cloud-upload"/>
+        <a ng-if="avatar.image_data.url_thumb || preview == true" ng-click="removeAvatar()"><i class="fa fa-trash"></i>
+            {{'REMOVE_AVATAR_TEXT' | translate }}</a>
+    </div>
+
+</div>

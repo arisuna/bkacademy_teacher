@@ -107,6 +107,10 @@
         background-color: $relo-green;
     }
 
+    &.unverified {
+        background-color: $relo-dark-gray;
+    }
+    
     &.in-active {
         background-color: $relo-grey;
     }

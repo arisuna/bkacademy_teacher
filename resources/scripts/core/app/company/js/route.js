@@ -16,6 +16,15 @@
             url: '',
             title: 'COMPANIES_TEXT',
             templateUrl: helper.modulePath('app', 'company/items', '_=' + Math.random())
+        }).state('app.company.edit', {
+            url: '/{uuid}',
+            title: 'EDIT_COMPANY_TEXT',
+            parent: 'app.company.list',
+            views: {
+                '@app.company': {
+                    templateUrl: helper.modulePath('app', 'company/view', '_=' + Math.random())
+                }
+            }
         });
     }]);
 })();

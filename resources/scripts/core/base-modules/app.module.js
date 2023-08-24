@@ -65,7 +65,8 @@ var Routes;
             'app.app-services',
             'app.app-services-auth',
             'app.app-directives',
-            'app.app-components'
+            'app.app-components',
+            'app.app-directives-media-zone'
         ]).config(function ($sceProvider) {
             $sceProvider.enabled(false);
         });

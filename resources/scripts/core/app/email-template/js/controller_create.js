@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    App.controller('EmailTemplateCreateController',  ['$scope', '$http', '$stateParams', '$state', '$timeout', 'ngDialog', 'urlBase', 'AppSystem', 'WaitingService', 'AppEmailTemplateService', 'emailTemplate',
+    App.controller('EmailTemplateCreateController', ['$scope', '$http', '$stateParams', '$state', '$timeout', 'ngDialog', 'urlBase', 'AppSystem', 'WaitingService', 'AppEmailTemplateService', 'emailTemplate',
         function ($scope, $http, $stateParams, $state, $timeout, ngDialog, urlBase, AppSystem, WaitingService, AppEmailTemplateService, emailTemplate) {
 
             $scope.emailTemplate = {
@@ -15,9 +15,11 @@
                 WaitingService.begin();
                 AppEmailTemplateService.create($scope.emailTemplate).then(function (res) {
                     if (res.success) {
+                        WaitingService.popSuccess(res.message);
                         $scope.closeThisDialog(res.data)
                     } else {
-                        WaitingService.expire(res);
+                        WaitingService.error(res.message);
+                        // WaitingService.expire(res);
                     }
                     WaitingService.end();
                 }, function (error) {

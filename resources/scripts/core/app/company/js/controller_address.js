@@ -4,7 +4,7 @@
 
 (function () {
     'use strict';
-    App.controller('CompanyFormController', ['$scope', '$http', '$stateParams', '$state', '$translate', '$timeout', 'WaitingService', 'AppDataService', 'AppSystem', 'AppCompanyService', 'AppAddressService',
+    App.controller('AddressController', ['$scope', '$http', '$stateParams', '$state', '$translate', '$timeout', 'WaitingService', 'AppDataService', 'AppSystem', 'AppCompanyService', 'AppAddressService',
         function ($scope, $http, $stateParams, $state, $timeout, $translate, WaitingService, AppDataService, AppSystem, AppCompanyService, AppAddressService) {
             $scope.isLoading = true;
             $scope.isLoadingAddress = true;
@@ -137,17 +137,17 @@
             $scope.createAddress = function (type = 1) {
                 alert('createAddress')
                 $scope.createCompanyDialog = ngDialog.open({
-                    template: urlBase.tplApp('app', 'company', 'add-address-right-dialog', '_=' + Math.random()),
+                    template: urlBase.tplApp('app', 'company', 'add-company-right-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
                     scope: $scope,
-                    closeByDocument: true,
-                    controller: 'AddressController'
+                    closeByDocument: false,
+                    controller: 'CompanyFormController'
                 });
 
                 $scope.createCompanyDialog.closePromise.then(function (data) {
                     if (angular.isDefined(data.value.company)) {
                         console.log('data.value', data.value);
-                        $scope.getListAddress($scope.company.id);
+                        $scope.loadItems();
                     }
                 });
             }

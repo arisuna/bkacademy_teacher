@@ -1,0 +1,19 @@
+<div id="top-button-container" ng-if="company.is_deleted != 1">
+    <div class="btn-group dropdown open pull-right"
+         uib-dropdown=""
+         style="vertical-align: unset; margin-top: 3px">
+        <button type="button" class="btn btn-round dropdown-toggle"
+                uib-dropdown-toggle=""
+                aria-haspopup="true" aria-expanded="true">
+            <i class="fa-solid fa-ellipsis txt-16 txt-dark-blue" aria-hidden="true"></i>
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu="" role="menu"
+            aria-labelledby="split-button">
+            <li role="menuitem" ng-if="isEditable" ><a ng-click="onEditable($event)">{{'CANCEL_EDIT_COMPANY_TEXT' | translate}}</a></li>
+            <li role="menuitem" ng-if="!isEditable"><a ng-click="onEditable($event)">{{'EDIT_COMPANY_TEXT' | translate}}</a></li>
+            <li role="menuitem" ><a ng-click="deleteFn(company.id)">{{'DELETE_COMPANY_TEXT' | translate}}</a></li>
+        </ul>
+    </div>
+
+</div>

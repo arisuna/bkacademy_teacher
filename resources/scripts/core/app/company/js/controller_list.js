@@ -204,27 +204,24 @@
                 });
             };
 
+            $scope.editFn = function (item) {
+                $state.go('app.company.edit', {uuid: item.uuid});
+            };
+
             $scope.openCreateCompanyDialog = function () {
                 $scope.currentCompany = {id: 0};
                 $scope.createCompanyDialog = ngDialog.open({
-                    template: urlBase.tplApp('app', 'company', 'form', '_=' + Math.random()),
-                    className: 'ngdialog-theme-default md-box',
+                    template: urlBase.tplApp('app', 'company', 'add-company-right-dialog', '_=' + Math.random()),
+                    className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
                     scope: $scope,
-                    resolve: {
-                        currentCompany: ['AppDataService', function (AppDataService) {
-                            return {
-                                id: 0
-                            };
-                        }]
-                    },
-                    closeByDocument: false,
+                    closeByDocument: true,
                     controller: 'CompanyFormController'
                 });
 
                 $scope.createCompanyDialog.closePromise.then(function (data) {
-                    if (angular.isDefined(data.value)) {
+                    if (angular.isDefined(data.value.company)) {
                         console.log('data.value', data.value);
-                        $scope.items.unshift(data.value.company);
+                        $scope.loadItems();
                     }
                 });
             }

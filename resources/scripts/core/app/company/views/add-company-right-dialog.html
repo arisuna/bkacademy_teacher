@@ -1,0 +1,64 @@
+<div class="card noBorder">
+    <div class="card-heading relo-bg-bright-gray card-title-heading">
+        <span ng-show="!company.id">{{'CREATE_COMPANY_TEXT' | translate}}</span>
+        <span ng-show="company.id">{{'EDIT_COMPANY_TEXT' | translate}}</span>
+    </div>
+
+    <form class="form-validate pd-0 mg-0"
+          validate-form=""
+          ng-submit="saveFn()"
+          ng-if="!isLoading"
+          novalidate>
+        <div class="card-body custom-dialog-overflow scroll-append scroll-y overflow-x-disable height-100vh-m93px">
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                is-required="true"
+                                ng-model="company.name"
+                                required-message="ENTER_COMPANY_NAME_TEXT"
+                                label="NAME_TEXT"
+                                show-label="true"></input-text>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-email="true"
+                                is-lower-case="true"
+                                is-required="true"
+                                ng-model="company.email"
+                                label="EMAIL_TEXT"
+                                invalid-message="INVALID_EMAIL_TEXT"
+                                required-message="ENTER_EMAIL_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <app-phone-selector ng-model="company.phone"
+                                        show-label="true"
+                                        is-editable="true"
+                                        label="PHONE_TEXT">
+                    </app-phone-selector>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <app-country-selector ng-model="company.country_id"
+                                          show-label="true"
+                                          is-editable="true"
+                                          is-required="true"
+                                          label="COUNTRY_TEXT"
+                                          required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}">
+                    </app-country-selector>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer text-right">
+            <save-button-submit title="SAVE_BTN_TEXT" ng-disabled="saving"></save-button-submit>
+        </div>
+    </form>
+</div>

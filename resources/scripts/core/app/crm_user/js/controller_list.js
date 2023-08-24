@@ -213,7 +213,7 @@
                             return currentObj
                         }]
                     },
-                    closeByDocument: false,
+                    closeByDocument: true,
                     controller: 'CrmUserFormController'
                 });
 

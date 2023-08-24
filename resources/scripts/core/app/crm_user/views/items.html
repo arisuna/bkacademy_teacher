@@ -51,6 +51,15 @@
         <div>
             <spinner-v2 type="spin" ng-show="isInitialLoading"></spinner-v2>
 
+            <div class="flex-vertical" ng-if="!isInitialLoading &&  items.length == 0"
+                 ng-style="{'height' : '100%', 'width': '100%', 'text-align': 'center'}">
+                <div class="align-centers">
+                    <div class="mg-0 mg-b-4s text-16 text-muted align-middle">
+                        {{ 'NO_DATA_AVAILABLE_TEXT' | translate }}
+                    </div>
+                </div>
+            </div>
+
             <angular-table table="table"
                            items="items"
                            ng-if="!isInitialLoading && items.length > 0"
@@ -103,7 +112,7 @@
                         <td class="bd-t-white">{{ object.created_at | amDateFormat: 'DD/MM/YYYY'}}</td>
                         <td class="text-right bd-t-white">
                             <button-edit-icon
-                                              ng-click="editUserFn( object )" class="mr-sm"></button-edit-icon>
+                                    ng-click="editUserFn( object )" class="mr-sm"></button-edit-icon>
                             <button-delete-icon ng-class="{'disabled': object.status == -1}"
                                                 ng-click="deleteFn( object )" app-acl-allow="crm_user/delete"
                                                 acl-remove="true">

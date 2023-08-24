@@ -289,6 +289,20 @@ body {
     }
 }
 
+.uib-select-white {
+    > div.ui-select-match {
+        > span.btn {
+            background: $relo-white;
+
+            &:hover {
+                transform: none;
+                -webkit-transform: none;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
 .uib-select-required.ng-invalid {
     > div.ui-select-match {
         > span.btn {
