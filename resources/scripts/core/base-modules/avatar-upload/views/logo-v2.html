@@ -5,7 +5,8 @@
                 <spinner show="true"></spinner>
             </div>
             <div class="user-block-status text-center" ng-show="preview == true">
-                <img id="previewLogo_{{type}}_{{uuid}}" class="img-avatar img-responsive" src="">
+                <img id="previewLogo_{{type}}_{{uuid}}" class="img-avatar img-responsive"
+                     ng-clas="{'squared-standard': type == 'squared_logo', 'rectangular-standard': type == 'rectangular_logo'}" src="">
             </div>
             <div class="user-block-status text-center" ng-show="uploading == false && preview == false">
                 <img class=" img-avatar img-responsive"
