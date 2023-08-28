@@ -100,13 +100,13 @@
                                     ng-class="{'is-terminated': object.is_active != 1, 'is-active': object.is_active == 1}">
                             </button>
 
-                            <button class="selected-status btn btn-flat btn-circle flex text-center flex-vertical width-18px height-18px bd-radius-9px is-deleted"
+                            <button class="selected-status btn btn-flat btn-circle flex text-center flex-vertical width-18px height-18px bd-radius-9px archived"
                                     uib-dropdown-toggle=""
                                     aria-haspopup="true"
                                     ng-if="object.status == -1"
                                     aria-expanded="false"
                                     tooltip-placement="bottom"
-                                    uib-tooltip="{{'DELETED_TEXT' | translate}}">
+                                    uib-tooltip="{{'ARCHIVED_TEXT' | translate}}">
                             </button>
                         </td>
                         <td class="bd-t-white">{{ object.created_at | amDateFormat: 'DD/MM/YYYY'}}</td>
