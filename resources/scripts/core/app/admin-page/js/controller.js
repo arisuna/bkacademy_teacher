@@ -21,7 +21,6 @@
                         {"title": "CURRENCIES_TEXT", "state": "app.currency.list"},
                         {"title": "COUNTRIES_TEXT", "state": "app.country.list"},
                         {"title": "CITIES_TEXT", "state": "app.city.list"},
-                        {"title": "SECTIONS_MODES_TEXT", "state": "app.section-mode.list"},
                         {"title": "SYSTEM_ATTRIBUTES_TEXT", "state": "app.system-attribute.list"},
                     ]
                 },
