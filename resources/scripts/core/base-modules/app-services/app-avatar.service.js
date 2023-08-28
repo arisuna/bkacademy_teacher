@@ -23,6 +23,7 @@
             rectangularLogoType: 'rectangular_logo',
             logoType: 'logo',
             defaultUploadUrl: __env.apiHostname + '/app/object-avatar/upload',
+            avatarUploadUrl: __env.apiHostname + '/app/object-image/uploadAvatar',
             logoUploadUrl: __env.apiHostname + '/app/object-image/uploadLogo',
             squaredLogoUploadUrl: __env.apiHostname + '/app/object-image/uploadSquaredLogo',
             rectangularLogoUploadUrl: __env.apiHostname + '/app/object-image/uploadRectangularLogo',
@@ -66,6 +67,9 @@
                             break;
                         case 'logo':
                             uploadUrl = vm.config.logoUploadUrl;
+                            break;
+                        case 'avatar':
+                            uploadUrl = vm.config.avatarUploadUrl;
                             break;
                         default:
                             break;

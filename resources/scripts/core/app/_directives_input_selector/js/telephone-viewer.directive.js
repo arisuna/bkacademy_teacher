@@ -10,7 +10,7 @@
 
     telephoneViewer.$inject = ['$timeout', 'Utils', 'TELEPHONE_PREFIX'];
 
-    function telephoneViewer() {
+    function telephoneViewer($timeout, Utils, TELEPHONE_PREFIX) {
         return {
             restrict: 'E',
             scope: {
