@@ -135,7 +135,7 @@
             }; // End delete function
 
             $scope.createAddress = function (type = 1) {
-                alert('createAddress')
+                // alert('createAddress')
                 $scope.createCompanyDialog = ngDialog.open({
                     template: urlBase.tplApp('app', 'company', 'add-address-right-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
