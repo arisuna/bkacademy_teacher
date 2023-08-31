@@ -27,15 +27,15 @@
             templateUrl: urlBase.tplBase('base-modules/avatar-upload', 'logo-v2', '_=' + Math.random()),
             link: function (scope, element, attrs, timeout) {
 
-                if( scope.buttonText == '' || scope.buttonText == 'undefined' ){
-                    scope.buttonText = $translate.instant('CHANGE_AVATAR_TEXT');
+                if( scope.buttonText == '' || angular.isDefined(scope.buttonText) ){
+                    scope.buttonText = $translate.instant('CHANGE_LOGO_TEXT');
                 }
 
                 if( scope.groupname == '' || scope.groupname == 'undefined' ){
                     scope.groupname = 'avatar';
                 }
 
-                if( scope.type == '' || scope.type == 'undefined' ){
+                if( scope.type == '' ||  angular.isDefined(scope.type)  ){
                     scope.type = 'squared_logo';
                 }
 

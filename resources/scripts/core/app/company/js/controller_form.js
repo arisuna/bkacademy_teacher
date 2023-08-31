@@ -77,8 +77,8 @@
 
 
             $scope.saveFn = function ($event) {
-                $event.preventDefault();
-                $event.stopPropagation();
+                // $event.preventDefault();
+                // $event.stopPropagation();
 
                 if ($scope.company.id > 0) {
                     AppCompanyService.updateCompany($scope.company).then(function (res) {
