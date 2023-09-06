@@ -17,6 +17,9 @@
             $scope.billAddresses = [];
             $scope.siteAddresses = [];
             $scope.mailAddresses = [];
+            $scope.companyStatus = 0;
+
+            $scope.attachmentSelect = [];
 
             $scope.statuses = [
                 {name: 'UNVERIFIED_TEXT', value: 0, color: 'dark-gray', text: 'UNVERIFIED_TEXT'},
@@ -35,8 +38,9 @@
                     function (res) {
                         if (res.success) {
                             $scope.company = res.data;
+                            $scope.companyStatus = res.data.status
 
-                            $scope.company.statusSelected = $scope.statuses.find(o => o.value == $scope.company.status)
+                            $scope.company.statusSelected = $scope.statuses.find(o => o.value === $scope.company.status)
 
                             $scope.getListAddress(res.data.id)
                         } else {
@@ -79,6 +83,10 @@
             $scope.saveFn = function ($event) {
                 // $event.preventDefault();
                 // $event.stopPropagation();
+
+                if($scope.company.status != $scope.companyStatus){
+                    $scope.company.status = $scope.companyStatus
+                }
 
                 if ($scope.company.id > 0) {
                     AppCompanyService.updateCompany($scope.company).then(function (res) {
@@ -135,7 +143,7 @@
             }; // End delete function
 
             $scope.createAddress = function (type = 1) {
-                alert('createAddress')
+                // alert('createAddress')
                 $scope.createCompanyDialog = ngDialog.open({
                     template: urlBase.tplApp('app', 'company', 'add-address-right-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
@@ -153,15 +161,47 @@
             }
 
             $scope.onEditable = ($event) => {
-                $event.preventDefault();
-                $event.stopPropagation();
+                // $event.preventDefault();
+                // $event.stopPropagation();
                 $scope.$evalAsync(function () {
                     $scope.isEditable = !$scope.isEditable
                 })
             }
 
             $scope.changeStatus = (item) => {
-                $scope.company.status = item.value
+                $scope.companyStatus = item.value
+                // $scope.company.status = item.value
+            }
+
+            $scope.selectedAttachment = function () {
+                if (angular.isDefined($scope.attachmentSelect) && $scope.attachmentSelect.length > 0) {
+                    let attachment_uuids = [];
+                    let data = {};
+                    data.isAttachFiles = false
+                    angular.forEach($scope.attachmentSelect, function (item, index) {
+                        attachment_uuids.push(item.media_attachment_uuid);
+                    });
+
+                    data.attachment_uuids = attachment_uuids;
+                    WaitingService.begin();
+                    AppMediaService.copyMultipleAttachments(data).then(function (res) {
+                        WaitingService.end();
+                        if (res.success) {
+                            $scope.$evalAsync(function () {
+                                $scope.onSelectItem({items: res.mediaList});
+                            });
+                            WaitingService.popSuccess('ATTACH_SUCCESS_TEXT');
+
+                        } else {
+                            WaitingService.error(res.message);
+                        }
+                    }).catch(function (err) {
+                        WaitingService.end();
+                        WaitingService.popError(err.message);
+                    });
+                } else {
+                    WaitingService.error('NO_FILE_SELECTED_TEXT');
+                }
             }
         }]);
 

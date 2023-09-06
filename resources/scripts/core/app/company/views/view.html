@@ -44,7 +44,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="mb">{{'TAX_NUMBER_TEXT'}}: {{company.tax_number}}</div>
+                                <div class="mb">{{'TAX_NUMBER_TEXT' | translate}}: {{company.tax_number}}</div>
                                 <div class="mb">
                                     <div class="" ng-if="company.is_deleted != 1">
                                         <em class="fa-solid fa-circle txt-18 mr-sm "
@@ -58,10 +58,10 @@
                                         {{ 'ARCHIVED_TEXT' | translate}}
                                     </div>
                                 </div>
-                                <div class="mb-sm">{{'CREATED_AT_TEXT'}}:
+                                <div class="mb-sm">{{'CREATED_AT_TEXT' | translate}}
                                     {{ company.created_at | amDateFormat: 'DD/MM/YYYY'}}
                                 </div>
-                                <div class="pd-b-15">{{'UPDATED_AT_TEXT'}}:
+                                <div class="pd-b-15">{{'UPDATED_AT_TEXT' | translate}}
                                     {{ company.updated_at | amDateFormat: 'DD/MM/YYYY'}}
                                 </div>
                             </div>

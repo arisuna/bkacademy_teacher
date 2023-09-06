@@ -13,26 +13,30 @@
                   $rootScope, ngDialog, WaitingService, AppDataService, AppSystem, AppCompanyService) {
 
             var filters = {
-                roles: [],
+                statuses: [],
             };
 
-            $scope.list_roles = AppSystem.getSettingUserGroups();
+            $scope.list_statuses = [
+                {name: 'UNVERIFIED_TEXT', value: 0, color: 'dark-gray', label: 'UNVERIFIED_TEXT', selected: false},
+                {name: 'VERIFIED_TEXT', value: 1, color: 'green', label: 'VERIFIED_TEXT', selected: false},
+                {name: 'DELETED_TEXT', value: -1, color: 'red', label: 'DELETED_TEXT', selected: false},
+            ];
 
-            $scope.selected_roles = angular.isDefined(filters.roles) ? filters.roles : [];
+            $scope.selected_statuses = angular.isDefined(filters.statuses) ? filters.statuses : [];
 
             $scope.broadcastFilter = function () {
                 var filters;
                 filters = {
-                    roles: $scope.selected_roles,
+                    statuses: $scope.selected_statuses,
                 };
                 $rootScope.$broadcast('company_filter_update', filters);
             }
 
-            // $scope.$watch('selected_roles', function (newValue, oldValue) {
-            //     if (newValue !== oldValue) {
-            //         $scope.broadcastFilter();
-            //     }
-            // });
+            $scope.$watch('selected_statuses', function (newValue, oldValue) {
+                if (newValue !== oldValue) {
+                    $scope.broadcastFilter();
+                }
+            });
         }]);
 
 })();

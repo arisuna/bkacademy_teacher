@@ -1,11 +1,11 @@
 (function () {
     'use strict';
     App.controller('ProductModelListApiController', ['$scope', '$state', '$timeout', '$rootScope', '$translate',
-        'WaitingService', 'AppProductModelService', 'ngDialog', 'urlBase',
-        function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppProductModelService, ngDialog, urlBase) {
+        'WaitingService', 'AppModelService', 'ngDialog', 'urlBase',
+        function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppModelService, ngDialog, urlBase) {
 
 
-            $scope.module_name = 'product_models';
+            $scope.module_name = 'models';
 
             $scope.column_array = [
                 {
@@ -71,7 +71,7 @@
                 $scope.params.is_tmp = $scope.search.isTmp;
 
 
-                AppProductModelService.getList($scope.params).then(function (res) {
+                AppModelService.getList($scope.params).then(function (res) {
                     if (res.success) {
                         $scope.items = res.data;
                         $scope.totalPages = res.total_pages;
@@ -105,7 +105,7 @@
                     $scope.params.filter_config_id = $scope.search.filterConfigId;
                     $scope.params.is_tmp = $scope.search.isTmp;
 
-                    AppProductModelService.getList($scope.params).then(function (res) {
+                    AppModelService.getList($scope.params).then(function (res) {
                         if (res.success) {
                             $scope.items = $scope.items.concat(res.data);
                             $scope.totalPages = res.total_pages;
@@ -141,7 +141,7 @@
                 $scope.reloadInit();
             }
 
-            $scope.subscribe('apply_filter_config_product_models', function (filterConfigId) {
+            $scope.subscribe('apply_filter_config_models', function (filterConfigId) {
                 angular.element('.scroll-append').scrollTop(0);
                 $scope.search.filterConfigId = filterConfigId;
                 $scope.search.isTmp = true;
@@ -149,14 +149,14 @@
                 $scope.reloadInit();
             });
 
-            $scope.subscribe('sort_by_column_and_order_product_models', function (data) {
+            $scope.subscribe('sort_by_column_and_order_models', function (data) {
                 angular.element('.scroll-append').scrollTop(0);
                 $scope.search.orders = [data];
                 $scope.sort = {};
                 $scope.reloadInit();
             });
 
-            $scope.subscribe('text_search_product_models', function (data) {
+            $scope.subscribe('text_search_models', function (data) {
                 angular.element('.scroll-append').scrollTop(0);
                 $scope.search.query = data;
                 // GmsFilterConfigService.setFilterQuery($scope.module_name, $scope.currentUser.uuid, data);
@@ -175,7 +175,7 @@
 
             $scope.deleteFn = function (item, index) {
                 WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_PRODUCT_MODEL_TEXT', function () {
-                    AppProductModelService.deleteProductModel(item.uuid).then(function (res) {
+                    AppModelService.deleteModel(item.uuid).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
                             $scope.reloadInit();
@@ -196,13 +196,13 @@
                         productModel: productModel,
                         view: false
                     },
-                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppProductModelService', '$state',
-                        function ($scope, $element, $timeout, WaitingService, AppProductModelService, $state) {
+                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppModelService', '$state',
+                        function ($scope, $element, $timeout, WaitingService, AppModelService, $state) {
                             $scope.productModel = $scope.ngDialogData.productModel;
                             $scope.page_loading = true;
                             $scope.isClone = true;
                             $scope.getDetailFn = function () {
-                                AppProductModelService.detailProductModel($scope.productModel.uuid).then(
+                                AppModelService.detailModel($scope.productModel.uuid).then(
                                     function (res) {
                                         if (res.success) {
                                             $scope.productModel = res.data;
@@ -225,7 +225,7 @@
                                 object.id = 0;
                                 object.uuid = 0;
 
-                                AppProductModelService.createProductModel(object).then(function (res) {
+                                AppModelService.createModel(object).then(function (res) {
                                     if (res.success) {
                                         $scope.closeThisDialog(res.data);
                                         WaitingService.popSuccess('DATA_CLONE_SUCCESS_TEXT');
@@ -266,11 +266,11 @@
                         productModel: productModel,
                         view: false
                     },
-                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppProductModelService', '$state',
-                        function ($scope, $element, $timeout, WaitingService, AppProductModelService, $state) {
+                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppModelService', '$state',
+                        function ($scope, $element, $timeout, WaitingService, AppModelService, $state) {
                             $scope.productModel = $scope.ngDialogData.productModel;
                             $scope.saveFn = function(){
-                                AppProductModelService.createProductModel($scope.productModel).then(function (res) {
+                                AppModelService.createModel($scope.productModel).then(function (res) {
                                     if (res.success) {
                                         $scope.closeThisDialog(res.data);
                                         WaitingService.popSuccess(res.message);
@@ -305,13 +305,13 @@
                         productModel: productModel,
                         view: false
                     },
-                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppProductModelService', '$state',
-                        function ($scope, $element, $timeout, WaitingService, AppProductModelService, $state) {
+                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppModelService', '$state',
+                        function ($scope, $element, $timeout, WaitingService, AppModelService, $state) {
                             $scope.productModel = $scope.ngDialogData.productModel;
                             $scope.page_loading = true;
 
                             $scope.getDetailFn = function () {
-                                AppProductModelService.detailProductModel($scope.productModel.uuid).then(
+                                AppModelService.detailModel($scope.productModel.uuid).then(
                                     function (res) {
                                         if (res.success) {
                                             $scope.productModel = res.data;
@@ -330,7 +330,7 @@
 
                             $scope.saveFn  = function(){
                                 if($scope.productModel.id > 0){
-                                    AppProductModelService.updateProductModel($scope.productModel).then(function (res) {
+                                    AppModelService.updateModel($scope.productModel).then(function (res) {
                                         if (res.success) {
                                             $scope.closeThisDialog(res.data);
 

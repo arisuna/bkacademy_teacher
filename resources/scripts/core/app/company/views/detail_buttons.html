@@ -1,7 +1,21 @@
 <div id="top-button-container" ng-if="company.is_deleted != 1">
+    <div class="relo-bg-white edit-radio-mode mg-r-10"
+         ng-style="{'height':'32px','display':'inline-flex'}">
+    <span class="text-bold mr-sm txt-12 flex-middle"
+          ng-class="{'text-blue':isEditable == true, 'text-muted': isEditable == false}">
+        {{ 'EDIT_TEXT' | translate }}
+    </span>
+        <label class="switch">
+            <input type="checkbox" ng-model="isEditable" ng-change="onEditable($event)">
+            <span></span>
+        </label>
+    </div>
+
+
     <div class="btn-group dropdown open pull-right"
          uib-dropdown=""
          style="vertical-align: unset; margin-top: 3px">
+
         <button type="button" class="btn btn-round dropdown-toggle"
                 uib-dropdown-toggle=""
                 aria-haspopup="true" aria-expanded="true">
@@ -10,9 +24,9 @@
 
         <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu="" role="menu"
             aria-labelledby="split-button">
-            <li role="menuitem" ng-if="isEditable" ><a ng-click="onEditable($event)">{{'CANCEL_EDIT_COMPANY_TEXT' | translate}}</a></li>
-            <li role="menuitem" ng-if="!isEditable"><a ng-click="onEditable($event)">{{'EDIT_COMPANY_TEXT' | translate}}</a></li>
-            <li role="menuitem" ><a ng-click="deleteFn(company.id)">{{'DELETE_COMPANY_TEXT' | translate}}</a></li>
+            <!--            <li role="menuitem" ng-if="isEditable" ><a ng-click="onEditable($event)">{{'CANCEL_EDIT_COMPANY_TEXT' | translate}}</a></li>-->
+            <!--            <li role="menuitem" ng-if="!isEditable"><a ng-click="onEditable($event)">{{'EDIT_COMPANY_TEXT' | translate}}</a></li>-->
+            <li role="menuitem"><a ng-click="deleteFn(company.id)">{{'DELETE_COMPANY_TEXT' | translate}}</a></li>
         </ul>
     </div>
 
