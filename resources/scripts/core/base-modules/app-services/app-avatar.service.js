@@ -27,6 +27,7 @@
             logoUploadUrl: __env.apiHostname + '/app/object-image/uploadLogo',
             squaredLogoUploadUrl: __env.apiHostname + '/app/object-image/uploadSquaredLogo',
             rectangularLogoUploadUrl: __env.apiHostname + '/app/object-image/uploadRectangularLogo',
+            objectImageUploadUrl: __env.apiHostname + '/app/object-image/uploadObjectImage',
         };
 
         vm.types = {
@@ -70,6 +71,9 @@
                             break;
                         case 'avatar':
                             uploadUrl = vm.config.avatarUploadUrl;
+                            break;
+                        case 'object_image':
+                            uploadUrl = vm.config.objectImageUploadUrl;
                             break;
                         default:
                             break;
