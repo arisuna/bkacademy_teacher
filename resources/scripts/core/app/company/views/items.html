@@ -3,8 +3,11 @@
     <div class="project-filter min-height-70px">
         <div class="pd-1x relo-bg-dark-blue-5 bd-radius-5x">
             <div class="row mx-0">
+                <div class="col-sm-7 text-left pd-l-0 pd-r-5">
+                    <ng-include src="'/app/views/company/filter.html'"></ng-include>
+                </div>
 
-                <div class="col-sm-12 text-right pd-r-0">
+                <div class="col-sm-5 text-right pd-r-0">
                     <button ng-click="clearFilter()"
                             uib-tooltip="{{'CLEAR_ALL_FILTERS_BTN_TEXT' | translate}}"
                             class="btn pointer btn-round pull-right filter-dark-blue" style="margin-top:3px;">

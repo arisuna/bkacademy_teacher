@@ -3,7 +3,7 @@
     App.controller('CompaniesListController', ['$scope', '$state', '$timeout', '$rootScope', '$translate', 'ngDialog', 'urlBase', 'WaitingService', 'AppDataService', 'AppCompanyService',
         function ($scope, $state, $timeout, $rootScope, $translate, ngDialog, urlBase, WaitingService, AppDataService, AppCompanyService) {
             $scope.params = {
-                roles: [],
+                statuses: [],
             };
             $scope.isLoadingMore = false;
             $scope.isLoading = true;
@@ -141,13 +141,22 @@
                 }
             };
 
-            $rootScope.$on('company_filter_update', function (data) {
+
+            $rootScope.$on('company_filter_update', function (event, data) {
                 $scope.isLoading = true;
                 $scope.loadCount = 0;
+                console.log("data", data, data.statuses)
+                if (data.statuses && data.statuses.length) {
+                    $scope.params.statuses = data.statuses.map(o => o.value)
+                } else {
+                    $scope.params.statuses = []
+                }
+
                 $timeout(function () {
                     $scope.items = [];
                     $scope.loadItems();
                 }, 1000);
+
             });
 
             $scope.sortByColumnAndOrder = function (columnName, isDescending) {
@@ -161,7 +170,13 @@
             $scope.clearFilter = function () {
                 $scope.query = "";
                 $scope.sort = {};
+                $scope.items = [];
+                $scope.loadCount = 1;
+                $scope.currentPage = 0;
+                $scope.isLoading = true;
                 $scope.publish('clearFilter');
+
+                $scope.initItems();
             };
 
             $scope.deleteFn = function (company, index) {
