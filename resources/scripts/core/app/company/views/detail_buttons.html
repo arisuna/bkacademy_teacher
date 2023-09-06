@@ -6,7 +6,7 @@
         {{ 'EDIT_TEXT' | translate }}
     </span>
         <label class="switch">
-            <input type="checkbox" ng-model="isEditable" ng-change="onEditable($event, isEditable)">
+            <input type="checkbox" ng-value="isEditable" ng-click="onEditable($event, isEditable)">
             <span></span>
         </label>
     </div>
