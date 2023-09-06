@@ -1,0 +1,24 @@
+<div class="card-heading relo-bg-bright-blue shadow-z1 text-white">
+    <div class="row">
+        <div class="col-md-12 text-left ml-lg">
+            <h4>Edit Data</h4>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <form role="form" validate-form="" data-parsley-validate="" novalidate="" ng-submit="submitDataFn()">
+        <div class="card-body height-60vh overflow-y-enable">
+            <div ng-repeat="field in fields">
+                <app-data-field type="field.type"
+                                    is-editable="field.isEditable"
+                                    is-required="field.isRequired"
+                                    ng-model="model[field.name]"
+                                    label="field.label"></app-data-field>
+            </div>
+        </div>
+        <div class="card-footer text-right">
+            <save-button-submit title="Update"></save-button-submit>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,363 @@
+<div class="row">
+    <ng-if ng-if="type == 'dateTime'">
+        <div class="col-xs-12 col-sm-12">
+            <label class="text-muted">{{ label }}</label>
+            <date-time-picker-input-mda name="datetime"
+                                        input-type="timestamp"
+                                        output-type="timestamp"
+                                        label="{{ label }}"
+                                        ng-model="$parent.model"></date-time-picker-input-mda>
+
+        </div>
+        <div class="clearfix"></div>
+    </ng-if>
+    <div class="col-md-12" style="" ng-if="type == 'time'">
+        <!-- date and only date -->
+        <date-picker-input-mda ng-model="$parent.model"
+                               input-type="timestamp"
+                               output-type="timestamp"
+                               label="{{ label }}"></date-picker-input-mda>
+    </div>
+
+
+    <div class="col-md-12" style="" ng-if="type == 'date'">
+        <!-- date and only date -->
+        <date-picker-input-mda ng-model="$parent.model"
+                               input-type="date"
+                               output-type="date"
+                               label="{{ label }}"></date-picker-input-mda>
+    </div>
+
+    <div class="col-md-12" style="" ng-if="type == 'text'">
+        <!-- text pure -->
+        <div class="form-group float-label">
+            <label>{{ label }} <span ng-if="isRequired" class="text-danger">*</span> </label>
+            <input type="text" class="form-control"
+                   ng-disabled="!isEditable"
+                   ng-required="isRequired"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="File {{ label }} is required"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" style="" ng-if="type == 'telephone'">
+        <!-- text pure -->
+        <div class="form-group float-label">
+            <label>{{ label }}</label>
+            <input type="tel" class="form-control"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" style="" ng-if="type == 'url'">
+        <!-- text pure -->
+        <div class="form-group float-label">
+            <label>{{ label }}</label>
+            <input type="url" class="form-control"
+                   data-parsley-type="url"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" style="" ng-if="type == 'number'">
+        <!-- number -->
+        <div class="form-group float-label">
+            <label>{{ label }}</label>
+            <input type="number" class="form-control"
+                   string-to-number
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+
+    <div class="col-md-12" style="" ng-if="type == 'amount'">
+        <!-- number -->
+        <div class="form-group float-label">
+            <label>{{ label }}</label>
+            <input type="number"
+                   class="form-control"
+                   string-to-number
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" style="" ng-if="type == 'countryId'">
+        <!-- country -->
+        <app-country-selector ng-model="$parent.model"
+                                  required-message="Field {{label}} is required"
+                                  label-floating="true"
+                                  show-label="true"
+                                  required="isRequired"
+                                  label="{{ label }}"></app-country-selector>
+
+    </div>
+
+    <div class="col-md-12" style="" ng-if="type == 'currency'">
+        <!-- currency -->
+        <label>{{ label }}  <span ng-if="isRequired" class="text-danger">*</span> </label>
+        <input-selector-currency ng-model="$parent.model"
+                                 required="isRequired"
+                                 required-message="label"
+                                 label="{{label}}"></input-selector-currency>
+    </div>
+    <div class="col-md-12" ng-if="type=='textarea'">
+        <!-- text area -->
+        <div class="form-group float-label">
+            <label>{{ label }}</label>
+            <textarea class="form-control"
+                      ng-model="$parent.model"
+                      data-parsley-required-message="label"
+                      rows="5"></textarea>
+        </div>
+    </div>
+
+
+    <div class="col-md-12" style="" ng-if="type == 'email'">
+        <!-- email -->
+        <div class="form-group float-label">
+            <label>{{ label }} <span ng-if="isRequired" class="text-danger">*</span></label>
+            <input type="email" data-parsley-type="email" class="form-control"
+                   ng-model="$parent.model"
+                   ng-required="isRequired"
+                   data-parsley-required-message="Field {{label}} is requied"
+                   data-parsley-type-message="label"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" style="" ng-if="type == 'yesNo'">
+        <!-- yes and no -->
+        <app-yes-no-input ng-model="$parent.model"
+                              label="{{ label }}"
+                              label-floating="false"
+                              init-value="false"
+                              required-message="{{ label }}"></app-yes-no-input>
+    </div>
+
+
+    <div class="col-md-12" style="" ng-if="type == 'bool'">
+        <!-- yes and no -->
+        <app-yes-no-input ng-model="$parent.model"
+                              label="{{ label }}"
+                              label-floating="false"
+                              init-value="false"
+                              required-message="label"></app-yes-no-input>
+    </div>
+
+    <div class="col-md-12" style="" ng-if="type == 'amount'">
+        <!-- amount and price -->
+        <div class="form-group float-label">
+            <label>{{ label }}</label>
+            <input type="number" class="form-control"
+                   string-to-number
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" style="" ng-if="type == 'float'">
+        <!-- amount and price -->
+        <div class="form-group float-label">
+            <label>{{ label }}</label>
+            <input type="number" class="form-control"
+                   string-to-number
+                   ng-model="$parent.model"
+                   step="any"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'sex'">
+        <label>{{ label }}</label>
+        <div class="form-group float-label">
+            <app-sex-selector label=""
+                                  ng-model="$parent.model"></app-sex-selector>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'marital_status'">
+        <app-attribute-selector ng-model="$parent.model"
+                                    required="false"
+                                    show-label="true"
+                                    label-floating="true"
+                                    label="Marital status"
+                                    attribute-name="MARITAL_STATUS"></app-attribute-selector>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'countryList'">
+        <label>{{ label }}</label>
+        <app-nationality-selector ng-model="$parent.model"
+                                      required="true"
+                                      is-editable="isEditable"
+                                      label-floating="true"
+        ></app-nationality-selector>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'languageList'">
+        <label>{{ label }}</label>
+        <app-spoken-languages-selector ng-model="$parent.model"
+                                           is-editable="isEditable"
+                                           required="false"
+                                           label-floating="true"
+        ></app-spoken-languages-selector>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'officeBelongWithCompany'">
+        <div class="form-group float-label">
+            <label>{{ label }}</label>
+            <input type="text" class="form-control" ng-disabled="!isEditable"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'departmentBelongWithCompany'">
+        <div class="form-group float-label">
+            <label>{{ label }}</label>
+            <input type="text" class="form-control" ng-disabled="!isEditable"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'teamBelongWithCompany'">
+        <div class="form-group float-label">
+            <label>{{ label }}</label>
+            <input type="text" class="form-control" ng-disabled="!isEditable"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'taxBelongWithCompany'">
+        <div class="form-group float-label">
+            <label>{{ label }}</label>
+            <input type="text" class="form-control" ng-disabled="!isEditable"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'companyBelongWithCompany'">
+        <div class="form-group float-label">
+            <label>{{ label }}</label>
+            <input type="text" class="form-control" ng-disabled="!isEditable"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'productBelongToCompany'">
+        <div class="form-group float-label">
+            <label>{{ label }}</label>
+            <input type="text" class="form-control" ng-disabled="!isEditable"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'hrCompanyBelongToDspCompany'">
+        <div class="form-group float-label">
+            <label>{{ label }}<span ng-if="isRequired" class="text-danger">*</span></label>
+            <input type="text" class="form-control" ng-disabled="!isEditable"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'employeeBelongToCompany'">
+        <div class="form-group float-label">
+            <label>{{ label }}<span ng-if="isRequired" class="text-danger">*</span></label>
+            <input type="text" class="form-control" ng-disabled="!isEditable"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'hrAssignmentOwner'">
+        <div class="form-group float-label">
+            <label>{{ label }} <span ng-if="isRequired" class="text-danger">*</span></label>
+            <input type="text" class="form-control" ng-disabled="!isEditable"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'policyBelongToCompany'">
+        <div class="form-group float-label">
+            <label>{{ label }} <span ng-if="isRequired" class="text-danger">*</span></label>
+            <input type="text" class="form-control" ng-disabled="!isEditable"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'payroll'">
+
+        <div class="form-group float-label">
+            <label>{{ label }} <span ng-if="isRequired" class="text-danger">*</span></label>
+            <input type="text" class="form-control" ng-disabled="!isEditable"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+
+
+<!--        <app-attribute-selector ng-model="$parent.model"-->
+<!--                               is-required="isRequired"-->
+<!--                               show-label="true"-->
+<!--                               label-floating="true"-->
+<!--                               label="Payroll"-->
+<!--                               attribute-name="PAYROLL"></app-attribute-selector>-->
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'budgetAmount'">
+        <div class="form-group float-label">
+            <label>{{ label }} <span ng-if="isRequired" class="text-danger">*</span></label>
+            <input type="text" class="form-control" ng-disabled="!isEditable"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'hrContactAssignment'">
+        <div class="form-group float-label">
+            <label>{{ label }} <span ng-if="isRequired" class="text-danger">*</span></label>
+            <input type="text" class="form-control" ng-disabled="!isEditable"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'officeAssignment'">
+        <div class="form-group float-label">
+            <label>{{ label }} <span ng-if="isRequired" class="text-danger">*</span></label>
+            <input type="text" class="form-control" ng-disabled="!isEditable"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'booker_assignment'">
+        <div class="form-group float-label">
+            <label>{{ label }} <span ng-if="isRequired" class="text-danger">*</span></label>
+            <input type="text" class="form-control" ng-disabled="!isEditable"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+    <div class="col-md-12" ng-if="type == 'provider_assignment_owner'">
+        <div class="form-group float-label">
+            <label>{{ label }} <span ng-if="isRequired" class="text-danger">*</span></label>
+            <input type="text" class="form-control" ng-disabled="!isEditable"
+                   ng-model="$parent.model"
+                   data-parsley-required-message="{{ label }}"/>
+        </div>
+    </div>
+
+
+
+</div>
