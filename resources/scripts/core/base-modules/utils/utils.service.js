@@ -297,6 +297,112 @@
                 return result;
             },
 
+            transformStringToKey: function slugify(string) {
+                const a = 'àáäâãåèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_:;'
+                const b = 'aaaaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh-----'
+                const p = new RegExp(a.split('').join('|'), 'g')
+                return string.toString().toLowerCase()
+                    .trim()
+                    .replace(/\s+/g, '-') // Replace spaces with
+                    .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
+                    .replace(/&/g, '-and-') // Replace & with ‘and’
+                    .replace(/[^\w\-]+/g, '') // Remove all non-word characters
+                    .replace(/\-\-+/g, '-') // Replace multiple — with single -
+                    .replace(/^-+/, '') // Trim — from start of text .replace(/-+$/, '') // Trim — from end of text
+                    .replace(/^-+/, '') // Trim — from start of text .replace(/-+$/, '') // Trim — from end of text
+                    .replace(/\-/g, '_') // Replace  — with _
+                    .replace(/^_+/, '') // Trim — from start of text .replace(/-+$/, '') // Trim — from end of text
+            },
+
+
+            transformHeardersLinesCSV: function slugify(string) {
+                const a = 'àáäâãåèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_:'
+                const b = 'aaaaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh----'
+                const p = new RegExp(a.split('').join('|'), 'g')
+                return string.toString().toLowerCase()
+                    .trim()
+                    .replace(/\s+/g, '-') // Replace spaces with
+                    .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
+                    .replace(/&/g, '-and-') // Replace & with ‘and’
+                    .replace(/[^\w\-\;\,]+/g, '') // Remove all non-word characters
+                    .replace(/\-\-+/g, '-') // Replace multiple — with single -
+                    .replace(/^-+/, '') // Trim — from start of text .replace(/-+$/, '') // Trim — from end of text
+                    .replace(/^-+/, '') // Trim — from start of text .replace(/-+$/, '') // Trim — from end of text
+                    .replace(/\-/g, '_') // Replace  — with _
+                    .replace(/^_+/, '') // Trim — from start of text .replace(/-+$/, '') // Trim — from end of text
+            },
+
+            csvGetHeaders: function (csvString, args) {
+                var vm = this;
+                var lineDelimiter = args.lineDelimiter || '\n';
+                var columnDelimiter = args.columnDelimiter || ',';
+                var textDelimiter = args.textDelimiter || '"';
+
+                var lines = csvString.split(lineDelimiter);
+                var headerValues = lines[0].split(columnDelimiter);
+                var headers = [];
+                headerValues.forEach(function (headerValue, index) {
+                    headerValue = vm.transformStringToKey(headerValue);
+                    headers.push({name: headerValue});
+                });
+                return headers;
+            },
+
+            csvToArray: function (csvString, args) {
+                csvString = csvString.trim();
+
+                console.log(csvString);
+
+                var vm = this;
+                let lineDelimiter = '\n';
+                if (args.lineDelimiter == 'RN') {
+                    lineDelimiter = '\r\n';
+                } else if (args.lineDelimiter == 'N') {
+                    lineDelimiter = '\n';
+                }
+
+                var columnDelimiter = args.columnDelimiter || ';';
+                var textDelimiter = args.textDelimiter || '"';
+
+                var lines = csvString.split(lineDelimiter);
+                var headerValues = lines[0].split(columnDelimiter);
+                var dataValues = lines.splice(1).map(function (dataLine) {
+                    return dataLine.split(columnDelimiter);
+                });
+
+
+                return dataValues.map(function (rowValues) {
+                    var row = {};
+                    headerValues.forEach(function (headerValue, index) {
+                        headerValue = vm.transformStringToKey(headerValue);
+                        row[headerValue] = (index < rowValues.length) ? rowValues[index] : null;
+                    });
+                    return row;
+                });
+            },
+            /**
+             * @param strData
+             * @param argDialect
+             */
+            csvToArrayFormat2: function (strData, argDialect = {}) {
+                let vm = this;
+
+                argDialect.header = true;
+                argDialect.skipEmptyLines = true;
+                argDialect.trimHeaders = true;
+                argDialect.encoding = "UTF-8";
+
+                argDialect.beforeFirstChunk = function (chunk) {
+                    var rows = chunk.split(/\r\n|\r|\n/);
+                    var headings = rows[0].toLowerCase();
+                    headings = vm.transformHeardersLinesCSV(headings);
+                    rows[0] = headings;
+                    return rows.join("\r\n");
+                };
+
+                let result = Papa.parse(strData, argDialect);
+                return result.data;
+            },
             stripTags: function (text) {
                 //remove tag
                 text = text ? String(text).replace(/<[^>]+>/gm, '') : '';

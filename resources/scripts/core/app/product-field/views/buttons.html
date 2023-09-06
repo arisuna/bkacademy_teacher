@@ -1,0 +1,12 @@
+<div id="top-button-container">
+    <button class="btn btn-oval relo-bg-bright-blue" ng-click="importFn()">
+        <em class="fa fa-upload mr-sm"></em>
+        {{ 'IMPORT_CSV_TEXT' | translate }}
+    </button>
+    <button class="btn btn-circle relo-bg-bright-blue"
+                   type="button"
+                    uib-tooltip="{{ 'ADD_NEW_TEXT' | translate }}"
+                    tooltip-placement="bottom" ng-click="createFn()">
+        <em class="fas fa-plus"></em>
+    </button>
+</div>

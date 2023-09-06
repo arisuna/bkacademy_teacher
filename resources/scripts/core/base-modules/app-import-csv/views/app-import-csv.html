@@ -1,0 +1,282 @@
+<div class="">
+    <uib-tabset class="uib-tabset-custom" active="step">
+        <uib-tab>
+            <uib-tab-heading>
+                <em class="fa fa-upload mr-sm"></em> Import CSV FIle
+            </uib-tab-heading>
+            <uib-tab-body>
+                <div class="white-block pd-2x">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="text-muted">CSV FIle</label>
+                            <input class="form-control"
+                                   accept=".csv"
+                                   file-reader="csvData.fileContent"
+                                   filestyle=""
+                                   data-classbutton="btn btn-default btn-flat"
+                                   data-classinput="form-control inline"
+                                   id="csvFile1"
+                                   name="csvFile1"
+                                   ng-model="csvData.csvFile"
+                                   style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" tabindex="-1"
+                                   type="file">
+                            <p class="help-block small">Select a file to import (.csv format).</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="mda-form-group float-label">
+                                <label class="text-muted">Column Delimiter</label>
+                                <select ng-model="csvData.columnDelimiter" class="mda-form-control">
+                                    <option value="">Auto Detect</option>
+                                    <option value=";">Semi-Colon</option>
+                                    <option value=",">Comma</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="mda-form-group float-label">
+                                <label class="text-muted">Text Delimiter</label>
+                                <select ng-model="csvData.textDelimiter" class="mda-form-control">
+                                    <option value="">Auto Detect</option>
+                                    <option value='"'>Quotes</option>
+                                    <option value="'">Apostrophe</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="mda-form-group float-label">
+                                <label class="text-muted">Lines Delimiter</label>
+                                <select ng-model="csvData.lineDelimiter" class="mda-form-control">
+                                    <option value="">Auto Detect</option>
+                                    <option value='RN'>Style 1(\r\n)</option>
+                                    <option value='N'>Style 2(\n)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt">
+                        <div class="col-sm-12 text-right">
+                            <button class="btn relo-bg-yellow mr-sm" type="button"
+                                    ng-click="resetFn()">
+                                <em class="fa fa-refresh mr-sm"></em>Reset
+                            </button>
+
+                            <button class="btn relo-bg-bright-blue mr-sm" type="button"
+                                    ng-click="stepMappingDataFn()">
+                                Map <em class="fa fa-arrow-circle-right ml-sm"></em>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </uib-tab-body>
+        </uib-tab>
+
+        <uib-tab>
+            <uib-tab-heading>
+                <em class="fa fa-map-signs mr-sm"></em> Mapping Data
+            </uib-tab-heading>
+            <uib-tab-body>
+
+                <div class="white-block pd-2x" ng-show="validating">
+                    <div class="progress-striped active progress ng-isolate-scope" value="100" type="danger">
+                        <div class="progress-bar progress-bar-danger"
+                             role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"
+                             ng-style="{width: (percent < 100 ? percent : 100) + '%'}" aria-valuetext="95%"
+                             aria-labelledby="progressbar" style="width: 95%;">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="white-block pd-2x">
+                    <form class="form-validate"
+                          novalidate=""
+                          validate-form=""
+                          role="form"
+                          ng-submit="validateCsvFn();">
+                        <div class="row">
+                            <div class="col-sm-12 text-left">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>CSV Headers</th>
+                                        <th>Map Headers</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="field in mapFields">
+                                        <td>
+                                            <select class="form-control"
+                                                    chosen=""
+                                                    allow-single-deselect="true"
+                                                    ng-model="field.csvColumnName"
+                                                    ng-required="field.required == true"
+                                                    ng-options="csvField.name as csvField.name for csvField in csvFields">
+                                                <option value="">-- Select --</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            {{ field.label | translate }}
+                                        </td>
+                                        <td>
+                                            <span class="text-red" ng-if="field.required == true">
+                                                <em class="fa fa-warning mr-sm"></em>Required
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 text-right">
+                                <button class="btn relo-bg-yellow mr-sm" type="button"
+                                        ng-click="resetFn()">
+                                    <em class="fa fa-refresh mr-sm"></em>Reset
+                                </button>
+                                <button class="btn btn-default mr-sm" type="button"
+                                        ng-click="prePopulateFn()">
+                                    <em class="fa fa-check-circle mr-sm"></em>Auto Detect
+                                </button>
+                                <button class="btn relo-bg-green" type="submit">
+                                    <em class="fa fa-check-circle mr-sm"></em>Validate
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+            </uib-tab-body>
+        </uib-tab>
+
+        <uib-tab>
+            <uib-tab-heading>
+                <em class="fa fa-check-circle mr-sm"></em> Validate Data
+            </uib-tab-heading>
+            <uib-tab-body>
+                <div class="white-block pd-2x">
+                    <div class="text-normal">
+                        <div ng-if="countErrors > 0">
+                            <h5>You can't import this block of data because the validator found some errors in the CSV
+                                File.</h5>
+                            <h5>Please recheck the data and edit it and revalidate one more time,
+                            </h5>
+                        </div>
+                        <div ng-if="countSuccess > 0 && countErrors == 0">
+                            <h5>
+                                You can import now the block of data to the System
+                            </h5>
+                        </div>
+                        <div ng-if="countSuccess == 0 && countErrors == 0">
+                            <h5>
+                                You don't have any data to import
+                            </h5>
+                        </div>
+
+                        <h5>Actually, you have :</h5>
+                        <ul>
+                            <li><span class="badge relo-bg-green">{{ countSuccess }}</span> items valid</li>
+                            <li><span class="badge relo-bg-red">{{ countErrors }}</span> items invalid</li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 text-right">
+                            <button class="btn relo-bg-yellow mr-sm" type="button"
+                                    ng-click="resetFn()">
+                                <em class="fa fa-refresh mr-sm"></em>Reset
+                            </button>
+                            <button class="btn relo-bg-green" type="button"
+                                    ng-click="validateCsvFn()">
+                                <em class="fa fa-check-circle mr-sm"></em>Re-Validate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="white-block mt pd-2x table-responsive">
+                    <a ng-click="showUploadError = !showUploadError" ng-init="showUploadError=false">Show / Hide Upload
+                        errors</a>
+                    <div ng-show="showUploadError == true" class="block">
+                        <div ng-repeat="item in items | filter:{ isUploaded : false }">
+                            <pre>{{ item| json }}</pre>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="white-block mt pd-2x table-responsive">
+
+                    <line-loading-spinner ng-show="loading" lines="30" options="l1-l2-l2-l3-l1"></line-loading-spinner>
+
+                    <div class="mt" ng-show="!loading && items.length > 0">
+
+                        <div class="custom-datatable no-filter-page switch-search-filter mt-lg import-datatable">
+                            <table class="row-border hover" datatable="ng">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Uploaded</th>
+                                    <th class="none-icon-sorting">Action</th>
+                                    <th>Error (if Exist)</th>
+                                    <th ng-repeat="field in mapFields">{{ field.label }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="(index, item) in items"
+                                    class="{{ item.hasError == true ? 'bt-invalid' : '' }}">
+                                    <td>{{ index + 1 }}</td>
+                                    <td>
+                                        <label class="label label-success" ng-if="item.isUploaded">Uploaded</label>
+                                        <label class="label label-inverse" ng-if="!item.isUploaded">Not_Uploaded</label>
+                                    </td>
+                                    <td>
+                                        <app-edit-data ng-model="item" map-fields="mapFields"></app-edit-data>
+                                        <button class="btn btn-circle btn-delete btn-outline"
+                                                ng-click="deleteItemFn(index)">
+                                            <em class="fa fa-trash"></em>
+                                        </button>
+                                        <button class="btn btn-circle btn-primary btn-outline"
+                                                ng-click="uploadOneItemFn(item, index)">
+                                            <em class="fa fa-upload"></em>
+                                        </button>
+
+
+                                        <button class="btn btn-circle btn-primary btn-outline"
+                                                ng-click="checkItemFn(item, index)">
+                                            <em class="fa fa-check-circle"></em>
+                                        </button>
+
+
+                                    </td>
+                                    <td>
+                                        <span ng-if="item.hasError && item.messageError != '' " class="text-danger" uib-tooltip="{{ item.messageError }}">{{ item.messageError }}</span>
+                                        <span ng-if="item.hasSuccess == true && item.hasError == false " class="text-success">Data valid</span>
+                                    </td>
+                                    <td ng-repeat="field in mapFields" ng-bind-html="item[field.name]">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-sm-12 text-right">
+                                <span class="text-muted" ng-if="!isEnableImportData"><i class="fa fa-spin fa-spinner"></i> Validating...</span>
+                                <button ng-if="isEnableImportData" class="btn relo-bg-green" type="button" ng-click="importDataFn()"
+                                        ng-disabled="items.length == 0 || invalid_num > 0">
+                                    <span class="fa fa-upload mr-sm"></span>Import data<span
+                                        class="badge ml-sm p-sm bg-gray">{{ items.length }}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </uib-tab-body>
+        </uib-tab>
+    </uib-tabset>
+</div>

@@ -1,11 +1,11 @@
 (function () {
     'use strict';
-    App.controller('ProductModelListApiController', ['$scope', '$state', '$timeout', '$rootScope', '$translate',
-        'WaitingService', 'AppModelService', 'ngDialog', 'urlBase',
-        function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppModelService, ngDialog, urlBase) {
+    App.controller('ProductFieldListApiController', ['$scope', '$state', '$timeout', '$rootScope', '$translate',
+        'WaitingService', 'AppProductFieldService', 'ngDialog', 'urlBase',
+        function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppProductFieldService, ngDialog, urlBase) {
 
 
-            $scope.module_name = 'models';
+            $scope.module_name = 'product_fields';
 
             $scope.column_array = [
                 {
@@ -44,7 +44,7 @@
             $scope.current = 0;
 
             $scope.loadingMore = false;
-            $scope.isInitialLoading = false;
+            $scope.isInitialisInitialLoading = false;
 
             $scope.loadCount = 0;
             $scope.totalPages = 1;
@@ -60,7 +60,6 @@
             $scope.loadList = function () {
                 $scope.params = {};
                 $scope.params.page = 0;
-                $scope.params.brand_id = $scope.object.id;
                 $scope.params.query = $scope.search.query;
                 $scope.params.limit = 20;
                 $scope.params.orders = $scope.search.orders;
@@ -71,7 +70,7 @@
                 $scope.params.is_tmp = $scope.search.isTmp;
 
 
-                AppModelService.getList($scope.params).then(function (res) {
+                AppProductFieldService.search($scope.params).then(function (res) {
                     if (res.success) {
                         $scope.items = res.data;
                         $scope.totalPages = res.total_pages;
@@ -105,7 +104,7 @@
                     $scope.params.filter_config_id = $scope.search.filterConfigId;
                     $scope.params.is_tmp = $scope.search.isTmp;
 
-                    AppModelService.getList($scope.params).then(function (res) {
+                    AppProductFieldService.search($scope.params).then(function (res) {
                         if (res.success) {
                             $scope.items = $scope.items.concat(res.data);
                             $scope.totalPages = res.total_pages;
@@ -136,12 +135,9 @@
                 $scope.loadList();
             };
 
-            if($scope.object && $scope.object.id){
-                console.log('$scope.object.id', $scope.object.id);
-                $scope.reloadInit();
-            }
+            $scope.reloadInit();
 
-            $scope.subscribe('apply_filter_config_models', function (filterConfigId) {
+            $scope.subscribe('apply_filter_config_product_fields', function (filterConfigId) {
                 angular.element('.scroll-append').scrollTop(0);
                 $scope.search.filterConfigId = filterConfigId;
                 $scope.search.isTmp = true;
@@ -149,14 +145,14 @@
                 $scope.reloadInit();
             });
 
-            $scope.subscribe('sort_by_column_and_order_models', function (data) {
+            $scope.subscribe('sort_by_column_and_order_product_fields', function (data) {
                 angular.element('.scroll-append').scrollTop(0);
                 $scope.search.orders = [data];
                 $scope.sort = {};
                 $scope.reloadInit();
             });
 
-            $scope.subscribe('text_search_models', function (data) {
+            $scope.subscribe('text_search_product_fields', function (data) {
                 angular.element('.scroll-append').scrollTop(0);
                 $scope.search.query = data;
                 // GmsFilterConfigService.setFilterQuery($scope.module_name, $scope.currentUser.uuid, data);
@@ -174,8 +170,8 @@
             });
 
             $scope.deleteFn = function (item, index) {
-                WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_PRODUCT_MODEL_TEXT', function () {
-                    AppModelService.deleteModel(item.uuid).then(function (res) {
+                WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_BUSINESS_ZONE_TEXT', function () {
+                    AppProductFieldService.deleteProductField(item.uuid).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
                             $scope.reloadInit();
@@ -186,26 +182,27 @@
                 });
             };
 
-            $scope.cloneFn = function(productModel){
+
+            $scope.cloneFn = function(business_zone){
                 $scope.cloneDialog = ngDialog.open({
-                    template: urlBase.tplApp('app', 'make', 'form-product-model-dialog', '_=' + Math.random()),
+                    template: urlBase.tplApp('app', 'product-field', 'form-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue',
                     closeByDocument: true,
                     showClose: true,
                     data: {
-                        productModel: productModel,
+                        business_zone: business_zone,
                         view: false
                     },
-                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppModelService', '$state',
-                        function ($scope, $element, $timeout, WaitingService, AppModelService, $state) {
-                            $scope.productModel = $scope.ngDialogData.productModel;
+                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppProductFieldService', '$state',
+                        function ($scope, $element, $timeout, WaitingService, AppProductFieldService, $state) {
+                            $scope.object = $scope.ngDialogData.business_zone;
                             $scope.page_loading = true;
                             $scope.isClone = true;
                             $scope.getDetailFn = function () {
-                                AppModelService.detailModel($scope.productModel.uuid).then(
+                                AppProductFieldService.detailProductField($scope.object.uuid).then(
                                     function (res) {
                                         if (res.success) {
-                                            $scope.productModel = res.data;
+                                            $scope.object = res.data;
                                         } else {
                                             WaitingService.error(res.msg);
                                         }
@@ -221,11 +218,11 @@
 
 
                             $scope.saveFn = function () {
-                                let object = angular.copy($scope.productModel);
+                                let object = angular.copy($scope.object);
                                 object.id = 0;
                                 object.uuid = 0;
 
-                                AppModelService.createModel(object).then(function (res) {
+                                AppProductFieldService.createProductField(object).then(function (res) {
                                     if (res.success) {
                                         $scope.closeThisDialog(res.data);
                                         WaitingService.popSuccess('DATA_CLONE_SUCCESS_TEXT');
@@ -250,40 +247,36 @@
 
 
             $scope.createFn = function(){
-                let productModel = {
-                    uuid: "",
-                    brand_id: $scope.object.id,
-                    status: 1,
+                let business_zone = {
+                    uuid: ""
                 };
-
-                console.log('object', $scope.object.id);
                 $scope.createDialog = ngDialog.open({
-                    template: urlBase.tplApp('app', 'make', 'form-product-model-dialog', '_=' + Math.random()),
+                    template: urlBase.tplApp('app', 'product-field', 'form-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue',
                     closeByDocument: true,
                     showClose: true,
                     data: {
-                        productModel: productModel,
+                        business_zone: business_zone,
                         view: false
                     },
-                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppModelService', '$state',
-                        function ($scope, $element, $timeout, WaitingService, AppModelService, $state) {
-                            $scope.productModel = $scope.ngDialogData.productModel;
-                            $scope.saveFn = function(){
-                                AppModelService.createModel($scope.productModel).then(function (res) {
-                                    if (res.success) {
-                                        $scope.closeThisDialog(res.data);
-                                        WaitingService.popSuccess(res.message);
-                                    } else {
-                                        WaitingService.popError(res.message);
-                                    }
-                                    $scope.saving = false;
-                                }, function (err) {
-                                    WaitingService.popError(err);
-                                })
-                            }
+                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppProductFieldService', '$state',
+                    function ($scope, $element, $timeout, WaitingService, AppProductFieldService, $state) {
+                        $scope.object = $scope.ngDialogData.business_zone;
+                        $scope.saveFn = function(){
+                            AppProductFieldService.createProductField($scope.object).then(function (res) {
+                                if (res.success) {
+                                    $scope.closeThisDialog(res.data);
+                                    WaitingService.popSuccess(res.message);
+                                } else {
+                                    WaitingService.popError(res.message);
+                                }
+                                $scope.saving = false;
+                            }, function (err) {
+                                WaitingService.popError(err);
+                            })
+                        }
 
-                        }]
+                    }]
                 });
                 $scope.createDialog.closePromise.then(function (data) {
                     console.log('data', data);
@@ -294,27 +287,27 @@
                 });
             }
 
-            $scope.editFn = function(productModel){
-                console.log('productModel', productModel);
+            $scope.editFn = function(business_zone){
+                console.log('business_zone', business_zone);
                 $scope.editDialog = ngDialog.open({
-                    template: urlBase.tplApp('app', 'make', 'form-product-model-dialog', '_=' + Math.random()),
+                    template: urlBase.tplApp('app', 'product-field', 'form-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue',
                     closeByDocument: true,
                     showClose: true,
                     data: {
-                        productModel: productModel,
+                        business_zone: business_zone,
                         view: false
                     },
-                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppModelService', '$state',
-                        function ($scope, $element, $timeout, WaitingService, AppModelService, $state) {
-                            $scope.productModel = $scope.ngDialogData.productModel;
+                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppProductFieldService', '$state',
+                        function ($scope, $element, $timeout, WaitingService, AppProductFieldService, $state) {
+                            $scope.object = $scope.ngDialogData.business_zone;
                             $scope.page_loading = true;
 
                             $scope.getDetailFn = function () {
-                                AppModelService.detailModel($scope.productModel.uuid).then(
+                                AppProductFieldService.detailProductField($scope.object.uuid).then(
                                     function (res) {
                                         if (res.success) {
-                                            $scope.productModel = res.data;
+                                            $scope.object = res.data;
                                         } else {
                                             WaitingService.error(res.msg);
                                         }
@@ -329,8 +322,8 @@
                             $scope.getDetailFn();
 
                             $scope.saveFn  = function(){
-                                if($scope.productModel.id > 0){
-                                    AppModelService.updateModel($scope.productModel).then(function (res) {
+                                if($scope.object.id > 0){
+                                    AppProductFieldService.updateProductField($scope.object).then(function (res) {
                                         if (res.success) {
                                             $scope.closeThisDialog(res.data);
 
@@ -348,7 +341,7 @@
 
 
 
-                        }]
+                    }]
                 });
                 $scope.editDialog.closePromise.then(function (data) {
                     if(data && data.value && data.value.uuid){
@@ -364,5 +357,10 @@
                     }
                 });
             }
+
+            $scope.importFn = function() {
+                $state.go('app.product-field.import');
+            }
+
         }]);
 })();
