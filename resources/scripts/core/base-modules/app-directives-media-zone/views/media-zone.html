@@ -1,0 +1,299 @@
+<div class="upload-zone">
+    <div class="mg-0 text-12 text-dark-blue"
+         ng-if="description != undefined" ng-show="showUpload ? true : false">
+        {{ description | translate }}
+    </div>
+    <div class="uploadZone my-drop-zone" uploader="uploader" nv-file-drop="">
+        <div class="dropZone" nv-file-drop="" uploader="uploader"
+             ng-if="!uploader.queue.length"
+             ng-show="showUpload ? true : false">
+            <div nv-file-over="" uploader="uploader" over-class="bg-light-blue-200" class="box-placeholder">
+
+                <h4 class="text-center">
+                    {{ 'DRAG_AND_DROP_TEXT' | translate }}
+                </h4>
+
+                <div class="buttonUploadOnly text-center pd-b-1x">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <input filestylev2=""
+                                   type="file"
+                                   class="form-control"
+                                   multiple="multiple"
+                                   data-button-text="UPLOAD_FILE_BTN_TEXT"
+                                   data-icon-name="fa fa-cloud-upload"
+                                   data-class-button="btn btn-inverse btn-lg"
+                                   data-class-input="form-control inline"
+                                   nv-file-select="" uploader="uploader" ng-if="options.limit > 1"/>
+
+                            <input filestylev2=""
+                                   type="file"
+                                   class="form-control"
+                                   data-button-text="UPLOAD_FILE_BTN_TEXT"
+                                   data-icon-name="fa fa-cloud-upload"
+                                   data-class-button="btn btn-inverse btn-lg"
+                                   data-class-input="form-control inline"
+                                   nv-file-select="" uploader="uploader" ng-if="options.limit == 1"/>
+                        </div>
+<!--                        <div class="col-xs-6 text-left" ng-if="options.showLibrary == true">-->
+<!--                            <button type="button" class="btn btn-default"-->
+<!--                                    app-media-button-->
+<!--                                    is-share-document="isShareDocument"-->
+<!--                                    is-share-assignee="isShareAssignee"-->
+<!--                                    object="object"-->
+<!--                                    object-type="{{objectType}}"-->
+<!--                                    employee-uuid="libraryEmployeeUuid"-->
+<!--                                    company-uuid="libraryCompanyUuid"-->
+<!--                                    library-options="libraryOpts"-->
+<!--                                    is-send-history="false"-->
+<!--                                    is-attach-attachment="isAttachAttachment"-->
+<!--                                    on-select-item="itemsSelected(items)"><em class="fa fa-folder-open"></em>-->
+<!--                                {{ 'LIBRARY_TEXT' | translate }}-->
+<!--                            </button>-->
+<!--                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="uploader.isHTML5 && uploader.queue.length">
+            <div ng-if="uploader.queue.length" nv-file-drop="" uploader="uploader" nv-file-over=""
+                 over-class="bg-light-blue-200">
+                <table ng-if="uploader.queue.length" class="table">
+                    <thead>
+                    <tr>
+                        <th width="50%">{{ 'NAME_TEXT' | translate }}</th>
+                        <th ng-show="uploader.isHTML5">{{ 'SIZE_TEXT' | translate }}</th>
+                        <th ng-show="uploader.isHTML5">{{ 'PROCESS_TEXT' | translate }}</th>
+                        <th>{{ 'STATUS_TEXT' | translate }}</th>
+                        <th>{{ 'ACTION_TEXT' | translate }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in uploader.queue">
+                        <td>
+                            <strong>{{ item.file.name }}</strong>
+                        </td>
+                        <td ng-show="uploader.isHTML5" nowrap="">{{
+                            item.file.size / 1024 / 1024 | number:2 }} MB
+                        </td>
+                        <td ng-show="uploader.isHTML5">
+                            <div style="margin-bottom: 0;" class="progress progress-xs">
+                                <div role="progressbar" ng-style="{ 'width': item.progress + '%' }"
+                                     class="progress-bar"></div>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                                                 <span ng-show="item.isSuccess">
+                                                    <em class="fa fa-check fa-fw"></em>
+                                                 </span>
+                            <span ng-show="item.isCancel">
+                                                    <em class="fa fa-ban-circle fa-fw"></em>
+                                                 </span>
+                            <span ng-show="item.isError">
+                                                    <em class="fa fa-times fa-fw"></em>
+                                                 </span>
+                        </td>
+                        <td nowrap="">
+                            <button type="button" ng-click="item.upload()"
+                                    ng-disabled="item.isReady || item.isUploading || item.isSuccess"
+                                    class="btn btn-info btn-xs">
+                                <span class="icon-cloud-upload mr"></span>{{ 'UPLOAD_FILE_BTN_TEXT' | translate }}
+                            </button>
+                            <button type="button" ng-click="item.cancel()"
+                                    ng-disabled="!item.isUploading" class="btn btn-warning btn-xs">
+                                <span class="icon-close mr"></span>{{ 'CANCEL_TEXT' | translate }}
+                            </button>
+                            <button type="button" ng-click="item.remove()"
+                                    class="btn btn-danger btn-xs">
+                                <span class="icon-trash mr"></span>{{ 'REMOVE_TEXT' | translate }}
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="panel" ng-if="uploader.queue.length > 1">
+                <div class="panel-body">
+                    <div>
+                        <p>{{ 'QUEUE_PROCESS_TEXT' | translate }}:</p>
+
+                        <div style="" class="progress progress-xs">
+                            <div role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"
+                                 class="progress-bar"></div>
+                        </div>
+                    </div>
+                    <button type="button" ng-click="uploader.uploadAll()"
+                            ng-disabled="!uploader.getNotUploadedItems().length"
+                            class="btn btn-info btn-s">
+                        <span class="icon-cloud-upload mr"></span>{{ 'UPLOAD_ALL_TEXT' | translate }}
+                    </button>
+                    <button type="button" ng-click="uploader.cancelAll()"
+                            ng-disabled="!uploader.isUploading" class="btn btn-warning btn-s">
+                        <span class="icon-close mr"></span>{{ 'CANCEL_ALL_TEXT' | translate }}
+                    </button>
+                    <button type="button" ng-click="uploader.clearQueue()"
+                            ng-disabled="!uploader.queue.length" class="btn btn-danger btn-s">
+                        <span class="icon-trash mr"></span>{{ 'REMOVE_ALL_TEXT' | translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="isLoading == true">
+            <spinner-v2 type="spin"></spinner-v2>
+        </div>
+
+        <div ng-show="isLoading == false">
+
+            <div class="row">
+                <div class="col-md-8 col-lg-8 col-sm-8">
+
+                    <input type="text"
+                           name="media_search"
+                           class="form-control"
+                           ng-model="searchText"
+                           placeholder="{{ 'ENTER_TO_SEARCH_TEXT'|translate }}"
+                           ng-keypress="($event.which === 13) ? searchMedia():0"/>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-4 text-right">
+
+                    <div class="btn-group mb-sm dropdown"
+                         ng-if="false"
+                         uib-dropdown="dropdown" style=""
+                         ng-init="uploadEntityProfile = 'all';uploadEntityProfile = 'ALL_TEXT'">
+
+                        <button class="btn dropdown-toggle btn-default mr-sm" type="button" ng-disabled="disabled"
+                                uib-dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
+                            <em class="fa fa-users"></em>
+                        </button>
+<!--                        <ul class="dropdown-menu" role="menu">-->
+<!--                            <li>-->
+<!--                                <a ng-click="uploadEntityProfile = 'all';uploadEntityProfileLabel = 'ALL_TEXT'">{{-->
+<!--                                    'ALL_TEXT' | translate }}-->
+<!--                                    <em class="fa fa-check mr-sm" ng-show="uploadEntityProfile == 'all'"></em>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a ng-click="uploadEntityProfile = 'me';uploadEntityProfileLabel = 'ME_TEXT'">{{-->
+<!--                                    'ME_TEXT' | translate }}-->
+<!--                                    <em class="fa fa-check mr-sm" ng-show="uploadEntityProfile == 'me'"></em>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a ng-click="uploadEntityProfile = 'member'; uploadEntityProfileLabel = 'MY_MEMBERS_TEXT'">{{-->
+<!--                                    'MY_MEMBERS_TEXT' | translate }}-->
+<!--                                    <em class="fa fa-check mr-sm" ng-show="uploadEntityProfile == 'member'"></em>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a ng-click="uploadEntityProfile = 'counterparty';uploadEntityProfileLabel = 'COUNTERPARTY_TEXT'">{{-->
+<!--                                    'COUNTERPARTY_TEXT' | translate }}-->
+<!--                                    <em class="fa fa-check mr-sm" ng-show="uploadEntityProfile == 'counterparty'"></em>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+                    </div>
+
+                    <button class="btn btn-round mr-sm"
+                            ng-click="getFileList()" type="button">
+                        <em class="fa fa-rotate" ng-class="{'fa-spin': isLoading}"></em>
+                    </button>
+
+
+                    <div class="btn-group dropdown" uib-dropdown="dropdown" style="">
+
+                        <button class="btn dropdown-toggle btn-round"
+                                type="button"
+                                ng-disabled="disabled"
+                                uib-dropdown-toggle=""
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                            <em class="fa fa-th" ng-show="displayMode == 'grid'"></em>
+                            <em class="fa fa-list" ng-show="displayMode == 'list'"></em>
+                        </button>
+
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <li>
+                                <a ng-click="displayMode = 'list';displayModeLabel = 'LIST_MODE_TEXT'">
+                                    <em class="fa fa-list mr-sm"></em>
+                                    {{ 'LIST_MODE_TEXT' | translate }}
+                                    <em class="fa fa-check mr-sm" ng-show="displayMode == 'list'"></em>
+                                </a>
+                            </li>
+                            <li>
+                                <a ng-click="showGrid()">
+                                    <em class="fa fa-th mr-sm"></em>
+                                    {{'GRID_MODE_TEXT' | translate }}
+                                    <em class="fa fa-check mr-sm" ng-show="displayMode == 'grid'"></em>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" ng-if="isProperty" ng-show="!showUpload">
+                <div class="col-md-12 mg-t-20 mg-b-10 text-bright-blue" ng-click="showUploadFn()">
+                    <img class="height-35px margin-auto" src="/app/assets/img/svg/reduced_file_section.svg"/>
+                    <span class="ml txt-16"> {{'UPLOAD_NEW_PICTURE_TEXT' | translate}}</span>
+                </div>
+            </div>
+
+            <div ng-if="items.length == 0"
+                 class="height-100">
+
+                <app-no-data message="NO_FILES_AVAILABLE_TEXT"></app-no-data>
+
+            </div>
+
+            <div class="row mt" ng-if="false">
+                <div
+                    ng-class="{ 'media-items-list': displayMode == 'grid', 'media-items-list-small': displayMode == 'list'  }">
+                    <app-media-item display-mode="displayMode"
+                                    is-attachment="true"
+                                    is-selectable="false"
+                                    is-editable="true"
+                                    on-delete="deleteItem(item.uuid)"
+                                    object-uuid="uuid"
+                                    item="item"
+                                    items="items"
+                                    ng-repeat="item in items | filter:searchText track  by $index "></app-media-item>
+                </div>
+            </div>
+
+
+            <div class="mt media-items-list-small mr-sm " ng-if="displayMode == 'list'"
+                 ng-class="{'overflow-y-enable overflow-x-disable pd-r-10' : isProperty, 'height-70vh-m70px' : isProperty && showUpload, 'height-80vh-m70px' :  isProperty && !showUpload }">
+                <app-media-item-list display-mode="displayMode"
+                                     is-selectable="false"
+                                     is-editable="true"
+                                     is-attachment="true"
+                                     object-uuid="uuid"
+                                     object-type="objectType"
+                                     is-property="isProperty"
+                                     on-delete="deleteItem(item.uuid)"
+                                     item="item"
+                                     items="items"
+                                     ng-repeat="item in items | filter:searchText track  by $index "></app-media-item-list>
+            </div>
+            <div class="mt row" ng-if="displayMode == 'grid'" vertilize-container=""
+                 ng-class="{'overflow-y-enable overflow-x-disable' : isProperty ,'height-70vh-m70px' : isProperty && showUpload, 'height-80vh-m70px' :  isProperty && !showUpload } ">
+                <app-media-item-grid display-mode="displayMode"
+                                     is-selectable="false"
+                                     is-editable="true"
+                                     is-attachment="true"
+                                     object-uuid="uuid"
+                                     object-type="objectType"
+                                     on-delete="deleteItem(item.uuid)"
+                                     is-property="isProperty"
+                                     item="item"
+                                     items="items"
+                                     width="mediaContentWidth"
+                                     ng-repeat="item in items | filter:searchText track  by $index "></app-media-item-grid>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -45,7 +45,7 @@
             <div class="col-md-6">
                 <div>
                     <label class="label-text-form">
-                        {{'STATUS_TEXT'}}
+                        {{'STATUS_TEXT' | translate}}
                     </label>
                 </div>
                 <ui-select ng-model="company.statusSelected"
@@ -63,7 +63,7 @@
                     </ui-select-match>
 
                     <ui-select-choices repeat="item in statuses track by $index">
-                        <div class=" " ng-click="company.status = item.value">
+                        <div class=" " ng-click="changeStatus(item)">
                             <em class="fa-solid fa-circle txt-16 mr-sm {{'text-' + item.color}}"></em>
                             {{ item.text | translate}}
                         </div>
@@ -76,11 +76,20 @@
             <div class="col-md-12">
                 <div>
                     <label class="label-text-form">
-                        {{'VAT_REGISTRATION_CERTIFICATE_TEXT'}}
+                        {{'VAT_REGISTRATION_CERTIFICATE_TEXT' | translate}}
                     </label>
                 </div>
-                <div>
 
+                <div class="mg-b-20" ng-if="isEditable && company.status != 1">
+                    <app-media-zone uuid="company.uuid"
+                                    company-id="company.id"
+                                    object-type="company"></app-media-zone>
+                </div>
+
+                <div class="mg-b-20" ng-if="!isEditable || company.status == 1">
+                    <app-media-zone-view uuid="company.uuid"
+                                         show-no-data-available="true"
+                                         object-type="company"></app-media-zone-view>
                 </div>
             </div>
         </div>

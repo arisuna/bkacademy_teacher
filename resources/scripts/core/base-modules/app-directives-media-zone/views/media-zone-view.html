@@ -1,0 +1,133 @@
+<div class="upload-zone">
+    <div class="uploadZone my-drop-zone" uploader="uploader" nv-file-drop="">
+        <div class="">
+            <div class="">
+                <div class="text-right">
+                    <div class="btn-group mb-sm dropdown" uib-dropdown="dropdown" style=""
+                         ng-show="items.length > 0"
+                         ng-init="displayMode = 'list';displayModeLabel = 'LIST_MODE_TEXT'">
+
+                        <button class="btn dropdown-toggle btn-default" type="button" ng-disabled="disabled"
+                                uib-dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
+                            <em class="fa fa-th" ng-show="displayMode == 'grid'"></em>
+                            <em class="fa fa-list" ng-show="displayMode == 'list'"></em>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <li>
+                                <a ng-click="displayMode = 'list';displayModeLabel = 'LIST_MODE_TEXT'">{{
+                                    'LIST_MODE_TEXT' | translate }}
+                                    <em class="fa fa-check mr-sm" ng-show="displayMode == 'list'"></em>
+                                </a>
+                            </li>
+                            <li>
+                                <a ng-click="displayMode = 'grid'; displayModeLabel = 'GRID_MODE_TEXT'">{{
+                                    'GRID_MODE_TEXT' | translate }}
+                                    <em class="fa fa-check mr-sm" ng-show="displayMode == 'grid'"></em>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div ng-if="items.length > 0 && isLoading == false"
+                     ng-class="{ 'media-items-list': displayMode == 'grid', 'media-items-list-small': displayMode == 'list'  }">
+                    <div class="item-box" ng-repeat="item in items">
+                        <!-- Item name -->
+                        <!-- GRID ITEM -->
+                        <div ng-if="displayMode == 'grid'" class="item-icon box-ratio-4-3"
+                             ng-switch="item.file_type">
+                            <div class="inner-ratio">
+                                <img ng-switch-when="image"
+                                     ng-src="{{ item.image_data.url_thumb }}"
+                                     class="img-responsive block-center"/>
+                                <em ng-switch-when="audio" class="fa fa-file-audio-o"></em>
+                                <em ng-switch-when="video" class="fa fa-file-video-o"></em>
+                                <ng-switch-when ng-switch-when="document">
+                                    <em ng-if="item.file_extension == 'pdf'"
+                                        class="fa fa-file-{{ item.file_extension }}-o"></em>
+                                    <em ng-if="item.file_extension == 'docx' || item.file_extension == 'doc'"
+                                        class="fa fa-file-word-o"></em>
+                                    <em ng-if="item.file_extension == 'ppt' || item.file_extension == 'pptx'"
+                                        class="fa fa-file-powerpoint-o"></em>
+                                    <em ng-if="item.file_extension == 'xls' || item.file_extension == 'xlsx'"
+                                        class="fa fa-file-excel-o"></em>
+                                    <em ng-if="item.file_extension != 'ppt' && item.file_extension != 'pptx' &&
+                                                    item.file_extension != 'docx' && item.file_extension != 'doc' && item.file_extension != 'pdf'
+                                                    && item.file_extension != 'xls' && item.file_extension != 'xlsx'"
+                                        class="fa fa-file-o"></em>
+                                </ng-switch-when>
+                                <em ng-switch-when="compressed" class="fa fa-file-archive-o"></em>
+                                <em ng-switch-when="other" class="fa fa-file-text-o"></em>
+                            </div>
+                        </div>
+                        <!-- LIST ITEM -->
+                        <span ng-if="displayMode == 'list'" class="item-icon" ng-switch="item.file_type">
+                            <em ng-switch-when="image" class="fa fa-file-image-o"></em>
+                            <em ng-switch-when="audio" class="fa fa-file-audio-o"></em>
+                            <em ng-switch-when="video" class="fa fa-file-video-o"></em>
+                            <ng-switch-when ng-switch-when="document">
+                                <em ng-if="item.file_extension == 'pdf'"
+                                    class="fa fa-file-{{ item.file_extension }}-o"></em>
+                                <em ng-if="item.file_extension == 'docx' || item.file_extension == 'doc'"
+                                    class="fa fa-file-word-o"></em>
+                                <em ng-if="item.file_extension == 'ppt' || item.file_extension == 'pptx'"
+                                    class="fa fa-file-powerpoint-o"></em>
+                                <em ng-if="item.file_extension == 'xls' || item.file_extension == 'xlsx'"
+                                    class="fa fa-file-excel-o"></em>
+                                <em ng-if="item.file_extension != 'ppt' && item.file_extension != 'pptx' &&
+                                    item.file_extension != 'docx' && item.file_extension != 'doc' && item.file_extension != 'pdf'
+                                    && item.file_extension != 'xls' && item.file_extension != 'xlsx'"
+                                    class="fa fa-file-o"></em>
+                            </ng-switch-when>
+                            <em ng-switch-when="compressed" class="fa fa-file-archive-o"></em>
+                            <em ng-switch-when="other" class="fa fa-file-text-o"></em>
+                        </span>
+
+                        <a class="item-name mg-0 mg-b-1x txt-bold cursor-pointer"
+                           document-view-media=""
+                           items="items"
+                           element="item">{{ item.name }}.{{ item.file_extension }}</a>
+
+
+                        <p ng-if="displayMode == 'grid'" class="item-name mg-0 mg-t-1x txt-gray txt-12">
+                             <span class="txt-10 mg-r-1s">
+                                 <i class="icon-clock"></i>
+                             </span>
+                            {{ item.updated_at | amUtc | amLocal | amDateFormat:$root.constants['COMPANY_DATE_FORMAT']
+                            }}
+                            {{ item.updated_at | amUtc | amLocal | amDateFormat:' HH:mm' }}
+                        </p>
+
+
+                        <span ng-if="displayMode == 'list'" class="mt pull-right ml">
+                            <a type="button" class="item-download mr-sm text-15"
+                               ng-click="uploader.downloadItem( item )"><em
+                                    class="fa fa-download"></em></a>
+                        </span>
+
+                        <span ng-if="displayMode == 'grid'" class="mt-lg text-left">
+                            <a type="button" class="item-download text-18 mr-sm"
+                               ng-click="uploader.downloadItem( item )"><em
+                                    class="fa fa-download"></em></a>
+                        </span>
+
+                        <!-- Updated date -->
+                        <p ng-if="displayMode == 'list'" class="mt text-left pull-right mg-0 mg-t-1x txt-gray txt-12">
+                             <span class="txt-10 mg-r-1s">
+                                 <i class="icon-clock"></i>
+                             </span>
+                            {{ item.updated_at | amUtc | amLocal | amDateFormat:$root.constants['COMPANY_DATE_FORMAT']
+                            }}
+                            {{ item.updated_at | amUtc | amLocal | amDateFormat:' HH:mm' }}
+                        </p>
+                    </div>
+                </div>
+
+                <app-no-data ng-if="items.length == 0 && isLoading == false && showNoDataAvailable == true"
+                             message="NO_FILES_AVAILABLE_TEXT"></app-no-data>
+            </div>
+        </div>
+
+    </div>
+</div>
+

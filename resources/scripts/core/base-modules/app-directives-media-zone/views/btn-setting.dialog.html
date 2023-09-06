@@ -1,0 +1,50 @@
+<ul class="list-group list-dropdown font-nunito" ng-if="isMedia == true">
+    <li ng-click="closeThisDialog({type: 1})"
+        ng-if="item.is_owner"
+        class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13">
+        <span>{{'RENAME_TEXT' | translate}}</span>
+    </li>
+    <li ng-click="closeThisDialog({type: 2})"
+        ng-if="item.is_owner"
+        class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13">
+        <span>{{ 'MOVE_FILE_TEXT' | translate }}</span>
+    </li>
+    <li ng-click="closeThisDialog({type: 3})"
+        ng-if="item.is_owner"
+        class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13">
+        <span>{{'COPY_FILE_TEXT' | translate}}</span>
+    </li>
+    <li ng-if="isPrivate != null && isPrivate == 1 && item.is_owner"
+        class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13"
+        ng-click="closeThisDialog({type: 4})">
+        <span>{{'MAKE_PUBLIC_TEXT' | translate}}</span>
+    </li>
+    <li ng-if="isPrivate != null && isPrivate == 0 && item.is_owner"
+        class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13"
+        ng-click="closeThisDialog({type: 4})">
+        <span>{{'MAKE_PRIVATE_TEXT' | translate}}</span>
+    </li>
+    <li ng-if=" (currentUser.isAdmin || item.is_owner) && isMedia == true"
+        ng-click="closeThisDialog({type: 5})"
+        class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13">
+        <span class="text-red">{{'REMOVE_TEXT' | translate}}</span>
+    </li>
+</ul>
+
+<ul class="list-group list-dropdown" ng-if="isAttachment == true">
+<!--    <li class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13"-->
+<!--        ng-click="closeThisDialog({type: 6})"-->
+<!--        ng-if="isEmployee == true">-->
+<!--        <span class="">{{'MOVE_FILE_TEXT' | translate}}</span>-->
+<!--    </li>-->
+<!--    <li class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13"-->
+<!--        ng-if="attachmentItem.assignee_folder_uuid && isEmployee == true"-->
+<!--        ng-click="closeThisDialog({type: 7})">-->
+<!--        <span>{{'MOVE_FILE_OUT_OF_FOLDER_TEXT' | translate}}</span>-->
+<!--    </li>-->
+    <li class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13"
+        ng-click="closeThisDialog({type: 5})"
+        ng-if="isEditable && attachmentItem.can_delete && isAttachment == true">
+        <span class="text-red">{{'REMOVE_TEXT' | translate}}</span>
+    </li>
+</ul>

@@ -1,0 +1,132 @@
+<div class="item-box overflow-unset">
+    <!-- Item name -->
+    <span ng-if="isSelectable" class="selectable-input">
+        <div class="checkbox c-checkbox pull-left">
+            <label>
+                <input type="checkbox" ng-model="$parent.item.is_selected" ng-change="selectItemFn()">
+                <span class="fa fa-check"></span>
+            </label>
+        </div>
+    </span>
+
+    <span ng-if="isAttachment && isLibrary" class="selectable-input">
+        <div class="checkbox c-checkbox pull-left">
+            <label>
+                <input type="checkbox" ng-model="$parent.item.is_selected" ng-change="selectAttachmentFn()">
+                <span class="fa fa-check"></span>
+            </label>
+        </div>
+    </span>
+
+
+    <div class="pull-left txt-24"
+         ng-switch="item.file_type"
+         ng-click="openDocument(item.image_data.url_full,item.file_type, item.file_extension )">
+        <em ng-switch-when="image" class="fa fa-file-image-o"></em>
+        <em ng-switch-when="audio" class="fa fa-file-audio-o"></em>
+        <em ng-switch-when="video" class="fa fa-file-video-o"></em>
+        <ng-switch-when ng-switch-when="document">
+            <em ng-if="item.file_extension == 'pdf'"
+                class="fa fa-file-{{ item.file_extension }}-o"></em>
+            <em ng-if="item.file_extension == 'docx' || item.file_extension == 'doc'"
+                class="fa fa-file-word-o"></em>
+            <em ng-if="item.file_extension == 'ppt' || item.file_extension == 'pptx'"
+                class="fa fa-file-powerpoint-o"></em>
+            <em ng-if="item.file_extension == 'xls' || item.file_extension == 'xlsx'"
+                class="fa fa-file-excel-o"></em>
+            <em ng-if="item.file_extension != 'ppt' && item.file_extension != 'pptx' &&
+                item.file_extension != 'docx' && item.file_extension != 'doc' && item.file_extension != 'pdf'
+                && item.file_extension != 'xls' && item.file_extension != 'xlsx'"
+                class="fa fa-file-o"></em>
+        </ng-switch-when>
+        <em ng-switch-when="compressed" class="fa fa-file-archive-o"></em>
+        <em ng-switch-when="other" class="fa fa-file-text-o"></em>
+    </div>
+
+    <div class="item-name mg-0 mg-b-1x txt-14 pull-left ml max-width-80per cursor-pointer" document-view-media=""
+         items="" element="item">
+        <span class="">{{ item.name }}.{{ item.file_extension
+            }}{{ item.file_size > 0 ? ' (' + item.file_size_human_format + ')' : ''}}</span>
+
+        <div class="txt-10">
+            <span class="txt-10 mg-r-1s"><i class="icon-clock"></i></span>
+            {{ item.updated_at | amUtc | amLocal | amDateFormat:$root.constants['COMPANY_DATE_FORMAT'] }}
+            {{ item.updated_at | amUtc | amLocal | amDateFormat:' HH:mm' }}
+
+
+<!--            <span class="label relo-bg-green text-white mr text-left"-->
+<!--                  ng-if="item.user_profile_uuid == currentUser.uuid">-->
+<!--                {{ 'ME_TEXT' | translate }}-->
+<!--            </span>-->
+<!--            <span class="label label-primary  mr text-left"-->
+<!--                  ng-if="item.user_profile_uuid != currentUser.uuid && item.company_uuid == currentCompany.uuid">-->
+<!--                {{ 'MY_MEMBERS_TEXT' | translate }}-->
+<!--            </span>-->
+<!--            <span class="label label-inverse  mr text-left"-->
+<!--                  ng-if="item.company_uuid && item.company_uuid != currentCompany.uuid && !item.is_employee">-->
+<!--                {{ 'SHARED_BY_HR_TEXT' | translate }}-->
+<!--            </span>-->
+
+<!--            <span class="label label-inverse  mr text-left"-->
+<!--                  ng-if="item.company_uuid != currentCompany.uuid && item.is_employee">-->
+<!--                {{ 'SHARED_BY_EE_TEXT' | translate }}-->
+<!--            </span>-->
+
+<!--            <span class="label label-primary mr text-left" ng-if="isProperty && item.is_thumb">-->
+<!--                {{ 'MAIN_THUMBNAIL_TEXT' | translate }}-->
+<!--            </span>-->
+        </div>
+
+
+    </div>
+
+    <div class="pull-right media-list-right">
+        <app-media-item-button-setting type="displayMode"
+                                       new-uploader="newUploader"
+                                       copy-media-item="copyMediaItem(item)"
+                                       move-media-item="moveMediaItem(item)"
+                                       change-media-status="changeMediaStatus(item)"
+                                       rename-media-item="renameMediaItem(item)"
+                                       remove-media-item="removeItem(item)"
+                                       item="item"
+                                       on-delete="onDelete"
+                                       is-private="item.is_private"
+                                       is-media="true"
+                                       ng-if="isMedia == true && !item.can_attach_to_my_library && (currentUser.isAdmin || item.is_owner)"
+        ></app-media-item-button-setting>
+
+        <app-media-item-button-setting type="displayMode"
+                                       attachment-item="item"
+                                       is-attachment="true"
+                                       is-employee="isEmployee"
+                                       remove-media-item="removeItem(item)"
+                                       move-attachment-item="moveAttachmentItem(item)"
+                                       is-editable="isEditable"
+                                       item="item"
+                                       set_thumb="setThumb(item)"
+                                       is-property="isProperty"
+                                       ng-if="isAttachment == true && (isEditable && item.can_delete) && (!item.can_attach_to_my_library || (item.is_deleted === 1 && item.user_profile_uuid === currentUser.uuid))"
+        ></app-media-item-button-setting>
+
+<!--        <app-media-item-button-copy type="displayMode"-->
+<!--                                    is-media="isMedia"-->
+<!--                                    is-attachment="isAttachment"-->
+<!--                                    remove-media-item="removeItem(item)"-->
+<!--                                    item="item"-->
+<!--                                    is-share-document="isShareDocument"-->
+<!--                                    copy-media-item="copyMediaItem(item)"-->
+<!--                                    copy-to-hr="copyToHr(item)"-->
+<!--                                    copy-to-dsp="copyToDsp(item)"-->
+<!--                                    copy-to-assignee="copyToAssignee(item)"-->
+<!--                                    ng-if="(isAttachment == true && item.user_profile_uuid != currentUser.uuid && item.can_attach_to_my_library == true) || (isMedia == true && item.user_profile_uuid != currentUser.uuid && item.can_attach_to_my_library == true)">-->
+<!--        </app-media-item-button-copy>-->
+
+        <button-default-icon icon-class="fa fa-download"
+                             ng-click="downloadItem( item )"></button-default-icon>
+
+    </div>
+
+    <div class="clearfix"></div>
+
+
+</div>

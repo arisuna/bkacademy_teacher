@@ -1,0 +1,218 @@
+<div
+        ng-class="{'item-grid col-xl-3 col-lg-4 col-md-6 col-sm-6':displayMode == 'grid','col-md-12 item-box':displayMode == 'list'}">
+
+    <div class="panel discoverer border-gray" data-filter-group="audio" ng-if="displayMode == 'grid'">
+        <div class="panel-body text-center">
+            <div class="clearfix discover mb-sm">
+
+                <div ng-if="isSelectable" class="selectable-input pull-left">
+                    <div class="checkbox c-checkbox pull-left mt0 mb0">
+                        <label>
+                            <input type="checkbox" ng-model="$parent.item.is_selected" ng-change="selectItemFn()">
+                            <span class="fa fa-check"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="pull-right">
+                    <a class="text-bright-blue" title="Download"
+                       ng-click="downloadItem( item )">
+                        <em class="fa fa-download fa-fw"></em>
+                    </a>
+                </div>
+            </div>
+
+            <a class="file-icon"
+               items="items"
+               element="item"
+               app-media-view="true"
+               ng-click="openDocument(item.image_data.url_full,item.file_type, item.file_extension )"
+               ng-switch="item.file_type">
+                <img ng-switch-when="image"
+                     ng-src="{{ item.image_data.url_thumb }}"
+                     class="img-responsive img-height-70 block-center" ng-style="{'max-height':'70px'}"/>
+                <em ng-switch-when="audio" class="fa fa-file-audio-o"></em>
+                <em ng-switch-when="video" class="fa fa-file-video-o"></em>
+                <ng-switch-when ng-switch-when="document">
+                    <em ng-if="item.file_extension == 'pdf'"
+                        class="fa fa-5x fa-file-{{ item.file_extension }}-o"></em>
+                    <em ng-if="item.file_extension == 'docx' || item.file_extension == 'doc'"
+                        class="fa  fa-5x fa-file-word-o"></em>
+                    <em ng-if="item.file_extension == 'ppt' || item.file_extension == 'pptx'"
+                        class="fa fa-5x fa-file-powerpoint-o"></em>
+                    <em ng-if="item.file_extension == 'xls' || item.file_extension == 'xlsx'"
+                        class="fa fa-5x fa-file-excel-o"></em>
+                    <em ng-if="item.file_extension != 'ppt' && item.file_extension != 'pptx' &&
+                                                    item.file_extension != 'docx' && item.file_extension != 'doc' && item.file_extension != 'pdf'
+                                                    && item.file_extension != 'xls' && item.file_extension != 'xlsx'"
+                        class="fa fa-5x fa-file-o"></em>
+                </ng-switch-when>
+                <em ng-switch-when="compressed" class="fa fa-5x fa-file-archive-o"></em>
+                <em ng-switch-default="" class="fa fa-5x fa-file-o"></em>
+            </a>
+
+            <p ng-style="{'overflow':'hidden'}">
+                <small class="text-dark">{{ item.name }}.{{ item.file_extension }}</small>
+            </p>
+
+            <div class="clearfix m0 text-muted">
+                <small class="pull-right" ng-show="item.file_size > 0">{{ item.file_size_human_format }}</small>
+            </div>
+
+
+        </div>
+        <div class="footer pd-l-1x pd-r-1x">
+
+<!--            <div ng-style="{'overflow':'hidden'}" class="mb-sm">-->
+<!--                <span class="label relo-bg-green text-white mt-lg mr text-left"-->
+<!--                      ng-if="item.user_profile_uuid == currentUser.uuid">-->
+<!--                    {{ 'ME_TEXT' | translate }}-->
+<!--                </span>-->
+<!--                <span class="label label-primary mt-lg mr text-left"-->
+<!--                      ng-if="item.user_profile_uuid != currentUser.uuid && item.company_id == currentCompany.id">-->
+<!--                    {{ 'MY_MEMBERS_TEXT' | translate }}-->
+<!--                </span>-->
+<!--                <span class="label label-inverse mt-lg mr text-left" ng-if="item.company_id != currentCompany.id">-->
+<!--                    {{ 'COUNTERPARTY_TEXT' | translate }}-->
+<!--                </span>-->
+<!--            </div>-->
+
+
+            <div class="pull-left">
+                <small class="mt-sm">
+                    <em class="fa fa-clock-o mr-sm"></em>
+                    {{ item.updated_at | amUtc | amLocal | amDateFormat:$root.constants['COMPANY_DATE_FORMAT'] }}
+                    {{ item.updated_at | amUtc | amLocal | amDateFormat:' HH:mm' }}
+                </small>
+            </div>
+
+
+            <div class="btn-group mb-sm dropdown open pull-right" uib-dropdown="dropdown" class="">
+                <button class="btn btn-sm btn-link btn-transparent btn-flat " type="button"
+                        ng-disabled="disabled"
+                        uib-dropdown-toggle="">
+                    <em class="fa fa-ellipsis-h text-gray"></em>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <li ng-show="isMedia == true">
+                        <a ng-click="renameMediaItem(item)">
+                            <em class="fa fa-edit text-bright-blue mr-sm"></em>
+                            {{'RENAME_BTN_TEXT' | translate}}
+                        </a>
+                    </li>
+                    <li ng-show="isMedia == true">
+                        <a ng-click="removeMediaItem(item.uuid)">
+                            <em class="fa fa-trash text-red mr-sm"></em>
+                            {{'DELETE_BTN_TEXT' | translate}}
+                        </a>
+                    </li>
+                    <li ng-show="isMedia == false" ng-if="isEditable && item.can_delete">
+                        <a ng-click="removeAttachmentItem(item.uuid)">
+                            <em class="fa fa-trash text-red mr-sm"></em>{{'DELETE_BTN_TEXT' | translate}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div ng-if="displayMode == 'list'">
+        <span ng-if="isSelectable" class="selectable-input">
+            <div class="checkbox c-checkbox pull-left">
+                <label>
+                    <input type="checkbox" ng-model="$parent.item.is_selected" ng-change="selectItemFn()">
+                    <span class="fa fa-check"></span>
+                </label>
+            </div>
+        </span>
+
+        <span class="pull-left item-icon mt "
+              ng-switch="item.file_type">
+            <em ng-switch-when="image" class="fa fa-file-image-o"></em>
+            <em ng-switch-when="audio" class="fa fa-file-audio-o"></em>
+            <em ng-switch-when="video" class="fa fa-file-video-o"></em>
+            <ng-switch-when ng-switch-when="document">
+                <em ng-if="item.file_extension == 'pdf'"
+                    class="fa fa-file-{{ item.file_extension }}-o"></em>
+                <em ng-if="item.file_extension == 'docx' || item.file_extension == 'doc'"
+                    class="fa fa-file-word-o"></em>
+                <em ng-if="item.file_extension == 'ppt' || item.file_extension == 'pptx'"
+                    class="fa fa-file-powerpoint-o"></em>
+                <em ng-if="item.file_extension == 'xls' || item.file_extension == 'xlsx'"
+                    class="fa fa-file-excel-o"></em>
+                <em ng-if="item.file_extension != 'ppt' && item.file_extension != 'pptx' &&
+                    item.file_extension != 'docx' && item.file_extension != 'doc' && item.file_extension != 'pdf'
+                    && item.file_extension != 'xls' && item.file_extension != 'xlsx'"
+                    class="fa fa-file-o"></em>
+            </ng-switch-when>
+            <em ng-switch-when="compressed" class="fa fa-file-archive-o"></em>
+            <em ng-switch-default="" class="fa fa-file-o"></em>
+        </span>
+
+        <a class="pull-left item-name mt ml-sm mg-0 mg-b-1x txt-bold text-inverse cursor-pointer"
+           document-view-media=""
+           items="items"
+           element="item">{{ item.name }}.{{ item.file_extension }}</a>
+
+        <span class="mt pull-right ml">
+
+            <a class="btn btn-round btn-primary btn-outline btn-sm"
+               ng-click="downloadItem( item )"><em class="fa fa-download"></em>
+            </a>
+
+            <div class="btn-group mb-sm dropdown open" uib-dropdown="dropdown" style="" ng-show="isMedia == true">
+
+                <button class="btn btn-outline btn-round btn-edit btn-sm dropdown-toggle" type="button"
+                        ng-disabled="disabled"
+                        uib-dropdown-toggle="" aria-haspopup="true" aria-expanded="true">
+                    <em class="fa fa-ellipsis-h text-gray"></em>
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <li ng-show="isMedia == true"><a ng-click="renameMediaItem(item)">{{'RENAME_BTN_TEXT' |
+                    translate}}</a>
+                    </li>
+                    <li ng-show="isMedia == true">
+                        <a ng-click="removeMediaItem(item.uuid)">{{'DELETE_BTN_TEXT'
+                        | translate}}</a>
+                    </li>
+
+                    <li ng-show="isAttachment == true" ng-if="isEditable && item.can_delete">
+                        <a ng-click="removeAttachmentItem(item.uuid)">{{'DELETE_BTN_TEXT'
+                        | translate}}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <a type="button"
+               class="btn btn-outline btn-delete btn-round"
+               ng-show="isMedia == false"
+               ng-if="isEditable && item.can_delete"
+               ng-click="removeAttachmentItem( item.uuid )">
+                <em class="fa fa-trash"></em>
+            </a>
+        </span>
+
+        <span class="mt-lg text-left pull-right mg-0 mg-t-1x txt-gray txt-12">
+            <span class="txt-10 mg-r-1s"><i class="icon-clock"></i></span>
+            {{ item.updated_at | amUtc | amLocal | amDateFormat:$root.constants['COMPANY_DATE_FORMAT'] }}
+            {{ item.updated_at | amUtc | amLocal | amDateFormat:' HH:mm' }}
+        </span>
+
+        <!--        <span class="label relo-bg-green text-white mt-lg mr text-left pull-right"-->
+        <!--              ng-if="item.user_profile_uuid == currentUser.uuid">-->
+        <!--            {{ 'ME_TEXT' | translate }}-->
+        <!--        </span>-->
+        <!--        <span class="label label-primary mt-lg mr text-left pull-right"-->
+        <!--              ng-if="item.user_profile_uuid != currentUser.uuid && item.company_id == currentCompany.id">-->
+        <!--            {{ 'MY_MEMBERS_TEXT' | translate }}-->
+        <!--        </span>-->
+        <!--        <span class="label label-inverse mt-lg mr text-left pull-right" ng-if="item.company_id != currentCompany.id">-->
+        <!--            {{ 'SHARED_BY_HR_TEXT' | translate }}-->
+        <!--        </span>-->
+        <div class="clearfix"></div>
+    </div>
+
+</div>
