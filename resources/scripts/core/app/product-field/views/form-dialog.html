@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-heading relo-bg-bright-gray">
         <span class="text-dark-blue">
-           {{ isClone == true ?  ('CLONE_BUSINESS_ZONE_TEXT' | translate) + (' #' + object.id) : (object.id ?  ('EDIT_BUSINESS_ZONE_TEXT' | translate) + ' #' + object.id : ('CREATE_BUSINESS_ZONE_TEXT' | translate)) }}
+           {{ isClone == true ?  ('CLONE_PRODUCT_FIELD_TEXT' | translate) + (' #' + object.id) : (object.id ?  ('EDIT_PRODUCT_FIELD_TEXT' | translate) + ' #' + object.id : ('CREATE_PRODUCT_FIELD_TEXT' | translate)) }}
         </span>
     </div>
     <form class="form-validate noPadding" validate-form="true"
@@ -9,7 +9,7 @@
           role="form" ng-submit="" novalidate="">
         <div class="card-body custom-dialog-overflow height-100vh-m90px">
             <spinner-v2 type="spin" ng-show="page_loading"></spinner-v2>
-            <div ng-show="!page_loading">
+            <div ng-if="!page_loading">
                 <div class="row">
                     <div class="col-md-12">
                         <input-text is-editable="true"
@@ -21,49 +21,57 @@
                                     show-label="true"></input-text>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input-text is-editable="true"
+                                    is-required="true"
+                                    is-text="true"
+                                    ng-model="object.name_vn"
+                                    required-message="FIELD_IS_REQUIRED_TEXT"
+                                    label="NAME_VN_TEXT"
+                                    show-label="true"></input-text>
+                    </div>
+                </div>
 
 
                 <div class="row">
                     <div class="col-md-12">
                         <input-text is-editable="true"
-                                    is-required="false"
+                                    is-required="true"
                                     is-text="true"
-                                    ng-model="object.code"
-                                    label="CODE_TEXT"
+                                    ng-model="object.label"
+                                    label="LABEL_TEXT"
                                     show-label="true"></input-text>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
-                        <input-text-area
-                                is-editable="true"
-                                placeholder="ENTER_DESCRIPTION_TEXT"
-                                is-text="true"
-                                rows="5"
-                                label="DESCRIPTION_TEXT"
-                                show-label="true"
-                                ng-model="object.description"></input-text-area>
+                        <app-yes-no-input ng-model="object.is_mandatory"
+                                              label="IS_MANDATORY_TEXT"
+                                              label-floating="false"
+                                              init-value="false"></app-yes-no-input>
                     </div>
                 </div>
-
                 <div class="row">
-                    <div class="col-md-12">
-                        <div>
-                            <label class="txt-12">
-                                {{'ACTIVATED_TEXT' | translate}}
-                            </label>
-                        </div>
-                        <label class="switch switch-md">
-                            <input type="checkbox"
-                                   ng-value="1"
-                                   ng-checked="object.status == 1"
-                                   ng-click="object.status = object.status == 1 ? 0 : 1"
-                                   ng-model="object.status"/>
-                            <span ng-class=""></span>
-                        </label>
+                    <div class="col-sm-12">
+                        <app-product-field-types-selector ng-model="object.type"
+                                            label="TYPE_TEXT"
+                                            show-label="true"
+                                            is-required="true"
+                                            placeholder="ENTER_TYPE_TEXT"
+                                            required-message="FIELD_TYPE_IS_REQUIRED_TEXT"></app-product-field-types-selector>
                     </div>
-
+                </div>
+                <div class="row" ng-show="object.type == 2">
+                    <div class="col-sm-12">
+                        <app-attribute-types-selector ng-model="object.attribute_id"
+                                            label="ATTRIBUTE_TEXT"
+                                            show-label="true"
+                                            is-required="object.type == 2"
+                                            placeholder="ENTER_ATTRIBUTE_TEXT"
+                                            required-message="ATTRIBUTE_IS_REQUIRED_TEXT"></app-attribute-types-selector>
+                    </div>
                 </div>
 
 
@@ -71,13 +79,6 @@
             </div>
         </div>
         <div class="card-footer">
-<!--            <div class="pull-left">-->
-<!--                <button type="button"-->
-<!--                        class="btn btn-default btn-oval" ng-click="closeThisDialog(0)">-->
-<!--                    <em class="fa fa-long-arrow-left mr-sm"></em>-->
-<!--                    {{'CANCEL_TEXT' | translate}}-->
-<!--                </button>-->
-<!--            </div>-->
             <div class="pull-right text-right">
 
                 <button type="submit" class="btn relo-bg-green"

@@ -46,6 +46,20 @@
                     id: 3,
                     label: 'ALL_TEXT'
                 }
+            ], 
+            product_field_types: [
+                {
+                    id: 0,
+                    label: 'FIELD_TEXT_TEXT'
+                },
+                {
+                    id: 1,
+                    label: 'NUMERIC_TEXT'
+                },
+                {
+                    id: 2,
+                    label: 'ATTRIBUTE_TEXT'
+                }
             ]
         };
 
@@ -57,6 +71,10 @@
 
         this.getSettingUserGroups = function () {
             return vm.data.user_groups;
+        }
+
+        this.getProductFieldTypes = function () {
+            return vm.data.product_field_types;
         }
 
         this.getLevels = function () {

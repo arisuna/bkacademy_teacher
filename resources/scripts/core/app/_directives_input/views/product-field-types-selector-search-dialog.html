@@ -1,0 +1,22 @@
+<div class="panel panel-default panel-default-b">
+
+    <div class="panel-body  overflow-y-enable {{height}}"
+         ng-style="{'padding':'5px'}">
+
+        <div>
+            <div class="list-group list-group-flat list-group-blue">
+                <a class="list-group-item "
+                   ng-repeat="item in items"
+                   ng-class="{'active': (searchConfig.currentItem.id == item.id)}"
+                   ng-click="selectItem(item)">
+                    <div class="flex">
+<!--                        <em class="fa fa-users txt-24 text-gray mr-sm"></em>-->
+                        <span class="flex-vertical">
+                            {{item.label | translate}}
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

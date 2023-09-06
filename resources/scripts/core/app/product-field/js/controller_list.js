@@ -183,19 +183,19 @@
             };
 
 
-            $scope.cloneFn = function(business_zone){
+            $scope.cloneFn = function(product_field){
                 $scope.cloneDialog = ngDialog.open({
                     template: urlBase.tplApp('app', 'product-field', 'form-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue',
                     closeByDocument: true,
                     showClose: true,
                     data: {
-                        business_zone: business_zone,
+                        product_field: product_field,
                         view: false
                     },
                     controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppProductFieldService', '$state',
                         function ($scope, $element, $timeout, WaitingService, AppProductFieldService, $state) {
-                            $scope.object = $scope.ngDialogData.business_zone;
+                            $scope.object = $scope.ngDialogData.product_field;
                             $scope.page_loading = true;
                             $scope.isClone = true;
                             $scope.getDetailFn = function () {
@@ -247,7 +247,7 @@
 
 
             $scope.createFn = function(){
-                let business_zone = {
+                let product_field = {
                     uuid: ""
                 };
                 $scope.createDialog = ngDialog.open({
@@ -256,12 +256,12 @@
                     closeByDocument: true,
                     showClose: true,
                     data: {
-                        business_zone: business_zone,
+                        product_field: product_field,
                         view: false
                     },
                     controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppProductFieldService', '$state',
                     function ($scope, $element, $timeout, WaitingService, AppProductFieldService, $state) {
-                        $scope.object = $scope.ngDialogData.business_zone;
+                        $scope.object = $scope.ngDialogData.product_field;
                         $scope.saveFn = function(){
                             AppProductFieldService.createProductField($scope.object).then(function (res) {
                                 if (res.success) {
@@ -279,28 +279,25 @@
                     }]
                 });
                 $scope.createDialog.closePromise.then(function (data) {
-                    console.log('data', data);
-                    if(data && data.value && data.value.uuid){
-                        $scope.items.unshift(data.value);
-                    }
+                    $scope.reloadInit();
 
                 });
             }
 
-            $scope.editFn = function(business_zone){
-                console.log('business_zone', business_zone);
+            $scope.editFn = function(product_field){
+                console.log('product_field', product_field);
                 $scope.editDialog = ngDialog.open({
                     template: urlBase.tplApp('app', 'product-field', 'form-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue',
                     closeByDocument: true,
                     showClose: true,
                     data: {
-                        business_zone: business_zone,
+                        product_field: product_field,
                         view: false
                     },
                     controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppProductFieldService', '$state',
                         function ($scope, $element, $timeout, WaitingService, AppProductFieldService, $state) {
-                            $scope.object = $scope.ngDialogData.business_zone;
+                            $scope.object = $scope.ngDialogData.product_field;
                             $scope.page_loading = true;
 
                             $scope.getDetailFn = function () {
@@ -344,17 +341,7 @@
                     }]
                 });
                 $scope.editDialog.closePromise.then(function (data) {
-                    if(data && data.value && data.value.uuid){
-                        let _index = _.findIndex($scope.items, function(o){
-                            return o.uuid == data.value.uuid;
-                        })
-                        console.log('data.value', data.value)
-                        if (_index != 1){
-                            $scope.$evalAsync(function(){
-                                $scope.items[_index] = _.cloneDeep(data.value);
-                            })
-                        }
-                    }
+                    $scope.reloadInit();
                 });
             }
 
