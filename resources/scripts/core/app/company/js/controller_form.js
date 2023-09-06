@@ -84,7 +84,7 @@
                 // $event.preventDefault();
                 // $event.stopPropagation();
 
-                if($scope.company.status != $scope.companyStatus){
+                if ($scope.company.status != $scope.companyStatus) {
                     $scope.company.status = $scope.companyStatus
                 }
 
@@ -160,11 +160,11 @@
                 });
             }
 
-            $scope.onEditable = ($event) => {
+            $scope.onEditable = ($event, isEditable) => {
                 // $event.preventDefault();
                 // $event.stopPropagation();
                 $scope.$evalAsync(function () {
-                    $scope.isEditable = !$scope.isEditable
+                    $scope.isEditable = isEditable
                 })
             }
 

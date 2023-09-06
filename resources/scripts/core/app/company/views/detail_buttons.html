@@ -1,12 +1,12 @@
 <div id="top-button-container" ng-if="company.is_deleted != 1">
-    <div class="relo-bg-white edit-radio-mode mg-r-10"
+    <div class="relo-bg-white edit-radio-mode mg-r-10 mg-t-2"
          ng-style="{'height':'32px','display':'inline-flex'}">
     <span class="text-bold mr-sm txt-12 flex-middle"
           ng-class="{'text-blue':isEditable == true, 'text-muted': isEditable == false}">
         {{ 'EDIT_TEXT' | translate }}
     </span>
         <label class="switch">
-            <input type="checkbox" ng-model="isEditable" ng-change="onEditable($event)">
+            <input type="checkbox" ng-model="isEditable" ng-change="onEditable($event, isEditable)">
             <span></span>
         </label>
     </div>
