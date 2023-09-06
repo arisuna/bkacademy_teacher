@@ -2,9 +2,9 @@
     'use strict';
 
     App.controller('ProductFieldImportController', ['$q', '$scope', '$http', '$state', '$window', '$rootScope', '$translate', '$timeout',
-        'WaitingService', 'AppImportService', 'AppProductFieldService',
+        'WaitingService', 'AppImportService', 'AppProductFieldService', 'AppProductFieldGroupService',
 
-        function ($q, $scope, $http, $state, $window, $rootScope, $translate, $timeout, WaitingService, AppImportService, AppProductFieldService) {
+        function ($q, $scope, $http, $state, $window, $rootScope, $translate, $timeout, WaitingService, AppImportService, AppProductFieldService, AppProductFieldGroupService) {
             // Page loading
             $scope.loading = true;
             $scope.data = [];
@@ -64,6 +64,13 @@
 
                     $q.all(requestList).then(function () {
                         WaitingService.popSuccess($translate.instant("IMPORT_TEXT") + ' ' + i + '/' + $scope.data.length + ' ' +$translate.instant("SUCCESS_TEXT") + '!');
+                        AppProductFieldGroupService.updateFieldGroupAfterImport().then(function (res) {
+                            if (!res.success) {
+                                WaitingService.popError(res.message);
+                            }
+                        }, function (err) {
+                            WaitingService.popError(err);
+                        })
                         $scope.loading = false;
                     }, function () {
                         WaitingService.error('IMPORT_FAIL_TEXT');
