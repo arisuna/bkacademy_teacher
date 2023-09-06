@@ -3,18 +3,18 @@
 
     angular
         .module('app.app-services')
-        .service('AppProductModelService', AppProductModelService);
+        .service('AppModelService', AppModelService);
 
-    AppProductModelService.$inject = ['$http', '$q', '$httpParamSerializer', '$localStorage', '$filter', 'moment', 'AppHttp'];
+    AppModelService.$inject = ['$http', '$q', '$httpParamSerializer', '$localStorage', '$filter', 'moment', 'AppHttp'];
 
-    function AppProductModelService($http, $q, $httpParamSerializer, $localStorage, $filter, moment, AppHttp) {
+    function AppModelService($http, $q, $httpParamSerializer, $localStorage, $filter, moment, AppHttp) {
 
         var vm = this;
 
         
         this.search = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/app/product-model/search', data).then(function (response) {
+            AppHttp.put('/app/model/search', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -24,7 +24,7 @@
 
         this.getList = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/app/product-model/getList', data).then(function (response) {
+            AppHttp.put('/app/model/getList', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -34,9 +34,9 @@
 
 
 
-        this.deleteProductModel = function (uuid) {
+        this.deleteModel = function (uuid) {
             var deferred = $q.defer();
-            AppHttp.delete('/app/product-model/delete/' + uuid).then(function (response) {
+            AppHttp.delete('/app/model/delete/' + uuid).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);
@@ -45,9 +45,9 @@
         };
 
 
-        this.createProductModel = function (data) {
+        this.createModel = function (data) {
             var deferred = $q.defer();
-            AppHttp.post('/app/product-model/create', data).then(function (response) {
+            AppHttp.post('/app/model/create', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);
@@ -55,9 +55,9 @@
             return deferred.promise;
         };
 
-        this.updateProductModel = function (data) {
+        this.updateModel = function (data) {
             var deferred = $q.defer();
-            AppHttp.put('/app/product-model/update/' + data.id, data).then(function (response) {
+            AppHttp.put('/app/model/update/' + data.id, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);
@@ -65,9 +65,9 @@
             return deferred.promise;
         };
 
-        this.detailProductModel = function (id) {
+        this.detailModel = function (id) {
             var deferred = $q.defer();
-            AppHttp.get('/app/product-model/detail/' + id).then(function (response) {
+            AppHttp.get('/app/model/detail/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);
