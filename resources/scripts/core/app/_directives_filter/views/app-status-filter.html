@@ -1,0 +1,39 @@
+<div class="filter-item-container">
+    <div  uib-dropdown auto-close="outsideClick" is-open="isopen">
+        <div class="filter-title" uib-dropdown-toggle>
+            <span ng-if="iconClass == ''">
+<!--                <em class="fas fa-check-double"></em>-->
+                <em class="fa-solid fa-bars-progress"></em>
+<!--                <img src="/gms/assets/img/svg/filter-by-status.svg" class="img height-13px">-->
+            </span>
+
+            <span ng-if="iconClass != ''">
+                <em class="{{iconClass}}"></em>
+            </span>
+            <span class="badge relo-bg-bright-blue ml-sm mg-t-minus-1">{{ model.length ? model.length : 0 }}</span>
+            <div class="close">
+                <em class="fa fa-angle-down ml-sm"></em>
+            </div>
+        </div>
+        <div uib-dropdown-menu style="padding:5px; margin-bottom: 20px;" ng-style="dropdown_style" ng-class="dropdownSize">
+            <div class="input-search">
+                <input type="text"
+                       class="form-control"
+                       ng-model="filter_text"
+                       placeholder="Search ..." />
+                <i class="fa fa-search"></i>
+            </div>
+            <ul class="filter-dropdown">
+                <li ng-repeat="option in options | filter: filter_text">
+                    <div class="checkbox c-checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="option.selected" ng-change="update(option)">
+                            <span class="fa fa-check"></span>{{option.name | translate}}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+            <a ng-click="clearThisFilter()">{{'RESET_BTN_TEXT' | translate }}</a>
+        </div>
+    </div>
+</div>

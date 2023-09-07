@@ -132,6 +132,7 @@
                 $scope.loadCount = 0;
                 $scope.totalPages = 1;
                 $scope.currentPage = 1;
+                $scope.currentPage = 1;
                 $scope.items = [];
                 $scope.loadList();
             };

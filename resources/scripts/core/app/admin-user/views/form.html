@@ -41,13 +41,10 @@
                                 show-label="true"></input-text>
                 </div>
                 <div class="col-sm-6">
-                    <input-text is-editable="true"
-                                is-telephone="true"
-                                is-required="true"
-                                ng-model="user.phone"
-                                required-message="ENTER_PHONE_TEXT"
-                                label="PHONE_TEXT"
-                                show-label="true"></input-text>
+                    <app-phone-selector ng-model="user.phone"
+                                        show-label="true"
+                                        is-editable="true"
+                                        label="PHONE_TEXT"></app-phone-selector>
                 </div>
             </div>
         </div>
