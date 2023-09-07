@@ -7,7 +7,7 @@
     Routes.config(['$stateProvider', 'RouteHelpersProvider', function ($stateProvider, helper) {
             $stateProvider.state('app.product-field-group', {
                 url: '/product-field-group',
-                title: 'PRODUCT_FIELD_GROUP_GROUPS_TEXT',
+                title: 'PRODUCT_FIELD_GROUPS_TEXT',
                 resolve: helper.resolveFor('modernizr', 'icons', 'parsley'),
                 abstract: true,
                 parent: 'app.admin-page.dashboard',
@@ -23,7 +23,7 @@
                 }
             }).state('app.product-field-group.list', {
                 url: '',
-                title: 'PRODUCT_FIELD_GROUP_GROUPS_TEXT',
+                title: 'PRODUCT_FIELD_GROUPS_TEXT',
                 templateUrl: helper.modulePath('app', 'product-field-group/items', '_=' + Math.random())
             }).state('app.product-field-group.create', {
                 url: '/create',
