@@ -4,87 +4,45 @@
 
 (function () {
     'use strict';
-    App.controller('AddressController', ['$scope', '$http', '$stateParams', '$state', '$translate', '$timeout', 'WaitingService', 'AppDataService', 'AppSystem', 'AppCompanyService', 'AppAddressService',
-        function ($scope, $http, $stateParams, $state, $timeout, $translate, WaitingService, AppDataService, AppSystem, AppCompanyService, AppAddressService) {
-            $scope.isLoading = true;
-            $scope.isLoadingAddress = true;
-            $scope.company = {};
+    App.controller('AddressController', ['$scope', '$http', '$stateParams', '$state', '$translate', '$timeout', 'WaitingService', 'AppDataService', 'AppSystem', 'AppCompanyService', 'AppAddressService', 'ngDialog', 'urlBase', 'currentCompany',
+        function ($scope, $http, $stateParams, $state, $timeout, $translate, WaitingService, AppDataService, AppSystem, AppCompanyService, AppAddressService, ngDialog, urlBase, currentCompany) {
+            $scope.isLoading = false;
             $scope.isEditable = false;
             $scope.tabActive = 1;
             $scope.saving = false;
-
-            $scope.addresses = [];
-            $scope.billAddresses = [];
-            $scope.siteAddresses = [];
-            $scope.mailAddresses = [];
-
-            $scope.statuses = [
-                {name: 'UNVERIFIED_TEXT', value: 0, color: 'dark-gray', text: 'UNVERIFIED_TEXT'},
-                {name: 'VERIFIED_TEXT', value: 1, color: 'green', text: 'VERIFIED_TEXT'},
-            ]
-
-            $scope.getDetailFn = function () {
-                console.log("$stateParams.uuid", $stateParams.uuid)
-                let uuid = angular.isDefined($stateParams.uuid) ? $stateParams.uuid : 0;
-                if (!uuid) {
-                    $scope.isLoading = false;
-                    return;
-                }
-
-                AppCompanyService.getCompanyDetail(uuid).then(
-                    function (res) {
-                        if (res.success) {
-                            $scope.company = res.data;
-
-                            $scope.company.statusSelected = $scope.statuses.find(o => o.value == $scope.company.status)
-
-                            $scope.getListAddress(res.data.id)
-                        } else {
-                            WaitingService.error(res.msg);
-                        }
-                        $scope.isLoading = false;
-                    },
-                    function (error) {
-                        console.log("error", error)
-                        WaitingService.expire(error);
-                        $scope.isLoading = false;
-                    }
-                );
-            };
-            $scope.getDetailFn();
-
-            $scope.getListAddress = (companyId) => {
-                AppAddressService.getAddressList({
-                    company_id: companyId
-                }).then((res) => {
-                    if (res.success) {
-                        $scope.addresses = res.data
-                    } else {
-                        WaitingService.expire();
-                    }
-
-                    $timeout(function () {
-                        $scope.isLoadingAddress = false;
-                    }, 500)
-
-                }, (err) => {
-                    WaitingService.expire();
-                    $timeout(function () {
-                        $scope.isLoadingAddress = false;
-                    }, 500)
-                });
+            $scope.company = currentCompany;
+            $scope.address = {
+                company_id: $scope.company.id ? $scope.company.id : null,
+                vn_district_id: null,
+                vn_ward_id: null,
+                vn_province_id: null,
+                name: null,
+                address1: null,
+                address2: null,
+                latitude: null,
+                longitude: null,
+                ward_name: null,
+                district_name: null,
+                province_name: null,
+                postal: null,
+                city: null,
+                country: null,
+                telephone: null,
+                phone: null,
+                is_default: null,
+                address_type: null,
+                country_id: null,
             };
 
+            console.log("currentCompany", currentCompany)
 
             $scope.saveFn = function ($event) {
-                $event.preventDefault();
-                $event.stopPropagation();
+                // $event.preventDefault();
+                // $event.stopPropagation();
 
-                if ($scope.company.id > 0) {
-                    AppCompanyService.updateCompany($scope.company).then(function (res) {
+                if ($scope.address.id > 0) {
+                    AppAddressService.updateAddress($scope.address).then(function (res) {
                         $scope.saving = false;
-                        $scope.isEditable = false
-
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
                             $scope.closeThisDialog({company: res.data});
@@ -93,17 +51,15 @@
                         }
                     }, (err) => {
                         $scope.saving = false;
-                        $scope.isEditable = false
-
                         WaitingService.error(err);
                     })
                 } else {
-                    AppCompanyService.createCompany($scope.company).then(function (res) {
+                    AppAddressService.createAddress($scope.address).then(function (res) {
                         $scope.saving = false;
 
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
-                            $scope.closeThisDialog({company: res.data});
+                            $scope.closeThisDialog({address: res.data});
                         } else {
                             WaitingService.error(res.message);
                         }
@@ -115,54 +71,7 @@
                     })
                 }
 
-            }; // End save function
-
-            $scope.deleteFn = function (id) {
-                WaitingService.questionSimple('QUESTION_DELETE_COMPANY_TEXT',
-                    function (res) {
-                        AppCompanyService.deleteCompany(id).then(function (res) {
-                            if (res.success) {
-                                WaitingService.popSuccess(res.message);
-                                console.log('go', res.message);
-                                $scope.closeThisDialog({company: res.data});
-                            } else {
-                                WaitingService.error(res.message);
-                            }
-                        }, function (err) {
-                            WaitingService.error(err);
-                        });
-                    });
-            }; // End delete function
-
-            $scope.createAddress = function (type = 1) {
-                alert('createAddress')
-                $scope.createCompanyDialog = ngDialog.open({
-                    template: urlBase.tplApp('app', 'company', 'add-company-right-dialog', '_=' + Math.random()),
-                    className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
-                    scope: $scope,
-                    closeByDocument: false,
-                    controller: 'CompanyFormController'
-                });
-
-                $scope.createCompanyDialog.closePromise.then(function (data) {
-                    if (angular.isDefined(data.value.company)) {
-                        console.log('data.value', data.value);
-                        $scope.loadItems();
-                    }
-                });
-            }
-
-            $scope.onEditable = ($event) => {
-                $event.preventDefault();
-                $event.stopPropagation();
-                $scope.$evalAsync(function () {
-                    $scope.isEditable = !$scope.isEditable
-                })
-            }
-
-            $scope.changeStatus = (item) => {
-                $scope.company.status = item.value
-            }
+            };
         }]);
 
 })();

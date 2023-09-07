@@ -5,9 +5,9 @@
         .module('app.app-directives')
         .directive('appCityFullSelector', appCityFullSelector);
 
-    appCityFullSelector.$inject = ['$timeout', 'GmsGeonameService', 'urlBase', 'ngDialog', 'AppSystem'];
+    appCityFullSelector.$inject = ['$timeout', 'AppGeonameService', 'urlBase', 'ngDialog', 'AppSystem'];
 
-    function appCityFullSelector($timeout, GmsGeonameService, urlBase, ngDialog, AppSystem) {
+    function appCityFullSelector($timeout, AppGeonameService, urlBase, ngDialog, AppSystem) {
         var directive = {
             restrict: 'EA',
             replace: true,
@@ -90,7 +90,7 @@
                         template: urlBase.tplApp('app', '_directives_input', 'city-full-selector-modal-search'),
                         className: 'ngdialog-theme-default md-box',
                         scope: $scope,
-                        controller: ['GmsGeonameService', 'AppSystem', function (GmsGeonameService, AppSystem) {
+                        controller: ['AppGeonameService', 'AppSystem', function (AppGeonameService, AppSystem) {
                             let countries = AppSystem.getCountries();
                             $timeout(function () {
                                 $scope.country = _.find(countries, function (o) {
@@ -107,7 +107,7 @@
                     $scope.isLoading = true;
                     $scope.search.country_id = $scope.countryId;
                     $scope.hasCustomCity = false;
-                    GmsGeonameService.getCities($scope.search).then(function (res) {
+                    AppGeonameService.getCities($scope.search).then(function (res) {
                         if (res.success) {
                             $scope.cities = _.concat($scope.cities, res.data);
                             $scope.totalCities = res.total_items;
@@ -203,14 +203,14 @@
                         $scope.citySelected = {};
                     } else {
                         if ($scope.isObject == true && angular.isDefined($scope.model.geonameid)) {
-                            GmsGeonameService.getCity($scope.model.geonameid).then(function (res) {
+                            AppGeonameService.getCity($scope.model.geonameid).then(function (res) {
                                 if (res.success) {
                                     $scope.cityReference = res.data;
                                     $scope.citySelected = res.data;
                                 }
                             })
                         } else if ($scope.isGeonameid == true && $scope.model > 0) {
-                            GmsGeonameService.getCity($scope.model).then(function (res) {
+                            AppGeonameService.getCity($scope.model).then(function (res) {
                                 if (res.success) {
                                     $scope.cityReference = res.data;
                                     $scope.citySelected = res.data;

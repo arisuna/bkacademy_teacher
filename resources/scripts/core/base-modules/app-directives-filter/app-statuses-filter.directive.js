@@ -133,31 +133,21 @@
                             $scope.totalRestItems = 0;
                             $scope.statuses_selected = angular.copy(statuses_selected);
 
-
                             $scope.showShowHideSelectedItems = function () {
                                 $scope.showSelectedItems = !$scope.showSelectedItems;
                             }
 
-
                             $scope.addItem = function (item) {
-
-                                if (item.selected == true) {
-                                    item.selected = false;
-                                } else {
-                                    item.selected = true;
+                                let _index = _.findIndex($scope.statuses, function (o) {
+                                    return o.value == item.value;
+                                });
+                                if (_index <= 0) {
+                                    return
                                 }
 
-                                if (item.selected == true) {
-                                    $scope.statuses_selected.push(item);
-                                } else {
-                                    let indexToRemove = _.findIndex($scope.statuses_selected, function (o) {
-                                        return o.value == item.value;
-                                    });
+                                $scope.statuses[_index].selected = !item.selected
 
-                                    if (indexToRemove >= 0) {
-                                        $scope.statuses_selected.splice(indexToRemove, 1);
-                                    }
-                                }
+                                $scope.statuses_selected = $scope.statuses.filter(o => o.selected);
                             };
 
                             $scope.removeItem = function (item) {
@@ -190,17 +180,16 @@
                                 }
                             }
 
-
                             $scope.confirmSelect = function () {
                                 $scope.closeThisDialog({statuses_selected: $scope.statuses_selected});
                             }
 
                             $scope.updateSelected = function () {
                                 angular.forEach($scope.statuses_selected, function (item) {
-                                    item.selected = true;
                                     let _index = _.findIndex($scope.statuses, function (o) {
                                         return o.value == item.value
                                     });
+
                                     if (_index != -1) {
                                         $scope.statuses[_index].selected = true;
                                     }
@@ -214,17 +203,21 @@
                         if (angular.isDefined(returnData.value) && angular.isDefined(returnData.value.statuses_selected)) {
                             $scope.updateValue(returnData.value.statuses_selected);
                         } else {
-                            $scope.updateValue([]);
+                            // $scope.updateValue([]);
                         }
                     })
                 };
-
 
                 $scope.subscribe('clearFilter', function () {
                     $scope.clearThisFilter();
                 });
 
                 $scope.clearThisFilter = function () {
+                    $scope.options = $scope.options.map(o => {
+                        o.selected = false
+                        return o
+                    })
+
                     $scope.data.statuses_selected = angular.copy([]);
                     $scope.model = [];
                 };

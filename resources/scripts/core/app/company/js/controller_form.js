@@ -4,8 +4,8 @@
 
 (function () {
     'use strict';
-    App.controller('CompanyFormController', ['$scope', '$http', '$stateParams', '$state', '$translate', '$timeout', 'WaitingService', 'AppDataService', 'AppSystem', 'AppCompanyService', 'AppAddressService',
-        function ($scope, $http, $stateParams, $state, $timeout, $translate, WaitingService, AppDataService, AppSystem, AppCompanyService, AppAddressService) {
+    App.controller('CompanyFormController', ['$scope', '$state', '$http', '$stateParams', '$timeout', '$rootScope', '$translate', 'ngDialog', 'urlBase', 'WaitingService', 'AppDataService', 'AppCompanyService', 'AppAddressService',
+        function ($scope, $state, $http, $stateParams, $timeout, $rootScope, $translate, ngDialog, urlBase, WaitingService, AppDataService, AppCompanyService, AppAddressService) {
             $scope.isLoading = true;
             $scope.isLoadingAddress = true;
             $scope.company = {};
@@ -144,15 +144,21 @@
 
             $scope.createAddress = function (type = 1) {
                 // alert('createAddress')
-                $scope.createCompanyDialog = ngDialog.open({
+
+                $scope.createAddressDialog = ngDialog.open({
                     template: urlBase.tplApp('app', 'company', 'add-address-right-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
                     scope: $scope,
+                    resolve: {
+                        currentCompany: ['AppDataService', function (AppDataService) {
+                            return $scope.company;
+                        }]
+                    },
                     closeByDocument: true,
                     controller: 'AddressController'
                 });
 
-                $scope.createCompanyDialog.closePromise.then(function (data) {
+                $scope.createAddressDialog.closePromise.then(function (data) {
                     if (angular.isDefined(data.value.company)) {
                         console.log('data.value', data.value);
                         $scope.getListAddress($scope.company.id);

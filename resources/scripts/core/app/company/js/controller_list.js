@@ -176,7 +176,7 @@
                 $scope.isLoading = true;
                 $scope.publish('clearFilter');
 
-                $scope.initItems();
+                // $scope.initItems();
             };
 
             $scope.deleteFn = function (company, index) {

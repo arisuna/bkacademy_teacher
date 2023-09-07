@@ -1,7 +1,6 @@
 <div class="card noBorder">
     <div class="card-heading relo-bg-bright-gray card-title-heading">
-        <span ng-show="!company.id">{{'CREATE_COMPANY_TEXT' | translate}}</span>
-        <span ng-show="company.id">{{'EDIT_COMPANY_TEXT' | translate}}</span>
+        <span>{{'CREATE_ADDRESS_TEXT' | translate}}</span>
     </div>
 
     <form class="form-validate pd-0 mg-0"
@@ -11,42 +10,8 @@
           novalidate>
         <div class="card-body custom-dialog-overflow scroll-append scroll-y overflow-x-disable height-100vh-m93px">
             <div class="row">
-                <div class="col-sm-12">
-                    <input-text is-editable="true"
-                                is-text="true"
-                                is-required="true"
-                                ng-model="company.name"
-                                required-message="ENTER_COMPANY_NAME_TEXT"
-                                label="NAME_TEXT"
-                                show-label="true"></input-text>
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <input-text is-editable="true"
-                                is-email="true"
-                                is-lower-case="true"
-                                is-required="true"
-                                ng-model="company.email"
-                                label="EMAIL_TEXT"
-                                invalid-message="INVALID_EMAIL_TEXT"
-                                required-message="ENTER_EMAIL_TEXT"
-                                show-label="true"></input-text>
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-md-12">
-                    <app-phone-selector ng-model="company.phone"
-                                        show-label="true"
-                                        is-editable="true"
-                                        label="PHONE_TEXT">
-                    </app-phone-selector>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <app-country-selector ng-model="company.country_id"
+                    <app-country-selector ng-model="address.country_id"
                                           show-label="true"
                                           is-editable="true"
                                           is-required="true"
@@ -55,10 +20,83 @@
                     </app-country-selector>
                 </div>
             </div>
+            <div class="row" [hidden]="!address.country_id">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                is-required="true"
+                                ng-model="address.province_name"
+                                required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}"
+                                label="PROVINCE_NAME_TEXT"
+                                show-label="true"></input-text>
+
+                </div>
+            </div>
+
+            <div class="row" [hidden]="!address.country_id">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                is-required="true"
+                                ng-model="address.city"
+                                required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}"
+                                label="CITY_TEXT"
+                                show-label="true"></input-text>
+
+                    <app-city-full-selector
+                            is-required="true"
+                            name="address_city_geonameid"
+                            is-geonameid="true"
+                            ng-model="address.city_geonameid"
+                            ng-model-text="address.city"
+                            ng-model-state-county-text="address.country"
+                            label-floating="true"
+                            show-label="true"
+                            country-id="address.country_id"
+                            label="CITY_TEXT"></app-city-full-selector>
+                </div>
+            </div>
+
+
+            <div class="row" [hidden]="!address.country_id">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                is-required="true"
+                                ng-model="address.district_name"
+                                required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}"
+                                label="DISTRICT_NAME_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+
+            <div class="row" [hidden]="!address.country_id">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                is-required="true"
+                                ng-model="address.ward_name"
+                                required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}"
+                                label="WARD_NAME_TEXT"
+                                show-label="true"></input-text>
+
+                </div>
+            </div>
+
+            <div class="row" [hidden]="!address.country_id">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                is-required="false"
+                                ng-model="address.address1"
+                                label="ADDRESS_DETAILS_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
         </div>
 
         <div class="card-footer text-right">
-            <save-button-submit title="SAVE_BTN_TEXT" ng-disabled="saving"></save-button-submit>
+            <save-button-submit title="SAVE_BTN_TEXT" ng-disabled="saving || "></save-button-submit>
         </div>
     </form>
 </div>
