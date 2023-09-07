@@ -22,9 +22,9 @@
                 },
                 name_vn: {
                     name: 'field_name_vn',
-                    label: 'NAME_VN_TEXT',
-                    required: true,
-                    notEmpty: true,
+                    label: 'FIELD_DESCRIPTION_TEXT',
+                    required: false,
+                    notEmpty: false,
                     type: 'text',
                 },
                 label: {

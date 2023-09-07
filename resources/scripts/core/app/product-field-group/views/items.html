@@ -1,0 +1,68 @@
+<div class="" ng-controller="ProductFieldGroupListApiController">
+    <div ng-include="'/app/views/product-field-group/buttons.html'"></div>
+    <div class="min-height-70px">
+        <project-filter
+            columns="column_array"
+            is-sort="false"
+            is-filter="false"
+            module-name="module_name"></project-filter>
+    </div>
+
+    <div class="scroll-append scroll-y height-100vh-m140px overflow-x-disable" when-scrolled="loadMore()">
+        <div>
+            <spinner-v2 type="spin" ng-show="isInitialLoading"></spinner-v2>
+            <div class="flex-middle align-center centered" ng-show="!isInitialLoading && items.length == 0 ">
+<!--                <img class="height-96px margin-auto mg-t-15 mg-b-10" src="/app/assets/img/svg/no_activity_log.svg">-->
+                <div class="mg-0 mg-b-4s text-muted">
+                    {{'NO_DATA_AVAILABLE_TEXT'|translate}}
+                </div>
+            </div>
+
+
+            <angular-table table="table"
+                           items="items"
+                           ng-if="!isInitialLoading && items.length > 0"
+                           search-input-enable="false">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th class="text-dark-blue bd-b-white">#</th>
+                        <th class="text-dark-blue bd-b-white">{{'NAME_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'LABEL_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'LAST_UPDATED_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="(index, object) in table.pagedItems[table.currentPage]" class="relo-bg-bright-gray-4 bd-r-5 border-white">
+                        <td class="bd-t-white">{{ object.id }}</td>
+                    <td ng-style="{'width':'300px'}" class="bd-t-white">
+                        <div ng-click="editFn( object )"
+                             ng-if="object.status != -1"
+                             class="wrap-word text-bright-blue">{{ object.name }}
+                        </div>
+
+                        <div ng-if="object.status == -1"
+                             class="wrap-word txt-dark-blue">{{ object.name }}
+                        </div>
+                    </td>
+                    <td class="bd-t-white">{{ object.label }}</td>
+                    <td class="bd-t-white">{{ object.updated_at  | amUtc | amLocal | amDateFormat: 'DD/MM/YYYY HH:mm:ss' }}</td>
+                    <td class="text-right bd-t-white noWrap">
+                        <button-edit-icon ng-if="object.status != -1" ng-click="editFn( object )" class="mr-sm"></button-edit-icon>
+                        <button-delete-icon ng-if="object.status != -1" ng-click="deleteFn( object )"></button-delete-icon>
+                    </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </angular-table>
+            <div class="row" ng-if="loadingMore">
+                <div class="col-lg-12">
+                    <spinner-v2 type="spin" ></spinner-v2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

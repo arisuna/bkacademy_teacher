@@ -12,9 +12,19 @@
         var vm = this;
 
         
-        this.getList = function (data) {
+        this.search = function (data) {
             let deferred = $q.defer();
             AppHttp.put('/app/category/search', data).then(function (response) {
+                deferred.resolve(response.data);
+            }).catch(function (err) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        }
+        
+        this.getList = function () {
+            let deferred = $q.defer();
+            AppHttp.get('/app/category/getList').then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
