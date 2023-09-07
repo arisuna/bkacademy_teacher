@@ -15,6 +15,7 @@
                 model: '=ngModel',
                 isRequired: '<',
                 isEditable: '<?',
+                subCategoryOnly: '<?',
                 label: '@',
                 showLabel: '<',
             },
@@ -30,6 +31,10 @@
                 if (angular.isUndefined(scope.isEditable)) {
                     scope.isEditable = true
                 }
+
+                if (angular.isUndefined(scope.subCategoryOnly)) {
+                    scope.subCategoryOnly = false;
+                }
             },
             controller: function ($scope, $element, $attrs) {
 
@@ -40,19 +45,35 @@
                 };
 
                 $scope.initFn = function () {
-                    AppCategoryService.getList().then(function (res) {
-                        if (res.success) {
-                            $scope.items = res.data;
-                            angular.forEach($scope.model, function (id) {
-                                let findItem = _.find($scope.items, function (o) {
-                                    return o.id == id;
-                                });
-                                if (findItem) {
-                                    $scope.data.selected.push(findItem);
-                                }
-                            })
-                        }
-                    });
+                    if(!$scope.subCategoryOnly){
+                        AppCategoryService.getList().then(function (res) {
+                            if (res.success) {
+                                $scope.items = res.data;
+                                angular.forEach($scope.model, function (id) {
+                                    let findItem = _.find($scope.items, function (o) {
+                                        return o.id == id;
+                                    });
+                                    if (findItem) {
+                                        $scope.data.selected.push(findItem);
+                                    }
+                                })
+                            }
+                        });
+                    } else {
+                        AppCategoryService.getSubCategory().then(function (res) {
+                            if (res.success) {
+                                $scope.items = res.data;
+                                angular.forEach($scope.model, function (id) {
+                                    let findItem = _.find($scope.items, function (o) {
+                                        return o.id == id;
+                                    });
+                                    if (findItem) {
+                                        $scope.data.selected.push(findItem);
+                                    }
+                                })
+                            }
+                        });
+                    }
                 };
 
                 $scope.removeItems = function () {

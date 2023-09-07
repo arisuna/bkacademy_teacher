@@ -31,6 +31,16 @@
             });
             return deferred.promise;
         }
+        
+        this.getSubCategory = function () {
+            let deferred = $q.defer();
+            AppHttp.get('/app/category/getAllLevel2Items').then(function (response) {
+                deferred.resolve(response.data);
+            }).catch(function (err) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        }
 
 
 
