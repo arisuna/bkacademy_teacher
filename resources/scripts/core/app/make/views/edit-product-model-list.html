@@ -15,7 +15,7 @@
   <project-filter
           columns="column_array"
           is-sort="false"
-          is-filter="false"
+          is-filter="true"
           module-name="module_name"></project-filter>
 
   <div class="panel-body">
@@ -50,10 +50,15 @@
           </thead>
           <tbody>
           <tr ng-repeat="(index, object) in table.pagedItems[table.currentPage]" class="relo-bg-bright-gray-4 bd-r-5 border-white">
-            <td class="bd-t-white">{{ object.id }}</td>
+            <td class="bd-t-white">{{ index + 1}}</td>
             <td ng-style="{'width':'300px'}" class="bd-t-white">
               <div ng-click="editFn( object )"
+                   ng-if="object.status != -1"
                    class="wrap-word text-bright-blue">{{ object.name }}
+              </div>
+
+              <div  ng-if="object.status == -1"
+                    class="wrap-word text-dark-blue">{{ object.name }}
               </div>
             </td>
             <td class="bd-t-white">{{ object.description }}</td>
@@ -68,15 +73,15 @@
                       aria-haspopup="true"
                       aria-expanded="false"
                       tooltip-placement="bottom"
-                      uib-tooltip="{{ object.status  == 1 ? ('ACTIVE_TEXT' | translate) : ('INACTIVE_TEXT' | translate) }}"
-                      ng-class="{'is-terminated': object.status != 1, 'is-active': object.status == 1}">
+                      uib-tooltip="{{ object.status  == 1 ? ('ACTIVE_TEXT' | translate) : (object.status == 0 ? ('INACTIVE_TEXT' | translate) : ('ARCHIVED_TEXT' | translate)) }}"
+                      ng-class="{'in-active': object.status == 0, 'is-active': object.status == 1, 'archived': object.status == -1}">
               </button>
             </td>
             <td class="bd-t-white">{{ object.updated_at | amUtc | amLocal | amDateFormat: 'DD/MM/YYYY HH:mm:ss' }}</td>
             <td class="text-right bd-t-white noWrap">
-              <button-edit-icon ng-click="editFn( object )" class="mr-sm"></button-edit-icon>
-              <button-clone-icon ng-click="cloneFn( object )" class="mr-sm"></button-clone-icon>
-              <button-delete-icon ng-click="deleteFn( object )"></button-delete-icon>
+              <button-edit-icon ng-if="object.status != -1" ng-click="editFn( object )" class="mr-sm"></button-edit-icon>
+              <button-clone-icon ng-if="object.status != -1" ng-click="cloneFn( object )" class="mr-sm"></button-clone-icon>
+              <button-delete-icon ng-if="object.status != -1" ng-click="deleteFn( object )"></button-delete-icon>
             </td>
           </tr>
 

@@ -144,12 +144,6 @@
                     "class": "",
                     "items": [
                         {
-                            "text": "CRM_USERS_TEXT",
-                            "sref": "app.crm-user.list",
-                            "appAclAllow": "crm_user/index",
-                            "aclRemove": true,
-                        },
-                        {
                             "text": "END_USERS_TEXT",
                             "sref": "app.user.list",
                             "appAclAllow": "end_user/index",
@@ -182,6 +176,23 @@
                     "aclRemove": true,
                     "class": "",
                     "controller": ""
+                },
+                {
+                    "text": "MORE_TEXT",
+                    "icon": "fa-solid fa-ellipsis",
+                    "iconType": "fontawesome",
+                    "appAclAllow": "",
+                    "aclRemove": false,
+                    "hasChild": true,
+                    "class": "",
+                    "items": [
+                        {
+                            "text": "CRM_USERS_TEXT",
+                            "sref": "app.crm-user.list",
+                            "appAclAllow": "crm_user/index",
+                            "aclRemove": true,
+                        },
+                    ]
                 },
             ]
         };

@@ -47,14 +47,10 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <input-text is-editable="user.status != -1"
-                                is-telephone="true"
-                                is-required="false"
-                                ng-model="user.phone"
-                                placeholder="ENTER_PHONE_TEXT"
-                                required-message="FIELD_IS_REQUIRED_TEXT"
-                                label="PHONE_TEXT"
-                                show-label="true"></input-text>
+                    <app-phone-selector ng-model="user.phone"
+                                        show-label="true"
+                                        is-editable="user.status != -1"
+                                        label="PHONE_TEXT"></app-phone-selector>
                 </div>
             </div>
             <div class="row">

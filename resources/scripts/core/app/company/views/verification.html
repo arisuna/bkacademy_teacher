@@ -95,7 +95,7 @@
         </div>
 
         <div class="text-right mg-t-20">
-            <save-button-submit label="VERIFY_BTN_TEXT" ng-if="isEditable && company.status != 1"
+            <save-button-submit label="SAVE_BTN_TEXT" ng-if="isEditable && (company.status != 1 || (company.status == 1 && !companyStatus))"
                                 ng-disabled="saving"></save-button-submit>
         </div>
     </div>

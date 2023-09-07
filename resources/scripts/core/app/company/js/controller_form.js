@@ -84,14 +84,14 @@
                 // $event.preventDefault();
                 // $event.stopPropagation();
 
-                if($scope.company.status != $scope.companyStatus){
+                if ($scope.company.status !== $scope.companyStatus) {
                     $scope.company.status = $scope.companyStatus
                 }
 
                 if ($scope.company.id > 0) {
                     AppCompanyService.updateCompany($scope.company).then(function (res) {
                         $scope.saving = false;
-                        $scope.isEditable = false
+                        // $scope.isEditable = false
 
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
@@ -101,7 +101,7 @@
                         }
                     }, (err) => {
                         $scope.saving = false;
-                        $scope.isEditable = false
+                        // $scope.isEditable = false
 
                         WaitingService.error(err);
                     })
@@ -160,11 +160,11 @@
                 });
             }
 
-            $scope.onEditable = ($event) => {
+            $scope.onEditable = ($event, isEditable) => {
                 // $event.preventDefault();
                 // $event.stopPropagation();
                 $scope.$evalAsync(function () {
-                    $scope.isEditable = !$scope.isEditable
+                    $scope.isEditable = !isEditable
                 })
             }
 
