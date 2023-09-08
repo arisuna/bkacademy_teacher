@@ -69,7 +69,6 @@
                         {"title": "CATEGORIES_TEXT", "state": "app.category.list"},
                         {"title": "PRODUCT_FIELDS_TEXT", "state": "app.product-field.list"},
                         {"title": "PRODUCT_FIELD_GROUPS_CATEGORIES_TEXT", "state": "app.product-field-group.list"},
-                        {"title": "PRODUCT_ATTRIBUTES_TEXT", "state": "app.product-attribute.list"},
                         {"title": "MAKES_AND_MODELS_TEXT", "state": "app.make.list"},
                     ]
                 },
