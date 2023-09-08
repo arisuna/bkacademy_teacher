@@ -66,5 +66,38 @@
             });
             return deferred.promise;
         };
+
+        this.searchWards = function (params) {
+            const deferred = $q.defer();
+            AppHttp.put('/app/address/searchWards', params)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.searchDistricts = function (params) {
+            const deferred = $q.defer();
+            AppHttp.put('/app/address/searchDistricts', params)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.searchProvinces = function (params) {
+            const deferred = $q.defer();
+            AppHttp.put('/app/address/searchProvinces', params)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
     }
 })();

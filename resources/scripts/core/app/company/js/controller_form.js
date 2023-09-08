@@ -63,6 +63,11 @@
                 }).then((res) => {
                     if (res.success) {
                         $scope.addresses = res.data
+                        $scope.billAddresses = res.data.filter(o => o.address_type == 3)
+                        $scope.siteAddresses = res.data.filter(o => o.address_type == 2)
+                        $scope.mailAddresses = res.data.filter(o => o.address_type == 1)
+
+                        console.log("mailAddresses", $scope.mailAddresses)
                     } else {
                         WaitingService.expire();
                     }
@@ -146,12 +151,18 @@
                 // alert('createAddress')
 
                 $scope.createAddressDialog = ngDialog.open({
-                    template: urlBase.tplApp('app', 'company', 'add-address-right-dialog', '_=' + Math.random()),
+                    template: urlBase.tplApp('app', 'company', 'address-form-right-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
                     scope: $scope,
                     resolve: {
                         currentCompany: ['AppDataService', function (AppDataService) {
                             return $scope.company;
+                        }],
+                        type: ['AppDataService', function (AppDataService) {
+                            return type;
+                        }],
+                        address: ['AppDataService', function (AppDataService) {
+                            return {};
                         }]
                     },
                     closeByDocument: true,
@@ -159,8 +170,56 @@
                 });
 
                 $scope.createAddressDialog.closePromise.then(function (data) {
-                    if (angular.isDefined(data.value.company)) {
+                    if (angular.isDefined(data.value.address) && data.value.address) {
                         console.log('data.value', data.value);
+
+                        $scope.getListAddress($scope.company.id);
+                    }
+                });
+            }
+
+            $scope.deleteAddressFn = function (id) {
+                WaitingService.questionSimple('QUESTION_DELETE_COMPANY_TEXT',
+                    function (res) {
+                        AppAddressService.deleteAddress(id).then(function (res) {
+                            if (res.success) {
+                                WaitingService.popSuccess(res.message);
+                                $scope.getListAddress($scope.company.id);
+                            } else {
+                                WaitingService.error(res.message);
+                            }
+                        }, function (err) {
+                            WaitingService.error(err);
+                        });
+                    });
+            };
+
+            $scope.editAddressFn = function (address, type = 1) {
+                // alert('editAddress')
+
+                $scope.editAddressDialog = ngDialog.open({
+                    template: urlBase.tplApp('app', 'company', 'address-form-right-dialog', '_=' + Math.random()),
+                    className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
+                    scope: $scope,
+                    resolve: {
+                        currentCompany: ['AppDataService', function (AppDataService) {
+                            return $scope.company;
+                        }],
+                        type: ['AppDataService', function (AppDataService) {
+                            return type;
+                        }],
+                        address: ['AppDataService', function (AppDataService) {
+                            return address;
+                        }]
+                    },
+                    closeByDocument: true,
+                    controller: 'AddressController'
+                });
+
+                $scope.editAddressDialog.closePromise.then(function (data) {
+                    if (angular.isDefined(data.value.address) && data.value.address) {
+                        console.log('data.value', data.value);
+
                         $scope.getListAddress($scope.company.id);
                     }
                 });

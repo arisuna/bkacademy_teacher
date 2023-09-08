@@ -6,22 +6,27 @@
         <div class="row mb">
             <span class="text-bold">{{'MAILING_ADDRESSES_TEXT' | translate}}</span>
         </div>
-        <div class="row relo-bg-bright-gray" ng-repeat="mailAddress in mailAddresses track by $index">
-            <div class="col-md-10">
-                <div class="text-bold">{{mailAddress.name}}</div>
-                <div class="">{{mailAddress.address1}}, {{mailAddress.district_name}}, {{mailAddress.province_name}},
-                    {{mailAddress.city}}, {{mailAddress.country}}
+        <div class="row relo-bg-bright-gray mb pd-10 flex"
+             ng-repeat="mailAddress in mailAddresses track by $index">
+            <div class="w-100">
+                <div class="text-bold">{{mailAddress.name | translate}}</div>
+                <div class="">
+                    {{mailAddress.address1}}, {{mailAddress.ward_name}}, {{mailAddress.district_name}},
+                    {{mailAddress.province_name}}
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="flex" ng-if="isEditable">
-                    <button-edit-icon ng-click="editFn( mailAddress )" class="mr-sm"></button-edit-icon>
-                    <button-delete-icon ng-click="deleteFn( mailAddress )"></button-delete-icon>
+            <div class="flex mr" ng-if="isEditable">
+                <div class="flex-middle">
+                    <button-edit-icon ng-click="editAddressFn( mailAddress )"></button-edit-icon>
+                </div>
+                <div class="flex-middle">
+                    <button-delete-icon ng-click="deleteAddressFn( mailAddress.id )"></button-delete-icon>
                 </div>
             </div>
         </div>
+
         <div ng-if="isEditable">
-            <div class="flex clickable text-bright-blue" ng-click="createAddress()">
+            <div class="flex clickable text-bright-blue" ng-click="createAddress(1)">
                 <em class="fa fa-circle-plus mr-sm text-bright-blue txt-16"></em>
                 {{ 'CREATE_ADDRESS_TEXT' | translate }}
             </div>
@@ -32,22 +37,27 @@
         <div class="row mb">
             <span class="text-bold">{{'SITES_ADDRESSES_TEXT' | translate}}</span>
         </div>
-        <div class="row relo-bg-bright-gray" ng-repeat="siteAddress in siteAddresses track by $index">
-            <div class="col-md-10">
+        <div class="row relo-bg-bright-gray mb pd-10 flex"
+             ng-repeat="siteAddress in siteAddresses track by $index">
+            <div class="w-100">
                 <div class="text-bold">{{siteAddress.name}}</div>
-                <div class="">{{siteAddress.address1}}, {{siteAddress.district_name}}, {{siteAddress.province_name}},
-                    {{siteAddress.city}}, {{siteAddress.country}}
+                <div class="">
+                    {{siteAddress.address1}}, {{siteAddress.ward_name}}, {{siteAddress.district_name}},
+                    {{siteAddress.province_name}}
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="flex" ng-if="isEditable">
-                    <button-edit-icon ng-click="editFn( siteAddress )" class="mr-sm"></button-edit-icon>
-                    <button-delete-icon ng-click="deleteFn( siteAddress )"></button-delete-icon>
+
+            <div class="flex mr" ng-if="isEditable">
+                <div class="flex-middle">
+                    <button-edit-icon ng-click="editAddressFn( siteAddress )" class="mr-sm"></button-edit-icon>
+                </div>
+                <div class="flex-middle">
+                    <button-delete-icon ng-click="deleteAddressFn( siteAddress.id )"></button-delete-icon>
                 </div>
             </div>
         </div>
         <div ng-if="isEditable">
-            <div class="flex clickable text-bright-blue" ng-click="createAddress()">
+            <div class="flex clickable text-bright-blue" ng-click="createAddress(2)">
                 <em class="fa fa-circle-plus mr-sm text-bright-blue txt-16"></em>
                 {{ 'CREATE_ADDRESS_TEXT' | translate }}
             </div>
@@ -58,22 +68,26 @@
         <div class="row mb">
             <span class="text-bold">{{'BILLING_ADDRESSES_TEXT' | translate}}</span>
         </div>
-        <div class="row relo-bg-bright-gray" ng-repeat="billAddress in billAddresses track by $index">
-            <div class="col-md-10">
+        <div class="row relo-bg-bright-gray mb pd-10 flex"
+             ng-repeat="billAddress in billAddresses track by $index">
+            <div class="w-100">
                 <div class="text-bold">{{billAddress.name}}</div>
-                <div class="">{{billAddress.address1}}, {{billAddress.district_name}}, {{billAddress.province_name}},
-                    {{billAddress.city}}, {{billAddress.country}}
+                <div class="">
+                    {{billAddress.address1}}, {{billAddress.ward_name}}, {{billAddress.district_name}},
+                    {{billAddress.province_name}}
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="flex" ng-if="isEditable">
-                    <button-edit-icon ng-click="editFn( billAddress )" class="mr-sm"></button-edit-icon>
-                    <button-delete-icon ng-click="deleteFn( billAddress )"></button-delete-icon>
+            <div class="flex mr">
+                <div class="flex-middle">
+                    <button-edit-icon ng-click="editAddressFn( billAddress )" class="mr-sm"></button-edit-icon>
+                </div>
+                <div class="flex-middle">
+                    <button-delete-icon ng-click="deleteAddressFn( billAddress.id )"></button-delete-icon>
                 </div>
             </div>
         </div>
         <div ng-if="isEditable">
-            <div class="flex clickable text-bright-blue" ng-click="createAddress()">
+            <div class="flex clickable text-bright-blue" ng-click="createAddress(3)">
                 <em class="fa fa-circle-plus mr-sm text-bright-blue txt-16"></em>
                 {{ 'CREATE_ADDRESS_TEXT' | translate }}
             </div>

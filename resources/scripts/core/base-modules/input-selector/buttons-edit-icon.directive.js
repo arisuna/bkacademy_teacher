@@ -16,7 +16,7 @@
                 ngClick: "&?",
             },
             template:
-                '<button class="btn btn-round btn-edit btn-outline" ng-show="ngIf"  type="button"  title="{{ \'EDIT_BTN_TEXT\'|translate }}">' +
+                '<button class="btn btn-round-cus btn-edit btn-outline" ng-show="ngIf"  type="button"  title="{{ \'EDIT_BTN_TEXT\'|translate }}">' +
                 '<em class="fa-solid fa-pen-to-square"></em>' +
                 '</button>',
             link: function (scope, element, attrs) {
