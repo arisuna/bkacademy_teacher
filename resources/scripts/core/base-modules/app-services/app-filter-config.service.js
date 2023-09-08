@@ -490,6 +490,12 @@
                 {text: 'DRAFT_STATUS_TEXT', name: 'DRAFT_STATUS_TEXT', value: 0, id: 0, color: 'yellow'},
                 {text: 'ACTIVE_STATUS_TEXT', name: 'ACTIVE_STATUS_TEXT', value: 1, id: 1, color: 'green'},
             ],
+
+            __make_status_list: [
+                {text: 'DELETE_STATUS_TEXT', name: 'DELETE_STATUS_TEXT', value: -1, id: -1, color: 'red'},
+                {text: 'INACTIVE_STATUS_TEXT', name: 'INACTIVE_STATUS_TEXT', value: 0, id: 0, color: 'yellow'},
+                {text: 'ACTIVE_STATUS_TEXT', name: 'ACTIVE_STATUS_TEXT', value: 1, id: 1, color: 'green'},
+            ],
         };
 
         this.filters = {
@@ -833,6 +839,10 @@
 
         this.getDepartmentStatusList = function () {
             return vm.config.__department_status_list;
+        };
+
+        this.getMakeStatusList = function () {
+            return vm.config.__make_status_list;
         };
 
 

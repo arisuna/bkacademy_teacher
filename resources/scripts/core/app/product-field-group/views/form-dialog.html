@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-heading relo-bg-bright-gray">
         <span class="text-dark-blue">
-           {{ isClone == true ?  ('CLONE_PRODUCT_FIELD_TEXT' | translate) + (' #' + object.id) : (object.id ?  ('EDIT_PRODUCT_FIELD_TEXT' | translate) + ' #' + object.id : ('CREATE_PRODUCT_FIELD_TEXT' | translate)) }}
+           {{ isClone == true ?  ('CLONE_PRODUCT_FIELD_GROUP_TEXT' | translate) + (' #' + object.id) : (object.id ?  ('EDIT_PRODUCT_FIELD_GROUP_TEXT' | translate) + ' #' + object.id : ('CREATE_PRODUCT_FIELD_GROUP_TEXT' | translate)) }}
         </span>
     </div>
     <form class="form-validate noPadding" validate-form="true"
@@ -28,7 +28,7 @@
                                     is-text="true"
                                     ng-model="object.name_vn"
                                     required-message="FIELD_IS_REQUIRED_TEXT"
-                                    label="FIELD_DESCRIPTION_TEXT"
+                                    label="DESCRIPTION_TEXT"
                                     show-label="true"></input-text>
                     </div>
                 </div>
@@ -44,43 +44,15 @@
                                     show-label="true"></input-text>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <app-yes-no-input ng-model="object.is_mandatory"
-                                              label="IS_MANDATORY_TEXT"
-                                              label-floating="false"
-                                              init-value="false"></app-yes-no-input>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <app-product-field-types-selector ng-model="object.type"
-                                            label="TYPE_TEXT"
-                                            show-label="true"
-                                            is-required="true"
-                                            placeholder="ENTER_TYPE_TEXT"
-                                            required-message="FIELD_TYPE_IS_REQUIRED_TEXT"></app-product-field-types-selector>
-                    </div>
-                </div>
-                <div class="row" ng-show="object.type == 2">
-                    <div class="col-sm-12">
-                        <app-attribute-types-selector ng-model="object.attribute_id"
-                                            label="ATTRIBUTE_TEXT"
-                                            show-label="true"
-                                            is-required="object.type == 2"
-                                            placeholder="ENTER_ATTRIBUTE_TEXT"
-                                            required-message="ATTRIBUTE_IS_REQUIRED_TEXT"></app-attribute-types-selector>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <app-product-field-groups-selector ng-model="object.group_ids"
-                                            label="PRODUCT_FIELD_GROUPS_TEXT"
+                        <app-categories-selector ng-model="object.category_ids"
+                                            sub-category-only="true"
+                                            label="CATEGORIES_TEXT"
                                             show-label="true"
                                             is-required="false"
                                             placeholder="SELECT_TEXT"
-                                            required-message="ATTRIBUTE_IS_REQUIRED_TEXT"></app-product-field-groups-selector>
+                                            required-message="ATTRIBUTE_IS_REQUIRED_TEXT"></app-categories-selector>
                     </div>
                 </div>
 

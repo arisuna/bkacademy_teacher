@@ -1,0 +1,61 @@
+<div class="form-group">
+    <div>
+        <label class="label-text-form" ng-show="showLabel == true && label != ''">
+            {{ label | translate }}
+        </label>
+        <div class="clearfix"></div>
+    </div>
+
+    <div ng-if="isEditable == true">
+        <div>
+            <div class="pull-left">
+                <button type="button"
+                        class="btn btn-circle btn-primary"
+                        ng-click="openSearchDialog($event)">
+                    {{ data.selected.length }}
+                </button>
+                <a ng-click="openSearchDialog($event)">{{'ADD_NEW_TEXT' | translate }}</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+
+        <div class="list-group list-group-flat relo-bd-gray bd-radius-3px mt bd-1x"
+             ng-show="data.selected.length > 0">
+            <a class="list-group-item text-overflow-ellipsis"
+               ng-repeat="item in data.selected track by item.id">
+
+                <div class="flex pull-left">
+                    <span class="">{{item.name}} </span>
+                </div>
+
+                <div class="flex pull-right">
+                    <em class="fa fa-times txt-16 text-gray"
+                        ng-click="removeItem(item)"></em>
+                </div>
+
+                <div class="clearfix"></div>
+            </a>
+        </div>
+    </div>
+
+    <div ng-if="isEditable == false">
+        <div>
+            <button type="button" class="btn btn-circle btn-primary">
+                {{ data.selected.length }}
+            </button>
+        </div>
+
+        <div class="list-group list-group-flat relo-bd-gray bd-radius-3px mt"
+             ng-show="data.selected.length > 0">
+            <a class="list-group-item text-overflow-ellipsis pd-l-0"
+               ng-repeat="item in data.selected track by item.id">
+                <div class="flex">
+                    <span>{{item.name}} </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+

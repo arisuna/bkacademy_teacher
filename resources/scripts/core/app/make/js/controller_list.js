@@ -1,8 +1,9 @@
 (function () {
     'use strict';
     App.controller('MakeListApiController', ['$scope', '$state', '$timeout', '$rootScope', '$translate',
-        'WaitingService', 'AppMakeService', 'ngDialog', 'urlBase',
-        function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppMakeService, ngDialog, urlBase) {
+        'WaitingService', 'AppMakeService', 'ngDialog', 'urlBase', 'AppFilterConfigService',
+        function ($scope, $state, $timeout, $rootScope, $translate,
+                  WaitingService, AppMakeService, ngDialog, urlBase, AppFilterConfigService) {
 
 
             $scope.module_name = 'makes';
@@ -37,6 +38,9 @@
                     "sortText" : $translate.instant("ALPHABET_DOWN_TEXT")
                 },
             ];
+
+            $scope.list_statuses = AppFilterConfigService.getMakeStatusList();
+
             $scope.loading = true;
             $scope.items = [];
             $scope.totalPages = 0;
@@ -52,6 +56,8 @@
 
             $scope.search = {
                 query: null,
+                filterQuery: null,
+                selected_statuses: [],
                 filterConfigId: null,
                 isTmp: false,
                 orders: {},
@@ -68,6 +74,10 @@
                 }
                 $scope.params.filter_config_id = $scope.search.filterConfigId;
                 $scope.params.is_tmp = $scope.search.isTmp;
+
+                if (_.size($scope.search.selected_statuses) > 0) {
+                    $scope.params.statuses = _.map($scope.search.selected_statuses, 'id');
+                }
 
 
                 AppMakeService.getList($scope.params).then(function (res) {
@@ -104,6 +114,10 @@
                     $scope.params.filter_config_id = $scope.search.filterConfigId;
                     $scope.params.is_tmp = $scope.search.isTmp;
 
+                    if (_.size($scope.search.selected_statuses) > 0) {
+                        $scope.statuses = _.map($scope.search.selected_statuses, 'id');
+                    }
+
                     AppMakeService.getList($scope.params).then(function (res) {
                         if (res.success) {
                             $scope.items = $scope.items.concat(res.data);
@@ -136,6 +150,29 @@
             };
 
             $scope.reloadInit();
+
+
+            $scope.clearFilter = function(){
+                $scope.search = {
+                    query: null,
+                    filterQuery: null,
+                    selected_statuses: [],
+                    filterConfigId: null,
+                    isTmp: false,
+                    orders: {},
+                };
+
+                $scope.publish('clearFilter');
+                $scope.reloadInit();
+            };
+
+            $scope.$watchGroup(['search.selected_statuses'], function(){
+                $scope.reloadInit();
+            });
+
+            $scope.applyFilter = function(){
+                $scope.reloadInit();
+            };
 
             $scope.subscribe('apply_filter_config_makes', function (filterConfigId) {
                 angular.element('.scroll-append').scrollTop(0);

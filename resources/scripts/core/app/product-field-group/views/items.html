@@ -1,5 +1,5 @@
-<div class="" ng-controller="BusinessZoneListApiController">
-    <div ng-include="'/app/views/business-zone/buttons.html'"></div>
+<div class="" ng-controller="ProductFieldGroupListApiController">
+    <div ng-include="'/app/views/product-field-group/buttons.html'"></div>
     <div class="min-height-70px">
         <project-filter
             columns="column_array"
@@ -12,7 +12,7 @@
         <div>
             <spinner-v2 type="spin" ng-show="isInitialLoading"></spinner-v2>
             <div class="flex-middle align-center centered" ng-show="!isInitialLoading && items.length == 0 ">
-<!--                <img class="height-96px margin-auto mg-t-15 mg-b-10" src="/gms/assets/img/svg/no_activity_log.svg">-->
+<!--                <img class="height-96px margin-auto mg-t-15 mg-b-10" src="/app/assets/img/svg/no_activity_log.svg">-->
                 <div class="mg-0 mg-b-4s text-muted">
                     {{'NO_DATA_AVAILABLE_TEXT'|translate}}
                 </div>
@@ -28,16 +28,14 @@
                     <tr>
                         <th class="text-dark-blue bd-b-white">#</th>
                         <th class="text-dark-blue bd-b-white">{{'NAME_TEXT' | translate }}</th>
-                        <th class="text-dark-blue bd-b-white">{{'CODE_TEXT' | translate }}</th>
-                        <th class="text-dark-blue bd-b-white">{{'DESCRIPTION_TEXT' | translate }}</th>
-                        <th class="text-dark-blue bd-b-white">{{'STATUS_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'LABEL_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white">{{'LAST_UPDATED_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white"></th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="(index, object) in table.pagedItems[table.currentPage]" class="relo-bg-bright-gray-4 bd-r-5 border-white">
-                        <td class="bd-t-white">{{ index + 1 }}</td>
+                        <td class="bd-t-white">{{ object.id }}</td>
                     <td ng-style="{'width':'300px'}" class="bd-t-white">
                         <div ng-click="editFn( object )"
                              ng-if="object.status != -1"
@@ -48,26 +46,10 @@
                              class="wrap-word txt-dark-blue">{{ object.name }}
                         </div>
                     </td>
-                    <td class="bd-t-white">{{ object.code }}</td>
-                    <td class="bd-t-white">{{ object.description }}</td>
-                    <td class="bd-t-white">
-<!--                        <div class="txt-ellipsis">-->
-<!--                            <span class="text-green" ng-if="object.status == 1">{{'ACTIVE_TEXT' | translate}}</span>-->
-<!--                            <span class="text-red" ng-if="object.status != 1">{{'INACTIVE_TEXT' | translate}}</span>-->
-<!--                        </div>-->
-                        <button class="selected-status btn btn-flat btn-circle flex text-center flex-vertical width-18px height-18px bd-radius-9px"
-                                uib-dropdown-toggle=""
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                                tooltip-placement="bottom"
-                                uib-tooltip="{{ object.status  == 1 ? ('ACTIVE_TEXT' | translate) : (object.status == 0 ? ('INACTIVE_TEXT' | translate) : ('ARCHIVED_TEXT' | translate)) }}"
-                                ng-class="{'in-active': object.status == 0, 'is-active': object.status == 1, 'archived': object.status == -1}">
-                        </button>
-                    </td>
+                    <td class="bd-t-white">{{ object.label }}</td>
                     <td class="bd-t-white">{{ object.updated_at  | amUtc | amLocal | amDateFormat: 'DD/MM/YYYY HH:mm:ss' }}</td>
                     <td class="text-right bd-t-white noWrap">
                         <button-edit-icon ng-if="object.status != -1" ng-click="editFn( object )" class="mr-sm"></button-edit-icon>
-                        <button-clone-icon ng-if="object.status != -1" ng-click="cloneFn( object )" class="mr-sm"></button-clone-icon>
                         <button-delete-icon ng-if="object.status != -1" ng-click="deleteFn( object )"></button-delete-icon>
                     </td>
                     </tr>

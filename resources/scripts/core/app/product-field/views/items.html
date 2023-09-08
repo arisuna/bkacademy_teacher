@@ -49,12 +49,11 @@
                         </div>
                     </td>
                     <td class="bd-t-white">{{ object.label }}</td>
-                    <td class="bd-t-white">{{ object.type }}</td>
-                    <td class="bd-t-white">{{ object.attribute_name }}</td>
+                    <td class="bd-t-white">{{ (object.type == 0 ? 'FIELD_TEXT_TEXT' : (object.type == 1 ? 'NUMERIC_TEXT' : 'ATTRIBUTE_TEXT') | translate)}}</td>
+                    <td class="bd-t-white">{{ object.type == 2 ? object.attribute_name : ''}}</td>
                     <td class="bd-t-white">{{ object.updated_at  | amUtc | amLocal | amDateFormat: 'DD/MM/YYYY HH:mm:ss' }}</td>
                     <td class="text-right bd-t-white noWrap">
                         <button-edit-icon ng-if="object.status != -1" ng-click="editFn( object )" class="mr-sm"></button-edit-icon>
-                        <button-clone-icon ng-if="object.status != -1" ng-click="cloneFn( object )" class="mr-sm"></button-clone-icon>
                         <button-delete-icon ng-if="object.status != -1" ng-click="deleteFn( object )"></button-delete-icon>
                     </td>
                     </tr>
