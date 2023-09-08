@@ -280,7 +280,7 @@
                 uploader.removeItem = function (item_id_to_remove) {
                     $window.swal({
                         title: $translate.instant('ARE_YOU_SURE_TEXT'),
-                        text: $translate.instant('QUESTION_DELETE_DOCUMENT_TEXT'),
+                        text: $translate.instant('DO_YOU_WANT_TO_DELETE_DOCUMENT_TEXT'),
                         type: "warning",
                         showCancelButton: true,
                         confirmButtonColor: "#DD6B55",

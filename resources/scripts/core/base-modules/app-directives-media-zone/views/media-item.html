@@ -1,5 +1,4 @@
-<div
-        ng-class="{'item-grid col-xl-3 col-lg-4 col-md-6 col-sm-6':displayMode == 'grid','col-md-12 item-box':displayMode == 'list'}">
+<div ng-class="{'item-grid col-xl-3 col-lg-4 col-md-6 col-sm-6':displayMode == 'grid','col-md-12 item-box':displayMode == 'list'}">
 
     <div class="panel discoverer border-gray" data-filter-group="audio" ng-if="displayMode == 'grid'">
         <div class="panel-body text-center">
@@ -63,21 +62,6 @@
         </div>
         <div class="footer pd-l-1x pd-r-1x">
 
-<!--            <div ng-style="{'overflow':'hidden'}" class="mb-sm">-->
-<!--                <span class="label relo-bg-green text-white mt-lg mr text-left"-->
-<!--                      ng-if="item.user_profile_uuid == currentUser.uuid">-->
-<!--                    {{ 'ME_TEXT' | translate }}-->
-<!--                </span>-->
-<!--                <span class="label label-primary mt-lg mr text-left"-->
-<!--                      ng-if="item.user_profile_uuid != currentUser.uuid && item.company_id == currentCompany.id">-->
-<!--                    {{ 'MY_MEMBERS_TEXT' | translate }}-->
-<!--                </span>-->
-<!--                <span class="label label-inverse mt-lg mr text-left" ng-if="item.company_id != currentCompany.id">-->
-<!--                    {{ 'COUNTERPARTY_TEXT' | translate }}-->
-<!--                </span>-->
-<!--            </div>-->
-
-
             <div class="pull-left">
                 <small class="mt-sm">
                     <em class="fa fa-clock-o mr-sm"></em>
@@ -85,7 +69,6 @@
                     {{ item.updated_at | amUtc | amLocal | amDateFormat:' HH:mm' }}
                 </small>
             </div>
-
 
             <div class="btn-group mb-sm dropdown open pull-right" uib-dropdown="dropdown" class="">
                 <button class="btn btn-sm btn-link btn-transparent btn-flat " type="button"
@@ -201,17 +184,6 @@
             {{ item.updated_at | amUtc | amLocal | amDateFormat:' HH:mm' }}
         </span>
 
-        <!--        <span class="label relo-bg-green text-white mt-lg mr text-left pull-right"-->
-        <!--              ng-if="item.user_profile_uuid == currentUser.uuid">-->
-        <!--            {{ 'ME_TEXT' | translate }}-->
-        <!--        </span>-->
-        <!--        <span class="label label-primary mt-lg mr text-left pull-right"-->
-        <!--              ng-if="item.user_profile_uuid != currentUser.uuid && item.company_id == currentCompany.id">-->
-        <!--            {{ 'MY_MEMBERS_TEXT' | translate }}-->
-        <!--        </span>-->
-        <!--        <span class="label label-inverse mt-lg mr text-left pull-right" ng-if="item.company_id != currentCompany.id">-->
-        <!--            {{ 'SHARED_BY_HR_TEXT' | translate }}-->
-        <!--        </span>-->
         <div class="clearfix"></div>
     </div>
 

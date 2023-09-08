@@ -242,7 +242,7 @@
                 };
 
                 uploader.removeItem = function (itemMediaUuid) {
-                    WaitingService.questionSimple('QUESTION_DELETE_DOCUMENT_TEXT', function () {
+                    WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_DOCUMENT_TEXT', function () {
                         $scope.$apply();
 
                         if ($scope.uuid && $scope.uuid != "") {

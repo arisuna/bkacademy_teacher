@@ -6,7 +6,7 @@
     <div class="uploadZone my-drop-zone" uploader="uploader" nv-file-drop="">
         <div class="dropZone" nv-file-drop="" uploader="uploader"
              ng-if="!uploader.queue.length"
-             ng-show="showUpload ? true : false">
+             ng-show="isEditable && (showUpload ? true : false)">
             <div nv-file-over="" uploader="uploader" over-class="bg-light-blue-200" class="box-placeholder">
 
                 <h4 class="text-center">
@@ -35,28 +35,28 @@
                                    data-class-input="form-control inline"
                                    nv-file-select="" uploader="uploader" ng-if="options.limit == 1"/>
                         </div>
-<!--                        <div class="col-xs-6 text-left" ng-if="options.showLibrary == true">-->
-<!--                            <button type="button" class="btn btn-default"-->
-<!--                                    app-media-button-->
-<!--                                    is-share-document="isShareDocument"-->
-<!--                                    is-share-assignee="isShareAssignee"-->
-<!--                                    object="object"-->
-<!--                                    object-type="{{objectType}}"-->
-<!--                                    employee-uuid="libraryEmployeeUuid"-->
-<!--                                    company-uuid="libraryCompanyUuid"-->
-<!--                                    library-options="libraryOpts"-->
-<!--                                    is-send-history="false"-->
-<!--                                    is-attach-attachment="isAttachAttachment"-->
-<!--                                    on-select-item="itemsSelected(items)"><em class="fa fa-folder-open"></em>-->
-<!--                                {{ 'LIBRARY_TEXT' | translate }}-->
-<!--                            </button>-->
-<!--                        </div>-->
+                        <!--                        <div class="col-xs-6 text-left" ng-if="options.showLibrary == true">-->
+                        <!--                            <button type="button" class="btn btn-default"-->
+                        <!--                                    app-media-button-->
+                        <!--                                    is-share-document="isShareDocument"-->
+                        <!--                                    is-share-assignee="isShareAssignee"-->
+                        <!--                                    object="object"-->
+                        <!--                                    object-type="{{objectType}}"-->
+                        <!--                                    employee-uuid="libraryEmployeeUuid"-->
+                        <!--                                    company-uuid="libraryCompanyUuid"-->
+                        <!--                                    library-options="libraryOpts"-->
+                        <!--                                    is-send-history="false"-->
+                        <!--                                    is-attach-attachment="isAttachAttachment"-->
+                        <!--                                    on-select-item="itemsSelected(items)"><em class="fa fa-folder-open"></em>-->
+                        <!--                                {{ 'LIBRARY_TEXT' | translate }}-->
+                        <!--                            </button>-->
+                        <!--                        </div>-->
                     </div>
                 </div>
             </div>
         </div>
 
-        <div ng-show="uploader.isHTML5 && uploader.queue.length">
+        <div ng-show="isEditable && uploader.isHTML5 && uploader.queue.length">
             <div ng-if="uploader.queue.length" nv-file-drop="" uploader="uploader" nv-file-over=""
                  over-class="bg-light-blue-200">
                 <table ng-if="uploader.queue.length" class="table">
@@ -147,7 +147,7 @@
 
         <div ng-show="isLoading == false">
 
-            <div class="row">
+            <div class="row" style="margin-right: -13px;">
                 <div class="col-md-8 col-lg-8 col-sm-8">
 
                     <input type="text"
@@ -168,32 +168,32 @@
                                 uib-dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
                             <em class="fa fa-users"></em>
                         </button>
-<!--                        <ul class="dropdown-menu" role="menu">-->
-<!--                            <li>-->
-<!--                                <a ng-click="uploadEntityProfile = 'all';uploadEntityProfileLabel = 'ALL_TEXT'">{{-->
-<!--                                    'ALL_TEXT' | translate }}-->
-<!--                                    <em class="fa fa-check mr-sm" ng-show="uploadEntityProfile == 'all'"></em>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <a ng-click="uploadEntityProfile = 'me';uploadEntityProfileLabel = 'ME_TEXT'">{{-->
-<!--                                    'ME_TEXT' | translate }}-->
-<!--                                    <em class="fa fa-check mr-sm" ng-show="uploadEntityProfile == 'me'"></em>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <a ng-click="uploadEntityProfile = 'member'; uploadEntityProfileLabel = 'MY_MEMBERS_TEXT'">{{-->
-<!--                                    'MY_MEMBERS_TEXT' | translate }}-->
-<!--                                    <em class="fa fa-check mr-sm" ng-show="uploadEntityProfile == 'member'"></em>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <a ng-click="uploadEntityProfile = 'counterparty';uploadEntityProfileLabel = 'COUNTERPARTY_TEXT'">{{-->
-<!--                                    'COUNTERPARTY_TEXT' | translate }}-->
-<!--                                    <em class="fa fa-check mr-sm" ng-show="uploadEntityProfile == 'counterparty'"></em>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
+                        <!--                        <ul class="dropdown-menu" role="menu">-->
+                        <!--                            <li>-->
+                        <!--                                <a ng-click="uploadEntityProfile = 'all';uploadEntityProfileLabel = 'ALL_TEXT'">{{-->
+                        <!--                                    'ALL_TEXT' | translate }}-->
+                        <!--                                    <em class="fa fa-check mr-sm" ng-show="uploadEntityProfile == 'all'"></em>-->
+                        <!--                                </a>-->
+                        <!--                            </li>-->
+                        <!--                            <li>-->
+                        <!--                                <a ng-click="uploadEntityProfile = 'me';uploadEntityProfileLabel = 'ME_TEXT'">{{-->
+                        <!--                                    'ME_TEXT' | translate }}-->
+                        <!--                                    <em class="fa fa-check mr-sm" ng-show="uploadEntityProfile == 'me'"></em>-->
+                        <!--                                </a>-->
+                        <!--                            </li>-->
+                        <!--                            <li>-->
+                        <!--                                <a ng-click="uploadEntityProfile = 'member'; uploadEntityProfileLabel = 'MY_MEMBERS_TEXT'">{{-->
+                        <!--                                    'MY_MEMBERS_TEXT' | translate }}-->
+                        <!--                                    <em class="fa fa-check mr-sm" ng-show="uploadEntityProfile == 'member'"></em>-->
+                        <!--                                </a>-->
+                        <!--                            </li>-->
+                        <!--                            <li>-->
+                        <!--                                <a ng-click="uploadEntityProfile = 'counterparty';uploadEntityProfileLabel = 'COUNTERPARTY_TEXT'">{{-->
+                        <!--                                    'COUNTERPARTY_TEXT' | translate }}-->
+                        <!--                                    <em class="fa fa-check mr-sm" ng-show="uploadEntityProfile == 'counterparty'"></em>-->
+                        <!--                                </a>-->
+                        <!--                            </li>-->
+                        <!--                        </ul>-->
                     </div>
 
                     <button class="btn btn-round mr-sm"
@@ -250,7 +250,7 @@
 
             <div class="row mt" ng-if="false">
                 <div
-                    ng-class="{ 'media-items-list': displayMode == 'grid', 'media-items-list-small': displayMode == 'list'  }">
+                        ng-class="{ 'media-items-list': displayMode == 'grid', 'media-items-list-small': displayMode == 'list'  }">
                     <app-media-item display-mode="displayMode"
                                     is-attachment="true"
                                     is-selectable="false"
@@ -259,16 +259,16 @@
                                     object-uuid="uuid"
                                     item="item"
                                     items="items"
-                                    ng-repeat="item in items | filter:searchText track  by $index "></app-media-item>
+                                    ng-repeat="item in items | filter:searchText track by $index "></app-media-item>
                 </div>
             </div>
 
 
-            <div class="mt media-items-list-small mr-sm " ng-if="displayMode == 'list'"
+            <div class="mt media-items-list-small mr " ng-if="displayMode == 'list'"
                  ng-class="{'overflow-y-enable overflow-x-disable pd-r-10' : isProperty, 'height-70vh-m70px' : isProperty && showUpload, 'height-80vh-m70px' :  isProperty && !showUpload }">
                 <app-media-item-list display-mode="displayMode"
                                      is-selectable="false"
-                                     is-editable="true"
+                                     is-editable="isEditable"
                                      is-attachment="true"
                                      object-uuid="uuid"
                                      object-type="objectType"
@@ -276,13 +276,13 @@
                                      on-delete="deleteItem(item.uuid)"
                                      item="item"
                                      items="items"
-                                     ng-repeat="item in items | filter:searchText track  by $index "></app-media-item-list>
+                                     ng-repeat="item in items | filter:searchText track by $index "></app-media-item-list>
             </div>
             <div class="mt row" ng-if="displayMode == 'grid'" vertilize-container=""
                  ng-class="{'overflow-y-enable overflow-x-disable' : isProperty ,'height-70vh-m70px' : isProperty && showUpload, 'height-80vh-m70px' :  isProperty && !showUpload } ">
                 <app-media-item-grid display-mode="displayMode"
                                      is-selectable="false"
-                                     is-editable="true"
+                                     is-editable="isEditable"
                                      is-attachment="true"
                                      object-uuid="uuid"
                                      object-type="objectType"
@@ -291,7 +291,7 @@
                                      item="item"
                                      items="items"
                                      width="mediaContentWidth"
-                                     ng-repeat="item in items | filter:searchText track  by $index "></app-media-item-grid>
+                                     ng-repeat="item in items | filter:searchText track by $index "></app-media-item-grid>
             </div>
         </div>
     </div>

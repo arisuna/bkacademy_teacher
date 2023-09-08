@@ -32,7 +32,7 @@
         $scope.removeAttachmentItem = function (item) {
             console.log(item);
             console.log($scope.object);
-            WaitingService.questionSimple('QUESTION_DELETE_DOCUMENT_TEXT', function () {
+            WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_DOCUMENT_TEXT', function () {
                 // $scope.$apply();
                 if(angular.isDefined(item.media_attachment_uuid) && item.media_attachment_uuid != null && item.media_attachment_uuid != ""){
                     AppMediaService.removeAttachment({
@@ -72,7 +72,7 @@
         };
 
         $scope.removeMediaItem = function (item) {
-            WaitingService.questionSimple('QUESTION_DELETE_DOCUMENT_TEXT', function () {
+            WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_DOCUMENT_TEXT', function () {
                 // $scope.$apply();
                 if (item.uuid && item.uuid != "") {
                     AppMediaService.removeMedia(item.uuid).then(function (res) {

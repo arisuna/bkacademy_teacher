@@ -61,7 +61,7 @@
 
                 $scope.removeAttachmentItem = function (itemMediaUuid) {
                     console.log('removeAttachmentItem', itemMediaUuid);
-                    WaitingService.questionSimple('QUESTION_DELETE_DOCUMENT_TEXT', function () {
+                    WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_DOCUMENT_TEXT', function () {
                         $scope.$apply();
                         if ($scope.objectUuid && $scope.objectUuid != "") {
                             AppMediaService.removeAttachment({
@@ -90,7 +90,7 @@
                 };
 
                 $scope.removeMediaItem = function (itemMediaUuid) {
-                    WaitingService.questionSimple('QUESTION_DELETE_DOCUMENT_TEXT', function () {
+                    WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_DOCUMENT_TEXT', function () {
                         $scope.$apply();
                         if (itemMediaUuid && itemMediaUuid != "") {
                             AppMediaService.removeMedia(itemMediaUuid).then(function (res) {

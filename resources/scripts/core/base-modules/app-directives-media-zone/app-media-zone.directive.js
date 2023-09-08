@@ -20,6 +20,7 @@
                 showLibrary: '<?',
                 isMultiple: '<?',
                 isHidden: '<?',
+                isEditable: '<?',
                 isGrid: '<?',
                 limit: '<?',
                 objectShared: '@?',
@@ -74,11 +75,9 @@
                     scope.objectShared = null;
                 }
 
-                if (angular.isDefined(scope.isMultiple) || scope.isMultiple == false) {
-                    scope.isMultiple = false;
-                } else {
-                    scope.isMultiple = true;
-                }
+                scope.isMultiple = !(angular.isDefined(scope.isMultiple) || scope.isMultiple == false);
+
+                scope.isEditable = !(angular.isDefined(scope.isEditable) || scope.isEditable == false);
 
                 if (angular.isUndefined(scope.showUpload) && !_.isBoolean(scope.showUpload)) {
                     console.log('scope.showUpload', scope.showUpload);

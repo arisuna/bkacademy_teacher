@@ -12,19 +12,19 @@
                 </div>
             </div>
 
-            <div class="selectable-input pull-left" ng-if="isProperty && !isSelectable">
-                <div class="checkbox c-checkbox position-absolute z-10 btn-check-grid mg-t-0">
-                    <label class="checkbox-thumb relo-bg-white" ng-if="!$parent.item.is_thumb">
-                        <input type="checkbox" ng-model="$parent.item.is_thumb" ng-change="setThumb($parent.item)"/>
-                        <span class="fa fa-check"></span>
-                        <small class="relo-dark-blue text-bold txt-ellipsis txt-10"> {{'SET_AS_MAIN_THUMBNAIL_TEXT' | translate}}</small>
-                    </label>
+            <!--            <div class="selectable-input pull-left" ng-if="isProperty && !isSelectable">-->
+            <!--                <div class="checkbox c-checkbox position-absolute z-10 btn-check-grid mg-t-0">-->
+            <!--                    <label class="checkbox-thumb relo-bg-white" ng-if="!$parent.item.is_thumb">-->
+            <!--                        <input type="checkbox" ng-model="$parent.item.is_thumb" ng-change="setThumb($parent.item)"/>-->
+            <!--                        <span class="fa fa-check"></span>-->
+            <!--                        <small class="relo-dark-blue text-bold txt-ellipsis txt-10"> {{'SET_AS_MAIN_THUMBNAIL_TEXT' | translate}}</small>-->
+            <!--                    </label>-->
 
-                    <label class="checkbox-thumb relo-bg-bright-blue pg-l-2" ng-if="$parent.item.is_thumb" style="padding-left: 2px !important;">
-                        <small class="relo-dark-blue text-bold txt-ellipsis txt-10"> <i class="fas fa-check"></i> {{'MAIN_THUMBNAIL_TEXT' | translate}}</small>
-                    </label>
-                </div>
-            </div>
+            <!--                    <label class="checkbox-thumb relo-bg-bright-blue pg-l-2" ng-if="$parent.item.is_thumb" style="padding-left: 2px !important;">-->
+            <!--                        <small class="relo-dark-blue text-bold txt-ellipsis txt-10"> <i class="fas fa-check"></i> {{'MAIN_THUMBNAIL_TEXT' | translate}}</small>-->
+            <!--                    </label>-->
+            <!--                </div>-->
+            <!--            </div>-->
 
             <div class="selectable-input pull-left control-hover" ng-if="isAttachment && isLibrary">
                 <div class="checkbox c-checkbox position-absolute mg-1x z-10 btn-check-grid">
@@ -74,21 +74,22 @@
                                        ng-if="isAttachment == true && (isEditable && item.can_delete) && isEmployee">
                 </app-media-btn-setting>
 
-<!--                <app-media-btn-copy-->
-<!--                                    type="displayMode"-->
-<!--                                    item="item"-->
-<!--                                    is-media="isMedia"-->
-<!--                                    is-attachment="isAttachment"-->
-<!--                                    remove-media-item="removeItem(item)"-->
-<!--                                    is-share-document="isShareDocument"-->
-<!--                                    copy-media-item="copyMediaItem(item)"-->
-<!--                                    copy-to-hr="copyToHr(item)"-->
-<!--                                    copy-to-dsp="copyToDsp(item)"-->
-<!--                                    copy-to-assignee="copyToAssignee(item)"-->
-<!--                                    ng-if="(isAttachment == true && item.user_profile_uuid != currentUser.uuid && item.can_attach_to_my_library == true) || (isMedia == true && item.user_profile_uuid != currentUser.uuid && item.can_attach_to_my_library == true)"-->
-<!--                                    class="btn-setting-grid"></app-media-btn-copy>-->
+                <!--                <app-media-btn-copy-->
+                <!--                                    type="displayMode"-->
+                <!--                                    item="item"-->
+                <!--                                    is-media="isMedia"-->
+                <!--                                    is-attachment="isAttachment"-->
+                <!--                                    remove-media-item="removeItem(item)"-->
+                <!--                                    is-share-document="isShareDocument"-->
+                <!--                                    copy-media-item="copyMediaItem(item)"-->
+                <!--                                    copy-to-hr="copyToHr(item)"-->
+                <!--                                    copy-to-dsp="copyToDsp(item)"-->
+                <!--                                    copy-to-assignee="copyToAssignee(item)"-->
+                <!--                                    ng-if="(isAttachment == true && item.user_profile_uuid != currentUser.uuid && item.can_attach_to_my_library == true) || (isMedia == true && item.user_profile_uuid != currentUser.uuid && item.can_attach_to_my_library == true)"-->
+                <!--                                    class="btn-setting-grid"></app-media-btn-copy>-->
             </div>
-            <div class="file-icon z-0 flex height-120 cursor-pointer" document-view-media="" items="items" element="item">
+            <div class="file-icon z-0 flex height-120 cursor-pointer" document-view-media="" items="items"
+                 element="item">
                 <div ng-switch="item.file_type"
                      class="flex-1 flex-middle"
                      ng-click="openDocument(item.image_data.url_full,item.file_type, item.file_extension )">
@@ -129,27 +130,9 @@
                 <div class="flex-vertical md-truncate mg-r-1x"
                      uib-tooltip="{{ item.updated_at | amUtc | amLocal | amDateFormat:$root.constants['COMPANY_DATE_FORMAT'] }}">
                     <span class="txt-10 md-truncate"><i
-                        class="icon-clock mg-r-1s"></i> {{ item.updated_at | amUtc | amLocal | amDateFormat:$root.constants['COMPANY_DATE_FORMAT']
+                            class="icon-clock mg-r-1s"></i> {{ item.updated_at | amUtc | amLocal | amDateFormat:$root.constants['COMPANY_DATE_FORMAT']
                         }}</span>
                 </div>
-<!--                <div class="flex-vertical flex-1">-->
-<!--                        <span class="label relo-bg-green text-white text-left"-->
-<!--                              ng-if="item.user_profile_uuid == currentUser.uuid">-->
-<!--                        {{ 'ME_TEXT' | translate }}-->
-<!--                        </span>-->
-<!--                    <span class="label label-primary text-left"-->
-<!--                          ng-if="item.user_profile_uuid != currentUser.uuid && item.company_uuid == currentCompany.uuid">-->
-<!--                            {{ 'MY_MEMBERS_TEXT' | translate }}-->
-<!--                        </span>-->
-<!--                    <span class="label label-inverse text-left"-->
-<!--                          ng-if="item.company_uuid && item.company_uuid != currentCompany.uuid && !item.is_employee">-->
-<!--                            {{ 'SHARED_BY_HR_TEXT' | translate }}-->
-<!--                        </span>-->
-<!--                    <span class="label label-inverse  mr text-left"-->
-<!--                          ng-if="item.company_uuid != currentCompany.uuid && item.is_employee">-->
-<!--                            {{ 'SHARED_BY_EE_TEXT' | translate }}-->
-<!--                        </span>-->
-<!--                </div>-->
             </div>
 
             <div class="clearfix mg-b-1x"></div>

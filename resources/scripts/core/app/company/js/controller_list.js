@@ -180,18 +180,20 @@
             };
 
             $scope.deleteFn = function (company, index) {
-                WaitingService.questionSimple('QUESTION_DELETE_COMPANY_TEXT',
-                    function (res) {
-                        AppCompanyService.deleteCompany(company.id).then(function (res) {
-                            if (res.success) {
-                                WaitingService.popSuccess(res.message);
-                                $scope.loadItems()
-                            } else {
-                                WaitingService.error(res.message);
-                            }
-                        }, function (err) {
-                            WaitingService.error(err);
-                        });
+                WaitingService.questionWithPasswordDefault('YOU_SHOULD_ENTER_YOUR_PASSWORD_TO_CONFIRM_ACTION_TEXT',
+                    function (passwordInputValue) {
+                        if (passwordInputValue) {
+                            AppCompanyService.deleteCompany(company.id, passwordInputValue).then(function (res) {
+                                if (res.success) {
+                                    WaitingService.popSuccess(res.message);
+                                    $scope.loadItems()
+                                } else {
+                                    WaitingService.error(res.message);
+                                }
+                            }, function (err) {
+                                WaitingService.error(err);
+                            });
+                        }
                     });
             };
 
@@ -234,7 +236,7 @@
                 });
 
                 $scope.createCompanyDialog.closePromise.then(function (data) {
-                    if (angular.isDefined(data.value.company)) {
+                    if (data && angular.isDefined(data.value)) {
                         console.log('data.value', data.value);
                         $scope.loadItems();
                     }
