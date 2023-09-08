@@ -1,5 +1,5 @@
 <div class="card text-dark-blue">
-    <div class="card-heading card-white card-title-heading height-58px">
+    <div class="card-heading relo-bg-bright-gray card-title-heading height-58px">
         <div class="row mg-t-10">
             <div class="col-sm-7 txt-14">
                 <span class="">{{ 'EMAIL_TEMPLATE_TEXT' | translate }}</span>
@@ -22,7 +22,7 @@
                             ng-model="emailTemplate.name"
                             label="NAME_TEXT"
                             show-label="true"
-                            required-message="ENTER_NAME_TEXT">
+                            required-message="FIELD_IS_REQUIRED_TEXT">
                 </input-text>
             </div>
 
@@ -30,6 +30,7 @@
                 <input-text-area is-editable="true"
                                  label="DESCRIPTION_TEXT"
                                  placeholder="ENTER_DESCRIPTION_TEXT"
+                                 error-message="FIELD_IS_REQUIRED_TEXT"
                                  show-label="true"
                                  rows="5"
                                  ng-model="emailTemplate.description">
@@ -45,11 +46,11 @@
 
                     <div>
                         <input-text is-editable="true"
-                                    is-required="true"
+                                    is-required="false"
                                     ng-model="item.subject"
                                     label="SUBJECT_TEXT"
                                     show-label="true"
-                                    required-message="ENTER_SUBJECT_TEXT">
+                                    required-message="FIELD_IS_REQUIRED_TEXT">
                         </input-text>
                     </div>
 
@@ -57,7 +58,16 @@
                         <label class="text-label">{{'TEXT_TEXT' | translate}}
 <!--                            <asterik-red>*</asterik-red>-->
                         </label>
-                        <app-wysiwyg ng-model="item.text" mention="false"></app-wysiwyg>
+                        <app-wysiwyg-email-template ng-model="item.text"
+                                                    mention="false"
+                                                    ng-model="item.text"
+                                                    uploader="true"
+                                                    is-email-template="true"
+                                                    template="item"
+                                                    show-upload-zone="true"
+                                                    add-media-link="false"
+                                                    items="item.items"
+                        ></app-wysiwyg-email-template>
                     </div>
                 </uib-tab>
             </uib-tabset>

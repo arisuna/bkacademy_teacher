@@ -99,7 +99,7 @@
             };
 
             $scope.deleteFn = function (template) {
-                WaitingService.questionSimple('ARE_YOU_SURE_WANT_DELETE_THIS_EMAIL_TEMPLATE_TEXT',
+                WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_THIS_EMAIL_TEXT',
                     function () {
                         AppEmailTemplateService.delete(template).then(function (res) {
                             if (res.success) {
