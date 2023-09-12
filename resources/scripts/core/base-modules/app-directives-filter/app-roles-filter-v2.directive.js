@@ -48,7 +48,7 @@
                     };
                 }
 
-                if($scope.toLeft == true){
+                if ($scope.toLeft == true) {
                     $scope.position = 'right';
                 }
 
@@ -73,18 +73,18 @@
                     let element = $event.currentTarget;
                     var place = element.getBoundingClientRect();
                     let dialogTop, dialogBottom = "";
-                    if ($window.innerHeight / 2 < place.y){
+                    if ($window.innerHeight / 2 < place.y) {
                         dialogBottom = ($window.innerHeight - _.parseInt(place.y)).toString() + 'px';
                         dialogTop = 'inherit';
-                    }else{
+                    } else {
                         dialogTop = (_.parseInt(place.y) + 33).toString() + 'px';
                         dialogBottom = 'inherit';
                     }
                     let dialogLeft = (_.parseInt(place.x) - 33).toString() + 'px';
                     let dialogRight = ($window.innerWidth - parseInt(place.right) - 10).toString() + 'px';
-                    if($scope.toLeft){
-                         dialogLeft = (_.parseInt(place.x) - 33).toString() + 'px';
-                         dialogRight = ($window.innerWidth - parseInt(place.right) - 10).toString() + 'px';
+                    if ($scope.toLeft) {
+                        dialogLeft = (_.parseInt(place.x) - 33).toString() + 'px';
+                        dialogRight = ($window.innerWidth - parseInt(place.right) - 10).toString() + 'px';
                     }
                     let dialogHeight = 0;
                     let dialogWidth = 0;
@@ -109,7 +109,7 @@
                                 return $scope.data.roles_selected;
                             }
                         },
-                        controller: ['$scope', '$element', '$rootScope', 'AppDataService', 'AppSystem', 'roles_selected', function ($scope, $element, $rootScope, AppDataService, AppSystem,roles_selected) {
+                        controller: ['$scope', '$element', '$rootScope', 'AppDataService', 'AppSystem', 'roles_selected', function ($scope, $element, $rootScope, AppDataService, AppSystem, roles_selected) {
 
 
                             document.documentElement.style.setProperty('--ng-dialog-custom-position-top', dialogTop);
@@ -139,23 +139,32 @@
 
                             $scope.addItem = function (item) {
 
-                                if (item.selected == true) {
-                                    item.selected = false;
-                                } else {
-                                    item.selected = true;
-                                }
+                                // item.selected = !item.selected;
+                                //
+                                // if (item.selected == true) {
+                                //     $scope.roles_selected.push(item);
+                                // } else {
+                                //     let indexToRemove = _.findIndex($scope.roles_selected, function (o) {
+                                //         return o.id == item.id;
+                                //     });
+                                //
+                                //     if (indexToRemove >= 0) {
+                                //         $scope.roles_selected.splice(indexToRemove, 1);
+                                //     }
+                                // }
 
-                                if (item.selected == true) {
-                                    $scope.roles_selected.push(item);
-                                } else {
-                                    let indexToRemove = _.findIndex($scope.roles_selected, function (o) {
-                                        return o.id == item.id;
-                                    });
+                                let _index = _.findIndex($scope.roles, function (o) {
+                                    return o.id == item.id;
+                                });
 
-                                    if (indexToRemove >= 0) {
-                                        $scope.roles_selected.splice(indexToRemove, 1);
-                                    }
+                                if (_index < 0) {
+                                    return
                                 }
+                                $scope.roles[_index].selected = !item.selected
+
+                                $timeout(function () {
+                                    $scope.roles_selected = $scope.roles.filter(o => o.selected);
+                                }, 500)
                             };
 
                             $scope.removeItem = function (item) {
@@ -199,7 +208,7 @@
                                     let _index = _.findIndex($scope.roles, function (o) {
                                         return o.id == item.id
                                     });
-                                    if (_index != -1){
+                                    if (_index != -1) {
                                         $scope.roles[_index].selected = true;
                                     }
 
@@ -212,7 +221,7 @@
                         if (angular.isDefined(returnData.value) && angular.isDefined(returnData.value.roles_selected)) {
                             $scope.updateValue(returnData.value.roles_selected);
                         } else {
-                            $scope.updateValue([]);
+                            // $scope.updateValue([]);
                         }
                     })
                 };
@@ -226,6 +235,15 @@
                     $scope.data.roles_selected = angular.copy([]);
                     $scope.model = [];
                 };
+
+                $scope.subscribe('clearFilter', function () {
+                    $scope.options = $scope.options.map(o => {
+                        o.selected = false
+                        return o
+                    })
+
+                    $scope.clearThisFilter();
+                });
             }
         };
 

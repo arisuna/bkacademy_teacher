@@ -4,13 +4,13 @@
 
             <line-loading-spinner options="c-l1-l2" lines="10" ng-show="isLoading"></line-loading-spinner>
 
-            <div class="flex pd-1x bd-t-1x relo-bd-bright-gray"
+            <div class="flex pd-1x bd-t-1x"
                  ng-show="isLoading == false"
-                 ng-class="{'relo-bg-bright-blue': item.selected == true}"
+                 ng-class="{'relo-bg-bright-blue': item.selected == true, 'relo-bd-bright-gray': !item.selected}"
                  ng-repeat="item in roles"
                  ng-click="addItem(item)">
                 <div class="flex-middle">
-                    <div>{{item.label| translate}}</div>
+                    <div>{{item.label | translate}}</div>
                 </div>
             </div>
         </div>
@@ -47,8 +47,8 @@
                 <button class="btn btn-transparent btn-flat btn-link pull-right mr-sm"
                         ng-click="showShowHideSelectedItems()"
                         type="button">
-                    {{ showSelectedItems == true ? ( 'SHOW_HIDE_BTN_TEXT' | translate ) : (
-                    'SHOW_HIDE_BTN_TEXT' | translate )}}
+                    {{ showSelectedItems == true ? ('SHOW_HIDE_BTN_TEXT' | translate) : (
+                        'SHOW_HIDE_BTN_TEXT' | translate)}}
                     <span class="badge relo-bg-bright-blue">{{ roles_selected.length }}</span>
                 </button>
                 <div class="clearfix"></div>

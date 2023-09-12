@@ -138,16 +138,19 @@
                             }
 
                             $scope.addItem = function (item) {
+
                                 let _index = _.findIndex($scope.statuses, function (o) {
                                     return o.value == item.value;
                                 });
-                                if (_index <= 0) {
+
+                                if (_index < 0) {
                                     return
                                 }
-
                                 $scope.statuses[_index].selected = !item.selected
 
-                                $scope.statuses_selected = $scope.statuses.filter(o => o.selected);
+                                $timeout(function (){
+                                    $scope.statuses_selected = $scope.statuses.filter(o => o.selected);
+                                }, 500)
                             };
 
                             $scope.removeItem = function (item) {

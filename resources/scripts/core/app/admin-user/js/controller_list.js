@@ -201,7 +201,9 @@
 
                 $scope.createAdminUserDialog.closePromise.then(function (data) {
                     if (angular.isDefined(data.value.adminUser)) {
-                        $scope.reLoadUsers();
+                        $timeout(function (){
+                            $scope.reLoadUsers();
+                        }, 500)
                     }
                 });
             };

@@ -144,7 +144,15 @@
             $rootScope.$on('crm_user_filter_update', function (event, data) {
                 $scope.isLoading = true;
                 $scope.loadCount = 0;
-                $scope.params.roles = data.roles;
+
+                console.log("data.statuses", data.roles)
+
+                if (data.roles && data.roles.length) {
+                    $scope.params.roles = data.roles
+                } else {
+                    $scope.params.roles = []
+                }
+
                 $timeout(function () {
                     $scope.items = [];
                     $scope.loadItems();
@@ -197,7 +205,11 @@
                 $scope.editDialog.closePromise.then(function (data) {
                     if (angular.isDefined(data.value.data)) {
                         console.log('data.value', data.value);
-                        $scope.loadItems()
+
+                        $timeout(function () {
+                            $scope.items = [];
+                            $scope.loadItems();
+                        }, 500);
                     }
                 });
             };
@@ -218,9 +230,13 @@
                 });
 
                 $scope.createDialog.closePromise.then(function (data) {
-                    if (angular.isDefined(data.value.data)) {
-                        console.log('data.value', data.value);
-                        $scope.loadItems()
+                    console.log('data.value', data.value);
+
+                    if (angular.isDefined(data.value)) {
+                        $timeout(function () {
+                            $scope.items = [];
+                            $scope.loadItems();
+                        }, 500);
                     }
                 });
             };

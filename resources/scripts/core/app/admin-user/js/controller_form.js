@@ -63,8 +63,7 @@
 
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
-                            $scope.closeThisDialog({adminUser: id});
-                            // $state.go('app.admin-user.list');
+                            $scope.closeThisDialog({adminUser: res.data});
                         } else {
                             WaitingService.error(res.message, function () {
                                 $scope.closeThisDialog();
