@@ -43,7 +43,8 @@
 
 
         <div class="mt upload-zone pd-2x" ng-if="isEmailTemplate == true" ng-show="showItems && items && items.length > 0">
-            <app-media-zone on-select-item=""
+            {{template.uuid + 'dfjhbvhdfhb'}}
+            <app-media-zone on-select-item="onAddItem(item)"
                             items="template.items"
                             uuid="template.uuid"></app-media-zone>
         </div>

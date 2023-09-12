@@ -252,7 +252,8 @@
                     if ($scope.showUploadZone == true) {
                         if (uploadZone.hasClass('ng-hide')) {
                             uploadZone.removeClass('ng-hide').animo({
-                                animation: 'fadeInDown', duration: 0.3
+                                animation: 'fadeInDown',
+                                duration: 0.3
                             });
                         }
                     }
