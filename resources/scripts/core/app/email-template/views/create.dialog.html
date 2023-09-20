@@ -2,7 +2,12 @@
     <div class="card-heading relo-bg-bright-gray card-title-heading">
         <span>{{'CREATE_NEW_EMAIL_TEMPLATE_TEXT' | translate}}</span>
     </div>
-    <form novalidate validate-form="" ng-submit="saveFn()">
+    <form
+            validate-form=""
+            ng-submit="saveFn()"
+            class="form-validate"
+            id="createEmailTemplate"
+    >
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
@@ -26,7 +31,7 @@
                                      error-message="FIELD_IS_REQUIRED_TEXT"
                                      show-label="true"
                                      ng-model="emailTemplate.description"
-                                     is-required="false">
+                                     is-required="true">
                     </input-text-area>
                 </div>
 

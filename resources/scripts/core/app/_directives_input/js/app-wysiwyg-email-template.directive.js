@@ -80,6 +80,10 @@
                 $scope.appCompany = {};
                 $scope.isManageMediaRelocation = AppAclService.validateAction('relocation', 'manage_documents');
 
+
+                console.log("template", $scope.template, $scope.uuid)
+
+
                 $scope.options = {
                     plugins: 'textcolor lists link table paste image uploader noneditable',
                     menubar: false,
@@ -129,9 +133,12 @@
                             }
 
                             var reader = new FileReader();
+
+                            console.log("$scope", $scope.uuid)
                             reader.onload = function () {
                                 var formData = new FormData();
                                 formData.append('file', file);
+                                formData.append('objectUuid', $scope.uuid);
                                 WaitingService.begin();
                                 AppMediaService.uploadImagePublic(formData).then(function (res) {
                                     WaitingService.end();

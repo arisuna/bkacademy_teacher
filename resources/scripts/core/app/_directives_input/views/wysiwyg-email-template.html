@@ -12,25 +12,27 @@
         </p>
     </div>
 
-    <div ng-show="showing" class="" ng-class="{'editor-wrapper': !mediaSetting.showUploadZone, 'editor-wrapper-2': mediaSetting.showUploadZone}">
+    <div ng-show="showing" class=""
+         ng-class="{'editor-wrapper': !mediaSetting.showUploadZone, 'editor-wrapper-2': mediaSetting.showUploadZone}">
         <textarea
-            ui-tinymce="options"
-            ng-disable="disabled"
-            ng-model="model"
-            mentio
-            mentio-id="'theTextArea'"
-            mentio-macros="macros"
-            mentio-trigger-char="'['"
-            mentio-items="mapField"
-            mentio-search="searchField(term)"
-            mentio-select="getMapFieldTextRaw(item)"
-            mentio-type-term="typedTerm"
-            mentio-template-url="people-mentions.tpl"
-            mentio-iframe-element="iframeElement"
-            ng-trim="false">
+                ui-tinymce="options"
+                ng-disable="disabled"
+                ng-model="model"
+                mentio
+                mentio-id="'theTextArea'"
+                mentio-macros="macros"
+                mentio-trigger-char="'['"
+                mentio-items="mapField"
+                mentio-search="searchField(term)"
+                mentio-select="getMapFieldTextRaw(item)"
+                mentio-type-term="typedTerm"
+                mentio-template-url="people-mentions.tpl"
+                mentio-iframe-element="iframeElement"
+                ng-trim="false">
         </textarea>
 
-        <input style="display: none" type="text" ng-model="model" ng-required="isRequired"  data-parsley-required-message="{{ requiredMessage | translate }}">
+        <input style="display: none" type="text" ng-model="model" ng-required="isRequired"
+               data-parsley-required-message="{{ requiredMessage | translate }}">
 
         <div class="mt" ng-if="communicationSignature == true">
             <a ng-click="addSignature()">
@@ -42,7 +44,8 @@
         <input name="image" type="file" id="upload" class="hidden" onchange="">
 
 
-        <div class="mt upload-zone pd-2x" ng-if="isEmailTemplate == true" ng-show="showItems && items && items.length > 0">
+        <div class="mt upload-zone pd-2x" ng-if="isEmailTemplate == true"
+             ng-show="showItems && items && items.length > 0">
             <app-media-zone on-select-item="onAddItem(item)"
                             items="template.items"
                             uuid="template.uuid"></app-media-zone>
@@ -65,7 +68,8 @@
         <script type="text/ng-template" id="people-mentions.tpl">
             <div class="width-300px relo-box-shadow-gray relo-bg-white">
                 <ul class="height-400px scroll-y pd-0 mg-0">
-                    <li mentio-menu-item="field" ng-repeat="field in items" class="noBorder border-radius-0px list-group-item list-group-item-custom">
+                    <li mentio-menu-item="field" ng-repeat="field in items"
+                        class="noBorder border-radius-0px list-group-item list-group-item-custom">
                         <em class="text-muted" ng-bind="field.table_translate"></em>
                         <span class="txt-dark-blue"
                               ng-bind-html="field.label_translate | mentioHighlight:typedTerm:'menu-highlighted' | unsafe"></span>

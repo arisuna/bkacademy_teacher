@@ -125,8 +125,17 @@
                                 document.documentElement.style.setProperty('--ng-dialog-custom-position-right', 'inherit');
                             }
 
-                            console.log(options);
-                            $scope.statuses = options;
+                            $scope.statuses = options.map((item) => {
+                                item.selected = false
+                                if (statuses_selected && statuses_selected.length > 0) {
+                                    let _index = _.findIndex(statuses_selected, o => o.value == item.value);
+
+                                    item.selected = _index > -1
+                                }
+
+                                return item;
+                            });
+
 
                             $scope.showSelectedItems = false;
                             $scope.isLoading = false;
@@ -148,7 +157,7 @@
                                 }
                                 $scope.statuses[_index].selected = !item.selected
 
-                                $timeout(function (){
+                                $timeout(function () {
                                     $scope.statuses_selected = $scope.statuses.filter(o => o.selected);
                                 }, 500)
                             };
@@ -224,6 +233,14 @@
                     $scope.data.statuses_selected = angular.copy([]);
                     $scope.model = [];
                 };
+
+
+                $scope.$watch('selected_roles', function (newValue, oldValue) {
+                    if (newValue !== oldValue) {
+                        $scope.broadcastFilter();
+                    }
+                });
+
             }
         };
 

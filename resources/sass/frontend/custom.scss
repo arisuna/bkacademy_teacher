@@ -1808,6 +1808,7 @@ span.mark-complete-messenger {
 
 .editor-wrapper {
     height: 100%;
+    border: 1px solid #dde6e9;
 }
 
 .editor-wrapper .mce-tinymce.mce-container.mce-panel,
@@ -1816,7 +1817,8 @@ span.mark-complete-messenger {
 }
 
 .editor-wrapper .mce-edit-area.mce-container.mce-panel.mce-stack-layout-item {
-    height: calc(100vh - 178px); /* 75 is tinymce header and footer height*/
+    //height: calc(100vh - 178px); /* 75 is tinymce header and footer height*/
+    height: 70vh;
 }
 
 .editor-wrapper iframe, .editor-wrapper html {
@@ -1828,6 +1830,7 @@ span.mark-complete-messenger {
     display: -webkit-box;
     vertical-align: middle;
     align-items: center;
+    border-bottom: 1px solid #dde6e9;
 }
 
 .editor-wrapper .mce-panel {
@@ -1836,6 +1839,7 @@ span.mark-complete-messenger {
 
 .editor-wrapper-2 {
     height: 100%;
+    border: 1px solid #dde6e9;
 }
 
 .editor-wrapper-2 .mce-tinymce.mce-container.mce-panel,

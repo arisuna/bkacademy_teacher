@@ -28,7 +28,7 @@
                     scope.dropdownSize = 'small';
                 }
                 if (angular.isUndefined(scope.options)) {
-                    scope.options = [];
+                    scope.options = AppSystem.getSettingUserGroups();
                 }
 
                 if (angular.isUndefined(scope.toLeft) || scope.toLeft == true) {
@@ -69,7 +69,7 @@
 
 
                 $scope.openSearchDialog = function ($event) {
-
+                    let options = $scope.options;
                     let element = $event.currentTarget;
                     var place = element.getBoundingClientRect();
                     let dialogTop, dialogBottom = "";
@@ -88,7 +88,6 @@
                     }
                     let dialogHeight = 0;
                     let dialogWidth = 0;
-
 
                     let searchDialog = ngDialog.open({
                         template: urlBase.tplBase('base-modules/app-directives-filter', 'app-roles-filter-dialog'),
@@ -110,10 +109,7 @@
                             }
                         },
                         controller: ['$scope', '$element', '$rootScope', 'AppDataService', 'AppSystem', 'roles_selected', function ($scope, $element, $rootScope, AppDataService, AppSystem, roles_selected) {
-
-
                             document.documentElement.style.setProperty('--ng-dialog-custom-position-top', dialogTop);
-                            document.documentElement.style.setProperty('--ng-dialog-custom-position-bottom', dialogBottom);
                             if ($scope.ngDialogData.position === 'right') {
                                 console.log('right dialog');
                                 document.documentElement.style.setProperty('--ng-dialog-custom-position-right', dialogRight);
@@ -124,7 +120,16 @@
                                 document.documentElement.style.setProperty('--ng-dialog-custom-position-right', 'inherit');
                             }
 
-                            $scope.roles = AppSystem.getSettingUserGroups();
+                            $scope.roles = options.map((item) => {
+                                item.selected = false
+                                if (roles_selected && roles_selected.length > 0) {
+                                    let _index = _.findIndex(roles_selected, o => o.id == item.id);
+
+                                    item.selected = _index > -1
+                                }
+
+                                return item;
+                            });
 
                             $scope.showSelectedItems = false;
                             $scope.isLoading = false;
@@ -138,21 +143,6 @@
 
 
                             $scope.addItem = function (item) {
-
-                                // item.selected = !item.selected;
-                                //
-                                // if (item.selected == true) {
-                                //     $scope.roles_selected.push(item);
-                                // } else {
-                                //     let indexToRemove = _.findIndex($scope.roles_selected, function (o) {
-                                //         return o.id == item.id;
-                                //     });
-                                //
-                                //     if (indexToRemove >= 0) {
-                                //         $scope.roles_selected.splice(indexToRemove, 1);
-                                //     }
-                                // }
-
                                 let _index = _.findIndex($scope.roles, function (o) {
                                     return o.id == item.id;
                                 });
@@ -225,11 +215,6 @@
                         }
                     })
                 };
-
-
-                $scope.subscribe('clearFilter', function () {
-                    $scope.clearThisFilter();
-                });
 
                 $scope.clearThisFilter = function () {
                     $scope.data.roles_selected = angular.copy([]);
