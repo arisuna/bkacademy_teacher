@@ -1,8 +1,9 @@
 (function () {
     'use strict';
     App.controller('BusinessZoneListApiController', ['$scope', '$state', '$timeout', '$rootScope', '$translate',
-        'WaitingService', 'AppBusinessZoneService', 'ngDialog', 'urlBase',
-        function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppBusinessZoneService, ngDialog, urlBase) {
+        'WaitingService', 'AppBusinessZoneService', 'ngDialog', 'urlBase', 'AppFilterConfigService',
+        function ($scope, $state, $timeout, $rootScope, $translate,
+                  WaitingService, AppBusinessZoneService, ngDialog, urlBase, AppFilterConfigService) {
 
 
             $scope.module_name = 'business_zones';
@@ -45,6 +46,7 @@
 
             $scope.loadingMore = false;
             $scope.isInitialisInitialLoading = false;
+            $scope.list_statuses = AppFilterConfigService.getBusinessZoneStatusList();
 
             $scope.loadCount = 0;
             $scope.totalPages = 1;
@@ -53,6 +55,7 @@
             $scope.search = {
                 query: null,
                 filterConfigId: null,
+                selected_statuses: [],
                 isTmp: false,
                 orders: {},
             };
@@ -68,7 +71,9 @@
                 }
                 $scope.params.filter_config_id = $scope.search.filterConfigId;
                 $scope.params.is_tmp = $scope.search.isTmp;
-
+                if (_.size($scope.search.selected_statuses) > 0) {
+                    $scope.params.statuses = _.map($scope.search.selected_statuses, 'id');
+                }
 
                 AppBusinessZoneService.search($scope.params).then(function (res) {
                     if (res.success) {
@@ -103,6 +108,9 @@
                     }
                     $scope.params.filter_config_id = $scope.search.filterConfigId;
                     $scope.params.is_tmp = $scope.search.isTmp;
+                    if (_.size($scope.search.selected_statuses) > 0) {
+                        $scope.params.statuses = _.map($scope.search.selected_statuses, 'id');
+                    }
 
                     AppBusinessZoneService.search($scope.params).then(function (res) {
                         if (res.success) {
@@ -136,6 +144,28 @@
             };
 
             $scope.reloadInit();
+
+            $scope.clearFilter = function(){
+                $scope.search = {
+                    query: null,
+                    filterQuery: null,
+                    selected_statuses: [],
+                    filterConfigId: null,
+                    isTmp: false,
+                    orders: {},
+                };
+
+                $scope.publish('clearFilter');
+                $scope.reloadInit();
+            };
+
+            $scope.$watchGroup(['search.selected_statuses'], function(){
+                $scope.reloadInit();
+            });
+
+            $scope.applyFilter = function(){
+                $scope.reloadInit();
+            };
 
             $scope.subscribe('apply_filter_config_business_zones', function (filterConfigId) {
                 angular.element('.scroll-append').scrollTop(0);
