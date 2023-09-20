@@ -224,7 +224,7 @@
                                     $timeout(function () {
                                         $scope.publish('updateLogoAfterChange', $scope.uuid);
                                     }, 500);
-                                    WaitingService.popSuccess('LOGO_DELETE_SUCCESS_TEXT');
+                                    WaitingService.popSuccess('DATA_DELETE_SUCCESS_TEXT');
                                 } else {
                                     WaitingService.error(res.message);
                                 }

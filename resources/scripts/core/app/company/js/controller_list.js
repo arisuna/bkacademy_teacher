@@ -180,10 +180,10 @@
             };
 
             $scope.deleteFn = function (company, index) {
-                WaitingService.questionWithPasswordDefault('YOU_SHOULD_ENTER_YOUR_PASSWORD_TO_CONFIRM_ACTION_TEXT',
-                    function (passwordInputValue) {
-                        if (passwordInputValue) {
-                            AppCompanyService.deleteCompany(company.id, passwordInputValue).then(function (res) {
+                WaitingService.questionWithInputText('YOU_SHOULD_ENTER_CODE_TO_CONFIRM_ACTION_TEXT', 'ENTER_CODE_TO_CONFIRM_DELETE_TEXT', null,
+                    function (confirmText) {
+                        if (confirmText) {
+                            AppCompanyService.deleteCompany(company.id, confirmText).then(function (res) {
                                 if (res.success) {
                                     WaitingService.popSuccess(res.message);
                                     $scope.loadItems()
@@ -214,7 +214,7 @@
                 });
 
                 $scope.editCompanyDialog.closePromise.then(function (data) {
-                    if (angular.isDefined(data.value)) {
+                    if (angular.isDefined(data.value.company)) {
                         console.log('data.value', data.value);
                         $scope.loadItems()
                     }
@@ -236,7 +236,7 @@
                 });
 
                 $scope.createCompanyDialog.closePromise.then(function (data) {
-                    if (data && angular.isDefined(data.value)) {
+                    if (data && angular.isDefined(data.value.company)) {
                         console.log('data.value', data.value);
                         $scope.loadItems();
                     }

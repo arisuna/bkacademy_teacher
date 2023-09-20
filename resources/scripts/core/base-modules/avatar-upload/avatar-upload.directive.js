@@ -182,7 +182,7 @@
                                         $scope.publish('updateAvatarAfterChange', $scope.uuid);
                                         $scope.publish('load_avatar_thumb', '');
                                     }, 500);
-                                    WaitingService.popSuccess('AVATAR_DELETE_SUCCESS_TEXT');
+                                    WaitingService.popSuccess('DATA_DELETE_SUCCESS_TEXT');
                                 } else {
                                     WaitingService.error(res.message);
                                 }

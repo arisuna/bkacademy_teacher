@@ -8,7 +8,7 @@
             <div class="col-sm-12">
                 <input-text is-editable="isEditable && company.status != 1"
                             is-text="true"
-                            is-required="company.status == 1"
+                            is-required="companyStatus == 1"
                             ng-model="company.taxpayer_name"
                             required-message="FIELD_IS_REQUIRED_TEXT"
                             label="TAXPAYER_NAME_TEXT"
@@ -21,7 +21,7 @@
             <div class="col-sm-12">
                 <input-text is-editable="isEditable && company.status != 1"
                             is-text="true"
-                            is-required="company.status == 1"
+                            is-required="companyStatus == 1"
                             ng-model="company.address"
                             required-message="FIELD_IS_REQUIRED_TEXT"
                             label="ADMINISTRATIVE_ADDRESS_TEXT"
@@ -35,7 +35,7 @@
             <div class="col-sm-6">
                 <input-text is-editable="isEditable && company.status != 1"
                             is-text="true"
-                            is-required="company.status == 1"
+                            is-required="companyStatus == 1"
                             ng-model="company.tax_number"
                             required-message="FIELD_IS_REQUIRED_TEXT"
                             label="TAX_NUMBER_TEXT"
@@ -70,6 +70,10 @@
 
                     </ui-select-choices>
                 </ui-select>
+                <div ng-if="company.status==1 && company.user_verified_name" class="txt-10 mt-sm">
+                    {{'VERIFIED_ON_TEXT' | translate}} {{ company.verified_at | amDateFormat: 'DD/MM/YYYY'}} {{'BY_TEXT'}}
+                    {{company.user_verified_name}}
+                </div>
             </div>
         </div>
         <div class="row">
@@ -77,6 +81,7 @@
                 <div>
                     <label class="label-text-form">
                         {{'VAT_REGISTRATION_CERTIFICATE_TEXT' | translate}}
+                        <asterik-red ng-if="companyStatus == 1 && isEditable" class=""></asterik-red>
                     </label>
                 </div>
 

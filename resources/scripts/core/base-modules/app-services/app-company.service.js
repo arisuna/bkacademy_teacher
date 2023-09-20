@@ -33,9 +33,9 @@
             return deferred.promise;
         };
 
-        this.deleteCompany = function (id, password) {
+        this.deleteCompany = function (id, confirmText) {
             const deferred = $q.defer();
-            AppHttp.putWithPassword('/app/company/delete/' + id, {id: id, password: password}, {password: password})
+            AppHttp.putWithPassword('/app/company/delete/' + id, {id: id, confirmText: confirmText})
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err, status) {

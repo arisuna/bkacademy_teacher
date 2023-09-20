@@ -554,12 +554,14 @@
                     });
                 },
             }).then((inputValue) => {
-                if (inputValue === false || inputValue === "") {
-                    return false;
-                }
-                if (inputValue !== '') {
-                    callback(inputValue);
-                }
+                // if (inputValue === false || inputValue === "") {
+                //     return false;
+                // }
+                // if (inputValue !== '') {
+                //     callback(inputValue);
+                // }
+
+                callback(inputValue);
             }).catch((result) => {
                 console.log(result);
             });

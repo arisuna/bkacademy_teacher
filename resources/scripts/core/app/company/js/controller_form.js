@@ -18,6 +18,7 @@
             $scope.siteAddresses = [];
             $scope.mailAddresses = [];
             $scope.companyStatus = 0;
+            $scope.isUnVerify = false;
 
             $scope.attachmentSelect = [];
 
@@ -88,35 +89,72 @@
             $scope.saveFn = function ($event) {
                 // $event.preventDefault();
                 // $event.stopPropagation();
-
-                if ($scope.company.status !== $scope.companyStatus) {
-                    $scope.company.status = $scope.companyStatus
+                if ($scope.companyStatus == 0 && $scope.company.status == 1) {
+                    $scope.isUnVerify = true
                 }
 
                 if ($scope.company.id > 0) {
-                    AppCompanyService.updateCompany($scope.company).then(function (res) {
-                        $scope.saving = false;
-                        // $scope.isEditable = false
+                    if (!$scope.isUnVerify) {
+                        let oldStatus = $scope.company.status;
 
-                        if (res.success) {
-                            WaitingService.popSuccess(res.message);
-                            $scope.closeThisDialog({company: res.data});
-                        } else {
-                            WaitingService.error(res.message);
+                        if ($scope.company.status !== $scope.companyStatus) {
+                            $scope.company.status = $scope.companyStatus
                         }
-                    }, (err) => {
-                        $scope.saving = false;
-                        // $scope.isEditable = false
 
-                        WaitingService.error(err);
-                    })
+                        AppCompanyService.updateCompany($scope.company).then(function (res) {
+                            $scope.saving = false;
+                            if (res.success) {
+                                WaitingService.popSuccess(res.message);
+                                $scope.closeThisDialog({company: res});
+                            } else {
+                                $scope.company.status = oldStatus
+                                WaitingService.error(res.message);
+                            }
+                        }, (err) => {
+                            $scope.saving = false;
+                            $scope.company.status = oldStatus
+                            WaitingService.error(err);
+                        })
+
+                        return
+                    }
+
+                    WaitingService.questionWithInputText('YOU_SHOULD_ENTER_CODE_TO_CONFIRM_ACTION_TEXT', 'ENTER_CODE_TO_CONFIRM_UNVERIFIED_TEXT', null,
+                        function (confirmText) {
+                            if ($scope.company.status !== $scope.companyStatus) {
+                                $scope.company.status = $scope.companyStatus
+                            }
+                            $scope.company.confirmText = confirmText
+                            AppCompanyService.updateCompany($scope.company).then(function (res) {
+                                $scope.saving = false;
+                                if (res.success) {
+                                    WaitingService.popSuccess(res.message);
+                                    $scope.isUnVerify = false
+
+                                    $scope.closeThisDialog({company: res});
+                                } else {
+                                    $scope.company.status = 1
+                                    $scope.companyStatus = 0
+                                    $scope.isUnVerify = false
+
+                                    WaitingService.error(res.message);
+                                }
+                            }, (err) => {
+                                $scope.company.status = 1
+                                $scope.companyStatus = 0
+                                $scope.isUnVerify = false
+
+                                $scope.saving = false;
+                                WaitingService.error(err);
+                            })
+                        });
                 } else {
                     AppCompanyService.createCompany($scope.company).then(function (res) {
                         $scope.saving = false;
 
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
-                            $scope.closeThisDialog({company: res.data});
+                            $scope.closeThisDialog({company: res});
                         } else {
                             WaitingService.error(res.message);
                         }
@@ -131,21 +169,22 @@
             }; // End save function
 
             $scope.deleteFn = function (id) {
-                WaitingService.questionSimple('QUESTION_DELETE_COMPANY_TEXT',
-                    function (res) {
-                        AppCompanyService.deleteCompany(id).then(function (res) {
-                            if (res.success) {
-                                WaitingService.popSuccess(res.message);
-                                console.log('go', res.message);
-                                $scope.closeThisDialog({company: res.data});
-                            } else {
-                                WaitingService.error(res.message);
-                            }
-                        }, function (err) {
-                            WaitingService.error(err);
-                        });
+                WaitingService.questionWithInputText('YOU_SHOULD_ENTER_CODE_TO_CONFIRM_ACTION_TEXT', 'ENTER_CODE_TO_CONFIRM_DELETE_TEXT', null,
+                    function (confirmText) {
+                        if (confirmText) {
+                            AppCompanyService.deleteCompany(id, confirmText).then(function (res) {
+                                if (res.success) {
+                                    WaitingService.popSuccess(res.message);
+                                    $scope.getDetailFn()
+                                } else {
+                                    WaitingService.error(res.message);
+                                }
+                            }, function (err) {
+                                WaitingService.error(err);
+                            });
+                        }
                     });
-            }; // End delete function
+            };
 
             $scope.createAddress = function (type = 1) {
                 // alert('createAddress')
