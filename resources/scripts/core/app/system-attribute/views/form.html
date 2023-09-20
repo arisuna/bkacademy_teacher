@@ -2,7 +2,7 @@
     <div class="card-heading">
         <div class="row">
             <div class="col-sm-6 text-left">
-                <h4>{{ isClone ?  ('CLONE_ATTRIBUTE_TEXT' | translate) + ('#' + object.id) : (object.id ?  ('EDIT_ATTRIBUTE_TEXT' | translate) + '#' + object.id : ('CREATE_ATTRIBUTE_TEXT' | translate)) }}</h4>
+                <h4>{{ isClone ?  ('CLONE_ATTRIBUTE_TEXT' | translate) : (object.id ?  ('EDIT_ATTRIBUTE_TEXT' | translate) + '#' + object.id : ('CREATE_ATTRIBUTE_TEXT' | translate)) }}</h4>
             </div>
             <div class="col-sm-6 text-right">
                 <back-button-state ui-sref="app.system-attribute.list"></back-button-state>

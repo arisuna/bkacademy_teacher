@@ -6,9 +6,9 @@
     'use strict';
 
     App.controller('SystemAttributeFormController', ['$scope', '$http', '$stateParams', '$state', '$location', '$anchorScroll',
-        'WaitingService', 'AppDataService', 'AppAttributeService', 'AppSystem',
+        'WaitingService', 'AppDataService', 'AppAttributeService', 'AppSystem', '$filter',
         function ($scope, $http, $stateParams, $state, $location, $anchorScroll,
-                  WaitingService, AppDataService, AppAttributeService, AppSystem) {
+                  WaitingService, AppDataService, AppAttributeService, AppSystem, $filter) {
             $scope.page_loading = true;
             $scope.object = {};
             $scope.data_translated = [];
@@ -32,6 +32,8 @@
                                 res.data.id = 0;
                             }
                             $scope.object = res.data;
+                            $scope.object.created_at = $filter('amDateFormat')($filter('amLocal')($filter('amUtc')($scope.object.created_at)), 'DD/MM/YYYY HH:mm:ss');
+                            $scope.object.updated_at = $filter('amDateFormat')($filter('amLocal')($filter('amUtc')($scope.object.updated_at)), 'DD/MM/YYYY HH:mm:ss');
                             $scope.data_translated = res.data_translated;
                         } else {
                             WaitingService.error(res.msg);

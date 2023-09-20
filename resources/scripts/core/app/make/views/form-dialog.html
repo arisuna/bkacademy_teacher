@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-heading relo-bg-bright-gray">
         <span class="text-dark-blue">
-           {{ isClone == true ?  ('CLONE_MAKE_TEXT' | translate) + (' #' + object.id) : (object.id ?  ('EDIT_MAKE_TEXT' | translate) + ' #' + object.id : ('CREATE_MAKE_TEXT' | translate)) }}
+           {{ isClone == true ?  ('CLONE_MAKE_TEXT' | translate) : (object.id ?  ('EDIT_MAKE_TEXT' | translate) + ' #' + object.id : ('CREATE_MAKE_TEXT' | translate)) }}
         </span>
     </div>
     <form class="form-validate noPadding" validate-form="true"
