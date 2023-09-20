@@ -209,7 +209,7 @@
                         $timeout(function () {
                             $scope.items = [];
                             $scope.loadItems();
-                        }, 500);
+                        }, 1000);
                     }
                 });
             };
@@ -232,7 +232,7 @@
                 $scope.createDialog.closePromise.then(function (data) {
                     console.log('data.value', data.value);
 
-                    if (angular.isDefined(data.value)) {
+                    if (angular.isDefined(data.value.data)) {
                         $timeout(function () {
                             $scope.items = [];
                             $scope.loadItems();

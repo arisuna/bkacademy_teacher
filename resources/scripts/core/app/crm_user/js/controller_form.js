@@ -60,7 +60,7 @@
                     AppDataService.createCrmUser($scope.user).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
-                            $scope.closeThisDialog({data: res.data});
+                            $scope.closeThisDialog({data: res});
                         } else {
                             WaitingService.error(res.message);
                         }

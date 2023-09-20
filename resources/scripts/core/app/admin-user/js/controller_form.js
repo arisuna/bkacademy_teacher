@@ -63,7 +63,7 @@
 
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
-                            $scope.closeThisDialog({adminUser: res.data});
+                            $scope.closeThisDialog({adminUser: res});
                         } else {
                             WaitingService.error(res.message, function () {
                                 $scope.closeThisDialog();

@@ -86,7 +86,7 @@
                         width: 300,
                         data: {
                             roles: $scope.roles,
-                            height: 'height-100px'
+                            height: 'height-150px'
                         },
 
                         controller: ['$scope', '$element', '$timeout', 'Utils', function ($scope, $element, $timeout, Utils) {
