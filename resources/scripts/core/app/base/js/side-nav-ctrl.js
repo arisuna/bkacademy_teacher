@@ -134,6 +134,26 @@
                     "controller": ""
                 },
                 {
+                    "text": "ORDERS_TEXT",
+                    "sref": "app.order",
+                    "icon": "fa-solid fa-basket-shopping",
+                    "iconType": "fontawesome",
+                    // "appAclAllow": "order/index",
+                    // "aclRemove": true,
+                    "class": "",
+                    "controller": ""
+                },
+                {
+                    "text": "PRODUCTS_TEXT",
+                    "sref": "app.product",
+                    "icon": "fa-solid fa-snowplow",
+                    "iconType": "fontawesome",
+                    // "appAclAllow": "product/index",
+                    // "aclRemove": true,
+                    "class": "",
+                    "controller": ""
+                },
+                {
                     "text": "USERS_TEXT",
                     "icon": "fa-solid fa-building-user",
                     "iconType": "fontawesome",
@@ -156,26 +176,6 @@
                             "aclRemove": true,
                         }
                     ]
-                },
-                {
-                    "text": "ORDERS_TEXT",
-                    "sref": "app.order",
-                    "icon": "fa-solid fa-basket-shopping",
-                    "iconType": "fontawesome",
-                    "appAclAllow": "order/index",
-                    "aclRemove": true,
-                    "class": "",
-                    "controller": ""
-                },
-                {
-                    "text": "PRODUCTS_TEXT",
-                    "sref": "app.product",
-                    "icon": "fa-solid fa-snowplow",
-                    "iconType": "fontawesome",
-                    "appAclAllow": "product/index",
-                    "aclRemove": true,
-                    "class": "",
-                    "controller": ""
                 },
                 {
                     "text": "MORE_TEXT",
