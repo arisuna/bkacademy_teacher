@@ -157,6 +157,16 @@
             return deferred.promise;
         };
 
+        this.getAttribute = function (name) {
+            let deferred = $q.defer();
+            AppHttp.get('/app/attribute/item/' + name).then(function (response) {
+                deferred.resolve(response.data);
+            }).catch(function (err) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        }
+
         this.getAttributeValues = function (companyId, attributeName) {
             var deferred = $q.defer();
             AppHttp.get('/app/attribute/item/' + companyId + '/' + attributeName + '?_random=' + Math.random()).then(function (response) {
@@ -176,5 +186,16 @@
             });
             return deferred.promise;
         };
+
+        this.getAttributeByCode = function (code) {
+            var deferred = $q.defer();
+            AppHttp.get('/app/attributes/getByCode?code=' + code).then(function (response) {
+                deferred.resolve(response.data);
+            }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
     }
 })();

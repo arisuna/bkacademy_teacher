@@ -4,54 +4,61 @@
 
 
     <div class="mt"></div>
-    <app-employee-filter-full
-        name="ASSIGNEE_TEXT"
-        companies="object.selected_companies"
-        model="object.selected_assignees"
-        has-avatar="true"
-        type="R"
-        class="medium"
-        auto-search="true"
-        float="true"
-        dropdown-size="medium"
-        inline-list="true"></app-employee-filter-full>
+
+    <app-system-attribute-seletor   attribute-name="{{object.attribute_code}}"
+                                   is-required="false"
+                                   show-label="true"
+                                   ng-model="object.attribute_value"
+                                   required-message="PROPERTY_TYPE_REQUIRED_TEXT"
+                                   label="PROPERTY_TYPE_TEXT"></app-system-attribute-seletor>
+<!--    <app-employee-filter-full-->
+<!--        name="ASSIGNEE_TEXT"-->
+<!--        companies="object.selected_companies"-->
+<!--        model="object.selected_assignees"-->
+<!--        has-avatar="true"-->
+<!--        type="R"-->
+<!--        class="medium"-->
+<!--        auto-search="true"-->
+<!--        float="true"-->
+<!--        dropdown-size="medium"-->
+<!--        inline-list="true"></app-employee-filter-full>-->
 
 
-    <app-country-filter
-        name="ORIGIN_TEXT"
-        model="object.selected_countries_origin"></app-country-filter>
+<!--    <app-country-filter-->
+<!--        name="ORIGIN_TEXT"-->
+<!--        model="object.selected_countries_origin"></app-country-filter>-->
 
 
-    <app-property-selector
-        ng-model="object.property_id"
-        label="PROPERTY_TEXT"
-        show-label="true"
-        is-required="false"></app-property-selector>
+<!--    <app-property-selector-->
+<!--        ng-model="object.property_id"-->
+<!--        label="PROPERTY_TEXT"-->
+<!--        show-label="true"-->
+<!--        is-required="false"></app-property-selector>-->
 
 
-    <app-attribute-selector
-        attribute-name="PROPERTY_TYPE"
-        is-required="false"
-        show-label="true"
-        ng-model="object.property_type"
-        required-message="FIELD_IS_REQUIRED_TEXT"
-        label="PROPERTY_TYPE_TEXT"></app-attribute-selector>
+<!--    <app-attribute-selector-->
+<!--        attribute-name="PROPERTY_TYPE"-->
+<!--        is-required="false"-->
+<!--        show-label="true"-->
+<!--        ng-model="object.property_type"-->
+<!--        required-message="FIELD_IS_REQUIRED_TEXT"-->
+<!--        label="PROPERTY_TYPE_TEXT"></app-attribute-selector>-->
 
 
-    <app-service-provider-single-selector
-        provider-type-name="landlord"
-        label="LANDLORD_TEXT"
-        show-label="true"
-        is-editable="true"
-        ng-model="object.landlord_svp_id"></app-service-provider-single-selector>
+<!--    <app-service-provider-single-selector-->
+<!--        provider-type-name="landlord"-->
+<!--        label="LANDLORD_TEXT"-->
+<!--        show-label="true"-->
+<!--        is-editable="true"-->
+<!--        ng-model="object.landlord_svp_id"></app-service-provider-single-selector>-->
 
 
-    <app-service-provider-single-selector
-        provider-type-name="agent"
-        label="AGENT_TEXT"
-        show-label="true"
-        is-editable="true"
-        ng-model="object.agent_svp_id"></app-service-provider-single-selector>
+<!--    <app-service-provider-single-selector-->
+<!--        provider-type-name="agent"-->
+<!--        label="AGENT_TEXT"-->
+<!--        show-label="true"-->
+<!--        is-editable="true"-->
+<!--        ng-model="object.agent_svp_id"></app-service-provider-single-selector>-->
 
 </div>
 <style>
