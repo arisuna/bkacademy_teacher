@@ -218,7 +218,7 @@
             }
 
             $scope.deleteAddressFn = function (id) {
-                WaitingService.questionSimple('QUESTION_DELETE_COMPANY_TEXT',
+                WaitingService.questionSimple('QUESTION_DELETE_ADDRESS_TEXT',
                     function (res) {
                         AppAddressService.deleteAddress(id).then(function (res) {
                             if (res.success) {

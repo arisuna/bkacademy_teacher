@@ -69,7 +69,7 @@
                                 'media_uuid': itemMediaUuid,
                             }).then(function (res) {
                                 if (res.success) {
-                                    WaitingService.popSuccess('DOCUMENT_DELETE_SUCCESS_TEXT');
+                                    WaitingService.popSuccess('FILE_DELETE_SUCCESS_TEXT');
                                     $scope.onDelete();
                                 } else {
                                     WaitingService.error(res.message);
@@ -95,7 +95,7 @@
                         if (itemMediaUuid && itemMediaUuid != "") {
                             AppMediaService.removeMedia(itemMediaUuid).then(function (res) {
                                 if (res.success) {
-                                    WaitingService.popSuccess('DOCUMENT_DELETE_SUCCESS_TEXT');
+                                    WaitingService.popSuccess('FILE_DELETE_SUCCESS_TEXT');
                                     if (angular.isFunction($scope.onDelete)) {
                                         $scope.onDelete();
                                     }

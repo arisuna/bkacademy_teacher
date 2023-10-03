@@ -134,7 +134,7 @@
 
                     if (angular.isFunction($scope.ngChange)) {
                         $timeout(function () {
-                            $scope.ngChange();
+                            $scope.ngChange({item: $scope.data.selected});
                         });
                     }
                 }
@@ -200,7 +200,7 @@
 
                     if (angular.isFunction($scope.ngChange)) {
                         $timeout(function () {
-                            $scope.ngChange();
+                            $scope.ngChange({item: $scope.data.selected});
                         });
                     }
                 }

@@ -10,17 +10,18 @@
           ng-if="!isLoading"
           novalidate>
         <div class="card-body custom-dialog-overflow scroll-append scroll-y overflow-x-disable height-100vh-m93px">
-            <!--            <div class="row">-->
-            <!--                <div class="col-md-12">-->
-            <!--                    <app-country-selector ng-model="address.country_id"-->
-            <!--                                          show-label="true"-->
-            <!--                                          is-editable="true"-->
-            <!--                                          is-required="true"-->
-            <!--                                          label="COUNTRY_TEXT"-->
-            <!--                                          required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}">-->
-            <!--                    </app-country-selector>-->
-            <!--                </div>-->
-            <!--            </div>-->
+            <div class="row">
+                <div class="col-md-12">
+                    <app-country-selector ng-model="address.country_id"
+                                          show-label="true"
+                                          is-editable="true"
+                                          is-required="true"
+                                          label="COUNTRY_TEXT"
+                                          ng-change="ngChangeCountry(item)"
+                                          required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}">
+                    </app-country-selector>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col-sm-12">

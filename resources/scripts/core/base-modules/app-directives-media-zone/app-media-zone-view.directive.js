@@ -251,7 +251,7 @@
                                 'media_uuid': itemMediaUuid,
                             }).then(function (res) {
                                 if (res.success) {
-                                    WaitingService.popSuccess('DOCUMENT_DELETE_SUCCESS_TEXT');
+                                    WaitingService.popSuccess('FILE_DELETE_SUCCESS_TEXT');
                                     angular.forEach($scope.items, function (item, index) {
                                         if (item.uuid == itemMediaUuid) {
                                             $scope.items.splice(index, 1);
