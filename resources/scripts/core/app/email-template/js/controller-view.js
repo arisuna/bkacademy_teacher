@@ -45,7 +45,7 @@
             };
 
             $scope.getLangName = function (code) {
-                console.log($scope.languages[code])
+                // console.log($scope.languages[code])
                 return angular.isDefined($scope.languages[code]) ? $scope.languages[code].description : "";
             }
 
