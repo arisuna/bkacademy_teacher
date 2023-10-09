@@ -54,6 +54,7 @@
                 query: null,
                 filterConfigId: null,
                 isTmp: false,
+                selected_groups: [],
                 orders: {},
             };
 
@@ -68,6 +69,9 @@
                 }
                 $scope.params.filter_config_id = $scope.search.filterConfigId;
                 $scope.params.is_tmp = $scope.search.isTmp;
+                if (_.size($scope.search.selected_groups) > 0) {
+                    $scope.params.groups = _.map($scope.search.selected_groups, 'id');
+                }
 
 
                 AppProductFieldService.search($scope.params).then(function (res) {
@@ -103,6 +107,9 @@
                     }
                     $scope.params.filter_config_id = $scope.search.filterConfigId;
                     $scope.params.is_tmp = $scope.search.isTmp;
+                    if (_.size($scope.search.selected_groups) > 0) {
+                        $scope.params.groups = _.map($scope.search.selected_groups, 'id');
+                    }
 
                     AppProductFieldService.search($scope.params).then(function (res) {
                         if (res.success) {
@@ -136,6 +143,28 @@
             };
 
             $scope.reloadInit();
+
+            $scope.clearFilter = function(){
+                $scope.search = {
+                    query: null,
+                    filterQuery: null,
+                    selected_statuses: [],
+                    filterConfigId: null,
+                    isTmp: false,
+                    orders: {},
+                };
+
+                $scope.publish('clearFilter');
+                $scope.reloadInit();
+            };
+
+            $scope.applyFilter = function(){
+                $scope.reloadInit();
+            };
+
+            $scope.$watchGroup(['search.selected_groups'], function(){
+                $scope.reloadInit();
+            });
 
             $scope.subscribe('apply_filter_config_product_fields', function (filterConfigId) {
                 angular.element('.scroll-append').scrollTop(0);
