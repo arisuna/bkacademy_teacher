@@ -6,6 +6,7 @@
 
 
             $scope.module_name = 'product_fields';
+            $scope.list_types = AppProductFieldService.getFieldTypeList();
 
             $scope.column_array = [
                 {
@@ -55,6 +56,7 @@
                 filterConfigId: null,
                 isTmp: false,
                 selected_groups: [],
+                selected_types: [],
                 orders: {},
             };
 
@@ -71,6 +73,9 @@
                 $scope.params.is_tmp = $scope.search.isTmp;
                 if (_.size($scope.search.selected_groups) > 0) {
                     $scope.params.groups = _.map($scope.search.selected_groups, 'id');
+                }
+                if (_.size($scope.search.selected_types) > 0) {
+                    $scope.params.types = _.map($scope.search.selected_types, 'id');
                 }
 
 
@@ -109,6 +114,9 @@
                     $scope.params.is_tmp = $scope.search.isTmp;
                     if (_.size($scope.search.selected_groups) > 0) {
                         $scope.params.groups = _.map($scope.search.selected_groups, 'id');
+                    }
+                    if (_.size($scope.search.selected_types) > 0) {
+                        $scope.params.types = _.map($scope.search.selected_types, 'id');
                     }
 
                     AppProductFieldService.search($scope.params).then(function (res) {
@@ -163,6 +171,10 @@
             };
 
             $scope.$watchGroup(['search.selected_groups'], function(){
+                $scope.reloadInit();
+            });
+
+            $scope.$watchGroup(['search.selected_types'], function(){
                 $scope.reloadInit();
             });
 

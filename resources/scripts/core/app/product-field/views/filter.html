@@ -9,6 +9,14 @@
                             float="true"
                             inline-list="true"></app-product-field-groups-filter>
                 </div>
+                <div class="task-filter mr-sm"
+                     uib-tooltip="{{'PRODUCT_FIELD_TYPES_TEXT' | translate}}">
+                    <app-product-field-types-filter
+                            model="search.selected_types"
+                            options="list_types"
+                            float="true"
+                            inline-list="true"></app-product-field-types-filter>
+                </div>
             </div>
             <div class="col-sm-5 text-right pd-r-0">
                 <button ng-click="clearFilter()"
