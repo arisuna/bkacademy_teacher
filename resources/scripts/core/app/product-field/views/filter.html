@@ -24,6 +24,21 @@
                         class="btn pointer btn-round pull-right filter-dark-blue" style="margin-top:3px;">
                     <i class="fa-solid fa-eraser txt-16"></i>
                 </button>
+                <div class="btn-group dropdown open pull-right mr-sm "
+                     uib-dropdown=""
+                     style="vertical-align: unset; margin-top: 3px">
+                    <button type="button" class="btn btn-round dropdown-toggle"
+                            uib-dropdown-toggle=""
+                            aria-haspopup="true" aria-expanded="true">
+                        <i class="fa-solid fa-arrow-down-wide-short txt-16" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu="" role="menu"
+                        aria-labelledby="split-button">
+                        <li role="menuitem" ng-repeat="column in columns">
+                            <a ng-click="sortByColumnAndOrder(column.name, column.descending)">
+                                {{column.label | translate}} {{ column.sortText | translate}}</a></li>
+                    </ul>
+                </div>
                 <div class="project-filter-select pull-right mr-sm">
                     <div class="input-group search">
                         <input

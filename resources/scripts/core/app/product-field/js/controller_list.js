@@ -8,7 +8,7 @@
             $scope.module_name = 'product_fields';
             $scope.list_types = AppProductFieldService.getFieldTypeList();
 
-            $scope.column_array = [
+            $scope.columns = [
                 {
                     "name": "created_at",
                     "datatype": "datetime",
@@ -37,6 +37,20 @@
                     'descending': true,
                     "sortText" : $translate.instant("ALPHABET_DOWN_TEXT")
                 },
+                {
+                    "name": "label",
+                    "datatype": "string",
+                    "label" : "LABEL_TEXT",
+                    'descending': false,
+                    "sortText" : $translate.instant("ALPHABET_UP_TEXT"),
+                },
+                {
+                    "name": "label",
+                    "datatype": "string",
+                    "label" : "LABEL_TEXT",
+                    'descending': true,
+                    "sortText" : $translate.instant("ALPHABET_DOWN_TEXT")
+                },
             ];
             $scope.loading = true;
             $scope.items = [];
@@ -58,6 +72,11 @@
                 selected_groups: [],
                 selected_types: [],
                 orders: {},
+            };
+
+            $scope.sort = {
+                column: '',
+                descending: undefined
             };
 
             $scope.loadList = function () {
@@ -147,6 +166,14 @@
                 $scope.totalPages = 1;
                 $scope.currentPage = 1;
                 $scope.items = [];
+                $scope.loadList();
+            };
+
+            $scope.sortByColumnAndOrder = function (columnName, isDescending) {
+                $scope.sort = {
+                    column: columnName.toUpperCase(),
+                    descending: isDescending
+                };
                 $scope.loadList();
             };
 
