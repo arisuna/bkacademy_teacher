@@ -275,10 +275,6 @@
                 };
 
                 $scope.subscribe('clearFilter', function () {
-                    $scope.options = $scope.options.map(o => {
-                        o.selected = false
-                        return o
-                    })
 
                     $scope.clearThisFilter();
                 });
