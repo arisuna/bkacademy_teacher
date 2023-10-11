@@ -145,11 +145,11 @@
                 },
                 {
                     "text": "PRODUCTS_TEXT",
-                    "sref": "app.product",
+                    "sref": "app.product.list",
                     "icon": "fa-solid fa-snowplow",
                     "iconType": "fontawesome",
-                    // "appAclAllow": "product/index",
-                    // "aclRemove": true,
+                    "appAclAllow": "product/index",
+                    "aclRemove": true,
                     "class": "",
                     "controller": ""
                 },
