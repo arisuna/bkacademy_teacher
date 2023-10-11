@@ -286,6 +286,10 @@
 
 
                             $scope.saveFn = function () {
+                
+                                if($scope.object.type === null){
+                                    return;
+                                }
                                 let object = angular.copy($scope.object);
                                 object.id = 0;
                                 object.uuid = 0;
@@ -331,6 +335,10 @@
                     function ($scope, $element, $timeout, WaitingService, AppProductFieldService, $state) {
                         $scope.object = $scope.ngDialogData.product_field;
                         $scope.saveFn = function(){
+                
+                            if($scope.object.type === null){
+                                return;
+                            }
                             AppProductFieldService.createProductField($scope.object).then(function (res) {
                                 if (res.success) {
                                     $scope.closeThisDialog(res.data);
@@ -387,6 +395,10 @@
                             $scope.getDetailFn();
 
                             $scope.saveFn  = function(){
+                
+                                if($scope.object.type === null){
+                                    return;
+                                }
                                 if($scope.object.id > 0){
                                     AppProductFieldService.updateProductField($scope.object).then(function (res) {
                                         if (res.success) {
