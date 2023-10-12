@@ -189,7 +189,7 @@
 
         this.getAttributeByCode = function (code) {
             var deferred = $q.defer();
-            AppHttp.get('/app/attributes/getByCode?code=' + code).then(function (response) {
+            AppHttp.get('/app/attribute/getByCode?code=' + code).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);

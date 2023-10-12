@@ -3,11 +3,11 @@
 
     angular
         .module('app.app-directives')
-        .directive('appSystemAttributeSeletor', appSystemAttributeSeletor);
+        .directive('appSystemAttributeSelector', appSystemAttributeSelector);
 
-    appSystemAttributeSeletor.$inject = ['$translate', '$window', 'urlBase', 'ngDialog', 'WaitingService', 'AppDataService', 'AppSystem', 'AppAttributeService', 'Utils', '$timeout'];
+    appSystemAttributeSelector.$inject = ['$translate', '$window', 'urlBase', 'ngDialog', 'WaitingService', 'AppDataService', 'AppSystem', 'AppAttributeService', 'Utils', '$timeout'];
 
-    function appSystemAttributeSeletor($translate, $window, urlBase, ngDialog, WaitingService, AppDataService, AppSystem, AppAttributeService, Utils, $timeout) {
+    function appSystemAttributeSelector($translate, $window, urlBase, ngDialog, WaitingService, AppDataService, AppSystem, AppAttributeService, Utils, $timeout) {
         var directive = {
             restrict: 'EA',
             replace: true,
@@ -221,6 +221,7 @@
                     });
 
                     searchDialog.closePromise.then(function (returnData) {
+                        console.log('returnData', returnData);
                         if (angular.isDefined(returnData.value) && angular.isDefined(returnData.value.code) && returnData.value.code != '') {
                             $scope.data.selected = angular.copy(returnData.value);
                             $scope.model = returnData.value.code;
