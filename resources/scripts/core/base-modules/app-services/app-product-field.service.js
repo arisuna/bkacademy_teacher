@@ -11,6 +11,18 @@
 
         var vm = this;
 
+        this.config = {
+            __field_type_list:[
+                {text: 'FIELD_TEXT_TEXT', name: 'FIELD_TEXT_TEXT', value:0, id: 0, color: 'red'},
+                {text: 'NUMERIC_TEXT', name: 'NUMERIC_TEXT', value: 1, id: 1, color: 'yellow'},
+                {text: 'ATTRIBUTE_TEXT', name: 'ATTRIBUTE_TEXT', value: 2, id: 2, color: 'green'},
+            ]
+        };
+
+        this.getFieldTypeList = function () {
+            return vm.config.__field_type_list;
+        };
+
         
         this.search = function (data) {
             let deferred = $q.defer();

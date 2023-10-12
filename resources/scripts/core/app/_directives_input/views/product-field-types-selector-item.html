@@ -12,7 +12,7 @@
 
     <div ng-if="isEditable == true" class="user-profile-view-rectangle relo-bg-bright-blue-10">
         <div class="item"
-             ng-show="data.selected.id >= 0">
+             ng-show="data.selected != null && data.selected.label != null && data.selected.label != ''">
 
 
             <span class="icon">
@@ -32,7 +32,7 @@
             </span>
         </div>
         <div class="item"
-             ng-show="!(data.selected.id >= 0)">
+             ng-show="!(data.selected != null && data.selected.label != null && data.selected.label != '')">
             <span class="icon">
                 <em class="fa-solid fa-info text-dark-gray text-16"></em>
             </span>
@@ -51,11 +51,11 @@
                 <em class="fa-solid fa-info text-dark-gray text-16"></em>
             </span>
 
-            <span class="c pd-t-3" ng-if="data.selected.id >= 0">
+            <span class="c pd-t-3" ng-if="data.selected != null && data.selected.label != null && data.selected.label != ''">
                  {{data.selected.label | translate }}
             </span>
 
-            <span class="c pd-t-3" ng-if="!data.selected.id >= 0">
+            <span class="c pd-t-3" ng-if="!(data.selected != null && data.selected.label != null && data.selected.label != '')">
                 {{ 'EMPTY_TEXT' | translate }}
             </span>
 
@@ -64,7 +64,7 @@
 
     <input ng-show="false"
            class="input-invisible"
-           ng-value="data.selected.id"
+           ng-value="data.selected.label"
            data-parsley-validate=""
            ng-required="isRequired"
            data-parsley-required-message="{{ requiredMessage | translate }}"/>

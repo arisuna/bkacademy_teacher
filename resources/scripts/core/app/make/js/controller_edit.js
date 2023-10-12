@@ -30,7 +30,7 @@
                 if($scope.object.id > 0){
                     AppMakeService.updateMake($scope.object).then(function (res) {
                         if (res.success) {
-                            $scope.closeThisDialog(res.data);
+                            // $scope.closeThisDialog(res.data);
 
                             WaitingService.popSuccess(res.message);
                         } else {

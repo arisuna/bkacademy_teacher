@@ -1,0 +1,28 @@
+<div class="panel panel-default panel-default-b">
+    <div class="panel-heading" ng-style="{'padding':'5px'}">
+        <div class="row">
+            <div class="col-md-12">
+                <input-text-search ng-model="searchConfig.query"
+                                   ng-search="applyFilter()"></input-text-search>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body height-200 overflow-y-enable"
+         ng-style="{'padding':'5px'}">
+
+        <div ng-if="isLoading == true">
+            <spinner-v2 type="message"></spinner-v2>
+        </div>
+        <div class="list-group list-group-flat list-group-blue"
+             ng-show="isLoading == false">
+            <a class="list-group-item text-overflow-ellipsis"
+               ng-repeat="attributeValue in attribute.values | filter: searchConfig.filterQuery"
+               ng-class="{'active': (searchConfig.currentItem.code == attributeValue.value)}"
+               ng-click="selectItem(attributeValue)">
+                <div class="flex">
+                    <span class="ml-sm">{{attributeValue.value}}</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

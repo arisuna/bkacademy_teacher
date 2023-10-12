@@ -36,7 +36,7 @@
                     </thead>
                     <tbody>
                     <tr ng-repeat="(index, object) in table.pagedItems[table.currentPage]" class="relo-bg-bright-gray-4 bd-r-5 border-white">
-                        <td class="bd-t-white">{{ object.id }}</td>
+                        <td class="bd-t-white">{{ index + 1 }}</td>
                     <td ng-style="{'width':'300px'}" class="bd-t-white">
                         <div ng-click="editAttributeFn( object )"
                              class="wrap-word text-bright-blue">{{ object.name }}

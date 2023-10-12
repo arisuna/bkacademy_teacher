@@ -7,7 +7,7 @@
 
             $scope.module_name = 'product_field_group_groups';
 
-            $scope.column_array = [
+            $scope.columns = [
                 {
                     "name": "created_at",
                     "datatype": "datetime",
@@ -33,6 +33,20 @@
                     "name": "name",
                     "datatype": "string",
                     "label" : "NAME_TEXT",
+                    'descending': true,
+                    "sortText" : $translate.instant("ALPHABET_DOWN_TEXT")
+                },
+                {
+                    "name": "label",
+                    "datatype": "string",
+                    "label" : "LABEL_TEXT",
+                    'descending': false,
+                    "sortText" : $translate.instant("ALPHABET_UP_TEXT"),
+                },
+                {
+                    "name": "label",
+                    "datatype": "string",
+                    "label" : "LABEL_TEXT",
                     'descending': true,
                     "sortText" : $translate.instant("ALPHABET_DOWN_TEXT")
                 },
@@ -124,6 +138,14 @@
                         }, 1000)
                     });
                 }
+            };
+
+            $scope.sortByColumnAndOrder = function (columnName, isDescending) {
+                $scope.sort = {
+                    column: columnName.toUpperCase(),
+                    descending: isDescending
+                };
+                $scope.loadList();
             };
 
             $scope.reloadInit = function () {

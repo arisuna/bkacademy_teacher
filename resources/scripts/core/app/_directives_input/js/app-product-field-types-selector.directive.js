@@ -108,7 +108,7 @@
                     });
 
                     searchDialog.closePromise.then(function (returnData) {
-                        if (angular.isDefined(returnData.id) && angular.isDefined(returnData.value.id) && returnData.value.id != '') {
+                        if (angular.isDefined(returnData.id) && angular.isDefined(returnData.value.id)) {
                             $scope.setItem(returnData.value);
                         }
                     })

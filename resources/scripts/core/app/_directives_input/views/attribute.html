@@ -1,0 +1,112 @@
+<div class="form-group" ng-class="{'mb0': noMarginBottom}">
+
+    <div>
+        <label class="label-text-form pull-left" ng-show="showLabel == true && label != ''">
+            {{ label | translate }}
+            <asterik-red ng-if="isRequired">*</asterik-red>
+        </label>
+
+        <tooltip ng-if="toolTipText != ''"
+                 class="ml-sm"
+                 text="{{ toolTipText }}"></tooltip>
+
+        <span class="text-right text-sm ml-sm pull-right"
+              ng-if="addAttribute == true"
+              ng-show="isEditable == true">
+            <a ng-click="addNewValueForAttribute();">
+                {{'ADD_NEW_BTN_TEXT' | translate}}
+            </a>
+        </span>
+
+
+        <span class="text-right text-sm pull-right"
+              ng-if="showLabel == true && showRemoveLabel"
+              ng-show="!(data.selected.code == null || data.selected.code == '' || data.selected.code == undefined) && isEditable == true">
+            <a ng-click="removeItem();">
+                {{'REMOVE_TEXT' | translate}}
+            </a>
+        </span>
+
+        <div class="clearfix"></div>
+    </div>
+
+
+    <div ng-if="isEditable == true"
+         ng-class="{'border-error': !isValid}"
+
+         class="user-profile-view-rectangle relo-bg-bright-blue-10">
+        <div class="item {{classItem}}"
+             ng-show="!(data.selected.code == null || data.selected.code == '' || data.selected.code == undefined)">
+
+            <span class="icon">
+                <em class="fa-solid "
+                    ng-class="{'fa-info txt-16 text-dark-gray': attributeName != 'MARITAL_STATUS', 'fa-ring txt-gray txt-20': attributeName == 'MARITAL_STATUS'}"></em>
+            </span>
+
+<!--            <em class="fa txt-20 mg-l-1x text-gray mr-sm"-->
+<!--                ng-class="{'fa-info': attributeName != 'MARITAL_STATUS', 'fa-ring txt-20': attributeName == 'MARITAL_STATUS'}"></em>-->
+
+            <span class="principal pd-t-3">
+                <a ng-click="openSearchDialog($event)">
+                    <span class="">{{data.selected.value}}</span>
+                </a>
+            </span>
+
+            <span class="close text-gray">
+                <a ng-click="removeItem()">
+                    <em class="fa fa-times"></em>
+                </a>
+            </span>
+
+            <div class="clearfix"></div>
+        </div>
+
+
+        <div class="item {{classItem}}"
+             ng-show="data.selected.code == null || data.selected.code == '' || data.selected.code == undefined">
+            <span class="icon">
+                <em class="fa-solid "
+                    ng-class="{'fa-info text-16 text-dark-gray': attributeName != 'MARITAL_STATUS', 'fa-ring txt-gray txt-20': attributeName == 'MARITAL_STATUS'}"></em>
+            </span>
+
+            <span class="principal pd-t-3">
+                <a ng-click="openSearchDialog($event)">
+                    {{'SELECT_TEXT' | translate }}
+                </a>
+            </span>
+        </div>
+    </div>
+
+    <div class="user-profile-view"
+         ng-if="isEditable == false">
+        <div class="item"
+             ng-if="!(data.selected.code == null || data.selected.code == '' || data.selected.code == undefined)">
+
+              <span class="icon">
+                <em class="fa-solid "
+                    ng-class="{'fa-info txt-16 text-dark-gray': attributeName != 'MARITAL_STATUS', 'fa-ring txt-gray txt-20': attributeName == 'MARITAL_STATUS'}"></em>
+            </span>
+
+            <span class=" pd-t-3">{{data.selected.value}}</span>
+        </div>
+
+        <div class="item"
+             ng-if="data.selected.code == null || data.selected.code == '' || data.selected.code == undefined">
+
+            <span class="icon">
+                <em class="fa-solid "
+                    ng-class="{'fa-info txt-16 text-dark-gray': attributeName != 'MARITAL_STATUS', 'fa-ring txt-gray txt-20': attributeName == 'MARITAL_STATUS'}"></em>
+            </span>
+
+            <span class="principal pd-t-3">
+            </span>
+        </div>
+    </div>
+
+    <input type="text"
+           ng-show="false"
+           class="input-invisible"
+           ng-model="data.selected.code"
+           ng-required="isRequired"
+           data-parsley-required-message="{{ requiredMessage | translate }}"/>
+</div>

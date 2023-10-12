@@ -1,12 +1,14 @@
 <div class="" ng-controller="BusinessZoneListApiController">
     <div ng-include="'/app/views/business-zone/buttons.html'"></div>
-    <div class="min-height-70px">
-        <project-filter
-            columns="column_array"
-            is-sort="false"
-            is-filter="false"
-            module-name="module_name"></project-filter>
-    </div>
+<!--    <div class="min-height-70px">-->
+<!--        <project-filter-->
+<!--            columns="column_array"-->
+<!--            is-sort="false"-->
+<!--            is-filter="false"-->
+<!--            module-name="module_name"></project-filter>-->
+<!--    </div>-->
+
+    <div ng-include="'/app/views/business-zone/filter.html'"></div>
 
     <div class="scroll-append scroll-y height-100vh-m140px overflow-x-disable" when-scrolled="loadMore()">
         <div>

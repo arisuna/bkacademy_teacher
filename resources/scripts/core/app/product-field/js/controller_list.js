@@ -6,8 +6,9 @@
 
 
             $scope.module_name = 'product_fields';
+            $scope.list_types = AppProductFieldService.getFieldTypeList();
 
-            $scope.column_array = [
+            $scope.columns = [
                 {
                     "name": "created_at",
                     "datatype": "datetime",
@@ -36,6 +37,20 @@
                     'descending': true,
                     "sortText" : $translate.instant("ALPHABET_DOWN_TEXT")
                 },
+                {
+                    "name": "label",
+                    "datatype": "string",
+                    "label" : "LABEL_TEXT",
+                    'descending': false,
+                    "sortText" : $translate.instant("ALPHABET_UP_TEXT"),
+                },
+                {
+                    "name": "label",
+                    "datatype": "string",
+                    "label" : "LABEL_TEXT",
+                    'descending': true,
+                    "sortText" : $translate.instant("ALPHABET_DOWN_TEXT")
+                },
             ];
             $scope.loading = true;
             $scope.items = [];
@@ -54,7 +69,14 @@
                 query: null,
                 filterConfigId: null,
                 isTmp: false,
+                selected_groups: [],
+                selected_types: [],
                 orders: {},
+            };
+
+            $scope.sort = {
+                column: '',
+                descending: undefined
             };
 
             $scope.loadList = function () {
@@ -68,6 +90,12 @@
                 }
                 $scope.params.filter_config_id = $scope.search.filterConfigId;
                 $scope.params.is_tmp = $scope.search.isTmp;
+                if (_.size($scope.search.selected_groups) > 0) {
+                    $scope.params.groups = _.map($scope.search.selected_groups, 'id');
+                }
+                if (_.size($scope.search.selected_types) > 0) {
+                    $scope.params.types = _.map($scope.search.selected_types, 'id');
+                }
 
 
                 AppProductFieldService.search($scope.params).then(function (res) {
@@ -103,6 +131,12 @@
                     }
                     $scope.params.filter_config_id = $scope.search.filterConfigId;
                     $scope.params.is_tmp = $scope.search.isTmp;
+                    if (_.size($scope.search.selected_groups) > 0) {
+                        $scope.params.groups = _.map($scope.search.selected_groups, 'id');
+                    }
+                    if (_.size($scope.search.selected_types) > 0) {
+                        $scope.params.types = _.map($scope.search.selected_types, 'id');
+                    }
 
                     AppProductFieldService.search($scope.params).then(function (res) {
                         if (res.success) {
@@ -135,7 +169,41 @@
                 $scope.loadList();
             };
 
+            $scope.sortByColumnAndOrder = function (columnName, isDescending) {
+                $scope.sort = {
+                    column: columnName.toUpperCase(),
+                    descending: isDescending
+                };
+                $scope.loadList();
+            };
+
             $scope.reloadInit();
+
+            $scope.clearFilter = function(){
+                $scope.search = {
+                    query: null,
+                    filterQuery: null,
+                    selected_statuses: [],
+                    filterConfigId: null,
+                    isTmp: false,
+                    orders: {},
+                };
+
+                $scope.publish('clearFilter');
+                $scope.reloadInit();
+            };
+
+            $scope.applyFilter = function(){
+                $scope.reloadInit();
+            };
+
+            $scope.$watchGroup(['search.selected_groups'], function(){
+                $scope.reloadInit();
+            });
+
+            $scope.$watchGroup(['search.selected_types'], function(){
+                $scope.reloadInit();
+            });
 
             $scope.subscribe('apply_filter_config_product_fields', function (filterConfigId) {
                 angular.element('.scroll-append').scrollTop(0);
@@ -218,6 +286,10 @@
 
 
                             $scope.saveFn = function () {
+                
+                                if($scope.object.type === null){
+                                    return;
+                                }
                                 let object = angular.copy($scope.object);
                                 object.id = 0;
                                 object.uuid = 0;
@@ -263,6 +335,10 @@
                     function ($scope, $element, $timeout, WaitingService, AppProductFieldService, $state) {
                         $scope.object = $scope.ngDialogData.product_field;
                         $scope.saveFn = function(){
+                
+                            if($scope.object.type === null){
+                                return;
+                            }
                             AppProductFieldService.createProductField($scope.object).then(function (res) {
                                 if (res.success) {
                                     $scope.closeThisDialog(res.data);
@@ -319,6 +395,10 @@
                             $scope.getDetailFn();
 
                             $scope.saveFn  = function(){
+                
+                                if($scope.object.type === null){
+                                    return;
+                                }
                                 if($scope.object.id > 0){
                                     AppProductFieldService.updateProductField($scope.object).then(function (res) {
                                         if (res.success) {

@@ -66,6 +66,11 @@
                 if ($scope.arrayHasDelete.length > 0) {
                     $scope.object.arrayHasDelete = $scope.arrayHasDelete;
                 }
+                console.log($scope.object.type, $scope.object.type === null);
+
+                if($scope.object.type === null){
+                    return;
+                }
 
 
 

@@ -14,7 +14,9 @@
                 selected_assignees: [],
                 selected_companies: [],
                 property_id:  null,
-                selected_countries_origin: []
+                selected_countries_origin: [],
+                attribute_code: 'FREQUENCY',
+                attribute_value: ''
             }
 
         }]);
