@@ -91,6 +91,13 @@
                 $scope.address.province_name = item.name
             }
 
+            $scope.ngChangeCountry = function (item) {
+                console.log("item", item.name)
+
+                $scope.address.country_id = item.id
+                $scope.address.country = item.name
+            }
+
             $scope.ngChangeDistrict = function (item) {
                 console.log("item", item)
                 $scope.address.vn_district_id = item.id

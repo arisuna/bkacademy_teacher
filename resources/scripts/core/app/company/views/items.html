@@ -73,7 +73,7 @@
                         <th class="text-dark-blue bd-b-white">{{'NAME_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white">{{'PHONE_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white">{{'EMAIL_TEXT' | translate }}</th>
-                        <th class="text-dark-blue bd-b-white">{{'CITY_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'COUNTRY_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white">{{'CREATED_AT_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white">{{'STATUS_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white"></th>
@@ -90,7 +90,7 @@
                         </td>
                         <td class="bd-t-white">{{ object.phone }}</td>
                         <td class="bd-t-white">{{ object.email }}</td>
-                        <td class="bd-t-white">{{ object.town | translate }}</td>
+                        <td class="bd-t-white">{{ object.country_name | translate }}</td>
                         <td class="bd-t-white">{{ object.created_at | amDateFormat: 'DD/MM/YYYY'}}</td>
                         <td class="bd-t-white">
                             <button class="selected-status btn btn-flat btn-circle flex text-center flex-vertical width-18px height-18px bd-radius-9px"

@@ -313,7 +313,7 @@
                                 if (res.success) {
                                     $window.swal({
                                         title:$translate.instant('CONGRATULATION_TEXT'), 
-                                        text:"DOCUMENT_DELETE_SUCCESS_TEXT", 
+                                        text:"FILE_DELETE_SUCCESS_TEXT", 
                                         type:"success",
                                         confirmButtonText: 'OK'
                                     });

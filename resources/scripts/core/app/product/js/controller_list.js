@@ -1,7 +1,7 @@
 (function () {
     'use strict';
-    App.controller('CrmUserListController', ['$scope', '$state', '$timeout', '$rootScope', '$translate', 'WaitingService', 'AppDataService', 'ngDialog', 'urlBase',
-        function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppDataService, ngDialog, urlBase) {
+    App.controller('ProductListController', ['$scope', '$state', '$timeout', '$rootScope', '$translate', 'WaitingService', 'AppDataService', 'AppProductService',
+        function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppDataService, AppProductService) {
             $scope.params = {
                 roles: [],
             };
@@ -30,16 +30,16 @@
                 {
                     "name": "name",
                     "datatype": "string",
-                    "label": "NAME_TEXT",
+                    "label" : "NAME_TEXT",
                     'descending': false,
-                    "sortText": $translate.instant("ALPHABET_UP_TEXT"),
+                    "sortText" : $translate.instant("ALPHABET_UP_TEXT"),
                 },
                 {
                     "name": "name",
                     "datatype": "string",
-                    "label": "NAME_TEXT",
+                    "label" : "NAME_TEXT",
                     'descending': true,
-                    "sortText": $translate.instant("ALPHABET_DOWN_TEXT")
+                    "sortText" : $translate.instant("ALPHABET_DOWN_TEXT")
                 },
             ];
 
@@ -69,9 +69,9 @@
                 $scope.params.orders = [$scope.sort];
                 $scope.params.query = $scope.query;
 
-                AppDataService.getCrmUserList($scope.params).then(function (res) {
+                AppProductService.getProductList($scope.params).then(function (res) {
                     if (res.success) {
-                        $scope.items = $scope.loadCount > 1 ? $scope.items.concat(res.data) : res.data;
+                        $scope.items = $scope.loadCount > 1 ? $scope.dataList.concat(res.data) : res.data;
                         $scope.totalPages = res.total_pages;
                         $scope.currentPage = res.page;
 
@@ -93,7 +93,7 @@
 
             $scope.loadMore = function () {
                 console.log('loadMore');
-                if ($scope.isLoadingMore == false) {
+                if ($scope.isLoadingMore == false){
                     $scope.loadCount += 1;
                     $scope.getListMore();
                 }
@@ -105,16 +105,16 @@
                 $scope.params.start = ($scope.loadCount - 1) * 20;
                 $scope.params.orders = [$scope.sort];
                 $scope.params.query = $scope.query;
-                if ($scope.currentPage > 0 && $scope.loadCount <= $scope.totalPages) {
+                if ($scope.currentPage > 0 && $scope.loadCount <= $scope.totalPages){
                     $scope.isLoadingMore = true;
                 }
 
                 //console.log($scope.loadCount);
                 if ($scope.loadCount == 1 || $scope.loadCount <= $scope.totalPages) {
 
-                    AppDataService.getCrmUserList($scope.params).then(function (res) {
+                    AppProductService.getProductList($scope.params).then(function (res) {
                         if (res.success) {
-                            $scope.items = $scope.loadCount > 1 ? $scope.items.concat(res.data) : res.data;
+                            $scope.dataList = $scope.loadCount > 1 ? $scope.dataList.concat(res.data) : res.data;
                             $scope.totalPages = res.total_pages;
                             $scope.currentPage = res.page;
 
@@ -133,7 +133,7 @@
                         }, 1000)
                     });
 
-                } else {
+                }else{
                     $timeout(function () {
                         $scope.isLoadingMore = false;
                         $scope.isLoading = false;
@@ -141,18 +141,9 @@
                 }
             };
 
-            $rootScope.$on('crm_user_filter_update', function (event, data) {
+            $rootScope.$on('product_filter_update', function (data) {
                 $scope.isLoading = true;
                 $scope.loadCount = 0;
-
-                console.log("data.statuses", data.roles)
-
-                if (data.roles && data.roles.length) {
-                    $scope.params.roles = data.roles
-                } else {
-                    $scope.params.roles = []
-                }
-
                 $timeout(function () {
                     $scope.items = [];
                     $scope.loadItems();
@@ -173,12 +164,12 @@
                 $scope.publish('clearFilter');
             };
 
-            $scope.deleteFn = function (user, index) {
-                WaitingService.questionSimple('QUESTION_DELETE_CRM_USER_TEXT', function () {
-                    AppDataService.deleteCrmUser(user.id).then(function (res) {
+            $scope.deleteFn = function (product, index) {
+                WaitingService.questionSimple('QUESTION_DELETE_USER_TEXT', function () {
+                    AppDataService.deleteCrmProduct(product.id).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
-                            $scope.loadItems();
+                            $scope.reloadInit();
                         } else {
                             WaitingService.error(msg);
                         }
@@ -186,59 +177,8 @@
                 });
             };
 
-            $scope.editUserFn = function (user) {
-                let currentObj = user
-
-                $scope.editDialog = ngDialog.open({
-                    template: urlBase.tplApp('app', 'crm_user', 'edit.dialog', '_=' + Math.random()),
-                    className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
-                    scope: $scope,
-                    resolve: {
-                        currentObj: ['AppDataService', function (AppDataService) {
-                            return currentObj;
-                        }]
-                    },
-                    closeByDocument: true,
-                    controller: 'CrmUserFormController'
-                });
-
-                $scope.editDialog.closePromise.then(function (data) {
-                    if (angular.isDefined(data.value.data)) {
-                        console.log('data.value', data.value);
-
-                        $timeout(function () {
-                            $scope.items = [];
-                            $scope.loadItems();
-                        }, 1000);
-                    }
-                });
-            };
-
-            $scope.createUserFn = function () {
-                let currentObj = {id: 0};
-                $scope.createDialog = ngDialog.open({
-                    template: urlBase.tplApp('app', 'crm_user', 'create.dialog', '_=' + Math.random()),
-                    className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
-                    scope: $scope,
-                    resolve: {
-                        currentObj: ['AppDataService', function (AppDataService) {
-                            return currentObj
-                        }]
-                    },
-                    closeByDocument: true,
-                    controller: 'CrmUserFormController'
-                });
-
-                $scope.createDialog.closePromise.then(function (data) {
-                    console.log('data.value', data.value);
-
-                    if (angular.isDefined(data.value.data)) {
-                        $timeout(function () {
-                            $scope.items = [];
-                            $scope.loadItems();
-                        }, 500);
-                    }
-                });
+            $scope.editProductFn = function (product) {
+                $state.go('app.product.edit', {id: product.id});
             };
 
             $scope.loadItems();

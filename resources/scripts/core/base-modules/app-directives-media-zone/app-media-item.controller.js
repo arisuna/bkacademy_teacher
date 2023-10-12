@@ -42,7 +42,7 @@
                         'type':  $scope.objectType
                     }).then(function (res) {
                         if (res.success) {
-                            WaitingService.popSuccess('DOCUMENT_DELETE_SUCCESS_TEXT');
+                            WaitingService.popSuccess('FILE_DELETE_SUCCESS_TEXT');
                             $scope.publish('MediaUpdateDocument', {isUpdate: true});
                             $scope.publish('reload_thumb', {reload: true});
                             if (angular.isDefined($scope.object) && angular.isDefined($scope.object.uuid)){
@@ -77,7 +77,7 @@
                 if (item.uuid && item.uuid != "") {
                     AppMediaService.removeMedia(item.uuid).then(function (res) {
                         if (res.success) {
-                            WaitingService.popSuccess('DOCUMENT_DELETE_SUCCESS_TEXT');
+                            WaitingService.popSuccess('FILE_DELETE_SUCCESS_TEXT');
                             if (angular.isFunction($scope.onDelete)) {
                                 $scope.onDelete({item: item});
                             }
