@@ -71,7 +71,7 @@
                     </ui-select-choices>
                 </ui-select>
                 <div ng-if="company.status==1 && company.user_verified_name" class="txt-10 mt-sm">
-                    {{'VERIFIED_ON_TEXT' | translate}} {{ company.verified_at | amDateFormat: 'DD/MM/YYYY'}} {{'BY_TEXT'}}
+                    {{'VERIFIED_ON_TEXT' | translate}} {{ company.verified_at | amDateFormat: 'DD/MM/YYYY'}} {{'BY_TEXT' | translate}}
                     {{company.user_verified_name}}
                 </div>
             </div>
