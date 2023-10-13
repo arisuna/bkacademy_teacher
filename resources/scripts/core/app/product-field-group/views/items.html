@@ -23,7 +23,7 @@
                         <th class="text-dark-blue bd-b-white">#</th>
                         <th class="text-dark-blue bd-b-white">{{'NAME_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white">{{'LABEL_TEXT' | translate }}</th>
-                        <th class="text-dark-blue bd-b-white">{{'LAST_UPDATED_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'CREATED_AT_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white"></th>
                     </tr>
                     </thead>
@@ -41,7 +41,7 @@
                         </div>
                     </td>
                     <td class="bd-t-white">{{ object.label }}</td>
-                    <td class="bd-t-white">{{ object.updated_at  | amUtc | amLocal | amDateFormat: 'DD/MM/YYYY HH:mm:ss' }}</td>
+                    <td class="bd-t-white">{{ object.created_at  | amUtc | amLocal | amDateFormat: 'DD/MM/YYYY HH:mm:ss' }}</td>
                     <td class="text-right bd-t-white noWrap">
                         <button-edit-icon ng-if="object.status != -1" ng-click="editFn( object )" class="mr-sm"></button-edit-icon>
                         <button-delete-icon ng-if="object.status != -1" ng-click="deleteFn( object )"></button-delete-icon>
