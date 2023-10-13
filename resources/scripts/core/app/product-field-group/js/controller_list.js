@@ -157,6 +157,17 @@
                 $scope.loadList();
             };
 
+            $scope.clearFilter = function () {
+                $scope.search = {
+                    query: null,
+                    filterConfigId: null,
+                    isTmp: false,
+                    orders: {},
+                };
+                $scope.sort = {};
+                $scope.reloadInit();
+            };
+
             $scope.reloadInit();
 
             $scope.subscribe('apply_filter_config_product_field_group_groups', function (filterConfigId) {

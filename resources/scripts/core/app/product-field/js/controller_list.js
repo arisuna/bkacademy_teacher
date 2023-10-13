@@ -287,7 +287,7 @@
 
                             $scope.saveFn = function () {
                 
-                                if($scope.object.type === null){
+                                if($scope.object.type == undefined ||  $scope.object.type === null){
                                     return;
                                 }
                                 let object = angular.copy($scope.object);
@@ -336,7 +336,7 @@
                         $scope.object = $scope.ngDialogData.product_field;
                         $scope.saveFn = function(){
                 
-                            if($scope.object.type === null){
+                            if($scope.object.type == undefined ||  $scope.object.type === null){
                                 return;
                             }
                             AppProductFieldService.createProductField($scope.object).then(function (res) {
@@ -396,7 +396,7 @@
 
                             $scope.saveFn  = function(){
                 
-                                if($scope.object.type === null){
+                                if($scope.object.type == undefined ||  $scope.object.type === null){
                                     return;
                                 }
                                 if($scope.object.id > 0){
