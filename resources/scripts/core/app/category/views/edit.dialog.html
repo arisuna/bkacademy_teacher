@@ -11,20 +11,21 @@
                 </uib-tab-heading>
                 <uib-tab-body>
                     <form class="form-validate noPadding"
-                    validate-form=""
-                    role="form"
-                    name="aclForm"
-                    data-parsley-validate=""
-                    ng-submit="updateFn()"
-                    ng-if="!page_loading"
-                    novalidate>
+                          validate-form=""
+                          role="form"
+                          name="aclForm"
+                          data-parsley-validate=""
+                          ng-submit="updateFn()"
+                          ng-if="!page_loading"
+                          novalidate>
 
 
-                          <div class="pd-2x custom-dialog-overflow height-100vh-m150px">
+                        <div class="pd-2x custom-dialog-overflow height-100vh-m150px">
 
 
                             <div class="" ng-if="!(itemParent.id > 0)">
-                                <notification-flat type="info">{{'THIS_CATEGORY_HAVE_NO_PARENT_TEXT' | translate}}</notification-flat>
+                                <notification-flat type="info">{{'THIS_CATEGORY_HAVE_NO_PARENT_TEXT' | translate}}
+                                </notification-flat>
                             </div>
                             <div class="" ng-if="itemParent.id > 0">
                                 <notification-flat type="info">
@@ -53,7 +54,24 @@
                                 </div>
                             </div>
 
-                
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <logo-upload-v2 class="mg-b-2s"
+                                                    button-text="UPLOAD_SQUARED_LOGO_TEXT"
+                                                    type="squared_logo"
+                                                    acl-edit-allow="true"
+                                                    uuid="categoryConfig.uuid"></logo-upload-v2>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6">
+                                    <logo-upload-v2 class="mg-b-2s"
+                                                    button-text="UPLOAD_RECTANGULAR_LOGO_TEXT"
+                                                    type="rectangular_logo"
+                                                    acl-edit-allow="true"
+                                                    uuid="categoryConfig.uuid"></logo-upload-v2>
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-sm-12">
                                     <input-text-area ng-model="categoryConfig.description"
@@ -67,9 +85,9 @@
 
                         <div class="card-footer text-right">
                             <button type="submit" class="btn relo-bg-green"><i
-                                class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
-                            {{'SAVE_BTN_TEXT' | translate}}
-                        </button>
+                                    class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
+                                {{'SAVE_BTN_TEXT' | translate}}
+                            </button>
                         </div>
                     </form>
                 </uib-tab-body>
@@ -81,19 +99,20 @@
                 </uib-tab-heading>
                 <uib-tab-body>
                     <form class="form-validate noPadding"
-                    validate-form=""
-                    role="form"
-                    name="aclForm"
-                    data-parsley-validate=""
-                    ng-submit="updateCategoryFn()"
-                    ng-if="!page_loading"
-                    novalidate>
+                          validate-form=""
+                          role="form"
+                          name="aclForm"
+                          data-parsley-validate=""
+                          ng-submit="updateCategoryFn()"
+                          ng-if="!page_loading"
+                          novalidate>
 
 
-                          <div class="pd-2x custom-dialog-overflow height-100vh-m150px">
+                        <div class="pd-2x custom-dialog-overflow height-100vh-m150px">
 
                             <div class="" ng-if="!(itemParent.id > 0)">
-                                <notification-flat type="info">{{'THIS_CATEGORY_HAVE_NO_PARENT_TEXT' | translate}}</notification-flat>
+                                <notification-flat type="info">{{'THIS_CATEGORY_HAVE_NO_PARENT_TEXT' | translate}}
+                                </notification-flat>
                             </div>
                             <div class="" ng-if="itemParent.id > 0">
                                 <notification-flat type="info">
