@@ -11,7 +11,7 @@
 
         <span class="text-right text-sm pull-right"
               ng-show="!(data.selected.id == null || data.selected.id == '' || data.selected.id == undefined) && isEditable == true">
-            <a ng-click="resetBrand();">
+            <a ng-click="resetModel();">
                 {{'REMOVE_TEXT'|translate}}
             </a>
         </span>
@@ -32,7 +32,7 @@
             </span>
 
             <span class="close text-gray">
-                <a ng-click="resetBrand()">
+                <a ng-click="resetModel()">
                     <em class="fa fa-times"></em>
                 </a>
             </span>

@@ -30,9 +30,9 @@
                                 class="form-control form-control-custom-radius filter-search ng-valid filter-search-timelog"
                                 placeholder="{{('SEARCH_TEXT') | translate}}"
                                 ng-model="search.query"
-                                ng-keypress="($event.which === 13) ? applyFilter():0"/>
+                                ng-keypress="($event.which === 13) ? reloadInit():0"/>
                         <span class="input-group-btn">
-                            <button type="button" ng-click="applyFilter()" class="btn btn-default btn-flat"
+                            <button type="button" ng-click="reloadInit()" class="btn btn-default btn-flat"
                                     style="">
                                 <span class="fa fa-search"></span>
                             </button>
