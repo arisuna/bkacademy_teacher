@@ -162,6 +162,7 @@
                 $scope.query = "";
                 $scope.sort = {};
                 $scope.publish('clearFilter');
+                $scope.loadItems();
             };
 
             $scope.deleteFn = function (product, index) {

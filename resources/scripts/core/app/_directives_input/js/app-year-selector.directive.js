@@ -101,9 +101,7 @@
                                 $scope.isLoading = true;
                                 $scope.years = [];
                                 var currentYear=new Date().getFullYear();
-                                console.log(currentYear);
                                 for(var i = 1979; i <= currentYear; i++)  $scope.years.push(i);
-                                console.log($scope.years);
                                 $scope.isLoading = false;
                             }
 
