@@ -33,8 +33,54 @@
                     <app-model-selector ng-model="product.model_id"
                                         brand-id="product.brand_id"
                                         show-label="true"
-                                        is-required="true"
+                                        is-required="false"
                                         label="MODEL_TEXT"></app-model-selector>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <app-category-selector ng-model="product.main_category_id"
+                                        level-1-only="true"
+                                        show-label="true"
+                                        is-required="true"
+                                        label="CATEGORY_TEXT"></app-category-selector>
+                </div>
+                <div class="col-sm-6">
+                    <app-category-selector ng-model="product.secondary_category_id"
+                                        parent-id="product.main_category_id"
+                                        show-label="true"
+                                        is-required="true"
+                                        label="SUBCATEGORY_TEXT"></app-category-selector>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <app-year-selector ng-model="product.year"
+                                        show-label="true"
+                                        is-required="false"
+                                        label="YEAR_TEXT"></app-year-selector>
+                </div>
+                <div class="col-sm-6">
+                    <input-text is-editable="true"
+                                is-required="false"
+                                is-numeric="true"
+                                min="0"
+                                ng-model="product.usage"
+                                label="HOURS_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input-text is-editable="true"
+                                is-required="false"
+                                is-text="true"
+                                ng-model="product.vehicle_id"
+                                label="VIN_TEXT"
+                                show-label="true"></input-text>
+
                 </div>
             </div>
         </div>
