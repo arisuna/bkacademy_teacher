@@ -16,7 +16,8 @@
                 property_id:  null,
                 selected_countries_origin: [],
                 attribute_code: 'FREQUENCY',
-                attribute_value: ''
+                attribute_value: '',
+                year: '2029',
             }
 
         }]);
