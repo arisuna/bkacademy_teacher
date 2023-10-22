@@ -18,6 +18,7 @@
                 attribute_code: 'FREQUENCY',
                 attribute_value: '',
                 year: '2029',
+                contentUuid: null,
             }
 
         }]);
