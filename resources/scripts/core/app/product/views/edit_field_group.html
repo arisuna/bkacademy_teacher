@@ -21,12 +21,6 @@
                                                    ng-model="field.value"
                                                    required-message="ENTER_FIELD_TEXT"
                                                    label="{{field.label}}"></app-system-attribute-selector>
-                    <app-attribute-selector ng-model="field.value"
-                                    required="field.is_mandatory == 1"
-                                    show-label="true"
-                                    label-floating="true"
-                                    label="{{field.label}}"
-                                    attribute-name="{{field.attribute_name}}"></app-attribute-selector>
 
                 </div>
             </div>
@@ -35,7 +29,7 @@
     </div>
     <div class="card-footer">
         <div class="row">
-            <div class="col-sm-12 text-right">s
+            <div class="col-sm-12 text-right">
                 <button type="submit" class="btn relo-bg-green" title="Save" ng-disabled="saving" ng-if="canSave"><i
                         class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
                     {{'SAVE_BTN_TEXT' | translate}}
