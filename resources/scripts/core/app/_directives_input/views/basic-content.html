@@ -1,0 +1,27 @@
+<div class="form-group">
+    <label ng-show="showLabel" class="label-text-form">
+        {{ label | translate }}
+        <span class="text-danger" ng-show="required">*</span>
+    </label>
+
+    <div class="flex">
+        <div class="flex-1 mg-r-10 pd-r-10 bd-right-bright-gray">
+            <div ng-if="data.uuid" ng-bind-html="data.description"></div>
+            <div ng-if="!data.uuid">{{'NO_CONTENT_TEXT' | translate}}</div>
+        </div>
+        <div class="">
+            <div>
+                <button type="button" class="btn relo-bg-bright-blue" ng-click="openDialog($event)">
+                    <i class="fa fa-pencil"></i>
+                </button>
+
+            </div>
+            <div ng-show="data.uuid" class="mt-5">
+                <button type="button" class="btn relo-bg-red" ng-click="removeFn(data)">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>

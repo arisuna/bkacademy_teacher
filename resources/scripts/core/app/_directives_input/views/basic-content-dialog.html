@@ -1,0 +1,42 @@
+<div class="card">
+    <div class="card-heading relo-bg-bright-gray ">
+        <span class="text-dark-blue">{{('DESCRIPTION_TEXT') | translate}}</span>
+    </div>
+
+    <spinner-v2 type="spin" ng-show="isLoadingDialog"></spinner-v2>
+    <form class="form-validate noPadding"
+          validate-form=""
+          role="form"
+          name="aclForm"
+          data-parsley-validate=""
+          ng-submit="saveFn()"
+          ng-show="!isLoadingDialog"
+          novalidate>
+        <div class="pd-2x custom-dialog-overflow ngdialog-content-body">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <app-wysiwyg ng-model="model.description"
+                                 min-height="500"
+                                 is-required="required"></app-wysiwyg>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer text-right border-0">
+            <div class="row">
+                <div class="col-sm-6 text-left">
+                    <button type="button" ng-click="cancelFn()" class="btn btn-default">
+                        {{'CANCEL_BTN_TEXT' | translate}}
+                    </button>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <button type="submit" class="btn relo-bg-green"><i
+                            class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
+                        {{'SAVE_BTN_TEXT' | translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
