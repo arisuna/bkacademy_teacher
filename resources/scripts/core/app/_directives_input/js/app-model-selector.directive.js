@@ -63,6 +63,7 @@
                         AppModelService.detailModel($scope.modelId).then(function (res) {
                             if (res.success) {
                                 $scope.data.selected = res.data;
+                                $scope.model =  angular.copy(res.data);
                             }
                         });
                     } else {

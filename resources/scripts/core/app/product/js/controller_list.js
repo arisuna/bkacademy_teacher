@@ -179,7 +179,7 @@
             };
 
             $scope.editProductFn = function (product) {
-                $state.go('app.product.edit', {id: product.id});
+                $state.go('app.product.edit', {id: product.uuid});
             };
 
             $scope.loadItems();
