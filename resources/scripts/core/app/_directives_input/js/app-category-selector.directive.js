@@ -69,6 +69,7 @@
                         AppCategoryService.detailCategory($scope.categoryId).then(function (res) {
                             if (res.success) {
                                 $scope.data.selected = res.data;
+                                $scope.category =  angular.copy(res.data);
                             }
                         });
                     } else {

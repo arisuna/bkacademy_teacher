@@ -31,7 +31,7 @@
                 parent: 'app.product.list',
                 views: {
                     '@app.product': {
-                        templateUrl: helper.modulePath('app', 'product/form', '_=' + Math.random())
+                        templateUrl: helper.modulePath('app', 'product/edit', '_=' + Math.random())
                     }
                 },
             });

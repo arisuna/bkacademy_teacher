@@ -1,0 +1,46 @@
+<form class="form-validate" validate-form="" role="form" name="productFieldForm" data-parsley-validate=""
+    ng-submit="saveFn()" ng-if="!page_loading" novalidate>
+    <div class="panel panel-default-b white-block">
+        <div class="panel-body">
+            <div class="row" ng-repeat="field in selectedGroup.fields">
+                <div class="col-sm-12" ng-if="field.type == 0">
+                    <input-text is-editable="true" is-required="field.is_mandatory == 1" is-text="true" ng-model="field.value"
+                        required-message="ENTER_FIELD_TEXT" label="{{field.label}}" show-label="true"></input-text>
+
+                </div>
+                <div class="col-sm-12" ng-if="field.type == 1">
+                    <input-text is-editable="true" is-required="field.is_mandatory == 1" is-numeric="true" ng-model="field.value"
+                        required-message="ENTER_FIELD_TEXT" label="{{field.label}}" show-label="true"></input-text>
+
+                </div>
+                <div class="col-sm-12" ng-if="field.type == 2">
+
+                    <app-system-attribute-selector   attribute-name="{{field.attribute_name}}"
+                                                   is-required="field.is_mandatory == 1"
+                                                   show-label="true"
+                                                   ng-model="field.value"
+                                                   required-message="ENTER_FIELD_TEXT"
+                                                   label="{{field.label}}"></app-system-attribute-selector>
+                    <app-attribute-selector ng-model="field.value"
+                                    required="field.is_mandatory == 1"
+                                    show-label="true"
+                                    label-floating="true"
+                                    label="{{field.label}}"
+                                    attribute-name="{{field.attribute_name}}"></app-attribute-selector>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-sm-12 text-right">s
+                <button type="submit" class="btn relo-bg-green" title="Save" ng-disabled="saving" ng-if="canSave"><i
+                        class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
+                    {{'SAVE_BTN_TEXT' | translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
