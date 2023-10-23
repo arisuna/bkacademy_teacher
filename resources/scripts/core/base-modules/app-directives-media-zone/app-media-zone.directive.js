@@ -74,10 +74,13 @@
                 } else {
                     scope.objectShared = null;
                 }
-
                 scope.isMultiple = !(angular.isDefined(scope.isMultiple) || scope.isMultiple == false);
 
-                scope.isEditable = !(angular.isDefined(scope.isEditable) || scope.isEditable == false);
+                if(angular.isUndefined(scope.isEditable)){
+                    scope.isEditable = true;
+                }
+
+                // scope.isEditable = !(angular.isDefined(scope.isEditable) || scope.isEditable == false);
 
                 if (angular.isUndefined(scope.showUpload) && !_.isBoolean(scope.showUpload)) {
                     console.log('scope.showUpload', scope.showUpload);

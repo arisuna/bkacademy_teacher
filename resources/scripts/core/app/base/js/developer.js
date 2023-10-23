@@ -19,6 +19,7 @@
                 attribute_value: '',
                 year: '2029',
                 contentUuid: null,
+                uuid: '721974cd-7ffc-4a7f-a5e8-46d1825db271'
             }
 
         }]);
