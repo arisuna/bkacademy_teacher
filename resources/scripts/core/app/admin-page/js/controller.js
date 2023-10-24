@@ -56,7 +56,7 @@
                     "acl": "",
                     "subMenu": [
                         {"title": "BUSINESS_ZONES_TEXT", "state": "app.business-zone.list"},
-                        {"title": "WAREHOUSES_PARKS_TEXT", "state": "app.location.list"},
+                        {"title": "WAREHOUSES_PARKS_TEXT", "state": "app.business-park.list"},
                     ]
                 },
                 {

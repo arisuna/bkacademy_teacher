@@ -1,0 +1,122 @@
+<div class="card">
+    <div class="card-heading relo-bg-bright-gray">
+        <span class="text-dark-blue">
+           {{ isClone == true ?  ('CLONE_BUSINESS_PARK_TEXT' | translate) + (' #' + object.id) : (object.id ?  ('EDIT_BUSINESS_PARK_TEXT' | translate) + ' #' + object.id : ('CREATE_BUSINESS_PARK_TEXT' | translate)) }}
+        </span>
+    </div>
+    <form class="form-validate noPadding" validate-form="true"
+          id="" name="crudForm"
+          role="form" ng-submit="" novalidate="">
+        <div class="card-body custom-dialog-overflow height-100vh-m90px">
+            <spinner-v2 type="spin" ng-show="page_loading"></spinner-v2>
+            <div ng-show="!page_loading">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input-text is-editable="true"
+                                    is-required="true"
+                                    is-text="true"
+                                    ng-model="object.name"
+                                    required-message="FIELD_IS_REQUIRED_TEXT"
+                                    label="NAME_TEXT"
+                                    show-label="true"></input-text>
+                    </div>
+                </div>
+
+
+<!--                <div class="row">-->
+<!--                    <div class="col-md-12">-->
+<!--                        <input-text is-editable="true"-->
+<!--                                    is-required="false"-->
+<!--                                    is-text="true"-->
+<!--                                    ng-model="object.code"-->
+<!--                                    label="CODE_TEXT"-->
+<!--                                    show-label="true"></input-text>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <app-business-zone-selector is-editable="true"
+                                                    label="BUSINESS_ZONE_TEXT"
+                                                    ng-model="object.business_zone_uuid"></app-business-zone-selector>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <app-province-selector ng-model="object.province_id"
+                                               show-label="true"
+                                               is-editable="true"
+                                               is-required="true"
+                                               label="PROVINCE_TEXT"
+                                               ng-change="ngChangeProvince(item)"
+                                               required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}">
+                        </app-province-selector>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <app-district-selector ng-model="object.district_id"
+                                               province-id="object.province_id"
+                                               show-label="true"
+                                               is-editable="!!object.province_id"
+                                               is-required="true"
+                                               label="DISTRICT_TEXT"
+                                               ng-change="ngChangeDistrict(item)"
+                                               required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}">
+                        </app-district-selector>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <app-ward-selector ng-model="object.ward_id"
+                                           district-id="object.district_id"
+                                           show-label="true"
+                                           is-editable="!!object.district_id"
+                                           is-required="true"
+                                           ng-change="ngChangeWard(item)"
+                                           label="WARD_TEXT"
+                                           required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}">
+                        </app-ward-selector>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <input-text is-editable="true"
+                                    is-required="false"
+                                    is-text="true"
+                                    ng-model="object.address"
+                                    label="ADDRESS_TEXT"
+                                    show-label="true"></input-text>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="card-footer">
+<!--            <div class="pull-left">-->
+<!--                <button type="button"-->
+<!--                        class="btn btn-default btn-oval" ng-click="closeThisDialog(0)">-->
+<!--                    <em class="fa fa-long-arrow-left mr-sm"></em>-->
+<!--                    {{'CANCEL_TEXT' | translate}}-->
+<!--                </button>-->
+<!--            </div>-->
+            <div class="pull-right text-right">
+
+                <button type="submit" class="btn relo-bg-green"
+                        ng-disabled="saving"
+                        ng-click="crudForm.$valid && saveFn();">
+                    <em class="fa-solid  mr-sm {{ saving ? 'fa-spin fa-spinner' : 'fa-floppy-disk'}}"></em>
+                    {{ 'SAVE_BTN_TEXT' | translate }}
+                </button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+    </form>
+</div>

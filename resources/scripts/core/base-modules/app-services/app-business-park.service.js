@@ -3,18 +3,18 @@
 
     angular
         .module('app.app-services')
-        .service('AppBusinessZoneService', AppBusinessZoneService);
+        .service('AppBusinessParkService', AppBusinessParkService);
 
-    AppBusinessZoneService.$inject = ['$http', '$q', '$httpParamSerializer', '$localStorage', '$filter', 'moment', 'AppHttp'];
+    AppBusinessParkService.$inject = ['$http', '$q', '$httpParamSerializer', '$localStorage', '$filter', 'moment', 'AppHttp'];
 
-    function AppBusinessZoneService($http, $q, $httpParamSerializer, $localStorage, $filter, moment, AppHttp) {
+    function AppBusinessParkService($http, $q, $httpParamSerializer, $localStorage, $filter, moment, AppHttp) {
 
         var vm = this;
 
         
         this.search = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/app/business-zone/search', data).then(function (response) {
+            AppHttp.put('/app/business-park/search', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -24,7 +24,7 @@
 
         this.getList = function (data) {
             let deferred = $q.defer();
-            AppHttp.put('/app/business-zone/getList', data).then(function (response) {
+            AppHttp.put('/app/business-park/getList', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -34,9 +34,9 @@
 
 
 
-        this.deleteBusinessZone = function (id) {
+        this.deleteBusinessPark = function (id) {
             var deferred = $q.defer();
-            AppHttp.delete('/app/business-zone/delete/' + id).then(function (response) {
+            AppHttp.delete('/app/business-park/delete/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);
@@ -45,9 +45,9 @@
         };
 
 
-        this.createBusinessZone = function (data) {
+        this.createBusinessPark = function (data) {
             var deferred = $q.defer();
-            AppHttp.post('/app/business-zone/create', data).then(function (response) {
+            AppHttp.post('/app/business-park/create', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);
@@ -55,9 +55,9 @@
             return deferred.promise;
         };
 
-        this.updateBusinessZone = function (data) {
+        this.updateBusinessPark = function (data) {
             var deferred = $q.defer();
-            AppHttp.put('/app/business-zone/update/' + data.id, data).then(function (response) {
+            AppHttp.put('/app/business-park/update/' + data.id, data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);
@@ -65,9 +65,9 @@
             return deferred.promise;
         };
 
-        this.detailBusinessZone = function (uuid) {
+        this.detailBusinessPark = function (id) {
             var deferred = $q.defer();
-            AppHttp.get('/app/business-zone/detail/' + uuid).then(function (response) {
+            AppHttp.get('/app/business-park/detail/' + id).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err, status) {
                 deferred.reject(err.data);
