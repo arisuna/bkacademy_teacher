@@ -5,22 +5,20 @@
         .module('app.app-directives')
         .directive('appCompanySelector', appCompanySelector);
 
-    appCompanySelector.$inject = ['Utils', 'GmsHrAccountService', 'urlBase', 'AppDataService', 'ngDialog'];
+    appCompanySelector.$inject = ['Utils', 'urlBase', 'AppCompanyService', 'ngDialog'];
 
-    function appCompanySelector(Utils, GmsHrAccountService, urlBase, AppDataService, ngDialog) {
+    function appCompanySelector(Utils, urlBase, AppCompanyService, ngDialog) {
         var directive = {
             restrict: 'E',
             replace: true,
             scope: {
                 companyId: '=ngModel',
-                relocationId: '<?',
                 company: '=?',
                 isRequired: '<',
                 label: '@',
                 requiredMessage: '@',
                 isEditable: '<?',
                 showLabel: '<?',
-                addBooker: '<?',
                 ngChange: '&?'
             },
 
@@ -30,10 +28,6 @@
 
                 if (angular.isUndefined(scope.label) || scope.label == '') {
                     scope.label = 'COMPANY_TEXT';
-                }
-
-                if (angular.isUndefined(scope.addBooker) || scope.addBooker == null) {
-                    scope.addBooker = false;
                 }
 
                 if (angular.isUndefined(scope.isEditable) || scope.isEditable == null) {
@@ -65,7 +59,7 @@
 
                 $scope.initFn = function () {
                     if ($scope.companyId > 0) {
-                        AppDataService.getCompanyDetailById($scope.companyId).then(function (res) {
+                        AppCompanyService.getCompanyDetail($scope.companyId).then(function (res) {
                             if (res.success) {
                                 $scope.data.selected = res.data;
                             }
@@ -117,19 +111,9 @@
                         cache: true,
                         width: 300,
                         data: dialogPosition,
-                        resolve: {
-                            addBooker: function () {
-                                return $scope.addBooker;
-                            },
-                            relocationId: function () {
-                                return $scope.relocationId;
-                            }
-                        },
-                        controller: ['$scope', '$element', '$timeout', 'AppDataService', 'Utils', 'addBooker', 'relocationId', function ($scope, $element, $timeout, AppDataService, Utils, addBooker, relocationId) {
+                        controller: ['$scope', '$element', '$timeout', 'AppCompanyService', 'Utils', function ($scope, $element, $timeout, AppCompanyService, Utils) {
 
                             $scope.companies = [];
-                            $scope.relocationId = relocationId;
-                            $scope.addBooker = addBooker;
 
                             $scope.totalItems = 0;
                             $scope.totalPages = 0;
@@ -159,10 +143,8 @@
                                 $scope.currentPage = 0;
                                 $scope.totalPages = 0;
                                 $scope.isLoading = true;
-                                AppDataService.searchCompaniesAndBookers({
+                                AppCompanyService.getCompanyList({
                                     query: $scope.searchConfig.query,
-                                    relocationId: $scope.relocationId,
-                                    hasBooker: $scope.addBooker,
                                     page: 1
                                 }).then(function (res) {
                                     $scope.companies = res.data;
@@ -179,9 +161,8 @@
                             $scope.loadMore = function () {
                                 if ($scope.totalPages > $scope.currentPage) {
                                     $scope.isLoadingMore = true;
-                                    AppDataService.searchCompaniesAndBookers({
+                                    AppCompanyService.getCompanyList({
                                         query: $scope.searchConfig.query,
-                                        hasBooker: $scope.addBooker,
                                         page: $scope.currentPage + 1
                                     }).then(function (res) {
                                         $scope.companies = _.concat($scope.companies, res.data);

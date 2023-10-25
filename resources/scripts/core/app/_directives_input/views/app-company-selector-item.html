@@ -26,14 +26,6 @@
         <div class="item"
              ng-show="!(data.selected.id == null || data.selected.id == '' || data.selected.id == undefined)">
 
-            <span class="icon">
-                <company-logo-thumb
-                    uuid="{{ data.selected.uuid }}"
-                    class="flex-middle"
-                    is-field-icon="true"
-                    size="small"></company-logo-thumb>
-            </span>
-
             <span class="principal pd-t-3">
                <a ng-click="openSearchDialog($event)">
                     <span class="">{{data.selected.name}}</span>
@@ -52,9 +44,6 @@
 
         <div class="item"
              ng-show="data.selected.id == null || data.selected.id == '' || data.selected.id == undefined">
-            <span class="icon">
-                <em class="fa-solid fa-hotel text-dark-gray txt-16 ml mr-sm mg-t-minus-3"></em>
-            </span>
             <span class="principal pd-t-3">
                <a ng-click="openSearchDialog($event)">
                    <span class="">{{'SELECT_TEXT' | translate }}</span>
@@ -67,17 +56,11 @@
          ng-if="isEditable == false">
         <div class="item"
              ng-if="!(data.selected.id == null || data.selected.id == '' || data.selected.id == undefined)">
-            <span class="icon">
-                <em class="fa-solid fa-hotel text-dark-gray txt-16 ml mr-sm"></em>
-            </span>
             <span class="">{{data.selected.name}}</span>
         </div>
 
         <div class="item"
              ng-if="data.selected.id == null || data.selected.id == '' || data.selected.id == undefined">
-            <span class="icon">
-                <em class="fa-solid fa-hotel text-dark-gray txt-16 ml mr-sm"></em>
-            </span>
             <span class="principal pd-t-3">
             </span>
         </div>
