@@ -11,11 +11,6 @@
     <div class="card-footer">
         <div class="row">
             <div class="col-sm-12 text-right">
-                <button type="button" ng-if="product.id" class="btn relo-bg-red mr-lg"
-                    ng-click="deleteFn(product.id)" app-acl-allow="product/delete" acl-remove="true" title="Delete">
-                    <i class="fa fa-trash mr-sm" ng-disabled="saving"></i>
-                    {{'DELETE_BTN_TEXT' | translate}}
-                </button>
                 <button type="submit" class="btn relo-bg-green" title="Save" ng-disabled="saving" ng-if="canSave"><i
                         class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
                     {{'SAVE_BTN_TEXT' | translate}}
