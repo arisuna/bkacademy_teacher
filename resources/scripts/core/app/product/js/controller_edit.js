@@ -61,10 +61,10 @@
                     })
             }; // End save function
 
-            $scope.deleteFn = function (id) {
-                WaitingService.questionSimple('QUESTION_DELETE_USER_TEXT',
-                    function (res) {
-                        AppProductService.deleteProduct(id).then(function (res) {
+            $scope.deleteFn = function () {
+                WaitingService.questionSimple('QUESTION_DELETE_PRODUCT_TEXT',
+                    function () {
+                        AppProductService.deleteProduct($scope.product.uuid).then(function (res) {
                             if (res.success) {
                                 // WaitingService.success(res.message, function () {
                                 //     $state.go('app.product.list');

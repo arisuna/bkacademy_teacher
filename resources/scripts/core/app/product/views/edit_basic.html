@@ -55,7 +55,7 @@
         <div class="row">
             <div class="col-sm-12 text-right">
                 <button type="button" ng-if="product.id" class="btn relo-bg-red mr-lg"
-                    ng-click="deleteFn(product.id)" app-acl-allow="product/delete" acl-remove="true" title="Delete">
+                    ng-click="deleteFn()" app-acl-allow="product/delete" acl-remove="true" title="Delete">
                     <i class="fa fa-trash mr-sm" ng-disabled="saving"></i>
                     {{'DELETE_BTN_TEXT' | translate}}
                 </button>

@@ -94,7 +94,7 @@
                     <td class="bd-t-white">{{ object.created_at | amDateFormat: 'DD/MM/YYYY'}}</td>
                     <td class="text-right bd-t-white">
                         <button-edit-icon ng-click="editProductFn( object )" class="mr-sm"></button-edit-icon>
-                        <button-delete-icon ng-click="deleteFn( object )"
+                        <button-delete-icon ng-click="deleteFn( object.uuid )"
                         app-acl-allow="product/delete"
                         acl-remove="true"></button-delete-icon>
                     </td>

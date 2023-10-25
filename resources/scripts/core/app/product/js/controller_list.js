@@ -165,12 +165,12 @@
                 $scope.loadItems();
             };
 
-            $scope.deleteFn = function (product, index) {
-                WaitingService.questionSimple('QUESTION_DELETE_USER_TEXT', function () {
-                    AppDataService.deleteCrmProduct(product.id).then(function (res) {
+            $scope.deleteFn = function (uuid) {
+                WaitingService.questionSimple('QUESTION_DELETE_PRODUCT_TEXT', function () {
+                    AppProductService.deleteProduct(uuid).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
-                            $scope.reloadInit();
+                            $scope.loadItems();
                         } else {
                             WaitingService.error(msg);
                         }
