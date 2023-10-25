@@ -1,0 +1,12 @@
+<div class="noPaddingTop">
+    <label ng-if="showLabel == true && label != ''" class="small text-muted">{{ label | translate }}</label>
+    <div class="input-form mda-date-container" ng-if="showLabel == false">
+        <mdp-date-picker ng-model="$parent.currentDate" mdp-placeholder="{{ label | translate }}" mdp-current-view="month"
+                         mdp-format="DD/MM/YYYY" ng-change="changeValue()"></mdp-date-picker>
+    </div>
+    <div class="input-form mda-date-container" ng-if="showLabel == true">
+        <mdp-date-picker ng-model="$parent.currentDate" mdp-current-view="month" mdp-format-date=""
+                         mdp-format="DD/MM/YYYY"
+                         ng-change="changeValue()"></mdp-date-picker>
+    </div>
+</div>

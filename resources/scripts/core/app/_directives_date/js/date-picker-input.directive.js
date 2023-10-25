@@ -6,31 +6,40 @@
     'use strict';
 
     angular
-        .module('app.input-selector')
-        .directive('yearPickerInput', yearPickerInput);
+        .module('app.date-picker-input')
+        .directive('datePickerInput', datePickerInput);
 
-    yearPickerInput.$inject = ['urlBase', 'moment', '$filter', '$rootScope', 'Utils', 'WaitingService',
-        'tmhDynamicLocale', '$translate', 'uibDatepickerPopupConfig', '$locale'];
+    datePickerInput.$inject = ['urlBase', 'moment', '$filter', '$rootScope', 'Utils', 'WaitingService',
+        'AppAuthService', 'tmhDynamicLocale', 'AppSystem', '$translate', 'uibDatepickerPopupConfig', '$locale'];
 
-    function yearPickerInput(urlBase, moment, $filter, $rootScope, Utils, WaitingService,
-                              tmhDynamicLocale, $translate, uibDatepickerPopupConfig, $locale) {
+    function datePickerInput(urlBase, moment, $filter, $rootScope, Utils, WaitingService,
+                             AppAuthService, tmhDynamicLocale, AppSystem, $translate, uibDatepickerPopupConfig, $locale) {
         var directive = {
             restrict: 'E',
             replace: true,
             scope: {
                 model: '=ngModel',
+                observedModel: '=?',
                 showLabel: '<?',
+                isGray: '<?',
                 label: '@?',
+                name: '<',
+                inputType: '@?',
+                outputType: '@',
                 required: '<?',
                 disabled: '<?',
                 onAfterSave: '&?onAfterSave',
                 fullWidth: '<?',
                 noMargin: '<?',
                 appendBody: '<?',
+                fromNow: '<?',
+                isCompanyTimezone: '<?',
                 className: '@?',
+                buttonClassName: '@?',
                 noMarginBottom: '<?',
+                isServiceModal: '<?',
             },
-            templateUrl: urlBase.tplApp('app', '_directives_input_selector', 'year-picker-input'),
+            templateUrl: urlBase.tplApp('gms', '_directives_date', 'date-picker-input'),
             link: function (scope, element, attrs, timeout) {
 
                 function parseISO(s) {
@@ -95,16 +104,31 @@
                 $scope.isOpen = false;
                 $scope.isChangedInside = false;
                 $scope.dt = '';
+                $scope.companyTimezoneOffset = AppAuthService.getCompanyTimezoneOffset();
 
                 uibDatepickerPopupConfig.currentText = $translate.instant('TODAY_TEXT');
                 uibDatepickerPopupConfig.closeText = $translate.instant('CLOSE_TEXT');
                 uibDatepickerPopupConfig.clearText = $translate.instant('CLEAR_TEXT');
-                // tmhDynamicLocale.set(AppSystem.getUserSettingVariable('display_language') ? AppSystem.getUserSettingVariable('display_language') : 'en');
+                tmhDynamicLocale.set(AppSystem.getUserSettingVariable('display_language') ? AppSystem.getUserSettingVariable('display_language') : 'en');
 
-                $scope._companyDateFormat = 'YYYY'
+                $scope._companyDateFormat = AppAuthService.getCompanyDateFormat() ? AppAuthService.getCompanyDateFormat() : 'DD/MM/YYYY';
 
-                $scope._datePickerFormat = 'yyyy';
+                $scope._datePickerFormat = 'dd/MM/yyyy';
 
+                switch ($scope._companyDateFormat){
+                    case 'DD/MM/YYYY':
+                        $scope._datePickerFormat = 'dd/MM/yyyy';
+                        break;
+                    case 'MM/DD/YYYY':
+                        $scope._datePickerFormat = 'MM/dd/yyyy';
+                        break;
+                    case 'YYYY/MM/DD':
+                        $scope._datePickerFormat = 'yyyy/MM/dd';
+                        break;
+                    default:
+                        $scope._datePickerFormat = 'dd/MM/yyyy';
+                        break;
+                }
 
                 $scope.dpick = {
                     appendBody: angular.isUndefined($scope.appendBody) ? $scope.appendBody = false : $scope.appendBody,
@@ -133,22 +157,18 @@
                     }
                     ,
                     dateOptions: {
-                        datepickerMode:"year",
-                        minMode:"year",
-                        minDate:"minDate",
-                        showWeeks:"false",
+                        formatYear: 'yyyy',
+                        initDate:
+                            null,
+                        minDate:
+                            $scope.fromNow ? (new Date()).setDate(new Date().getDate() + 1) : null,
+                        maxDate:
+                            null
                     }
                     ,
                     formats: ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd/MM/yyyy', 'shortDate'],
                     format:
                         $scope._datePickerFormat,
-                };
-
-                $scope.dateOptions = {
-                    datepickerMode:"year",
-                    minMode:"year",
-                    minDate:"minDate",
-                    showWeeks:"false",
                 };
 
                 $scope.minDate = $scope.fromNow ? (new Date()).setDate(new Date().getDate() + 1) : null;
@@ -162,10 +182,30 @@
 
                 $scope.changeDate = function () {
                     if ($scope.dt != '' && $scope.dt != null && $scope.dt != undefined) {
-                        console.log('changeDate', $scope.dt);
                         if (Utils.isDateValid($scope.dt)) {
-                            $scope.model = $filter('amDateFormat')($filter('amLocal')($filter('amUtc')($scope.dt)), 'YYYY');
-
+                            if ($scope.fromNow) {
+                                let checkModel = moment($scope.dt).unix();
+                                $scope.current_date = new Date();
+                                if (checkModel <= Math.floor($scope.current_date / 1000)) {
+                                    WaitingService.error('MUST_CHOOSE_FROM_TOMORROW_TEXT');
+                                    $scope.initValue();
+                                    return;
+                                } else {
+                                    let check_date = new Date(checkModel * 1000);
+                                    let difference = checkModel * 1000 - $scope.current_date;
+                                    if (difference < 1000 * 3600 * 24 && check_date.getDate() == $scope.current_date.getDate()) {
+                                        WaitingService.error('MUST_CHOOSE_FROM_TOMORROW_TEXT');
+                                        $scope.initValue();
+                                        return;
+                                    }
+                                }
+                            }
+                            if ($scope.inputType == 'date') {
+                                $scope.model = $filter('amDateFormat')($filter('amLocal')($filter('amUtc')($scope.dt)), 'YYYY-MM-DD');
+                            } else {
+                                $scope.model = moment($scope.dt).unix();
+                            }
+                            $scope.isChangedInside = true;
                         }
                     } else {
                         $scope.model = null;
@@ -187,7 +227,21 @@
                 }
 
                 $scope.initValue = function () {
-                    $scope.dt = moment($scope.model, 'YYYY-MM-DD').toDate();
+                    if ($scope.inputType == 'date') {
+                        if (($scope.model != '' && $scope.model != null) && ($scope.dt == '' || $scope.dt == null)) {
+                            $scope.dt = moment($scope.model, 'YYYY-MM-DD').toDate();
+                        } else {
+                            $scope.dt = '';
+                        }
+                    } else {
+                        if (_.isInteger($scope.model) && $scope.model > 0) {
+                            var temporary_date = new Date(0);
+                            temporary_date.setUTCSeconds($scope.model);
+                            $scope.dt = temporary_date;
+                        } else {
+                            $scope.dt = '';
+                        }
+                    }
 
                 };
 

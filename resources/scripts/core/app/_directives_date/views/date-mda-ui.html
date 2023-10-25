@@ -1,0 +1,25 @@
+<div>
+    <div class="pd-t-0">
+        <label ng-if="showLabel == true && label != ''" class="text-muted" ng-class="{'text-small':size =='small'}">{{
+            label | translate }}
+            <span class="text-danger ng-scope" ng-if="required">*</span>
+        </label>
+
+        <div class="input-form mda-date-container" ng-if="showLabel == false">
+            <mdp-date-picker ng-model="$parent.currentDate" mdp-placeholder="{{ label | translate }}"
+                             mdp-disabled="readOnly"
+                             mdp-current-view="month"
+                             mdp-format="DD/MM/YYYY"
+                             ng-change="changeValue()"></mdp-date-picker>
+        </div>
+        <div class="input-form mda-date-container" ng-if="showLabel == true" style="height:50px; margin-top:-10px;">
+            <mdp-date-picker ng-model="$parent.currentDate" mdp-current-view="month"
+                             mdp-disabled="readOnly"
+                             mdp-format="DD/MM/YYYY"
+                             ng-change="changeValue()"></mdp-date-picker>
+        </div>
+
+        <input ng-show="false" type="text" ng-model="model" ng-required="required" data-parsley-validate=""
+               data-parsley-required-message="{{ 'DATE_REQUIRED_TEXT' | translate }}"/>
+    </div>
+</div>

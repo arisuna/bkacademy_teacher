@@ -61,7 +61,7 @@
                             // });
 
                             WaitingService.popSuccess(res.message);
-                            $state.go('app.product.list');
+                            $state.go('app.product.edit', {id: res.data.uuid});
                         } else {
                             WaitingService.error(res.message);
                         }

@@ -12,17 +12,23 @@
                         <a class="list-group-item"
                            ng-class="{'active': (settingActive == 0)}"
                            ng-click="settingActive = 10">{{ 'BASIC_INFO_TEXT' | translate }}</a>
-
-                        <a class="list-group-item"
-                            ng-repeat="group in product.product_field_groups"
-                           ng-class="{'active': (settingActive == (group.id + 2))}"
-                           ng-click="changeTab(group)">{{ group.name| translate }}</a>
                         <a class="list-group-item"
                             ng-class="{'active': (settingActive == 1)}"
                             ng-click="settingActive = 1">{{ 'DESCRTIPTION_TEXT' | translate }}</a>
                         <a class="list-group-item"
                             ng-class="{'active': (settingActive == 2)}"
                             ng-click="settingActive = 2">{{ 'IMAGES_TEXT' | translate }}</a>
+                        <a class="list-group-item"
+                            ng-class="{'active': (settingActive == 3)}"
+                            ng-click="settingActive = 3">{{ 'SALE_TEXT' | translate }}</a>
+                        <a class="list-group-item"
+                            ng-class="{'active': (settingActive == 4)}"
+                            ng-click="settingActive = 4">{{ 'RENTAL_TEXT' | translate }}</a>
+
+                        <a class="list-group-item"
+                            ng-repeat="group in product.product_field_groups"
+                           ng-class="{'active': (settingActive == (group.id + 4))}"
+                           ng-click="changeTab(group)">{{ group.name| translate }}</a>
                     </div>
                 </div>
             </div>
@@ -30,7 +36,7 @@
                 <div ng-show="settingActive == 0">
                     <div ng-include="'/app/views/product/edit_basic.html'"></div>
                 </div>
-                <div ng-show="settingActive > 2">
+                <div ng-show="settingActive > 4">
                     <div ng-include="'/app/views/product/edit_field_group.html'"></div>
                 </div>
                 <div ng-show="settingActive == 1">
@@ -38,6 +44,12 @@
                 </div>
                 <div ng-show="settingActive == 2">
                     <div ng-include="'/app/views/product/edit_image.html'"></div>
+                </div>
+                <div ng-show="settingActive == 3">
+                    <div ng-include="'/app/views/product/edit_sale_info.html'"></div>
+                </div>
+                <div ng-show="settingActive == 4">
+                    <div ng-include="'/app/views/product/edit_rent_info.html'"></div>
                 </div>
             </div>
         </div>

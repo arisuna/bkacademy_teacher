@@ -1,0 +1,27 @@
+<div class="form-group {{ (fullWidth && fullWidth == true) ? 'w-100' : 'm-w-200' }}">
+    <label ng-show="showLabel" ng-class="{'text-gray': isGray == true, 'text-dark-blue': isGray != true}">
+        {{ label | translate }}
+        <span class="text-danger" ng-show="isRequired">*</span>
+    </label>
+    <div class="input-group">
+        <input class="form-control"
+               type="text" name="{{ name }}"
+               placeholder="{{ label | translate }}"
+               ng-model="selectedData.dateValue"
+               ng-disabled="isDisabled"/>
+            <span class="input-group-btn">
+                <button class="btn btn-default btn-flat"
+                        type="button"
+                        ng-disabled="isDisabled"
+                        ng-click="openDatePickerDialog()">
+                    <em class="fa fa-calendar txt-dark-gray"></em>
+                </button>
+            </span>
+        <div class="clearfix"></div>
+    </div>
+    <input class="text"
+           ng-show="false"
+           ng-model="model"
+           ng-required="isRequired"
+           data-parsley-required-message="{{'DATE_REQUIRED_TEXT' | translate}}">
+</div>

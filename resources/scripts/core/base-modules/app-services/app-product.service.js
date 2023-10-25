@@ -5,11 +5,28 @@
         .module('app.app-services')
         .service('AppProductService', AppProductService);
 
-    AppProductService.$inject = ['$http', '$q', '$httpParamSerializer', '$localStorage', '$filter', 'moment', 'AppHttp'];
+    AppProductService.$inject = ['$http', '$q', '$httpParamSerializer', '$localStorage', '$filter', '$translate', 'moment', 'AppHttp'];
 
-    function AppProductService($http, $q, $httpParamSerializer, $localStorage, $filter, moment, AppHttp) {
+    function AppProductService($http, $q, $httpParamSerializer, $localStorage, $filter, $translate, moment, AppHttp) {
+
+
+        this.config = {
+            __period_list: [
+                {name: $translate.instant("DAILY_TEXT"), value: 2},
+                {name: $translate.instant("WEEKLY_TEXT"), value: 3},
+                {name: $translate.instant("MONTHLY_TEXT"), value: 4},
+                {name: $translate.instant("QUARTERLY_TEXT"), value: 5},
+                {name: $translate.instant("YEARLY_TEXT"), value: 6},
+            ],
+        };
 
         var vm = this;
+
+
+
+        this.getPeriodList = function () {
+            return vm.config.__period_list;
+        }
 
 
         this.getProductDetail = function (id) {

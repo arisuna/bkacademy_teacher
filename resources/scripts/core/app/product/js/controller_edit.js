@@ -11,6 +11,7 @@
             $scope.product = {};
             $scope.canSave = false;
             $scope.selectedGroup = undefined;
+            $scope.periodList = AppProductService.getPeriodList();
 
             $scope.canSave =  angular.isDefined($stateParams.id) ? AppAclService.validateAction('product', 'edit') : AppAclService.validateAction('product', 'create');
 
@@ -39,7 +40,7 @@
             $scope.getDetailFn();
 
             $scope.changeTab = function(group){
-                $scope.settingActive = group.id + 2;
+                $scope.settingActive = group.id + 4;
                 $scope.selectedGroup = group;
             };
 

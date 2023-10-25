@@ -1,0 +1,41 @@
+<div class="form-group {{ (fullWidth && fullWidth == true) ? 'w-100' : 'm-w-200' }}" ng-class="{'mg-0': noMargin, 'mb0': noMarginBottom, 'width-170': isServiceModal}">
+    <label ng-show="showLabel" class="label-text-form">
+        {{ label | translate }}
+        <span class="text-danger" ng-show="required">*</span>
+    </label>
+    <div class="input-group date-picker">
+        <input class="form-control {{className}}"
+               ng-class="{' relo-bg-bright-blue-10': !disabled, 'date-disabled': disabled}"
+               type="text"
+               name="{{ name }}"
+               uib-datepicker-popup="{{ dpick.format}}"
+               placeholder="{{_companyDateFormat}}"
+               ng-model="dt"
+               min-date="minDate"
+               is-open="dpick.dateOpened"
+               uib-datepicker-options="dpick.dateOptions"
+               date-disabled="dpick.disabled(date, mode)"
+               datepicker-append-to-body="dpick.appendBody"
+               clear-text="{{'CLEAR_TEXT' | translate}}"
+               current-text="{{'TODAY_TEXT' | translate}}"
+               close-text="{{'CLOSE_TEXT' | translate}}"
+               ng-disabled="disabled"
+               ng-change="changeDate()"/>
+        <span class="input-group-btn">
+            <button class="btn btn-default btn-flat max-height-35px {{buttonClassName}}"
+                    ng-class="{' btn-soft-blue': !disabled, 'date-icon-disabled': disabled}"
+                    type="button"
+                    ng-disabled="disabled"
+                    ng-click="dpick.dateOpen($event)">
+                <em class="fa fa-calendar txt-dark-gray"></em>
+            </button>
+        </span>
+        <div class="clearfix"></div>
+    </div>
+
+    <input class="text"
+           ng-show="false"
+           ng-model="model"
+           ng-required="required"
+           data-parsley-required-message="{{'DATE_REQUIRED_TEXT' | translate}}">
+</div>

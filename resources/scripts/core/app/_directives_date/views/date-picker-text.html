@@ -1,0 +1,50 @@
+<div class="" ng-class="{'mg-0': noMargin, 'mb0': noMarginBottom, 'width-170': isServiceModal}">
+    <label ng-show="showLabel" class="label-text-form">
+        {{ label | translate }}
+        <span class="text-danger" ng-show="required">*</span>
+    </label>
+    <div class="date-picker">
+<!--        <span ng-show="dt == '' || dt == undefined || dt == null"-->
+<!--              class="cursor-pointer text-bright-blue"-->
+<!--              ng-click="dpick.dateOpen($event)">{{text | translate}}-->
+<!--        </span>-->
+
+<!--        <span ng-show="dt != '' && dt != undefined && dt != null"-->
+<!--              class="cursor-pointer text-bright-blue">-->
+<!--            {{dt}}-->
+<!--        </span>-->
+
+        <input class="text-bright-blue noBorder relo-bg-transparent placeholder-bright-blue txt-align-middle hover-underline"
+               ng-class=""
+               type="text"
+               name="{{ name }}"
+               readonly="readonly"
+               ng-click="dpick.dateOpen($event)"
+               uib-datepicker-popup="{{ dpick.format}}"
+               placeholder="{{text | translate}}"
+               ng-model="dt"
+               min-date="minDate"
+               is-open="dpick.dateOpened"
+               uib-datepicker-options="dpick.dateOptions"
+               date-disabled="dpick.disabled(date, mode)"
+               datepicker-append-to-body="dpick.appendBody"
+               ng-disabled="disabled"
+               ng-change="changeDate()"
+               clear-text="{{'CLEAR_TEXT' | translate}}"
+               current-text="{{'TODAY_TEXT' | translate}}"
+               close-text="{{'CLOSE_TEXT' | translate}}"/>
+
+<!--        <button class="btn btn-default btn-flat max-height-35px {{buttonClassName}}"-->
+<!--                ng-class="{' btn-soft-blue': !disabled, 'date-icon-disabled': disabled}"-->
+<!--                type="button"-->
+<!--                ng-disabled="disabled"-->
+<!--                ng-click="dpick.dateOpen($event)">-->
+<!--            <em class="fa fa-calendar text-dark-blue"></em>-->
+<!--        </button>-->
+
+    <input class="text"
+           ng-show="false"
+           ng-model="model"
+           ng-required="required"
+           data-parsley-required-message="{{'DATE_REQUIRED_TEXT' | translate}}">
+</div>
