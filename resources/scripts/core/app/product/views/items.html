@@ -87,8 +87,8 @@
                                 aria-haspopup="true"
                                 aria-expanded="false"
                                 tooltip-placement="bottom"
-                                uib-tooltip="{{ object.is_active  == 1 ? ('ACTIVE_TEXT' | translate) : ('INACTIVE_TEXT' | translate) }}"
-                                ng-class="{'is-terminated': object.is_active != 1, 'is-active': object.is_active == 1}">
+                                uib-tooltip="{{ object.is_active  == 1 ? ('UNVERIFIED_TEXT' | translate) : (object.is_active  == 2 ? ('VERIFIED_TEXT' | translate) : ('PUBLISHED_TEXT' | translate)) }}"
+                                ng-class="{'unverified': object.status == 1, 'is-active': object.status == 2, 'in-aproval': object.status == 3}">
                         </button>
                     </td>
                     <td class="bd-t-white">{{ object.created_at | amDateFormat: 'DD/MM/YYYY'}}</td>

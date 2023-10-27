@@ -18,6 +18,13 @@
                 {name: $translate.instant("QUARTERLY_TEXT"), value: 5},
                 {name: $translate.instant("YEARLY_TEXT"), value: 6},
             ],
+
+
+            _status_list: [
+                {name: 'UNVERIFIED_TEXT', value: 1, color: 'dark-gray', text: 'UNVERIFIED_TEXT'},
+                {name: 'VERIFIED_TEXT', value: 2, color: 'green', text: 'VERIFIED_TEXT'},
+                {name: 'PUBLISH', value: 3, color: 'bright-blue', text: 'PUBLISHED_TEXT'},
+            ]
         };
 
         var vm = this;
@@ -26,6 +33,10 @@
 
         this.getPeriodList = function () {
             return vm.config.__period_list;
+        }
+
+        this.getStatusList = function () {
+            return vm.config._status_list;
         }
 
 
