@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <app-brand-selector ng-model="product.brand_id" show-label="true" is-required="true"
-                        label="BRANCH_TEXT"></app-brand-selector>
+                        label="BRAND_TEXT"></app-brand-selector>
                 </div>
                 <div class="col-sm-6">
                     <app-model-selector ng-model="product.model_id" brand-id="product.brand_id" show-label="true"
@@ -24,10 +24,12 @@
             <div class="row">
                 <div class="col-sm-6">
                     <app-category-selector ng-model="product.main_category_id" level-1-only="true" show-label="true"
+                        is-editable="false"
                         is-required="true" label="CATEGORY_TEXT"></app-category-selector>
                 </div>
                 <div class="col-sm-6">
                     <app-category-selector ng-model="product.secondary_category_id" parent-id="product.main_category_id"
+                        is-editable="false"
                         show-label="true" is-required="true" label="SUBCATEGORY_TEXT"></app-category-selector>
                 </div>
             </div>
