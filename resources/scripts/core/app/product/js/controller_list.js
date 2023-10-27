@@ -11,6 +11,7 @@
             $scope.currentPage = 0;
             $scope.items = [];
             $scope.totalPages = 1;
+            $scope.statuses = AppProductService.getStatusList();
 
             $scope.columns = [
                 {

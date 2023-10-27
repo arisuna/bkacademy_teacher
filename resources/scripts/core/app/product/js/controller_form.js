@@ -11,6 +11,8 @@
             $scope.product = {};
             $scope.canSave = false;
 
+            $scope.statuses = AppProductService.getStatusList();
+
             $scope.canSave =  angular.isDefined($stateParams.id) ? AppAclService.validateAction('product', 'edit') : AppAclService.validateAction('product', 'create');
 
             $scope.getDetailFn = function () {
