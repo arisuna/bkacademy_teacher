@@ -82,5 +82,12 @@
                     });
             }; // End delete function
 
+            $scope.updateDescription = function(data){
+                console.log('data', data);
+                if(data){
+                    $scope.product.description_id = data.descriptionId;
+                    $scope.saveFn();
+                }
+            }
         }]);
 })();

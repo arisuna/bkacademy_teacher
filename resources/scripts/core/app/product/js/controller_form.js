@@ -39,6 +39,14 @@
 
             $scope.saving = false;
 
+            $scope.updateDescription = function(data){
+                console.log('data', data);
+                if(data){
+                    $scope.product.description_id = data.descriptionId;
+                    $scope.saveFn();
+                }
+            }
+
             $scope.saveFn = function () {
                 $scope.saving = true;
 

@@ -12,13 +12,13 @@
             restrict: 'E',
             replace: true,
             scope: {
-                contentUuid: '=ngModel',
-                objectUuid: '=?',
+                descriptionId: '=ngModel',
                 isRequired: '<?',
                 label: '@?',
                 requiredMessage: '@?',
                 isEditable: '<?',
                 showLabel: '<?',
+                ngChange: '&?',
             },
 
             templateUrl: urlBase.tplApp('app', '_directives_input', 'basic-content'),
@@ -54,8 +54,8 @@
 
 
                 $scope.initFn = function () {
-                    if ($scope.contentUuid) {
-                        AppBasicContentService.detail($scope.contentUuid).then(function (res) {
+                    if ($scope.descriptionId != undefined) {
+                        AppBasicContentService.detail($scope.descriptionId).then(function (res) {
                             if (res.success) {
                                 $scope.data = res.data;
                             }
@@ -72,14 +72,14 @@
 
                 $scope.resetModel = function () {
                     $scope.data = angular.copy({id: null, uuid: null, description: null});
-                    $scope.contentUuid = null;
-                    if (typeof $scope.ngChange == 'function' && angular.isDefined($scope.ngChange)) {
-                        $scope.ngChange();
-                    }
+                    $scope.descriptionId = null;
+                    // if (typeof $scope.ngChange == 'function' && angular.isDefined($scope.ngChange)) {
+                    //     $scope.ngChange({id: null, uuid: null, description: null});
+                    // }
                 }
 
 
-                $scope.$watch('contentUuid', function () {
+                $scope.$watch('descriptionId', function () {
                     $scope.initFn();
                 });
 
@@ -87,7 +87,10 @@
                     AppBasicContentService.delete(data.uuid).then(function(res){
                         if(res.success){
                             $scope.data = angular.copy({id: null, uuid: null, description: null});
-                            $scope.contentUuid = null;
+                            if (typeof $scope.ngChange == 'function' && angular.isDefined($scope.ngChange)) {
+                                $scope.ngChange({descriptionId: null});
+                            }
+                            $scope.descriptionId = null;
                             WaitingService.success(res.message);
                         }
                     })
@@ -108,15 +111,15 @@
                         width: 300,
                         data: dialogPosition,
                         resolve: {
-                            contentUuid: ['AppDataService', function (AppDataService) {
-                                return $scope.contentUuid;
+                            descriptionId: ['AppDataService', function (AppDataService) {
+                                return $scope.descriptionId;
                             }],
                         },
-                        controller: ['$scope', '$element', '$timeout', 'AppBasicContentService', 'Utils', 'WaitingService', 'contentUuid',
-                            function ($scope, $element, $timeout, AppBasicContentService, Utils, WaitingService, contentUuid) {
+                        controller: ['$scope', '$element', '$timeout', 'AppBasicContentService', 'Utils', 'WaitingService', 'descriptionId',
+                            function ($scope, $element, $timeout, AppBasicContentService, Utils, WaitingService, descriptionId) {
 
                             $scope.model = {};
-                            $scope.contentUuid = contentUuid;
+                            $scope.descriptionId = descriptionId;
                             $scope.isLoadingDialog = false;
                             $scope.saving = false;
 
@@ -128,9 +131,9 @@
                             }
 
                             $scope.initContent = function () {
-                                if ($scope.contentUuid) {
+                                if ($scope.descriptionId != undefined) {
                                     $scope.isLoadingDialog = true;
-                                    AppBasicContentService.detail($scope.contentUuid).then(function (res) {
+                                    AppBasicContentService.detail($scope.descriptionId).then(function (res) {
                                         if (res.success) {
                                             $scope.model = res.data;
                                         }
@@ -156,6 +159,8 @@
                                         }, 500)
                                     })
                                 }else{
+                                    let params = angular.copy($scope.model);
+                                    console.log('$scope.model', $scope.model);
                                     AppBasicContentService.create($scope.model).then(function(res){
                                         if(res.success){
                                             $scope.closeThisDialog(res.data);
@@ -178,7 +183,12 @@
                     searchDialog.closePromise.then(function (returnData) {
                         if (angular.isDefined(returnData.id) && angular.isDefined(returnData.value.id) && returnData.value.id != '') {
                             $scope.data = returnData.value;
-                            $scope.contentUuid = returnData.value.uuid;
+                            if (typeof $scope.ngChange == 'function' && angular.isDefined($scope.ngChange)) {
+                                $scope.$evalAsync(function () {
+                                    $scope.ngChange({descriptionId: $scope.data.id});
+                                });
+                            }
+                            $scope.descriptionId = returnData.value.id;
                         }
                     })
                 };
