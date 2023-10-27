@@ -328,6 +328,14 @@
                     }, 1000);
                 });
 
+                $scope.uploader.onAfterAddingFile = function () {
+                };
+
+                $scope.uploader.onWhenAddingFileFailed = function (item /*{File|FileLikeObject}*/, filter, options) {
+                    // console.info('onWhenAddingFileFailed', item, filter, options);
+                    $scope.translateButton()
+                };
+
 
                 $scope.uploader.onSuccessItem = function (fileItem, response, status, headers) {
                     AppMediaService.upload({
