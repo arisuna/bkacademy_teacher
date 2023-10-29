@@ -3,7 +3,11 @@
     App.controller('ProductListController', ['$scope', '$state', '$timeout', '$rootScope', '$translate', 'WaitingService', 'AppDataService', 'AppProductService',
         function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppDataService, AppProductService) {
             $scope.params = {
-                roles: [],
+                categories: [],
+                brandes: [],
+                companies: [],
+                years: [],
+                options: []
             };
             $scope.isLoadingMore = false;
             $scope.isLoading = true;
@@ -142,9 +146,34 @@
                 }
             };
 
-            $rootScope.$on('product_filter_update', function (data) {
+            $rootScope.$on('product_filter_update', function (event, data) {
                 $scope.isLoading = true;
                 $scope.loadCount = 0;
+                if (data.categories && data.categories.length) {
+                    $scope.params.categories = data.categories
+                } else {
+                    $scope.params.categories = []
+                }
+                if (data.brandes && data.brandes.length) {
+                    $scope.params.brandes = data.brandes
+                } else {
+                    $scope.params.brandes = []
+                }
+                if (data.companies && data.companies.length) {
+                    $scope.params.companies = data.companies
+                } else {
+                    $scope.params.companies = []
+                }
+                if (data.years && data.years.length) {
+                    $scope.params.years = data.years
+                } else {
+                    $scope.params.years = []
+                }
+                if (data.options && data.options.length) {
+                    $scope.params.options = data.options
+                } else {
+                    $scope.params.options = []
+                }
                 $timeout(function () {
                     $scope.items = [];
                     $scope.loadItems();
@@ -161,6 +190,13 @@
 
             $scope.clearFilter = function () {
                 $scope.query = "";
+                $scope.params = {
+                    categories: [],
+                    brandes: [],
+                    companies: [],
+                    years: [],
+                    options: []
+                };
                 $scope.sort = {};
                 $scope.publish('clearFilter');
                 $scope.loadItems();

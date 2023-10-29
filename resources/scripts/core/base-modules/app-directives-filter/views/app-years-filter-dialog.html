@@ -1,0 +1,58 @@
+<div class="panel panel-default panel-default-b">
+    <div class="panel-body pd-t-5 overflow-y-enable height-30vh">
+        <div class="flex-middle" ng-show="showSelectedItems == false">
+
+            <line-loading-spinner options="c-l1-l2" lines="10" ng-show="isLoading"></line-loading-spinner>
+
+            <div class="flex pd-1x bd-t-1x"
+                 ng-show="isLoading == false"
+                 ng-class="{'relo-bg-bright-blue': item.selected == true, 'relo-bd-bright-gray': !item.selected}"
+                 ng-repeat="item in years"
+                 ng-click="addItem(item)">
+                <div class="flex-middle">
+                    <div>{{item.id | translate}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-middle" ng-show="showSelectedItems == true">
+            <div class="flex pd-1x bd-t-1x relo-bd-bright-gray"
+                 ng-class="{'relo-bg-bright-blue': item.selected == true}"
+                 ng-repeat="item in years_selected"
+                 ng-click="removeItem(item)">
+                <div class="flex-middle">
+                    <div>{{item.id | translate}}</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="panel-body text-center" ng-style="{'padding':'5px'}">
+        <div class="row mt">
+            <div class="col-sm-12">
+                <button class="btn btn-primary pull-right"
+                        ng-click="confirmSelect()"
+                        type="button">
+                    {{'CONFIRM_BTN_TEXT' | translate}}
+                </button>
+
+                <button class="btn btn-transparent btn-flat btn-link pull-right mr-sm"
+                        ng-click="clearFn()"
+                        type="button">
+                    {{'CLEAR_ALL_BTN_TEXT' | translate}}
+                </button>
+
+
+                <button class="btn btn-transparent btn-flat btn-link pull-right mr-sm"
+                        ng-click="showShowHideSelectedItems()"
+                        type="button">
+                    {{ showSelectedItems == true ? ('SHOW_HIDE_BTN_TEXT' | translate) : (
+                        'SHOW_HIDE_BTN_TEXT' | translate)}}
+                    <span class="badge relo-bg-bright-blue">{{ years_selected.length }}</span>
+                </button>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>

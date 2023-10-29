@@ -4,6 +4,15 @@
         <div class="panel-body">
 
             <div class="row">
+                <div class="col-md-12">
+                    <app-yes-no-input ng-model="product.product_sale_info.status"
+                                          label="IS_ACTIVE_TEXT"
+                                          label-floating="false"
+                                          init-value="false"></app-yes-no-input>
+                </div>
+            </div>
+
+            <div class="row">
                 <div class="col-sm-6">
                     <input-text is-editable="true" is-required="false" is-numeric="true" ng-model="product.product_sale_info.quantity"
                         required-message="ENTER_QUANTITY_TEXT" label="QUANTITY_TEXT" show-label="true"></input-text>

@@ -24,7 +24,21 @@
                 {name: 'UNVERIFIED_TEXT', value: 1, color: 'dark-gray', text: 'UNVERIFIED_TEXT'},
                 {name: 'VERIFIED_TEXT', value: 2, color: 'green', text: 'VERIFIED_TEXT'},
                 {name: 'PUBLISH', value: 3, color: 'bright-blue', text: 'PUBLISHED_TEXT'},
-            ]
+            ],
+            _option_list: [
+                {
+                    id: 1,
+                    label: 'RENT_TEXT'
+                },
+                {
+                    id: 2,
+                    label: 'SALE_TEXT'
+                },
+                {
+                    id: 3,
+                    label: 'AUCTION_TEXT'
+                }
+            ], 
         };
 
         var vm = this;
@@ -37,6 +51,10 @@
 
         this.getStatusList = function () {
             return vm.config._status_list;
+        }
+
+        this.getOptionList = function () {
+            return vm.config._option_list;
         }
 
 

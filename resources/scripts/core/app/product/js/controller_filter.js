@@ -13,22 +13,56 @@
                   $rootScope, ngDialog, WaitingService, AppDataService, AppSystem, AppProductService) {
 
             var filters = {
-                roles: [],
+                categories: [],
+                brandes: [],
+                companies: [],
+                years: [],
+                options: []
             };
 
-            $scope.list_roles = AppSystem.getSettingProductGroups();
-
-            $scope.selected_roles = angular.isDefined(filters.roles) ? filters.roles : [];
+            $scope.selected_categories = angular.isDefined(filters.categories) ? filters.categories : [];
+            $scope.selected_brandes = angular.isDefined(filters.brandes) ? filters.brandes : [];
+            $scope.selected_companies = angular.isDefined(filters.companies) ? filters.companies : [];
+            $scope.selected_years = angular.isDefined(filters.years) ? filters.years : [];
+            $scope.selected_options = angular.isDefined(filters.options) ? filters.options : [];
 
             $scope.broadcastFilter = function () {
                 var filters;
                 filters = {
-                    roles: $scope.selected_roles,
+                    categories: $scope.selected_categories,
+                    brandes: $scope.selected_brandes,
+                    companies: $scope.selected_companies,
+                    years: $scope.selected_years,
+                    options: $scope.selected_options,
                 };
                 $rootScope.$broadcast('product_filter_update', filters);
             }
 
-            $scope.$watch('selected_roles', function (newValue, oldValue) {
+            $scope.$watch('selected_categories', function (newValue, oldValue) {
+                if (newValue !== oldValue) {
+                    $scope.broadcastFilter();
+                }
+            });
+
+            $scope.$watch('selected_brandes', function (newValue, oldValue) {
+                if (newValue !== oldValue) {
+                    $scope.broadcastFilter();
+                }
+            });
+
+            $scope.$watch('selected_companies', function (newValue, oldValue) {
+                if (newValue !== oldValue) {
+                    $scope.broadcastFilter();
+                }
+            });
+
+            $scope.$watch('selected_years', function (newValue, oldValue) {
+                if (newValue !== oldValue) {
+                    $scope.broadcastFilter();
+                }
+            });
+
+            $scope.$watch('selected_options', function (newValue, oldValue) {
                 if (newValue !== oldValue) {
                     $scope.broadcastFilter();
                 }
