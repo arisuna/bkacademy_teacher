@@ -67,6 +67,7 @@
                         $scope.billAddresses = res.data.filter(o => o.address_type == 3)
                         $scope.siteAddresses = res.data.filter(o => o.address_type == 2)
                         $scope.mailAddresses = res.data.filter(o => o.address_type == 1)
+                        $scope.warehouseAddresses = res.data.filter(o => o.address_type == 4)
 
                         console.log("mailAddresses", $scope.mailAddresses)
                     } else {

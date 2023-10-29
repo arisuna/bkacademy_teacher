@@ -8,28 +8,28 @@
                         <label class="label-text-form">
                             {{'STATUS_TEXT' | translate}}
                         </label>
+                        <ui-select ng-model="product.statusSelected"
+                                required="true"
+                                ng-disabled="false"
+                                class="w-100 uib-select-95-per form-control-custom-radius uib-select-bright-blue-10"
+                                theme="bootstrap">
+                            <ui-select-match
+                                    placeholder="{{'SELECT_TEXT' | translate}}"
+                                    class="bg-transparent">
+                                <em class="fa-solid fa-circle txt-16 mr-sm {{'text-' + $select.selected.color}}"></em>
+                                {{ $select.selected.text | translate}}
+        
+                            </ui-select-match>
+        
+                            <ui-select-choices repeat="item in statuses track by item.value">
+                                <div class=" " ng-click="changeStatus(item)">
+                                    <em class="fa-solid fa-circle txt-16 mr-sm {{'text-' + item.color}}"></em>
+                                    {{ item.text | translate}}
+                                </div>
+        
+                            </ui-select-choices>
+                        </ui-select>
                     </div>
-                    <ui-select ng-model="product.statusSelected"
-                               required="true"
-                               ng-disabled="false"
-                               class="w-100 uib-select-95-per form-control-custom-radius uib-select-bright-blue-10"
-                               theme="bootstrap">
-                        <ui-select-match
-                                placeholder="{{'SELECT_TEXT' | translate}}"
-                                class="bg-transparent">
-                            <em class="fa-solid fa-circle txt-16 mr-sm {{'text-' + $select.selected.color}}"></em>
-                            {{ $select.selected.text | translate}}
-    
-                        </ui-select-match>
-    
-                        <ui-select-choices repeat="item in statuses track by item.value">
-                            <div class=" " ng-click="changeStatus(item)">
-                                <em class="fa-solid fa-circle txt-16 mr-sm {{'text-' + item.color}}"></em>
-                                {{ item.text | translate}}
-                            </div>
-    
-                        </ui-select-choices>
-                    </ui-select>
                     
                 </div>
             </div>
@@ -87,6 +87,18 @@
                                         show-label="true"
                                         is-required="false"
                                         label="COMPANY_TEXT"></app-company-selector>
+
+                </div>
+            </div>
+            <div class="row" ng-if="product.creator_company_id > 0">
+                <div class="col-sm-6">
+                    <app-address-selector ng-model="product.current_address_id"
+                                            company-id="product.creator_company_id"
+                                            type="4"
+                                        is-editable="true"
+                                        show-label="true"
+                                        is-required="false"
+                                        label="ADDRESS_TEXT"></app-address-selector>
 
                 </div>
             </div>

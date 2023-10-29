@@ -1,0 +1,48 @@
+<div class="panel panel-default panel-default-b">
+    <div class="panel-heading" ng-style="{'padding':'5px'}">
+        <div class="row">
+            <div class="col-md-12">
+                <input-text-search
+                    ng-model="searchConfig.query"
+                    ng-search="initSearch()"></input-text-search>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body height-30vh-m70px overflow-y-enable" ng-style="{'padding':'5px'}">
+
+        <div ng-if="isLoading == true">
+            <spinner-v2 type="spin"></spinner-v2>
+        </div>
+        <div ng-show="isLoading == false">
+            <div class="list-group list-group-flat">
+                <a class="list-group-item "
+                   ng-repeat="item in items"
+                   ng-class="{'active': (searchConfig.currentItem.id == item.id)}"
+                   ng-click="selectItem(item)">
+                    <div class="flex">
+                        <span class="flex-vertical">
+                            {{item.name}}
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div ng-show="isLoadingMore == true">
+            <spinner-v2 type="message"></spinner-v2>
+        </div>
+
+    </div>
+
+    <div class="panel-body text-center" ng-style="{'padding':'5px'}">
+        <a class="text-center text-bright-blue"
+           ng-click="loadMore()"
+           ng-show="totalPages > currentPage">
+            {{ 'LOAD_MORE_TEXT' | translate }}
+        </a>
+        <br ng-show="totalPages > currentPage">
+        <span class="text-center text-dark-blue" ng-show="!isLoading">
+            {{'TOTAL_TEXT' | translate}}: {{ items.length }} {{ 'MODELS_TEXT' | translate }}
+        </span>
+    </div>
+</div>

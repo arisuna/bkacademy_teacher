@@ -93,4 +93,34 @@
             </div>
         </div>
     </div>
+
+    <div class="mg-b-20">
+        <div class="row mb">
+            <span class="text-bold">{{'WAREHOUSE_ADDRESSES_TEXT' | translate}}</span>
+        </div>
+        <div class="row relo-bg-bright-gray mb pd-10 flex"
+             ng-repeat="warehouseAddress in warehouseAddresses track by $index">
+            <div class="w-100">
+                <div class="text-bold">{{warehouseAddress.name}}</div>
+                <div class="">
+                    {{warehouseAddress.address1}}, {{warehouseAddress.ward_name}}, {{warehouseAddress.district_name}},
+                    {{warehouseAddress.province_name}}, {{warehouseAddress.country}}
+                </div>
+            </div>
+            <div class="flex mr" ng-if="isEditable">
+                <div class="flex-middle">
+                    <button-edit-icon ng-click="editAddressFn( warehouseAddress )" class="mr-sm"></button-edit-icon>
+                </div>
+                <div class="flex-middle">
+                    <button-delete-icon ng-click="deleteAddressFn( warehouseAddress.id )"></button-delete-icon>
+                </div>
+            </div>
+        </div>
+        <div ng-if="isEditable">
+            <div class="flex clickable text-bright-blue" ng-click="createAddress(4)">
+                <em class="fa fa-circle-plus mr-sm text-bright-blue txt-16"></em>
+                {{ 'CREATE_ADDRESS_TEXT' | translate }}
+            </div>
+        </div>
+    </div>
 </div>
