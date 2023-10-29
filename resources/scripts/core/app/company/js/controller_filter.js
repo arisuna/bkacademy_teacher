@@ -19,7 +19,7 @@
             $scope.list_statuses = [
                 {name: 'UNVERIFIED_TEXT', value: 0, color: 'dark-gray', label: 'UNVERIFIED_TEXT', selected: false},
                 {name: 'VERIFIED_TEXT', value: 1, color: 'green', label: 'VERIFIED_TEXT', selected: false},
-                {name: 'DELETED_TEXT', value: -1, color: 'red', label: 'DELETED_TEXT', selected: false},
+                {name: 'ARCHIVED_TEXT', value: -1, color: 'red', label: 'ARCHIVED_TEXT', selected: false},
             ];
 
             $scope.selected_statuses = angular.isDefined(filters.statuses) ? filters.statuses : [];
