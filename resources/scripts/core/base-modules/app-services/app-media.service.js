@@ -302,19 +302,19 @@
             return deferred.promise;
         }
 
-        this.upload = function (data) {
-            var deferred = $q.defer();
-            if (data != undefined) {
-                AppHttp.post('/app/media/upload', data).then(function (response) {
-                    deferred.resolve(response.data);
-                }).catch(function (err, status) {
-                    deferred.reject(err.data);
-                });
-            } else {
-                deferred.resolve({success: false});
-            }
-            return deferred.promise;
-        }
+        // this.upload = function (data) {
+        //     var deferred = $q.defer();
+        //     if (data != undefined) {
+        //         AppHttp.post('/app/media/upload', data).then(function (response) {
+        //             deferred.resolve(response.data);
+        //         }).catch(function (err, status) {
+        //             deferred.reject(err.data);
+        //         });
+        //     } else {
+        //         deferred.resolve({success: false});
+        //     }
+        //     return deferred.promise;
+        // }
 
         /**
          * Upload Media By Url Multiple
@@ -392,7 +392,7 @@
          */
         vm.createFileUploaderEngine = function (uploadParams) {
             var uploadUrl = vm.config.defaultUploadUrl;
-
+            console.log('uploadParams', uploadParams);
             if (uploadParams) {
                 if (angular.isDefined(uploadParams.folderUuid) && angular.isString(uploadParams.folderUuid) && uploadParams.folderUuid != null && uploadParams.folderUuid != '') {
                     uploadUrl = uploadUrl + '/' + uploadParams.folderUuid;
@@ -408,8 +408,8 @@
                     uploadUrl = uploadUrl + '?isPublic=true';
                 }
 
-                uploadUrl = uploadUrl + '?objectUuid=' + uploadParams.objectUuid + '&objectName=' + uploadParams.objectName;
-                console.log("createFileUploaderEngine", uploadUrl, uploadParams)
+                // uploadUrl = uploadUrl + '?objectUuid=' + uploadParams.objectUuid + '&objectName=' + uploadParams.objectName;
+                // console.log("createFileUploaderEngine", uploadUrl, uploadParams)
             }
 
             var uploader = new FileUploader({
@@ -443,7 +443,7 @@
                 //console.info('onWhenAddingFileFailed', item, filter, options);
             };
             uploader.onAfterAddingFile = function (fileItem) {
-                // console.info('onAfterAddingFile========: ', {'name': fileItem.file.name, 'type': fileItem.file.type});
+                console.info('onAfterAddingFile========: ', {'name': fileItem.file.name, 'type': fileItem.file.type});
                 vm.getUploadUrl({
                     'name': fileItem.file.name,
                     'type': fileItem.file.type,

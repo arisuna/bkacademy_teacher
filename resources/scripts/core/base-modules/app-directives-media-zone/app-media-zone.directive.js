@@ -198,7 +198,7 @@
                 });
 
                 $scope.$watchCollection('items', function () {
-                    console.log('items', $scope.items);
+                    // console.log('items', $scope.items);
                 });
 
                 $scope.subscribe('reload_attachments', function (data) {
@@ -311,7 +311,7 @@
 
                 var uploader = $scope.uploader = AppMediaService.createFileUploaderEngine({
                     isHidden: $scope.isHidden,
-                    objectUuid: $scope.uuid,
+                    // objectUuid: $scope.uuid,
                 });
 
                 AppMediaService.getUploadUrl().then(function (res) {
@@ -328,8 +328,8 @@
                     }, 1000);
                 });
 
-                $scope.uploader.onAfterAddingFile = function () {
-                };
+                // $scope.uploader.onAfterAddingFile = function () {
+                // };
 
                 $scope.uploader.onWhenAddingFileFailed = function (item /*{File|FileLikeObject}*/, filter, options) {
                     // console.info('onWhenAddingFileFailed', item, filter, options);
@@ -338,6 +338,7 @@
 
 
                 $scope.uploader.onSuccessItem = function (fileItem, response, status, headers) {
+                    console.log('fileItem', fileItem);
                     AppMediaService.upload({
                         'name': fileItem.file.name,
                         'size': fileItem.file.size,
