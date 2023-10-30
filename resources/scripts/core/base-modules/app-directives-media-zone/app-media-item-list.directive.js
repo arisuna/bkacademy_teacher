@@ -45,6 +45,7 @@
                 isLibrary: '<?',
                 attachmentSelect: '&?attachmentSelect',
                 isProperty: '<?',
+                isProduct: '<?',
                 objectType: '@?',
             },
             link: function (scope, element, attrs) {

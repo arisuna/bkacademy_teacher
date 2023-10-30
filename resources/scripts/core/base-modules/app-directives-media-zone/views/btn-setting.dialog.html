@@ -4,26 +4,26 @@
         class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13">
         <span>{{'RENAME_TEXT' | translate}}</span>
     </li>
-    <li ng-click="closeThisDialog({type: 2})"
-        ng-if="item.is_owner"
-        class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13">
-        <span>{{ 'MOVE_FILE_TEXT' | translate }}</span>
-    </li>
+<!--    <li ng-click="closeThisDialog({type: 2})"-->
+<!--        ng-if="item.is_owner"-->
+<!--        class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13">-->
+<!--        <span>{{ 'MOVE_FILE_TEXT' | translate }}</span>-->
+<!--    </li>-->
     <li ng-click="closeThisDialog({type: 3})"
         ng-if="item.is_owner"
         class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13">
         <span>{{'COPY_FILE_TEXT' | translate}}</span>
     </li>
-    <li ng-if="isPrivate != null && isPrivate == 1 && item.is_owner"
-        class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13"
-        ng-click="closeThisDialog({type: 4})">
-        <span>{{'MAKE_PUBLIC_TEXT' | translate}}</span>
-    </li>
-    <li ng-if="isPrivate != null && isPrivate == 0 && item.is_owner"
-        class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13"
-        ng-click="closeThisDialog({type: 4})">
-        <span>{{'MAKE_PRIVATE_TEXT' | translate}}</span>
-    </li>
+<!--    <li ng-if="isPrivate != null && isPrivate == 1 && item.is_owner"-->
+<!--        class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13"-->
+<!--        ng-click="closeThisDialog({type: 4})">-->
+<!--        <span>{{'MAKE_PUBLIC_TEXT' | translate}}</span>-->
+<!--    </li>-->
+<!--    <li ng-if="isPrivate != null && isPrivate == 0 && item.is_owner"-->
+<!--        class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13"-->
+<!--        ng-click="closeThisDialog({type: 4})">-->
+<!--        <span>{{'MAKE_PRIVATE_TEXT' | translate}}</span>-->
+<!--    </li>-->
     <li ng-if=" (currentUser.isAdmin || item.is_owner) && isMedia == true"
         ng-click="closeThisDialog({type: 5})"
         class="list-group-item txt-ellipsis no-border bd-radius-0 txt-13">

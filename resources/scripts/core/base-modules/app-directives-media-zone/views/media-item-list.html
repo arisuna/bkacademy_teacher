@@ -54,10 +54,10 @@
             {{ item.updated_at | amUtc | amLocal | amDateFormat:' HH:mm' }}
 
 
-<!--            <span class="label relo-bg-green text-white mr text-left"-->
-<!--                  ng-if="item.user_profile_uuid == currentUser.uuid">-->
-<!--                {{ 'ME_TEXT' | translate }}-->
-<!--            </span>-->
+            <span class="label label-primary text-white mr text-left"
+                  ng-if="item.is_thumb">
+                {{ 'MAIN_THUMNAIL_TEXT' | translate }}
+            </span>
 <!--            <span class="label label-primary  mr text-left"-->
 <!--                  ng-if="item.user_profile_uuid != currentUser.uuid && item.company_uuid == currentCompany.uuid">-->
 <!--                {{ 'MY_MEMBERS_TEXT' | translate }}-->
@@ -103,8 +103,9 @@
                                        move-attachment-item="moveAttachmentItem(item)"
                                        is-editable="isEditable"
                                        item="item"
-                                       set_thumb="setThumb(item)"
+                                       set-thumb="setThumb(item)"
                                        is-property="isProperty"
+                                       is-product="isProduct"
                                        ng-if="isAttachment == true && (isEditable && item.can_delete) && (!item.can_attach_to_my_library || (item.is_deleted === 1 && item.user_profile_uuid === currentUser.uuid))"
         ></app-media-item-button-setting>
 

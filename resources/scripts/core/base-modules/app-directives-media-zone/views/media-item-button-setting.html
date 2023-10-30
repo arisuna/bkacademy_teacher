@@ -8,37 +8,37 @@
             <button type="button" class="btn btn-default" ng-click="renameMediaItem()">{{'RENAME_TEXT' | translate}}</button>
         </li>
 
-        <li ng-if="item.is_owner">
-            <!--<button class="btn btn-default" ng-click="moveMediaItem()">{{'MOVE_FILE_TEXT' | translate}}</button>-->
-            <button class="btn btn-default"
-                    type="button"
-                    ng-click="moveMediaItem()">
-                {{ 'MOVE_FILE_TEXT' | translate }}
-            </button>
-        </li>
+<!--        <li ng-if="item.is_owner">-->
+<!--            &lt;!&ndash;<button class="btn btn-default" ng-click="moveMediaItem()">{{'MOVE_FILE_TEXT' | translate}}</button>&ndash;&gt;-->
+<!--            <button class="btn btn-default"-->
+<!--                    type="button"-->
+<!--                    ng-click="moveMediaItem()">-->
+<!--                {{ 'MOVE_FILE_TEXT' | translate }}-->
+<!--            </button>-->
+<!--        </li>-->
         <li ng-if="item.is_owner">
             <button type="button" class="btn btn-default" ng-click="copyMediaItem()">{{'COPY_FILE_TEXT' | translate}}</button>
         </li>
-        <li ng-if="isPrivate != null && isPrivate == 1 && item.is_owner">
-            <button type="button" class="btn btn-default" ng-click="changeMediaStatus()">{{'MAKE_PUBLIC_TEXT' | translate}}</button>
-        </li>
-        <li ng-if="isPrivate != null && isPrivate == 0 && item.is_owner">
-            <button type="button" class="btn btn-default" ng-click="changeMediaStatus()">{{'MAKE_PRIVATE_TEXT' | translate}}</button>
-        </li>
+<!--        <li ng-if="isPrivate != null && isPrivate == 1 && item.is_owner">-->
+<!--            <button type="button" class="btn btn-default" ng-click="changeMediaStatus()">{{'MAKE_PUBLIC_TEXT' | translate}}</button>-->
+<!--        </li>-->
+<!--        <li ng-if="isPrivate != null && isPrivate == 0 && item.is_owner">-->
+<!--            <button type="button" class="btn btn-default" ng-click="changeMediaStatus()">{{'MAKE_PRIVATE_TEXT' | translate}}</button>-->
+<!--        </li>-->
         <li ng-if=" ( currentUser.isAdmin || item.is_owner ) && isMedia == true">
             <button type="button" class="btn btn-default text-red" ng-click="removeMediaItem()">{{'REMOVE_TEXT' | translate}}</button>
         </li>
     </ul>
 
     <ul class="dropdown-menu dropdown-menu-right pb0 pt0" uib-dropdown-menu role="menu" aria-labelledby="single-button" ng-if="isAttachment == true">
-        <li ng-if="isEmployee == true">
-            <button type="button" class="btn btn-default" ng-click="moveAttachmentItem()">{{'MOVE_FILE_TEXT' | translate}}</button>
-        </li>
+<!--        <li ng-if="isEmployee == true">-->
+<!--            <button type="button" class="btn btn-default" ng-click="moveAttachmentItem()">{{'MOVE_FILE_TEXT' | translate}}</button>-->
+<!--        </li>-->
 
         <li ng-if="isEditable && attachmentItem.can_delete && isAttachment == true">
             <button type="button" class="btn btn-default text-red" ng-click="removeMediaItem()">{{'REMOVE_TEXT' | translate}}</button>
         </li>
-        <li ng-if="isProperty" ng-show="!item.is_thumb">
+        <li ng-if="isProduct" ng-show="!item.is_thumb">
             <button type="button" class="btn btn-default text-dark-blue" ng-click="setThumb(item)">{{'SET_AS_MAIN_THUMBNAIL_TEXT' | translate}}</button>
         </li>
     </ul>

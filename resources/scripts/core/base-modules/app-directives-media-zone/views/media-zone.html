@@ -15,7 +15,7 @@
 
                 <div class="buttonUploadOnly text-center pd-b-1x">
                     <div class="row">
-                        <div class="col-xs-12 text-center">
+                        <div class="col-xs-6 text-right">
                             <input filestylev2=""
                                    type="file"
                                    class="form-control"
@@ -35,22 +35,19 @@
                                    data-class-input="form-control inline"
                                    nv-file-select="" uploader="uploader" ng-if="options.limit == 1"/>
                         </div>
-                        <!--                        <div class="col-xs-6 text-left" ng-if="options.showLibrary == true">-->
-                        <!--                            <button type="button" class="btn btn-default"-->
-                        <!--                                    app-media-button-->
-                        <!--                                    is-share-document="isShareDocument"-->
-                        <!--                                    is-share-assignee="isShareAssignee"-->
-                        <!--                                    object="object"-->
-                        <!--                                    object-type="{{objectType}}"-->
-                        <!--                                    employee-uuid="libraryEmployeeUuid"-->
-                        <!--                                    company-uuid="libraryCompanyUuid"-->
-                        <!--                                    library-options="libraryOpts"-->
-                        <!--                                    is-send-history="false"-->
-                        <!--                                    is-attach-attachment="isAttachAttachment"-->
-                        <!--                                    on-select-item="itemsSelected(items)"><em class="fa fa-folder-open"></em>-->
-                        <!--                                {{ 'LIBRARY_TEXT' | translate }}-->
-                        <!--                            </button>-->
-                        <!--                        </div>-->
+                        <div class="col-xs-6 text-left" ng-if="options.showLibrary == true">
+                            <button type="button" class="btn btn-default"
+                                    app-media-button
+                                    object="object"
+                                    object-type="{{objectType}}"
+                                    company-uuid="libraryCompanyUuid"
+                                    library-options="libraryOpts"
+                                    is-send-history="false"
+                                    is-attach-attachment="isAttachAttachment"
+                                    on-select-item="itemsSelected(items)"><em class="fa fa-folder-open"></em>
+                                {{ 'LIBRARY_TEXT' | translate }}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -234,7 +231,7 @@
                 </div>
             </div>
 
-            <div class="row" ng-if="isProperty" ng-show="!showUpload">
+            <div class="row" ng-if="isProduct" ng-show="!showUpload">
                 <div class="col-md-12 mg-t-20 mg-b-10 text-bright-blue" ng-click="showUploadFn()">
                     <img class="height-35px margin-auto" src="/app/assets/img/svg/reduced_file_section.svg"/>
                     <span class="ml txt-16"> {{'UPLOAD_NEW_PICTURE_TEXT' | translate}}</span>
@@ -264,22 +261,20 @@
             </div>
 
 
-            <div class="mt media-items-list-small mr " ng-if="displayMode == 'list'"
-                 ng-class="{'overflow-y-enable overflow-x-disable pd-r-10' : isProperty, 'height-70vh-m70px' : isProperty && showUpload, 'height-80vh-m70px' :  isProperty && !showUpload }">
+            <div class="mt media-items-list-small mr " ng-if="displayMode == 'list'">
                 <app-media-item-list display-mode="displayMode"
                                      is-selectable="false"
                                      is-editable="isEditable"
                                      is-attachment="true"
                                      object-uuid="uuid"
                                      object-type="objectType"
-                                     is-property="isProperty"
+                                     is-product="isProduct"
                                      on-delete="deleteItem(item.uuid)"
                                      item="item"
                                      items="items"
                                      ng-repeat="item in items | filter:searchText track by $index "></app-media-item-list>
             </div>
-            <div class="mt row" ng-if="displayMode == 'grid'" vertilize-container=""
-                 ng-class="{'overflow-y-enable overflow-x-disable' : isProperty ,'height-70vh-m70px' : isProperty && showUpload, 'height-80vh-m70px' :  isProperty && !showUpload } ">
+            <div class="mt row" ng-if="displayMode == 'grid'" vertilize-container="">
                 <app-media-item-grid display-mode="displayMode"
                                      is-selectable="false"
                                      is-editable="isEditable"
@@ -287,7 +282,7 @@
                                      object-uuid="uuid"
                                      object-type="objectType"
                                      on-delete="deleteItem(item.uuid)"
-                                     is-property="isProperty"
+                                     is-product="isProduct"
                                      item="item"
                                      items="items"
                                      width="mediaContentWidth"

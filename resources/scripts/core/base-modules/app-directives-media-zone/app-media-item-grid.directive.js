@@ -33,6 +33,7 @@
                 isLibrary: '<?',
                 attachmentSelect: '&?attachmentSelect',
                 isProperty: '<?',
+                isProduct: '<?',
                 objectType: '@?',
             },
             templateUrl: urlBase.tplBase('base-modules/app-directives-media-zone', 'media-item-grid'),

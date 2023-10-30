@@ -5,9 +5,9 @@
         .module('app.app-directives-media-zone')
         .controller('AppMediaItemController', AppMediaItemController);
 
-    AppMediaItemController.$inject = ['$scope', '$window', '$timeout', '$location', 'AppMediaService', 'urlBase', 'WaitingService', 'AppAuthService', '$rootScope', 'HistoryService'];
+    AppMediaItemController.$inject = ['$scope', '$window', '$timeout', '$location', 'AppMediaService', 'urlBase', 'WaitingService', 'AppAuthService', '$rootScope'];
 
-    function AppMediaItemController($scope, $window, $timeout, $location, AppMediaService, urlBase, WaitingService, AppAuthService, $rootScope, HistoryService) {
+    function AppMediaItemController($scope, $window, $timeout, $location, AppMediaService, urlBase, WaitingService, AppAuthService, $rootScope) {
 
         $scope.currentUser = AppAuthService.getUser();
 
@@ -411,8 +411,9 @@
 
         $scope.setThumb = function (item) {
             console.log('is_thumb', item);
+            console.log('is_thumb', item.is_thumb);
 
-            if (item && item.is_thumb) {
+            if (item) {
                 WaitingService.begin();
                 AppMediaService.setThumb({
                     uuid: item.media_attachment_uuid

@@ -35,6 +35,7 @@
                 moveAttachmentItem: '&?moveAttachmentItem',
                 moveFileOutOfFolder: '&?moveFileOutOfFolder',
                 isProperty: '<?',
+                isProduct: '<?',
                 setThumb: '&?setThumb',
             },
             link: function (scope, element, attrs) {
@@ -63,6 +64,9 @@
                 }
                 if (angular.isUndefined(scope.isProperty) || scope.isProperty == undefined) {
                     scope.isProperty = false;
+                }
+                if (angular.isUndefined(scope.isProduct) || scope.isProduct == undefined) {
+                    scope.isProduct = false;
                 }
             },
             templateUrl: urlBase.tplBase('base-modules/app-directives-media-zone', 'media-item-button-setting'),

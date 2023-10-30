@@ -1,0 +1,350 @@
+<div class="card card-transparent">
+    <div class="card-heading relo-bg-bright-gray">
+        <h4 class="pd-b-5 mg-t-5 mg-b-0">{{ 'MEDIA_LIBRARIES_TEXT' | translate }}</h4>
+    </div>
+
+    <div class="pd-0">
+        <div class="row ml0 mr0">
+            <div class="col-md-3 pd-0 custom-dialog-overflow height-100vh-m110px relo-bg-white">
+
+
+
+                <div class="list-group list-group-flat list-group-media pd-t-10" ng-init="settingActive = 1">
+
+                    <div class="relo-bg-bright-gray pd-1x bd-radius-5px list-group-media mg-b-15 mg-1x">
+                        <h4 class="pd-l-1x pd-r-1x txt-14">{{'SYSTEM_FILES_TEXT' | translate}}</h4>
+
+                        <a class="list-group-item"
+                           ng-class="{'active': (settingActive == 1 && !currentFolder.uuid)}"
+                           ng-click="gotoMyFiles()">
+                        <span class="pull-left">
+                           {{ 'MY_FILES_TEXT' |translate }}
+                        </span>
+
+<!--                            <span class="pull-right">-->
+<!--                            <em class="fa-solid fa-folder-plus txt-16 txt-bright-blue"-->
+<!--                                ng-click="createFolder($event)"></em>-->
+<!--                        </span>-->
+                            <div class="clearfix"></div>
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-md-9 relo-bg-white custom-dialog-overflow height-100vh-m110px relo-bg-white media-content">
+                <div ng-show="settingActive == 1 || settingActive == 0" class="pd-t-2x">
+                    <div class="heading">
+
+                        <div class="flex mb" ng-if="currentFolder.uuid">
+                            <div class="flex-middle flex-1 mr">
+                                <span class="txt-truncate-1-lines"><em class="fa fa-folder text-yellow" ng-style="{'font-size':'18px'}"></em> {{ currentFolder.name }}</span>
+                            </div>
+                            <div class="flex-middle">
+                                <back-button-click ng-click="goBackToFolder()" class="btn-sm"></back-button-click>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-12 flex">
+                                <div class="pull-left mr-sm flex-1"
+                                     ng-style="{'display':'inline-block'}" aria-hidden="false"
+                                     style="display: inline-block;">
+                                    <div class="form-group">
+                                        <div class="input-group search">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   placeholder="{{ 'ENTER_TO_SEARCH_TEXT' | translate }}"
+                                                   ng-keypress="($event.which === 13) ? searchMedia():0"
+                                                   ng-style="{'border-radius':'3px'}"
+                                                   ng-model="search.query" aria-invalid="false">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default btn-flat" type="button"
+                                                        ng-click="searchMedia()">
+                                                    <em class="fa fa-search text-bright-blue"></em>
+                                                </button>
+                                             </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pull-left mr-sm">
+                                    <date-picker-input ng-model="search.creationDate"
+                                                       ng-style="{'width':'200px'}"
+                                                       show-label="false"
+                                                       ng-show="!search.folderUuid"
+                                                       label="UPLOADED_SINCE_TEXT"
+                                                       show-label="false"
+                                                       output-type="date"
+                                                       input-type="date">
+                                    </date-picker-input>
+
+                                    <date-picker-input ng-model="search.creationDateFolder"
+                                                       ng-style="{'width':'200px'}"
+                                                       show-label="false"
+                                                       ng-show="search.folderUuid"
+                                                       label="UPLOADED_SINCE_TEXT"
+                                                       show-label="false"
+                                                       output-type="date"
+                                                       input-type="date">
+                                    </date-picker-input>
+
+                                </div>
+
+                                <div class="pull-right">
+                                    <button class="btn btn-round-32 btn-flat mg-r-2"
+                                            type="button"
+                                            ng-model="displayModeValue"
+                                            ng-init="displayModeValue = 1"
+                                            uib-btn-checkbox="btn-checkbox"
+                                            btn-checkbox-true="1"
+                                            btn-checkbox-false="0">
+                                        <em class="fa fa-th text-black" ng-show="displayModeValue == 0"></em>
+                                        <em class="fa fa-list text-black" ng-show="displayModeValue == 1"></em>
+                                    </button>
+
+
+                                    <button class="btn btn-round-32 btn-flat" ng-click="downloadSelectedFiles()"><em class="fa fa-download text-black"></em></button>
+
+                                    <button class="btn btn-round-32 btn-flat" ng-click="bulkDeleteMedias()"><em class="fa fa-trash text-black"></em></button>
+
+
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </div>
+                        <!--<div class="row">-->
+
+                            <!--<div class="col-xs-12 col-lg-12 text-right">-->
+                                <!--<ul uib-pagination-->
+                                    <!--total-items="totalItems"-->
+                                    <!--ng-model="search.page"-->
+                                    <!--ng-change="pageChanged()"-->
+                                    <!--class="pagination mt0 mr-sm pull-left"-->
+                                    <!--max-size="maxSize"-->
+                                    <!--boundary-link-numbers="true" rotate="false"></ul>-->
+
+                                <!--<div class="clearfix"></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+
+                                <!-- upload zone -->
+                                <app-upload-zone
+                                    ng-if="settingActive == 1"
+                                    folder-uuid="currentFolder.uuid"
+                                    is-multiple="true"
+                                    on-add-items="onAddItems(items)"></app-upload-zone>
+                                <app-upload-zone
+                                    ng-if="settingActive == 0"
+                                    folder-uuid="currentFolder.uuid"
+                                    is-public="true"
+                                    is-multiple="true"
+                                    on-add-items="onAddItems(items)"></app-upload-zone>
+                                <!-- end upload zone -->
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="mt media-items-list-small" ng-if="displayMode == 'list'">
+                        <spinner-v2 type="spin" ng-show="isLoading"></spinner-v2>
+
+                        <app-media-item-list is-media="true"
+                                             ng-show="!isLoading"
+                                             is-selectable="true"
+                                             is-editable="aclUploadAllow"
+                                             on-delete="afterDeleteSuccessFn2(item)"
+                                             on-add-items="onAddItems([item])"
+                                             object-uuid="uuid"
+                                             item="item"
+                                             items="mediaItems"
+                                             folders="selectFolders"
+                                             current-folder="currentFolder"
+                                             ng-select-click="selectMediaItem(item, $event,$index)"
+                                             id="{{item.uuid}}"
+                                             company-uuid="companyUuid"
+                                             object="object"
+                                             setting-active="settingActive"
+                                             drag-type="media"
+                                             x-app-media-drag="true"
+                                             width="mediaContentWidth"
+                                             ng-repeat="item in mediaItems | orderBy:'-updated_at' track  by $index "></app-media-item-list>
+                    </div>
+                    <div class="mt row" ng-if="displayMode == 'grid'" vertilize-container="">
+                        <spinner-v2 type="spin" ng-show="isLoading"></spinner-v2>
+                        <app-media-item-grid is-media="true"
+                                             ng-show="!isLoading"
+                                             is-selectable="true"
+                                             is-editable="aclUploadAllow"
+                                             on-delete="afterDeleteSuccessFn2(item)"
+                                             on-add-items="onAddItems([item])"
+                                             object-uuid="uuid"
+                                             item="item"
+                                             items="mediaItems"
+                                             folders="selectFolders"
+                                             current-folder="currentFolder"
+                                             ng-select-click="selectMediaItem(item, $event,$index)"
+                                             id="{{item.uuid}}"
+                                             company-uuid="companyUuid"
+                                             object="object"
+                                             setting-active="settingActive"
+                                             drag-type="media"
+                                             x-app-media-drag="true"
+                                             width="mediaContentWidth"
+                                             ng-repeat="item in mediaItems | orderBy:'-updated_at' track  by $index "></app-media-item-grid>
+
+                    </div>
+
+                    <div class="" ng-show="!isLoading">
+
+                        <div class="sticky-left" ng-show="isLoadingMore">
+                            <spinner-v2 type="spin"></spinner-v2>
+                        </div>
+
+                        <div class="text-center mg-t-5s mg-b-5s sticky-left"
+                             ng-if="currentPage < totalPages">
+                            <button class="btn btn-oval relo-bg-bright-blue"
+                                    ng-click="loadMore()">
+                                <em class="" ng-class="{'fa fa-spinner fa-spin': isLoadingMore}"></em>
+                                {{ 'VIEW_MORE_BTN_TEXT' | translate }}
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div ng-show="settingActive == 2">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 documents folder">
+                                <div class="" ng-click="createMyFolder();">
+                                    <div class="icon">
+                                        <em class="fa fa-folder text-bright-blue"></em>
+                                    </div>
+                                    <div class="name text-bright-blue">
+                                       <span>
+                                            <em class="fa fa-plus mr-sm"></em>
+                                            {{ 'CREATE_BTN_TEXT' | translate }}
+                                       </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <div class="input-group search">
+                                        <input type="text"
+                                               class="form-control"
+                                               placeholder="{{ 'ENTER_TO_SEARCH_TEXT' | translate }}"
+                                               ng-keypress="($event.which === 13) ? searchFolderFn():0"
+                                               ng-style="{'border-radius':'3px'}"
+                                               ng-model="searchFolder.query" aria-invalid="false">
+                                        <span class="input-group-btn">
+                                                <button class="btn btn-default btn-flat" type="button"
+                                                        ng-click="searchFolderFn()">
+                                                    <em class="fa fa-search text-bright-blue"></em>
+                                                </button>
+                                             </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 documents folder" ng-repeat="folder in folders">
+                                <div class="">
+                                    <div class="icon" ng-click="gotoFolder(folder);"><em
+                                        class="fa fa-folder text-yellow"></em></div>
+                                    <div class="name" ng-click="gotoFolder(folder);">
+                                        <span>{{ folder.name }}</span>
+                                    </div>
+                                    <div class="action">
+                                        <div class="btn-group dropdown" uib-dropdown="dropdown" style="">
+                                            <button class="btn btn-relo-gray btn-round btn-flat dropdown-toggle"
+                                                    uib-dropdown-toggle="" type="button"><i
+                                                class="fa fa-ellipsis-v"></i></button>
+                                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                                <li><a ng-click="renameFolder($event, folder, $index, 1)">{{'RENAME_BTN_TEXT'
+                                                    |
+                                                    translate}}</a>
+                                                </li>
+                                                <li><a ng-click="removeFolder($event, folder, $index, 1)">{{'DELETE_BTN_TEXT'
+                                                    | translate}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="relo-bg-bright-gray text-right pd-15">
+        <div class="pull-left display-inline-block pd-t-10">
+            <span class="mr">
+                <span class="">
+                    <em class="fa fa-database txt-dark-gray mr-sm"></em>
+                    <strong>{{ mediaTotalSizeHuman }} </strong>
+                </span>
+                <span class="">
+                    {{'STORAGE_TEXT' | translate }}
+                </span>
+
+            </span>
+
+<!--            <span class="mr">-->
+<!--                <span class="">-->
+<!--                    <em class="fa fa-file txt-dark-gray mr-sm"></em>-->
+<!--                    <strong>{{ mediaMyItems }} </strong>-->
+<!--                </span>-->
+<!--                <span class="">-->
+<!--                    {{ 'MY_FILES_TEXT' | translate }}-->
+<!--                </span>-->
+
+<!--            </span>-->
+
+            <span class="mr">
+                <span class="">
+                    <em class="fa fa-file txt-dark-gray mr-sm"></em>
+                    <strong>{{ mediaTotalItems }} </strong>
+                </span>
+                <span class="">
+                    {{ 'TOTAL_FILES_TEXT' | translate }}
+                </span>
+
+            </span>
+        </div>
+
+        <div class="pull-right">
+            <button class="btn btn-oval btn-primary"
+                    ng-show="settingActive == 0 || settingActive == 1"
+                    ng-class="{'btn-disable btn-primary': !itemsSelect.length, 'btn-primary' : itemsSelect.length }"
+                    ng-disabled="!itemsSelect.length"
+                    ng-click="showSelected()">
+                <em class="fa fa-paperclip fa-flip-horizontal mr-sm" aria-hidden="true"></em>
+                {{ 'ATTACH_FILE_BTN_TEXT' | translate }}
+                <span class="badge relo-bg-dark-blue">{{ itemsSelect.length }}</span>
+            </button>
+
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+<!--    <div class="relo-bg-bright-gray text-right pd-15" ng-class="{'pd-t-b-25': !isAttachAttachment}" ng-show="settingActive != 0 && settingActive != 1">-->
+
+<!--    </div>-->
+</div>

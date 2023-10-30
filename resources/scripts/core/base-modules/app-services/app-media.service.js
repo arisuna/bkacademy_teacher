@@ -1172,5 +1172,21 @@
             });
             return deferred.promise;
         }
+
+        this.setThumb = function (data) {
+            var deferred = $q.defer();
+            if (data != undefined) {
+                AppHttp.put('/app/attachments/changeThumb', {
+                    uuid: data.uuid != undefined ? data.uuid : '',
+                }).then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                    deferred.reject(err.data);
+                });
+            } else {
+                deferred.resolve({success: false});
+            }
+            return deferred.promise;
+        }
     }
 })();

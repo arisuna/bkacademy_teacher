@@ -44,6 +44,7 @@
                 isShareDocument: '<?',
                 isAttachAttachment: '<?',
                 isProperty: '<?',
+                isProduct: '<?',
             },
 
             templateUrl: urlBase.tplBase('base-modules/app-directives-media-zone', 'media-zone'),
@@ -119,6 +120,10 @@
 
                 if (angular.isUndefined(scope.isProperty) || scope.isProperty === undefined) {
                     scope.isProperty = false;
+                }
+
+                if (angular.isUndefined(scope.isProduct) || scope.isProduct === undefined) {
+                    scope.isProduct = false;
                 }
 
                 if (angular.isUndefined(scope.objectType)) {
@@ -242,22 +247,22 @@
                  * @param items
                  */
                 $scope.addItem = function (items) {
-                    if (items.length > 0) {
-                        if (angular.isUndefined($scope.items) || angular.isArray($scope.items) == false) {
-                            $scope.items = [];
-                        }
-                        angular.forEach(items, function (item, key) {
-                            if ($scope.items.map(function (e) {
-                                return e.id;
-                            }).indexOf(item.id) < 0) {
-                                $scope.items.unshift(item);
-                                if (!angular.isUndefined($scope.onAddItem)) {
-                                    item.can_delete = true;
-                                    $scope.onAddItem({item: item});
-                                }
-                            }
-                        });
-                    }
+                    // if (items.length > 0) {
+                    //     if (angular.isUndefined($scope.items) || angular.isArray($scope.items) == false) {
+                    //         $scope.items = [];
+                    //     }
+                    //     angular.forEach(items, function (item, key) {
+                    //         if ($scope.items.map(function (e) {
+                    //             return e.id;
+                    //         }).indexOf(item.id) < 0) {
+                    //             $scope.items.unshift(item);
+                    //             if (!angular.isUndefined($scope.onAddItem)) {
+                    //                 item.can_delete = true;
+                    //                 $scope.onAddItem({item: item});
+                    //             }
+                    //         }
+                    //     });
+                    // }
 
                     if (Utils.isUndefinedOrNull($scope.uuid) === false && $scope.uuid !== '') {
                         AppMediaService.attachMultipleFiles({
@@ -277,15 +282,15 @@
                                 }, 300)
                             } else {
                                 WaitingService.popError(res.message);
-                                angular.forEach(items, function (item, index) {
-                                    $scope.items.splice(index, 1);
-                                });
+                                // angular.forEach(items, function (item, index) {
+                                //     $scope.items.splice(index, 1);
+                                // });
                             }
                         }, function (err) {
                             WaitingService.popExpire(err);
-                            angular.forEach(items, function (item, index) {
-                                $scope.items.splice(index, 1);
-                            });
+                            // angular.forEach(items, function (item, index) {
+                            //     $scope.items.splice(index, 1);
+                            // });
                         })
                     }
                 };

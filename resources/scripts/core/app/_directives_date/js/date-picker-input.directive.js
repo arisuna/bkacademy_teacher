@@ -39,7 +39,7 @@
                 noMarginBottom: '<?',
                 isServiceModal: '<?',
             },
-            templateUrl: urlBase.tplApp('gms', '_directives_date', 'date-picker-input'),
+            templateUrl: urlBase.tplApp('app', '_directives_date', 'date-picker-input'),
             link: function (scope, element, attrs, timeout) {
 
                 function parseISO(s) {
