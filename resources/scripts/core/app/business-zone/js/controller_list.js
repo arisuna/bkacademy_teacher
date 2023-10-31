@@ -200,7 +200,7 @@
             });
 
             $scope.deleteFn = function (item, index) {
-                WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_BUSINESS_ZONE_TEXT', function () {
+                WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_BUSINESS_PARK_TEXT', function () {
                     AppBusinessZoneService.deleteBusinessZone(item.uuid).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);

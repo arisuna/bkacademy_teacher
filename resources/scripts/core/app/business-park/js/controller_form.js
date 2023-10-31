@@ -73,6 +73,7 @@
                     AppBusinessParkService.updateBusinessPark($scope.object).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
+                            $state.go('app.business-park.list');
                         } else {
                             WaitingService.error(res.message);
                         }
@@ -88,7 +89,7 @@
                             // });
 
                             WaitingService.popSuccess(res.message);
-                            $state.go('app.system-attribute.list');
+                            $state.go('app.business-park.list');
                         } else {
                             WaitingService.error(res.message);
                         }

@@ -56,6 +56,7 @@
                 query: null,
                 filterConfigId: null,
                 selected_statuses: [],
+                selected_business_zones: [],
                 isTmp: false,
                 orders: {},
             };
@@ -73,6 +74,10 @@
                 $scope.params.is_tmp = $scope.search.isTmp;
                 if (_.size($scope.search.selected_statuses) > 0) {
                     $scope.params.statuses = _.map($scope.search.selected_statuses, 'id');
+                }
+
+                if (_.size($scope.search.selected_business_zones) > 0) {
+                    $scope.params.business_zones = _.map($scope.search.selected_business_zones, 'id');
                 }
 
                 AppBusinessParkService.search($scope.params).then(function (res) {
@@ -110,6 +115,10 @@
                     $scope.params.is_tmp = $scope.search.isTmp;
                     if (_.size($scope.search.selected_statuses) > 0) {
                         $scope.params.statuses = _.map($scope.search.selected_statuses, 'id');
+                    }
+
+                    if (_.size($scope.search.selected_business_zones) > 0) {
+                        $scope.params.business_zones = _.map($scope.search.selected_business_zones, 'id');
                     }
 
                     AppBusinessParkService.search($scope.params).then(function (res) {
@@ -159,7 +168,7 @@
                 $scope.reloadInit();
             };
 
-            $scope.$watchGroup(['search.selected_statuses'], function(){
+            $scope.$watchGroup(['search.selected_statuses', 'search.selected_business_zones'], function(){
                 $scope.reloadInit();
             });
 
@@ -374,12 +383,13 @@
                     }]
                 });
                 $scope.editDialog.closePromise.then(function (data) {
+                    console.log('data', data);
                     if(data && data.value && data.value.uuid){
                         let _index = _.findIndex($scope.items, function(o){
                             return o.uuid == data.value.uuid;
                         })
                         console.log('data.value', data.value)
-                        if (_index != 1){
+                        if (_index != -1){
                             $scope.$evalAsync(function(){
                                 $scope.items[_index] = _.cloneDeep(data.value);
                             })
