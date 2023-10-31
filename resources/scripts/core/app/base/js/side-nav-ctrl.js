@@ -53,6 +53,8 @@
             // });
 
             $(document).on('click', '.has-children', function () {
+                $('.has-children').removeClass('dropdown-menu-visible');
+
                 let left = $(this).width();
                 let top = $(this).offset().top - 30;
 
@@ -83,6 +85,14 @@
             $(window).on('resize', function () {
                 setNavStyle();
             });
+
+            $scope.removeDropdown = function(event, sref){
+                event.preventDefault();
+                event.stopPropagation();
+                $('.has-children').removeClass('dropdown-menu-visible');
+                $state.go(sref);
+
+            }
 
 
             function setNavStyle() {

@@ -139,7 +139,7 @@
                     <ul class="dropdown-menu">
                         <li ng-repeat="child in item.items" ng-class="{active: $state.includes(child.sref)}"
                             app-acl-allow="{{child.appAclAllow}}" acl-remove="{{child.aclRemove}}"><a
-                                ui-sref="{{child.sref}}">{{ child.text | translate }}</a></li>
+                                ui-sref="{{child.sref}}" ng-click="removeDropdown($event, child.sref)">{{ child.text | translate }}</a></li>
                     </ul>
                 </li>
 
