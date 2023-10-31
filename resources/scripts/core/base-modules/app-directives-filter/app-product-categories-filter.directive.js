@@ -123,6 +123,7 @@
                             $scope.searchConfig = {
                                 query: null,
                                 page: 0,
+                                level: 2
                             };
                             $scope.categories_selected = angular.copy(categories_selected);
                             $scope.clearFn = function () {

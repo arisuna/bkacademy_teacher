@@ -71,6 +71,7 @@
                 isTmp: false,
                 selected_groups: [],
                 selected_types: [],
+                selected_categories: [],
                 orders: {},
             };
 
@@ -95,6 +96,10 @@
                 }
                 if (_.size($scope.search.selected_types) > 0) {
                     $scope.params.types = _.map($scope.search.selected_types, 'id');
+                }
+
+                if (_.size($scope.search.selected_categories) > 0) {
+                    $scope.params.categories = _.map($scope.search.selected_categories, 'id');
                 }
 
 
@@ -137,6 +142,11 @@
                     if (_.size($scope.search.selected_types) > 0) {
                         $scope.params.types = _.map($scope.search.selected_types, 'id');
                     }
+
+                    if (_.size($scope.search.selected_categories) > 0) {
+                        $scope.params.categories = _.map($scope.search.selected_categories, 'id');
+                    }
+
 
                     AppProductFieldService.search($scope.params).then(function (res) {
                         if (res.success) {
@@ -184,24 +194,23 @@
                     query: null,
                     filterQuery: null,
                     selected_statuses: [],
+                    selected_groups: [],
+                    selected_categories: [],
+                    selected_types: [],
                     filterConfigId: null,
                     isTmp: false,
                     orders: {},
                 };
 
                 $scope.publish('clearFilter');
-                $scope.reloadInit();
+                // $scope.reloadInit();
             };
 
             $scope.applyFilter = function(){
                 $scope.reloadInit();
             };
 
-            $scope.$watchGroup(['search.selected_groups'], function(){
-                $scope.reloadInit();
-            });
-
-            $scope.$watchGroup(['search.selected_types'], function(){
+            $scope.$watchGroup(['search.selected_groups', 'search.selected_categories', 'search.selected_types'], function(){
                 $scope.reloadInit();
             });
 
