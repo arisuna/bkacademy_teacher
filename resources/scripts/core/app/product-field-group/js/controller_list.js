@@ -67,6 +67,7 @@
             $scope.search = {
                 query: null,
                 filterConfigId: null,
+                selected_categories: [],
                 isTmp: false,
                 orders: {},
             };
@@ -82,6 +83,10 @@
                 }
                 $scope.params.filter_config_id = $scope.search.filterConfigId;
                 $scope.params.is_tmp = $scope.search.isTmp;
+
+                if (_.size($scope.search.selected_categories) > 0) {
+                    $scope.params.categories = _.map($scope.search.selected_categories, 'id');
+                }
 
 
                 AppProductFieldGroupService.search($scope.params).then(function (res) {
@@ -117,6 +122,10 @@
                     }
                     $scope.params.filter_config_id = $scope.search.filterConfigId;
                     $scope.params.is_tmp = $scope.search.isTmp;
+
+                    if (_.size($scope.search.selected_categories) > 0) {
+                        $scope.params.categories = _.map($scope.search.selected_categories, 'id');
+                    }
 
                     AppProductFieldGroupService.search($scope.params).then(function (res) {
                         if (res.success) {
@@ -165,6 +174,7 @@
                     orders: {},
                 };
                 $scope.sort = {};
+                $scope.publish('clearFilter');
                 $scope.reloadInit();
             };
 
@@ -277,6 +287,10 @@
                     }
                 });
             }
+
+            $scope.$watchGroup(['search.selected_categories'], function(){
+                $scope.reloadInit();
+            });
 
 
             $scope.createFn = function(){
