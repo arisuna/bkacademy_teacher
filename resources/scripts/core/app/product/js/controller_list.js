@@ -198,7 +198,7 @@
                     options: []
                 };
                 $scope.sort = {};
-                $scope.publish('clearFilter');
+                // $scope.publish('clearFilter');
                 $scope.loadItems();
             };
 
