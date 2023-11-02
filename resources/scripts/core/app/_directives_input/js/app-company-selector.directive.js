@@ -145,7 +145,8 @@
                                 $scope.isLoading = true;
                                 AppCompanyService.getCompanyList({
                                     query: $scope.searchConfig.query,
-                                    page: 1
+                                    page: 1,
+                                    statuses: [1]
                                 }).then(function (res) {
                                     $scope.companies = res.data;
                                     $scope.isLoading = false;

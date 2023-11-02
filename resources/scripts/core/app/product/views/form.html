@@ -49,6 +49,7 @@
                 <div class="col-sm-6">
                     <app-category-selector ng-model="product.secondary_category_id"
                                         parent-id="product.main_category_id"
+                                        is-disable="!(product.main_category_id > 0)"
                                         show-label="true"
                                         is-required="true"
                                         label="SUBCATEGORY_TEXT"></app-category-selector>

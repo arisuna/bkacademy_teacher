@@ -21,6 +21,7 @@
                 subCategoryOnly: '<?',
                 level1Only: '<?',
                 isEditable: '<?',
+                isDisable: '<?',
                 showLabel: '<?',
                 ngChange: '&?'
             },
@@ -82,11 +83,13 @@
 
 
                 $scope.resetCategory = function () {
-                    $scope.data.selected = angular.copy({id: null, uuid: null});
-                    $scope.category = null;
-                    $scope.categoryId = null;
-                    if (typeof $scope.ngChange == 'function' && angular.isDefined($scope.ngChange)) {
-                        $scope.ngChange();
+                    if(!$scope.isDisable){
+                        $scope.data.selected = angular.copy({id: null, uuid: null});
+                        $scope.category = null;
+                        $scope.categoryId = null;
+                        if (typeof $scope.ngChange == 'function' && angular.isDefined($scope.ngChange)) {
+                            $scope.ngChange();
+                        }
                     }
                 }
 
@@ -119,133 +122,135 @@
 
 
                 $scope.openSearchDialog = function ($event) {
+                    if(!$scope.isDisable){
 
-                    let dialogPosition = Utils.getPositionDropdownDialog($event, 300, 300);
+                        let dialogPosition = Utils.getPositionDropdownDialog($event, 300, 300);
 
-                    let searchDialog = ngDialog.open({
-                        template: urlBase.tplApp('app', '_directives_input', 'app-category-selector-search-dialog'),
-                        className: 'ngdialog-custom-position no-background ' + dialogPosition['className'],
-                        showClose: false,
-                        closeByDocument: true,
-                        disableAnimation: true,
-                        cache: true,
-                        width: 300,
-                        data: dialogPosition,
-                        resolve: {
-                            parentId: ['AppDataService', function (AppDataService) {
-                                return $scope.parentId;
-                            }],
-                            level1Only: ['AppDataService', function (AppDataService) {
-                                return $scope.level1Only;
-                            }],
+                        let searchDialog = ngDialog.open({
+                            template: urlBase.tplApp('app', '_directives_input', 'app-category-selector-search-dialog'),
+                            className: 'ngdialog-custom-position no-background ' + dialogPosition['className'],
+                            showClose: false,
+                            closeByDocument: true,
+                            disableAnimation: true,
+                            cache: true,
+                            width: 300,
+                            data: dialogPosition,
+                            resolve: {
+                                parentId: ['AppDataService', function (AppDataService) {
+                                    return $scope.parentId;
+                                }],
+                                level1Only: ['AppDataService', function (AppDataService) {
+                                    return $scope.level1Only;
+                                }],
 
-                        },
-                        controller: ['$scope', '$element', '$timeout', 'AppCategoryService', 'Utils', 'parentId', 'level1Only', function ($scope, $element, $timeout, AppCategoryService, Utils, parentId, level1Only) {
+                            },
+                            controller: ['$scope', '$element', '$timeout', 'AppCategoryService', 'Utils', 'parentId', 'level1Only', function ($scope, $element, $timeout, AppCategoryService, Utils, parentId, level1Only) {
 
-                            $scope.items = [];
-                            $scope.parentId = parentId;
-                            $scope.level1Only = level1Only;
+                                $scope.items = [];
+                                $scope.parentId = parentId;
+                                $scope.level1Only = level1Only;
 
-                            $scope.totalItems = 0;
-                            $scope.totalPages = 0;
-                            $scope.currentPage = 0;
-                            $scope.totalRestItems = 0;
-
-                            Utils.setPositionDropdownDialog(dialogPosition);
-
-                            $scope.searchConfig = {
-                                query: null,
-                                currentItem: {
-                                    id: null,
-                                },
-                                filterQuery: ""
-                            };
-
-                            $scope.applyFilter = function () {
-                                $scope.searchConfig.filterQuery = $scope.searchConfig.query;
-                            }
-
-                            $scope.selectItem = function (item) {
-                                $scope.closeThisDialog(item);
-                            }
-
-                            $scope.initSearch = function () {
-                                $scope.categoryes = [];
-                                $scope.currentPage = 0;
+                                $scope.totalItems = 0;
                                 $scope.totalPages = 0;
-                                $scope.isLoading = true;
-                                if($scope.level1Only){
-                                    AppCategoryService.getLevel1Items().then(function (res) {
-                                        $scope.items = res.data;
-                                        $scope.isLoading = false;
-                                        $scope.totalItems = res.total_items;
-                                        $scope.totalPages = res.total_pages;
-                                        $scope.currentPage = res.current;
-                                    }, function () {
-                                        $scope.isLoading = false;
-                                        $scope.items = [];
-                                    });
+                                $scope.currentPage = 0;
+                                $scope.totalRestItems = 0;
 
-                                } else if($scope.parentId > 0){
-                                    AppCategoryService.getChildrenItems($scope.parentId).then(function (res) {
-                                        $scope.items = res.data;
-                                        $scope.isLoading = false;
-                                        $scope.totalItems = res.total_items;
-                                        $scope.totalPages = res.total_pages;
-                                        $scope.currentPage = res.current;
-                                    }, function () {
-                                        $scope.isLoading = false;
-                                        $scope.items = [];
-                                    });
+                                Utils.setPositionDropdownDialog(dialogPosition);
 
-                                } else  {
-                                    AppCategoryService.getList({
-                                        query: $scope.searchConfig.query,
-                                        page: 1,
-                                        brand_id: $scope.parentId
-                                    }).then(function (res) {
-                                        $scope.items = res.data;
-                                        $scope.isLoading = false;
-                                        $scope.totalItems = res.total_items;
-                                        $scope.totalPages = res.total_pages;
-                                        $scope.currentPage = res.current;
-                                    }, function () {
-                                        $scope.isLoading = false;
-                                        $scope.items = [];
-                                    });
+                                $scope.searchConfig = {
+                                    query: null,
+                                    currentItem: {
+                                        id: null,
+                                    },
+                                    filterQuery: ""
+                                };
+
+                                $scope.applyFilter = function () {
+                                    $scope.searchConfig.filterQuery = $scope.searchConfig.query;
                                 }
+
+                                $scope.selectItem = function (item) {
+                                    $scope.closeThisDialog(item);
+                                }
+
+                                $scope.initSearch = function () {
+                                    $scope.categoryes = [];
+                                    $scope.currentPage = 0;
+                                    $scope.totalPages = 0;
+                                    $scope.isLoading = true;
+                                    if($scope.level1Only){
+                                        AppCategoryService.getLevel1Items().then(function (res) {
+                                            $scope.items = res.data;
+                                            $scope.isLoading = false;
+                                            $scope.totalItems = res.total_items;
+                                            $scope.totalPages = res.total_pages;
+                                            $scope.currentPage = res.current;
+                                        }, function () {
+                                            $scope.isLoading = false;
+                                            $scope.items = [];
+                                        });
+
+                                    } else if($scope.parentId > 0){
+                                        AppCategoryService.getChildrenItems($scope.parentId).then(function (res) {
+                                            $scope.items = res.data;
+                                            $scope.isLoading = false;
+                                            $scope.totalItems = res.total_items;
+                                            $scope.totalPages = res.total_pages;
+                                            $scope.currentPage = res.current;
+                                        }, function () {
+                                            $scope.isLoading = false;
+                                            $scope.items = [];
+                                        });
+
+                                    } else  {
+                                        AppCategoryService.getList({
+                                            query: $scope.searchConfig.query,
+                                            page: 1,
+                                            brand_id: $scope.parentId
+                                        }).then(function (res) {
+                                            $scope.items = res.data;
+                                            $scope.isLoading = false;
+                                            $scope.totalItems = res.total_items;
+                                            $scope.totalPages = res.total_pages;
+                                            $scope.currentPage = res.current;
+                                        }, function () {
+                                            $scope.isLoading = false;
+                                            $scope.items = [];
+                                        });
+                                    }
+                                }
+
+                                $scope.loadMore = function () {
+                                    if ($scope.totalPages > $scope.currentPage) {
+                                        $scope.isLoadingMore = true;
+                                        AppCategoryService.getList({
+                                            query: $scope.searchConfig.query,
+                                            page: $scope.currentPage + 1,
+                                            brand_id: $scope.parentId
+                                        }).then(function (res) {
+                                            $scope.items = _.concat($scope.items, res.data);
+                                            $scope.isLoadingMore = false;
+                                            $scope.totalItems = res.total_items;
+                                            $scope.totalPages = res.total_pages;
+                                            $scope.currentPage = res.current;
+                                        }, function () {
+                                            $scope.isLoadingMore = false;
+                                            $scope.items = [];
+                                        });
+                                    }
+                                };
+
+                                $scope.initSearch();
+
+                            }]
+                        });
+
+                        searchDialog.closePromise.then(function (returnData) {
+                            if (angular.isDefined(returnData.id) && angular.isDefined(returnData.value.id) && returnData.value.id != '') {
+                                $scope.selectCategory(returnData.value);
                             }
-
-                            $scope.loadMore = function () {
-                                if ($scope.totalPages > $scope.currentPage) {
-                                    $scope.isLoadingMore = true;
-                                    AppCategoryService.getList({
-                                        query: $scope.searchConfig.query,
-                                        page: $scope.currentPage + 1,
-                                        brand_id: $scope.parentId
-                                    }).then(function (res) {
-                                        $scope.items = _.concat($scope.items, res.data);
-                                        $scope.isLoadingMore = false;
-                                        $scope.totalItems = res.total_items;
-                                        $scope.totalPages = res.total_pages;
-                                        $scope.currentPage = res.current;
-                                    }, function () {
-                                        $scope.isLoadingMore = false;
-                                        $scope.items = [];
-                                    });
-                                }
-                            };
-
-                            $scope.initSearch();
-
-                        }]
-                    });
-
-                    searchDialog.closePromise.then(function (returnData) {
-                        if (angular.isDefined(returnData.id) && angular.isDefined(returnData.value.id) && returnData.value.id != '') {
-                            $scope.selectCategory(returnData.value);
-                        }
-                    })
+                        })
+                    }
                 };
             }
         };
