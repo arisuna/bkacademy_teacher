@@ -2,6 +2,13 @@
     <div class="pd-1x relo-bg-dark-blue-5 bd-radius-5x">
         <div class="row mx-0">
             <div class="col-sm-7 text-left pd-l-0 pd-r-5">
+                <div class="task-filter mr-sm"
+                     uib-tooltip="{{'CATEGORIES_TEXT' | translate}}">
+                    <app-product-categories-filter
+                            model="search.selected_categories"
+                            is-icon="true"
+                            float="true" inline-list="true" name="CATEGORIES_TEXT"></app-product-categories-filter>
+                </div>
             </div>
             <div class="col-sm-5 text-right pd-r-0">
                 <button ng-click="clearFilter()"

@@ -106,11 +106,9 @@
                         controller: ['$scope', '$element', '$rootScope', 'AppCategoryService','categories_selected', function ($scope, $element, $rootScope, AppCategoryService, categories_selected) {
                             document.documentElement.style.setProperty('--ng-dialog-custom-position-top', dialogTop);
                             if ($scope.ngDialogData.position === 'right') {
-                                console.log('right dialog');
                                 document.documentElement.style.setProperty('--ng-dialog-custom-position-right', dialogRight);
                                 document.documentElement.style.setProperty('--ng-dialog-custom-position-left', 'inherit');
                             } else {
-                                console.log('default dialog', dialogLeft);
                                 document.documentElement.style.setProperty('--ng-dialog-custom-position-left', dialogLeft);
                                 document.documentElement.style.setProperty('--ng-dialog-custom-position-right', 'inherit');
                             }
