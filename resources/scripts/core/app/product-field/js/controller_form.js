@@ -71,6 +71,9 @@
                 if($scope.object.type === null){
                     return;
                 }
+                if($scope.object.type == 2 && !($scope.object.attribute_id > 0)){
+                    return;
+                }
 
 
 
@@ -93,7 +96,7 @@
                             // });
 
                             WaitingService.popSuccess(res.message);
-                            $state.go('app.system-attribute.list');
+                            // $state.go('app.system-attribute.list');
                         } else {
                             WaitingService.error(res.message);
                         }

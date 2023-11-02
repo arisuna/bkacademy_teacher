@@ -299,6 +299,9 @@
                                 if($scope.object.type == undefined ||  $scope.object.type === null){
                                     return;
                                 }
+                                if($scope.object.type == 2 && !($scope.object.attribute_id > 0)){
+                                    return;
+                                }
                                 let object = angular.copy($scope.object);
                                 object.id = 0;
                                 object.uuid = 0;
@@ -348,6 +351,9 @@
                             if($scope.object.type == undefined ||  $scope.object.type === null){
                                 return;
                             }
+                            if($scope.object.type == 2 && !($scope.object.attribute_id > 0)){
+                                return;
+                            }
                             AppProductFieldService.createProductField($scope.object).then(function (res) {
                                 if (res.success) {
                                     $scope.closeThisDialog(res.data);
@@ -364,7 +370,9 @@
                     }]
                 });
                 $scope.createDialog.closePromise.then(function (data) {
+                    if(data && data.value && data.value.uuid){
                     $scope.reloadInit();
+                    }
 
                 });
             }
@@ -408,6 +416,9 @@
                                 if($scope.object.type == undefined ||  $scope.object.type === null){
                                     return;
                                 }
+                                if($scope.object.type == 2 && !($scope.object.attribute_id > 0)){
+                                    return;
+                                }
                                 if($scope.object.id > 0){
                                     AppProductFieldService.updateProductField($scope.object).then(function (res) {
                                         if (res.success) {
@@ -430,7 +441,9 @@
                     }]
                 });
                 $scope.editDialog.closePromise.then(function (data) {
+                    if(data && data.value && data.value.uuid){
                     $scope.reloadInit();
+                    }
                 });
             }
 
