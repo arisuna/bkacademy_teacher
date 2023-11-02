@@ -12,7 +12,7 @@
             $scope.canSave = false;
             $scope.selectedGroup = undefined;
             $scope.periodList = AppProductService.getPeriodList();
-            $scope.statuses = AppProductService.getStatusList();
+            $scope.statuses = AppProductService.getStatusList($scope.product.status);
 
             $scope.canSave =  angular.isDefined($stateParams.id) ? AppAclService.validateAction('product', 'edit') : AppAclService.validateAction('product', 'create');
 
@@ -28,6 +28,7 @@
                         if (res.success) {
                             $scope.product = res.data;
                             $scope.product.statusSelected = $scope.statuses.find(o => o.value === $scope.product.status);
+                            $scope.statuses = AppProductService.getStatusList($scope.product.status);
                         } else {
                             WaitingService.error(res.msg);
                         }
@@ -59,6 +60,7 @@
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
                             $scope.product.product_field_groups = res.data.product_field_groups;
+                            $scope.statuses = AppProductService.getStatusList($scope.product.status);
                         } else {
                             WaitingService.error(res.message);
                         }

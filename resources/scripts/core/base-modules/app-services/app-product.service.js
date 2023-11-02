@@ -25,6 +25,10 @@
                 {name: 'VERIFIED_TEXT', value: 2, color: 'green', text: 'VERIFIED_TEXT'},
                 {name: 'PUBLISH', value: 3, color: 'bright-blue', text: 'PUBLISHED_TEXT'},
             ],
+            _status_list_1: [
+                {name: 'UNVERIFIED_TEXT', value: 1, color: 'dark-gray', text: 'UNVERIFIED_TEXT'},
+                {name: 'VERIFIED_TEXT', value: 2, color: 'green', text: 'VERIFIED_TEXT'}
+            ],
             _option_list: [
                 {
                     id: 1,
@@ -49,7 +53,10 @@
             return vm.config.__period_list;
         }
 
-        this.getStatusList = function () {
+        this.getStatusList = function (status) {
+            if(status == 1){
+                return vm.config._status_list_1;
+            }
             return vm.config._status_list;
         }
 
