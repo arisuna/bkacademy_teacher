@@ -1,0 +1,57 @@
+<div class="" ng-controller="OrderEditController">
+    <div class="mt-sm">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-default-b white-block pd-b-0">
+                    <div class="panel-body">
+                        <h4 class="text-dark-blue text-center">
+                            {{ product.name }}
+                        </h4>
+                    </div>
+                    <div class="list-group mt" ng-init="settingActive = 0">
+                        <a class="list-group-item"
+                           ng-class="{'active': (settingActive == 0)}"
+                           ng-click="settingActive = 0">{{ 'BASIC_INFO_TEXT' | translate }}</a>
+                        <a class="list-group-item"
+                            ng-class="{'active': (settingActive == 1)}"
+                            ng-click="settingActive = 1">{{ 'DESCRIPTION_TEXT' | translate }}</a>
+                        <a class="list-group-item"
+                            ng-class="{'active': (settingActive == 2)}"
+                            ng-click="settingActive = 2">{{ 'IMAGES_TEXT' | translate }}</a>
+                        <a class="list-group-item"
+                            ng-class="{'active': (settingActive == 3)}"
+                            ng-click="settingActive = 3">{{ 'SALE_TEXT' | translate }}</a>
+                        <a class="list-group-item"
+                            ng-class="{'active': (settingActive == 4)}"
+                            ng-click="settingActive = 4">{{ 'RENTAL_TEXT' | translate }}</a>
+
+                        <a class="list-group-item"
+                            ng-repeat="group in product.product_field_groups"
+                           ng-class="{'active': (settingActive == (group.id + 4))}"
+                           ng-click="changeTab(group)">{{ group.name| translate }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div ng-show="settingActive == 0">
+                    <div ng-include="'/app/views/product/edit_basic.html'"></div>
+                </div>
+                <div ng-show="settingActive > 4">
+                    <div ng-include="'/app/views/product/edit_field_group.html'"></div>
+                </div>
+                <div ng-show="settingActive == 1">
+                    <div ng-include="'/app/views/product/edit_description.html'"></div>
+                </div>
+                <div ng-show="settingActive == 2">
+                    <div ng-include="'/app/views/product/edit_image.html'"></div>
+                </div>
+                <div ng-show="settingActive == 3">
+                    <div ng-include="'/app/views/product/edit_sale_info.html'"></div>
+                </div>
+                <div ng-show="settingActive == 4">
+                    <div ng-include="'/app/views/product/edit_rent_info.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

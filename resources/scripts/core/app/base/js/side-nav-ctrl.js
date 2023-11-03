@@ -156,7 +156,7 @@
                 },
                 {
                     "text": "ORDERS_TEXT",
-                    "sref": "app.order",
+                    "sref": "app.order.list",
                     "icon": "fa-solid fa-basket-shopping",
                     "iconType": "fontawesome",
                     // "appAclAllow": "order/index",
