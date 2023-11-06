@@ -76,7 +76,7 @@
 
                 AppBusinessOrderService.search($scope.params).then(function (res) {
                     if (res.success) {
-                        $scope.items = $scope.loadCount > 1 ? $scope.dataList.concat(res.data) : res.data;
+                        $scope.items = $scope.loadCount > 1 ? $scope.items.concat(res.data) : res.data;
                         $scope.totalPages = res.total_pages;
                         $scope.currentPage = res.page;
 
@@ -119,7 +119,7 @@
 
                     AppBusinessOrderService.search($scope.params).then(function (res) {
                         if (res.success) {
-                            $scope.dataList = $scope.loadCount > 1 ? $scope.dataList.concat(res.data) : res.data;
+                            $scope.items = $scope.loadCount > 1 ? $scope.items.concat(res.data) : res.data;
                             $scope.totalPages = res.total_pages;
                             $scope.currentPage = res.page;
 
@@ -220,5 +220,9 @@
             };
 
             $scope.loadItems();
+
+            $scope.convertNumber = function(amount){
+                return Number(amount).toLocaleString();
+            }
         }]);
 })();

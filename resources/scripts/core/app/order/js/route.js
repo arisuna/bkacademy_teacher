@@ -17,7 +17,7 @@
             title: 'ORDERS_TEXT',
             templateUrl: helper.modulePath('app', 'order/items', '_=' + Math.random())
         }).state('app.order.edit', {
-            url: '/edit/{id}',
+            url: '/edit/{uuid}',
             title: 'EDIT_ORDER_TEXT',
             parent: 'app.order.list',
             views: {

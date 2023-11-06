@@ -67,5 +67,36 @@
             return deferred.promise;
         };
 
+
+        this.setCompleted = function(data){
+            var deferred = $q.defer();
+            AppHttp.put('/app/business-order/setCompleted/' + data.uuid, data).then(function (response) {
+                deferred.resolve(response.data);
+            }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        }
+
+        this.setCancelled = function(data){
+            var deferred = $q.defer();
+            AppHttp.put('/app/business-order/setCancelled/' + data.uuid, data).then(function (response) {
+                deferred.resolve(response.data);
+            }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        }
+
+        this.setConfirmed = function(data){
+            var deferred = $q.defer();
+            AppHttp.put('/app/business-order/setConfirmed/' + data.uuid, data).then(function (response) {
+                deferred.resolve(response.data);
+            }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        }
+
     }
 })();

@@ -1,0 +1,43 @@
+<div>
+    <div class="pd-t-1x">
+        <div class="row">
+            <div class="col-xs-3 col-lg-3 text-right">
+                <label class="text-dark-blue ">{{ 'SELLER_NAME_TEXT' | translate }}:</label>
+            </div>
+            <div class="col-xs-9 col-lg-9">
+                {{order.seller.firstname}} {{order.seller.lastname}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-3 col-lg-3 text-right">
+                <label class="text-dark-blue ">{{ 'ORDER_NUMBER_TEXT' | translate }}:</label>
+            </div>
+            <div class="col-xs-9 col-lg-9">
+                {{order.number}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-3 col-lg-3 text-right">
+                <label class="text-dark-blue ">{{ 'ORDER_DATE_TEXT' | translate }}:</label>
+            </div>
+            <div class="col-xs-9 col-lg-9">
+                {{order.created_at | amFromUnix | amLocal | amDateFormat: 'DD/MM/YYYY HH:mm:ss'}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-3 col-lg-3 text-right">
+                <label class="text-dark-blue ">{{ 'STATUS_TEXT' | translate }}:</label>
+            </div>
+            <div class="col-xs-9 col-lg-9">
+                <span ng-if="order.status == 1">{{'PENDING_STATUS_TEXT' | translate}}</span>
+                <span ng-if="order.status == 2" class="txt-green">{{'CONFIRMED_STATUS_TEXT' | translate}}</span>
+                <span ng-if="order.status == 3" class="txt-bright-blue">{{'COMPLETED_STATUS_TEXT' | translate}}</span>
+                <span ng-if="order.status == -1" class="txt-red">{{'CANCELLED_STATUS_TEXT' | translate}}</span>
+            </div>
+        </div>
+
+    </div>
+</div>

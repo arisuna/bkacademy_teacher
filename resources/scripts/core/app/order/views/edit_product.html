@@ -1,0 +1,87 @@
+<div class="pd-t-10">
+    <table class="table table-striped table-hover table-responsive hover">
+        <thead>
+        <tr>
+            <th class=" text-dark-blue-important">
+                {{ 'NAME' | translate }}
+            </th>
+            <th class="text-dark-blue-important">
+                {{ 'UNIT_PRICE_TEXT' | translate }}
+            </th>
+            <th class="text-dark-blue-important">
+                {{ 'QUANTITY_TEXT' | translate }}
+            </th>
+            <th class="text-dark-blue-important text-right">
+                {{ 'SUB_TOTAL_TEXT' | translate }}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="txt-ellipsis col-md-5"
+                ng-style="{'max-width':'1px'}">
+                <span class="txt-ellipsis" tooltip-placement="left" uib-tooltip="{{product.name}}">
+                    {{product.name}}
+                </span>
+            </td>
+            <td class="col-md-3">
+                <div ng-if="order.type == 1">
+                    {{product.product_sale_info.currency}} {{(product.product_sale_info.price).toLocaleString()}}
+                </div>
+
+                <div ng-if="order.type == 2">
+                    {{product.product_rent_info.currency}} {{(product.product_rent_info.price).toLocaleString()}}
+                </div>
+            </td>
+            <td class="col-md-2">
+                {{order.quantity}}
+            </td>
+
+            <td class="text-right nowrap col-md-2">
+                <span ng-if="order.type == 1">{{order.currency}} {{(product.product_sale_info.price * order.quantity).toLocaleString() }}</span>
+                <span ng-if="order.type == 2">{{order.currency}} {{(product.product_rent_info.price * order.quantity).toLocaleString()}}</span>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
+    <table class="table table-striped table-hover table-responsive hover">
+        <tr>
+            <td class="col-md-5"></td>
+            <td class="col-md-3"></td>
+            <td class="col-md-2 text-right">
+                {{'SUB_TOTAL_TEXT' | translate}}:
+            </td>
+            <td class="col-md-2 text-right">
+                {{order.currency}} {{(order.amount).toLocaleString()}}
+            </td>
+        </tr>
+
+        <tr>
+            <td class="col-md-5"></td>
+            <td class="col-md-3"></td>
+            <td class="col-md-2 text-right">
+                {{'TAX_TEXT' | translate}}:
+            </td>
+            <td class="col-md-2 text-right">
+                0%
+            </td>
+        </tr>
+
+        <tr>
+            <td class="col-md-5"></td>
+            <td class="col-md-3"></td>
+            <td class="col-md-2 text-right">
+                {{'TOTAL_TEXT' | translate}}:
+            </td>
+            <td class="col-md-2 text-right">
+                {{order.currency}} {{(order.amount).toLocaleString()}}
+            </td>
+        </tr>
+    </table>
+
+</div>
