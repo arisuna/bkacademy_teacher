@@ -11,6 +11,18 @@
 
         var vm = this;
 
+        this.config = {
+            _status_list: [
+                {name: 'PENDING_STATUS_TEXT', value: 1, color: 'dark-gray', text: 'PENDING_STATUS_TEXT'},
+                {name: 'CONFIRMED_STATUS_TEXT', value: 2, color: 'green', text: 'CONFIRMED_STATUS_TEXT'},
+                {name: 'COMPLETED_STATUS_TEXT', value: 3, color: 'bright-blue', text: 'COMPLETED_STATUS_TEXT'},
+                {name: 'CANCELLED_STATUS_TEXT', value: -1, color: 'red', text: 'CANCELLED_STATUS_TEXT'},
+            ],
+        }
+
+        this.getStatusList = function(){
+            return this.config._status_list;
+        }
         
         this.search = function (data) {
             let deferred = $q.defer();
