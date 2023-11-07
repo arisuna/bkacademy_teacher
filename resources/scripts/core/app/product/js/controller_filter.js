@@ -39,31 +39,31 @@
             }
 
             $scope.$watch('selected_categories', function (newValue, oldValue) {
-                if (newValue !== oldValue) {
+                if (angular.isDefined(newValue) && newValue !== oldValue && !(newValue.length == 0 && oldValue.length == 0)) {
                     $scope.broadcastFilter();
                 }
             });
 
             $scope.$watch('selected_brandes', function (newValue, oldValue) {
-                if (newValue !== oldValue) {
+                if (angular.isDefined(newValue) && newValue !== oldValue && !(newValue.length == 0 && oldValue.length == 0)) {
                     $scope.broadcastFilter();
                 }
             });
 
             $scope.$watch('selected_companies', function (newValue, oldValue) {
-                if (newValue !== oldValue) {
+                if (angular.isDefined(newValue) && newValue !== oldValue && !(newValue.length == 0 && oldValue.length == 0)) {
                     $scope.broadcastFilter();
                 }
             });
 
             $scope.$watch('selected_years', function (newValue, oldValue) {
-                if (newValue !== oldValue) {
+                if (angular.isDefined(newValue) && newValue !== oldValue && !(newValue.length == 0 && oldValue.length == 0)) {
                     $scope.broadcastFilter();
                 }
             });
 
             $scope.$watch('selected_options', function (newValue, oldValue) {
-                if (newValue !== oldValue) {
+                if (angular.isDefined(newValue) && newValue !== oldValue && !(newValue.length == 0 && oldValue.length == 0)) {
                     $scope.broadcastFilter();
                 }
             });

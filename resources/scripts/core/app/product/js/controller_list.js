@@ -190,16 +190,16 @@
 
             $scope.clearFilter = function () {
                 $scope.query = "";
-                $scope.params = {
-                    categories: [],
-                    brandes: [],
-                    companies: [],
-                    years: [],
-                    options: []
-                };
+                // $scope.params = {
+                //     categories: [],
+                //     brandes: [],
+                //     companies: [],
+                //     years: [],
+                //     options: []
+                // };
                 $scope.sort = {};
-                // $scope.publish('clearFilter');
-                $scope.loadItems();
+                $scope.publish('clearFilter');
+                // $scope.loadItems();
             };
 
             $scope.deleteFn = function (uuid) {
