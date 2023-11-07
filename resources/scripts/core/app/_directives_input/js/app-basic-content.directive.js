@@ -92,6 +92,8 @@
                             }
                             $scope.descriptionId = null;
                             WaitingService.success(res.message);
+                        } else {
+                            WaitingService.error(res.message);
                         }
                     })
                 }
@@ -152,6 +154,8 @@
                                     AppBasicContentService.update($scope.model).then(function(res){
                                         if(res.success){
                                             $scope.closeThisDialog(res.data);
+                                        } else {
+                                            WaitingService.error(res.message);
                                         }
 
                                         setTimeout(function(){
@@ -164,6 +168,8 @@
                                     AppBasicContentService.create($scope.model).then(function(res){
                                         if(res.success){
                                             $scope.closeThisDialog(res.data);
+                                        } else {
+                                            WaitingService.error(res.message);
                                         }
 
                                         setTimeout(function(){
