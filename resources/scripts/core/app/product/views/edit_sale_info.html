@@ -14,7 +14,7 @@
 
             <div class="row">
                 <div class="col-sm-6">
-                    <input-text is-editable="true" is-required="false" is-numeric="true" ng-model="product.product_sale_info.quantity"
+                    <input-text is-editable="true" is-required="true" is-numeric="true" ng-model="product.product_sale_info.quantity"
                         required-message="ENTER_QUANTITY_TEXT" label="QUANTITY_TEXT" show-label="true"></input-text>
 
                 </div>
@@ -23,6 +23,7 @@
                 <div class="col-sm-6 ">
                     <input-price
                         is-editable="true"
+                        is-required="true"
                         step="0.01"
                         is-numeric="true"
                         label="PRICE_TEXT"
@@ -35,6 +36,7 @@
                     <app-currency-selector
                             ng-model="product.product_sale_info.currency"
                             is-editable="true"
+                            is-required="true"
                             label="CURRENCY"
                             show-label="true"></app-currency-selector>
 
