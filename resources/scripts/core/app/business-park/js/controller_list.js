@@ -237,6 +237,16 @@
                             $scope.object = $scope.ngDialogData.business_park;
                             $scope.page_loading = true;
                             $scope.isClone = true;
+
+                            $scope.ngChangeProvince = function (item) {
+                                $scope.object.ward_id = null;
+                                $scope.object.district_id = null;
+                                console.log("item", item.name, $scope.object)
+                                
+                
+                                // $scope.address.vn_province_id = item.id
+                                // $scope.address.province_name = item.name
+                            }
                             $scope.getDetailFn = function () {
                                 AppBusinessParkService.detailBusinessPark($scope.object.uuid).then(
                                     function (res) {
@@ -351,6 +361,16 @@
                         function ($scope, $element, $timeout, WaitingService, AppBusinessParkService, $state) {
                             $scope.object = $scope.ngDialogData.business_park;
                             $scope.page_loading = true;
+
+                            $scope.ngChangeProvince = function (item) {
+                                $scope.object.ward_id = null;
+                                $scope.object.district_id = null;
+                                console.log("item", item.name, $scope.object)
+                                
+                
+                                // $scope.address.vn_province_id = item.id
+                                // $scope.address.province_name = item.name
+                            }
 
                             $scope.getDetailFn = function () {
                                 AppBusinessParkService.detailBusinessPark($scope.object.uuid).then(
