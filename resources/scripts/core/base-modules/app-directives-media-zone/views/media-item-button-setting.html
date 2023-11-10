@@ -38,7 +38,7 @@
         <li ng-if="isEditable && attachmentItem.can_delete && isAttachment == true">
             <button type="button" class="btn btn-default text-red" ng-click="removeMediaItem()">{{'REMOVE_TEXT' | translate}}</button>
         </li>
-        <li ng-if="isProduct" ng-show="!item.is_thumb">
+        <li ng-if="isProduct" ng-show="!item.is_thumb && isEditable">
             <button type="button" class="btn btn-default text-dark-blue" ng-click="setThumb(item)">{{'SET_AS_MAIN_THUMBNAIL_TEXT' | translate}}</button>
         </li>
     </ul>

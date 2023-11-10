@@ -11,13 +11,13 @@
         </div>
         <div class="">
             <div>
-                <button type="button" class="btn relo-bg-bright-blue" ng-click="openDialog($event)">
+                <button type="button" class="btn relo-bg-bright-blue" ng-click="openDialog($event)" ng-if="isEditable">
                     <i class="fa fa-pencil"></i>
                 </button>
 
             </div>
             <div ng-show="data.uuid" class="mt-5">
-                <button type="button" class="btn relo-bg-red" ng-click="removeFn(data)">
+                <button type="button" class="btn relo-bg-red" ng-click="removeFn(data)" ng-if="isEditable">
                     <i class="fa fa-trash"></i>
                 </button>
             </div>
