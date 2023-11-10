@@ -83,7 +83,12 @@
                         <td class="bd-t-white">{{ index + 1}}</td>
                         <td class="bd-t-white">
                             <div ng-click="editUserFn( object )"
-                                 class="wrap-word text-bright-blue">{{ object.name }}
+                                ng-if="object.status != -1"
+                                class="wrap-word text-bright-blue">{{ object.name }}
+                            </div>
+
+                            <div ng-if="object.status == -1"
+                                class="wrap-word txt-dark-blue">{{ object.name }}
                             </div>
                         </td>
                         <td class="bd-t-white">{{ object.email }}</td>
@@ -111,9 +116,9 @@
                         </td>
                         <td class="bd-t-white">{{ object.created_at | amDateFormat: 'DD/MM/YYYY'}}</td>
                         <td class="text-right bd-t-white">
-                            <button-edit-icon
+                            <button-edit-icon ng-if="object.status != -1"  
                                     ng-click="editUserFn( object )" class="mr-sm"></button-edit-icon>
-                            <button-delete-icon ng-class="{'disabled': object.status == -1}"
+                            <button-delete-icon ng-class="{'disabled': object.status == -1}" ng-if="object.status != -1"  
                                                 ng-click="deleteFn( object )" app-acl-allow="crm_user/delete"
                                                 acl-remove="true">
                             </button-delete-icon>

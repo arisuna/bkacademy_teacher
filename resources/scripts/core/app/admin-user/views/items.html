@@ -44,8 +44,16 @@
                         <td class="bd-t-white">{{ index + 1}}</td>
                         <td class="bd-t-white">
                             <div ng-click="openEditAdminDialog( object )"
-                                 class="wrap-word text-bright-blue">{{ object.name }}
+                                ng-if="object.status != -1"
+                                class="wrap-word text-bright-blue">{{ object.name }}
                             </div>
+
+                            <div ng-if="object.status == -1"
+                                class="wrap-word txt-dark-blue">{{ object.name }}
+                            </div>
+                            <!-- <div ng-click="openEditAdminDialog( object )"
+                                 class="wrap-word text-bright-blue">{{ object.name }}
+                            </div> -->
                         </td>
                         <td class="bd-t-white">{{ object.email }}</td>
                         <!--                    <td class="bd-t-white">{{ object.phone }}</td>-->
@@ -72,8 +80,8 @@
                         </td>
                         <td class="bd-t-white">{{ object.created_at | amDateFormat: 'DD/MM/YYYY'}}</td>
                         <td class="text-right bd-t-white">
-                            <button-edit-icon ng-click="openEditAdminDialog( object )" class="mr-sm"></button-edit-icon>
-                            <button-delete-icon ng-class="{'disabled': object.status == -1}" ng-click="deleteFn( object )"></button-delete-icon>
+                            <button-edit-icon ng-if="object.status != -1"  ng-click="openEditAdminDialog( object )" class="mr-sm"></button-edit-icon>
+                            <button-delete-icon ng-if="object.status != -1"  ng-class="{'disabled': object.status == -1}" ng-click="deleteFn( object )"></button-delete-icon>
                         </td>
                     </tr>
 
