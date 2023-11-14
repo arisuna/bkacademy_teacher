@@ -14,7 +14,7 @@
 
                         <div class="selectable-input pull-left" ng-if="isProduct && !isSelectable">
                             <div class="checkbox c-checkbox position-absolute z-10 btn-check-grid mg-t-0">
-                                <label class="checkbox-thumb relo-bg-white" ng-if="!$parent.item.is_thumb">
+                                <label class="checkbox-thumb relo-bg-white" ng-if="!$parent.item.is_thumb && isEditable">
                                     <input type="checkbox" ng-model="$parent.item.is_thumb" ng-change="setThumb($parent.item)"/>
                                     <span class="fa fa-check"></span>
                                     <small class="relo-dark-blue text-bold txt-ellipsis txt-10"> {{'SET_AS_MAIN_THUMBNAIL_TEXT' | translate}}</small>
