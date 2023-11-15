@@ -34,6 +34,7 @@
                     "subMenu": [
                         {"title": "ACLS_TEXT", "state": "app.setting-acl.list"},
                         {"title": "ACL_GROUPS_ROLES_TEXT", "state": "app.user-group.list"},
+                        {"title": "WEB_ACLS_TEXT", "state": "app.web-acl.list"},
                         {"title": "ADMIN_USERS_TEXT ", "state": "app.admin-user.list"},
                     ]
                 },

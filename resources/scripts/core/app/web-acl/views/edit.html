@@ -1,0 +1,52 @@
+<div class="card card-nobox">
+    <div class="project-filter">
+        <div class="pd-1x relo-bg-dark-blue-5 bd-radius-5x">
+            <div class="row mx-0">
+                <div class="col-sm-10 text-left pd-l-0 pd-r-5">
+                    <label class="label-text-form">
+                        {{ web_acl.name | translate }}
+                    </label>
+                </div>
+                <div class="col-sm-2 text-right pd-r-0">
+                    <button-edit-icon ng-click="openEditDialogFn()" class="mr-sm"></button-edit-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-append scroll-y height-100vh-m140px overflow-x-disable mg-t-20">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-heading bg-gray-lighter text-bold">
+                        {{ 'PERMISSIONS_LIST_TEXT' | translate}}
+                    </div>
+                    <div class="panel-body">
+                        <div ng-repeat="end_user_acl in web_acl.acls">
+                            <div class="pull-left">
+                                <p class="mg-0 txt-bold txt-black-60 mg-t-25">{{ end_user_acl.name|translate }}
+                                </p>
+                            </div>
+                            <div class="pull-right width-350px flex" ng-if="true">
+                                <label class="switch switch-lg flex-middle mg-t-10 mr-sm flex-1">
+                                    <input type="checkbox" class="privilege" ng-model="end_user_acl.selected"
+                                        data-checkname="{{ end_user_acl.id }}"
+                                        ng-change="onAclItemChanged(end_user_acl)" />
+                                    <span></span>
+                                </label>
+                                <div class="flex-middle flex-4" ng-if="end_user_acl.limit_enabled">
+
+                                    <input-text is-editable="end_user_acl.limit_enabled" is-required="false"
+                                        is-numeric="true" ng-model="end_user_acl.limit"
+                                        ng-change="onAclItemChanged(end_user_acl)"
+                                        required-message="ENTER_LIMIT_TEXT" label="LIMIT_TEXT"
+                                        show-label="true"></input-text>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

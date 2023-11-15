@@ -1,0 +1,65 @@
+<div class="card" ng-controller="WebAclFormController">
+    <div class="card-heading relo-bg-bright-gray ">
+        <span class="text-dark-blue">{{(web_acl.id > 0 ? 'EDIT_WEB_ACL_TEXT' : 'CREATE_WEB_ACL_TEXT') | translate}}</span>
+    </div>
+    <form class="form-validate noPadding"
+      validate-form=""
+      role="form"
+      name="userForm"
+      data-parsley-validate=""
+      ng-submit="saveFn()"
+      ng-if="!page_loading"
+      novalidate>
+
+        <div class="pd-2x custom-dialog-overflow ngdialog-content-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-required="true"
+                                is-text="true"
+                                ng-model="web_acl.name"
+                                required-message="ENTER_NAME_TEXT"
+                                label="NAME_TEXT"
+                                show-label="true"></input-text>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-required="true"
+                                is-text="true"
+                                ng-model="web_acl.label"
+                                required-message="ENTER_LABEL_TEXT"
+                                label="LABEL_TEXT"
+                                show-label="true"></input-text>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                is-required="false"
+                                ng-model="web_acl.description"
+                                required-message="ENTER_DESCRIPTION_TEXT"
+                                label="DESCRIPTION_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="card-footer text-right border-0">
+            <div class="row">
+                <div class="col-sm-12 text-right">
+                    <button type="submit" class="btn relo-bg-green" title="Save" ng-disabled="saving"><i
+                            class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
+                        {{'SAVE_BTN_TEXT' | translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
