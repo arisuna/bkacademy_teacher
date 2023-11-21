@@ -15,6 +15,7 @@
                 companyId: '=ngModel',
                 company: '=?',
                 isRequired: '<',
+                isVerified: '<',
                 label: '@',
                 requiredMessage: '@',
                 isEditable: '<?',
@@ -32,6 +33,10 @@
 
                 if (angular.isUndefined(scope.isEditable) || scope.isEditable == null) {
                     scope.isEditable = true;
+                }
+
+                if (angular.isUndefined(scope.isVerified) || scope.isVerified == null) {
+                    scope.isVerified = true;
                 }
 
                 if (angular.isUndefined(scope.requiredMessage) || scope.requiredMessage == '') {
@@ -143,11 +148,14 @@
                                 $scope.currentPage = 0;
                                 $scope.totalPages = 0;
                                 $scope.isLoading = true;
-                                AppCompanyService.getCompanyList({
+                                let params = {
                                     query: $scope.searchConfig.query,
-                                    page: 1,
-                                    statuses: [1]
-                                }).then(function (res) {
+                                    page: 1
+                                };
+                                if($scope.isVerified){
+                                    params.statuses = [1];
+                                }
+                                AppCompanyService.getCompanyList(params).then(function (res) {
                                     $scope.companies = res.data;
                                     $scope.isLoading = false;
                                     $scope.totalItems = res.total_items;
@@ -162,10 +170,14 @@
                             $scope.loadMore = function () {
                                 if ($scope.totalPages > $scope.currentPage) {
                                     $scope.isLoadingMore = true;
-                                    AppCompanyService.getCompanyList({
+                                    let params = {
                                         query: $scope.searchConfig.query,
                                         page: $scope.currentPage + 1
-                                    }).then(function (res) {
+                                    };
+                                    if($scope.isVerified){
+                                        params.statuses = [1];
+                                    }
+                                    AppCompanyService.getCompanyList(params).then(function (res) {
                                         $scope.companies = _.concat($scope.companies, res.data);
                                         $scope.isLoadingMore = false;
                                         $scope.totalItems = res.total_items;
