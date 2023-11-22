@@ -207,6 +207,7 @@
                 });
 
                 $scope.subscribe('reload_attachments', function (data) {
+                    console.log('reload_Attachments', data);
                     if (angular.isDefined(data.uuid) && data.uuid == $scope.uuid) {
                         $scope.getFileList();
                         // $timeout(function(){
@@ -216,7 +217,8 @@
                 });
 
                 $scope.subscribe('reload_thumb', function (data) {
-                    if (angular.isDefined(data)) {
+                    console.log('reload_thumb', data);
+                    if (angular.isDefined(data) && data.uuid == $scope.uuid && data.object_type == $scope.objectType) {
                         $scope.getFileList();
                     }
                 });
@@ -277,7 +279,7 @@
                                 // }
                                 $scope.getFileList();
                                 $timeout(() => {
-                                    $scope.publish('reload_thumb', {reload: true});
+                                    $scope.publish('reload_thumb', {reload: true, uuid: $scope.uuid, object_type: $scope.objectType});
                                     WaitingService.popSuccess(res.message);
                                 }, 300)
                             } else {

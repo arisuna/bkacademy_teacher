@@ -31,7 +31,7 @@
                 parent: 'app.user.list',
                 views: {
                     '@app.user': {
-                        templateUrl: helper.modulePath('app', 'user/form', '_=' + Math.random())
+                        templateUrl: helper.modulePath('app', 'user/view', '_=' + Math.random())
                     }
                 },
             });

@@ -1,0 +1,70 @@
+<div ng-controller="EndUserFormController">
+    <div ng-include="'/app/views/user/detail_buttons.html'"></div>
+
+    <div ng-if="page_loading">
+        <spinner-v2 type="spin"></spinner-v2>
+    </div>
+
+    <div class="mt-sm" ng-if="!page_loading">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-default-b white-block pd-b-0">
+                    <div class="panel-body">
+
+                        <h4 class="text-dark-blue text-center">
+                            {{ user.name }}
+                        </h4>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb">{{'ID_NUMBER_TEXT' | translate}}: {{user.id_number}}</div>
+                                <div class="mb">
+                                    <div class="">
+                                        <em class="fa-solid fa-circle txt-18 mr-sm "
+                                            ng-class="{'text-dark-gray': user.lvl != 3, 'text-green': user.lvl == 3}"></em>
+
+                                        {{ user.lvl == 3 ? ('VERIFIED_TEXT' | translate) : ('UNVERIFIED_TEXT' | translate)}}
+                                    </div>
+                                </div>
+                                <div class="mb-sm">{{'CREATED_AT_TEXT' | translate}}
+                                    {{ user.created_at | amDateFormat: 'DD/MM/YYYY'}}
+                                </div>
+                                <div class="pd-b-15">{{'UPDATED_AT_TEXT' | translate}}
+                                    {{ user.updated_at | amDateFormat: 'DD/MM/YYYY'}}
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="divider">
+                    </div>
+
+                    <div class="list-group mt" ng-init="tabActive = 1">
+                        <a class="list-group-item"
+                           ng-class="{'active': (tabActive == 1)}"
+                           ng-click="tabActive = 1">{{ 'BASIC_INFO_TEXT' | translate }}</a>
+
+                        <a class="list-group-item"
+                           ng-class="{'active': (tabActive == 2)}"
+                           ng-click="tabActive = 2">{{ 'ADDRESSES_TEXT' | translate }}</a>
+
+                        <a class="list-group-item"
+                           ng-class="{'active': (tabActive == 3)}"
+                           ng-click="tabActive = 3">{{ 'VERIFICATION_AND_TAX_NUMBER_TEXT' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div ng-show="tabActive == 1">
+                    <div ng-include="'/app/views/user/view_basic.html'"></div>
+                </div>
+
+                <div ng-show="tabActive == 2">
+                    <div ng-include="'/app/views/user/addresses.html'"></div>
+                </div>
+
+                <div ng-show="tabActive == 3">
+                    <div ng-include="'/app/views/user/verification.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

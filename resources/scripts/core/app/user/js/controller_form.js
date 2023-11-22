@@ -10,8 +10,15 @@
             $scope.page_loading = true;
             $scope.user = {};
             $scope.canSave = false;
+            $scope.isEditable = false;
 
-            $scope.canSave =  angular.isDefined($stateParams.id) ? AppAclService.validateAction('crm_user', 'edit') : AppAclService.validateAction('crm_user', 'create');
+            $scope.canSave =  angular.isDefined($stateParams.id) ? AppAclService.validateAction('end_user', 'edit') : AppAclService.validateAction('end_user', 'create');
+
+            $scope.onEditable = ($event, isEditable) => {
+                $scope.$evalAsync(function () {
+                    $scope.isEditable = !isEditable
+                })
+            }
 
             $scope.getDetailFn = function () {
                 var id = angular.isDefined($stateParams.id) ? $stateParams.id : 0;

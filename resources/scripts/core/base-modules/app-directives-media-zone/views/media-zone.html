@@ -6,7 +6,7 @@
     <div class="uploadZone my-drop-zone" uploader="uploader" nv-file-drop="">
         <div class="dropZone" nv-file-drop="" uploader="uploader"
              ng-if="!uploader.queue.length"
-             ng-show="isEditable && (showUpload ? true : false)">
+             ng-show="isEditable && (showUpload ? true : false) && (isMultiple || (!isMultiple && items.length == 0))">
             <div nv-file-over="" uploader="uploader" over-class="bg-light-blue-200" class="box-placeholder">
 
                 <h4 class="text-center">
@@ -144,7 +144,7 @@
 
         <div ng-show="isLoading == false">
 
-            <div class="row" style="margin-right: -13px;">
+            <div class="row" style="margin-right: -13px;" ng-show="isMultiple">
                 <div class="col-md-8 col-lg-8 col-sm-8">
 
                     <input type="text"
@@ -165,32 +165,6 @@
                                 uib-dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
                             <em class="fa fa-users"></em>
                         </button>
-                        <!--                        <ul class="dropdown-menu" role="menu">-->
-                        <!--                            <li>-->
-                        <!--                                <a ng-click="uploadEntityProfile = 'all';uploadEntityProfileLabel = 'ALL_TEXT'">{{-->
-                        <!--                                    'ALL_TEXT' | translate }}-->
-                        <!--                                    <em class="fa fa-check mr-sm" ng-show="uploadEntityProfile == 'all'"></em>-->
-                        <!--                                </a>-->
-                        <!--                            </li>-->
-                        <!--                            <li>-->
-                        <!--                                <a ng-click="uploadEntityProfile = 'me';uploadEntityProfileLabel = 'ME_TEXT'">{{-->
-                        <!--                                    'ME_TEXT' | translate }}-->
-                        <!--                                    <em class="fa fa-check mr-sm" ng-show="uploadEntityProfile == 'me'"></em>-->
-                        <!--                                </a>-->
-                        <!--                            </li>-->
-                        <!--                            <li>-->
-                        <!--                                <a ng-click="uploadEntityProfile = 'member'; uploadEntityProfileLabel = 'MY_MEMBERS_TEXT'">{{-->
-                        <!--                                    'MY_MEMBERS_TEXT' | translate }}-->
-                        <!--                                    <em class="fa fa-check mr-sm" ng-show="uploadEntityProfile == 'member'"></em>-->
-                        <!--                                </a>-->
-                        <!--                            </li>-->
-                        <!--                            <li>-->
-                        <!--                                <a ng-click="uploadEntityProfile = 'counterparty';uploadEntityProfileLabel = 'COUNTERPARTY_TEXT'">{{-->
-                        <!--                                    'COUNTERPARTY_TEXT' | translate }}-->
-                        <!--                                    <em class="fa fa-check mr-sm" ng-show="uploadEntityProfile == 'counterparty'"></em>-->
-                        <!--                                </a>-->
-                        <!--                            </li>-->
-                        <!--                        </ul>-->
                     </div>
 
                     <button class="btn btn-round mr-sm"
