@@ -1,0 +1,60 @@
+<form class="form-validate pd-0 mg-0"
+      validate-form=""
+      ng-submit="saveFn()"
+      novalidate>
+    <div class="custom-dialog-overflow scroll-append scroll-y overflow-x-disable pd-l-20">
+        <div class="row">
+            <div class="col-sm-6">
+                <input-text is-editable="isEditable"
+                            is-required="true"
+                            is-text="true"
+                            ng-model="user.firstname"
+                            required-message="ENTER_FIRST_NAME_TEXT"
+                            label="FIRST_NAME_TEXT"
+                            show-label="true"></input-text>
+
+            </div>
+            <div class="col-sm-6">
+                <input-text is-editable="isEditable"
+                            is-required="true"
+                            is-text="true"
+                            ng-model="user.lastname"
+                            required-message="ENTER_LAST_NAME_TEXT"
+                            label="LAST_NAME_TEXT"
+                            show-label="true"></input-text>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <input-text is-editable="isEditable"
+                            is-email="true"
+                            is-required="true"
+                            ng-model="user.email"
+                            required-message="ENTER_EMAIL_TEXT"
+                            label="EMAIL_TEXT"
+                            show-label="true"></input-text>
+            </div>
+            <div class="col-sm-6">
+                <app-phone-selector ng-model="user.phone"
+                                    show-label="true"
+                                    is-editable="isEditable"
+                                    label="PHONE_TEXT"></app-phone-selector>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <app-company-selector ng-model="user.company_id"
+                                    is-verified="false"
+                                    is-editable="isEditable"
+                                    show-label="true"
+                                    is-required="false"
+                                    label="COMPANY_TEXT"></app-company-selector>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="text-right mg-t-20">
+        <save-button-submit title="SAVE_BTN_TEXT" ng-disabled="saving" ng-if="isEditable"></save-button-submit>
+    </div>
+</form>
