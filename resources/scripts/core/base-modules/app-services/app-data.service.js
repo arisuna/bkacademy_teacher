@@ -1524,5 +1524,16 @@
             return deferred.promise;
         }
 
+        this.getBanks = function () {
+            let deferred = $q.defer();
+
+            $http.get('https://api.vietqr.io/v2/banks').then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err) {
+                deferred.reject(err.data);
+            });
+
+            return deferred.promise;
+        }
     }
 })();

@@ -66,5 +66,40 @@
             });
             return deferred.promise;
         };
+
+
+        this.getBankAccounts = function (uuid) {
+            const deferred = $q.defer();
+            AppHttp.get('/app/company/getBankAccounts/' + uuid)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.createBankAccount = function (data) {
+            const deferred = $q.defer();
+            AppHttp.post('/app/company/createBankAccount', data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+
+        this.removeBankAccount = function (uuid) {
+            const deferred = $q.defer();
+            AppHttp.delete('/app/company/removeBankAccount/' + uuid)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
     }
 })();

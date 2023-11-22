@@ -1,0 +1,58 @@
+<div class="panel panel-default panel-default-b">
+    <div class="panel-heading" ng-style="{'padding':'5px'}">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group search">
+                        <input type="text"
+                               class="form-control form-control-custom-radius"
+                               placeholder="{{ 'SEARCH_TEXT' | translate }}"
+                               ng-enter-key="applyFilter()"
+                               ng-keypress="applyFilter()"
+                               ng-keyup="applyFilter()"
+                               ng-keydown="applyFilter()"
+                               ng-model="searchConfig.query" aria-invalid="false">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default btn-flat" type="button"
+                                    ng-click="applyFilter()">
+                                <em class="fa fa-search text-bright-blue"></em>
+                            </button>
+                         </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body height-30vh-m70px overflow-y-enable" ng-style="{'padding':'5px'}">
+        <div class="list-group list-group-flat list-group-blue">
+            <a class="list-group-item text-overflow-ellipsis"
+               ng-repeat="bank in banks | filter: {'short_name': searchConfig.filterQuery, 'name': searchConfig.filterQuery}"
+               ng-class="{'active': (searchConfig.currentItem.code == bank.code)}"
+               ng-click="selectItem(bank)">
+
+                <div class="flex">
+                    <img class="img-circle thumb32 mr-sm" src="{{bank.logo}}" alt="{{bank.short_name}}"/>
+                    <div>
+                        <div class="">{{bank.short_name}}</div>
+                        <span class="txt-10">{{bank.name}} </span>
+                    </div>
+                </div>
+
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!--"id": 17,-->
+<!--"name": "Ngân hàng TMCP Công thương Việt Nam",-->
+<!--"code": "ICB",-->
+<!--"bin": "970415",-->
+<!--"shortName": "VietinBank",-->
+<!--"logo": "https://api.vietqr.io/img/ICB.png",-->
+<!--"transferSupported": 1,-->
+<!--"lookupSupported": 1,-->
+<!--"short_name": "VietinBank",-->
+<!--"support": 3,-->
+<!--"isTransfer": 1,-->
+<!--"swift_code": "ICBVVNVX"-->

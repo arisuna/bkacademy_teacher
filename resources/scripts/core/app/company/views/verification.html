@@ -1,6 +1,8 @@
 <form class="form-validate pd-0 mg-0 text-dark-blue"
       validate-form=""
       ng-submit="saveFn($event)"
+      name="verificationForm"
+      role="form"
       ng-if="!isLoading"
       novalidate>
     <div class="custom-dialog-overflow scroll-append scroll-y overflow-x-disable pd-l-20">
@@ -8,7 +10,7 @@
             <div class="col-sm-12">
                 <input-text is-editable="isEditable && company.status != 1"
                             is-text="true"
-                            is-required="companyStatus == 1"
+                            is-required="true"
                             ng-model="company.taxpayer_name"
                             required-message="FIELD_IS_REQUIRED_TEXT"
                             label="TAXPAYER_NAME_TEXT"
@@ -21,7 +23,7 @@
             <div class="col-sm-12">
                 <input-text is-editable="isEditable && company.status != 1"
                             is-text="true"
-                            is-required="companyStatus == 1"
+                            is-required="true"
                             ng-model="company.address"
                             required-message="FIELD_IS_REQUIRED_TEXT"
                             label="ADMINISTRATIVE_ADDRESS_TEXT"
@@ -35,45 +37,12 @@
             <div class="col-sm-6">
                 <input-text is-editable="isEditable && company.status != 1"
                             is-text="true"
-                            is-required="companyStatus == 1"
+                            is-required="true"
                             ng-model="company.tax_number"
                             required-message="FIELD_IS_REQUIRED_TEXT"
                             label="TAX_NUMBER_TEXT"
                             show-label="true"></input-text>
 
-            </div>
-            <div class="col-md-6">
-                <div>
-                    <label class="label-text-form">
-                        {{'STATUS_TEXT' | translate}}
-                    </label>
-                </div>
-                <ui-select ng-model="company.statusSelected"
-                           required="true"
-                           ng-disabled="!isEditable"
-                           ng-class="{'uib-select-bright-blue-10': isEditable, 'uib-select-white': !isEditable}"
-                           class="w-100 uib-select-95-per form-control-custom-radius"
-                           theme="bootstrap">
-                    <ui-select-match
-                            placeholder="{{'SELECT_TEXT' | translate}}"
-                            class="bg-transparent">
-                        <em class="fa-solid fa-circle txt-16 mr-sm {{'text-' + $select.selected.color}}"></em>
-                        {{ $select.selected.text | translate}}
-
-                    </ui-select-match>
-
-                    <ui-select-choices repeat="item in statuses track by $index">
-                        <div class=" " ng-click="changeStatus(item)">
-                            <em class="fa-solid fa-circle txt-16 mr-sm {{'text-' + item.color}}"></em>
-                            {{ item.text | translate}}
-                        </div>
-
-                    </ui-select-choices>
-                </ui-select>
-                <div ng-if="company.status==1 && company.user_verified_name" class="txt-10 mt-sm">
-                    {{'VERIFIED_ON_TEXT' | translate}} {{ company.verified_at | amDateFormat: 'DD/MM/YYYY'}} {{'BY_TEXT' | translate}}
-                    {{company.user_verified_name}}
-                </div>
             </div>
         </div>
         <div class="row">
@@ -89,6 +58,8 @@
                     <app-media-zone uuid="company.uuid"
                                     is-editable="isEditable && company.status != 1"
                                     company-id="company.id"
+                                    limit="1"
+                                    show-library="false"
                                     object-type="company"></app-media-zone>
                 </div>
 
@@ -97,6 +68,21 @@
                 <!--                                         show-no-data-available="true"-->
                 <!--                                         object-type="company"></app-media-zone-view>-->
                 <!--                </div>-->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <label class="label-text-form">
+                        {{'BANK_ACCOUNTS_TEXT' | translate}}
+                        <asterik-red ng-if="companyStatus == 1 && isEditable" class=""></asterik-red>
+                    </label>
+                </div>
+
+                <div class="mg-b-20">
+                    <div ng-include="'/app/views/company/bank-acounts.html'"></div>
+                </div>
             </div>
         </div>
 

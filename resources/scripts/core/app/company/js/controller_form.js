@@ -8,6 +8,7 @@
         function ($scope, $state, $http, $stateParams, $timeout, $rootScope, $translate, ngDialog, urlBase, WaitingService, AppDataService, AppCompanyService, AppAddressService) {
             $scope.isLoading = true;
             $scope.isLoadingAddress = true;
+            $scope.isLoadingBanks = true;
             $scope.company = {};
             $scope.isEditable = false;
             $scope.tabActive = 1;
@@ -19,6 +20,7 @@
             $scope.mailAddresses = [];
             $scope.companyStatus = 0;
             $scope.isUnVerify = false;
+            $scope.bankAccounts = [];
 
             $scope.attachmentSelect = [];
 
@@ -44,8 +46,10 @@
                             $scope.company.statusSelected = $scope.statuses.find(o => o.value === $scope.company.status)
 
                             $scope.getListAddress(res.data.id)
+                            $scope.getListBanks(res.data.uuid)
+
                         } else {
-                            WaitingService.error(res.msg);
+                            WaitingService.error(res.message);
                         }
                         $scope.isLoading = false;
                     },
@@ -86,12 +90,31 @@
                 });
             };
 
-
             $scope.saveFn = function ($event) {
                 // $event.preventDefault();
                 // $event.stopPropagation();
                 if ($scope.companyStatus == 0 && $scope.company.status == 1) {
                     $scope.isUnVerify = true
+                }
+
+                if ($scope.companyStatus == 1 && (!$scope.company.taxpayer_name || !$scope.company.address || !$scope.company.tax_number)) {
+                    let mess = 'VERIFICATION_NOT_ALLOW_TEXT';
+
+                    if (!$scope.company.tax_number) {
+                        mess = 'TAX_NUMBER_IS_REQUIRED_TEXT'
+                    }
+                    if (!$scope.company.address) {
+                        mess = 'ADMINISTRATIVE_ADDRESS_IS_REQUIRED_TEXT'
+                    }
+
+                    if (!$scope.company.taxpayer_name) {
+                        mess = 'TAXPAYER_NAME_IS_REQUIRED_TEXT'
+                    }
+
+                    WaitingService.error(mess);
+                    $scope.setTab(3)
+
+                    return;
                 }
 
                 if ($scope.company.id > 0) {
@@ -273,8 +296,14 @@
                 })
             }
 
-            $scope.changeStatus = (item) => {
+            $scope.setTab = (tabActive) => {
+                $scope.tabActive = tabActive
+            }
+
+            $scope.changeStatus = (item, index) => {
                 $scope.companyStatus = item.value
+
+                $scope.saveFn()
                 // $scope.company.status = item.value
             }
 
@@ -308,6 +337,56 @@
                     WaitingService.error('NO_FILE_SELECTED_TEXT');
                 }
             }
+
+            $scope.getListBanks = (uuid) => {
+                $scope.isLoadingBanks = true
+
+                AppCompanyService.getBankAccounts(uuid).then(
+                    function (res) {
+                        if (res.success) {
+                            $scope.bankAccounts = res.data ? res.data : []
+                        } else {
+                            WaitingService.error(res.message);
+                        }
+                        $scope.isLoadingBanks = false
+                    },
+                    function (error) {
+                        console.log("error", error)
+                        $scope.isLoadingBanks = false
+
+                        WaitingService.expire(error);
+                    }
+                );
+            }
+
+
+            $scope.createBankAccount = () => {
+
+                $scope.createBankDialog = ngDialog.open({
+                    template: urlBase.tplApp('app', 'company', 'bank-account-form-right-dialog', '_=' + Math.random()),
+                    className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
+                    scope: $scope,
+                    resolve: {
+                        currentCompany: ['AppDataService', function (AppDataService) {
+                            return $scope.company;
+                        }],
+                        bank: ['AppDataService', function (AppDataService) {
+                            return {};
+                        }]
+                    },
+                    closeByDocument: true,
+                    controller: 'BankAccountController'
+                });
+
+                $scope.createBankDialog.closePromise.then(function (data) {
+                    if (angular.isDefined(data.value.bank) && data.value.bank) {
+                        console.log('data.value', data.value);
+
+                        $scope.getListBanks($scope.company.uuid);
+                    }
+                });
+            }
+
         }]);
 
 })();
