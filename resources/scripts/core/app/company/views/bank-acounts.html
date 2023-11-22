@@ -1,7 +1,7 @@
 <div>
     <div ng-show="!isLoadingBanks">
         <div class="row" style="margin-right: -13px;">
-            <div class="col-md-8 col-lg-8 col-sm-8 mb">
+            <div class="col-md-8 col-lg-8 col-sm-8 ">
                 <!--                <input type="text"-->
                 <!--                       name="media_search"-->
                 <!--                       class="form-control"-->
@@ -22,25 +22,29 @@
             </div>
         </div>
 
-        <div class="row border-radius-5 relo-bg-bright-gray mb pd-10 flex"
-             ng-if="bankAccounts && bankAccounts.length > 0"
-             ng-repeat="bank in bankAccounts track by $index">
-            <div class="w-100">
-                <div class="text-bold text-uppercase">{{bank.account_name}}</div>
-                <div class="">
-                    {{bank.bank_name}} {{bank.account_number}}
+        <div class="row mt">
+            <div class="col-sm-12 border-radius-5 relo-bg-bright-gray mb pd-10 flex"
+                 ng-if="bankAccounts && bankAccounts.length > 0"
+                 ng-repeat="bank in bankAccounts track by $index">
+                <div class="w-100">
+                    <div class="text-bold text-uppercase">{{bank.account_name}}</div>
+                    <div class="">
+                        {{bank.bank_name}} {{bank.account_number}}
+                    </div>
                 </div>
-            </div>
 
-<!--            <div class="flex mr" ng-if="isEditable">-->
-<!--                <div class="flex-middle">-->
-<!--                    <button-edit-icon ng-click="editAddressFn( bank )"></button-edit-icon>-->
-<!--                </div>-->
-<!--                <div class="flex-middle">-->
-<!--                    <button-delete-icon ng-click="deleteAddressFn( bank.id )"></button-delete-icon>-->
-<!--                </div>-->
-<!--            </div>-->
+                <!--            <div class="flex mr" ng-if="isEditable">-->
+                <!--                <div class="flex-middle">-->
+                <!--                    <button-edit-icon ng-click="editAddressFn( bank )"></button-edit-icon>-->
+                <!--                </div>-->
+                <!--                <div class="flex-middle">-->
+                <!--                    <button-delete-icon ng-click="deleteAddressFn( bank.id )"></button-delete-icon>-->
+                <!--                </div>-->
+                <!--            </div>-->
+            </div>
         </div>
+
+
         <div class="height-100"
              ng-if="!bankAccounts || bankAccounts.length == 0">
             <app-no-data message="NO_BANK_ACCOUNTS_AVAILABLE_TEXT"></app-no-data>
