@@ -21,9 +21,9 @@
                                 <div class="mb">
                                     <div class="">
                                         <em class="fa-solid fa-circle txt-18 mr-sm "
-                                            ng-class="{'text-dark-gray': user.lvl != 3, 'text-green': user.lvl == 3}"></em>
+                                            ng-class="{'text-dark-gray': user.lvl < 2, 'text-green': user.lvl >= 2}"></em>
 
-                                        {{ user.lvl == 3 ? ('VERIFIED_TEXT' | translate) : ('UNVERIFIED_TEXT' | translate)}}
+                                        {{ user.lvl >= 2 ? ('VERIFIED_TEXT' | translate) : ('UNVERIFIED_TEXT' | translate)}}
                                     </div>
                                 </div>
                                 <div class="mb-sm">{{'CREATED_AT_TEXT' | translate}}

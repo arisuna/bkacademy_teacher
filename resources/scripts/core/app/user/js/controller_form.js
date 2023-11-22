@@ -79,6 +79,21 @@
                 }
             }; // End save function
 
+            $scope.upgradeToLvl2 = function () {
+                $scope.saving = true;
+                AppUserService.upgradeToLvl2($scope.user).then(function (res) {
+                    if (res.success) {
+                        WaitingService.popSuccess(res.message);
+                        $scope.user.lvl = 2;
+                    } else {
+                        WaitingService.error(res.message);
+                    }
+                    $scope.saving = false;
+                }, function (err) {
+                    WaitingService.error(err);
+                })
+            }; 
+
             $scope.deleteFn = function (id) {
                 WaitingService.questionSimple('QUESTION_DELETE_USER_TEXT',
                     function (res) {

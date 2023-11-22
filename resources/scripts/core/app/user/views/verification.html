@@ -50,6 +50,10 @@
         </div>
 
         <div class="text-right mg-t-20">
+            <button type="button" class="btn relo-bg-green mr-sm" title="Save" ng-disabled="saving" ng-if="isEditable && canSave && user.lvl == 1" ng-click="upgradeToLvl2()"><i
+                    class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-check'}} mr-sm"></i>
+                {{'APPROVE_TO_LVL2_TEXT' | translate}}
+            </button>
             <save-button-submit label="SAVE_BTN_TEXT"
                                 ng-if="isEditable"
                                 ng-disabled="saving"></save-button-submit>
