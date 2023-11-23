@@ -359,7 +359,6 @@
                 );
             }
 
-
             $scope.createBankAccount = () => {
 
                 $scope.createBankDialog = ngDialog.open({
@@ -387,6 +386,53 @@
                 });
             }
 
+            $scope.editBankAccount = (bank) => {
+                $scope.editBankDialog = ngDialog.open({
+                    template: urlBase.tplApp('app', 'company', 'bank-account-form-right-dialog', '_=' + Math.random()),
+                    className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
+                    scope: $scope,
+                    resolve: {
+                        currentCompany: ['AppDataService', function (AppDataService) {
+                            return $scope.company;
+                        }],
+                        bank: ['AppDataService', function (AppDataService) {
+                            return bank;
+                        }]
+                    },
+                    closeByDocument: true,
+                    controller: 'BankAccountController'
+                });
+
+                $scope.editBankDialog.closePromise.then(function (data) {
+                    if (angular.isDefined(data.value.bank) && data.value.bank) {
+                        console.log('data.value', data.value);
+
+                        $scope.getListBanks($scope.company.uuid);
+                    }
+                });
+            }
+
+            $scope.deleteBankAccount = (uuid) => {
+                $scope.saving = true;
+                if ($scope.bankAccounts.length == 1 && $scope.company.status == 1) {
+                    WaitingService.error('DELETE_BANK_ACCOUNT_IMPOSSIBLE_TEXT');
+                    return;
+                }
+
+                AppCompanyService.removeBankAccount(uuid).then(function (res) {
+                    $scope.saving = false;
+                    if (res.success) {
+                        WaitingService.popSuccess(res.message);
+                        $scope.getListBanks($scope.company.uuid);
+                    } else {
+                        WaitingService.error(res.message);
+                    }
+                }, (err) => {
+                    $scope.saving = false;
+                    WaitingService.error(err);
+                })
+
+            }
         }]);
 
 })();

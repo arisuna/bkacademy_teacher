@@ -90,6 +90,16 @@
             return deferred.promise;
         };
 
+        this.updateBankAccount = function (data) {
+            const deferred = $q.defer();
+            AppHttp.put('/app/company/updateBankAccount', data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
 
         this.removeBankAccount = function (uuid) {
             const deferred = $q.defer();

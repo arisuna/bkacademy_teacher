@@ -15,7 +15,7 @@
                 <div class="col-md-12">
                     <app-bank-selector ng-model="bank.bank_code"
                                        show-label="true"
-                                       is-editable="true"
+                                       is-editable="!bank.id"
                                        is-required="true"
                                        ng-change="changeBank(item)"
                                        label="BANK_TEXT"
@@ -51,6 +51,18 @@
             <div class="row">
                 <div class="col-sm-12">
                     <input-text is-editable="true"
+                                ng-if="!bank.id"
+                                is-text="true"
+                                is-numeric="true"
+                                is-required="true"
+                                ng-model="bank.account_number"
+                                required-message="FIELD_IS_REQUIRED_TEXT"
+                                label="ACCOUNT_NUMBER_TEXT"
+                                placeholder="ENTER_ACCOUNT_NUMBER_TEXT"
+                                show-label="true"></input-text>
+
+                    <input-text is-editable="false"
+                                ng-if="bank.id"
                                 is-text="true"
                                 is-required="true"
                                 ng-model="bank.account_number"
@@ -63,7 +75,7 @@
 
             <div class="row">
                 <div class="col-sm-12">
-                    <input-text is-editable="true"
+                    <input-text is-editable="!bank.id"
                                 is-text="true"
                                 is-required="true"
                                 ng-model="bank.account_name"
@@ -71,6 +83,18 @@
                                 required-message="FIELD_IS_REQUIRED_TEXT"
                                 label="ACCOUNT_NAME_TEXT"
                                 placeholder="ENTER_ACCOUNT_NAME_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                is-required="false"
+                                ng-model="bank.iban"
+                                required-message="FIELD_IS_REQUIRED_TEXT"
+                                label="IBAN_TEXT"
                                 show-label="true"></input-text>
                 </div>
             </div>

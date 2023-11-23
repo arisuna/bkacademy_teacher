@@ -37,7 +37,7 @@
                 console.log("$scope.bank", $scope.bank)
 
                 if ($scope.bank.id > 0) {
-                    AppCompanyService.updateAddress($scope.bank).then(function (res) {
+                    AppCompanyService.updateBankAccount($scope.bank).then(function (res) {
                         $scope.saving = false;
                         if (res.success) {
                             WaitingService.popSuccess(res.message);

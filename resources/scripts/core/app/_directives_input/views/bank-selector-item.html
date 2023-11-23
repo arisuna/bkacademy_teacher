@@ -10,7 +10,7 @@
               ng-if="showLabel == true && isEditable == true && showRemoveLabel"
               ng-show="!(data.selected.code == null || data.selected.code == '' || data.selected.code == undefined) && isEditable == true">
             <a ng-click="removeItem();">
-                {{'REMOVE_TEXT'|translate}}
+                {{'REMOVE_TEXT' | translate}}
             </a>
         </span>
         <div class="clearfix"></div>
@@ -22,12 +22,12 @@
         <div class="item"
              ng-show="!(data.selected.code == null || data.selected.code == '' || data.selected.code == undefined)">
 
-            <img class="img-circle thumb32 mr-sm" src="{{data.selected.logo}}" alt="{{data.selected.short_name}}"/>
+            <img class="height-32px mr-sm" src="{{data.selected.logo}}" alt="{{data.selected.short_name}}"/>
 
             <span class="principal pd-t-3">
                <a ng-click="openSearchDialog($event)">
                     <div class="">{{data.selected.short_name}}</div>
-<!--                    <span class="txt-10">{{data.selected.name}}</span>-->
+                   <!--                    <span class="txt-10">{{data.selected.name}}</span>-->
                </a>
             </span>
 
@@ -56,10 +56,10 @@
          ng-if="isEditable == false">
         <div class="item"
              ng-if="!(data.selected.code == null || data.selected.code == '' || data.selected.code == undefined)">
-            <img class="img-circle thumb32 mr-sm" src="{{data.selected.logo}}" alt="{{data.selected.short_name}}"/>
+            <img class="height-32px mr-sm" src="{{data.selected.logo}}" alt="{{data.selected.short_name}}"/>
 
             <div class="">{{data.selected.short_name}}</div>
-            <span class="txt-10">{{data.selected.name}}</span>
+            <!--            <span class="txt-10">{{data.selected.name}}</span>-->
         </div>
 
         <div class="item"
