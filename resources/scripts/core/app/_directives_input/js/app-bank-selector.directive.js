@@ -27,9 +27,8 @@
                 ngChange: '&?',
                 showRemoveLabel: '<?',
             },
-
             templateUrl: urlBase.tplApp('app', '_directives_input', 'bank-selector-item'),
-            
+
             link: function (scope, element, attrs) {
 
                 scope.name = 'bank';
