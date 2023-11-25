@@ -6,8 +6,7 @@
                    app-dynamic-label-hover=""
                    ng-if="showLabel == true">
                 {{ label | translate }}
-            </label>
-            <asterik-red ng-if="isRequired" class="pull-left"></asterik-red>
+            </label> <asterik-red ng-if="isRequired" class="pull-left"></asterik-red>
             <tooltip text="{{ toolTipText  }}" class="pull-right"></tooltip>
             <div class="clearfix"></div>
         </div>
@@ -63,6 +62,11 @@
                    update-on-enter=""
                    ng-change="updateValue()">
         </div>
+        <input class="text"
+               ng-show="false"
+               ng-model="data.telephone_number"
+               ng-required="isRequired"
+               data-parsley-required-message="{{'FIELD_REQUIRED_TEXT' | translate}}">
 
 
         <telephone-viewer ng-model="model" ng-if="isEditable == false" no-border="noBorderViewer"></telephone-viewer>

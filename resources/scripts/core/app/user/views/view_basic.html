@@ -28,7 +28,7 @@
             <div class="col-sm-6">
                 <input-text is-editable="isEditable"
                             is-email="true"
-                            is-required="true"
+                            is-required="false"
                             ng-model="user.email"
                             required-message="ENTER_EMAIL_TEXT"
                             label="EMAIL_TEXT"
@@ -38,6 +38,7 @@
                 <app-phone-selector ng-model="user.phone"
                                     show-label="true"
                                     is-editable="isEditable"
+                                    is-required="true"
                                     label="PHONE_TEXT"></app-phone-selector>
             </div>
         </div>
