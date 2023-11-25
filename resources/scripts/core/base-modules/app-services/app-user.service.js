@@ -79,5 +79,17 @@
             });
             return deferred.promise;
         };
+
+
+        this.rejectToLvl2 = function (data) {
+            var deferred = $q.defer();
+            AppHttp.put('/app/user/rejectToLvl2/' + data.id, data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
     }
 })();

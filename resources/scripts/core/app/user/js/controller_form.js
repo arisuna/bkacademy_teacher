@@ -85,6 +85,22 @@
                     if (res.success) {
                         WaitingService.popSuccess(res.message);
                         $scope.user.lvl = 2;
+                        $scope.user.verification_status = 2;
+                    } else {
+                        WaitingService.error(res.message);
+                    }
+                    $scope.saving = false;
+                }, function (err) {
+                    WaitingService.error(err);
+                })
+            }; 
+
+            $scope.rejectToLvl2 = function () {
+                $scope.saving = true;
+                AppUserService.rejectToLvl2($scope.user).then(function (res) {
+                    if (res.success) {
+                        WaitingService.popSuccess(res.message);
+                        $scope.user.verification_status = -1;
                     } else {
                         WaitingService.error(res.message);
                     }

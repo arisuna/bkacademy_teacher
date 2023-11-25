@@ -23,7 +23,7 @@
                                         <em class="fa-solid fa-circle txt-18 mr-sm "
                                             ng-class="{'text-dark-gray': user.lvl < 2, 'text-green': user.lvl >= 2}"></em>
 
-                                        {{ user.lvl >= 2 ? ('VERIFIED_TEXT' | translate) : ('UNVERIFIED_TEXT' | translate)}}
+                                        {{ user.lvl >= 2 ? ('VERIFIED_TEXT' | translate) : (user.verification_status == 1 ? ('PENDING_TEXT' | translate) : (user.verification_status == -1 ? ('REJECTED_TEXT' | translate) : ('UNVERIFIED_TEXT' | translate)))}}
                                     </div>
                                 </div>
                                 <div class="mb-sm">{{'CREATED_AT_TEXT' | translate}}
