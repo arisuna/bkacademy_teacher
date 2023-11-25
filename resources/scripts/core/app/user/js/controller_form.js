@@ -12,6 +12,11 @@
             $scope.canSave = false;
             $scope.isEditable = false;
 
+            $scope.statuses = [
+                {name: 'UNVERIFIED_TEXT', value: 0, color: 'dark-gray', text: 'UNVERIFIED_TEXT'},
+                {name: 'VERIFIED_TEXT', value: 2, color: 'green', text: 'VERIFIED_TEXT'},
+            ]
+
             $scope.canSave =  angular.isDefined($stateParams.id) ? AppAclService.validateAction('end_user', 'edit') : AppAclService.validateAction('end_user', 'create');
 
             $scope.onEditable = ($event, isEditable) => {
@@ -31,6 +36,8 @@
                     function (res) {
                         if (res.success) {
                             $scope.user = res.data;
+
+                            $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status)
                         } else {
                             WaitingService.error(res.msg);
                         }
@@ -79,6 +86,40 @@
                 }
             }; // End save function
 
+            $scope.changeStatus = (item, index) => {
+                if(item.value == 2 && $scope.user.lvl < 2){
+                    let mess = 'VERIFICATION_NOT_ALLOW_TEXT';
+
+                    if (!$scope.user.id_number) {
+                        mess = 'ID_NUMBER_IS_REQUIRED_TEXT';
+                        $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status)
+                        WaitingService.error(mess);
+                        $scope.setTab(3);
+                        return;
+                    }
+                    $scope.user.verification_status = item.value;
+                    $scope.upgradeToLvl2();
+
+
+                    return;
+                } else {
+                    WaitingService.questionWithInputText('YOU_SHOULD_ENTER_CODE_TO_CONFIRM_ACTION_TEXT', 'ENTER_CODE_TO_CONFIRM_UNVERIFIED_TEXT', null,
+                        function (confirmText) {
+                            let mess = 'VERIFICATION_NOT_ALLOW_TEXT';
+                            if (confirmText != 'unverified') {
+                                mess = 'CONFIRM_TEXT_INCORRECT_TEXT';
+                                $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status);
+                                console.log($scope.user.verification_status, $scope.user.statusSelected);
+                                WaitingService.error(mess);
+                                return;
+                            }
+                            $scope.user.verification_status = item.value;
+                            $scope.rejectToLvl2();
+                        });
+                }
+
+            }
+
             $scope.upgradeToLvl2 = function () {
                 $scope.saving = true;
                 AppUserService.upgradeToLvl2($scope.user).then(function (res) {
@@ -86,6 +127,7 @@
                         WaitingService.popSuccess(res.message);
                         $scope.user.lvl = 2;
                         $scope.user.verification_status = 2;
+                        $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status);
                     } else {
                         WaitingService.error(res.message);
                     }
@@ -100,7 +142,8 @@
                 AppUserService.rejectToLvl2($scope.user).then(function (res) {
                     if (res.success) {
                         WaitingService.popSuccess(res.message);
-                        $scope.user.verification_status = -1;
+                        $scope.user.verification_status = 0;
+                        $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status);
                     } else {
                         WaitingService.error(res.message);
                     }

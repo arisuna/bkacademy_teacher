@@ -19,12 +19,28 @@
                             <div class="col-md-12">
                                 <div class="mb">{{'ID_NUMBER_TEXT' | translate}}: {{user.id_number}}</div>
                                 <div class="mb">
-                                    <div class="">
-                                        <em class="fa-solid fa-circle txt-18 mr-sm "
-                                            ng-class="{'text-dark-gray': user.lvl < 2, 'text-green': user.lvl >= 2}"></em>
+                                    <ui-select ng-model="user.statusSelected"
+                                               required="true"
+                                               ng-disabled="!isEditable"
+                                               ng-class="{'uib-select-bright-blue-10': isEditable, 'uib-select-white': !isEditable}"
+                                               class="w-100 uib-select-95-per form-control-custom-radius"
+                                               theme="bootstrap">
+                                        <ui-select-match
+                                                placeholder="{{'SELECT_TEXT' | translate}}"
+                                                class="bg-transparent">
+                                            <em class="fa-solid fa-circle txt-16 mr-sm {{'text-' + $select.selected.color}}"></em>
+                                            {{ $select.selected.text | translate}}
 
-                                        {{ user.lvl >= 2 ? ('VERIFIED_TEXT' | translate) : (user.verification_status == 1 ? ('PENDING_TEXT' | translate) : (user.verification_status == -1 ? ('REJECTED_TEXT' | translate) : ('UNVERIFIED_TEXT' | translate)))}}
-                                    </div>
+                                        </ui-select-match>
+
+                                        <ui-select-choices repeat="item in statuses track by $index">
+                                            <div class=" " ng-click="saving = true ; changeStatus(item, $index)">
+                                                <em class="fa-solid fa-circle txt-16 mr-sm {{'text-' + item.color}}"></em>
+                                                {{ item.text | translate}}
+                                            </div>
+
+                                        </ui-select-choices>
+                                    </ui-select>
                                 </div>
                                 <div class="mb-sm">{{'CREATED_AT_TEXT' | translate}}
                                     {{ user.created_at | amDateFormat: 'DD/MM/YYYY'}}
@@ -48,7 +64,7 @@
 
                         <a class="list-group-item"
                            ng-class="{'active': (tabActive == 3)}"
-                           ng-click="tabActive = 3">{{ 'VERIFICATION_AND_TAX_NUMBER_TEXT' | translate }}</a>
+                           ng-click="tabActive = 3">{{ 'USER_VERIFICATION_TEXT' | translate }}</a>
                     </div>
                 </div>
             </div>
