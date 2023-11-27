@@ -5,12 +5,37 @@
 (function () {
     'use strict';
 
-    App.controller('EndUserFormController', ['$scope', '$http', '$stateParams', '$state', 'WaitingService', 'AppDataService', 'AppSystem', 'AppAclService', 'AppUserService',
-        function ($scope, $http, $stateParams, $state, WaitingService, AppDataService, AppSystem, AppAclService, AppUserService) {
+    App.controller('EndUserFormController', ['$scope', '$http', '$stateParams', '$state', 'ngDialog', 'urlBase', 'WaitingService', 'AppAddressService', 'AppSystem', 'AppAclService', 'AppUserService',
+        function ($scope, $http, $stateParams, $state, ngDialog, urlBase, WaitingService, AppAddressService, AppSystem, AppAclService, AppUserService) {
             $scope.page_loading = true;
             $scope.user = {};
             $scope.canSave = false;
             $scope.isEditable = false;
+            $scope.addresses = [];
+
+            $scope.getListAddress = () => {
+                AppAddressService.getAddressList({
+                    end_user_id: $stateParams.id
+                }).then((res) => {
+                    if (res.success) {
+                        $scope.addresses = res.data;
+
+                        console.log("mailAddresses", $scope.mailAddresses)
+                    } else {
+                        WaitingService.expire();
+                    }
+
+                    $timeout(function () {
+                        $scope.isLoadingAddress = false;
+                    }, 500)
+
+                }, (err) => {
+                    WaitingService.expire();
+                    $timeout(function () {
+                        $scope.isLoadingAddress = false;
+                    }, 500)
+                });
+            };
 
             $scope.statuses = [
                 {name: 'UNVERIFIED_TEXT', value: 0, color: 'dark-gray', text: 'UNVERIFIED_TEXT'},
@@ -32,6 +57,7 @@
                     return;
                 }
 
+                $scope.getListAddress();
                 AppUserService.getUserDetail(id).then(
                     function (res) {
                         if (res.success) {
@@ -174,5 +200,83 @@
                     });
             }; // End delete function
 
+
+            $scope.createAddress = function (type = 2) {
+                // alert('createAddress')
+
+                $scope.createAddressDialog = ngDialog.open({
+                    template: urlBase.tplApp('app', 'user', 'address-form-right-dialog', '_=' + Math.random()),
+                    className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
+                    scope: $scope,
+                    resolve: {
+                        currentUser: ['AppDataService', function (AppDataService) {
+                            return $scope.user;
+                        }],
+                        type: ['AppDataService', function (AppDataService) {
+                            return type;
+                        }],
+                        address: ['AppDataService', function (AppDataService) {
+                            return {};
+                        }]
+                    },
+                    closeByDocument: true,
+                    controller: 'UserAddressController'
+                });
+
+                $scope.createAddressDialog.closePromise.then(function (data) {
+                    if (angular.isDefined(data.value.address) && data.value.address) {
+                        console.log('data.value', data.value);
+
+                        $scope.getListAddress($scope.user.id);
+                    }
+                });
+            }
+
+            $scope.deleteAddressFn = function (id) {
+                WaitingService.questionSimple('QUESTION_DELETE_ADDRESS_TEXT',
+                    function (res) {
+                        AppAddressService.deleteAddress(id).then(function (res) {
+                            if (res.success) {
+                                WaitingService.popSuccess(res.message);
+                                $scope.getListAddress($scope.user.id);
+                            } else {
+                                WaitingService.error(res.message);
+                            }
+                        }, function (err) {
+                            WaitingService.error(err);
+                        });
+                    });
+            };
+
+            $scope.editAddressFn = function (address, type = 2) {
+                // alert('editAddress')
+
+                $scope.editAddressDialog = ngDialog.open({
+                    template: urlBase.tplApp('app', 'user', 'address-form-right-dialog', '_=' + Math.random()),
+                    className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
+                    scope: $scope,
+                    resolve: {
+                        currentUser: ['AppDataService', function (AppDataService) {
+                            return $scope.user;
+                        }],
+                        type: ['AppDataService', function (AppDataService) {
+                            return type;
+                        }],
+                        address: ['AppDataService', function (AppDataService) {
+                            return address;
+                        }]
+                    },
+                    closeByDocument: true,
+                    controller: 'UserAddressController'
+                });
+
+                $scope.editAddressDialog.closePromise.then(function (data) {
+                    if (angular.isDefined(data.value.address) && data.value.address) {
+                        console.log('data.value', data.value);
+
+                        $scope.getListAddress($scope.user.id);
+                    }
+                });
+            }
         }]);
 })();

@@ -1,0 +1,98 @@
+<div class="card noBorder">
+    <div class="card-heading relo-bg-bright-gray card-title-heading">
+        <span ng-if="!address.id">{{'CREATE_ADDRESS_TEXT' | translate}}</span>
+        <span ng-if="address.id" >{{'EDIT_ADDRESS_TEXT' | translate}}</span>
+    </div>
+
+    <form class="form-validate pd-0 mg-0"
+          validate-form=""
+          ng-submit="saveFn()"
+          ng-if="!isLoading"
+          novalidate>
+        <div class="card-body custom-dialog-overflow scroll-append scroll-y overflow-x-disable height-100vh-m93px">
+            <div class="row">
+                <div class="col-md-12">
+                    <app-country-selector ng-model="address.country_id"
+                                          show-label="true"
+                                          is-editable="true"
+                                          is-required="true"
+                                          label="COUNTRY_TEXT"
+                                          ng-change="ngChangeCountry(item)"
+                                          required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}">
+                    </app-country-selector>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                is-required="true"
+                                ng-model="address.name"
+                                required-message="FIELD_IS_REQUIRED_TEXT"
+                                placeholder="ENTER_NAME_TEXT"
+                                label="NAME_TEXT"
+                                show-label="true"></input-text>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <app-province-selector ng-model="address.vn_province_id"
+                                           show-label="true"
+                                           is-editable="true"
+                                           is-required="true"
+                                           label="PROVINCE_TEXT"
+                                           ng-change="ngChangeProvince(item)"
+                                           required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}">
+                    </app-province-selector>
+                </div>
+            </div>
+
+            <div class="row" ng-if="address.vn_province_id">
+                <div class="col-sm-12">
+                    <app-district-selector ng-model="address.vn_district_id"
+                                           province-id="address.vn_province_id"
+                                           show-label="true"
+                                           is-editable="!!address.vn_province_id"
+                                           is-required="true"
+                                           label="DISTRICT_TEXT"
+                                           ng-change="ngChangeDistrict(item)"
+                                           required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}">
+                    </app-district-selector>
+                </div>
+            </div>
+
+            <div class="row" ng-if="address.vn_district_id && address.vn_province_id">
+                <div class="col-sm-12">
+                    <app-ward-selector ng-model="address.vn_ward_id"
+                                       district-id="address.vn_district_id"
+                                       show-label="true"
+                                       is-editable="!!address.vn_district_id"
+                                       is-required="true"
+                                       ng-change="ngChangeWard(item)"
+                                       label="WARD_TEXT"
+                                       required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}">
+                    </app-ward-selector>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                is-required="false"
+                                ng-model="address.address1"
+                                label="ADDRESS_DETAILS_TEXT"
+                                required-message="FIELD_IS_REQUIRED_TEXT"
+                                placeholder="ENTER_ADDRESS_DETAILS_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer text-right">
+            <save-button-submit title="SAVE_BTN_TEXT" ng-disabled="saving "></save-button-submit>
+        </div>
+    </form>
+</div>
