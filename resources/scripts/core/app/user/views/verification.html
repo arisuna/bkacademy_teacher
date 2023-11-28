@@ -49,6 +49,20 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <label class="label-text-form">
+                        {{'BANK_ACCOUNTS_TEXT' | translate}} <asterik-red class=""></asterik-red>
+                    </label>
+                </div>
+
+                <div class="mg-b-20">
+                    <div ng-include="'/app/views/user/bank-acounts.html'"></div>
+                </div>
+            </div>
+        </div>
+
         <div class="text-right mg-t-20">
             <button type="button" class="btn relo-bg-red mr-sm" title="Save" ng-disabled="saving" ng-if="isEditable && canSave && user.lvl == 1 && user.verification_status == 1" ng-click="rejectToLvl2()"><i
                     class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-close'}} mr-sm"></i>

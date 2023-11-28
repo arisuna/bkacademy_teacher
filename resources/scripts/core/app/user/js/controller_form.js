@@ -12,6 +12,7 @@
             $scope.canSave = false;
             $scope.isEditable = false;
             $scope.addresses = [];
+            $scope.bankAccounts = [];
 
             $scope.getListAddress = () => {
                 AppAddressService.getAddressList({
@@ -63,7 +64,8 @@
                         if (res.success) {
                             $scope.user = res.data;
 
-                            $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status)
+                            $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status);
+                            $scope.getListBanks(res.data.uuid);
                         } else {
                             WaitingService.error(res.msg);
                         }
@@ -277,6 +279,102 @@
                         $scope.getListAddress($scope.user.id);
                     }
                 });
+            }
+
+            $scope.getListBanks = (uuid) => {
+                $scope.isLoadingBanks = true
+
+                AppUserService.getBankAccounts(uuid).then(
+                    function (res) {
+                        if (res.success) {
+                            $scope.bankAccounts = res.data ? res.data : []
+                        } else {
+                            WaitingService.error(res.message);
+                        }
+                        $scope.isLoadingBanks = false
+                    },
+                    function (error) {
+                        console.log("error", error)
+                        $scope.isLoadingBanks = false
+
+                        WaitingService.expire(error);
+                    }
+                );
+            }
+
+            $scope.createBankAccount = () => {
+
+                $scope.createBankDialog = ngDialog.open({
+                    template: urlBase.tplApp('app', 'user', 'bank-account-form-right-dialog', '_=' + Math.random()),
+                    className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
+                    scope: $scope,
+                    resolve: {
+                        currentUser: ['AppDataService', function (AppDataService) {
+                            return $scope.user;
+                        }],
+                        bank: ['AppDataService', function (AppDataService) {
+                            return {};
+                        }]
+                    },
+                    closeByDocument: true,
+                    controller: 'UserBankAccountController'
+                });
+
+                $scope.createBankDialog.closePromise.then(function (data) {
+                    if (angular.isDefined(data.value.bank) && data.value.bank) {
+                        console.log('data.value', data.value);
+
+                        $scope.getListBanks($scope.user.uuid);
+                    }
+                });
+            }
+
+            $scope.editBankAccount = (bank) => {
+                $scope.editBankDialog = ngDialog.open({
+                    template: urlBase.tplApp('app', 'company', 'bank-account-form-right-dialog', '_=' + Math.random()),
+                    className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
+                    scope: $scope,
+                    resolve: {
+                        currentUser: ['AppDataService', function (AppDataService) {
+                            return $scope.user;
+                        }],
+                        bank: ['AppDataService', function (AppDataService) {
+                            return bank;
+                        }]
+                    },
+                    closeByDocument: true,
+                    controller: 'UserBankAccountController'
+                });
+
+                $scope.editBankDialog.closePromise.then(function (data) {
+                    if (angular.isDefined(data.value.bank) && data.value.bank) {
+                        console.log('data.value', data.value);
+
+                        $scope.getListBanks($scope.user.uuid);
+                    }
+                });
+            }
+
+            $scope.deleteBankAccount = (uuid) => {
+                $scope.saving = true;
+                if ($scope.bankAccounts.length == 1 && $scope.user.verification_status == 2) {
+                    WaitingService.error('DELETE_BANK_ACCOUNT_IMPOSSIBLE_TEXT');
+                    return;
+                }
+
+                AppUserService.removeBankAccount(uuid).then(function (res) {
+                    $scope.saving = false;
+                    if (res.success) {
+                        WaitingService.popSuccess(res.message);
+                        $scope.getListBanks($scope.user.uuid);
+                    } else {
+                        WaitingService.error(res.message);
+                    }
+                }, (err) => {
+                    $scope.saving = false;
+                    WaitingService.error(err);
+                })
+
             }
         }]);
 })();

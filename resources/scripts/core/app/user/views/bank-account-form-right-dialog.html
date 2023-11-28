@@ -1,0 +1,117 @@
+<div class="card noBorder">
+    <div class="card-heading relo-bg-bright-gray card-title-heading">
+        <span ng-show="!bank.id">{{'CREATE_BANK_ACCOUNT_TEXT' | translate}}</span>
+        <span ng-show="bank.id">{{'EDIT_BANK_ACCOUNT_TEXT' | translate}}</span>
+    </div>
+
+    <form class="form-validate pd-0 mg-0"
+          validate-form=""
+          ng-submit="saveFn()"
+          ng-if="!isLoading"
+          novalidate>
+        <div class="card-body custom-dialog-overflow scroll-append scroll-y overflow-x-disable height-100vh-m93px">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <app-bank-selector ng-model="bank.bank_code"
+                                       show-label="true"
+                                       is-editable="!bank.id"
+                                       is-required="true"
+                                       ng-change="changeBank(item)"
+                                       label="BANK_TEXT"
+                                       required-message="{{ 'FIELD_IS_REQUIRED_TEXT' | translate }}">
+                    </app-bank-selector>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="false"
+                                is-text="true"
+                                is-required="true"
+                                ng-model="bank.swift_code"
+                                required-message="FIELD_IS_REQUIRED_TEXT"
+                                label="SWIFT_CODE_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                is-required="false"
+                                ng-model="bank.branch"
+                                required-message="FIELD_IS_REQUIRED_TEXT"
+                                label="BRANCH_TEXT"
+                                placeholder="ENTER_BRANCH_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                ng-if="!bank.id"
+                                is-text="true"
+                                is-numeric="true"
+                                is-required="true"
+                                ng-model="bank.account_number"
+                                required-message="FIELD_IS_REQUIRED_TEXT"
+                                label="ACCOUNT_NUMBER_TEXT"
+                                placeholder="ENTER_ACCOUNT_NUMBER_TEXT"
+                                show-label="true"></input-text>
+
+                    <input-text is-editable="false"
+                                ng-if="bank.id"
+                                is-text="true"
+                                is-required="true"
+                                ng-model="bank.account_number"
+                                required-message="FIELD_IS_REQUIRED_TEXT"
+                                label="ACCOUNT_NUMBER_TEXT"
+                                placeholder="ENTER_ACCOUNT_NUMBER_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="!bank.id"
+                                is-text="true"
+                                is-required="true"
+                                ng-model="bank.account_name"
+                                is-upper-case="true"
+                                required-message="FIELD_IS_REQUIRED_TEXT"
+                                label="ACCOUNT_NAME_TEXT"
+                                placeholder="ENTER_ACCOUNT_NAME_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-text="true"
+                                is-required="false"
+                                ng-model="bank.iban"
+                                required-message="FIELD_IS_REQUIRED_TEXT"
+                                label="IBAN_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <app-currency-selector
+                            ng-model="bank.currency"
+                            is-editable="true"
+                            is-required="true"
+                            label="CURRENCY"
+                            show-label="true"></app-currency-selector>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer text-right">
+            <save-button-submit title="SAVE_BTN_TEXT" ng-disabled="saving"></save-button-submit>
+        </div>
+    </form>
+</div>
