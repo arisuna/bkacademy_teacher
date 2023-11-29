@@ -96,7 +96,7 @@
                                 aria-haspopup="true"
                                 aria-expanded="false"
                                 tooltip-placement="bottom"
-                                uib-tooltip="{{ object.status  == 1 ? ('UNVERIFIED_TEXT' | translate) : (object.status  == 2 ? ('VERIFIED_TEXT' | translate) : ('PUBLISHED_TEXT' | translate)) }}"
+                                uib-tooltip="{{ object.status  == 1 ? ('UNDER_APPROVAL_TEXT' | translate) : (object.status  == 2 ? ('APPROVED_TEXT' | translate) : ('PUBLISHED_TEXT' | translate)) }}"
                                 ng-class="{'unverified': object.status == 1, 'is-active': object.status == 2, 'in-aproval': object.status == 3}">
                         </button>
                     </td>
