@@ -133,11 +133,13 @@
                                 $scope.closeThisDialog({company: res});
                             } else {
                                 $scope.company.status = oldStatus
+                                $scope.company.statusSelected = $scope.statuses.find(o => o.value === oldStatus)
                                 WaitingService.error(res.message);
                             }
                         }, (err) => {
                             $scope.saving = false;
                             $scope.company.status = oldStatus
+                            $scope.company.statusSelected = $scope.statuses.find(o => o.value === oldStatus)
                             WaitingService.error(err);
                         })
 
