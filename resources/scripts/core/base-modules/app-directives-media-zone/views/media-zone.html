@@ -248,6 +248,7 @@
                                      items="items"
                                      ng-repeat="item in items | filter:searchText track by $index "></app-media-item-list>
             </div>
+
             <div class="mt row" ng-if="displayMode == 'grid'" vertilize-container="">
                 <app-media-item-grid display-mode="displayMode"
                                      is-selectable="false"
