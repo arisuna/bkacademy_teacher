@@ -15,6 +15,7 @@
             replace: true,
             scope: {
                 onSelectItem: '&onSelectItem',
+                onLoaded: '&onLoaded',
                 onAddItem: '&onAddItem',
                 multiSelect: '<?',
                 showLibrary: '<?',
@@ -200,6 +201,7 @@
                         if (res.success == true) {
                             $scope.items = res.data
                         }
+                        $scope.publish('update_attachments', {count: $scope.items.length, uuid: $scope.uuid, type: $scope.objectType});
                         $scope.isLoading = false;
                     }, function () {
                         $scope.isLoading = false;

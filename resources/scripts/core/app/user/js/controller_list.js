@@ -161,15 +161,17 @@
             $scope.clearFilter = function () {
                 $scope.query = "";
                 $scope.sort = {};
+                $scope.items = [];
+                $scope.loadItems();
                 $scope.publish('clearFilter');
             };
 
             $scope.deleteFn = function (user, index) {
                 WaitingService.questionSimple('QUESTION_DELETE_USER_TEXT', function () {
-                    AppDataService.deleteCrmUser(user.id).then(function (res) {
+                    AppUserService.deleteUser(user.id).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
-                            $scope.reloadInit();
+                            $scope.loadItems();
                         } else {
                             WaitingService.error(msg);
                         }

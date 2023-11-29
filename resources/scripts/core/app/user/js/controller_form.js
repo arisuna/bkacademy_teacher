@@ -11,8 +11,11 @@
             $scope.user = {};
             $scope.canSave = false;
             $scope.isEditable = false;
+            $scope.tabActive = 1;
             $scope.addresses = [];
             $scope.bankAccounts = [];
+            $scope.count_attachment_id_front = 0;
+            $scope.count_attachment_id_back = 0;
 
             $scope.getListAddress = () => {
                 AppAddressService.getAddressList({
@@ -114,18 +117,58 @@
                 }
             }; // End save function
 
+            $scope.subscribe('update_attachments', function (data) {
+                console.log('update_attachments', data);
+                if (angular.isDefined(data.uuid) && angular.isDefined(data.type && angular.isDefined(data.count)) && data.uuid == $scope.user.uuid && data.type == 'user_id_front') {
+                   $scope.count_attachment_id_front = data.count;
+                }
+                if (angular.isDefined(data.uuid) && angular.isDefined(data.type) && angular.isDefined(data.count) && data.uuid == $scope.user.uuid && data.type == 'user_id_back') {
+                   $scope.count_attachment_id_back = data.count;
+                }
+            });
+
+            $scope.setTab = (tabActive) => {
+                $scope.tabActive = tabActive;
+            }
+
             $scope.changeStatus = (item, index) => {
                 if(item.value == 2 && $scope.user.lvl < 2){
                     let mess = 'VERIFICATION_NOT_ALLOW_TEXT';
 
-                    if (!$scope.user.id_number) {
+                    if (!$scope.user.id_number ) {
                         mess = 'ID_NUMBER_IS_REQUIRED_TEXT';
                         $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status)
                         WaitingService.error(mess);
                         $scope.setTab(3);
                         return;
                     }
-                    $scope.user.verification_status = item.value;
+
+                    if ($scope.bankAccounts.length == 0 ) {
+                        mess = 'BANK_ACCOUNT_IS_REQUIRED_TEXT';
+                        $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status)
+                        WaitingService.error(mess);
+                        $scope.setTab(3);
+                        return;
+                    }
+
+                    if ($scope.count_attachment_id_back == 0 ) {
+                        mess = 'ID_CERTIFICATE_BACK_SIDE_IS_REQUIRED_TEXT';
+                        $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status)
+                        WaitingService.error(mess);
+                        $scope.setTab(3);
+                        return;
+                    }
+
+                    if ($scope.count_attachment_id_front == 0 ) {
+                        mess = 'ID_CERTIFICATE_FRONT_SIDE_IS_REQUIRED_TEXT';
+                        $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status)
+                        WaitingService.error(mess);
+                        $scope.setTab(3);
+                        return;
+                    }
+
+                
+                    // $scope.user.verification_status = item.value;
                     $scope.upgradeToLvl2();
 
 
@@ -141,7 +184,7 @@
                                 WaitingService.error(mess);
                                 return;
                             }
-                            $scope.user.verification_status = item.value;
+                            // $scope.user.verification_status = item.value;
                             $scope.rejectToLvl2();
                         });
                 }
@@ -155,12 +198,14 @@
                         WaitingService.popSuccess(res.message);
                         $scope.user.lvl = 2;
                         $scope.user.verification_status = 2;
-                        $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status);
+                        // $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status);
                     } else {
                         WaitingService.error(res.message);
                     }
+                    $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status);
                     $scope.saving = false;
                 }, function (err) {
+                    $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status);
                     WaitingService.error(err);
                 })
             }; 
@@ -171,12 +216,14 @@
                     if (res.success) {
                         WaitingService.popSuccess(res.message);
                         $scope.user.verification_status = 0;
-                        $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status);
+                        // $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status);
                     } else {
                         WaitingService.error(res.message);
                     }
+                    $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status);
                     $scope.saving = false;
                 }, function (err) {
+                    $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status);
                     WaitingService.error(err);
                 })
             }; 
@@ -358,22 +405,25 @@
             $scope.deleteBankAccount = (uuid) => {
                 $scope.saving = true;
                 if ($scope.bankAccounts.length == 1 && $scope.user.verification_status == 2) {
-                    WaitingService.error('DELETE_BANK_ACCOUNT_IMPOSSIBLE_TEXT');
+                    WaitingService.error('CRM_DELETE_BANK_ACCOUNT_NOT_ALLOWED_TEXT');
                     return;
                 }
+                WaitingService.questionSimple('QUESTION_DELETE_BANK_ACCOUNT_TEXT',
+                function (res) {
 
-                AppUserService.removeBankAccount(uuid).then(function (res) {
-                    $scope.saving = false;
-                    if (res.success) {
-                        WaitingService.popSuccess(res.message);
-                        $scope.getListBanks($scope.user.uuid);
-                    } else {
-                        WaitingService.error(res.message);
-                    }
-                }, (err) => {
-                    $scope.saving = false;
-                    WaitingService.error(err);
-                })
+                    AppUserService.removeBankAccount(uuid).then(function (res) {
+                        $scope.saving = false;
+                        if (res.success) {
+                            WaitingService.popSuccess(res.message);
+                            $scope.getListBanks($scope.user.uuid);
+                        } else {
+                            WaitingService.error(res.message);
+                        }
+                    }, (err) => {
+                        $scope.saving = false;
+                        WaitingService.error(err);
+                    })
+                });
 
             }
         }]);
