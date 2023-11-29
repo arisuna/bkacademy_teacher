@@ -228,6 +228,7 @@
                                     is-editable="true"
                                     on-delete="deleteItem(item.uuid)"
                                     object-uuid="uuid"
+                                    object-type="objectType"
                                     item="item"
                                     items="items"
                                     ng-repeat="item in items | filter:searchText track by $index "></app-media-item>

@@ -44,7 +44,8 @@
                         if (res.success) {
                             WaitingService.popSuccess('FILE_DELETE_SUCCESS_TEXT');
                             $scope.publish('MediaUpdateDocument', {isUpdate: true});
-                            $scope.publish('reload_thumb', {reload: true});
+                            $scope.publish('reload_thumb', {reload: true,  uuid: $scope.objectUuid,
+                                object_type: $scope.objectType});
                             if (angular.isDefined($scope.object) && angular.isDefined($scope.object.uuid)){
                                 $scope.publish('check_attachment_existed', $scope.object.uuid);
                             }

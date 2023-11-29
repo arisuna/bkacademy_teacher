@@ -34,7 +34,7 @@
                 attachmentSelect: '&?attachmentSelect',
                 isProperty: '<?',
                 isProduct: '<?',
-                objectType: '@?',
+                objectType: '<?',
             },
             templateUrl: urlBase.tplBase('base-modules/app-directives-media-zone', 'media-item-grid'),
             link: function (scope, element, attrs) {
