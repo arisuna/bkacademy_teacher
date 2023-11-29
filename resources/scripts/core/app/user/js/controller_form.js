@@ -361,19 +361,22 @@
                     WaitingService.error('DELETE_BANK_ACCOUNT_IMPOSSIBLE_TEXT');
                     return;
                 }
+                WaitingService.questionSimple('QUESTION_DELETE_BANK_ACCOUNT_TEXT',
+                function (res) {
 
-                AppUserService.removeBankAccount(uuid).then(function (res) {
-                    $scope.saving = false;
-                    if (res.success) {
-                        WaitingService.popSuccess(res.message);
-                        $scope.getListBanks($scope.user.uuid);
-                    } else {
-                        WaitingService.error(res.message);
-                    }
-                }, (err) => {
-                    $scope.saving = false;
-                    WaitingService.error(err);
-                })
+                    AppUserService.removeBankAccount(uuid).then(function (res) {
+                        $scope.saving = false;
+                        if (res.success) {
+                            WaitingService.popSuccess(res.message);
+                            $scope.getListBanks($scope.user.uuid);
+                        } else {
+                            WaitingService.error(res.message);
+                        }
+                    }, (err) => {
+                        $scope.saving = false;
+                        WaitingService.error(err);
+                    })
+                });
 
             }
         }]);
