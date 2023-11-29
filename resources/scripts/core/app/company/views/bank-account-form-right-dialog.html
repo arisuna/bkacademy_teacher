@@ -53,11 +53,13 @@
                     <input-text is-editable="true"
                                 ng-if="!bank.id"
                                 is-text="true"
-                                is-numeric="true"
                                 is-required="true"
                                 ng-model="bank.account_number"
                                 required-message="FIELD_IS_REQUIRED_TEXT"
                                 label="ACCOUNT_NUMBER_TEXT"
+                                pattern="[0-9]+"
+                                has-pattern="true"
+                                pattern-error-message="INVALID_ACCOUNT_NUMBER_TEXT"
                                 placeholder="ENTER_ACCOUNT_NUMBER_TEXT"
                                 show-label="true"></input-text>
 
@@ -104,7 +106,7 @@
                             ng-model="bank.currency"
                             is-editable="true"
                             is-required="true"
-                            label="CURRENCY"
+                            label="CURRENCY_TEXT"
                             show-label="true"></app-currency-selector>
                 </div>
             </div>

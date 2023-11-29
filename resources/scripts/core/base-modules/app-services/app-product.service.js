@@ -21,13 +21,13 @@
 
 
             _status_list: [
-                {name: 'UNVERIFIED_TEXT', value: 1, color: 'dark-gray', text: 'UNVERIFIED_TEXT'},
-                {name: 'VERIFIED_TEXT', value: 2, color: 'green', text: 'VERIFIED_TEXT'},
+                {name: 'UNVERIFIED_TEXT', value: 1, color: 'dark-gray', text: 'UNDER_APPROVAL_TEXT'},
+                {name: 'VERIFIED_TEXT', value: 2, color: 'green', text: 'APPROVED_TEXT'},
                 {name: 'PUBLISH', value: 3, color: 'bright-blue', text: 'PUBLISHED_TEXT'},
             ],
             _status_list_1: [
-                {name: 'UNVERIFIED_TEXT', value: 1, color: 'dark-gray', text: 'UNVERIFIED_TEXT'},
-                {name: 'VERIFIED_TEXT', value: 2, color: 'green', text: 'VERIFIED_TEXT'}
+                {name: 'UNVERIFIED_TEXT', value: 1, color: 'dark-gray', text: 'UNDER_APPROVAL_TEXT'},
+                {name: 'VERIFIED_TEXT', value: 2, color: 'green', text: 'APPROVED_TEXT'}
             ],
             _option_list: [
                 {

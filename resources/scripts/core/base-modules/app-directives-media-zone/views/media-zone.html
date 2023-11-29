@@ -15,7 +15,7 @@
 
                 <div class="buttonUploadOnly text-center pd-b-1x">
                     <div class="row">
-                        <div class="col-xs-6 text-right">
+                        <div class="" ng-class="{'col-xs-6 text-right': options.showLibrary == true, 'col-xs-12 text-center': !(options.showLibrary == true)}">
                             <input filestylev2=""
                                    type="file"
                                    class="form-control"
@@ -248,6 +248,7 @@
                                      items="items"
                                      ng-repeat="item in items | filter:searchText track by $index "></app-media-item-list>
             </div>
+
             <div class="mt row" ng-if="displayMode == 'grid'" vertilize-container="">
                 <app-media-item-grid display-mode="displayMode"
                                      is-selectable="false"

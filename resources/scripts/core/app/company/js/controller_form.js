@@ -25,7 +25,8 @@
             $scope.attachmentSelect = [];
 
             $scope.statuses = [
-                {name: 'UNVERIFIED_TEXT', value: 0, color: 'dark-gray', text: 'UNVERIFIED_TEXT'},
+                {name: 'UNVERIFIED_TEXT', value: -1, color: 'dark-gray', text: 'UNVERIFIED_TEXT'},
+                {name: 'PENDING_TEXT', value: 0, color: 'yellow', text: 'PENDING_TEXT'},
                 {name: 'VERIFIED_TEXT', value: 1, color: 'green', text: 'VERIFIED_TEXT'},
             ]
 
@@ -415,21 +416,23 @@
             $scope.deleteBankAccount = (uuid) => {
                 $scope.saving = true;
                 if ($scope.bankAccounts.length == 1 && $scope.company.status == 1) {
-                    WaitingService.error('DELETE_BANK_ACCOUNT_IMPOSSIBLE_TEXT');
+                    WaitingService.error('CRM_DELETE_BANK_ACCOUNT_NOT_ALLOWED_TEXT');
                     return;
                 }
 
-                AppCompanyService.removeBankAccount(uuid).then(function (res) {
-                    $scope.saving = false;
-                    if (res.success) {
-                        WaitingService.popSuccess(res.message);
-                        $scope.getListBanks($scope.company.uuid);
-                    } else {
-                        WaitingService.error(res.message);
-                    }
-                }, (err) => {
-                    $scope.saving = false;
-                    WaitingService.error(err);
+                WaitingService.questionSimple('QUESTION_DELETE_BANK_ACCOUNT_TEXT', function () {
+                    AppCompanyService.removeBankAccount(uuid).then(function (res) {
+                        $scope.saving = false;
+                        if (res.success) {
+                            WaitingService.popSuccess('DATA_DELETE_SUCCESS_TEXT');
+                            $scope.getListBanks($scope.company.uuid);
+                        } else {
+                            WaitingService.error(res.message);
+                        }
+                    }, (err) => {
+                        $scope.saving = false;
+                        WaitingService.error(err);
+                    })
                 })
 
             }
