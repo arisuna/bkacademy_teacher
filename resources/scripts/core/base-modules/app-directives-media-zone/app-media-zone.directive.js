@@ -45,6 +45,8 @@
                 isAttachAttachment: '<?',
                 isProperty: '<?',
                 isProduct: '<?',
+                isRequired: '<?',
+                requiredMessage: '@?',
             },
 
             templateUrl: urlBase.tplBase('base-modules/app-directives-media-zone', 'media-zone'),
@@ -77,7 +79,15 @@
                 }
                 scope.isMultiple = !(angular.isDefined(scope.isMultiple) || scope.isMultiple == false);
 
-                if(angular.isUndefined(scope.isEditable)){
+                if (angular.isUndefined(scope.isRequired)) {
+                    scope.isRequired = false;
+                }
+
+                if (angular.isUndefined(scope.requiredMessage)) {
+                    scope.requiredMessage = '';
+                }
+
+                if (angular.isUndefined(scope.isEditable)) {
                     scope.isEditable = true;
                 }
 
@@ -279,7 +289,11 @@
                                 // }
                                 $scope.getFileList();
                                 $timeout(() => {
-                                    $scope.publish('reload_thumb', {reload: true, uuid: $scope.uuid, object_type: $scope.objectType});
+                                    $scope.publish('reload_thumb', {
+                                        reload: true,
+                                        uuid: $scope.uuid,
+                                        object_type: $scope.objectType
+                                    });
                                     WaitingService.popSuccess(res.message);
                                 }, 300)
                             } else {
@@ -342,8 +356,6 @@
                     // console.info('onWhenAddingFileFailed', item, filter, options);
                     $scope.translateButton()
                 };
-
-
                 $scope.uploader.onSuccessItem = function (fileItem, response, status, headers) {
                     console.log('fileItem', fileItem);
                     AppMediaService.upload({

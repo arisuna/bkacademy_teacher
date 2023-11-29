@@ -26,7 +26,7 @@
     <div class="panel-body height-30vh-m70px overflow-y-enable" ng-style="{'padding':'5px'}">
         <div class="list-group list-group-flat list-group-blue">
             <a class="list-group-item text-overflow-ellipsis"
-               ng-repeat="bank in banks | filter: {'short_name': searchConfig.filterQuery, 'name': searchConfig.filterQuery}"
+               ng-repeat="bank in banks | filter: {'short_name': searchConfig.filterQuery}"
                ng-class="{'active': (searchConfig.currentItem.code == bank.code)}"
                ng-click="selectItem(bank)">
 
