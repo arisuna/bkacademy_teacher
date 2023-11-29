@@ -62,6 +62,8 @@
                ng-required="isRequired"
                min="{{min}}"
                ng-model="$parent.model"
+               data-parsley-pattern='{{pattern}}'
+               data-parsley-pattern-message="{{ patternErrorMessage | translate }}"
                data-parsley-required-message="{{ requiredMessage | translate }}"
                ng-change="changeValue()">
     </div>

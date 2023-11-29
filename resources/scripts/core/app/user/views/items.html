@@ -94,8 +94,8 @@
                                 aria-haspopup="true"
                                 aria-expanded="false"
                                 tooltip-placement="bottom"
-                                uib-tooltip="{{ object.verification_status  == 2 ? ('VERIFIED_TEXT' | translate) : ('UNVERIFIED_TEXT' | translate) }}"
-                                ng-class="{'is-terminated': object.verification_status != 2, 'is-active': object.verification_status == 2}">
+                                uib-tooltip="{{ object.verification_status  == 2 ? ('VERIFIED_TEXT' | translate) : (object.verification_status  == 1 ? ('PENDING_TEXT' | translate) : ('UNVERIFIED_TEXT' | translate)) }}"
+                                ng-class="{'is-terminated': object.verification_status != 2 &&  object.verification_status != 1, 'is-active': object.verification_status == 2, 'pending': object.verification_status == 1}">
                         </button>
                     </td>
                     <td class="bd-t-white">{{ object.created_at | amDateFormat: 'DD/MM/YYYY'}}</td>
