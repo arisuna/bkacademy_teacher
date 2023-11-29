@@ -238,7 +238,7 @@
             <div class="mt media-items-list-small mr " ng-if="displayMode == 'list'">
                 <app-media-item-list display-mode="displayMode"
                                      is-selectable="false"
-                                     is-editable="isEditable && (!isRequired || (isRequired && items.length > 1))"
+                                     is-editable="isEditable"
                                      is-attachment="true"
                                      object-uuid="uuid"
                                      object-type="objectType"
@@ -251,7 +251,7 @@
             <div class="mt row" ng-if="displayMode == 'grid'" vertilize-container="">
                 <app-media-item-grid display-mode="displayMode"
                                      is-selectable="false"
-                                     is-editable="isEditable && (!isRequired || (isRequired && items.length > 1))"
+                                     is-editable="isEditable"
                                      is-attachment="true"
                                      object-uuid="uuid"
                                      object-type="objectType"
