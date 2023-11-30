@@ -5,7 +5,7 @@
     <div class="custom-dialog-overflow scroll-append scroll-y overflow-x-disable">
         <div class="row">
             <div class="col-sm-12">
-                <input-text is-editable="isEditable"
+                <input-text is-editable="isEditable && user.verification_status != 2"
                             is-text="true"
                             is-required="true"
                             ng-model="user.id_number"
@@ -27,7 +27,7 @@
                 <div class="mg-b-20">
                     <app-media-zone uuid="user.uuid"
                                     is-multiple="false"
-                                    is-editable="isEditable"
+                                    is-editable="isEditable && user.verification_status != 2"
                                     company-id="user.company_id"
                                     is-required="true"
                                     is-grid="true"
@@ -48,7 +48,7 @@
                 <div class="mg-b-20">
                     <app-media-zone uuid="user.uuid"
                                     is-multiple="false"
-                                    is-editable="isEditable"
+                                    is-editable="isEditable && user.verification_status != 2"
                                     company-id="user.company_id"
                                     show-library="false"
                                     is-required="true"
@@ -84,7 +84,7 @@
                 {{'APPROVE_TO_LVL2_TEXT' | translate}}
             </button>
             <save-button-submit label="SAVE_BTN_TEXT"
-                                ng-if="isEditable"
+                                ng-if="isEditable && user.verification_status != 2"
                                 ng-disabled="saving"></save-button-submit>
         </div>
     </div>
