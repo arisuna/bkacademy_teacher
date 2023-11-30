@@ -93,10 +93,16 @@
                                 uib-dropdown-toggle=""
                                 aria-haspopup="true"
                                 aria-expanded="false"
+                                ng-if="object.company_status != 1"
                                 tooltip-placement="bottom"
-                                uib-tooltip="{{ (object.company_status == 1 ? 'CERTIFIED_TEXT' : (object.verification_status  == 2 ? ('VERIFIED_TEXT' | translate) : (object.verification_status  == 1 ? ('PENDING_REQUEST_TEXT' | translate) : ('UNVERIFIED_TEXT' | translate)))) }}"
+                                uib-tooltip="{{(object.verification_status  == 2 ? ('VERIFIED_TEXT' | translate) : (object.verification_status  == 1 ? ('PENDING_REQUEST_TEXT' | translate) : ('UNVERIFIED_TEXT' | translate))) }}"
                                 ng-class="{'in-aproval': object.company_status == 1, 'unverified': object.company_status != 1 && object.verification_status != 2 &&  object.verification_status != 1, 'done': object.company_status != 1 && object.verification_status == 2, 'pending': object.company_status != 1 && object.verification_status == 1}">
                         </button>
+
+                        <em class="fas fa-certificate txt-blue txt-18"
+                            ng-if="object.company_status == 1"
+                            uib-tooltip="{{ 'CERTIFIED_TEXT' | translate }}"
+                        ></em>
                     </td>
                     <td class="bd-t-white">{{ object.created_at | amDateFormat: 'DD/MM/YYYY'}}</td>
                     <td class="text-right bd-t-white">
