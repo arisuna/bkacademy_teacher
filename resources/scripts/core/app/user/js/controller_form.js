@@ -45,7 +45,7 @@
                 {name: 'UNVERIFIED_TEXT', value: 0, color: 'dark-gray', text: 'UNVERIFIED_TEXT', isSelectable: true},
                 {name: 'PENDING_REQUEST_TEXT', value: 1, color: 'yellow', text: 'PENDING_REQUEST_TEXT', isSelectable: true},
                 {name: 'VERIFIED_TEXT', value: 2, color: 'green', text: 'VERIFIED_TEXT', isSelectable: true},
-                {name: 'VERIFIED_ACCOUNT_TEXT', value: 3, color: 'blue', text: 'VERIFIED_ACCOUNT_TEXT', isSelectable: false},
+                {name: 'CERTIFIED_TEXT', value: 3, color: 'blue', text: 'CERTIFIED_TEXT', isSelectable: false},
             ]
 
             $scope.canSave =  angular.isDefined($stateParams.id) ? AppAclService.validateAction('end_user', 'edit') : AppAclService.validateAction('end_user', 'create');
