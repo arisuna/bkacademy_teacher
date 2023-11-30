@@ -5,8 +5,8 @@
 (function () {
     'use strict';
 
-    App.controller('EndUserFormController', ['$scope', '$http', '$stateParams', '$state', 'ngDialog', 'urlBase', 'WaitingService', 'AppAddressService', 'AppSystem', 'AppAclService', 'AppUserService',
-        function ($scope, $http, $stateParams, $state, ngDialog, urlBase, WaitingService, AppAddressService, AppSystem, AppAclService, AppUserService) {
+    App.controller('EndUserFormController', ['$scope', '$timeout','$http', '$stateParams', '$state', 'ngDialog', 'urlBase', 'WaitingService', 'AppAddressService', 'AppSystem', 'AppAclService', 'AppUserService',
+        function ($scope, $timeout, $http, $stateParams, $state, ngDialog, urlBase, WaitingService, AppAddressService, AppSystem, AppAclService, AppUserService) {
             $scope.page_loading = true;
             $scope.user = {};
             $scope.canSave = false;
@@ -144,34 +144,43 @@
 
                     if (!$scope.user.id_number ) {
                         mess = 'ID_NUMBER_IS_REQUIRED_TEXT';
-                        $scope.user.statusSelected = $scope.statuses.find(o => o.value == $scope.user.verification_status)
                         console.log($scope.user.statusSelected);
                         WaitingService.error(mess);
                         $scope.setTab(3);
+                        $timeout(function () {
+                            $scope.user.statusSelected = $scope.statuses.find(o => o.value == $scope.user.verification_status)
+                        })
                         return;
                     }
 
                     if ($scope.bankAccounts.length == 0 ) {
                         mess = 'BANK_ACCOUNT_IS_REQUIRED_TEXT';
-                        $scope.user.statusSelected = $scope.statuses.find(o => o.value == $scope.user.verification_status)
                         WaitingService.error(mess);
                         $scope.setTab(3);
+
+                        $timeout(function () {
+                            $scope.user.statusSelected = $scope.statuses.find(o => o.value == $scope.user.verification_status)
+                        })
                         return;
                     }
 
                     if ($scope.count_attachment_id_back == 0 ) {
                         mess = 'ID_CERTIFICATE_BACK_SIDE_IS_REQUIRED_TEXT';
-                        $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status)
                         WaitingService.error(mess);
                         $scope.setTab(3);
+                        $timeout(function () {
+                            $scope.user.statusSelected = $scope.statuses.find(o => o.value == $scope.user.verification_status)
+                        })
                         return;
                     }
 
                     if ($scope.count_attachment_id_front == 0 ) {
                         mess = 'ID_CERTIFICATE_FRONT_SIDE_IS_REQUIRED_TEXT';
-                        $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status)
                         WaitingService.error(mess);
                         $scope.setTab(3);
+                        $timeout(function () {
+                            $scope.user.statusSelected = $scope.statuses.find(o => o.value == $scope.user.verification_status)
+                        })
                         return;
                     }
 
@@ -187,9 +196,10 @@
                             let mess = 'VERIFICATION_NOT_ALLOW_TEXT';
                             if (confirmText != 'unverified') {
                                 mess = 'CONFIRM_TEXT_INCORRECT_TEXT';
-                                $scope.user.statusSelected = $scope.statuses.find(o => o.value === $scope.user.verification_status);
-                                console.log($scope.user.verification_status, $scope.user.statusSelected);
                                 WaitingService.error(mess);
+                                $timeout(function () {
+                                    $scope.user.statusSelected = $scope.statuses.find(o => o.value == $scope.user.verification_status)
+                                })
                                 return;
                             }
                             // $scope.user.verification_status = item.value;
