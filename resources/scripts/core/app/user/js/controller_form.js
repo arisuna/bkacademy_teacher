@@ -405,7 +405,7 @@
             $scope.deleteBankAccount = (uuid) => {
                 $scope.saving = true;
                 if ($scope.bankAccounts.length == 1 && $scope.user.verification_status == 2) {
-                    WaitingService.error('CRM_DELETE_BANK_ACCOUNT_NOT_ALLOWED_TEXT');
+                    WaitingService.error('CRM_DELETE_BANK_ACCOUNT_OF_USER_NOT_ALLOWED_TEXT');
                     return;
                 }
                 WaitingService.questionSimple('QUESTION_DELETE_BANK_ACCOUNT_TEXT',
