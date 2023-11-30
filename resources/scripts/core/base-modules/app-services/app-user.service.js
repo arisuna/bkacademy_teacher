@@ -93,6 +93,18 @@
         };
 
 
+        this.changeToPending = function (data) {
+            var deferred = $q.defer();
+            AppHttp.put('/app/user/changeToPending/' + data.id, data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+
         this.getBankAccounts = function (uuid) {
             const deferred = $q.defer();
             AppHttp.get('/app/user/getBankAccounts/' + uuid)

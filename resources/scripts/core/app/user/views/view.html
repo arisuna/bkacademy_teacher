@@ -5,7 +5,7 @@
         <spinner-v2 type="spin"></spinner-v2>
     </div>
 
-    <div class="mt-sm" ng-if="!page_loading">
+    <div class="mt-sm" ng-show="!page_loading">
         <div class="row">
             <div class="col-md-3">
                 <div class="panel panel-default-b white-block pd-b-0">
@@ -21,8 +21,8 @@
                                 <div class="mb">
                                     <ui-select ng-model="user.statusSelected"
                                                required="true"
-                                               ng-disabled="!isEditable"
-                                               ng-class="{'uib-select-bright-blue-10': isEditable, 'uib-select-white': !isEditable}"
+                                               ng-disabled="!isEditable || user.company_status == 1"
+                                               ng-class="{'uib-select-bright-blue-10': isEditable && user.company_status != 1, 'uib-select-white': !isEditable || user.company_status == 1}"
                                                class="w-100 uib-select-95-per form-control-custom-radius"
                                                theme="bootstrap">
                                         <ui-select-match
@@ -33,7 +33,7 @@
 
                                         </ui-select-match>
 
-                                        <ui-select-choices repeat="item in statuses track by $index">
+                                        <ui-select-choices repeat="item in statuses | filter:{isSelectable: true} track by $index ">
                                             <div class=" " ng-click="saving = true ; changeStatus(item, $index)">
                                                 <em class="fa-solid fa-circle txt-16 mr-sm {{'text-' + item.color}}"></em>
                                                 {{ item.text | translate}}

@@ -87,15 +87,15 @@
                     </td>
                     <td class="bd-t-white">{{ object.email }}</td>
                     <td class="bd-t-white">{{ object.phone }}</td>
-                    <td class="bd-t-white">{{ object.lvl}}</td>
+                    <td class="bd-t-white">{{ object.company_status == 1 ? 3 : object.lvl}}</td>
                     <td class="bd-t-white">
                         <button class="selected-status btn btn-flat btn-circle flex text-center flex-vertical width-18px height-18px bd-radius-9px"
                                 uib-dropdown-toggle=""
                                 aria-haspopup="true"
                                 aria-expanded="false"
                                 tooltip-placement="bottom"
-                                uib-tooltip="{{ object.verification_status  == 2 ? ('VERIFIED_TEXT' | translate) : (object.verification_status  == 1 ? ('PENDING_TEXT' | translate) : ('UNVERIFIED_TEXT' | translate)) }}"
-                                ng-class="{'is-terminated': object.verification_status != 2 &&  object.verification_status != 1, 'is-active': object.verification_status == 2, 'pending': object.verification_status == 1}">
+                                uib-tooltip="{{ (object.company_status == 1 ? 'VERIFIED_ACCOUNT_TEXT' : (object.verification_status  == 2 ? ('VERIFIED_TEXT' | translate) : (object.verification_status  == 1 ? ('PENDING_REQUEST_TEXT' | translate) : ('UNVERIFIED_TEXT' | translate)))) }}"
+                                ng-class="{'in-aproval': object.company_status == 1, 'is-terminated': object.company_status != 1 && object.verification_status != 2 &&  object.verification_status != 1, 'done': object.company_status != 1 && object.verification_status == 2, 'pending': object.company_status != 1 && object.verification_status == 1}">
                         </button>
                     </td>
                     <td class="bd-t-white">{{ object.created_at | amDateFormat: 'DD/MM/YYYY'}}</td>
