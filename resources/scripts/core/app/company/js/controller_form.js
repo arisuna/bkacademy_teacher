@@ -26,7 +26,7 @@
 
             $scope.statuses = [
                 {name: 'UNVERIFIED_TEXT', value: -1, color: 'dark-gray', text: 'UNVERIFIED_TEXT'},
-                {name: 'PENDING_TEXT', value: 0, color: 'yellow', text: 'PENDING_TEXT'},
+                {name: 'PENDING_REQUEST_TEXT', value: 0, color: 'yellow', text: 'PENDING_REQUEST_TEXT'},
                 {name: 'VERIFIED_TEXT', value: 1, color: 'green', text: 'VERIFIED_TEXT'},
             ]
 
