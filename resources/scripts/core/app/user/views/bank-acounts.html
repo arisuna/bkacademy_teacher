@@ -32,7 +32,7 @@
                 </div>
             </div>
 
-            <div class="flex " ng-if="isEditable">
+            <div class="flex " ng-if="isEditable && user.verification_status != 2">
                 <div class="flex-middle">
                     <button-edit-icon ng-click="editBankAccount( bank )"></button-edit-icon>
                 </div>
