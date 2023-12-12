@@ -61,14 +61,14 @@
 
             $scope.loadItems = function () {
                 $scope.items = [];
-                $scope.loadCount = 1;
-                $scope.currentPage = 0;
+                $scope.page = 1;
+                $scope.currentPage = 1;
                 $scope.isLoading = true;
                 $scope.initItems();
             };
 
             $scope.initItems = function () {
-                $scope.params.draw = $scope.loadCount;
+                $scope.params.page = $scope.currentPage;
                 $scope.params.length = 20;
                 $scope.params.start = ($scope.loadCount - 1) * 20;
                 $scope.params.orders = [$scope.sort];
@@ -105,21 +105,21 @@
             };
 
             $scope.getListMore = function () {
-                $scope.params.draw = $scope.loadCount;
+                $scope.params.page = $scope.currentPage + 1;
                 $scope.params.length = 20;
                 $scope.params.start = ($scope.loadCount - 1) * 20;
                 $scope.params.orders = [$scope.sort];
                 $scope.params.query = $scope.query;
-                if ($scope.currentPage > 0 && $scope.loadCount <= $scope.totalPages){
+                if ($scope.currentPage > 0 && $scope.page <= $scope.totalPages){
                     $scope.isLoadingMore = true;
                 }
 
                 //console.log($scope.loadCount);
-                if ($scope.loadCount == 1 || $scope.loadCount <= $scope.totalPages) {
+                if ($scope.page == 1 || $scope.page <= $scope.totalPages) {
 
                     AppProductService.getProductList($scope.params).then(function (res) {
                         if (res.success) {
-                            $scope.dataList = $scope.loadCount > 1 ? $scope.dataList.concat(res.data) : res.data;
+                            $scope.dataList = $scope.page > 1 ? $scope.dataList.concat(res.data) : res.data;
                             $scope.totalPages = res.total_pages;
                             $scope.currentPage = res.page;
 
