@@ -106,20 +106,21 @@
 
             $scope.getListMore = function () {
                 $scope.params.page = $scope.currentPage + 1;
+                $scopecurrentPage = $scope.currentPage + 1;
                 $scope.params.length = 20;
                 $scope.params.start = ($scope.loadCount - 1) * 20;
                 $scope.params.orders = [$scope.sort];
                 $scope.params.query = $scope.query;
-                if ($scope.currentPage > 0 && $scope.page <= $scope.totalPages){
+                if ($scope.currentPage > 0 && $scope.currentPage <= $scope.totalPages){
                     $scope.isLoadingMore = true;
                 }
 
                 //console.log($scope.loadCount);
-                if ($scope.page == 1 || $scope.page <= $scope.totalPages) {
+                if ($scope.currentPage == 1 || $scope.currentPage <= $scope.totalPages) {
 
                     AppProductService.getProductList($scope.params).then(function (res) {
                         if (res.success) {
-                            $scope.dataList = $scope.page > 1 ? $scope.dataList.concat(res.data) : res.data;
+                            $scope.dataList = $scope.currentPage > 1 ? $scope.dataList.concat(res.data) : res.data;
                             $scope.totalPages = res.total_pages;
                             $scope.currentPage = res.page;
 
