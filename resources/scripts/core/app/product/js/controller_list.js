@@ -76,7 +76,7 @@
 
                 AppProductService.getProductList($scope.params).then(function (res) {
                     if (res.success) {
-                        $scope.items = $scope.loadCount > 1 ? $scope.dataList.concat(res.data) : res.data;
+                        $scope.items = $scope.loadCount > 1 ? $scope.items.concat(res.data) : res.data;
                         $scope.totalPages = res.total_pages;
                         $scope.currentPage = res.page;
 
@@ -120,7 +120,7 @@
 
                     AppProductService.getProductList($scope.params).then(function (res) {
                         if (res.success) {
-                            $scope.dataList = $scope.currentPage > 1 ? $scope.dataList.concat(res.data) : res.data;
+                            $scope.items = $scope.currentPage > 1 ? $scope.items.concat(res.data) : res.data;
                             $scope.totalPages = res.total_pages;
                             $scope.currentPage = res.page;
 
