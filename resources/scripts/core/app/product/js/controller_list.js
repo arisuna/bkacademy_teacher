@@ -106,7 +106,7 @@
 
             $scope.getListMore = function () {
                 $scope.params.page = $scope.currentPage + 1;
-                $scopecurrentPage = $scope.currentPage + 1;
+                $scope.currentPage = $scope.currentPage + 1;
                 $scope.params.length = 20;
                 $scope.params.start = ($scope.loadCount - 1) * 20;
                 $scope.params.orders = [$scope.sort];
