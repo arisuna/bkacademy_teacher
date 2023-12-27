@@ -139,7 +139,8 @@
                     <ul class="dropdown-menu">
                         <li ng-repeat="child in item.items" ng-class="{active: $state.includes(child.sref)}"
                             app-acl-allow="{{child.appAclAllow}}" acl-remove="{{child.aclRemove}}"><a
-                                ui-sref="{{child.sref}}" ng-click="removeDropdown($event, child.sref)">{{ child.text | translate }}</a></li>
+                                ui-sref="{{child.sref}}"
+                                ng-click="removeDropdown($event, child.sref)">{{ child.text | translate }}</a></li>
                     </ul>
                 </li>
 
@@ -166,6 +167,15 @@
                         <li><a ng-click="changeLanguage('en')">{{ 'ENGLISH_TEXT' | translate }}</a></li>
                         <li><a ng-click="changeLanguage('vi')">{{ 'VIETNAMESE_TEXT' | translate }}</a></li>
                     </ul>
+                </li>
+                <li class=" has-children collapse_nav" ng-class="{collapse_nav: !!app.layout.isCollapsedNav}"
+                    tooltip-placement="right"
+                    tooltip-enable="!!app.layout.isCollapsedNav"
+                    uib-tooltip="{{ 'HELP_TEXT' | translate }}">
+                    <a href="https://revo-hrm-vn.atlassian.net/servicedesk/customer/portals" target="_blank">
+                        <em class="fa-solid fa-circle-question"></em>
+                        <span class="" ng-if="!app.layout.isCollapsedNav">{{'HELP_TEXT' | translate}}</span>
+                    </a>
                 </li>
                 <li ng-class="{active: $state.includes(item.sref), collapse_nav: !!app.layout.isCollapsedNav}"
                     tooltip-placement="right"
