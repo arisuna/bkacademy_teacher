@@ -101,13 +101,13 @@
                         $scope.model = $scope.model.toLowerCase();
                     }
 
-                    if (angular.isDefined($scope.isNumeric) && $scope.isNumeric == true && $scope.model) {
-                        if (_.isString($scope.model)) {
-                            var inputNumber = $scope.model.toString().replace(/[^0-9]/g, '');
-                            inputNumber = _.toNumber(inputNumber);
-                            $scope.model = inputNumber;
-                        }
-                    }
+                    // if (angular.isDefined($scope.isNumeric) && $scope.isNumeric == true && $scope.model) {
+                    //     if (_.isString($scope.model)) {
+                    //         var inputNumber = $scope.model.toString().replace(/[^0-9]/g, '');
+                    //         inputNumber = _.toNumber(inputNumber);
+                    //         $scope.model = inputNumber;
+                    //     }
+                    // }
 
                     if (angular.isDefined($scope.isAlphabetic) && $scope.isAlphabetic == true && $scope.model) {
                         var inputNumber = $scope.model.toString().replace(/[^A-Za-z]/g, '');
