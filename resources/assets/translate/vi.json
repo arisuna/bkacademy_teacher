@@ -805,5 +805,6 @@
     "YOUR_ORDER_TEXT": "Đơn hàng",
     "SUBTOTAL_TEXT": "Tổng",
     "HELP_TEXT": "Hỗ trợ",
-    "ORDER_AMOUNT_TEXT": "Thành tiền"
+    "ORDER_AMOUNT_TEXT": "Thành tiền",
+    "GRADE_TEXT": "Khối"
   }

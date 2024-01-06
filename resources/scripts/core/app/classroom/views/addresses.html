@@ -1,0 +1,126 @@
+<div class="custom-dialog-overflow scroll-append scroll-y overflow-x-disable text-dark-blue pd-l-20">
+    <div ng-if="isLoading">
+        <spinner-v2 type="spin"></spinner-v2>
+    </div>
+    <div class="mg-b-20">
+        <div class="row mb">
+            <span class="text-bold">{{'MAILING_ADDRESSES_TEXT' | translate}}</span>
+        </div>
+        <div class="row relo-bg-bright-gray mb pd-10 flex"
+             ng-repeat="mailAddress in mailAddresses track by $index">
+            <div class="w-100">
+                <div class="text-bold">{{mailAddress.name | translate}}</div>
+                <div class="">
+                    {{mailAddress.address1}}, {{mailAddress.ward_name}}, {{mailAddress.district_name}},
+                    {{mailAddress.province_name}}, {{mailAddress.country}}
+                </div>
+            </div>
+            <div class="flex mr" ng-if="isEditable">
+                <div class="flex-middle">
+                    <button-edit-icon ng-click="editAddressFn( mailAddress )"></button-edit-icon>
+                </div>
+                <div class="flex-middle">
+                    <button-delete-icon ng-click="deleteAddressFn( mailAddress.id )"></button-delete-icon>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="isEditable">
+            <div class="flex clickable text-bright-blue" ng-click="createAddress(1)">
+                <em class="fa fa-circle-plus mr-sm text-bright-blue txt-16"></em>
+                {{ 'CREATE_ADDRESS_TEXT' | translate }}
+            </div>
+        </div>
+    </div>
+
+    <div class="mg-b-20">
+        <div class="row mb">
+            <span class="text-bold">{{'SITES_ADDRESSES_TEXT' | translate}}</span>
+        </div>
+        <div class="row relo-bg-bright-gray mb pd-10 flex"
+             ng-repeat="siteAddress in siteAddresses track by $index">
+            <div class="w-100">
+                <div class="text-bold">{{siteAddress.name}}</div>
+                <div class="">
+                    {{siteAddress.address1}}, {{siteAddress.ward_name}}, {{siteAddress.district_name}},
+                    {{siteAddress.province_name}}, {{siteAddress.country}}
+                </div>
+            </div>
+
+            <div class="flex mr" ng-if="isEditable">
+                <div class="flex-middle">
+                    <button-edit-icon ng-click="editAddressFn( siteAddress )" class="mr-sm"></button-edit-icon>
+                </div>
+                <div class="flex-middle">
+                    <button-delete-icon ng-click="deleteAddressFn( siteAddress.id )"></button-delete-icon>
+                </div>
+            </div>
+        </div>
+        <div ng-if="isEditable">
+            <div class="flex clickable text-bright-blue" ng-click="createAddress(2)">
+                <em class="fa fa-circle-plus mr-sm text-bright-blue txt-16"></em>
+                {{ 'CREATE_ADDRESS_TEXT' | translate }}
+            </div>
+        </div>
+    </div>
+
+    <div class="mg-b-20">
+        <div class="row mb">
+            <span class="text-bold">{{'BILLING_ADDRESSES_TEXT' | translate}}</span>
+        </div>
+        <div class="row relo-bg-bright-gray mb pd-10 flex"
+             ng-repeat="billAddress in billAddresses track by $index">
+            <div class="w-100">
+                <div class="text-bold">{{billAddress.name}}</div>
+                <div class="">
+                    {{billAddress.address1}}, {{billAddress.ward_name}}, {{billAddress.district_name}},
+                    {{billAddress.province_name}}, {{billAddress.country}}
+                </div>
+            </div>
+            <div class="flex mr" ng-if="isEditable">
+                <div class="flex-middle">
+                    <button-edit-icon ng-click="editAddressFn( billAddress )" class="mr-sm"></button-edit-icon>
+                </div>
+                <div class="flex-middle">
+                    <button-delete-icon ng-click="deleteAddressFn( billAddress.id )"></button-delete-icon>
+                </div>
+            </div>
+        </div>
+        <div ng-if="isEditable">
+            <div class="flex clickable text-bright-blue" ng-click="createAddress(3)">
+                <em class="fa fa-circle-plus mr-sm text-bright-blue txt-16"></em>
+                {{ 'CREATE_ADDRESS_TEXT' | translate }}
+            </div>
+        </div>
+    </div>
+
+    <div class="mg-b-20">
+        <div class="row mb">
+            <span class="text-bold">{{'WAREHOUSE_ADDRESSES_TEXT' | translate}}</span>
+        </div>
+        <div class="row relo-bg-bright-gray mb pd-10 flex"
+             ng-repeat="warehouseAddress in warehouseAddresses track by $index">
+            <div class="w-100">
+                <div class="text-bold">{{warehouseAddress.name}}</div>
+                <div class="">
+                    {{warehouseAddress.address1}}, {{warehouseAddress.ward_name}}, {{warehouseAddress.district_name}},
+                    {{warehouseAddress.province_name}}, {{warehouseAddress.country}}
+                </div>
+            </div>
+            <div class="flex mr" ng-if="isEditable">
+                <div class="flex-middle">
+                    <button-edit-icon ng-click="editAddressFn( warehouseAddress )" class="mr-sm"></button-edit-icon>
+                </div>
+                <div class="flex-middle">
+                    <button-delete-icon ng-click="deleteAddressFn( warehouseAddress.id )"></button-delete-icon>
+                </div>
+            </div>
+        </div>
+        <div ng-if="isEditable">
+            <div class="flex clickable text-bright-blue" ng-click="createAddress(4)">
+                <em class="fa fa-circle-plus mr-sm text-bright-blue txt-16"></em>
+                {{ 'CREATE_ADDRESS_TEXT' | translate }}
+            </div>
+        </div>
+    </div>
+</div>

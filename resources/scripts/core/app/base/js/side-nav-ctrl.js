@@ -169,7 +169,7 @@
                     "icon": "fa-solid fa-building-user",
                     "iconType": "fontawesome",
                     "appAclAllow": "user/index",
-                    "noRender": !(AppAclService.validateAction('crm_user', 'index')) && !(AppAclService.validateAction('end_user', 'index')),
+                    "noRender": !(AppAclService.validateAction('classroom', 'index')) && !(AppAclService.validateAction('end_user', 'index')),
                     "aclRemove": true,
                     "hasChild": true,
                     "class": "",
@@ -181,9 +181,9 @@
                             "aclRemove": true,
                         },
                         {
-                            "text": "COMPANIES_TEXT",
-                            "sref": "app.company.list",
-                            "appAclAllow": "crm_user/index",
+                            "text": "CLASSROOM_TEXT",
+                            "sref": "app.classroom.list",
+                            "appAclAllow": "classroom/index",
                             "aclRemove": true,
                         }
                     ]

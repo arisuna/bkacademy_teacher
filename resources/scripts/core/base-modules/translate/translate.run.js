@@ -18,9 +18,7 @@
         // list of available languages
         available: {
           'en':       'English',
-          'es_AR':    'Español',
-          'fr_FR':    'Français',
-          'it_IT':    'Italian'
+          'vi':    'VietNamese',
         },
         // display always the current ui language
         init: function () {

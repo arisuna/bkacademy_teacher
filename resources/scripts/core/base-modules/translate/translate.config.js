@@ -9,15 +9,15 @@
     function translateConfig(__env, $translateProvider, $translatePartialLoader) {
 
         $translateProvider.useStaticFilesLoader({
-            prefix: '/assets/translate/',
+            prefix: '/app/assets/translate/',
             suffix: ''
         });
         $translateProvider.useLoader('$translatePartialLoader', {
-            urlTemplate: '/assets/translate/{lang}.json'
+            urlTemplate: '/app/assets/translate/{lang}.json'
         });
 
         $translateProvider.translations(
-            localStorage.getItem('NG_TRANSLATE_LANG_KEY') ? localStorage.getItem('NG_TRANSLATE_LANG_KEY') : 'en', {
+            localStorage.getItem('NG_TRANSLATE_LANG_KEY') ? localStorage.getItem('NG_TRANSLATE_LANG_KEY') : 'vi', {
                 'LOGIN_TEXT': '{{ LOGIN_TEXT }}',
                 'ENTER_EMAIL_TEXT': '{{ ENTER_EMAIL_TEXT }}',
                 'ENTER_PASSWORD_TEXT': '{{ ENTER_PASSWORD_TEXT }}',

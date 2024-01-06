@@ -1,0 +1,31 @@
+<div class="panel panel-default panel-default-b">
+    <div class="panel-heading" ng-style="{'padding':'5px'}">
+        <div class="row">
+            <div class="col-md-12">
+                <input-text-search
+                    ng-model="searchConfig.query"></input-text-search>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body height-30vh-m70px overflow-y-enable" ng-style="{'padding':'5px'}">
+
+        <div ng-if="isLoading == true">
+            <spinner-v2 type="spin"></spinner-v2>
+        </div>
+        <div ng-show="isLoading == false">
+            <div class="list-group list-group-flat">
+                <a class="list-group-item "
+                   ng-repeat="item in grades | filter:searchConfig.query"
+                   ng-class="{'active': (searchConfig.currentItem == item)}"
+                   ng-click="selectItem(item)">
+                    <div class="flex">
+                        <span class="flex-vertical">
+                            {{item}}
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div id="top-button-container" ng-if="classroom.is_deleted != 1">
+    <div class="relo-bg-white edit-radio-mode mg-r-10 mg-t-2"
+         ng-style="{'height':'32px','display':'inline-flex'}">
+    <span class="text-bold mr-sm txt-12 flex-middle"
+          ng-class="{'text-blue':isEditable == true, 'text-muted': isEditable == false}">
+        {{ 'EDIT_BTN_TEXT' | translate }}
+    </span>
+        <label class="switch">
+            <input type="checkbox" ng-value="isEditable" ng-click="onEditable($event, isEditable)">
+            <span></span>
+        </label>
+    </div>
+
+
+    <div class="btn-group dropdown open pull-right"
+         uib-dropdown=""
+         style="vertical-align: unset; margin-top: 3px">
+
+        <button type="button" class="btn btn-round dropdown-toggle"
+                uib-dropdown-toggle=""
+                aria-haspopup="true" aria-expanded="true">
+            <i class="fa-solid fa-ellipsis txt-16 txt-dark-blue" aria-hidden="true"></i>
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu="" role="menu"
+            aria-labelledby="split-button">
+            <!--            <li role="menuitem" ng-if="isEditable" ><a ng-click="onEditable($event)">{{'CANCEL_EDIT_CLASSROOM_TEXT' | translate}}</a></li>-->
+            <!--            <li role="menuitem" ng-if="!isEditable"><a ng-click="onEditable($event)">{{'EDIT_CLASSROOM_TEXT' | translate}}</a></li>-->
+            <li role="menuitem"><a ng-click="deleteFn(classroom.id)">{{'DELETE_CLASSROOM_TEXT' | translate}}</a></li>
+        </ul>
+    </div>
+
+</div>
