@@ -39,7 +39,7 @@
                     $scope.isLoading = true;
                     $scope.options = [];
                     var currentYear=new Date().getFullYear();
-                    for(var i = 1979; i <= currentYear; i++)  $scope.options.push({id: i});
+                    for(var i = 2000; i <= currentYear; i++)  $scope.options.push({id: i});
                     $scope.isLoading = false;
                 }
 

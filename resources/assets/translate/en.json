@@ -806,5 +806,18 @@
     "SUBTOTAL_TEXT": "Subtotal",
     "HELP_TEXT": "Help Desk",
     "ORDER_AMOUNT_TEXT": "Amount",
-    "GRADE_TEXT": "Grade"
+    "GRADE_TEXT": "Grade",
+    "BIRTH_YEAR_TEXT": "Birh Year",
+    "MOTHER_FIRST_NAME_TEXT": "Tên mẹ",
+    "ENTER_MOTHER_FIRST_NAME_TEXT": "Điền Tên mẹ",
+    "MOTHER_LAST_NAME_TEXT": "Họ mẹ",
+    "ENTER_MOTHER_LAST_NAME_TEXT": "Điền Họ mẹ",
+    "MOTHER_PHONE_TEXT": "Số điện thoại của mẹ",
+    "MOTHER_FACEBOOK_URL_TEXT": "Link Facebook của mẹ",
+    "FATHER_FIRST_NAME_TEXT": "Tên bố",
+    "ENTER_FATHER_FIRST_NAME_TEXT": "Điền Tên bố",
+    "FATHER_LAST_NAME_TEXT": "Họ bố",
+    "ENTER_FATHER_LAST_NAME_TEXT": "Điền Họ bố",
+    "FATHER_PHONE_TEXT": "Số điện thoại của bố",
+    "FATHER_FACEBOOK_URL_TEXT": "Link Facebook của bố"
   }

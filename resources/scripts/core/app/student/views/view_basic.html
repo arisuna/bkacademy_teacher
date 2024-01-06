@@ -1,0 +1,125 @@
+<form class="form-validate pd-0 mg-0"
+      validate-form=""
+      ng-submit="saveFn()"
+      novalidate>
+    <div class="custom-dialog-overflow scroll-append scroll-y overflow-x-disable ">
+        <div class="row">
+            <div class="col-sm-6">
+                <input-text is-editable="true"
+                            is-required="true"
+                            is-text="true"
+                            ng-model="student.firstname"
+                            required-message="ENTER_FIRST_NAME_TEXT"
+                            label="FIRST_NAME_TEXT"
+                            show-label="true"></input-text>
+
+            </div>
+            <div class="col-sm-6">
+                <input-text is-editable="true"
+                            is-required="true"
+                            is-text="true"
+                            ng-model="student.lastname"
+                            required-message="ENTER_LAST_NAME_TEXT"
+                            label="LAST_NAME_TEXT"
+                            show-label="true"></input-text>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <app-year-selector ng-model="student.birth_year"
+                                    show-label="true"
+                                    is-required="false"
+                                    label="BIRTH_YEAR_TEXT"></app-year-selector>
+            </div>
+            <div class="col-sm-6">
+                <app-phone-selector ng-model="student.phone"
+                                    show-label="true"
+                                    is-editable="true"
+                                    is-required="false"
+                                    label="PHONE_TEXT"></app-phone-selector>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <input-text is-editable="true"
+                            is-required="false"
+                            is-text="true"
+                            ng-model="student.mother_firstname"
+                            required-message="ENTER_MOTHER_FIRST_NAME_TEXT"
+                            label="MOTHER_FIRST_NAME_TEXT"
+                            show-label="true"></input-text>
+
+            </div>
+            <div class="col-sm-6">
+                <input-text is-editable="true"
+                            is-required="false"
+                            is-text="true"
+                            ng-model="student.mother_lastname"
+                            required-message="ENTER_MOTHER_LAST_NAME_TEXT"
+                            label="MOTHER_LAST_NAME_TEXT"
+                            show-label="true"></input-text>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <app-phone-selector ng-model="student.mother_phone"
+                                    show-label="true"
+                                    is-editable="true"
+                                    is-required="false"
+                                    label="MOTHER_PHONE_TEXT"></app-phone-selector>
+            </div>
+            <div class="col-sm-6">
+                <input-text is-editable="true"
+                            is-required="false"
+                            is-text="true"
+                            ng-model="student.mother_facebook"
+                            required-message="ENTER_MOTHER_LAST_NAME_TEXT"
+                            label="MOTHER_FACEBOOK_URL_TEXT"
+                            show-label="true"></input-text>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <input-text is-editable="true"
+                            is-required="false"
+                            is-text="true"
+                            ng-model="student.father_firstname"
+                            required-message="ENTER_FATHER_FIRST_NAME_TEXT"
+                            label="FATHER_FIRST_NAME_TEXT"
+                            show-label="true"></input-text>
+
+            </div>
+            <div class="col-sm-6">
+                <input-text is-editable="true"
+                            is-required="false"
+                            is-text="true"
+                            ng-model="student.father_lastname"
+                            required-message="ENTER_FATHER_LAST_NAME_TEXT"
+                            label="FATHER_LAST_NAME_TEXT"
+                            show-label="true"></input-text>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <app-phone-selector ng-model="student.father_phone"
+                                    show-label="true"
+                                    is-editable="true"
+                                    is-required="false"
+                                    label="FATHER_PHONE_TEXT"></app-phone-selector>
+            </div>
+            <div class="col-sm-6">
+                <input-text is-editable="true"
+                            is-required="false"
+                            is-text="true"
+                            ng-model="student.faher_facebook"
+                            required-message="ENTER_FATHER_LAST_NAME_TEXT"
+                            label="FATHER_FACEBOOK_URL_TEXT"
+                            show-label="true"></input-text>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-right mg-t-20">
+        <save-button-submit title="SAVE_BTN_TEXT" ng-disabled="saving" ng-if="isEditable"></save-button-submit>
+    </div>
+</form>

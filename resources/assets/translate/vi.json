@@ -257,7 +257,7 @@
     "DELETED_TEXT": "Không hoạt động",
     "CHANGE_LOGO_TEXT": "Chỉnh sửa logo",
     "VERIFIED_TEXT": "Xác thực!",
-    "UPDATED_AT_TEXT": "Chỉnh sửa ngày tháng",
+    "UPDATED_AT_TEXT": "Ngày chỉnh sửa",
     "DELETE_COMPANY_TEXT": "Xoá công ty",
     "MAILING_ADDRESSES_TEXT": "Địa chỉ thư",
     "SITES_ADDRESSES_TEXT": "Địa điểm lưu kho",
@@ -806,5 +806,18 @@
     "SUBTOTAL_TEXT": "Tổng",
     "HELP_TEXT": "Hỗ trợ",
     "ORDER_AMOUNT_TEXT": "Thành tiền",
-    "GRADE_TEXT": "Khối"
+    "GRADE_TEXT": "Khối",
+    "BIRTH_YEAR_TEXT": "Năm sinh",
+    "MOTHER_FIRST_NAME_TEXT": "Tên mẹ",
+    "ENTER_MOTHER_FIRST_NAME_TEXT": "Điền Tên mẹ",
+    "MOTHER_LAST_NAME_TEXT": "Họ mẹ",
+    "ENTER_MOTHER_LAST_NAME_TEXT": "Điền Họ mẹ",
+    "MOTHER_PHONE_TEXT": "Số điện thoại của mẹ",
+    "MOTHER_FACEBOOK_URL_TEXT": "Link Facebook của mẹ",
+    "FATHER_FIRST_NAME_TEXT": "Tên bố",
+    "ENTER_FATHER_FIRST_NAME_TEXT": "Điền Tên bố",
+    "FATHER_LAST_NAME_TEXT": "Họ bố",
+    "ENTER_FATHER_LAST_NAME_TEXT": "Điền Họ bố",
+    "FATHER_PHONE_TEXT": "Số điện thoại của bố",
+    "FATHER_FACEBOOK_URL_TEXT": "Link Facebook của bố"
   }

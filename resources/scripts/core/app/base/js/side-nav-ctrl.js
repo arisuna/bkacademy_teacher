@@ -168,16 +168,15 @@
                     "text": "USERS_TEXT",
                     "icon": "fa-solid fa-building-user",
                     "iconType": "fontawesome",
-                    "appAclAllow": "user/index",
-                    "noRender": !(AppAclService.validateAction('classroom', 'index')) && !(AppAclService.validateAction('end_user', 'index')),
+                    "noRender": !(AppAclService.validateAction('classroom', 'index')) && !(AppAclService.validateAction('student', 'index')),
                     "aclRemove": true,
                     "hasChild": true,
                     "class": "",
                     "items": [
                         {
-                            "text": "END_USERS_TEXT",
-                            "sref": "app.user.list",
-                            "appAclAllow": "end_user/index",
+                            "text": "STUDENTS_TEXT",
+                            "sref": "app.student.list",
+                            "appAclAllow": "student/index",
                             "aclRemove": true,
                         },
                         {
