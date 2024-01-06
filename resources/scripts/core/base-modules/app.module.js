@@ -8,7 +8,7 @@ var Routes;
     'use strict';
 
     App = angular
-        .module('smxd', [
+        .module('bkacademy', [
             'app.core',
             'app.routes',
             'app.sidebar',

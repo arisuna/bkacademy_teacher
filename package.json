@@ -1,7 +1,7 @@
 {
-    "name": "smxd",
+    "name": "bkacademy",
     "version": "1.0.0",
-    "description": "SMXD Project",
+    "description": "bkacademy Project",
     "main": "gulpfile.js",
     "directories": {
         "test": "test"
@@ -59,7 +59,7 @@
     "license": "ISC",
     "dependencies": {
         "font-awesome": "^4.7.0",
-        "reloday": "https://reloid@bitbucket.org/reloid/reloday_frontend_librairies.git#smxd",
+        "reloday": "https://reloid@bitbucket.org/reloid/reloday_frontend_librairies.git#bkacademy",
         "roboto-npm-webfont": "^1.0.1"
     },
     "engines": {

@@ -9,11 +9,11 @@
     function translateConfig(__env, $translateProvider, $translatePartialLoader) {
 
         $translateProvider.useStaticFilesLoader({
-            prefix: __env.staticHostname + '/translate/',
+            prefix: '/assets/translate/',
             suffix: ''
         });
         $translateProvider.useLoader('$translatePartialLoader', {
-            urlTemplate: __env.staticHostname + '/translate/{lang}.json'
+            urlTemplate: '/assets/translate/{lang}.json'
         });
 
         $translateProvider.translations(
@@ -34,7 +34,7 @@
                 'SUBMIT_BTN_TEXT': '{{ SUBMIT_BTN_TEXT }}'
             });
 
-        $translateProvider.preferredLanguage('en');
+        $translateProvider.preferredLanguage('vi');
         $translateProvider.useLocalStorage();
         $translateProvider.usePostCompiling(true);
         $translateProvider.useSanitizeValueStrategy('sanitizeParameters');

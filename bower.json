@@ -1,6 +1,6 @@
 {
-    "name": "smxd",
-    "description": "SMXD Project",
+    "name": "bkacademy",
+    "description": "bkacademy Project",
     "main": "gulpfile.js",
     "license": "MIT",
     "private": true,
