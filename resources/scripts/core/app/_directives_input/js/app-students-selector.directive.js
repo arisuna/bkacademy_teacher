@@ -3,11 +3,11 @@
 
     angular
         .module('app.app-directives')
-        .directive('appProductFieldGroupsSelector', appProductFieldGroupsSelector);
+        .directive('appStudentsSelector', appStudentsSelector);
 
-    appProductFieldGroupsSelector.$inject = ['ngDialog', 'Utils', 'urlBase', 'AppProductFieldGroupService', '$translate'];
+    appStudentsSelector.$inject = ['ngDialog', 'Utils', 'urlBase', 'AppStudentService', '$translate'];
 
-    function appProductFieldGroupsSelector(ngDialog, Utils, urlBase, AppProductFieldGroupService, $translate) {
+    function appStudentsSelector(ngDialog, Utils, urlBase, AppStudentService, $translate) {
         var directive = {
             restrict: 'EA',
             replace: true,
@@ -18,7 +18,7 @@
                 label: '@',
                 showLabel: '<',
             },
-            templateUrl: urlBase.tplApp('app', '_directives_input', 'product-field-groups-selector-item'),
+            templateUrl: urlBase.tplApp('app', '_directives_input', 'students-selector-item'),
             link: function (scope, element, attrs) {
 
                 if (!angular.isUndefined(scope.init)) {
@@ -40,7 +40,7 @@
                 };
 
                 $scope.initFn = function () {
-                    AppProductFieldGroupService.getList().then(function (res) {
+                    AppStudentService.getAllStudentList().then(function (res) {
                         if (res.success) {
                             $scope.items = res.data;
                             angular.forEach($scope.model, function (id) {
@@ -95,7 +95,7 @@
 
 
                     let searchDialog = ngDialog.open({
-                        template: urlBase.tplApp('app', '_directives_input', 'product-field-groups-selector-search-dialog'),
+                        template: urlBase.tplApp('app', '_directives_input', 'students-selector-search-dialog'),
                         className: 'ngdialog-custom-position no-background ' + dialogPosition['className'],
                         showClose: false,
                         closeByDocument: true,

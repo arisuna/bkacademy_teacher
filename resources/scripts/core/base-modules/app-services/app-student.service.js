@@ -34,6 +34,17 @@
             return deferred.promise;
         };
 
+        this.getAllStudentList = function (params) {
+            var deferred = $q.defer();
+            AppHttp.put('/app/student/getList', params)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
         this.deleteStudent = function (id) {
             var deferred = $q.defer();
             AppHttp.delete('/app/student/delete/' + id)

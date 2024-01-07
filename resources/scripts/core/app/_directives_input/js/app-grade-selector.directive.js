@@ -5,9 +5,9 @@
         .module('app.app-directives')
         .directive('appGradeSelector', appGradeSelector);
 
-    appGradeSelector.$inject = ['Utils', 'urlBase', 'AppProductService', 'ngDialog'];
+    appGradeSelector.$inject = ['Utils', 'urlBase', 'ngDialog'];
 
-    function appGradeSelector(Utils, urlBase, AppProductService, ngDialog) {
+    function appGradeSelector(Utils, urlBase, ngDialog) {
         var directive = {
             restrict: 'E',
             replace: true,
@@ -78,7 +78,7 @@
                         cache: true,
                         width: 300,
                         data: dialogPosition,
-                        controller: ['$scope', '$element', '$timeout', 'AppProductService', 'Utils', function ($scope, $element, $timeout, AppProductService, Utils) {
+                        controller: ['$scope', '$element', '$timeout', 'Utils', function ($scope, $element, $timeout, Utils) {
 
                             $scope.grades = [];
 

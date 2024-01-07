@@ -23,6 +23,17 @@
                     label="GRADE_TEXT"></app-grade-selector>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <app-students-selector ng-model="classroom.student_ids"
+                                            is-editable="isEditable"
+                                            label="STUDENTS_TEXT"
+                                            show-label="true"
+                                            is-required="false"
+                                            placeholder="SELECT_TEXT"
+                                            required-message="ATTRIBUTE_IS_REQUIRED_TEXT"></app-students-selector>
+            </div>
+        </div>
     </div>
 
     <div class="text-right mg-t-20">

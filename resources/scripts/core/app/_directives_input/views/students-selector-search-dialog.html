@@ -13,7 +13,7 @@
                ng-repeat="item in items | filter: searchConfig.filterQuery"
                ng-click="selectItem(item)">
                 <div class="flex">
-                    <span>{{item.name}} </span>
+                    <span>{{item.lastname}} {{item.firstname}}</span>
                 </div>
             </a>
         </div>
