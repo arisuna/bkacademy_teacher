@@ -428,11 +428,11 @@
     "RESET_BTN_TEXT": "Reset",
     "DO_YOU_WANT_TO_DELETE_PRODUCT_FIELD_GROUP_TEXT": "Do you want to delete this Product field group?",
     "MAKES_TEXT": "Thương hiệu",
-    "VIEW_ALL_CATEGORIES_TEXT": "Xem toàn bộ danh mục",
+    "VIEW_ALL_CATEGORIES_TEXT": "Xem toàn bộ điểm kiến thức",
     "SEARCH_PLACEHOLDER_TEXT": "Tìm kiếm (theo từ khóa, nhãn hiệu)",
     "SEARCH_HEADER_TITLE_TEXT": "Sàn thương mại trực tuyến về máy móc xây dựng",
     "SEARCH_BTN_TEXT": "Tìm kiếm",
-    "CATEGORY_TEXT": "Danh mục",
+    "CATEGORY_TEXT": "Điểm kiến thức",
     "LOCATION_WHERE_TEXT": "Khu vực",
     "VIEW_ALL_MAKES_TEXT": "Xem toàn bộ thương hiệu",
     "CLOSE_TEXT": "Đóng",
@@ -819,5 +819,6 @@
     "FATHER_LAST_NAME_TEXT": "Họ bố",
     "ENTER_FATHER_LAST_NAME_TEXT": "Điền Họ bố",
     "FATHER_PHONE_TEXT": "Số điện thoại của bố",
-    "FATHER_FACEBOOK_URL_TEXT": "Link Facebook của bố"
+    "FATHER_FACEBOOK_URL_TEXT": "Link Facebook của bố",
+    "EXAM_TYPE_TEXT": "Loại bài tập"
   }
