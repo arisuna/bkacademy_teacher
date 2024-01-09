@@ -1,18 +1,40 @@
 <div class="">
     <div>
+        <div class="task-filter mr-sm"
+            uib-tooltip="{{'GRADES_TEXT' | translate}}">
+            <app-grades-filter
+                model="selected_grades"
+                is-icon="true"
+                float="true" inline-list="true" name="GRADES_TEXT"></app-grades-filter>
+        </div>
+    </div>
+    <div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
                 <app-category-level-list
                         item-parent="data.level1ParentId"
                         item-children-items="data.category_level_1_items"
                         item-selected="data.category_selected_level_1"
+                        grades="selected_grades"
                         column-title="LEVEL_1_TEXT"></app-category-level-list>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <app-category-level-list item-parent="data.category_selected_level_1"
                                          item-children-items="data.category_level_2_items"
                                          item-selected="data.category_selected_level_2"
+                                         grades="selected_grades"
                                     column-title="LEVEL_2_TEXT"></app-category-level-list>
+            </div>
+            <div class="col-md-4">
+                <app-category-level-list item-parent="data.category_selected_level_2"
+                                         item-children-items="data.category_level_3_items"
+                                         item-selected="data.category_selected_level_3"
+                                         grades="selected_grades"
+                                    column-title="LEVEL_3_TEXT"></app-category-level-list>
             </div>
         </div>
     </div>

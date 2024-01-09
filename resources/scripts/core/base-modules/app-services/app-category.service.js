@@ -86,9 +86,9 @@
         };
 
 
-        this.getLevel1Items = function () {
+        this.getLevel1Items = function (data) {
             var deferred = $q.defer();
-            AppHttp.get('/app/category/getLevel1Items/').then(function (response) {
+            AppHttp.post('/app/category/getLevel1Items', data).then(function (response) {
                 if (angular.isDefined(response.data.success) && response.data.success === true) {
                     deferred.resolve(response.data);
                 } else {

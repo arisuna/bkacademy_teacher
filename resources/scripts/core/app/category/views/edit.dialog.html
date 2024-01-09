@@ -37,49 +37,19 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <input-text is-text="true"
+                                                label="CODE_TEXT"
+                                                show-label="true"
+                                                is-editable="true"
+                                                is-required="true"
+                                                ng-model="categoryConfig.reference"></input-text>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input-text is-text="true"
                                                 label="NAME_TEXT"
                                                 show-label="true"
                                                 is-editable="true"
                                                 is-required="true"
                                                 ng-model="categoryConfig.name"></input-text>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input-text is-label="true"
-                                                label="LABEL_TEXT"
-                                                is-upper-case="true"
-                                                show-label="true"
-                                                is-editable="true"
-                                                is-required="true"
-                                                ng-model="categoryConfig.label"></input-text>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <logo-upload-v2 class="mg-b-2s"
-                                                    ng-if="categoryConfig.uuid"
-                                                    button-text="UPLOAD_SQUARED_LOGO_TEXT"
-                                                    type="squared_logo"
-                                                    acl-edit-allow="true"
-                                                    uuid="categoryConfig.uuid"></logo-upload-v2>
-                                </div>
-
-                                <div class="col-md-6 col-sm-6">
-                                    <logo-upload-v2 class="mg-b-2s"
-                                                    ng-if="categoryConfig.uuid"
-                                                    button-text="UPLOAD_RECTANGULAR_LOGO_TEXT"
-                                                    type="rectangular_logo"
-                                                    acl-edit-allow="true"
-                                                    uuid="categoryConfig.uuid"></logo-upload-v2>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <input-text-area ng-model="categoryConfig.description"
-                                                     label="DESCRIPTION_TEXT"
-                                                     show-label="true"
-                                                     is-editable="true"></input-text-area>
                                 </div>
                             </div>
                         </div>

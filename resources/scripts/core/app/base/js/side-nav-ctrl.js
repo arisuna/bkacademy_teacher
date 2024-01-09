@@ -143,33 +143,12 @@
                     "class": "",
                     "controller": ""
                 },
-
                 {
-                    "text": "PRODUCTS_TEXT",
-                    "sref": "app.product.list",
-                    "icon": "fa-solid fa-snowplow",
-                    "iconType": "fontawesome",
-                    "appAclAllow": "product/index",
-                    "aclRemove": true,
-                    "class": "",
-                    "controller": ""
-                },
-                {
-                    "text": "ORDERS_TEXT",
-                    "sref": "app.order.list",
-                    "icon": "fa-solid fa-basket-shopping",
-                    "iconType": "fontawesome",
-                    // "appAclAllow": "order/index",
-                    // "aclRemove": true,
-                    "class": "",
-                    "controller": ""
-                },
-                {
-                    "text": "USERS_TEXT",
-                    "icon": "fa-solid fa-building-user",
+                    "text": "MORE_TEXT",
+                    "icon": "fa-solid fa-ellipsis",
                     "iconType": "fontawesome",
                     "noRender": !(AppAclService.validateAction('classroom', 'index')) && !(AppAclService.validateAction('student', 'index')),
-                    "aclRemove": true,
+                    "aclRemove": false,
                     "hasChild": true,
                     "class": "",
                     "items": [
@@ -185,23 +164,6 @@
                             "appAclAllow": "classroom/index",
                             "aclRemove": true,
                         }
-                    ]
-                },
-                {
-                    "text": "MORE_TEXT",
-                    "icon": "fa-solid fa-ellipsis",
-                    "iconType": "fontawesome",
-                    "appAclAllow": "",
-                    "aclRemove": false,
-                    "hasChild": true,
-                    "class": "",
-                    "items": [
-                        {
-                            "text": "CRM_USERS_TEXT",
-                            "sref": "app.crm-user.list",
-                            "appAclAllow": "crm_user/index",
-                            "aclRemove": true,
-                        },
                     ]
                 },
             ]

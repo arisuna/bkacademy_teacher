@@ -3,9 +3,9 @@
 
     App.directive('appCategoryLevelList', appCategoryLevelList);
 
-    appCategoryLevelList.$inject = ['urlBase', 'ngDialog', 'AppCategoryService', 'WaitingService', '$state'];
+    appCategoryLevelList.$inject = ['urlBase', 'ngDialog', 'AppCategoryService', 'WaitingService', '$state', '$rootScope'];
 
-    function appCategoryLevelList(urlBase, ngDialog, AppCategoryService, WaitingService, $state) {
+    function appCategoryLevelList(urlBase, ngDialog, AppCategoryService, WaitingService, $state, $rootScope) {
         return {
             restrict: 'EA',
             replace: true,
@@ -14,6 +14,7 @@
                 parent: "=",
                 itemSelected: "=",
                 itemChildrenItems: "=?",
+                grades: "=?",
                 columnTitle: "@?"
             },
             templateUrl: urlBase.tplApp('app', 'category', 'category-level-list'),
@@ -83,7 +84,7 @@
                     } else if (!$scope.itemParent || $scope.itemParent.id == 0) {
                         $scope.isLoading = true;
                         $scope.itemChildrenItems = [];
-                        AppCategoryService.getLevel1Items().then(
+                        AppCategoryService.getLevel1Items({grades: $scope.grades}).then(
                             function (res) {
                                 if (res.success) {
                                     $scope.itemChildrenItems = res.data;
@@ -101,6 +102,10 @@
                         $scope.itemChildrenItems = [];
                     }
                 };
+
+                $rootScope.$on('grade_filter_update', function (event, data) {
+                    $scope.getCategoryChildrenItems();
+                });
 
 
                 $scope.selectCategoryItem = function (item) {

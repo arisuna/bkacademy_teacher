@@ -24,29 +24,25 @@
             <div class="row">
                 <div class="col-sm-6">
                     <input-text is-text="true"
+                                label="CODE_TEXT"
+                                show-label="true"
+                                is-editable="true"
+                                is-required="true"
+                                ng-model="categoryConfig.reference"></input-text>
+                </div>
+                <div class="col-sm-6">
+                    <input-text is-text="true"
                                 label="NAME_TEXT"
                                 show-label="true"
                                 is-editable="true"
                                 is-required="true"
                                 ng-model="categoryConfig.name"></input-text>
                 </div>
-                <div class="col-sm-6">
-                    <input-text is-label="true"
-                                label="LABEL_TEXT"
-                                is-upper-case="true"
-                                show-label="true"
-                                is-editable="true"
-                                is-required="true"
-                                ng-model="categoryConfig.label"></input-text>
-                </div>
             </div>
-
-            <div class="row">
+            <div class="row" ng-if="!(itemParent.id > 0)">
                 <div class="col-sm-12">
-                    <input-text-area ng-model="categoryConfig.description"
-                                     label="DESCRIPTION_TEXT"
-                                     show-label="true"
-                                     is-editable="true"></input-text-area>
+                    <app-grade-selector ng-model="categoryConfig.grade" show-label="true" is-required="true"
+                        label="GRADE_TEXT"></app-grade-selector>
                 </div>
             </div>
         </div>

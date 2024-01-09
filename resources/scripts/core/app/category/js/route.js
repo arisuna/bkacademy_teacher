@@ -16,7 +16,7 @@
                         templateUrl: helper.modulePath('app', 'category/index'),
                     }
                 },
-                acl: 'admin/index',
+                acl: 'category/index',
                 params: {
                     showSideNav2: true,
                     templateSideNav2: helper.modulePath('app', 'admin-page/left')
