@@ -820,5 +820,10 @@
     "ENTER_FATHER_LAST_NAME_TEXT": "Điền Họ bố",
     "FATHER_PHONE_TEXT": "Số điện thoại của bố",
     "FATHER_FACEBOOK_URL_TEXT": "Link Facebook của bố",
-    "EXAM_TYPE_TEXT": "Loại bài tập"
+    "EXAM_TYPE_TEXT": "Loại bài tập",
+    "CLASSROOM_TEXT": "Lớp học",
+    "LESSON_TEXT": "Buổi học",
+    "CONTENT_TEXT": "Nội dung",
+    "LESSON_TYPE_TEXT": "Loại buổi học",
+    "DATE_TEXT": "Ngày"
   }

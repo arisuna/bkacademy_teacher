@@ -1,0 +1,67 @@
+<div class="card card-nobox" ng-controller="LessonFormController">
+    <form class="form-validate"
+      validate-form=""
+      role="form"
+      name="lessonForm"
+      data-parsley-validate=""
+      ng-submit="saveFn()"
+      ng-if="!page_loading"
+      novalidate>
+      <div class="panel panel-primary white-block height-80vh scroll-y">
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <input-text is-editable="true"
+                                is-required="true"
+                                is-text="true"
+                                ng-model="lesson.name"
+                                required-message="ENTER_CONTENT_TEXT"
+                                label="CONTENT_TEXT"
+                                show-label="true"></input-text>
+
+                </div>
+                <div class="col-sm-6">
+                    <app-classroom-selector ng-model="lesson.class_id"
+                                        show-label="true"
+                                        is-editable="true"
+                                        is-required="true"
+                                        label="CLASSROOM_TEXT"></app-classroom-selector>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <date-picker-input ng-model="lesson.date"
+                                       ng-style="{'width':'200px'}"
+                                       show-label="true"
+                                       ng-show="!search.folderUuid"
+                                       label="DATE_TEXT"
+                                       show-label="false"
+                                       required="true"
+                                       output-type="date"
+                                       input-type="date">
+                    </date-picker-input>
+                </div>
+                <div class="col-sm-6">
+                    <app-lesson-type-selector ng-model="lesson.lesson_type_id"
+                                        show-label="true"
+                                        is-editable="true"
+                                        is-required="true"
+                                        label="LESSON_TYPE_TEXT"></app-lesson-type-selector>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-sm-12 text-right">
+                    <button type="submit" class="btn relo-bg-green" title="Save" ng-disabled="saving" ng-if="canSave"><i
+                            class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
+                        {{'SAVE_BTN_TEXT' | translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

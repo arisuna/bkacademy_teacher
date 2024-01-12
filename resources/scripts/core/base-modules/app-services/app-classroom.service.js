@@ -24,7 +24,18 @@
 
         this.getClassroomList = function (params) {
             const deferred = $q.defer();
-            AppHttp.put('/app/classroom/search', params)
+            AppHttp.put('/app/classroom/getList', params)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.getAllClassroomList = function (params) {
+            const deferred = $q.defer();
+            AppHttp.put('/app/classroom/getAll', params)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err, status) {

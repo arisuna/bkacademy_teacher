@@ -25,18 +25,18 @@
                 //         {"title": "SYSTEM_ATTRIBUTES_TEXT", "state": "app.system-attribute.list"},
                 //     ]
                 // },
-                {
-                    "title": "USERS_AND_ACLS_TEXT",
-                    "icon": "fa-solid fa-users",
-                    "iconType": "icon",
-                    "noRender": !(AppAclService.validateAction('admin', 'index')),
-                    "acl": "",
-                    "subMenu": [
-                        {"title": "ACLS_TEXT", "state": "app.setting-acl.list"},
-                        {"title": "ACL_GROUPS_ROLES_TEXT", "state": "app.user-group.list"},
-                        {"title": "ADMIN_USERS_TEXT ", "state": "app.admin-user.list"},
-                    ]
-                },
+                // {
+                //     "title": "USERS_AND_ACLS_TEXT",
+                //     "icon": "fa-solid fa-users",
+                //     "iconType": "icon",
+                //     "noRender": !(AppAclService.validateAction('admin', 'index')),
+                //     "acl": "",
+                //     "subMenu": [
+                //         {"title": "ACLS_TEXT", "state": "app.setting-acl.list"},
+                //         {"title": "ACL_GROUPS_ROLES_TEXT", "state": "app.user-group.list"},
+                //         {"title": "ADMIN_USERS_TEXT ", "state": "app.admin-user.list"},
+                //     ]
+                // },
                 // {
                 //     "title": "EMAILS_AND_NOTIFICATIONS_TEXT",
                 //     "icon": "fa-solid fa-envelope",

@@ -1,0 +1,70 @@
+<div ng-controller="LessonFormController">
+    <div ng-include="'/app/views/lesson/detail_buttons.html'"></div>
+
+    <div ng-if="page_loading">
+        <spinner-v2 type="spin"></spinner-v2>
+    </div>
+
+    <div class="mt-sm" ng-show="!page_loading">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-default-b white-block pd-b-0">
+                    <div class="panel-body">
+
+                        <h4 class="text-dark-blue text-center">
+                            {{ lesson.name }}
+                        </h4>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- <div class="mb">{{'ID_NUMBER_TEXT' | translate}}: {{lesson.id_number}}</div>
+                                <div class="mb">
+                                    <ui-select ng-model="lesson.statusSelected"
+                                               required="true"
+                                               ng-disabled="!isEditable || lesson.company_status == 1"
+                                               ng-class="{'uib-select-bright-blue-10': isEditable && lesson.company_status != 1, 'uib-select-white': !isEditable || lesson.company_status == 1}"
+                                               class="w-100 uib-select-95-per form-control-custom-radius"
+                                               theme="bootstrap">
+                                        <ui-select-match
+                                                placeholder="{{'SELECT_TEXT' | translate}}"
+                                                class="bg-transparent">
+                                            <em class="fa-solid fa-circle txt-16 mr-sm {{'text-' + $select.selected.color}}"></em>
+                                            {{ $select.selected.text | translate}}
+
+                                        </ui-select-match>
+
+                                        <ui-select-choices repeat="item in statuses | filter:{isSelectable: true} track by $index ">
+                                            <div class=" " ng-click="saving = true ; changeStatus(item, $index)">
+                                                <em class="fa-solid fa-circle txt-16 mr-sm {{'text-' + item.color}}"></em>
+                                                {{ item.text | translate}}
+                                            </div>
+
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div> -->
+                                <div class="mb-sm">{{'CREATED_AT_TEXT' | translate}}
+                                    {{ lesson.created_at | amDateFormat: 'DD/MM/YYYY'}}
+                                </div>
+                                <div class="pd-b-15">{{'UPDATED_AT_TEXT' | translate}}
+                                    {{ lesson.updated_at | amDateFormat: 'DD/MM/YYYY'}}
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="divider">
+                    </div>
+
+                    <div class="list-group mt" ng-init="tabActive = 1">
+                        <a class="list-group-item"
+                           ng-class="{'active': (tabActive == 1)}"
+                           ng-click="tabActive = 1">{{ 'BASIC_INFO_TEXT' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div ng-show="tabActive == 1">
+                    <div ng-include="'/app/views/lesson/view_basic.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

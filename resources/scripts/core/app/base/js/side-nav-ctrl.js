@@ -144,6 +144,15 @@
                     "controller": ""
                 },
                 {
+                    "text": "LESSON_TEXT",
+                    "sref": "app.lesson.list",
+                    "icon": "fa-solid fa-person-chalkboard",
+                    "iconType": "fontawesome",
+                    "gmsAclAllow": "lesson/index",
+                    "aclRemove": true,
+                    "class": ""
+                },
+                {
                     "text": "MORE_TEXT",
                     "icon": "fa-solid fa-ellipsis",
                     "iconType": "fontawesome",
