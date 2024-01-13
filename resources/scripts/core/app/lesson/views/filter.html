@@ -14,10 +14,25 @@
             float="true" inline-list="true" name="CLASSROOM_TEXT"></app-classroom-filter>
     </div>
     <div class="task-filter mr-sm"
+        uib-tooltip="{{'LESSON_TYPE_TEXT' | translate}}">
+        <app-lesson-types-filter
+            model="selected_lesson_types"
+            is-icon="true"
+            float="true" inline-list="true" name="LESSON_TYPE_TEXT"></app-lesson-types-filter>
+    </div>
+    <div class="task-filter mr-sm"
         uib-tooltip="{{'WEEK_TEXT' | translate}}">
         <app-weeks-filter
             model="selected_weeks"
             is-icon="true"
             float="true" inline-list="true" name="WEEK_TEXTM_TEXT"></app-weeks-filter>
+    </div>
+    <div class="task-filter mr-sm" uib-tooltip="{{'DATE_TEXT' | translate}}">
+        <app-date-range-utc-filter
+            ng-model="date"
+            float="true"
+            is-icon="true"
+            name="DATE_TEXT"
+            inline-list="true"></app-date-range-utc-filter>
     </div>
 </div>

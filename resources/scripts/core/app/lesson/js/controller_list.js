@@ -3,7 +3,11 @@
     App.controller('LessonListController', ['$scope', '$state', '$timeout', '$rootScope', '$translate', 'WaitingService', 'AppDataService', 'AppLessonService',
         function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppDataService, AppLessonService) {
             $scope.params = {
-                roles: [],
+                lesson_types: [],
+                date:{
+                    startDate: null,
+                    endDate: null
+                }
             };
             $scope.isLoadingMore = false;
             $scope.isLoading = true;
@@ -159,6 +163,22 @@
                 } else {
                     $scope.params.classrooms = []
                 }
+                if (data.lesson_types && data.lesson_types.length) {
+                    $scope.params.lesson_types = data.lesson_types
+                } else {
+                    $scope.params.lesson_types = []
+                }
+                if(data.date != undefined && data.date != null && data.date != ''){
+                    if(angular.isDefined(data.date.startDate) && data.date.startDate > 0){
+                        $scope.isFiltered = true;
+                        $scope.params.date.startDate = data.date.startDate;
+                    }
+
+                    if(angular.isDefined(data.date.endDate) && data.date.endDate > 0){
+                        $scope.isFiltered = true;
+                        $scope.params.date.endDate = data.date.endDate;
+                    }
+                }
                 $timeout(function () {
                     $scope.items = [];
                     $scope.loadItems();
@@ -177,6 +197,13 @@
                 $scope.query = "";
                 $scope.sort = {};
                 $scope.items = [];
+                $scope.params = {
+                    lesson_types: [],
+                    date:{
+                        startDate: null,
+                        endDate: null
+                    }
+                };
                 $scope.loadItems();
                 $scope.publish('clearFilter');
             };

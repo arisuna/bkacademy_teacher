@@ -71,6 +71,7 @@
                         <th class="text-dark-blue bd-b-white">{{'LESSON_CODE_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white">{{'CLASSROOM_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white">{{'CONTENT_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white">{{'LESSON_TYPE_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white">{{'WEEK_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white">{{'DATE_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white"></th>
@@ -86,8 +87,9 @@
                     </td>
                     <td class="bd-t-white">{{ object.class_name }}</td>
                     <td class="bd-t-white">{{ object.name }}</td>
+                    <td class="bd-t-white">{{ object.lesson_type_name}}</td>
                     <td class="bd-t-white">{{ object.week}}</td>
-                    <td class="bd-t-white">{{ object.date  | amUtc | amLocal | amDateFormat: 'DD/MM/YYYY'}}</td>
+                    <td class="bd-t-white">{{ object.date  | amFromUnix | amDateFormat: 'DD/MM/YYYY'}}</td>
                     <td class="text-right bd-t-white">
                         <button-edit-icon ng-click="editLessonFn( object )" class="mr-sm"></button-edit-icon>
                         <button-delete-icon ng-click="deleteFn( object )"

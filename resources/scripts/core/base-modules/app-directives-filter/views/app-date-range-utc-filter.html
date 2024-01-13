@@ -1,0 +1,24 @@
+<div class="filter-item-container"
+     ng-click="openCloseSwitch()">
+
+    <div class="filter-title"
+         ng-model="dateRangePicker.date"
+         picker="dateRangePicker.picker"
+         options="dateRangePicker.options"
+         date-range-picker="">
+
+       <span ng-if="!model">
+            <em class="fa-solid fa-calendar-week"></em>
+            <em class="fa fa-angle-down ml-sm"></em>
+        </span>
+
+        <span ng-if="model">
+            <span ng-if="model.startDate || model.endDate">
+                {{ model.startDate | companyDateFormatFromUnixUtc }} - {{ model.endDate | companyDateFormatFromUnixUtc }}
+                 <em class="fa fa-angle-down ml-sm"></em>
+            </span>
+        </span>
+
+        <div class="clearfix"></div>
+    </div>
+</div>

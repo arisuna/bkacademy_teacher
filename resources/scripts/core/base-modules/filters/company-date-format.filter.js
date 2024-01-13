@@ -136,7 +136,7 @@
 
     function companyDateFormatFromUnixUtc(AppAuthService, $filter, Utils) {
         return function (input) {
-            let settingFormat = AppAuthService.getCompanyDateFormat();
+            let settingFormat = "DD/MM/YYYY";
 
             let output = input;
 

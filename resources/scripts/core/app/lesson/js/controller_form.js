@@ -35,7 +35,7 @@
                     return;
                 }
 
-                AppLessonService.getLessonDetail(id).then(
+                AppLessonService.detailLesson(id).then(
                     function (res) {
                         if (res.success) {
                             $scope.lesson = res.data;
