@@ -61,7 +61,6 @@
                         AppClassroomService.getClassroomDetail($scope.classroom).then(function (res) {
                             if (res.success) {
                                 $scope.data.selected = res.data;
-                                $scope.address =  angular.copy(res.data);
                             }
                         });
                     } else {
@@ -73,6 +72,12 @@
                 };
 
                 $scope.initFn();
+
+                $scope.$watch('classroom', function (newValue, oldValue) {
+                    if (newValue !== oldValue) {
+                        $scope.initFn();
+                    }
+                });
 
 
                 $scope.resetItem = function () {

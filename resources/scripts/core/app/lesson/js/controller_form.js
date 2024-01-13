@@ -32,6 +32,11 @@
                 var id = angular.isDefined($stateParams.id) ? $stateParams.id : 0;
                 if (id == 0) {
                     $scope.page_loading = false;
+                    $scope.lesson = {
+                        date: null,
+                        categories: [],
+                        category_ids: []
+                    };
                     return;
                 }
 
@@ -76,7 +81,7 @@
                             // });
 
                             WaitingService.popSuccess(res.message);
-                            $state.go('app.lesson.list');
+                            $state.go('app.lesson.edit', {id: res.data.id});
                         } else {
                             WaitingService.error(res.message);
                         }
@@ -111,5 +116,26 @@
                         });
                     });
             }; // End delete function
+
+            $scope.editStudentScoreFn = function (object) {
+                $scope.currentClassroom = {id: 0};
+                $scope.createClassroomDialog = ngDialog.open({
+                    template: urlBase.tplApp('app', 'lesson', 'edit-score-right-dialog', '_=' + Math.random()),
+                    className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
+                    scope: $scope,
+                    closeByDocument: true,
+                    resolve:{
+                        student_score: function () {
+                            return object
+                        }
+                    },
+
+                    controller: 'EditStudentScoreFormController'
+                });
+
+                $scope.createClassroomDialog.closePromise.then(function (data) {
+                    $scope.getDetailFn();
+                });
+            }
         }]);
 })();

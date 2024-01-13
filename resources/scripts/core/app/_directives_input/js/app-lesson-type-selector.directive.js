@@ -71,6 +71,11 @@
                         };
                     }
                 };
+                $scope.$watch('lessonType', function (newValue, oldValue) {
+                    if (newValue !== oldValue) {
+                        $scope.initFn();
+                    }
+                });
 
                 $scope.initFn();
 

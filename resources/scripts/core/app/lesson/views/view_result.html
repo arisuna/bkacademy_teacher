@@ -4,49 +4,43 @@
       novalidate>
     <div class="custom-dialog-overflow scroll-append scroll-y overflow-x-disable ">
         <div class="row">
-            <div class="col-sm-6">
-                <input-text is-editable="false"
-                            is-required="true"
-                            is-text="true"
-                            ng-model="lesson.name"
-                            required-message="ENTER_CONTENT_TEXT"
-                            label="CONTENT_TEXT"
-                            show-label="true"></input-text>
+            <div class="col-sm-12">
+                <angular-table table="table"
+                           items="lesson.students"
+                           ng-if="!page_loading && lesson.students.length > 0"
+                           search-input-enable="false">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th class="text-dark-blue bd-b-white">#</th>
+                            <th class="text-dark-blue bd-b-white">{{'NAME_TEXT' | translate }}</th>
+                            <th class="text-dark-blue bd-b-white">{{'SCORE_TEXT' | translate }}</th>
+                            <th class="text-dark-blue bd-b-white" ng-repeat="category in lesson.categories">{{category.name }}</th>
+                            <th class="text-dark-blue bd-b-white"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="(index, object) in table.pagedItems[table.currentPage]" class="relo-bg-bright-gray-4 bd-r-5 border-white">
+                            <td class="bd-t-white">{{ index + 1}}</td>
+                        <td  class="bd-t-white">
+                            <div ng-click="editLessonFn( object )"
+                                class="wrap-word text-bright-blue">{{ object.student.lastname }} {{ object.student.firstname }}
+                            </div>
+                        </td>
+                        <td class="bd-t-white">{{ object.score }}</td>
+                        <td class="bd-t-white" ng-repeat="category in lesson.categories">{{ object.categories[category.id].score }} 
+                            <p>{{'CORRECT_TEXT' | translate}} : {{ object.categories[category.id].correct }}</p>
+                            <p>{{'WRONG_TEXT' | translate}} : {{ object.categories[category.id].wrong }}</p>
+                            <p>{{'NOT_DONE_TEXT' | translate}} : {{ object.categories[category.id].not_done }}</p></td>
+                        <td class="text-right bd-t-white">
+                            <button-edit-icon ng-click="editStudentScoreFn( object )" class="mr-sm"></button-edit-icon>
+                        </td>
+                        </tr>
 
-            </div>
-            <div class="col-sm-6">
-                <app-classroom-selector ng-model="lesson.class_id"
-                                    show-label="true"
-                                    is-editable="false"
-                                    is-required="true"
-                                    label="CLASSROOM_TEXT"></app-classroom-selector>
+                        </tbody>
+                    </table>
+                </angular-table>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <date-picker-input ng-model="lesson.date"
-                                    disabled="true"
-                                   ng-style="{'width':'200px'}"
-                                   show-label="true"
-                                   ng-show="!search.folderUuid"
-                                   label="DATE_TEXT"
-                                   show-label="false"
-                                   required="true"
-                                   output-type="date"
-                                   input-type="date">
-                </date-picker-input>
-            </div>
-            <div class="col-sm-6">
-                <app-lesson-type-selector ng-model="lesson.lesson_type_id"
-                                    show-label="true"
-                                    is-editable="false"
-                                    is-required="true"
-                                    label="LESSON_TYPE_TEXT"></app-lesson-type-selector>
-            </div>
-        </div>
-    </div>
-
-    <div class="text-right mg-t-20">
-        <save-button-submit title="SAVE_BTN_TEXT" ng-disabled="saving" ng-if="isEditable"></save-button-submit>
     </div>
 </form>

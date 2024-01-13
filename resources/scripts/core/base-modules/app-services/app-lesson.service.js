@@ -62,5 +62,15 @@
             return deferred.promise;
         };
 
+        this.updateScore = function (data) {
+            var deferred = $q.defer();
+            AppHttp.put('/app/lesson/updateScore', data).then(function (response) {
+                deferred.resolve(response.data);
+            }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
     }
 })();

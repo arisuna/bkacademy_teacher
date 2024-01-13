@@ -1,0 +1,75 @@
+<div class="card noBorder">
+    <div class="card-heading relo-bg-bright-gray card-title-heading">
+        <span>{{'EDIT_SCORE_TEXT' | translate}}</span>
+    </div>
+
+    <form class="form-validate pd-0 mg-0"
+          validate-form=""
+          ng-submit="saveFn()"
+          ng-if="!isLoading"
+          novalidate>
+        <div class="card-body custom-dialog-overflow scroll-append scroll-y overflow-x-disable height-100vh-m93px">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>{{'STUDENT_TEXT' | translate}} : {{student.lastname}} {{student.firstname}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                                is-required="true"
+                                is-numeric="true"
+                                ng-model="student_score.score"
+                                required-message="ENTER_SCORE_TEXT"
+                                label="SCORE_TEXT"
+                                show-label="true"></input-text>
+                </div>
+            </div>
+            <div class="row"  ng-repeat="category in lesson.categories">
+                <div class="col-sm-12">
+                    <p>{{'CATEGORY_TEXT' | translate}}: {{category.name}}</p>
+                </div>
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                    is-required="false"
+                    is-numeric="true"
+                    ng-model="student_score.categories[category.id].score"
+                    required-message="ENTER_SCORE_TEXT"
+                    label="SCORE_TEXT"
+                    show-label="true"></input-text>
+                </div>
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                    is-required="false"
+                    is-numeric="true"
+                    ng-model="student_score.categories[category.id].correct"
+                    required-message="ENTER_CORRECT_TEXT"
+                    label="CORRECT_TEXT"
+                    show-label="true"></input-text>
+                </div>
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                    is-required="false"
+                    is-numeric="true"
+                    ng-model="student_score.categories[category.id].wrong"
+                    required-message="ENTER_WRONG_TEXT"
+                    label="WRONG_TEXT"
+                    show-label="true"></input-text>
+                </div>
+                <div class="col-sm-12">
+                    <input-text is-editable="true"
+                    is-required="false"
+                    is-numeric="true"
+                    ng-model="student_score.categories[category.id].not_done"
+                    required-message="ENTER_NOT_DONE_TEXT"
+                    label="NOT_DONE_TEXT"
+                    show-label="true"></input-text>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer text-right">
+            <save-button-submit title="SAVE_BTN_TEXT" ng-disabled="saving"></save-button-submit>
+        </div>
+    </form>
+</div>

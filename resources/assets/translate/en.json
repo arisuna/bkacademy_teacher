@@ -853,5 +853,18 @@
     "APPLY_TEXT": "Áp dụng",
     "LAST_7_DAY_TEXT": "7 ngày gần đây",
     "LAST_30_DAY_TEXT": "30 ngày gần đây",
-    "CUSTOM_TEXT": "Tự chọn"
+    "CUSTOM_TEXT": "Tự chọn",
+    "SCORE_TEXT": "Điểm",
+    "CORRECT_TEXT": "Số câu đúng",
+    "WRONG_TEXT": "Số câu sai",
+    "NOT_DONE_TEXT": "Số câu chưa làm",
+    "EDIT_SCORE_TEXT": "Sửa điểm",
+    "ENTER_SCORE_TEXT": "Điền điểm",
+    "ENTER_CORRECT_TEXT": "Điền số câu đúng",
+    "ENTER_WRONG_TEXT": "Điền số câu sai",
+    "ENTER_NOT_DONE_TEXT": "Điền số câu chưa làm",
+    "QUESTION_DELETE_LESSON_TEXT": "Bạn có chắc muốn xoá buổi học này?",
+    "CREATE_LESSON_TEXT": "Tạo buổi học",
+    "RESULT_TEXT": "kết quả học tập",
+    "EDIT_LESSON_TEXT": "Cập nhật buổi học"
   }

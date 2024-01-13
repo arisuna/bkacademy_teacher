@@ -50,6 +50,16 @@
                                         label="LESSON_TYPE_TEXT"></app-lesson-type-selector>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <app-categories-selector ng-model="lesson.category_ids"
+                                        categories="lesson.categories"
+                                        show-label="true"
+                                        is-editable="true"
+                                        is-required="true"
+                                        label="CATEGORIES_TEXT"></app-categories-selector>
+                </div>
+            </div>
         </div>
         </div>
 

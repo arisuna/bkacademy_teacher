@@ -13,6 +13,7 @@
             replace: true,
             scope: {
                 model: '=ngModel',
+                categories: '=?',
                 isRequired: '<',
                 isEditable: '<?',
                 subCategoryOnly: '<?',
@@ -78,6 +79,7 @@
 
                 $scope.removeItems = function () {
                     $scope.model = angular.copy([]);
+                    $scope.categories = angular.copy([]);
                     $scope.data.selected = [];
                 }
 
@@ -107,6 +109,9 @@
 
                     _.remove($scope.model, function (id) {
                         return id == item.id;
+                    })
+                    _.remove($scope.categories, function (category) {
+                        return category.id == item.id;
                     })
                 }
 
@@ -164,12 +169,11 @@
                         let findIndex = _.findIndex($scope.data.selected, function (o) {
                             return o.id == item.id;
                         });
-
                         if (findIndex < 0) {
                             $scope.data.selected.push(item);
+                            $scope.categories.push(item);
+                            $scope.model.push(item.id);
                         }
-
-                        $scope.model = angular.copy(_.map($scope.data.selected, 'id'));
                     }
                 }
             }
