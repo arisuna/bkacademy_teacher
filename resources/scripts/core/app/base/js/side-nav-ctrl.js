@@ -20,7 +20,6 @@
                         secondary_color: '#0098FF'
                     };
                 }
-                console.log($scope.theme);
 
                 $scope.$broadcast("change_theme");
             };

@@ -19,7 +19,7 @@
                 vm.changeTheme = function () {
                     document.documentElement.style.setProperty('--main-color', vm.theme.main_color);
                     document.documentElement.style.setProperty('--secondary-color', vm.theme.secondary_color);
-                    console.log('set color');
+                    // console.log('set color');
                 };
 
                 vm.changeTheme();

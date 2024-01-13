@@ -56,6 +56,24 @@
                     }
                 };
 
+                $scope.initFn = function () {
+                    if ($scope.classroom > 0) {
+                        AppClassroomService.getClassroomDetail($scope.classroom).then(function (res) {
+                            if (res.success) {
+                                $scope.data.selected = res.data;
+                                $scope.address =  angular.copy(res.data);
+                            }
+                        });
+                    } else {
+                        $scope.data.selected = {
+                            id: null,
+                            name: null
+                        };
+                    }
+                };
+
+                $scope.initFn();
+
 
                 $scope.resetItem = function () {
                     $scope.classroom = null;

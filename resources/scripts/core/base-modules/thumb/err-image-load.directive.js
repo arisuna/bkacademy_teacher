@@ -42,7 +42,7 @@
                                             secondary_color: '#0098FF'
                                         };
                                     }
-                                    console.log('theme ' + scope.theme);
+                                    // console.log('theme ' + scope.theme);
                                     if(scope.type == 'theme_logo'){
                                         attrs.$set('src', scope.theme.logo_url);
                                     } else {

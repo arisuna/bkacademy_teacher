@@ -40,7 +40,7 @@
                 AppDataService.autoLoginFn({
                     'hash': $stateParams.hash
                 }).then(function (res) {
-                    console.log(res);
+                    // console.log(res);
                     //@TODO need redirection here in LOCAL
                     if (angular.isDefined(res.success) && res.success) {
                         localStorage.setItem('token_key', res.accessToken);

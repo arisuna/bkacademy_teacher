@@ -17,8 +17,8 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <!-- <div class="mb">{{'ID_NUMBER_TEXT' | translate}}: {{lesson.id_number}}</div>
-                                <div class="mb">
+                                <div class="mb">{{'LESSON_CODE_TEXT' | translate}}: {{lesson.code}}</div>
+                                <!-- <div class="mb">
                                     <ui-select ng-model="lesson.statusSelected"
                                                required="true"
                                                ng-disabled="!isEditable || lesson.company_status == 1"
@@ -42,12 +42,6 @@
                                         </ui-select-choices>
                                     </ui-select>
                                 </div> -->
-                                <div class="mb-sm">{{'CREATED_AT_TEXT' | translate}}
-                                    {{ lesson.created_at | amDateFormat: 'DD/MM/YYYY'}}
-                                </div>
-                                <div class="pd-b-15">{{'UPDATED_AT_TEXT' | translate}}
-                                    {{ lesson.updated_at | amDateFormat: 'DD/MM/YYYY'}}
-                                </div>
                             </div>
                         </div>
                         <hr class="divider">
@@ -58,11 +52,19 @@
                            ng-class="{'active': (tabActive == 1)}"
                            ng-click="tabActive = 1">{{ 'BASIC_INFO_TEXT' | translate }}</a>
                     </div>
+                    <div class="list-group mt" ng-init="tabActive = 2">
+                        <a class="list-group-item"
+                           ng-class="{'active': (tabActive == 2)}"
+                           ng-click="tabActive = 2">{{ 'RESULT_TEXT' | translate }}</a>
+                    </div>
                 </div>
             </div>
             <div class="col-md-9">
                 <div ng-show="tabActive == 1">
                     <div ng-include="'/app/views/lesson/view_basic.html'"></div>
+                </div>
+                <div ng-show="tabActive == 2">
+                    <div ng-include="'/app/views/lesson/view_result.html'"></div>
                 </div>
             </div>
         </div>

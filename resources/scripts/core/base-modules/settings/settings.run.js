@@ -57,9 +57,6 @@
         $rootScope.$watch('app.layout', function () {
             $localStorage.layout = $rootScope.app.layout;
         }, true);
-        $rootScope.$watch('app', function () {
-            console.log($rootScope.app);
-        }, true);
         // Close submenu when sidebar change from collapsed to normal
         $rootScope.$watch('app.layout.isCollapsed', function (newValue) {
             if (newValue === false)

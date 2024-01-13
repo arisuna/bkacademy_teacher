@@ -304,7 +304,7 @@
             } else {
                 AppDataService.checkLogin().then(
                     function (res) {
-                        console.log(res);
+                        // console.log(res);
                         var current_url = window.location.href;
                         if (res.success) {
                             vm.data.profile = res.user;
