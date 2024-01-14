@@ -31,7 +31,6 @@
             ]
 
             $scope.getDetailFn = function () {
-                console.log("$stateParams.uuid", $stateParams.uuid)
                 let uuid = angular.isDefined($stateParams.uuid) ? $stateParams.uuid : 0;
                 if (!uuid) {
                     $scope.isLoading = false;

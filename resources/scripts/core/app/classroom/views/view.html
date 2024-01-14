@@ -54,9 +54,9 @@
                            ng-class="{'active': (tabActive == 1)}"
                            ng-click="setTab(1)">{{ 'BASIC_INFO_TEXT' | translate }}</a>
 
-                        <a class="list-group-item"
+                        <!-- <a class="list-group-item"
                            ng-class="{'active': (tabActive == 2)}"
-                           ng-click="setTab(4)">{{ 'STUDENTS_TEXT' | translate }}</a>
+                           ng-click="setTab(4)">{{ 'STUDENTS_TEXT' | translate }}</a> -->
                     </div>
                 </div>
             </div>
@@ -65,9 +65,9 @@
                     <div ng-include="'/app/views/classroom/view_basic.html'"></div>
                 </div>
 
-                <div ng-show="tabActive == 2" ng-class="{'force-disabled-2 pd-t-10': classroom.is_deleted == 1}">
+                <!-- <div ng-show="tabActive == 2" ng-class="{'force-disabled-2 pd-t-10': classroom.is_deleted == 1}">
                     <div ng-include="'/app/views/classroom/addresses.html'"></div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

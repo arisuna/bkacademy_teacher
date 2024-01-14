@@ -868,5 +868,6 @@
     "RESULT_TEXT": "kết quả học tập",
     "EDIT_LESSON_TEXT": "Cập nhật buổi học",
     "ENTER_PASSWORD_TEXT": "Nhập mật khẩu",
-    "QUESTION_DELETE_STUDENT_TEXT": "Bạn có chắc muốn xoá học sinh này không?"
+    "QUESTION_DELETE_STUDENT_TEXT": "Bạn có chắc muốn xoá học sinh này không?",
+    "EDIT_CLASSROOM_TEXT": "Cập nhật lớp học"
   }
