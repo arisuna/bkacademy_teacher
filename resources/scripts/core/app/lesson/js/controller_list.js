@@ -67,7 +67,7 @@
             };
 
             $scope.initItems = function () {
-                $scope.params.draw = $scope.loadCount;
+                $scope.params.page = $scope.currentPage + 1;
                 $scope.params.length = 20;
                 $scope.params.start = ($scope.loadCount - 1) * 20;
                 $scope.params.orders = [$scope.sort];
@@ -104,17 +104,17 @@
             };
 
             $scope.getListMore = function () {
-                $scope.params.draw = $scope.loadCount;
+                $scope.params.page = $scope.currentPage + 1;
                 $scope.params.length = 20;
                 $scope.params.start = ($scope.loadCount - 1) * 20;
                 $scope.params.orders = [$scope.sort];
                 $scope.params.query = $scope.query;
-                if ($scope.currentPage > 0 && $scope.loadCount <= $scope.totalPages){
+                if ($scope.params.page > 0 && $scope.params.page <= $scope.totalPages){
                     $scope.isLoadingMore = true;
                 }
 
                 //console.log($scope.loadCount);
-                if ($scope.loadCount == 1 || $scope.loadCount <= $scope.totalPages) {
+                if ($scope.params.page == 1 || $scope.params.page <= $scope.totalPages) {
 
                     AppLessonService.getLessonList($scope.params).then(function (res) {
                         if (res.success) {
