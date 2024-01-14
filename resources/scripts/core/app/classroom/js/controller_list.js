@@ -71,7 +71,7 @@
 
                 AppClassroomService.getClassroomList($scope.params).then(function (res) {
                     if (res.success) {
-                        $scope.items = $scope.loadCount > 1 ? $scope.items.concat(res.data) : res.data;
+                        $scope.items = $scope.params.page > 1 ? $scope.items.concat(res.data) : res.data;
                         $scope.totalPages = res.total_pages;
                         $scope.currentPage = res.page;
 
@@ -114,7 +114,7 @@
 
                     AppClassroomService.getClassroomList($scope.params).then(function (res) {
                         if (res.success) {
-                            $scope.items = $scope.loadCount > 1 ? $scope.items.concat(res.data) : res.data;
+                            $scope.items = $scope.params.page > 1 ? $scope.items.concat(res.data) : res.data;
                             $scope.totalPages = res.total_pages;
                             $scope.currentPage = res.page;
 
