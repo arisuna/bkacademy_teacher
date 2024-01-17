@@ -1,0 +1,46 @@
+<div class="standard-scroll-board" ng-controller="ReportIndexController">
+    <div id="top-button-container">
+      
+    </div>
+    <div class="">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+            </div>
+            <div class="col-xs-6 col-lg-6 col-md-6" gms-acl-allow="report/index">
+                <div class="panel b eq-row position-relative">
+                    <div class="height-410px panel-body text-left position-relative">
+                        <div class="position-relative height-inherit">
+                            <div class="col-md-12">
+                                <h4>{{'REPORT_TEXT'|translate}}</h4>
+                            </div>
+
+                            <div class="left-aligin-item width-100pc">
+                                <div class="col-xs-3 col-md-3 text-left text-xl">
+<!--                                    <img src="/gms/assets/img/svg/icon_extract_data.svg">-->
+                                    <em class="fa-solid fa-square-arrow-up-right text-dark-blue txt-64 pd-t-3x"></em>
+                                </div>
+
+                                <div class="col-xs-9 col-md-9 text-left text-primary text-14">
+                                    <ul>
+                                        <li acl-remove="true">
+                                            <a ui-sref="app.report.week" acl-remove="true">{{'REPORT_BY_SCORE_TEXT'|translate}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

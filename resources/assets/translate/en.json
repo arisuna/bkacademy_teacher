@@ -871,5 +871,11 @@
     "QUESTION_DELETE_STUDENT_TEXT": "Bạn có chắc muốn xoá học sinh này không?",
     "EDIT_CLASSROOM_TEXT": "Cập nhật lớp học",
     "EXAM_TYPE_TEXT": "Loại bài tập",
-    "STUDENT_TEXT": "Học sinh"
+    "STUDENT_TEXT": "Học sinh",
+    "REPORT_TEXT": "Báo cáo",
+    "REPORT_BY_SCORE_TEXT": "Báo cáo theo điểm",
+    "REPORT_BY_MONTH_TEXT": "Báo cáo theo tháng",
+    "SCORE_AVERAGE_TEXT": "Điểm trung bình",
+    "MUST_CHOOSE_DATE_TEXT": "Hãy chọn ngày tháng",
+    "DETAIL_TEXT": "Chi tiết"
   }

@@ -152,6 +152,15 @@
                     "class": ""
                 },
                 {
+                    "text": "REPORTS_TEXT",
+                    "sref": "app.report.index",
+                    "icon": "fa-solid fa-chart-pie",
+                    "iconType": "fontawesome",
+                    "gmsAclAllow": "report/index",
+                    "aclRemove": true,
+                    "class": ""
+                },
+                {
                     "text": "MORE_TEXT",
                     "icon": "fa-solid fa-ellipsis",
                     "iconType": "fontawesome",
@@ -173,7 +182,7 @@
                             "aclRemove": true,
                         }
                     ]
-                },
+                }
             ]
         };
 
