@@ -28,7 +28,8 @@
                             </div>
                         </td>
                         <td class="bd-t-white">{{ object.score }}</td>
-                        <td class="bd-t-white" ng-repeat="category in lesson.categories">{{ object.categories[category.id].score }} 
+                        <td class="bd-t-white" ng-repeat="category in lesson.categories">
+                            <p>{{'SCORE_TEXT' | translate}} : {{ object.categories[category.id].score }}</p>
                             <p>{{'CORRECT_TEXT' | translate}} : {{ object.categories[category.id].correct }}</p>
                             <p>{{'WRONG_TEXT' | translate}} : {{ object.categories[category.id].wrong }}</p>
                             <p>{{'NOT_DONE_TEXT' | translate}} : {{ object.categories[category.id].not_done }}</p></td>

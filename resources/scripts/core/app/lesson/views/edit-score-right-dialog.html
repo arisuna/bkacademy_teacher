@@ -10,7 +10,7 @@
           novalidate>
         <div class="card-body custom-dialog-overflow scroll-append scroll-y overflow-x-disable height-100vh-m93px">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12 text-dark-blue">
                     <p>{{'STUDENT_TEXT' | translate}} : {{student.lastname}} {{student.firstname}}</p>
                 </div>
             </div>
@@ -26,7 +26,9 @@
                 </div>
             </div>
             <div class="row"  ng-repeat="category in lesson.categories">
-                <div class="col-sm-12">
+                <div class="panel panel-default panel-default-b">
+                    <div class="panel-body pd-t-5">
+                <div class="col-sm-12 text-dark-blue">
                     <p>{{'CATEGORY_TEXT' | translate}}: {{category.name}}</p>
                 </div>
                 <div class="col-sm-12">
@@ -64,6 +66,8 @@
                     required-message="ENTER_NOT_DONE_TEXT"
                     label="NOT_DONE_TEXT"
                     show-label="true"></input-text>
+                </div>
+                </div>
                 </div>
             </div>
         </div>
