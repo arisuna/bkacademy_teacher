@@ -65,6 +65,19 @@
                         $scope.params.start = ($scope.loadCount - 1) * 20;
                         $scope.params.orders = [$scope.sort];
                         $scope.params.query = $scope.query;
+                        $scope.isFiltered = false;
+
+                        if(angular.isDefined( $scope.params.date.startDate) &&  $scope.params.date.startDate > 0){
+                            $scope.isFiltered = true;
+                        }
+    
+                        if(angular.isDefined($scope.params.date.endDate) && $scope.params.date.endDate  > 0){
+                            $scope.isFiltered = true;
+                        }
+                        if( ! $scope.isFiltered){
+                            WaitingService.error('MUST_CHOOSE_DATE_TEXT');
+                            return;
+                        }
         
                         AppReportService.getReportByWeek($scope.params).then(function (res) {
                             if (res.success) {
@@ -122,14 +135,15 @@
                                 $scope.isFiltered = true;
                                 $scope.params.date.endDate = data.date.endDate;
                             }
-                            $timeout(function () {
-                                $scope.items = [];
-                                $scope.loadItems();
-                            }, 1000);
-                        } else {
+                        }
+                        if( ! $scope.isFiltered){
                             WaitingService.error('MUST_CHOOSE_DATE_TEXT');
                             return;
                         }
+                        $timeout(function () {
+                            $scope.items = [];
+                            $scope.loadItems();
+                        }, 1000);
                     });
         
                     $scope.sortByColumnAndOrder = function (columnName, isDescending) {
@@ -151,11 +165,8 @@
                                 endDate: null
                             }
                         };
-                        $scope.loadItems();
                         $scope.publish('clearFilter');
                     };
-
-                    $scope.loadPage();
 
         }]);
 

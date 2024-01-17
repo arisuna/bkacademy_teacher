@@ -81,7 +81,6 @@
                         <th class="text-dark-blue bd-b-white">{{'CLASSROOM_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white">{{'SCORE_AVERAGE_TEXT' | translate }}</th>
                         <th class="text-dark-blue bd-b-white">{{'DETAIL_TEXT' | translate }}</th>
-                        <th class="text-dark-blue bd-b-white"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -96,12 +95,6 @@
                     <td class="bd-t-white">{{ object.average_score }}</td>
                     <td class="bd-t-white">
                         <p ng-repeat="score in object.scores">{{score.exam_type_name}} - {{ score.date  | amFromUnix | amDateFormat: 'DD/MM/YYYY'}} : {{score.score}}</p>
-                    </td>
-                    <td class="text-right bd-t-white">
-                        <button-edit-icon ng-click="editLessonFn( object )" class="mr-sm"></button-edit-icon>
-                        <button-delete-icon ng-click="deleteFn( object )"
-                        app-acl-allow="lesson/delete"
-                        acl-remove="true"></button-delete-icon>
                     </td>
                     </tr>
 
