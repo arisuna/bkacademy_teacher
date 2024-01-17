@@ -51,7 +51,15 @@
                                     show-label="true"
                                     is-editable="isEditable"
                                     is-required="true"
+                                    class-id="lesson.class_id"
                                     label="CATEGORIES_TEXT"></app-categories-selector>
+            </div>
+            <div class="col-sm-6">
+                <app-exam-type-selector ng-model="lesson.exam_type_id"
+                                    show-label="true"
+                                    is-editable="false"
+                                    is-required="true"
+                                    label="EXAM_TYPE_TEXT"></app-exam-type-selector>
             </div>
         </div>
     </div>

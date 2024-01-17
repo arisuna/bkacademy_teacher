@@ -22,9 +22,9 @@
             return deferred.promise;
         }
         
-        this.getList = function () {
+        this.getList = function (data) {
             let deferred = $q.defer();
-            AppHttp.get('/app/category/getList').then(function (response) {
+            AppHttp.put('/app/category/getList', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);
@@ -32,9 +32,9 @@
             return deferred.promise;
         }
         
-        this.getSubCategory = function () {
+        this.getSubCategory = function (data) {
             let deferred = $q.defer();
-            AppHttp.get('/app/category/getAllLevel2Items').then(function (response) {
+            AppHttp.put('/app/category/getAllLevel3Items', data).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (err) {
                 deferred.reject(err.data);

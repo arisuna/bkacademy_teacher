@@ -869,5 +869,7 @@
     "EDIT_LESSON_TEXT": "Cập nhật buổi học",
     "ENTER_PASSWORD_TEXT": "Nhập mật khẩu",
     "QUESTION_DELETE_STUDENT_TEXT": "Bạn có chắc muốn xoá học sinh này không?",
-    "EDIT_CLASSROOM_TEXT": "Cập nhật lớp học"
+    "EDIT_CLASSROOM_TEXT": "Cập nhật lớp học",
+    "EXAM_TYPE_TEXT": "Loại bài tập",
+    "STUDENT_TEXT": "Học sinh"
   }

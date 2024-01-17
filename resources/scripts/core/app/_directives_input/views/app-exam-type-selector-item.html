@@ -10,8 +10,8 @@
                  text="{{ toolTipText }}"></tooltip>
 
         <span class="text-right text-sm pull-right"
-              ng-show="!(data.selected.id == null || data.selected.id == '' || data.selected.id == undefined) && isEditable == true">
-            <a ng-click="resetCategory();">
+              ng-show="data.selected.id > 0 && isEditable == true">
+            <a ng-click="resetItem();">
                 {{'REMOVE_TEXT'|translate}}
             </a>
         </span>
@@ -22,17 +22,17 @@
 
     <div ng-if="isEditable == true"
          class="user-profile-view-rectangle relo-bg-bright-blue-10">
-        <div class="item" ng-class="{'text-muted': isDisable}"
-             ng-show="!(data.selected.id == null || data.selected.id == '' || data.selected.id == undefined)">
+        <div class="item"
+             ng-show="data.selected.id > 0">
 
             <span class="principal pd-t-3">
-               <a ng-click="openSearchDialog($event)" ng-class="{'text-muted hover-no-underline': isDisable}">
-                    <span class="">{{data.selected.reference}} - {{data.selected.name}}</span>
+               <a ng-click="openSearchDialog($event)">
+                    <span class="">{{data.selected.name}}</span>
                </a>
             </span>
 
             <span class="close text-gray">
-                <a ng-click="resetCategory()" ng-class="{'text-muted hover-no-underline': isDisable}">
+                <a ng-click="resetItem()">
                     <em class="fa fa-times"></em>
                 </a>
             </span>
@@ -42,9 +42,9 @@
 
 
         <div class="item"
-             ng-show="data.selected.id == null || data.selected.id == '' || data.selected.id == undefined">
-            <span class="principal pd-t-3"  ng-class="{'text-muted': isDisable}">
-               <a ng-click="openSearchDialog($event)" ng-class="{'text-muted hover-no-underline': isDisable}">
+             ng-show="!(data.selected.id > 0)">
+            <span class="principal pd-t-3">
+               <a ng-click="openSearchDialog($event)">
                    <span class="">{{'SELECT_TEXT' | translate }}</span>
                 </a>
             </span>
@@ -54,12 +54,12 @@
     <div class="user-profile-view"
          ng-if="isEditable == false">
         <div class="item"
-             ng-if="!(data.selected.id == null || data.selected.id == '' || data.selected.id == undefined)">
-            <span class="">{{{data.selected.reference}} - {data.selected.name}}</span>
+             ng-if="data.selected.id > 0">
+            <span class="">{{data.selected.name}}</span>
         </div>
 
         <div class="item"
-             ng-if="data.selected.id == null || data.selected.id == '' || data.selected.id == undefined">
+             ng-if="!(data.selected.id > 0)">
             <span class="principal pd-t-3">
             </span>
         </div>

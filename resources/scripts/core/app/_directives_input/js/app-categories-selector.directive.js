@@ -14,6 +14,7 @@
             scope: {
                 model: '=ngModel',
                 categories: '=?',
+                classId: '<?',
                 isRequired: '<',
                 isEditable: '<?',
                 subCategoryOnly: '<?',
@@ -47,7 +48,9 @@
 
                 $scope.initFn = function () {
                     if(!$scope.subCategoryOnly){
-                        AppCategoryService.getList().then(function (res) {
+                        AppCategoryService.getList({
+                            class_id: $scope.classId
+                        }).then(function (res) {
                             if (res.success) {
                                 $scope.items = res.data;
                                 angular.forEach($scope.model, function (id) {
@@ -61,7 +64,9 @@
                             }
                         });
                     } else {
-                        AppCategoryService.getSubCategory().then(function (res) {
+                        AppCategoryService.getSubCategory({
+                            class_id: $scope.classId
+                        }).then(function (res) {
                             if (res.success) {
                                 $scope.items = res.data;
                                 angular.forEach($scope.model, function (id) {
@@ -98,6 +103,13 @@
                                 $scope.data.selected.push(findItem);
                             }
                         })
+                    }
+
+                });
+
+                $scope.$watch('classId', function(newValue, oldValue){
+                    if (newValue != oldValue){
+                        $scope.initFn();
                     }
 
                 });
