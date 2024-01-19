@@ -57,6 +57,19 @@
             params: {
                 hasLeftBar: false
             }
+        }).state('app.report.progress', {
+            url: '/progress',
+            title: 'REPORT_PROGRESS_TEXT',
+            parent: 'app.report.index',
+            views: {
+                '@app.report': {
+                    templateUrl: helper.modulePath('app', 'report/progress'),
+                },
+            },
+            acl: 'report/index',
+            params: {
+                hasLeftBar: false
+            }
         });
     }]);
 

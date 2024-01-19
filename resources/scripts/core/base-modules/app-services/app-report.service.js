@@ -31,5 +31,15 @@
             });
             return deferred.promise;
         }
+        
+        this.getReportProgress = function (data) {
+            let deferred = $q.defer();
+            AppHttp.put('/app/report/getReportProgress', data).then(function (response) {
+                deferred.resolve(response.data);
+            }).catch(function (err) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        }
     }
 })();
