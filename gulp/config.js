@@ -85,7 +85,7 @@ const config = {
 
     apiHostNames: {
         preprod: 'https://api-preprod.bkacademy.com',
-        prod: 'https://api.bkacademy.com',
+        prod: 'https://api.bkacademy-app.com',
         thuydev: 'https://thuydev.bkacademy.com',
         local: 'http://api.bkacademy.local',
     },
