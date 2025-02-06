@@ -891,5 +891,7 @@
     "CREATE_SCHEDULE_TEXT": "Thêm lịch học",
     "DAY_OF_WEEK_TEXT": "Ngày",
     "FROM_TEXT" : "Từ",
-    "TO_TEXT" : "Đến"
+    "TO_TEXT" : "Đến",
+    "TEACHER_TEXT" : "Giáo viên",
+    "CONSULTANT_TEXT" : "Trợ giảng"
   }

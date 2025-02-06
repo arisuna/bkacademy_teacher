@@ -39,6 +39,18 @@
                                 show-label="true"></input-text>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <app-roles-selector ng-model="user.user_group_id"
+                                        label="ROLE_TEXT"
+                                        show-label="true"
+                                        is-editable="true"
+                                        is-required="true"
+                                        placeholder="ENTER_ROLE_TEXT"
+                                        required-message="FIELD_IS_REQUIRED_TEXT"
+                                        tool-tip-text="{{ 'TOOLTIP_ROLE_TEXT' | translate }}"></app-roles-selector>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col-sm-12">
@@ -48,16 +60,6 @@
                                 ng-model="user.email"
                                 required-message="ENTER_EMAIL_TEXT"
                                 label="EMAIL_TEXT"
-                                show-label="true"></input-text>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12">
-                    <input-text is-editable="false"
-                                is-text="true"
-                                ng-model="user.aws_cognito_uuid"
-                                label="AWS_UUID_TEXT"
                                 show-label="true"></input-text>
                 </div>
             </div>

@@ -39,18 +39,18 @@
                                 show-label="true"></input-text>
                 </div>
             </div>
-            <!--            <div class="row">-->
-            <!--                <div class="col-sm-12">-->
-            <!--                    <input-text is-editable="true"-->
-            <!--                                is-telephone="true"-->
-            <!--                                is-required="true"-->
-            <!--                                ng-model="user.phone"-->
-            <!--                                required-message="ENTER_PHONE_TEXT"-->
-            <!--                                label="PHONE_TEXT"-->
-            <!--                                show-label="true"></input-text>-->
-            <!--                </div>-->
-            <!--            </div>-->
-
+            <div class="row">
+                <div class="col-sm-12">
+                    <app-roles-selector ng-model="user.user_group_id"
+                                        label="ROLE_TEXT"
+                                        show-label="true"
+                                        is-editable="true"
+                                        is-required="true"
+                                        placeholder="ENTER_ROLE_TEXT"
+                                        required-message="FIELD_IS_REQUIRED_TEXT"
+                                        tool-tip-text="{{ 'TOOLTIP_ROLE_TEXT' | translate }}"></app-roles-selector>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-sm-12">
                     <input-text is-editable="true"
@@ -60,6 +60,52 @@
                                 required-message="ENTER_EMAIL_TEXT"
                                 label="EMAIL_TEXT"
                                 show-label="true"></input-text>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group position-relative">
+                        <label class="txt-13 txt-dark-blue">{{ 'PASSWORD_TEXT' | translate }} *</label>
+                        <input class="form-control"
+                               type="text" required="required"
+                               id="modalPasswordInput"
+                               data-parsley-required-message="{{ 'ENTER_PASSWORD_TEXT' | translate }}"
+                               ng-model="user.password"
+                               autocomplete="off"
+                               show-password="showPassword1"
+                               data-parsley-pattern='(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#^()])[A-Za-z\d$@$!%*?&#^()]{8,}'
+                               data-parsley-pattern-message="{{ 'INVALID_PASSWORD_TEXT' | translate }}"/>
+
+                        <div class="closeeye">
+                                <span toggle="#modalPasswordInput"
+                                      ng-class="{'fa fa-eye': showPassword1, 'fa fa-eye-slash': !showPassword1}"
+                                      class="field-icon toggle-password"
+                                      ng-click="showPassword1 = !showPassword1"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group position-relative">
+                        <label class="txt-13 txt-dark-blue">{{ 'REENTER_NEW_PASSWORD_TEXT' | translate }} *</label>
+                        <input class="form-control" type="password" ng-model="user.password_confirm"
+                               required
+                               show-password="showPassword1"
+                               autocomplete="off"
+                               id="modelConfirmPasswordInput"
+                               data-parsley-required-message="{{ 'ENTER_CONFIRM_PASSWORD_TEXT' | translate }}"
+                               data-parsley-equalto="#modalPasswordInput"
+                               data-parsley-equalto-message="{{ 'CONFIRM_PASSWORD_INCORRECT_TEXT' | translate }}"/>
+                        <div class="closeeye">
+                                <span toggle="#modelConfirmPasswordInput"
+                                      ng-class="{'fa fa-eye': showPassword1, 'fa fa-eye-slash': !showPassword1}"
+                                      class="field-icon toggle-password"
+                                      ng-click="showPassword1 = !showPassword1">
+
+                                </span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
