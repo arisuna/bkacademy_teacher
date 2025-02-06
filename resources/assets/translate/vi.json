@@ -878,5 +878,18 @@
     "SCORE_AVERAGE_TEXT": "Điểm trung bình",
     "MUST_CHOOSE_DATE_TEXT": "Hãy chọn ngày tháng",
     "DETAIL_TEXT": "Chi tiết",
-    "REPORT_PROGRESS_TEXT": "Báo cáo tiến bộ"
+    "REPORT_PROGRESS_TEXT": "Báo cáo tiến bộ",
+    "SCHEDULE_TEXT": "Lịch học",
+    "ADD_TEXT": "Thêm mới",
+    "MONDAY_TEXT" : "Thứ hai",
+    "TUESDAY_TEXT" : "Thứ ba",
+    "WEDNESDAYDAY_TEXT" : "Thứ tư",
+    "THURSDAY_TEXT" : "Thứ năm",
+    "FRIDAY_TEXT" : "Thứ sáu",
+    "SATURDAY_TEXT" : "Thứ bảy",
+    "SUNDAY_TEXT" : "Chủ nhật",
+    "CREATE_SCHEDULE_TEXT": "Thêm lịch học",
+    "DAY_OF_WEEK_TEXT": "Ngày",
+    "FROM_TEXT" : "Từ",
+    "TO_TEXT" : "Đến"
   }

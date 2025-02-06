@@ -25,6 +25,12 @@
         </div>
         <div class="row">
             <div class="col-md-12">
+                <app-schedule-selector ng-model="classroom.schedules" show-label="true" is-required="true"
+                    label="SCHEDULE_TEXT"></app-schedule-selector>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <app-students-selector ng-model="classroom.student_ids"
                                             is-editable="isEditable"
                                             label="STUDENTS_TEXT"

@@ -353,23 +353,6 @@
                         deferredAll.reject(err.data);
                     }
                 ),
-                AppDataService.getMyCompanyInfo().then(
-                    function (res) {
-                        if (res.success) {
-                            vm.data.company = res.data;
-                            vm.data.subscription = res.subscription;
-                            vm.data.modules = res.modules;
-                            vm.data.limitations = res.limites;
-                            return res.data;
-                        } else {
-                            return null;
-                            // deferredAll.reject(res);
-                        }
-                    },
-                    function (err) {
-                        deferredAll.reject(err.data);
-                    }
-                ),
 
                 AppDataService.getPermissionsList().then(
                     function (res) {

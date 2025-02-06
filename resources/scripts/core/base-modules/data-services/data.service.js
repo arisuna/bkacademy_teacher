@@ -381,28 +381,6 @@
             return deferred.promise;
         }
 
-
-        this.getCountryList = function (lang) {
-            var deferred = $q.defer();
-            DataHttp.getFromCacheName('/app/setting/countries/' + lang, {cacheName: 'countriesCacheList'}).then(function (response) {
-                if (response.data.success) {
-                    deferred.resolve({
-                        success: true,
-                        data: response.data.data,
-                    });
-                } else {
-                    deferred.resolve({
-                        success: false,
-                        data: [],
-                    });
-                }
-                deferred.resolve(response.data);
-            }).catch(function (err, status) {
-                deferred.reject(err.data);
-            });
-            return deferred.promise;
-        }
-
         this.createAppForCompanyFn = function (data) {
             var deferred = $q.defer();
             if (angular.isUndefined(data.hash) || angular.isUndefined(data.company) || angular.isUndefined(data.url)) {
@@ -509,36 +487,6 @@
                         deferred.resolve({
                             success: true,
                             data: currencies,
-                        });
-                    } else {
-                        deferred.resolve({
-                            success: false,
-                            data: [],
-                        });
-                    }
-                }).catch(function (err, status) {
-                    deferred.reject(err.data);
-                });
-            }
-            return deferred.promise;
-        }
-
-        this.getListCountries = function () {
-            var deferred = $q.defer();
-            var countries = angular.fromJson($localStorage['countries']);
-            if (countries && countries.length > 0) {
-                deferred.resolve({
-                    success: true,
-                    data: countries,
-                });
-            } else {
-                DataHttp.get('/app/setting/countries').then(function (response) {
-                    if (response.data.success) {
-                        countries = response.data.data;
-                        $localStorage['countries'] = angular.toJson(countries);
-                        deferred.resolve({
-                            success: true,
-                            data: countries,
                         });
                     } else {
                         deferred.resolve({

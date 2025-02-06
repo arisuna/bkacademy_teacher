@@ -78,22 +78,6 @@
                 }));
 
 
-            promiseList.push(DataService.getCountryList($translate.use()).then(
-                function (response) {
-                    if (response.success == true) {
-                        self.data.countries.splice(self.data.countries.length);
-                        angular.extend(self.data.countries, response.data);
-
-                        self.data.countries_iso.splice(self.data.countries_iso.length);
-                        angular.extend(self.data.countries_iso, response.iso);
-                        return response;
-                    } else {
-                        deferred.reject(response);
-                    }
-                }, function (err) {
-                    deferred.reject(err);
-                }));
-
             promiseList.push(DataService.getNationalities().then(
                 function (response) {
                     if (response.success == true) {

@@ -1,0 +1,92 @@
+<div class="form-group">
+    <div>
+        <label class="label-text-form pull-left" ng-show="showLabel == true && label != ''">
+            {{ label | translate }}
+            <asterik-red ng-if="isRequired">*</asterik-red>
+        </label>
+
+        <tooltip ng-if="toolTipText != '' && toolTipText != undefined && showLabel == true"
+                 class="ml-sm"
+                 text="{{ toolTipText }}"></tooltip>
+
+        <span class="text-right text-sm pull-right"
+              ng-show="isEditable == true">
+            <a ng-click="add();">
+                {{'ADD_TEXT'|translate}}
+            </a>
+        </span>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="mt">
+        <div class="media" ng-repeat="(key, item) in schedule"
+             ng-mouseenter="options=true"
+             ng-mouseleave="options=false" class="icon">
+            <div class="media-body media-middle">
+                <span class="pull-left mt-sm">
+                    {{item.day_of_week.label | translate }} - {{ item.from  * 1000 | date: 'h:mm a'}} - {{ item.to  * 1000 | date: 'h:mm a'}}
+                </span>
+                <button-delete-icon ng-click="removeItem( item, key )"
+                                    class="pull-right"></button-delete-icon>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="dialogPersonForm">
+        <div class="ngdialog-message">
+            <div class="card">
+                <div class="card-heading card-white card-title-heading">
+                    <div class="card-title">
+                        {{ 'CREATE_SCHEDULE_TEXT' | translate }}
+                        <!--<button class="cd-close pull-right mr-sm text-gray" ng-click="closeThisDialog()">-->
+                            <!--<em class="fa fa-close"></em>-->
+                        <!--</button>-->
+                    </div>
+                </div>
+                <form class="form-validate noPadding"
+                      validate-form=""
+                      role="form" name="loginForm"
+                      novalidate="novalidate"
+                      data-parsley-validate=""
+                      ng-submit="createUserTag()">
+                    <div class="card-body custom-dialog-overflow height-60vh">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <app-day-of-week-selector ng-model="new_schedule.day_of_week" show-label="true" is-required="true"></app-grade-selector>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <time-picker-input name="at_reminder_date_time"
+                                               class="pull-left form-group"
+                                               output-type="timestamp"
+                                               input-type="timestamp"
+                                               show-label="true"
+                                               label="FROM_TEXT"
+                                               ng-model="new_schedule.from"></time-picker-input>
+                            </div>
+                            <div class="col-md-6">
+                                <time-picker-input name="at_reminder_date_time"
+                                               class="pull-left form-group"
+                                               output-type="timestamp"
+                                               input-type="timestamp"
+                                               show-label="true"
+                                               label="TO_TEXT"
+                                               ng-model="new_schedule.to"></time-picker-input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="pull-right">
+                            <button class="btn btn-oval relo-bg-green" type="submit">
+                                {{ 'SAVE_BTN_TEXT' | translate }}
+                            </button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+</div>

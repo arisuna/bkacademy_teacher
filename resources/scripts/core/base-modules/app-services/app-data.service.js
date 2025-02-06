@@ -113,20 +113,6 @@
             });
             return deferred.promise;
         }
-        /**
-         *
-         * @returns {*}
-         */
-        this.getMyCompanyInfo = function () {
-            let deferred = $q.defer();
-            AppHttp.get('/app/my_company/index')
-                .then(function (response) {
-                    deferred.resolve(response.data);
-                }).catch(function (err) {
-                deferred.reject(err.data);
-            });
-            return deferred.promise;
-        }
 
 
         this.getInitMyCompanyInfo = function () {
@@ -158,21 +144,6 @@
             let deferred = $q.defer();
             if (lang == undefined || lang == '') lang = 'en';
             AppHttp.get('/app/setting/reloadAttributes/' + lang)
-                .then(function (response) {
-                    deferred.resolve(response.data);
-                }).catch(function (err) {
-                deferred.reject(err.data);
-            });
-            return deferred.promise;
-        }
-
-        /**
-         * get all attributes values with languages
-         */
-        this.getSettingCountries = function (lang) {
-            let deferred = $q.defer();
-            if (lang == undefined || lang == '') lang = 'en';
-            AppHttp.get('/app/setting/countries/' + lang)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 }).catch(function (err) {
