@@ -23,6 +23,17 @@
             return deferred.promise;
         };
 
+        this.getTeacherList = function (params) {
+            var deferred = $q.defer();
+            AppHttp.put('/app/user/searchTeacher', params)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
         this.getUserList = function (params) {
             var deferred = $q.defer();
             AppHttp.put('/app/user/search', params)

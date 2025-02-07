@@ -24,6 +24,12 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-sm-12">
+                <app-teacher-selector ng-model="classroom.teacher_id" show-label="true" is-required="true"
+                    label="TEACHER_TEXT"></app-teacher-selector>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <app-schedule-selector ng-model="classroom.schedules" show-label="true" is-required="true"
                     label="SCHEDULE_TEXT"></app-schedule-selector>

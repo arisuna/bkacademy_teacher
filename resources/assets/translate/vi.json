@@ -893,5 +893,6 @@
     "FROM_TEXT" : "Từ",
     "TO_TEXT" : "Đến",
     "TEACHER_TEXT" : "Giáo viên",
-    "CONSULTANT_TEXT" : "Trợ giảng"
+    "CONSULTANT_TEXT" : "Trợ giảng",
+    "CREATE_CLASSROOM_TEXT": "Tạo lớp học"
   }
