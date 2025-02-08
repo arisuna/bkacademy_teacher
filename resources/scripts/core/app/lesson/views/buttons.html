@@ -1,9 +1,17 @@
 <div id="top-button-container">
+    <a class="mr-sm"
+        uib-tooltip="{{'GENERATE_BULK_LESSON_TEXT' | translate}}"
+        tooltip-placement="left"
+        app-acl-allow="lesson/create"
+        acl-remove="true"
+        ng-click="generateBulkLesson()">
+        {{'GENERATE_BULK_LESSON_TEXT' | translate}}
+    </a>
     <button class="btn btn-circle relo-bg-bright-blue"
                    type="button"
                     uib-tooltip="{{ 'ADD_NEW_TEXT' | translate }}"
                     tooltip-placement="bottom"
-                    app-acl-allow="lesson/index"
+                    app-acl-allow="lesson/create"
                     acl-remove="true"
                     ui-sref="app.lesson.create">
         <em class="fas fa-plus"></em>

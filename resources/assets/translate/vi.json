@@ -894,5 +894,7 @@
     "TO_TEXT" : "Đến",
     "TEACHER_TEXT" : "Giáo viên",
     "CONSULTANT_TEXT" : "Trợ giảng",
-    "CREATE_CLASSROOM_TEXT": "Tạo lớp học"
+    "CREATE_CLASSROOM_TEXT": "Tạo lớp học",
+    "GENERATE_BULK_LESSON_TEXT": "Tạo hàng loạt buổi học",
+    "INVALID_PASSWORD_TEXT": "Mật khẩu không hợp lệ"
   }

@@ -107,6 +107,47 @@
                 </div>
             </div>
         </div>
+        <script type="text/ng-template" id="dialogBulkForm">
+            <div class="ngdialog-message">
+                <div class="card">
+                    <div class="card-heading card-white card-title-heading">
+                        <div class="card-title">
+                            {{ 'GENERATE_BULK_LESSON_TEXT' | translate }}
+                            <!--<button class="cd-close pull-right mr-sm text-gray" ng-click="closeThisDialog()">-->
+                                <!--<em class="fa fa-close"></em>-->
+                            <!--</button>-->
+                        </div>
+                    </div>
+                    <form class="form-validate noPadding"
+                          validate-form=""
+                          role="form" name="loginForm"
+                          novalidate="novalidate"
+                          data-parsley-validate=""
+                          ng-submit="generateLessonBulkSubmit()">
+                        <div class="card-body custom-dialog-overflow height-60vh">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input-text is-editable="true"
+                                                label="WEEK_TEXT"
+                                                is-number="true"
+                                                required-message="ENTER_WEEK_TEXT"
+                                                is-required="true"
+                                                ng-model="bulk.week"></input-text>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="pull-right">
+                                <button class="btn btn-oval relo-bg-green" type="submit">
+                                    {{ 'SAVE_BTN_TEXT' | translate }}
+                                </button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </script>
 
     </div>
 </div>

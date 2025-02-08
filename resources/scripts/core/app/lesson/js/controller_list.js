@@ -1,7 +1,7 @@
 (function () {
     'use strict';
-    App.controller('LessonListController', ['$scope', '$state', '$timeout', '$rootScope', '$translate', 'WaitingService', 'AppDataService', 'AppLessonService',
-        function ($scope, $state, $timeout, $rootScope, $translate, WaitingService, AppDataService, AppLessonService) {
+    App.controller('LessonListController', ['$scope', '$state', '$timeout', '$rootScope', '$translate', 'ngDialog', 'WaitingService', 'AppDataService', 'AppLessonService',
+        function ($scope, $state, $timeout, $rootScope, $translate, ngDialog, WaitingService, AppDataService, AppLessonService) {
             $scope.params = {
                 lesson_types: [],
                 date:{
@@ -226,5 +226,49 @@
             };
 
             $scope.loadItems();
+
+            $scope.generateBulkLesson = function(){
+                let createDialog = ngDialog.open({
+                    template: 'dialogBulkForm',
+                    className: 'ngdialog-theme-default sm-box',
+                    scope: $scope,
+                    closeByDocument: false,
+                    showClose: true,
+                    controller: ['$rootScope', '$scope', '$http', '$q', 'AppLessonService', 'WaitingService', 'HistoryService', '$filter', 'ngDialog',
+                        function ($rootScope, $scope, $http, $q, AppLessonService, WaitingService, HistoryService, $filter, ngDialog) {
+                            $scope.bulk = {
+                                week: 1
+                            }
+
+                            /** createTaskFn **/
+                            $scope.generateLessonBulkSubmit = function () {
+                                WaitingService.begin();
+                                AppLessonService.generateLessonBulk($scope.bulk).then(
+                                    function (res) {
+                                        if (res.success) {
+                                            $scope.user_tag = res.data;
+                                            WaitingService.popSuccess(res.message);
+                                            $scope.closeThisDialog();
+
+                                        } else {
+                                            WaitingService.error(res.message);
+                                            $scope.closeThisDialog();
+                                            // ngDialog.closeAll();
+                                        }
+                                    },
+                                    function (error) {
+                                        WaitingService.expire();
+                                        $scope.closeThisDialog();
+                                        // ngDialog.closeAll();
+                                    }
+                                )
+                            }
+                        }]
+                });
+                createDialog.closePromise.then(function (returnData) {
+                    
+                    $scope.loadItems();
+                });
+            }
         }]);
 })();

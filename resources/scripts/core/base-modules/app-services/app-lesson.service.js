@@ -42,6 +42,16 @@
             return deferred.promise;
         };
 
+        this.generateLessonBulk = function (data) {
+            var deferred = $q.defer();
+            AppHttp.post('/app/lesson/generateBulk', data).then(function (response) {
+                deferred.resolve(response.data);
+            }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
         this.updateLesson = function (data) {
             var deferred = $q.defer();
             AppHttp.put('/app/lesson/update/' + data.id, data).then(function (response) {
