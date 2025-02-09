@@ -1,0 +1,67 @@
+<div class="card card-nobox" ng-controller="EvaluationFormController">
+    <form class="form-validate"
+      validate-form=""
+      role="form"
+      name="evaluationForm"
+      data-parsley-validate=""
+      ng-submit="saveFn()"
+      ng-if="!page_loading"
+      novalidate>
+      <div class="panel panel-primary white-block height-80vh scroll-y">
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <input-text is-editable="true"
+                                is-required="true"
+                                is-text="true"
+                                ng-model="evaluation.name"
+                                required-message="ENTER_NAME_TEXT"
+                                label="NAME_TEXT"
+                                show-label="true"></input-text>
+
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>
+                            {{'TYPE_TEXT' | translate}}
+                        </label>
+                        <select class="chosen-select form-control" chosen="" ng-model="evaluation.type_code"
+                                ng-options="type for type in types"
+                                data-placeholder-text-single="'- Select type'">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>
+                            {{'EVALUATION_CATEGORY_TEXT' | translate}}
+                        </label>
+                        <select class="chosen-select form-control" chosen="" ng-model="evaluation.category_code"
+                                ng-options="category for  category in categories"
+                                data-placeholder-text-single="'- Select category'">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-sm-12 text-right">
+                    <button type="submit" class="btn relo-bg-green" title="Save" ng-disabled="saving" ng-if="canSave"><i
+                            class="fa {{ saving ? 'fa-spin fa-spinner' : 'fa-save'}} mr-sm"></i>
+                        {{'SAVE_BTN_TEXT' | translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

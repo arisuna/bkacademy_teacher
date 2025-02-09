@@ -2,7 +2,7 @@
       validate-form=""
       ng-submit="saveFn()"
       novalidate>
-    <div class="custom-dialog-overflow scroll-append scroll-y overflow-x-disable ">
+    <div class="custom-dialog-overflow scroll-append scroll-y overflow-x-disable " ng-if="!page_loading">
         <div class="row">
             <div class="col-sm-6">
                 <input-text is-editable="false"
@@ -46,6 +46,24 @@
         </div>
         <div class="row">
             <div class="col-sm-6">
+                <app-yes-no-input
+                    ng-model="lesson.had_homework"
+                    label="HAS_HOMEWORK_TEXT"
+                    show-label="true"></app-yes-no-input>
+            </div>
+            <div class="col-sm-6">
+                <input-text is-editable="true"
+                            is-required="true"
+                            is-numeric="true"
+                            ng-model="lesson.week_report"
+                            required-message="ENTER_WEEK_REPORT_TEXT"
+                            label="WEEK_REPORT_TEXT"
+                            show-label="true"></input-text>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
                 <app-categories-selector ng-model="lesson.category_ids"
                                     categories="lesson.categories"
                                     show-label="true"
@@ -54,17 +72,19 @@
                                     class-id="lesson.class_id"
                                     label="CATEGORIES_TEXT"></app-categories-selector>
             </div>
-            <div class="col-sm-6">
-                <app-exam-type-selector ng-model="lesson.exam_type_id"
+            <div class="col-sm-6" ng-if="lesson.had_homework == 1">
+                <app-categories-selector ng-model="lesson.home_category_ids"
+                                    categories="lesson.home_categories"
                                     show-label="true"
-                                    is-editable="false"
+                                    is-editable="isEditable"
                                     is-required="true"
-                                    label="EXAM_TYPE_TEXT"></app-exam-type-selector>
-            </div>
+                                    class-id="lesson.class_id"
+                                    label="HOME_CATEGORIES_TEXT"></app-categories-selector>
         </div>
     </div>
 
-    <div class="text-right mg-t-20">
-        <save-button-submit title="SAVE_BTN_TEXT" ng-disabled="saving" ng-if="isEditable"></save-button-submit>
+    <div class="text-right mg-t-20"  app-acl-allow="lesson/edit"
+    acl-remove="true">
+        <save-button-submit title="SAVE_BTN_TEXT" ng-disabled="saving" ng-if="isEditable" ></save-button-submit>
     </div>
 </form>

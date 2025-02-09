@@ -15,7 +15,7 @@
                             <th class="text-dark-blue bd-b-white">#</th>
                             <th class="text-dark-blue bd-b-white">{{'NAME_TEXT' | translate }}</th>
                             <th class="text-dark-blue bd-b-white">{{'SCORE_TEXT' | translate }}</th>
-                            <th class="text-dark-blue bd-b-white" ng-repeat="category in lesson.categories">{{category.name }}</th>
+                            <th class="text-dark-blue bd-b-white" ng-if="lesson.had_homework == 1">{{'HOME_SCORE_TEXT' | translate }}</th>
                             <th class="text-dark-blue bd-b-white"></th>
                         </tr>
                         </thead>
@@ -28,11 +28,7 @@
                             </div>
                         </td>
                         <td class="bd-t-white">{{ object.score }}</td>
-                        <td class="bd-t-white" ng-repeat="category in lesson.categories">
-                            <p>{{'SCORE_TEXT' | translate}} : {{ object.categories[category.id].score }}</p>
-                            <p>{{'CORRECT_TEXT' | translate}} : {{ object.categories[category.id].correct }}</p>
-                            <p>{{'WRONG_TEXT' | translate}} : {{ object.categories[category.id].wrong }}</p>
-                            <p>{{'NOT_DONE_TEXT' | translate}} : {{ object.categories[category.id].not_done }}</p></td>
+                        <td class="bd-t-white" ng-if="lesson.had_homework == 1">{{ object.home_score }}</td>
                         <td class="text-right bd-t-white">
                             <button-edit-icon ng-click="editStudentScoreFn( object )" class="mr-sm"></button-edit-icon>
                         </td>

@@ -25,6 +25,7 @@
     "COUNTRIES_TEXT": "Quốc gia",
     "CITIES_TEXT": "Thành phố",
     "SYSTEM_ATTRIBUTES_TEXT": "Thuộc tính hệ thống",
+    "HOME_CATEGORIES_TEXT": "Điểm kiến thức của bài về nhà",
     "CATEGORIES_TEXT": "Điểm kiến thức",
     "PRODUCT_FIELDS_TEXT": "Trường thông tin của sản phẩm",
     "PRODUCT_FIELD_GROUPS_CATEGORIES_TEXT": "Trường thông tin sản phẩm theo nhóm",
@@ -273,7 +274,7 @@
     "EDIT_PRODUCT_FIELD_TEXT": "Edit Product field",
     "IS_MANDATORY_TEXT": "Is mandatory",
     "PRODUCT_FIELD_GROUPS_TEXT": "Product field groups",
-    "TYPE_TEXT": "Type",
+    "TYPE_TEXT": "Loại",
     "IMPORT_CSV_TEXT": "Import .csv file",
     "CREATE_PRODUCT_FIELD_TEXT": "Create Product field",
     "ATTRIBUTE_TEXT": "Attribute",
@@ -896,5 +897,14 @@
     "CONSULTANT_TEXT" : "Trợ giảng",
     "CREATE_CLASSROOM_TEXT": "Tạo lớp học",
     "GENERATE_BULK_LESSON_TEXT": "Tạo hàng loạt buổi học",
-    "INVALID_PASSWORD_TEXT": "Mật khẩu không hợp lệ"
+    "INVALID_PASSWORD_TEXT": "Mật khẩu không hợp lệ",
+    "HAS_HOMEWORK_TEXT": "Có bài tập về nhà không?",
+    "WEEK_REPORT_TEXT": "Tuần báo cáo",
+    "ENTER_WEEK_REPORT_TEXT": "Điền tuần báo cáo",
+    "HOME_SCORE_TEXT": "Điểm bài về nhà",
+    "EVALUATIONS_TEXT": "Danh sách Đánh giá",
+    "EVALUATION_CATEGORY_TEXT": "Phân loại đánh giá",
+    "CREATE_EVALUATION_TEXT": "Tạo đánh giá",
+    "EDIT_EVALUATION_TEXT": "Sửa đánh giá",
+    "QUESTION_DELETE_EVALUATION_TEXT": "Bạn có muốn xoá đánh giá này không?"
   }

@@ -35,6 +35,7 @@
                     $scope.lesson = {
                         date: null,
                         categories: [],
+                        home_categories: [],
                         category_ids: []
                     };
                     return;

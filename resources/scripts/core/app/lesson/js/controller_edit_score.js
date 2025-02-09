@@ -9,7 +9,7 @@
             $scope.student_score = student_score;
             $scope.student = student_score.student;
             $scope.student_score.lesson_id = $scope.lesson.id;
-            console.log($scope.student_score, $scope.lesson.categories);
+            console.log($scope.student_score, $scope.lesson.categories, $scope.lesson.home_categories);
 
 
             $scope.saveFn = function ($event) {

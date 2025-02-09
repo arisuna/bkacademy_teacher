@@ -128,6 +128,7 @@
                 }
 
                 $scope.openSearchDialog = function ($event) {
+                    console.log($scope.items);
 
                     let dialogPosition = Utils.getPositionDropdownDialog($event, 300, 300);
 

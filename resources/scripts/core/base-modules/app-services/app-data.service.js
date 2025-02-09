@@ -1506,5 +1506,61 @@
 
             return deferred.promise;
         }
+
+        this.getEvaluationDetail = function (id) {
+            var deferred = $q.defer();
+            AppHttp.get('/app/evaluation/detail/' + id)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.getEvaluationList = function (params) {
+            var deferred = $q.defer();
+            AppHttp.put('/app/evaluation/search', params)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.deleteEvaluation = function (id) {
+            var deferred = $q.defer();
+            AppHttp.delete('/app/evaluation/delete/' + id)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+        this.createEvaluation = function (data) {
+            var deferred = $q.defer();
+            AppHttp.post('/app/evaluation/create', data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
+
+        this.updateEvaluation = function (data) {
+            var deferred = $q.defer();
+            AppHttp.put('/app/evaluation/update/' + data.id, data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
     }
 })();
