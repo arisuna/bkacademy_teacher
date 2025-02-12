@@ -1,0 +1,21 @@
+<div class="panel panel-default panel-default-b">
+    <div class="panel-heading" ng-style="{'padding':'5px'}">
+        <div class="row">
+            <div class="col-md-12">
+                <input-text-search ng-model="searchConfig.query"
+                                   ng-search="applyFilter()"></input-text-search>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body height-200 overflow-y-enable" ng-style="{'padding':'5px'}">
+        <div class="list-group list-group-flat">
+            <a class="list-group-item text-overflow-ellipsis"
+               ng-repeat="item in items | filter: searchConfig.filterQuery"
+               ng-click="selectItem(item)">
+                <div class="flex">
+                    <span>{{item.name}} </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

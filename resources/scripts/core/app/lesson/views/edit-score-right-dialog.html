@@ -14,60 +14,112 @@
                     <p>{{'STUDENT_TEXT' | translate}} : {{student.lastname}} {{student.firstname}}</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <input-text is-editable="true"
-                                is-required="true"
-                                is-numeric="true"
-                                ng-model="student_score.score"
-                                required-message="ENTER_SCORE_TEXT"
-                                label="SCORE_TEXT"
-                                show-label="true"></input-text>
-                </div>
-            </div>
-            <div class="row"  ng-repeat="category in lesson.categories">
+            <div class="row"  ng-if="lesson.had_homework == 1">
                 <div class="panel panel-default panel-default-b">
                     <div class="panel-body pd-t-5">
-                <div class="col-sm-12 text-dark-blue">
-                    <p>{{'CATEGORY_TEXT' | translate}}: {{category.name}}</p>
+                        <div class="col-sm-12 text-dark-blue">
+                            <p>{{'HOME_SCORE_TEXT' | translate}}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <input-text is-editable="true"
+                                        is-required="true"
+                                        is-numeric="true"
+                                        ng-model="student_score.home_score"
+                                        required-message="ENTER_HOME_SCORE_TEXT"
+                                        label="HOME_SCORE_TEXT"
+                                        show-label="true"></input-text>
+                        </div>
+                        <div class="col-sm-12">
+                            <app-evaluations-selector ng-model="student_score.home_evaluations"
+                                                show-label="true"
+                                                is-home-evaluation="true"
+                                                is-editable="true"
+                                                is-required="true"
+                                                label="HOME_EVALUATION_TEXT"></app-evaluations-selector>
+                        </div>
+                        <div class="col-sm-12 text-dark-blue" ng-if="lesson.home_categories.length > 0">
+                            <p>{{'CATEGORY_EVALUATION_TEXT' | translate}}</p>
+                        </div>
+                        <div class="col-sm-12"  ng-if="lesson.home_categories.length > 0">
+                            <div class="row" ng-repeat="category in lesson.home_categories">
+                                <div class="col-sm-6">
+                                    {{category.name}}
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            {{'RATING_TEXT' | translate}}
+                                        </label>
+                                        <select class="chosen-select form-control" chosen="" ng-model="student_score.home_categories[category.id].score"
+                                                ng-options="rate.value as (rate.label | translate) for rate in ratings"
+                                                data-placeholder-text-single="'- Select rating'">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="panel panel-default panel-default-b">
+                    <div class="panel-body pd-t-5">
+                        <div class="col-sm-12 text-dark-blue">
+                            <p>{{'CLASS_SCORE_TEXT' | translate}}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <input-text is-editable="true"
+                                        is-required="true"
+                                        is-numeric="true"
+                                        ng-model="student_score.score"
+                                        required-message="ENTER_CLASS_SCORE_TEXT"
+                                        label="CLASS_SCORE_TEXT"
+                                        show-label="true"></input-text>
+                        </div>
+                        <div class="col-sm-12">
+                            <app-evaluations-selector ng-model="student_score.class_evaluations"
+                                                show-label="true"
+                                                is-home-evaluation="false"
+                                                is-editable="true"
+                                                is-required="true"
+                                                label="CLASS_EVALUATION_TEXT"></app-evaluations-selector>
+                        </div>
+                        <div class="col-sm-12 text-dark-blue"  ng-if="lesson.categories.length > 0">
+                            <p>{{'CATEGORY_EVALUATION_TEXT' | translate}}</p>
+                        </div>
+                        <div class="col-sm-12"  ng-if="lesson.categories.length > 0">
+                            <div class="row" ng-repeat="category in lesson.categories">
+                                <div class="col-sm-6">
+                                    {{category.name}}
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>
+                                            {{'RATING_TEXT' | translate}}
+                                        </label>
+                                        <select class="chosen-select form-control" chosen="" ng-model="student_score.categories[category.id].score"
+                                                ng-options="rate.value as (rate.label | translate) for rate in ratings"
+                                                data-placeholder-text-single="'- Select rating'">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-12">
-                    <input-text is-editable="true"
-                    is-required="false"
-                    is-numeric="true"
-                    ng-model="student_score.categories[category.id].score"
-                    required-message="ENTER_SCORE_TEXT"
-                    label="SCORE_TEXT"
-                    show-label="true"></input-text>
-                </div>
-                <div class="col-sm-12">
-                    <input-text is-editable="true"
-                    is-required="false"
-                    is-numeric="true"
-                    ng-model="student_score.categories[category.id].correct"
-                    required-message="ENTER_CORRECT_TEXT"
-                    label="CORRECT_TEXT"
-                    show-label="true"></input-text>
-                </div>
-                <div class="col-sm-12">
-                    <input-text is-editable="true"
-                    is-required="false"
-                    is-numeric="true"
-                    ng-model="student_score.categories[category.id].wrong"
-                    required-message="ENTER_WRONG_TEXT"
-                    label="WRONG_TEXT"
-                    show-label="true"></input-text>
-                </div>
-                <div class="col-sm-12">
-                    <input-text is-editable="true"
-                    is-required="false"
-                    is-numeric="true"
-                    ng-model="student_score.categories[category.id].not_done"
-                    required-message="ENTER_NOT_DONE_TEXT"
-                    label="NOT_DONE_TEXT"
-                    show-label="true"></input-text>
-                </div>
-                </div>
+                    <input-text-area is-editable="true"
+                                        label="NOTE_TEXT"
+                                        placeholder="ENTER_NOTE_TEXT"
+                                        show-label="true"
+                                        rows="5"
+                                        is-required="false"
+                                        ng-model="student_score.note">
+                    </input-text-area>
                 </div>
             </div>
         </div>

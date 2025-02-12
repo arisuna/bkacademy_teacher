@@ -56,6 +56,29 @@
                     }
                 );
             };
+            $scope.getStudentScores = function () {
+                var id = angular.isDefined($stateParams.id) ? $stateParams.id : 0;
+                if (id == 0) {
+                    $scope.page_loading = false;
+                    $scope.lesson.students = [];
+                    return;
+                }
+
+                AppLessonService.getStudentScores(id).then(
+                    function (res) {
+                        if (res.success) {
+                            $scope.lesson.students = res.data;
+                        } else {
+                            WaitingService.error(res.msg);
+                        }
+                        $scope.page_loading = false;
+                    },
+                    function (error) {
+                        WaitingService.expire(error);
+                        $scope.page_loading = false;
+                    }
+                );
+            };
             $scope.getDetailFn();
 
             $scope.saving = false;
@@ -119,23 +142,35 @@
             }; // End delete function
 
             $scope.editStudentScoreFn = function (object) {
-                $scope.currentClassroom = {id: 0};
+                object.lesson_id = $stateParams.id;
                 $scope.createClassroomDialog = ngDialog.open({
                     template: urlBase.tplApp('app', 'lesson', 'edit-score-right-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue no-background',
                     scope: $scope,
                     closeByDocument: true,
                     resolve:{
-                        student_score: function () {
-                            return object
-                        }
+                        student_score: ['AppLessonService', 'WaitingService', function (AppLessonService, WaitingService) {
+                            WaitingService.begin();
+                            return AppLessonService.getStudentScore(object).then(function (res) {
+                                if (res.success == true) {
+                                    WaitingService.end();
+                                    return res.data;
+                                } else {
+                                    WaitingService.end();
+                                    throw new Error('DATA_NOT_FOUND_TEXT');
+                                }
+                            }, function () {
+                                WaitingService.end();
+                                throw new Error('DATA_NOT_FOUND_TEXT');
+                            })
+                        }],
                     },
 
                     controller: 'EditStudentScoreFormController'
                 });
 
                 $scope.createClassroomDialog.closePromise.then(function (data) {
-                    $scope.getDetailFn();
+                    $scope.getStudentScores();
                 });
             }
         }]);

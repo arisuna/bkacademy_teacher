@@ -1507,6 +1507,17 @@
             return deferred.promise;
         }
 
+        this.getAllEvaluation = function () {
+            var deferred = $q.defer();
+            AppHttp.get('/app/evaluation/getList')
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }).catch(function (err, status) {
+                deferred.reject(err.data);
+            });
+            return deferred.promise;
+        };
+
         this.getEvaluationDetail = function (id) {
             var deferred = $q.defer();
             AppHttp.get('/app/evaluation/detail/' + id)

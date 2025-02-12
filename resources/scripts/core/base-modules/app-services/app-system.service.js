@@ -903,6 +903,7 @@
                 }
             ],
             languages: [],
+            evaluations: [],
             current_language: '',
             zone_langs: [],
             user_groups: [],
@@ -951,6 +952,10 @@
 
         this.getServerTimeZone = function () {
             return vm.data.server_time_zone;
+        }
+
+        this.getEvaluations = function () {
+            return vm.data.evaluations;
         }
 
         this.getSettingUserGroups = function () {
@@ -1170,22 +1175,6 @@
                     deferred.reject(err);
                 }));
 
-
-            promiseList.push(
-                AppDataService.getBanks().then(
-                    function (response) {
-                        if (response && response.data && response.data.length) {
-                            self.data.banks = response.data;
-                            return response;
-                        } else {
-                            deferred.reject(response);
-                        }
-                    }, function (err) {
-                        deferred.reject(err);
-                    }
-                )
-            );
-
             promiseList.push(
                 AppDataService.getSystemLanguages().then(
                     function (response) {
@@ -1193,6 +1182,19 @@
                             self.data.languages = response.data;
                             self.data.current_language = response.current;
                             $translate.use(self.data.current_language);
+                            return response;
+                        } else {
+                            deferred.reject(response);
+                        }
+                    }, function (err) {
+                        deferred.reject(err);
+                    }));
+
+            promiseList.push(
+                AppDataService.getAllEvaluation().then(
+                    function (response) {
+                        if (response.success == true) {
+                            self.data.evaluations = response.data;
                             return response;
                         } else {
                             deferred.reject(response);
