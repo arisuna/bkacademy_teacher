@@ -59,7 +59,7 @@
     "license": "ISC",
     "dependencies": {
         "font-awesome": "^4.7.0",
-        "reloday": "https://reloid@bitbucket.org/reloid/reloday_frontend_librairies.git#bkacademy",
+        "reloday": "https://reloid@bitbucket.org/reloid/reloday_frontend_librairies.git#release/v2.0.26",
         "roboto-npm-webfont": "^1.0.1"
     },
     "engines": {
