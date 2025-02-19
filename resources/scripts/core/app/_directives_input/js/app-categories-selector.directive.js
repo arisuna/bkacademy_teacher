@@ -46,41 +46,20 @@
                     selected: []
                 };
 
-                $scope.initFn = function () {
-                    if(!$scope.subCategoryOnly){
-                        AppCategoryService.getList({
-                            class_id: $scope.classId
+                $scope.initFn = function(){
+                    if($scope.model.length > 0){
+                        AppCategoryService.search({
+                            class_id: $scope.classId,
+                            ids: $scope.model
                         }).then(function (res) {
                             if (res.success) {
-                                $scope.items = res.data;
-                                angular.forEach($scope.model, function (id) {
-                                    let findItem = _.find($scope.items, function (o) {
-                                        return o.id == id;
-                                    });
-                                    if (findItem) {
-                                        $scope.data.selected.push(findItem);
-                                    }
-                                })
-                            }
-                        });
-                    } else {
-                        AppCategoryService.getSubCategory({
-                            class_id: $scope.classId
-                        }).then(function (res) {
-                            if (res.success) {
-                                $scope.items = res.data;
-                                angular.forEach($scope.model, function (id) {
-                                    let findItem = _.find($scope.items, function (o) {
-                                        return o.id == id;
-                                    });
-                                    if (findItem) {
-                                        $scope.data.selected.push(findItem);
-                                    }
-                                })
+                                $scope.data.selected = res.data;
                             }
                         });
                     }
                 };
+
+               
 
                 $scope.removeItems = function () {
                     $scope.model = angular.copy([]);
@@ -128,7 +107,6 @@
                 }
 
                 $scope.openSearchDialog = function ($event) {
-                    console.log($scope.items);
 
                     let dialogPosition = Utils.getPositionDropdownDialog($event, 300, 300);
 
@@ -142,11 +120,73 @@
                         cache: false,
                         width: 300,
                         data: {
-                            items: $scope.items
+                            subCategoryOnly: $scope.subCategoryOnly,
+                            classId: $scope.classId
                         },
-                        controller: ['$scope', '$element', 'AppSystem', 'Utils', function ($scope, $element, AppSystem, Utils) {
+                        controller: ['$scope', '$element', 'AppCategoryService', 'Utils', '$timeout', function ($scope, $element, AppCategoryService, Utils, $timeout) {
+                            $scope.subCategoryOnly = $scope.ngDialogData.subCategoryOnly;
+                            $scope.classId = $scope.ngDialogData.classId;
+                            $scope.totalItems = 0;
+                            $scope.totalPages = 0;
+                            $scope.totalRestItems = 0;
+                            $scope.searchConfig = {
+                                query: ""
+                            };
+                            $scope.initFn = function () {
+                                $scope.items = [];
+                                $scope.isLoading = true;
+                                    AppCategoryService.search({
+                                        class_id: $scope.classId,
+                                        query: $scope.searchConfig.query,
+                                        sub_category_only: $scope.subCategoryOnly,
+                                        not_root_category: true,
+                                    }).then(function (res) {
+                                        if (res.success) {
+                                            $scope.items = res.data;
+                                            $scope.isLoading = false;
+                                            $scope.totalItems = res.total_items;
+                                            $scope.totalRestItems = res.total_rest_items;
+                                            $scope.currentPage = res.current;
+                                        }
+                                        $scope.isLoading = false;
+                                    }, function () {
+                                        $timeout(function () {
+                                            $scope.isLoading = false;
+                                        }, 1000);
+                                    });
+                                
+                            };
 
-                            $scope.items = $scope.ngDialogData.items;
+                            $scope.loadMore = function () {
+                                $scope.isLoadingMore = true;
+                                AppCategoryService.search({
+                                    class_id: $scope.classId,
+                                    query: $scope.searchConfig.query,
+                                    sub_category_only: $scope.subCategoryOnly,
+                                    not_root_category: true,
+                                    page: $scope.currentPage + 1,
+                                }).then(
+                                    function (res) {
+                                        $timeout(function () {
+                                            $scope.isLoading = false;
+                                            $scope.isLoadingMore = false;
+                                        }, 1000);
+                                        if (res.success) {
+                                            $scope.items = _.concat($scope.items, res.data);
+                                            $scope.totalItems = res.total_items;
+                                            $scope.totalRestItems = res.total_rest_items;
+                                            $scope.currentPage = res.current;
+                                        }
+                                    }, function () {
+                                        $timeout(function () {
+                                            $scope.isLoading = false;
+                                            $scope.isLoadingMore = false;
+                                        }, 1000);
+                                    }
+                                )
+                            }
+
+                            $scope.initFn();
 
                             Utils.setPositionDropdownDialog(dialogPosition);
 

@@ -3,18 +3,31 @@
         <div class="row">
             <div class="col-md-12">
                 <input-text-search ng-model="searchConfig.query"
-                                   ng-search="applyFilter()"></input-text-search>
+                                   ng-search="initFn()"></input-text-search>
             </div>
         </div>
     </div>
     <div class="panel-body height-200 overflow-y-enable" ng-style="{'padding':'5px'}">
-        <div class="list-group list-group-flat">
-            <a class="list-group-item text-overflow-ellipsis"
-               ng-repeat="item in items | filter: searchConfig.filterQuery"
-               ng-click="selectItem(item)">
-                <div class="flex">
-                    <span>{{(item.parent_category_id > 0 ? item.parent_name + ' - ' : '')}} {{item.reference}} - {{item.name}} </span>
-                </div>
+        <div ng-if="isLoading == true">
+            <spinner-v2 type="spin"></spinner-v2>
+        </div>
+        <div ng-show="isLoading == false">
+            <div class="list-group list-group-flat">
+                <a class="list-group-item text-overflow-ellipsis"
+                ng-repeat="item in items | filter: searchConfig.filterQuery"
+                ng-click="selectItem(item)">
+                    <div class="flex">
+                        <span>{{(item.parent_category_id > 0 ? item.parent_category_name + ' - ' : '')}} {{item.reference}} - {{item.name}} </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div ng-if="isLoadingMore == true">
+            <spinner-v2 type="spin"></spinner-v2>
+        </div>
+        <div class="panel-body text-center" ng-style="{'padding':'5px'}" ng-if="totalRestItems > 0 && !isLoadingMore">
+            <a class="text-center text-bright-blue" ng-click="loadMore()">
+                {{ 'LOAD_MORE_TEXT' | translate }} {{ totalRestItems }} {{ 'CATEGORIES_TEXT' | translate }}
             </a>
         </div>
     </div>
