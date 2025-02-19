@@ -13,6 +13,12 @@ jobs:
       - name: git-checkout
         uses: actions/checkout@v3
 
+      - name: Install all dependencies
+        run: npm install 
+
+      - name: Install all dependencies
+        run: yarn install
+
       - name: Build
         run: gulp build --stage=prod # The build command of your project
 
