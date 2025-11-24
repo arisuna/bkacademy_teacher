@@ -1,0 +1,74 @@
+<div class="form-group">
+    <div>
+        <label class="label-text-form pull-left" ng-show="showLabel == true && label != ''">
+            {{ label | translate }}
+            <asterik-red ng-if="isRequired">*</asterik-red>
+        </label>
+
+        <tooltip ng-if="toolTipText != '' && toolTipText != undefined && showLabel == true"
+                 class="ml-sm"
+                 text="{{ toolTipText }}"></tooltip>
+
+        <span class="text-right text-sm pull-right"
+              ng-show="chapterType.value > 0 && isEditable == true">
+            <a ng-click="resetItem();">
+                {{'REMOVE_TEXT'|translate}}
+            </a>
+        </span>
+
+        <div class="clearfix"></div>
+    </div>
+
+
+    <div ng-if="isEditable == true"
+         class="user-profile-view-rectangle relo-bg-bright-blue-10">
+        <div class="item"
+             ng-show="chapterType.value > 0">
+
+            <span class="principal pd-t-3">
+               <a ng-click="openSearchDialog($event)">
+                    <span class="">{{chapterType.label | translate}}</span>
+               </a>
+            </span>
+
+            <span class="close text-gray">
+                <a ng-click="resetItem()">
+                    <em class="fa fa-times"></em>
+                </a>
+            </span>
+
+            <div class="clearfix"></div>
+        </div>
+
+
+        <div class="item"
+             ng-show="!(chapterType.value > 0)">
+            <span class="principal pd-t-3">
+               <a ng-click="openSearchDialog($event)">
+                   <span class="">{{'SELECT_TEXT' | translate }}</span>
+                </a>
+            </span>
+        </div>
+    </div>
+
+    <div class="user-profile-view"
+         ng-if="isEditable == false">
+        <div class="item"
+             ng-if="chapterType.value > 0">
+            <span class="">{{chapterType.label | translate}}</span>
+        </div>
+
+        <div class="item"
+             ng-if="!(chapterType.value > 0)">
+            <span class="principal pd-t-3">
+            </span>
+        </div>
+    </div>
+
+    <input type="text"
+           class="input-invisible"
+           ng-model="chapterType.value"
+           ng-hide="true"
+           ng-required="isRequired"
+           data-parsley-required-message="{{ requiredMessage | translate }}"/>
+</div>

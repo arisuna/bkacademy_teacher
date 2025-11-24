@@ -66,7 +66,9 @@
                     "noRender": !(AppAclService.validateAction('admin', 'index')),
                     "acl": "category/index",
                     "subMenu": [
-                        {"title": "CATEGORIES_TEXT", "state": "app.category.list"},
+                        {"title": "CATEGORIES_TEXT", "state": "app.knowledge-point.list"},
+                        {"title": "CHAPTERS_TEXT", "state": "app.chapter.list"},
+                        {"title": "TOPICS_TEXT", "state": "app.topic.list"},
                         {"title": "EXAM_TYPE_TEXT", "state": "app.exam-type.list"}
                     ]
                 },
