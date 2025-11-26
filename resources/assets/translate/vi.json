@@ -925,5 +925,11 @@
     "CHAPTERS_TEXT": "Danh sách chương",
     "EDIT_CHAPTER_TEXT": "Cập nhật chương",
     "CREATE_CHAPTER_TEXT": "Tạo chương",
-    "CLONE_CHAPTER_TEXT": "Sao chép chương"
+    "CLONE_CHAPTER_TEXT": "Sao chép chương",
+    "TOPIC_TEXT": "Chủ đề",
+    "TOPIC_TYPE_TEXT": "Loại chủ đề",
+    "TOPICS_TEXT": "Danh sách chủ đề",
+    "EDIT_TOPIC_TEXT": "Cập nhật chủ đề",
+    "CREATE_TOPIC_TEXT": "Tạo chủ đề",
+    "CLONE_TOPIC_TEXT": "Sao chép chủ đề"
   }

@@ -1,9 +1,9 @@
 (function () {
     'use strict';
-    App.controller('ChapterListApiController', ['$scope', '$state', '$timeout', '$rootScope', '$translate',
-        'WaitingService', 'AppChapterService', 'ngDialog', 'urlBase', 'AppFilterConfigService',
+    App.controller('TopicListApiController', ['$scope', '$state', '$timeout', '$rootScope', '$translate',
+        'WaitingService', 'AppTopicService', 'ngDialog', 'urlBase', 'AppFilterConfigService',
         function ($scope, $state, $timeout, $rootScope, $translate,
-                  WaitingService, AppChapterService, ngDialog, urlBase, AppFilterConfigService) {
+                  WaitingService, AppTopicService, ngDialog, urlBase, AppFilterConfigService) {
 
             $scope.loading = true;
             $scope.items = [];
@@ -15,7 +15,7 @@
             $scope.totalPages = 1;
             $scope.currentPage = 0;
             $scope.params = {
-                chapter_types: [],
+                topic_types: [],
             };
 
             $scope.search = {};
@@ -34,7 +34,7 @@
                     $scope.params.statuses = _.map($scope.search.selected_statuses, 'id');
                 }
 
-                AppChapterService.getList($scope.params).then(function (res) {
+                AppTopicService.getList($scope.params).then(function (res) {
                     if (res.success) {
                         $scope.items = res.data;
                         $scope.totalPages = res.total_pages;
@@ -71,7 +71,7 @@
                         $scope.params.statuses = _.map($scope.search.selected_statuses, 'id');
                     }
 
-                    AppChapterService.getList($scope.params).then(function (res) {
+                    AppTopicService.getList($scope.params).then(function (res) {
                         if (res.success) {
                             $scope.items = $scope.items.concat(res.data);
                             $scope.totalPages = res.total_pages;
@@ -108,10 +108,10 @@
                 $scope.search = {
                     query: null,
                     filterQuery: null,
-                    selected_statuses: [],
+                    grades: [],
                     filterConfigId: null,
                     isTmp: false,
-                    orders: {},
+                    orders: {}
                 };
 
                 $scope.publish('clearFilter');
@@ -126,7 +126,7 @@
                 $scope.reloadInit();
             };
 
-            $scope.subscribe('apply_filter_config_CHAPTER', function (filterConfigId) {
+            $scope.subscribe('apply_filter_config_TOPIC', function (filterConfigId) {
                 angular.element('.scroll-append').scrollTop(0);
                 $scope.search.filterConfigId = filterConfigId;
                 $scope.search.isTmp = true;
@@ -134,14 +134,14 @@
                 $scope.reloadInit();
             });
 
-            $scope.subscribe('sort_by_column_and_order_CHAPTER', function (data) {
+            $scope.subscribe('sort_by_column_and_order_TOPIC', function (data) {
                 angular.element('.scroll-append').scrollTop(0);
                 $scope.search.orders = [data];
                 $scope.sort = {};
                 $scope.reloadInit();
             });
 
-            $scope.subscribe('text_search_CHAPTER', function (data) {
+            $scope.subscribe('text_search_TOPIC', function (data) {
                 angular.element('.scroll-append').scrollTop(0);
                 $scope.search.query = data;
                 // GmsFilterConfigService.setFilterQuery($scope.module_name, $scope.currentUser.uuid, data);
@@ -158,18 +158,13 @@
                 $scope.reloadInit();
             });
 
-            $rootScope.$on('chapter_filter_update', function (event, data) {
+            $rootScope.$on('topic_filter_update', function (event, data) {
                 $scope.isLoading = true;
                 $scope.loadCount = 0;
                 if (data.grades && data.grades.length) {
                     $scope.params.grades = data.grades
                 } else {
                     $scope.params.grades = []
-                }
-                if (data.chapter_types && data.chapter_types.length) {
-                    $scope.params.chapter_types = data.chapter_types
-                } else {
-                    $scope.params.chapter_types = []
                 }
                 $timeout(function () {
                     $scope.items = [];
@@ -178,8 +173,8 @@
             });
 
             $scope.deleteFn = function (item, index) {
-                WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_CHAPTER_TEXT', function () {
-                    AppChapterService.deleteChapter(item.uuid).then(function (res) {
+                WaitingService.questionSimple('DO_YOU_WANT_TO_DELETE_TOPIC_TEXT', function () {
+                    AppTopicService.deleteTopic(item.uuid).then(function (res) {
                         if (res.success) {
                             WaitingService.popSuccess(res.message);
                             $scope.reloadInit();
@@ -192,23 +187,23 @@
 
 
             $scope.createFn = function(){
-                let chapter = {
+                let topic = {
                     uuid: ""
                 };
                 $scope.createDialog = ngDialog.open({
-                    template: urlBase.tplApp('app', 'chapter', 'form-dialog', '_=' + Math.random()),
+                    template: urlBase.tplApp('app', 'topic', 'form-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue',
                     closeByDocument: true,
                     showClose: true,
                     data: {
-                        chapter: chapter,
+                        topic: topic,
                         view: false
                     },
-                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppChapterService', '$state',
-                    function ($scope, $element, $timeout, WaitingService, AppChapterService, $state) {
-                        $scope.object = $scope.ngDialogData.chapter;
+                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppTopicService', '$state',
+                    function ($scope, $element, $timeout, WaitingService, AppTopicService, $state) {
+                        $scope.object = $scope.ngDialogData.topic;
                         $scope.saveFn = function(){
-                            AppChapterService.createChapter($scope.object).then(function (res) {
+                            AppTopicService.createTopic($scope.object).then(function (res) {
                                 if (res.success) {
                                     $scope.closeThisDialog(res.data);
                                     WaitingService.popSuccess(res.message);
@@ -229,24 +224,24 @@
                 });
             }
 
-            $scope.editFn = function(chapter){
-                console.log('chapter', chapter);
+            $scope.editFn = function(topic){
+                console.log('topic', topic);
                 $scope.editDialog = ngDialog.open({
-                    template: urlBase.tplApp('app', 'chapter', 'form-dialog', '_=' + Math.random()),
+                    template: urlBase.tplApp('app', 'topic', 'form-dialog', '_=' + Math.random()),
                     className: 'ngdialog-theme-right-box sm-box ng-dialog-btn-close-dark-blue',
                     closeByDocument: true,
                     showClose: true,
                     data: {
-                        chapter: chapter,
+                        topic: topic,
                         view: false
                     },
-                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppChapterService', '$state',
-                        function ($scope, $element, $timeout, WaitingService, AppChapterService, $state) {
-                            $scope.object = $scope.ngDialogData.chapter;
+                    controller: ['$scope', '$element', '$timeout', 'WaitingService', 'AppTopicService', '$state',
+                        function ($scope, $element, $timeout, WaitingService, AppTopicService, $state) {
+                            $scope.object = $scope.ngDialogData.topic;
                             $scope.page_loading = true;
 
                             $scope.getDetailFn = function () {
-                                AppChapterService.detailChapter($scope.object.uuid).then(
+                                AppTopicService.detailTopic($scope.object.uuid).then(
                                     function (res) {
                                         if (res.success) {
                                             $scope.object = res.data;
@@ -265,7 +260,7 @@
 
                             $scope.saveFn  = function(){
                                 if($scope.object.id > 0){
-                                    AppChapterService.updateChapter($scope.object).then(function (res) {
+                                    AppTopicService.updateTopic($scope.object).then(function (res) {
                                         if (res.success) {
                                             $scope.closeThisDialog(res.data);
 
