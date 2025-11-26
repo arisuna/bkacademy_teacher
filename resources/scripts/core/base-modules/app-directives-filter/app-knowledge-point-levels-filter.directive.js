@@ -7,11 +7,11 @@
 
     angular
         .module('app.app-directives')
-        .directive('appChapterTypesFilter', appChapterTypesFilter);
+        .directive('appKnowledgePointLevelsFilter', appKnowledgePointLevelsFilter);
 
-    appChapterTypesFilter.$inject = ['$window', '$timeout', 'ngDialog', 'urlBase', '$translate', '$rootScope', 'AppChapterService', 'WaitingService'];
+    appKnowledgePointLevelsFilter.$inject = ['$window', '$timeout', 'ngDialog', 'urlBase', '$translate', '$rootScope', 'AppChapterService', 'WaitingService'];
 
-    function appChapterTypesFilter($window, $timeout, ngDialog, urlBase, $translate, $rootScope, AppChapterService, WaitingService) {
+    function appKnowledgePointLevelsFilter($window, $timeout, ngDialog, urlBase, $translate, $rootScope, AppChapterService, WaitingService) {
         var directive = {
             restrict: 'E',
             replace: true,
@@ -21,7 +21,7 @@
                 toLeft: '<?',
                 float: '<?'
             },
-            templateUrl: urlBase.tplBase('base-modules/app-directives-filter', 'chapter-types-filter'),
+            templateUrl: urlBase.tplBase('base-modules/app-directives-filter', 'knowledge-point-levels-filter'),
             link: function (scope, element, attrs) {
                 if (angular.isUndefined(scope.dropdownSize) || scope.dropdownSize == '') {
                     scope.dropdownSize = 'small';
@@ -38,15 +38,15 @@
                 $scope.initSearch = function () {
                     $scope.isLoading = true;
                     $scope.options = [
-                        {value : 1, label: 'ARITHMETIC_TEXT'},
-                        {value : 2, label: 'GEOMETRY_TEXT'}
+                        {value : 0, label: 'BASIC_TEXT'},
+                        {value : 1, label: 'ADVANCE_TEXT'}
                     ];
                 }
 
                 $scope.initSearch();
 
                 $scope.data = {
-                    chapter_types_selected: []
+                    knowledge_point_levels_selected: []
                 };
 
                 if (angular.isUndefined($scope.float) || $scope.float == false) {
@@ -59,19 +59,19 @@
                     $scope.position = 'right';
                 }
 
-                $scope.updateValue = function (chapter_types_selected) {
+                $scope.updateValue = function (knowledge_point_levels_selected) {
                     $scope.model = [];
-                    angular.forEach(chapter_types_selected, function (o) {
+                    angular.forEach(knowledge_point_levels_selected, function (o) {
                         if (o.selected) {
                             $scope.model.push(o);
                         }
                     });
-                    $scope.data.chapter_types_selected = angular.copy(chapter_types_selected);
+                    $scope.data.knowledge_point_levels_selected = angular.copy(knowledge_point_levels_selected);
                     $scope.publish('applyFilter');
                 };
 
                 if (angular.isDefined($scope.model) && _.isArray($scope.model) && $scope.model.length > 0) {
-                    $scope.data.chapter_types_selected = angular.copy($scope.model);
+                    $scope.data.knowledge_point_levels_selected = angular.copy($scope.model);
                 }
 
 
@@ -97,7 +97,7 @@
                     let dialogWidth = 0;
 
                     let searchDialog = ngDialog.open({
-                        template: urlBase.tplBase('base-modules/app-directives-filter', 'app-chapter-types-filter-dialog'),
+                        template: urlBase.tplBase('base-modules/app-directives-filter', 'app-knowledge-point-levels-filter-dialog'),
                         className: 'ngdialog-custom-position custom-bottom no-background',
                         showClose: false,
                         closeByDocument: true,
@@ -111,11 +111,11 @@
                             position: $scope.position,
                         },
                         resolve: {
-                            chapter_types_selected: function () {
-                                return $scope.data.chapter_types_selected;
+                            knowledge_point_levels_selected: function () {
+                                return $scope.data.knowledge_point_levels_selected;
                             }
                         },
-                        controller: ['$scope', '$element', '$rootScope', 'AppDataService', 'AppSystem', 'chapter_types_selected', function ($scope, $element, $rootScope, AppDataService, AppSystem, chapter_types_selected) {
+                        controller: ['$scope', '$element', '$rootScope', 'AppDataService', 'AppSystem', 'knowledge_point_levels_selected', function ($scope, $element, $rootScope, AppDataService, AppSystem, knowledge_point_levels_selected) {
                             document.documentElement.style.setProperty('--ng-dialog-custom-position-top', dialogTop);
                             if ($scope.ngDialogData.position === 'right') {
                                 console.log('right dialog');
@@ -127,10 +127,10 @@
                                 document.documentElement.style.setProperty('--ng-dialog-custom-position-right', 'inherit');
                             }
 
-                            $scope.chapter_types = options.map((item) => {
+                            $scope.knowledge_point_levels = options.map((item) => {
                                 item.selected = false
-                                if (chapter_types_selected && chapter_types_selected.length > 0) {
-                                    let _index = _.findIndex(chapter_types_selected, o => o.value == item.value);
+                                if (knowledge_point_levels_selected && knowledge_point_levels_selected.length > 0) {
+                                    let _index = _.findIndex(knowledge_point_levels_selected, o => o.value == item.value);
 
                                     item.selected = _index > -1
                                 }
@@ -141,7 +141,7 @@
                             $scope.showSelectedItems = false;
                             $scope.isLoading = false;
                             $scope.totalRestItems = 0;
-                            $scope.chapter_types_selected = angular.copy(chapter_types_selected);
+                            $scope.knowledge_point_levels_selected = angular.copy(knowledge_point_levels_selected);
 
 
                             $scope.showShowHideSelectedItems = function () {
@@ -150,43 +150,43 @@
 
 
                             $scope.addItem = function (item) {
-                                let _index = _.findIndex($scope.chapter_types, function (o) {
+                                let _index = _.findIndex($scope.knowledge_point_levels, function (o) {
                                     return o.value == item.value;
                                 });
 
                                 if (_index < 0) {
                                     return
                                 }
-                                $scope.chapter_types[_index].selected = !item.selected
+                                $scope.knowledge_point_levels[_index].selected = !item.selected
 
                                 $timeout(function () {
-                                    $scope.chapter_types_selected = $scope.chapter_types.filter(o => o.selected);
+                                    $scope.knowledge_point_levels_selected = $scope.knowledge_point_levels.filter(o => o.selected);
                                 }, 500)
                             };
 
                             $scope.removeItem = function (item) {
 
-                                let indexToRemove = _.findIndex($scope.chapter_types_selected, function (o) {
+                                let indexToRemove = _.findIndex($scope.knowledge_point_levels_selected, function (o) {
                                     return o.value == item.value;
                                 });
 
                                 if (indexToRemove >= 0) {
-                                    $scope.chapter_types_selected.splice(indexToRemove, 1);
+                                    $scope.knowledge_point_levels_selected.splice(indexToRemove, 1);
                                 }
 
-                                let indexToUpdate = _.findIndex($scope.chapter_types, function (o) {
+                                let indexToUpdate = _.findIndex($scope.knowledge_point_levels, function (o) {
                                     return o.value == item.value;
                                 });
 
                                 if (indexToUpdate >= 0) {
-                                    $scope.chapter_types[indexToUpdate].selected = false;
+                                    $scope.knowledge_point_levels[indexToUpdate].selected = false;
                                 }
                             };
 
 
                             $scope.clearFn = function () {
-                                let items_selected = angular.copy($scope.chapter_types_selected);
-                                $scope.chapter_types_selected = angular.copy([]);
+                                let items_selected = angular.copy($scope.knowledge_point_levels_selected);
+                                $scope.knowledge_point_levels_selected = angular.copy([]);
                                 if (items_selected.length > 0) {
                                     angular.forEach(items_selected, function (item) {
                                         $scope.removeItem(item);
@@ -196,17 +196,17 @@
 
 
                             $scope.confirmSelect = function () {
-                                $scope.closeThisDialog({chapter_types_selected: $scope.chapter_types_selected});
+                                $scope.closeThisDialog({knowledge_point_levels_selected: $scope.knowledge_point_levels_selected});
                             }
 
                             $scope.updateSelected = function () {
-                                angular.forEach($scope.chapter_types_selected, function (item) {
+                                angular.forEach($scope.knowledge_point_levels_selected, function (item) {
                                     item.selected = true;
-                                    let _index = _.findIndex($scope.chapter_types, function (o) {
+                                    let _index = _.findIndex($scope.knowledge_point_levels, function (o) {
                                         return o.value == item.value
                                     });
                                     if (_index != -1) {
-                                        $scope.chapter_types[_index].selected = true;
+                                        $scope.knowledge_point_levels[_index].selected = true;
                                     }
 
                                 });
@@ -215,8 +215,8 @@
                     });
 
                     searchDialog.closePromise.then(function (returnData) {
-                        if (angular.isDefined(returnData.value) && angular.isDefined(returnData.value.chapter_types_selected)) {
-                            $scope.updateValue(returnData.value.chapter_types_selected);
+                        if (angular.isDefined(returnData.value) && angular.isDefined(returnData.value.knowledge_point_levels_selected)) {
+                            $scope.updateValue(returnData.value.knowledge_point_levels_selected);
                         } else {
                             // $scope.updateValue([]);
                         }
@@ -224,7 +224,7 @@
                 };
 
                 $scope.clearThisFilter = function () {
-                    $scope.data.chapter_types_selected = angular.copy([]);
+                    $scope.data.knowledge_point_levels_selected = angular.copy([]);
                     $scope.model = [];
                 };
 

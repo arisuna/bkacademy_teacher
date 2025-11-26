@@ -16,6 +16,7 @@
             $scope.currentPage = 0;
             $scope.params = {
                 chapter_types: [],
+                levels: []
             };
 
             $scope.search = {};
@@ -170,6 +171,11 @@
                     $scope.params.chapter_types = data.chapter_types
                 } else {
                     $scope.params.chapter_types = []
+                }
+                if (data.levels && data.levels.length) {
+                    $scope.params.levels = data.levels
+                } else {
+                    $scope.params.levels = []
                 }
                 $timeout(function () {
                     $scope.items = [];
