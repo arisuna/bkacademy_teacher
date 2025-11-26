@@ -933,5 +933,8 @@
     "CLONE_TOPIC_TEXT": "Sao chép chủ đề",
     "LEVEL_TEXT": "Độ khó",
     "BASIC_TEXT": "Cơ bản",
-    "ADVANCE_TEXT": "Nâng cao"
+    "ADVANCE_TEXT": "Nâng cao",
+    "EDIT_KNOWLEDGE_POINT_TEXT": "Cập nhật điểm kiến thức",
+    "CREATE_KNOWLEDGE_POINT_TEXT": "Tạo điểm kiến thức",
+    "CLONE_KNOWLEDGE_POINT_TEXT": "Sao chép điểm kiến thức"
   }

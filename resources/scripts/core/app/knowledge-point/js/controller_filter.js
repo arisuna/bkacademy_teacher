@@ -16,11 +16,15 @@
                 grades: [],
                 chapter_types: [],
                 levels: [],
+                chapters: [],
+                topics: [],
             };
 
             $scope.selected_grades = angular.isDefined(filters.grades) ? filters.grades : [];
             $scope.selected_chapter_types = angular.isDefined(filters.chapter_types) ? filters.chapter_types : [];
             $scope.selected_levels = angular.isDefined(filters.levels) ? filters.levels : [];
+            $scope.selected_chapters = angular.isDefined(filters.chapters) ? filters.chapters : [];
+            $scope.selected_topics = angular.isDefined(filters.topics) ? filters.topics : [];
 
             $scope.broadcastFilter = function () {
                 var filters;
@@ -28,6 +32,8 @@
                     grades: $scope.selected_grades,
                     chapter_types: $scope.selected_chapter_types,
                     levels: $scope.selected_levels,
+                    chapters: $scope.selected_chapters,
+                    topics: $scope.selected_topics,
                 };
                 $rootScope.$broadcast('knowledge_point_filter_update', filters);
             }
@@ -42,6 +48,16 @@
                 }
             });
             $scope.$watch('selected_levels', function (newValue, oldValue) {
+                if (angular.isDefined(newValue) && newValue !== oldValue && !(newValue.length == 0 && oldValue.length == 0)) {
+                    $scope.broadcastFilter();
+                }
+            });
+            $scope.$watch('selected_chapters', function (newValue, oldValue) {
+                if (angular.isDefined(newValue) && newValue !== oldValue && !(newValue.length == 0 && oldValue.length == 0)) {
+                    $scope.broadcastFilter();
+                }
+            });
+            $scope.$watch('selected_topics', function (newValue, oldValue) {
                 if (angular.isDefined(newValue) && newValue !== oldValue && !(newValue.length == 0 && oldValue.length == 0)) {
                     $scope.broadcastFilter();
                 }

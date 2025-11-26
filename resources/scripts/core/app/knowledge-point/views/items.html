@@ -1,5 +1,5 @@
 <div class="" ng-controller="KnowledgePointListApiController">
-    <div ng-include="'/app/views/knowledge_point/buttons.html'"></div>
+    <div ng-include="'/app/views/knowledge-point/buttons.html'"></div>
     <div class="project-filter">
         <div class="pd-1x relo-bg-dark-blue-5 bd-radius-5x">
             <div class="row mx-0">
@@ -80,7 +80,7 @@
                     <td class="bd-t-white">{{ object.chapter_name }}</td>
                     <td class="bd-t-white">{{ object.topic_name }}</td>
                     <td class="bd-t-white">{{ object.type == 1 ? 'ARITHMETIC_TEXT' : 'GEOMETRY_TEXT' | translate}}</td>
-                    <td class="bd-t-white">{{ object.level == 0 ? 'BASIC_TEXT' : 'ADVANCE_TEXT' | translate}}</td>
+                    <td class="bd-t-white">{{ object.level == 1 ? 'BASIC_TEXT' : 'ADVANCE_TEXT' | translate}}</td>
                     <td class="bd-t-white">{{ object.grade }}</td>
                     <td class="bd-t-white">{{ object.subject }}</td>
                     <td class="text-right bd-t-white noWrap">

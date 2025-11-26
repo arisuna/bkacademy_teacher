@@ -35,14 +35,26 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <app-chapter-type-selector ng-model="object.type" show-label="true" is-required="true"
-                        label="KNOWLEDGE_POINT_TYPE_TEXT"></app-chapter-type-selector>
+                        <app-knowledge-point-level-selector ng-model="object.level" show-label="true" is-required="true"
+                        label="LEVEL_TEXT"></app-knowledge-point-level-selector>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <app-grade-selector ng-model="object.grade" show-label="true" is-required="true"
                         label="GRADE_TEXT"></app-grade-selector>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <app-chapter-selector ng-model="object.chapter_id" show-label="true" is-required="false" grade="object.grade"
+                        label="CHAPTER_TEXT"></app-chapter-selector>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <app-topic-selector ng-model="object.topic_id" show-label="true" is-required="false" grade="object.grade"
+                        label="TOPIC_TEXT"></app-topic-selector>
                     </div>
                 </div>
 

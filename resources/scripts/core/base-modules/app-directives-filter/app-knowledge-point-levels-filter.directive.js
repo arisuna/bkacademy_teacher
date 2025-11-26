@@ -38,8 +38,8 @@
                 $scope.initSearch = function () {
                     $scope.isLoading = true;
                     $scope.options = [
-                        {value : 0, label: 'BASIC_TEXT'},
-                        {value : 1, label: 'ADVANCE_TEXT'}
+                        {value : 1, label: 'BASIC_TEXT'},
+                        {value : 2, label: 'ADVANCE_TEXT'}
                     ];
                 }
 
