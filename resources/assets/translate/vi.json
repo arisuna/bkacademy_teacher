@@ -159,7 +159,6 @@
     "COMPANIES_TEXT": "Công ty",
     "COMPANY_TEXT": "Công ty",
     "END_USERS_TEXT": "End Users",
-    "LEVEL_TEXT": "Level",
     "SCOPE_TEXT": "Phạm vi quản lý",
     "ALL_TEXT": "Tất cả",
     "OFFICE_TEXT": "Theo vùng",
@@ -931,5 +930,8 @@
     "TOPICS_TEXT": "Danh sách chủ đề",
     "EDIT_TOPIC_TEXT": "Cập nhật chủ đề",
     "CREATE_TOPIC_TEXT": "Tạo chủ đề",
-    "CLONE_TOPIC_TEXT": "Sao chép chủ đề"
+    "CLONE_TOPIC_TEXT": "Sao chép chủ đề",
+    "LEVEL_TEXT": "Độ khó",
+    "BASIC_TEXT": "Cơ bản",
+    "ADVANCE_TEXT": "Nâng cao"
   }

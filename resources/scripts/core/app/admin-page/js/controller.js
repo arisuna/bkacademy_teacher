@@ -9,22 +9,22 @@
         function ($scope, $rootScope,  $timeout, $http, $state, $window, urlBase, AppAclService, AppDataService, WaitingService) {
 
             $rootScope.menuSettings = [
-                {
-                    "title": "GENERAL_SETTINGS_TEXT",
-                    "icon": "fa-solid fa-gears",
-                    "iconType": "icon",
-                    "noRender": !(AppAclService.validateAction('evaluation', 'index')),
-                    "acl": "",
-                    "subMenu": [
-                        // {"title": "LANGUAGES_TEXT", "state": "app.language.list"},
-                        {"title": "EVALUATIONS_TEXT", "state": "app.evaluation.list"},
-                        // {"title": "CURRENCIES_TEXT", "state": "app.currency.list"},
-                        // {"title": "COUNTRIES_TEXT", "state": "app.country.list"},
-                        // {"title": "CITIES_TEXT", "state": "app.city.list"},
-                        // {"title": "SECTIONS_MODES_TEXT", "state": "app.section-mode.list"},
-                        // {"title": "SYSTEM_ATTRIBUTES_TEXT", "state": "app.system-attribute.list"},
-                    ]
-                },
+                // {
+                //     "title": "GENERAL_SETTINGS_TEXT",
+                //     "icon": "fa-solid fa-gears",
+                //     "iconType": "icon",
+                //     "noRender": !(AppAclService.validateAction('evaluation', 'index')),
+                //     "acl": "",
+                //     "subMenu": [
+                //         // {"title": "LANGUAGES_TEXT", "state": "app.language.list"},
+                //         {"title": "EVALUATIONS_TEXT", "state": "app.evaluation.list"},
+                //         // {"title": "CURRENCIES_TEXT", "state": "app.currency.list"},
+                //         // {"title": "COUNTRIES_TEXT", "state": "app.country.list"},
+                //         // {"title": "CITIES_TEXT", "state": "app.city.list"},
+                //         // {"title": "SECTIONS_MODES_TEXT", "state": "app.section-mode.list"},
+                //         // {"title": "SYSTEM_ATTRIBUTES_TEXT", "state": "app.system-attribute.list"},
+                //     ]
+                // },
                 {
                     "title": "USERS_AND_ACLS_TEXT",
                     "icon": "fa-solid fa-users",

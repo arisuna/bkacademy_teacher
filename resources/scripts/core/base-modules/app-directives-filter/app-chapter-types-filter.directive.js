@@ -151,7 +151,7 @@
 
                             $scope.addItem = function (item) {
                                 let _index = _.findIndex($scope.chapter_types, function (o) {
-                                    return o.id == item.id;
+                                    return o.value == item.value;
                                 });
 
                                 if (_index < 0) {
@@ -167,7 +167,7 @@
                             $scope.removeItem = function (item) {
 
                                 let indexToRemove = _.findIndex($scope.chapter_types_selected, function (o) {
-                                    return o.id == item.id;
+                                    return o.value == item.value;
                                 });
 
                                 if (indexToRemove >= 0) {
@@ -175,7 +175,7 @@
                                 }
 
                                 let indexToUpdate = _.findIndex($scope.chapter_types, function (o) {
-                                    return o.id == item.id;
+                                    return o.value == item.value;
                                 });
 
                                 if (indexToUpdate >= 0) {
@@ -203,7 +203,7 @@
                                 angular.forEach($scope.chapter_types_selected, function (item) {
                                     item.selected = true;
                                     let _index = _.findIndex($scope.chapter_types, function (o) {
-                                        return o.id == item.id
+                                        return o.value == item.value
                                     });
                                     if (_index != -1) {
                                         $scope.chapter_types[_index].selected = true;

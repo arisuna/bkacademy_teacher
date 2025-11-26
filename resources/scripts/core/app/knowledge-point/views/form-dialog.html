@@ -1,0 +1,65 @@
+<div class="card">
+    <div class="card-heading relo-bg-bright-gray">
+        <span class="text-dark-blue">
+           {{ isClone == true ?  ('CLONE_KNOWLEDGE_POINT_TEXT' | translate) + (' #' + object.id) : (object.id ?  ('EDIT_KNOWLEDGE_POINT_TEXT' | translate) + ' #' + object.id : ('CREATE_KNOWLEDGE_POINT_TEXT' | translate)) }}
+        </span>
+    </div>
+    <form class="form-validate noPadding" validate-form="true"
+          id="" name="crudForm"
+          role="form" ng-submit="" novalidate="">
+        <div class="card-body custom-dialog-overflow height-100vh-m90px">
+            <spinner-v2 type="spin" ng-show="page_loading"></spinner-v2>
+            <div ng-show="!page_loading">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input-text is-editable="true"
+                                    is-required="true"
+                                    is-text="true"
+                                    ng-model="object.name"
+                                    required-message="FIELD_IS_REQUIRED_TEXT"
+                                    label="NAME_TEXT"
+                                    show-label="true"></input-text>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <input-text is-editable="true"
+                                    is-required="true"
+                                    is-text="true"
+                                    ng-model="object.code"
+                                    required-message="FIELD_IS_REQUIRED_TEXT"
+                                    label="CODE_TEXT"
+                                    show-label="true"></input-text>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <app-chapter-type-selector ng-model="object.type" show-label="true" is-required="true"
+                        label="KNOWLEDGE_POINT_TYPE_TEXT"></app-chapter-type-selector>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <app-grade-selector ng-model="object.grade" show-label="true" is-required="true"
+                        label="GRADE_TEXT"></app-grade-selector>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="pull-right text-right">
+
+                <button type="submit" class="btn relo-bg-green"
+                        ng-disabled="saving"
+                        ng-click="crudForm.$valid && saveFn();">
+                    <em class="fa-solid  mr-sm {{ saving ? 'fa-spin fa-spinner' : 'fa-floppy-disk'}}"></em>
+                    {{ 'SAVE_BTN_TEXT' | translate }}
+                </button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+    </form>
+</div>
