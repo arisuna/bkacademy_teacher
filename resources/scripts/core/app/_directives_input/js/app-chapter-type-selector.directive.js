@@ -49,13 +49,8 @@
 
             controller: function ($scope, $element, $attrs) {
                 $scope.items = [
-                    {value : 1, label: 'MONDAY_TEXT'},
-                    {value : 2, label: 'TUESDAY_TEXT'},
-                    {value : 3, label: 'WEDNESDAY_TEXT'},
-                    {value : 4, label: 'THURSDAY_TEXT'},
-                    {value : 5, label: 'FRIDAY_TEXT'},
-                    {value : 6, label: 'SATURDAY_TEXT'},
-                    {value : 7, label: 'SUNDAY_TEXT'},
+                    {value : 1, label: 'ARITHMETIC_TEXT'},
+                    {value : 2, label: 'GEOMETRY_TEXT'}
                 ];
 
                 $scope.resetItem = function () {

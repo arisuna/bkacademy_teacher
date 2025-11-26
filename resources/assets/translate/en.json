@@ -135,7 +135,7 @@
     "YOUR_PERMISSIONS_CHANGE_TEXT": "ACL access rights updated. Please refresh your page",
     "REFRESH_ACL_TEXT": "ACL access rights were updated",
     "LAST_UPDATED_TEXT": "Last updated",
-    "CODE_TEXT": "Code",
+    "CODE_TEXT": "Mã",
     "CREATE_BUSINESS_ZONE_TEXT": "Create Business Zone",
     "ENTER_BUSINESS_NAME_TEXT": "Enter Business Zone name",
     "CLONE_BUSINESS_ZONE_TEXT": "Clone Business Zone",
@@ -234,7 +234,7 @@
     "EDIT_ATTRIBUTE_TEXT": "Edit attribute",
     "CREATE_NEW_EMAIL_TEMPLATE_TEXT": "Create email template",
     "MAIL_TRANSLATIONS_TEXT": "Email translations",
-    "SUBJECT_TEXT": "Subject",
+    "SUBJECT_TEXT": "Khối",
     "TEXT_TEXT": "Body",
     "EMAIL_TEMPLATE_TEXT": "Email template",
     "BASIC_INFO_TEXT": "Basic information",
@@ -878,5 +878,12 @@
     "SCORE_AVERAGE_TEXT": "Điểm trung bình",
     "MUST_CHOOSE_DATE_TEXT": "Hãy chọn ngày tháng",
     "DETAIL_TEXT": "Chi tiết",
-    "REPORT_PROGRESS_TEXT": "Báo cáo tiến bộ"
+    "REPORT_PROGRESS_TEXT": "Báo cáo tiến bộ",
+    "GEOMETRY_TEXT": "Hình học",
+    "ARITHMETIC_TEXT": "Số học",
+    "CHAPTER_TEXT": "Chương",
+    "CHAPTERS_TEXT": "Danh sách chương",
+    "EDIT_CHAPTER_TEXT": "Cập nhật chương",
+    "CREATE_CHAPTER_TEXT": "Tạo chương",
+    "CLONE_CHAPTER_TEXT": "Sao chép chương"
   }

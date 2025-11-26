@@ -136,7 +136,7 @@
     "YOUR_PERMISSIONS_CHANGE_TEXT": "Đã cập nhật quyền truy cập. Vui lòng tải lại trang",
     "REFRESH_ACL_TEXT": "Thay đổi quyền truy cập",
     "LAST_UPDATED_TEXT": "Ngày cập nhật",
-    "CODE_TEXT": "Mã vùng",
+    "CODE_TEXT": "Mã",
     "CREATE_BUSINESS_ZONE_TEXT": "Tạo Khu vực",
     "ENTER_BUSINESS_NAME_TEXT": "Nhập tên khu vực",
     "CLONE_BUSINESS_ZONE_TEXT": "Sao chép khu vực",
@@ -917,5 +917,13 @@
     "NOT_ARCHIVED_TEXT": "Chưa Đạt",
     "ALMOST_ARCHIVED_TEXT": "Gần Đạt",
     "NOTE_TEXT": "Ghi chú",
-    "ENTER_NOTE_TEXT": "Điền Ghi chú"
+    "ENTER_NOTE_TEXT": "Điền Ghi chú",
+    "GEOMETRY_TEXT": "Hình học",
+    "ARITHMETIC_TEXT": "Số học",
+    "CHAPTER_TEXT": "Chương",
+    "CHAPTER_TYPE_TEXT": "Loại chương",
+    "CHAPTERS_TEXT": "Danh sách chương",
+    "EDIT_CHAPTER_TEXT": "Cập nhật chương",
+    "CREATE_CHAPTER_TEXT": "Tạo chương",
+    "CLONE_CHAPTER_TEXT": "Sao chép chương"
   }

@@ -14,11 +14,13 @@
             $scope.loadCount = 0;
             $scope.totalPages = 1;
             $scope.currentPage = 0;
+            $scope.params = {
+                chapter_types: [],
+            };
 
             $scope.search = {};
 
             $scope.loadList = function () {
-                $scope.params = {};
                 $scope.params.page = 0;
                 $scope.params.query = $scope.search.query;
                 $scope.params.limit = 20;
@@ -154,6 +156,25 @@
                 $scope.sort = {};
                 $scope.search.query = null;
                 $scope.reloadInit();
+            });
+
+            $rootScope.$on('chapter_filter_update', function (event, data) {
+                $scope.isLoading = true;
+                $scope.loadCount = 0;
+                if (data.grades && data.grades.length) {
+                    $scope.params.grades = data.grades
+                } else {
+                    $scope.params.grades = []
+                }
+                if (data.chapter_types && data.chapter_types.length) {
+                    $scope.params.chapter_types = data.chapter_types
+                } else {
+                    $scope.params.chapter_types = []
+                }
+                $timeout(function () {
+                    $scope.items = [];
+                    $scope.loadList();
+                }, 1000);
             });
 
             $scope.deleteFn = function (item, index) {
