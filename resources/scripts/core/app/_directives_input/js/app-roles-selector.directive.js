@@ -93,7 +93,9 @@
 
                             $scope.height = $scope.ngDialogData.height ? $scope.ngDialogData.height : 'height-200px';
 
-                            $scope.roles = $scope.ngDialogData.roles;
+                            $scope.roles = $scope.ngDialogData.roles.filter(function(r) {
+                                return r.id > 2;
+                            });
 
                             Utils.setPositionDropdownDialog(dialogPosition)
 

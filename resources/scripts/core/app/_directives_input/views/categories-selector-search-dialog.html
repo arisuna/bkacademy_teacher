@@ -17,7 +17,7 @@
                 ng-repeat="item in items | filter: searchConfig.filterQuery"
                 ng-click="selectItem(item)">
                     <div class="flex">
-                        <span>{{(item.parent_category_id > 0 ? item.parent_category_name + ' - ' : '')}} {{item.reference}} - {{item.name}} </span>
+                        <span>{{(item.parent_category_id > 0 ? item.parent_category_name + ' - ' : '')}} {{item.code}} - {{item.name}} </span>
                     </div>
                 </a>
             </div>

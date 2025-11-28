@@ -80,8 +80,8 @@
                         </td>
                         <td class="bd-t-white">{{ object.created_at | amDateFormat: 'DD/MM/YYYY'}}</td>
                         <td class="text-right bd-t-white">
-                            <button-edit-icon ng-if="object.status != -1"  ng-click="openEditAdminDialog( object )" class="mr-sm"></button-edit-icon>
-                            <button-delete-icon ng-if="object.status != -1"  ng-class="{'disabled': object.status == -1}" ng-click="deleteFn( object )"></button-delete-icon>
+                            <button-edit-icon ng-if="object.user_group_id > 2"  ng-click="openEditAdminDialog( object )" class="mr-sm"></button-edit-icon>
+                            <button-delete-icon ng-if="object.user_group_id > 2"  ng-click="deleteFn( object )"></button-delete-icon>
                         </td>
                     </tr>
 

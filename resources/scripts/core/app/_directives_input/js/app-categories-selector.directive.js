@@ -5,9 +5,9 @@
         .module('app.app-directives')
         .directive('appCategoriesSelector', appCategoriesSelector);
 
-    appCategoriesSelector.$inject = ['ngDialog', 'Utils', 'urlBase', 'AppCategoryService', '$translate'];
+    appCategoriesSelector.$inject = ['ngDialog', 'Utils', 'urlBase', 'AppKnowledgePointService', '$translate'];
 
-    function appCategoriesSelector(ngDialog, Utils, urlBase, AppCategoryService, $translate) {
+    function appCategoriesSelector(ngDialog, Utils, urlBase, AppKnowledgePointService, $translate) {
         var directive = {
             restrict: 'EA',
             replace: true,
@@ -17,7 +17,6 @@
                 classId: '<?',
                 isRequired: '<',
                 isEditable: '<?',
-                subCategoryOnly: '<?',
                 label: '@',
                 showLabel: '<',
             },
@@ -48,7 +47,7 @@
 
                 $scope.initFn = function(){
                     if($scope.model.length > 0){
-                        AppCategoryService.search({
+                        AppKnowledgePointService.getList({
                             class_id: $scope.classId,
                             ids: $scope.model
                         }).then(function (res) {
@@ -120,11 +119,9 @@
                         cache: false,
                         width: 300,
                         data: {
-                            subCategoryOnly: $scope.subCategoryOnly,
                             classId: $scope.classId
                         },
-                        controller: ['$scope', '$element', 'AppCategoryService', 'Utils', '$timeout', function ($scope, $element, AppCategoryService, Utils, $timeout) {
-                            $scope.subCategoryOnly = $scope.ngDialogData.subCategoryOnly;
+                        controller: ['$scope', '$element', 'AppKnowledgePointService', 'Utils', '$timeout', function ($scope, $element, AppKnowledgePointService, Utils, $timeout) {
                             $scope.classId = $scope.ngDialogData.classId;
                             $scope.totalItems = 0;
                             $scope.totalPages = 0;
@@ -135,11 +132,9 @@
                             $scope.initFn = function () {
                                 $scope.items = [];
                                 $scope.isLoading = true;
-                                    AppCategoryService.search({
+                                    AppKnowledgePointService.getList({
                                         class_id: $scope.classId,
-                                        query: $scope.searchConfig.query,
-                                        sub_category_only: $scope.subCategoryOnly,
-                                        not_root_category: true,
+                                        query: $scope.searchConfig.query
                                     }).then(function (res) {
                                         if (res.success) {
                                             $scope.items = res.data;
@@ -159,11 +154,9 @@
 
                             $scope.loadMore = function () {
                                 $scope.isLoadingMore = true;
-                                AppCategoryService.search({
+                                AppKnowledgePointService.getList({
                                     class_id: $scope.classId,
                                     query: $scope.searchConfig.query,
-                                    sub_category_only: $scope.subCategoryOnly,
-                                    not_root_category: true,
                                     page: $scope.currentPage + 1,
                                 }).then(
                                     function (res) {
