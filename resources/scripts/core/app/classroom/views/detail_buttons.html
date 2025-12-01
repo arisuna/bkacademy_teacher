@@ -1,5 +1,6 @@
 <div id="top-button-container" ng-if="classroom.is_deleted != 1">
     <div class="relo-bg-white edit-radio-mode mg-r-10 mg-t-2"
+    ng-if="tabActive == 1"
          ng-style="{'height':'32px','display':'inline-flex'}">
     <span class="text-bold mr-sm txt-12 flex-middle"
           ng-class="{'text-blue':isEditable == true, 'text-muted': isEditable == false}">

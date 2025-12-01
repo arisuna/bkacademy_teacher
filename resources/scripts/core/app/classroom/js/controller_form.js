@@ -11,7 +11,7 @@
             $scope.isLoadingBanks = true;
             $scope.classroom = {};
             $scope.isEditable = false;
-            $scope.tabActive = 1;
+            $scope.tabActive = 2;
             $scope.saving = false;
 
             $scope.addresses = [];

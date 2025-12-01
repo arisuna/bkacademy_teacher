@@ -1516,13 +1516,7 @@ h5 .fa {
 }
 
 .scroll-x {
-    height: 100%;
-    height: -webkit-fill-available;
-    overflow-x: hidden;
-
-    &::-webkit-scrollbar-track {
-        background: transparent;
-    }
+    overflow-x: auto;
 }
 
 .hidden-tab-scroll::-webkit-scrollbar {

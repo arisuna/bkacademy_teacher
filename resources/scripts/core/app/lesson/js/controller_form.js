@@ -12,6 +12,7 @@
             $scope.canSave = false;
             $scope.isEditable = false;
             $scope.tabActive = 1;
+            $scope.ratings = AppLessonService.getRatingList();
 
             $scope.statuses = [
                 {name: 'UNVERIFIED_TEXT', value: 0, color: 'dark-gray', text: 'UNVERIFIED_TEXT', isSelectable: true},
@@ -85,34 +86,51 @@
 
             $scope.saveFn = function () {
                 $scope.saving = true;
+                if($scope.tabActive == 1){
 
-                if ($scope.lesson.id > 0) {
-                    AppLessonService.updateLesson($scope.lesson).then(function (res) {
-                        if (res.success) {
-                            WaitingService.popSuccess(res.message);
-                        } else {
-                            WaitingService.error(res.message);
-                        }
-                        $scope.saving = false;
-                    }, function (err) {
-                        WaitingService.error(err);
-                    })
+                    if ($scope.lesson.id > 0) {
+                        AppLessonService.updateLesson($scope.lesson).then(function (res) {
+                            if (res.success) {
+                                WaitingService.popSuccess(res.message);
+                            } else {
+                                WaitingService.error(res.message);
+                            }
+                            $scope.saving = false;
+                        }, function (err) {
+                            WaitingService.error(err);
+                        })
+                    } else {
+                        AppLessonService.createLesson($scope.lesson).then(function (res) {
+                            if (res.success) {
+                                // WaitingService.success(res.message, function () {
+                                //     $state.go('app.lesson.list');
+                                // });
+
+                                WaitingService.popSuccess(res.message);
+                                $state.go('app.lesson.edit', {id: res.data.id});
+                            } else {
+                                WaitingService.error(res.message);
+                            }
+                            $scope.saving = false;
+                        }, function (err) {
+                            WaitingService.error(err);
+                        })
+                    }
                 } else {
-                    AppLessonService.createLesson($scope.lesson).then(function (res) {
-                        if (res.success) {
-                            // WaitingService.success(res.message, function () {
-                            //     $state.go('app.lesson.list');
-                            // });
-
-                            WaitingService.popSuccess(res.message);
-                            $state.go('app.lesson.edit', {id: res.data.id});
-                        } else {
-                            WaitingService.error(res.message);
-                        }
-                        $scope.saving = false;
-                    }, function (err) {
-                        WaitingService.error(err);
-                    })
+                    angular.forEach($scope.lesson.students, function(student_score){
+                        student_score.lesson_id = $scope.lesson.id;
+                        AppLessonService.updateScore(student_score).then(function (res) {
+                            $scope.saving = false;
+                            if (res.success) {
+                                WaitingService.popSuccess(res.message);
+                            } else {
+                                WaitingService.error(res.message);
+                            }
+                        }, (err) => {
+                            $scope.saving = false;
+                            WaitingService.error(err);
+                        })
+                    });
                 }
             }; // End save function
 

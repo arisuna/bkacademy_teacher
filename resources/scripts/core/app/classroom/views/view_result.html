@@ -1,0 +1,34 @@
+<form class="form-validate pd-0 mg-0"
+      validate-form=""
+      ng-submit="saveFn()"
+      novalidate>
+    <div class="custom-dialog-overflow scroll-append scroll-y scroll-x ">
+        <div class="row">
+            <div class="col-sm-12" ng-if="!page_loading && classroom.students.length > 0">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th class="text-dark-blue bd-b-white">{{'CATEGORY_TEXT' | translate }}</th>
+                        <th class="text-dark-blue bd-b-white" ng-repeat="(index, object) in classroom.students" >{{ object.student.lastname }} {{ object.student.firstname }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr   class="relo-bg-bright-gray-4 bd-r-5 border-white" ng-repeat="(index1, knowledge_point) in classroom.knowledge_points">
+                        <td class="bd-t-white">{{knowledge_point.name}}</td>
+                        <td  class="bd-t-white" ng-repeat="(index, object) in classroom.students">
+                            <div
+                                class="wrap-word text-bright-blue">{{ object.knowledge_points[knowledge_point.id].result }}
+                            </div>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="text-right mg-t-20"  app-acl-allow="classroom/edit"
+    acl-remove="true">
+        <save-button-submit title="SAVE_BTN_TEXT" ng-disabled="saving" ng-if="isEditable" ></save-button-submit>
+    </div>
+</form>
