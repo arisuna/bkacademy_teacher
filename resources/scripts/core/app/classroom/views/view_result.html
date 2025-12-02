@@ -14,7 +14,7 @@
                     </thead>
                     <tbody>
                     <tr   class="relo-bg-bright-gray-4 bd-r-5 border-white" ng-repeat="(index1, knowledge_point) in classroom.knowledge_points">
-                        <td class="bd-t-white">{{knowledge_point.name}}</td>
+                        <td class="bd-t-white">{{knowledge_point.code}} - {{knowledge_point.name}}</td>
                         <td  class="bd-t-white" ng-repeat="(index, object) in classroom.students">
                             <div
                                 class="wrap-word text-bright-blue">{{ object.knowledge_points[knowledge_point.id].result }}

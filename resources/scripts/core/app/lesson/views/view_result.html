@@ -64,7 +64,7 @@
                         </td>
                     </tr>
                     <tr   class="relo-bg-bright-gray-4 bd-r-5 border-white" ng-repeat="(index1, category) in lesson.categories">
-                        <td class="bd-t-white">{{category.name}}</td>
+                        <td class="bd-t-white">{{category.code}} - {{category.name}}</td>
                         <td  class="bd-t-white" ng-repeat="(index, object) in lesson.students">
                             
                             <select class="chosen-select form-control" chosen="" ng-model="object.categories[category.id].score"
@@ -86,7 +86,7 @@
                         </td>
                     </tr>
                     <tr   class="relo-bg-bright-gray-4 bd-r-5 border-white" ng-repeat="(index1, category) in lesson.home_categories">
-                        <td class="bd-t-white">{{category.name}}</td>
+                        <td class="bd-t-white width-200">{{category.code}} - {{category.name}}</td>
                         <td  class="bd-t-white" ng-repeat="(index, object) in lesson.students">
                             <select class="chosen-select form-control" chosen="" ng-model="object.home_categories[category.id].score"
                                 ng-options="rate.value as (rate.label | translate) for rate in ratings"

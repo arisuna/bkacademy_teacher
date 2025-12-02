@@ -19,13 +19,13 @@
                     color: 'green',
                     label: 'ARCHIVED_TEXT'
                 },
-                {
-                    name: 'ALMOST_ARCHIVED_TEXT',
-                    value: 1,
-                    id: 1,
-                    color: 'yellow',
-                    label: 'ALMOST_ARCHIVED_TEXT'
-                },
+                // {
+                //     name: 'ALMOST_ARCHIVED_TEXT',
+                //     value: 1,
+                //     id: 1,
+                //     color: 'yellow',
+                //     label: 'ALMOST_ARCHIVED_TEXT'
+                // },
                 {
                     name: 'NOT_ARCHIVED_TEXT',
                     value: 0,
